@@ -11,40 +11,53 @@ import utility from '../../utility';
 export default function Header() {
 
 
-    const handlePassword = () => {
-        history.push('/forgot-password');
-    }
+   
 
-
-    const [passwordValid, setPasswordValid] = React.useState("");
-    const [emailValid, setEmailValid] = React.useState("");
-    const [emailError, setEmailError] = useState('')
-
-
-    // const validateEmail = (e) => {
-
-
-
-    //     if (validator.isEmail(emailValid)) {
-
-    //         history.push('/dashboard')
-
-    //     }
-
-    //     else {
-
-    //         setEmailError('Please enter a valid email address')
-
-    //     }
-    // }
+ 
 
 
 
     return (
         <div className="header-div">
+            <div className="headerleft">
+                <span style={{display:"flex"}}>
+                <span className="display-flex">
+           <span><img className="header-logo" src={require("../../assets/styles/images/xdc_logo.svg")} ></img></span> 
+           <span className="xdc"><p>XDC</p></span> 
+           </span>
+           <span>
+           <div className="connect-wallet">
+               <div className="circle"></div>
+           
+              <p>connect wallet</p> 
+           </div>
+           </span>
+           </span>
+            </div>
+
+            <div className="display-flex">
+                <Column className="mid-div">
+                <Row className="xdc-governance">XDC Governance</Row>
+                <Row className="xdc-para">Decentralized community for maintaining the integrity of the XinFin Blockchain through discussion and on-chain voting.</Row>
+                </Column>
+                <Row className="div-box">
+                <Column className="div-1">
+                    <Row className="div-1-row">65</Row>
+                    <Row className="div-1-row1">Proposal Passed</Row>
+                </Column>
+                <Column className="div-1">
+                    <Row className="div-1-row">150</Row>
+                    <Row className="div-1-row1">Voting Address</Row>
+                </Column>
+                <Column className="div-1">
+                    <Row className="div-1-row">4538</Row>
+                    <Row className="div-1-row1">Votes Casted</Row>
+                </Column>
+                </Row>
+            </div>
             
 
-
+            
         </div>
 
     )
