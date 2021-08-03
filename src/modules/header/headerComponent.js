@@ -11,15 +11,9 @@ import utility from '../../utility';
 export default function Header() {
 
 
-   
-
- 
-
-
-
     return (
-        <div className="header-div">
-            <div className="headerleft">
+        <div>
+            {/* <div className="headerleft">
                 <span style={{display:"flex"}}>
                 <span className="display-flex">
            <span><img className="header-logo" src={require("../../assets/styles/images/xdc_logo.svg")} ></img></span> 
@@ -33,9 +27,34 @@ export default function Header() {
            </div>
            </span>
            </span>
-            </div>
+            </div> */}
 
-            <div className="display-flex">
+            <Column className="header-div">
+            <Row className="row-1">
+                <Column>
+                <Row>
+                <Column>
+                <img className="header-logo" src={require("../../assets/styles/images/xdc_logo.svg")} ></img>
+                </Column>
+                <Column className="xdc">
+                <p>XDC</p>
+                </Column>
+                </Row>
+                </Column>
+                <Column>
+                <div className="connect-wallet">
+               <div className="circle"></div>
+           
+              <p>connect wallet</p> 
+           </div>
+                </Column>
+
+
+            </Row>
+            
+
+            {/* <div className="display-flex"> */}
+            <Row className="row-2">
                 <Column className="mid-div">
                 <Row className="xdc-governance">XDC Governance</Row>
                 <Row className="xdc-para">Decentralized community for maintaining the integrity of the XinFin Blockchain through discussion and on-chain voting.</Row>
@@ -54,8 +73,9 @@ export default function Header() {
                     <Row className="div-1-row1">Votes Casted</Row>
                 </Column>
                 </Row>
-            </div>
-            
+            {/* </div> */}
+            </Row>
+            </Column>
 
             
         </div>
