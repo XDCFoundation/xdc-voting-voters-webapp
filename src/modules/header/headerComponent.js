@@ -53,14 +53,15 @@ export default function Header() {
             </Row>
             
 
-            {/* <div className="display-flex"> */}
+            {/* !***********************!  */}
             <Row className="row-2">
                 <Column className="mid-div">
                 <Row className="xdc-governance">XDC Governance</Row>
-                <Row className="xdc-para">Decentralized community for maintaining the integrity of the XinFin Blockchain through discussion and on-chain voting.</Row>
+                <Row className="xdc-para"><div className="para-div"> Decentralized community for maintaining the integrity of the XinFin Blockchain through discussion and on-chain voting.</div></Row>
                 </Column>
-                <Row className="div-box">
-                <Column className="div-1">
+              <div className="mobile-alldiv">  <Row className="div-box">
+              <Row className="mobile-divbox"> <Column className="div-1">
+            
                     <Row className="div-1-row">65</Row>
                     <Row className="div-1-row1">Proposal Passed</Row>
                 </Column>
@@ -68,12 +69,15 @@ export default function Header() {
                     <Row className="div-1-row">150</Row>
                     <Row className="div-1-row1">Voting Address</Row>
                 </Column>
+                </Row> 
+                <Row className="mobile-lower-div">
                 <Column className="div-1">
                     <Row className="div-1-row">4538</Row>
                     <Row className="div-1-row1">Votes Casted</Row>
                 </Column>
                 </Row>
-            {/* </div> */}
+                </Row>
+                </div>
             </Row>
             </Column>
 
