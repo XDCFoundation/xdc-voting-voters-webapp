@@ -14,21 +14,24 @@ const useStyles = makeStyles((theme) => ({
 
     paddingTop: "8%",
     paddingLeft: "21%",
-    paddingRight: "9%",
-    flexDirection: "column",
+    paddingRight: "23%",
+    // flexDirection: "column",
   },
   container: {
     width: "100%",
     margin: "0px",
   },
   div: {
-    width: "80%",
+    width: "100%",
     height: "auto",
     background: "#FFFFFF 0% 0% no-repeat padding-box",
     border: "1px solid #E3E7EB",
     borderRadius: "6px",
     opacity: "1",
   },
+  // lign-items: center;
+  //   width: 50%;
+  //   display: flex;
   heading: {
     fontSize: "15px",
     marginTop: "2%",
@@ -54,7 +57,48 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 400px) and (max-width: 767px)": {
       display: "block",
       marginLeft: "7px",
-      width: "114%",
+      width: "113%",
+    },
+  },
+  proposalinput1: {
+    background: "#ffffff 0% 0% no-repeat padding-box",
+    border: "1px solid #e3e7eb",
+    borderRadius: "4px",
+    opacity: "1",
+    width: "75%",
+    marginLeft: "54px",
+    height: "35px",
+    fontSize: "12px",
+
+    "@media (min-width: 400px) and (max-width: 767px)": {
+      display: "block",
+      marginLeft: "7px",
+      width: "105%",
+    },
+
+    "@media (min-width: 767px) and (max-width: 980px)": {
+      marginLeft: "34px",
+    },
+  },
+  proposalinput12: {
+    background: "#ffffff 0% 0% no-repeat padding-box",
+    border: "1px solid #e3e7eb",
+    borderRadius: "4px",
+    opacity: "1",
+    width: "75%",
+    marginLeft: "54px",
+    height: "35px",
+    fontSize: "12px",
+
+    "@media (min-width: 400px) and (max-width: 767px)": {
+      display: "block",
+      marginLeft: "7px",
+      width: "105%",
+    },
+
+    "@media (min-width: 768px) and (max-width: 980px)": {
+      marginLeft: "39px",
+      width: "100%",
     },
   },
 
@@ -64,13 +108,17 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "4px",
     opacity: "1",
     height: "35px",
-    marginTop: "9%",
-    marginLeft: "0",
+
     fontSize: "10px",
-    width: "85%",
+
     "@media (min-width: 400px) and (max-width: 767px)": {
-      marginLeft: "7px",
-      width: "106px",
+      width: "88%",
+      marginLeft: "-9px",
+      marginTop: "2px",
+    },
+
+    "@media (min-width: 767px) and (max-width: 1024px)": {
+      marginLeft: "15px",
     },
   },
 
@@ -89,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: "8px",
     },
     "@media (min-width: 900px) and (max-width: 977px)": {
-      fontSize: "9px",
+      fontSize: "12px",
     },
   },
   startdate: {
@@ -99,48 +147,51 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "0px",
     color: " #2a2a2a",
     opacity: " 1",
-    paddingLeft: "21px",
-    paddingTop: "4%",
+
     fontSize: "12px",
     "@media (min-width: 400px) and (max-width: 767px)": {
       fontSize: "11px",
       paddingLeft: "8px",
     },
     "@media (min-width: 900px) and (max-width: 977px)": {
-      fontSize: "9px",
+      fontSize: "12px",
     },
   },
   startdateinput: {
+    width: "50%",
     background: " #FFFFFF 0% 0% no-repeat padding-box",
     border: " 1px solid #E3E7EB",
     borderRadius: "4px",
     opacity: "1",
-    width: "85%",
+
     fontSize: "10px",
     height: "35px",
-    marginTop: "9%",
-    marginLeft: "-6%",
+
     "@media (min-width: 400px) and (max-width: 767px)": {
-      marginLeft: "7px",
-      width: "106px",
+      marginLeft: "6px",
+      fontSize: "11px",
+      width: "85%",
+    },
+    "@media (min-width: 767px) and (max-width: 980px)": {
+      marginLeft: "34px",
+      width: "74%",
     },
   },
   enddate: {
     color: "var(--unnamed-color-2a2a2a)",
     textAlign: "left",
-    font: "normal normal normal 15px/19px Inter",
+
     letterSpacing: "0px",
     color: "#2a2a2a",
     opacity: 1,
     fontSize: "12px",
-    paddingLeft: "10%",
-    paddingTop: "4%",
+
+    "@media (min-width: 767px) and (max-width: 1024px)": {
+      fontSize: "12px",
+      marginLeft: "18px",
+    },
     "@media (min-width: 400px) and (max-width: 767px)": {
       fontSize: "11px",
-      paddingLeft: "8px",
-    },
-    "@media (min-width: 900px) and (max-width: 977px)": {
-      fontSize: "9px",
     },
   },
   description: {
@@ -158,15 +209,14 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: "8px",
     },
     "@media (min-width: 900px) and (max-width: 977px)": {
-      fontSize: "9px",
+      fontSize: "12px",
     },
   },
 
-  button: {},
   quillgrid: {
     paddingTop: "4%",
     background: "#FFFFFF 0% 0% no-repeat padding-box",
-
+    marginLeft: "8px",
     borderRadius: "6px",
     paddingRight: "4%",
     opacity: 1,
@@ -181,12 +231,7 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "center",
     },
   },
-  forstartendrow: {
-    "@media (min-width: 400px) and (max-width: 767px)": {
-      display: "flex",
-      flexFlow: "row nowrap",
-    },
-  },
+
   upload: {
     color: "var(--unnamed-color-2a2a2a)",
     textAlign: "left",
@@ -198,15 +243,16 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "10%",
     paddingLeft: "21px",
     "@media (min-width: 400px) and (max-width: 767px)": {
-      fontSize: "9px",
-      marginTop: "23%",
+      fontSize: "12px",
+      paddingLeft: "8px",
+      marginTop: "109px",
     },
     "@media (min-width: 767px) and (max-width: 900px)": {
       fontSize: "9px",
       marginTop: "23%",
     },
     "@media (min-width: 900px) and (max-width: 977px)": {
-      fontSize: "9px",
+      fontSize: "12px",
       marginTop: "20%",
     },
     "@media (min-width: 977px) and (max-width: 1080px)": {
@@ -216,6 +262,9 @@ const useStyles = makeStyles((theme) => ({
   },
   uploadbox: {
     marginTop: "9%",
+    "@media (min-width: 400px) and (max-width: 767px)": {
+      marginLeft: "7px",
+    },
     "@media (min-width: 767px) and (max-width: 900px)": {
       fontSize: "11px",
       marginTop: "22%",
@@ -225,7 +274,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "18%",
     },
     "@media (min-width: 977px) and (max-width: 1080px)": {
-      fontSize: "9px",
+      fontSize: "12px",
       marginTop: "12%",
     },
   },
@@ -234,14 +283,37 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #e3e7eb",
     borderRadius: "4px",
     opacity: "1",
-    width: "89%",
+    width: "85%",
     height: "35px",
     fontSize: "10px",
   },
   image: {
     width: "27px",
-    marginTop: "8px",
+
     marginLeft: "6px",
+  },
+
+  row_one: {
+    "@media (min-width: 767px) and (max-width: 2000px)": {
+      display: "flex",
+      flexDirection: "row",
+      marginTop: "23px",
+      marginLeft: "21px",
+    },
+    "@media (min-width: 400px) and (max-width: 2000px)": {
+      display: "flex",
+      flexDirection: "row",
+      marginTop: "23px",
+      width: "100%",
+    },
+  },
+  startdateparentdiv: {
+    "@media (min-width: 768px) and (max-width: 1024px)": {
+      display: "flex",
+    },
+    "@media (min-width: 1025px) and (max-width: 1400px)": {
+      display: "flex",
+    },
   },
 }));
 
@@ -302,20 +374,24 @@ export default function Createnewproposal(props) {
             </Grid>
           </div>
 
-          <div className={classes.row}>
-            <Grid xs={3} className={classes.startdate}>
+          <Grid xs={12} className={classes.row_one}>
+            <Grid xs={3} className={classes.proposaltitle}>
               Start&nbsp;Date
             </Grid>
-            <Grid xs={3}>
-              <input className={classes.startdateinput} type="date" />
+
+            <Grid xs={6}>
+              <input className={classes.proposalinput12} type="date" />
             </Grid>
-            <Grid xs={3} className={classes.enddate}>
+          </Grid>
+          <Grid xs={12} className={classes.row}>
+            <Grid xs={2} className={classes.proposaltitle}>
               End&nbsp;Date
             </Grid>
-            <Grid xs={3}>
-              <input className={classes.enddateinput} type="date" />
+
+            <Grid xs={4}>
+              <input className={classes.proposalinput1} type="date" />
             </Grid>
-          </div>
+          </Grid>
           <div className={classes.row}>
             <Grid xs={3} className={classes.description}>
               Description
@@ -329,8 +405,10 @@ export default function Createnewproposal(props) {
               Upload&nbsp;Document
             </Grid>
             <Grid xs={10} className={classes.uploadbox}>
-              <input type="file" className={classes.input} />
-              <img className={classes.image} src="/images/Add.svg" />
+              <Row>
+                <input type="file" className={classes.input} />
+                <img className={classes.image} src="/images/Add.svg" />
+              </Row>
             </Grid>
           </div>
           <div
@@ -355,4 +433,27 @@ const Button = styled.button`
   width: 170px;
   height: 30px;
   font-size: 12px;
+  margin-bottom: 10%;
+  @media (min-width: 400px) and (max-width: 767px) {
+    width: 120px;
+  }
+`;
+const Title = styled.span`
+  font: normal normal normal 15px/19px Inter;
+  color: #2a2a2a;
+  opacity: 1;
+  font-size: 12px;
+  text-align: left;
+  padding-top: 1%;
+  padding-left: 21px;
+  letter-spacing: 0px;
+`;
+const StartDate = styled.input`
+  width: 40%;
+  border: 1px solid #e3e7eb;
+  height: 35px;
+  opacity: 1;
+  font-size: 12px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 4px;
 `;
