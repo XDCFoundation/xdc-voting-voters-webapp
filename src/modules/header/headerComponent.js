@@ -7,6 +7,7 @@ import "../../assets/styles/custom.css";
 // import "../../assets/styles/images";
 import utility from '../../utility';
 // import validator from 'validator';
+import HeaderMain from './header';
 
 export default function Header() {
 
@@ -30,7 +31,8 @@ export default function Header() {
             </div> */}
 
             <Column className="header-div">
-            <Row className="row-1">
+               <div> <HeaderMain/> </div>
+            {/* <Row className="row-1">
                 <Column>
                 <Row>
                 <Column>
@@ -50,11 +52,13 @@ export default function Header() {
                 </Column>
 
 
-            </Row>
+            </Row> */}
             
 
             {/* !***********************!  */}
+          
             <Row className="row-2">
+                <div className="row-2-width">
                 <Column className="mid-div">
                 <Row className="xdc-governance">XDC Governance</Row>
                 <Row className="xdc-para"><div className="para-div"> Decentralized community for maintaining the integrity of the XinFin Blockchain through discussion and on-chain voting.</div></Row>
@@ -78,10 +82,16 @@ export default function Header() {
                 </Row>
                 </Row>
                 </div>
+                
+                </div>
             </Row>
+            <div className="recent-div">
+            <div className="recent-proposal-div"></div>
+            </div>
+
             </Column>
 
-            
+          
         </div>
 
     )
