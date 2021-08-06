@@ -21,7 +21,7 @@ export default function HeaderMain(){
                 <div className="connect-wallet">
                <div className="circle"></div>
            
-              <p>connect wallet</p> 
+              <p>Connect Wallet</p> 
            </div>
                 </Column>
 
