@@ -8,6 +8,8 @@ import "../../assets/styles/custom.css";
 import utility from '../../utility';
 // import validator from 'validator';
 import HeaderMain from './header';
+import RecentProposal from '../Dashboard/recentProposal';
+
 
 export default function Header() {
 
@@ -86,7 +88,9 @@ export default function Header() {
                 </div>
             </Row>
             <div className="recent-div">
-            <div className="recent-proposal-div"></div>
+            <div className="recent-proposal-div">
+               <RecentProposal/>
+            </div>
             </div>
 
             </Column>
