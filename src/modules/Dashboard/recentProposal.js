@@ -16,21 +16,49 @@ export default function RecentProposal(){
           {
             Adress: "Posted on 2 July 2021",
             AddedOn: "XDC-ABC Bootstrapping Partnership Proposal",
-            Votes: "Status: Open",
+            Votes: "Open",
+            Poll:"Poll Ended",
+            Bar:"Line",
+            Vote:"145",
             id: 1,
           },
           {
-            Adress: "xdcc4e699581116412965b…5e7c",
-            AddedOn: "21 June 2021",
-            Votes: "200",
+            Adress: "Posted on 24 June 2021",
+            AddedOn: "Adding more features to XDC Explorer 2.0",
+            Votes: "Passed",
+            Poll:"Poll Ended",
+            Bar:"Line",
+            Vote:"120",
             id: 2,
           },
           {
-            Adress: "5e7c71b8e2dd50ac8d30x…5b9c",
-            AddedOn: "1 June 2021",
-            Votes: "170",
+            Adress: "Posted on 16 June 2021",
+            AddedOn: "Relaunch of XinFin.org website",
+            Votes: "Failed",
+            Poll:"Poll Ended",
+            Bar:"Line",
+            Vote:"135",
             id: 3,
           },
+          {
+            Adress: "Posted on 24 June 2021",
+            AddedOn: "Launching NFT Marketplace to increase circulation of XDC",
+            Votes: "Passed",
+            Poll:"Poll Ended",
+            Bar:"Line",
+            Vote:"125",
+            id: 4,
+          },
+          {
+            Adress: "Posted on 24 June 2021",
+            AddedOn: "Partnership with Circle Stable Coin",
+            Votes: "Passed",
+            Poll:"Poll Ended",
+            Bar:"Line",
+            Vote:"89",
+            id: 5,
+          },
+          
         ]
     
           ;
@@ -41,7 +69,9 @@ export default function RecentProposal(){
               Adress: d.Adress,
               AddedOn: d.AddedOn,
               Votes: d.Votes,
-    
+              Poll: d.Poll,
+              Bar: d.Bar,
+              Vote:d.Vote,
               id: d.id,
             };
           })
@@ -113,7 +143,7 @@ export default function RecentProposal(){
 
             // address={filteredData && filteredData.length ? filteredData : address}
             <TableRow
-          
+          className="table-mid-line"
 
             //   style={
             //     index % 2 !== 1
@@ -135,10 +165,12 @@ export default function RecentProposal(){
                    
                   </Tooltip>
                 </a> */}
-                <Row>{row.Adress}</Row>
+                <Row className="date">{row.Adress}</Row>
                
-               <Row>{row.AddedOn} </Row>
-               <Row>{row.Votes}</Row>
+               <Row className="name">{row.AddedOn} </Row>
+               <Row className="status"><p>Status:</p> 
+              {row.Votes}
+               </Row>
              
               </TableCell>
               {/* <hr className="table-mid-line"/> */}
@@ -160,9 +192,9 @@ export default function RecentProposal(){
                   <span className="tabledata"  >  Delete</span>
                 </a> */}
 
-<Row>Poll Ended</Row>
-               <Row>Line</Row>
-               <Row>20 Votes</Row>
+<Row>{row.Poll}</Row>
+               <Row><div className="bar-line"></div> </Row>
+               <Row>{row.Vote}</Row>
 
               </TableCell>
               </Column>
@@ -177,6 +209,7 @@ export default function RecentProposal(){
 </Grid>
 </div>
 <Row className="view-all">View All Proposals</Row>
+<div style={{paddingTop:"10%"}}></div>
         </div>
     )
 }
