@@ -409,7 +409,7 @@ font-weight: 600;
 border: 1px solid #E3E7EB;
 
 border-radius: 6px; */
-height: 570px;
+height: 500px;
 background: #FFFFFF 0% 0% no-repeat padding-box;
 border: 1px solid #E3E7EB;
 border-color: #E3E7EB;
@@ -420,7 +420,7 @@ opacity: 1;
  .table-between{
      justify-content: space-between;
      display: flex;
-     /* margin: 15px; */
+     margin-bottom: -15px;
  }
  .table-mid-line{
     margin-top: 0px;
@@ -435,12 +435,41 @@ opacity: 1;
     border-color: #E3E7EB;
     border-radius: 6px;
     opacity: 1;
-     box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1);
+     /* box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1); */
+ }
+ .poll-ended{
+margin-left: 86px;
+font: normal normal medium 14px/17px Inter;
+letter-spacing: 0px;
+color: #CECECE;
+opacity: 1;
+font-size: 14px;
  }
  .bar-line{
      width: 150px;
      height: 3px;
-     background-color: black;
+    
+     background-color: red
+ }
+ .line-1{
+     background-color: red;
+     width: 100px;
+ }
+ .line-2{
+     background-color: green;
+     width: 50px;
+ }
+ .percent-line{
+    margin-top: 15px;
+ }
+ .vote-number{
+     margin-top: 15px;
+     margin-left: 86px;
+     font: normal normal normal 15px/19px Inter;
+letter-spacing: 0px;
+color: #2A2A2A;
+opacity: 1;
+font-size: 15px;
  }
  .date{
     font: normal normal medium 14px/17px Inter;
@@ -453,7 +482,7 @@ opacity: 1;
     letter-spacing: 0px;
     color: #2A2A2A;
     opacity: 1;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     margin-top: 2px;
  }
@@ -465,6 +494,8 @@ opacity: 1;
     font: normal normal normal 15px/19px Inter;
     letter-spacing: 0px;
     color: #3B3B3B;
+    font-size: 15px;
+
  }
 .view-all{
     
@@ -476,7 +507,8 @@ opacity: 1;
 letter-spacing: 0px;
 color: #2A2A2A;
 opacity: 1;
-font-size: 15px;
+font-size: 12px;
+font-weight: 600;
 }
 input:focus {
     border: solid 1px #0099ff;
