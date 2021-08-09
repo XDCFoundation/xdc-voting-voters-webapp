@@ -451,6 +451,20 @@ color: #CECECE;
 opacity: 1;
 font-size: 14px;
  }
+ .details{
+     height: 30px;
+     width: 70px;
+     background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid #2049B9;
+border-radius: 4px;
+opacity: 1;
+text-align: center;
+padding-top: 5px;
+margin-left: 45px;
+    margin-top: 5px;
+    color: #2149B9 !important;
+    font-weight: 600;
+ }
  .bar-line{
      width: 180px;
      height: 3px;
@@ -635,7 +649,12 @@ input:focus {
 }
 
 .fc-blue {
-    color: #0052cc !important;
+    /* color: #0052cc !important; */
+    color: #2149B9;
+
+}
+.fc-green{
+    color:#3AB70D;
 }
 
 .fc-dark-slate-blue {
@@ -655,7 +674,8 @@ input:focus {
 }
 
 .fc-red {
-    color: red;
+    /* color: red; */
+    color:#F43D3D;
 }
 
 .fc-brownish-grey {
