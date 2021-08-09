@@ -126,11 +126,11 @@ export default function RecentProposal() {
                                                         <Row className="date">{row.Date}</Row>
 
                                                         <Row className="name">{row.Name} </Row>
-                                                        <Row className="status" 
-                                                        // style={{row.Status=="Open"?"":""}}
+                                                        <Row className="status"
+                                                      
                                                         ><p>Status:</p>
                                                         
-                                                            {row.Status}
+                                                           <span className={row.Status==="Open"?"fc-blue":row.Status==="Passed"?"fc-green":"fc-red"}>{row.Status}</span> 
                                                         </Row>
 
                                                     </TableCell>
@@ -142,9 +142,10 @@ export default function RecentProposal() {
                                                     <TableCell style={{ border: "none" }} >
 
 
-                                                        <Row className="poll-ended"> <span style={{ marginRight: "5px" }}> <img style={{ height: "14px", width: "14px" }} className="time-inactive" src={require("../../assets/styles/images/Time-Inactive.svg")} ></img></span> {row.Poll}</Row>
+
+                                                       { row.Status=="Open"?<><Row><span style={{marginRight:"-135px"}}>01:50:48 Remaining</span><span style={{ marginRight: "5px" }}> <img style={{ height: "14px", width: "14px",marginTop:"-3px" }} className="time-inactive" src={require("../../assets/styles/images/Time-Active.svg")} ></img></span></Row><Row><div className="details">Details</div></Row></>:<><Row className="poll-ended"> <span style={{ marginRight: "5px" }}> <img style={{ height: "14px", width: "14px", marginTop:"-2px" }} className="time-inactive" src={require("../../assets/styles/images/Time-Inactive.svg")} ></img></span> {row.Poll}</Row>
                                                         <Row className="percent-line"><div className="bar-line"><div className="line-1"></div><div className="line-2"></div></div> </Row>
-                                                        <Row className="vote-number">{row.Vote}</Row>
+                                                        <Row className="vote-number">{row.Vote}</Row></>}
 
                                                     </TableCell>
                                                 </Column>
