@@ -14,45 +14,45 @@ export default function RecentProposal() {
     React.useEffect(() => {
         let address = [
             {
-                Adress: "Posted on 2 July 2021",
-                AddedOn: "XDC-ABC Bootstrapping Partnership Proposal",
-                Votes: "Open",
+                Date: "Posted on 2 July 2021",
+                Name: "XDC-ABC Bootstrapping Partnership Proposal",
+                Status: "Open",
                 Poll: "Poll Ended",
                 Bar: "Line",
                 Vote: "145 votes",
                 id: 1,
             },
             {
-                Adress: "Posted on 24 June 2021",
-                AddedOn: "Adding more features to XDC Explorer 2.0",
-                Votes: "Passed",
+                Date: "Posted on 24 June 2021",
+                Name: "Adding more features to XDC Explorer 2.0",
+                Status: "Passed",
                 Poll: "Poll Ended",
                 Bar: "Line",
                 Vote: "120 votes",
                 id: 2,
             },
             {
-                Adress: "Posted on 16 June 2021",
-                AddedOn: "Relaunch of XinFin.org website",
-                Votes: "Failed",
+                Date: "Posted on 16 June 2021",
+                Name: "Relaunch of XinFin.org website",
+                Status: "Failed",
                 Poll: "Poll Ended",
                 Bar: "Line",
                 Vote: "135 votes",
                 id: 3,
             },
             {
-                Adress: "Posted on 24 June 2021",
-                AddedOn: "Launching NFT Marketplace to increase circulation of XDC",
-                Votes: "Passed",
+                Date: "Posted on 24 June 2021",
+                Name: "Launching NFT Marketplace to increase circulation of XDC",
+                Status: "Passed",
                 Poll: "Poll Ended",
                 Bar: "Line",
                 Vote: "125 votes",
                 id: 4,
             },
             {
-                Adress: "Posted on 24 June 2021",
-                AddedOn: "Partnership with Circle Stable Coin",
-                Votes: "Passed",
+                Date: "Posted on 24 June 2021",
+                Name: "Partnership with Circle Stable Coin",
+                Status: "Passed",
                 Poll: "Poll Ended",
                 Bar: "Line",
                 Vote: "89 votes",
@@ -66,9 +66,9 @@ export default function RecentProposal() {
             address.map((d) => {
                 return {
                     select: false,
-                    Adress: d.Adress,
-                    AddedOn: d.AddedOn,
-                    Votes: d.Votes,
+                    Date: d.Date,
+                    Name: d.Name,
+                    Status: d.Status,
                     Poll: d.Poll,
                     Bar: d.Bar,
                     Vote: d.Vote,
@@ -86,7 +86,7 @@ export default function RecentProposal() {
                 <Column className="heading">Recent Proposals</Column>
                 <Column>
                     <div className="create-wallet">
-                        
+
 
                         <p>Create Proposal</p>
                     </div>
@@ -116,30 +116,33 @@ export default function RecentProposal() {
                                         <TableRow
                                             className="table-mid-line"
 
-                                       
+
                                         >
                                             <Row className="table-between">
                                                 <Column>
                                                     <TableCell style={{ border: "none" }}  >
 
-                                                       
-                                                        <Row className="date">{row.Adress}</Row>
 
-                                                        <Row className="name">{row.AddedOn} </Row>
-                                                        <Row className="status"><p>Status:</p>
-                                                            {row.Votes}
+                                                        <Row className="date">{row.Date}</Row>
+
+                                                        <Row className="name">{row.Name} </Row>
+                                                        <Row className="status" 
+                                                        // style={{row.Status=="Open"?"":""}}
+                                                        ><p>Status:</p>
+                                                        
+                                                            {row.Status}
                                                         </Row>
 
                                                     </TableCell>
-                                                   
+
                                                 </Column>
-                                               
+
 
                                                 <Column>
                                                     <TableCell style={{ border: "none" }} >
-                                                        
 
-                                                        <Row className="poll-ended">{row.Poll}</Row>
+
+                                                        <Row className="poll-ended"> <span style={{ marginRight: "5px" }}> <img style={{ height: "14px", width: "14px" }} className="time-inactive" src={require("../../assets/styles/images/Time-Inactive.svg")} ></img></span> {row.Poll}</Row>
                                                         <Row className="percent-line"><div className="bar-line"><div className="line-1"></div><div className="line-2"></div></div> </Row>
                                                         <Row className="vote-number">{row.Vote}</Row>
 
