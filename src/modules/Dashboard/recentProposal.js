@@ -139,7 +139,7 @@ export default function RecentProposal() {
 
 
                                                 <Column>
-                                                    <TableCell style={{ border: "none" }} >
+                                                    <TableCell className="mobile-div-right" style={{ border: "none" }} >
 
 
 
