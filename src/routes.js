@@ -8,7 +8,7 @@ import {Login, SignUp} from "./modules";
 import Header from './modules/header/headerComponent';
 import {history} from "./managers/history";
 import BaseComponent from "./modules/baseComponent";
-
+import AllProposal from './modules/Dashboard/viewProposal';
 class Routes extends BaseComponent {
 
     componentDidMount() {
@@ -22,6 +22,7 @@ class Routes extends BaseComponent {
                 <Router history={history}>
                     <Switch>
                         <Route exact path={'/'} component={Header}/>
+                        <Route exact path={'/view-all-proposals'} component={AllProposal}/>
                         <Route exact path={'/sign-up'} component={SignUp}/>
                         <Redirect exact from='*' to="/"/>
                     </Switch>
