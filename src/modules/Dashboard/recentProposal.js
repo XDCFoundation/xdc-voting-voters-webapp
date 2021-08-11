@@ -8,7 +8,7 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-
+import { history } from "../../managers/history";
 
 export default function RecentProposal() {
     React.useEffect(() => {
@@ -80,86 +80,78 @@ export default function RecentProposal() {
 
     const [address, setAddress] = React.useState([]);
 
+
     return (
         <div>
-            <Row className="recent-add-div">
-                <Column className="heading">Recent Proposals</Column>
-                <Column>
-                    <div className="create-wallet">
+
+            {/* <div className="griddiv"> */}
 
 
-                        <p>Create Proposal</p>
-                    </div>
-                </Column>
-            </Row>
-            <div className="griddiv">
+            <Grid lg={13} className="tablegrid_address">
+                {/* <Grid class="tabletop-header">Whitelisted Addresses</Grid> */}
+                <Grid component={Paper} style={{ boxShadow: "0px 0px 0px 0px" }}>
 
-
-                <Grid lg={13} className="tablegrid_address">
-                    {/* <Grid class="tabletop-header">Whitelisted Addresses</Grid> */}
-                    <Grid component={Paper} style={{ boxShadow: "0px 0px 0px 0px" }}>
-
-                        <Table className="table" aria-label="Whitelisted Addresses" style={{ boxShadow: "0px 0px 0px 0px" }}>
-                            <TableHead>
-                            </TableHead>
-                            <TableBody>
-                                {/* {filteredProducts.map((product)=>{ */}
+                    <Table className="table" aria-label="Whitelisted Addresses" style={{ boxShadow: "0px 0px 0px 0px" }}>
+                        <TableHead>
+                        </TableHead>
+                        <TableBody>
+                            {/* {filteredProducts.map((product)=>{ */}
 
 
 
-                                {address.map((row, index) => {
+                            {address.map((row, index) => {
 
 
-                                    return (
+                                return (
 
-                                        // address={filteredData && filteredData.length ? filteredData : address}
-                                        <TableRow
-                                            className="table-mid-line"
-
-
-                                        >
-                                            <Row className="table-between">
-                                                <Column>
-                                                    <TableCell style={{ border: "none" }}  >
+                                    // address={filteredData && filteredData.length ? filteredData : address}
+                                    <TableRow
+                                        className="table-mid-line"
 
 
-                                                        <Row className="date">{row.Date}</Row>
-
-                                                        <Row className="name">{row.Name} </Row>
-                                                        <Row className="status"
-                                                      
-                                                        ><p>Status:</p>
-                                                        
-                                                           <span className={row.Status==="Open"?"fc-blue":row.Status==="Passed"?"fc-green":"fc-red"}>{row.Status}</span> 
-                                                        </Row>
-
-                                                    </TableCell>
-
-                                                </Column>
+                                    >
+                                        <Row className="table-between">
+                                            <Column>
+                                                <TableCell style={{ border: "none" }}  >
 
 
-                                                <Column>
-                                                    <TableCell className="mobile-div-right" style={{ border: "none" }} >
+                                                    <Row className="date">{row.Date}</Row>
+
+                                                    <Row className="name">{row.Name} </Row>
+                                                    <Row className="status"
+
+                                                    ><p>Status:</p>
+
+                                                        <span className={row.Status === "Open" ? "fc-blue" : row.Status === "Passed" ? "fc-green" : "fc-red"}>{row.Status}</span>
+                                                    </Row>
+
+                                                </TableCell>
+
+                                            </Column>
+
+
+                                            <Column>
+                                                <TableCell className="mobile-div-right" style={{ border: "none" }} >
 
 
 
-                                                       { row.Status=="Open"?<><Row><span style={{marginRight:"-135px"}}>01:50:48 Remaining</span><span style={{ marginRight: "5px" }}> <img style={{ height: "14px", width: "14px",marginTop:"-3px" }} className="time-inactive" src={require("../../assets/styles/images/Time-Active.svg")} ></img></span></Row><Row><div className="details">Details</div></Row></>:<><Row className="poll-ended"> <span style={{ marginRight: "5px" }}> <img style={{ height: "14px", width: "14px", marginTop:"-2px" }} className="time-inactive" src={require("../../assets/styles/images/Time-Inactive.svg")} ></img></span> {row.Poll}</Row>
+                                                    {row.Status == "Open" ? <><Row><span style={{ marginRight: "-135px" }}>01:50:48 Remaining</span><span style={{ marginRight: "5px" }}> <img style={{ height: "14px", width: "14px", marginTop: "-3px" }} className="time-inactive" src={require("../../assets/styles/images/Time-Active.svg")} ></img></span></Row><Row><div className="details">Details</div></Row></> : <><Row className="poll-ended"> <span style={{ marginRight: "5px" }}> <img style={{ height: "14px", width: "14px", marginTop: "-2px" }} className="time-inactive" src={require("../../assets/styles/images/Time-Inactive.svg")} ></img></span> {row.Poll}</Row>
                                                         <Row className="percent-line"><div className="bar-line"><div className="line-1"></div><div className="line-2"></div></div> </Row>
                                                         <Row className="vote-number">{row.Vote}</Row></>}
 
-                                                    </TableCell>
-                                                </Column>
-                                            </Row>
-                                        </TableRow>
-                                    );
-                                })}
+                                                </TableCell>
+                                            </Column>
+                                        </Row>
+                                    </TableRow>
+                                );
+                            })}
 
-                            </TableBody>
-                        </Table>
-                    </Grid>
+                        </TableBody>
+                    </Table>
                 </Grid>
-            </div>
-            <Row className="view-all">View All Proposals</Row>
+            </Grid>
+            {/* </div> */}
+
             <div style={{ paddingTop: "10%" }}></div>
         </div>
     )

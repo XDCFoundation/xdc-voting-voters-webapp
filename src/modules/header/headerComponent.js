@@ -4,98 +4,74 @@ import { Button } from "@material-ui/core";
 import CustomInput from "../../common/components/CustomInput";
 import { history } from "../../managers/history";
 import "../../assets/styles/custom.css";
-// import "../../assets/styles/images";
 import utility from '../../utility';
-// import validator from 'validator';
 import HeaderMain from './header';
 import RecentProposal from '../Dashboard/recentProposal';
 
 
 export default function Header() {
 
-
+    const handleView = () => {
+        history.push('/view-all-proposals');
+    }
     return (
         <div>
-            {/* <div className="headerleft">
-                <span style={{display:"flex"}}>
-                <span className="display-flex">
-           <span><img className="header-logo" src={require("../../assets/styles/images/xdc_logo.svg")} ></img></span> 
-           <span className="xdc"><p>XDC</p></span> 
-           </span>
-           <span>
-           <div className="connect-wallet">
-               <div className="circle"></div>
-           
-              <p>connect wallet</p> 
-           </div>
-           </span>
-           </span>
-            </div> */}
 
             <Column className="header-div">
-               <div> <HeaderMain/> </div>
-            {/* <Row className="row-1">
-                <Column>
-                <Row>
-                <Column>
-                <img className="header-logo" src={require("../../assets/styles/images/xdc_logo.svg")} ></img>
-                </Column>
-                <Column className="xdc">
-                <p>XDC</p>
-                </Column>
-                </Row>
-                </Column>
-                <Column>
-                <div className="connect-wallet">
-               <div className="circle"></div>
-           
-              <p>connect wallet</p> 
-           </div>
-                </Column>
+                <div> <HeaderMain /> </div>
 
 
-            </Row> */}
-            
 
-            {/* !***********************!  */}
-          
-            <Row className="row-2">
-                <div className="row-2-width">
-                <Column className="mid-div">
-                <Row className="xdc-governance">XDC Governance</Row>
-                <Row className="xdc-para"><div className="para-div"> Decentralized community for maintaining the integrity of the XinFin Blockchain through discussion and on-chain voting.</div></Row>
-                </Column>
-              <div className="mobile-alldiv">  <Row className="div-box">
-              <Row className="mobile-divbox"> <Column className="div-1">
-            
-                    <Row className="div-1-row">65</Row>
-                    <Row className="div-1-row1">Proposal Passed</Row>
-                </Column>
-                <Column className="div-1">
-                    <Row className="div-1-row">150</Row>
-                    <Row className="div-1-row1">Voting Address</Row>
-                </Column>
-                </Row> 
-                <Row className="mobile-lower-div">
-                <Column className="div-1">
-                    <Row className="div-1-row">4538</Row>
-                    <Row className="div-1-row1">Votes Casted</Row>
-                </Column>
+                {/* !***********************!  */}
+
+                <Row className="row-2">
+                    <div className="row-2-width">
+                        <Column className="mid-div">
+                            <Row className="xdc-governance">XDC Governance</Row>
+                            <Row className="xdc-para"><div className="para-div"> Decentralized community for maintaining the integrity of the XinFin Blockchain through discussion and on-chain voting.</div></Row>
+                        </Column>
+                        <div className="mobile-alldiv">  <Row className="div-box">
+                            <Row className="mobile-divbox"> <Column className="div-1">
+
+                                <Row className="div-1-row">65</Row>
+                                <Row className="div-1-row1">Proposal Passed</Row>
+                            </Column>
+                                <Column className="div-1">
+                                    <Row className="div-1-row">150</Row>
+                                    <Row className="div-1-row1">Voting Address</Row>
+                                </Column>
+                            </Row>
+                            <Row className="mobile-lower-div">
+                                <Column className="div-1">
+                                    <Row className="div-1-row">4538</Row>
+                                    <Row className="div-1-row1">Votes Casted</Row>
+                                </Column>
+                            </Row>
+                        </Row>
+                        </div>
+
+                    </div>
                 </Row>
-                </Row>
+                <div className="recent-div">
+                    <div className="recent-proposal-div">
+                        <Row className="recent-add-div">
+                            <Column className="heading">Recent Proposals</Column>
+                            <Column>
+                                <div className="create-wallet">
+
+
+                                    <p>Create Proposal</p>
+                                </div>
+                            </Column>
+                        </Row>
+                        <div className="griddiv"><RecentProposal /></div>
+                        <Row onClick={handleView} className="view-all">View All Proposals</Row>
+                    </div>
                 </div>
-                
-                </div>
-            </Row>
-            <div className="recent-div">
-            <div className="recent-proposal-div">
-               <RecentProposal/>
-            </div>
-            </div>
 
             </Column>
 
-          
+
         </div>
 
     )
