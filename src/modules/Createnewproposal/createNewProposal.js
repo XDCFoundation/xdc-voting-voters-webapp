@@ -289,7 +289,6 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     width: "27px",
-
     marginLeft: "6px",
   },
 
