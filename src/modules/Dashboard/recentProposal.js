@@ -80,10 +80,7 @@ export default function RecentProposal() {
 
   return (
     <div>
-      {/* <div className="griddiv"> */}
-
       <Grid lg={13} className="tablegrid_address">
-        {/* <Grid class="tabletop-header">Whitelisted Addresses</Grid> */}
         <Grid component={Paper} style={{ boxShadow: "0px 0px 0px 0px" }}>
           <Table
             className="table"
@@ -92,11 +89,8 @@ export default function RecentProposal() {
           >
             <TableHead></TableHead>
             <TableBody>
-              {/* {filteredProducts.map((product)=>{ */}
-
               {address.map((row, index) => {
                 return (
-                  // address={filteredData && filteredData.length ? filteredData : address}
                   <TableRow className="table-mid-line">
                     <Row className="table-between">
                       <Column>
