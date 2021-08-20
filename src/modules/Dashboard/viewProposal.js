@@ -366,9 +366,7 @@ export default function ViewAllProposal() {
             <div>
               <Column>
                 <Row>
-                  <Posted>
-                    Posted&nbsp;on &nbsp;24&nbsp; June&nbsp; 2021&nbsp;
-                  </Posted>
+                  <Posted>Posted on 24 June 2021</Posted>
                   <TimeRemainingdiv>
                     <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
                     <Pollended>Poll&nbsp;Ended</Pollended>
@@ -406,9 +404,7 @@ export default function ViewAllProposal() {
             <div>
               <Column>
                 <Row>
-                  <Posted>
-                    Posted&nbsp;on &nbsp;24&nbsp; June&nbsp; 2021&nbsp;
-                  </Posted>
+                  <Posted>Posted on 24 June 2021</Posted>
                   <TimeRemainingdiv>
                     <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
                     <Pollended>Poll&nbsp;Ended</Pollended>
@@ -446,12 +442,10 @@ export default function ViewAllProposal() {
             <div>
               <Column>
                 <Row>
-                  <Posted>
-                    Posted&nbsp;on &nbsp;24&nbsp; June&nbsp; 2021&nbsp;
-                  </Posted>
+                  <Posted>Posted on 24 June 2021</Posted>
                   <TimeRemainingdiv>
                     <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
+                    <Pollended>Poll Ended</Pollended>
                   </TimeRemainingdiv>
                 </Row>
                 <Row>
@@ -481,7 +475,6 @@ export default function ViewAllProposal() {
                   </Mobileresponsive>
                 </Row>
               </Column>
-              <hr className={classes.line} />
             </div>
           </Div>
           <Pagingdiv>
@@ -645,19 +638,24 @@ const Button = styled.button`
   opacity: 1;
   color: var(--unnamed-color-2149b9);
   text-align: center;
-  font: normal normal 600 15px/19px Inter;
+  // font: normal normal 600 15px/19px Inter;
   letter-spacing: 0px;
   color: #2149b9;
   margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif !important;
 `;
 const Content = styled.span`
   color: var(--unnamed-color-2a2a2a);
   text-align: left;
-  font: normal normal 600 15px/26px Inter;
+  // font: normal normal 600 15px/26px Inter;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif !important;
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  font-size: 14px;
   padding-top: 6px;
   margin-left: 13px;
 `;
