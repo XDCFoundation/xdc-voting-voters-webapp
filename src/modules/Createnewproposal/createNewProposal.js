@@ -373,7 +373,7 @@ export default function Createnewproposal(props) {
             </Grid>
           </div>
 
-          <Grid xs={12} className={classes.row_one}>
+          {/* <Grid xs={12} className={classes.row_one}>
             <Grid xs={3} className={classes.proposaltitle}>
               Start&nbsp;Date
             </Grid>
@@ -381,8 +381,8 @@ export default function Createnewproposal(props) {
             <Grid xs={6}>
               <input className={classes.proposalinput12} type="date" />
             </Grid>
-          </Grid>
-          <Grid xs={12} className={classes.row}>
+          </Grid> */}
+          {/* <Grid xs={12} className={classes.row}>
             <Grid xs={2} className={classes.proposaltitle}>
               End&nbsp;Date
             </Grid>
@@ -390,6 +390,19 @@ export default function Createnewproposal(props) {
             <Grid xs={4}>
               <input className={classes.proposalinput1} type="date" />
             </Grid>
+          </Grid> */}
+          <Grid xs={12}>
+            <Row>
+              <Startdiv>
+                <Startdate>Start Date</Startdate>
+              </Startdiv>
+              <Inputstartdiv>
+                <Input type="date" />
+              </Inputstartdiv>
+              <Enddiv>
+                <Enddate>End Date</Enddate>
+              </Enddiv>
+            </Row>
           </Grid>
           <div className={classes.row}>
             <Grid xs={3} className={classes.description}>
@@ -437,22 +450,10 @@ const Button = styled.button`
     width: 120px;
   }
 `;
-const Title = styled.span`
-  font: normal normal normal 15px/19px Inter;
-  color: #2a2a2a;
-  opacity: 1;
-  font-size: 12px;
-  text-align: left;
-  padding-top: 1%;
-  padding-left: 21px;
-  letter-spacing: 0px;
-`;
-const StartDate = styled.input`
-  width: 40%;
-  border: 1px solid #e3e7eb;
-  height: 35px;
-  opacity: 1;
-  font-size: 12px;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border-radius: 4px;
-`;
+const Startdate = styled.span``;
+const Startdiv = styled.div``;
+const Inputstartdiv = styled.div``;
+const Input = styled.input``;
+const Enddiv = styled.div``;
+
+const Enddate = styled.span``;
