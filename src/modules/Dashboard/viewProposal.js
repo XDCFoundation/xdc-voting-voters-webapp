@@ -86,6 +86,7 @@ const Container = styled.div`
 `;
 const SecondContainer = styled.div`
   display: flex;
+  align-items: center;
   @media (min-width: 300px) and (max-width: 1038px) {
     display: none;
   }
@@ -487,15 +488,16 @@ export default function ViewAllProposal() {
               <Properties>Properties&nbsp;</Properties>
             </Container>
             <SecondContainer>
+              <Back>Back</Back>
               <Block>
                 <Span>1&nbsp;</Span>
               </Block>
               <Block>
                 <Span>2&nbsp;</Span>
               </Block>
-              <Block>
-                <Span>Next&nbsp;</Span>
-              </Block>
+              <NextBlock>
+                <Span>Next</Span>
+              </NextBlock>
             </SecondContainer>
           </Pagingdiv>
         </Grid>
@@ -503,9 +505,18 @@ export default function ViewAllProposal() {
     </div>
   );
 }
+const Back = styled.span`
+  text-align: left;
+  font: normal normal normal 14px/17px Inter;
+  letter-spacing: 0px;
+  color: #909090;
+  opacity: 1;
+`;
 const Pagingdiv = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 20px;
 `;
 const Span = styled.span`
   text-align: left;
@@ -514,6 +525,8 @@ const Span = styled.span`
   color: #3b3b3b;
   opacity: 1;
   display: flex;
+  padding-left: 6px;
+  padding-top: 2px;
 `;
 const Show = styled.span`
   display: flex;
@@ -522,12 +535,25 @@ const Show = styled.span`
   letter-spacing: 0px;
   color: #3b3b3b;
   opacity: 1;
+  align-items: center;
 `;
 const Block = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
   border-radius: 4px;
   opacity: 1;
+  width: 25px;
+  height: 22px;
+  margin-left: 8px;
+`;
+const NextBlock = styled.div`
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e3e7eb;
+  border-radius: 4px;
+  opacity: 1;
+  width: 43px;
+  height: 22px;
+  margin-left: 8px;
 `;
 const Properties = styled.span`
   display: flex;
@@ -536,8 +562,19 @@ const Properties = styled.span`
   letter-spacing: 0px;
   color: #3b3b3b;
   opacity: 1;
+  align-items: center;
+  margin-left: 8px;
 `;
-
+const Hash = styled.span`
+  color: var(--unnamed-color-2a2a2a);
+  text-align: left;
+  font: normal normal normal 14px/19px Inter;
+  letter-spacing: 0px;
+  color: #2a2a2a;
+  opacity: 1;
+  margin-left: 13px;
+  margin-right: 13px;
+`;
 const TimeRemainingdiv = styled.div`
   position: absolute;
   right: 24%;
