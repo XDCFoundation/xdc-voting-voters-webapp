@@ -47,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     height: "53px",
     background: "#FFFFFF 0% 0% no-repeat padding-box",
-    // border: "1px solid #E3E7EB",
     borderRadius: "6px",
     opacity: "1",
     justifyContent: "space-between",
@@ -137,13 +136,11 @@ export default function ViewAllProposal() {
             <div>
               <Column>
                 <Row>
-                  <Posted>
-                    Posted&nbsp;on&nbsp;24&nbsp;June&nbsp;2021&nbsp;
-                  </Posted>
+                  <Posted>Posted on 24 June 2021</Posted>
                   <TimeRemainingdiv>
                     <Timerimg src="/images/Time-Active.svg" />
                     &nbsp;
-                    <Time>01:50:48&nbsp;Remaining&nbsp;</Time>
+                    <Time>01:50:48 Remaining </Time>
                   </TimeRemainingdiv>
                 </Row>
                 <Row>
@@ -160,7 +157,7 @@ export default function ViewAllProposal() {
                   <Mobileresponsive>
                     <Timerimg src="/images/Time-Active.svg" />
                     &nbsp;
-                    <Time>01:50:48&nbsp;Remaining&nbsp;</Time>
+                    <Time>01:50:48 Remaining</Time>
                   </Mobileresponsive>
                 </Row>
               </Column>
@@ -169,22 +166,17 @@ export default function ViewAllProposal() {
             <div>
               <Column>
                 <Row>
-                  <Posted>
-                    Posted&nbsp;on &nbsp;24&nbsp; June&nbsp;2021&nbsp;
-                  </Posted>
+                  <Posted>Posted on 24 June 2021</Posted>
 
                   <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
+                    <Pollended>Poll Ended</Pollended>
                   </TimeRemainingdiv>
                 </Row>
                 <Row>
                   <div className={classes.mobilemedia}>
-                    <Content>
-                      {" "}
-                      Adding &nbsp;more &nbsp; features &nbsp; to &nbsp;XDC
-                      &nbsp; Explorer 2.0
-                    </Content>
+                    <Content> Addingmore features toXDC Explorer 2.0</Content>
                     <Positiondivline>
                       <Barline>
                         <Greenline></Greenline>
@@ -197,13 +189,14 @@ export default function ViewAllProposal() {
                   <Status>Status :</Status>
                   <Open>Open</Open>
                   <Positiondiv>
-                    <Numberofvotes>98&nbsp;votes</Numberofvotes>
+                    <Numberofvotes>98 votes</Numberofvotes>
                   </Positiondiv>
                 </Row>
                 <Row>
                   <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
+                    <Pollended>Poll Ended</Pollended>
                   </Mobileresponsive>
                 </Row>
               </Column>
@@ -212,12 +205,11 @@ export default function ViewAllProposal() {
             <div>
               <Column>
                 <Row>
-                  <Posted>
-                    Posted&nbsp;on &nbsp;24&nbsp; June&nbsp; 2021&nbsp;
-                  </Posted>
+                  <Posted>Posted on 24 June 2021</Posted>
                   <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
+                    <Pollended>Poll Ended</Pollended>
                   </TimeRemainingdiv>
                 </Row>
                 <Row>
@@ -235,13 +227,14 @@ export default function ViewAllProposal() {
                   <Status>Status :</Status>
                   <Failed>Failed</Failed>
                   <Positiondiv>
-                    <Numberofvotes>120&nbsp;votes</Numberofvotes>
+                    <Numberofvotes>120 votes</Numberofvotes>
                   </Positiondiv>
                 </Row>
                 <Row>
                   <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
+                    <Pollended>Poll Ended</Pollended>
                   </Mobileresponsive>
                 </Row>
               </Column>
@@ -251,12 +244,11 @@ export default function ViewAllProposal() {
             <div>
               <Column>
                 <Row>
-                  <Posted>
-                    Posted&nbsp;on &nbsp;24&nbsp; June&nbsp; 2021&nbsp;
-                  </Posted>
+                  <Posted>Posted on 24 June 2021</Posted>
                   <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
+                    <Pollended>Poll Ended</Pollended>
                   </TimeRemainingdiv>
                 </Row>
                 <Row>
@@ -274,13 +266,14 @@ export default function ViewAllProposal() {
                   <Status>Status :</Status>
                   <Passed>Passed</Passed>
                   <Positiondiv>
-                    <Numberofvotes>100&nbsp;votes</Numberofvotes>
+                    <Numberofvotes>100 votes</Numberofvotes>
                   </Positiondiv>
                 </Row>
                 <Row>
                   <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
+                    <Pollended>Poll Ended</Pollended>
                   </Mobileresponsive>
                 </Row>
               </Column>
@@ -289,12 +282,11 @@ export default function ViewAllProposal() {
             <div>
               <Column>
                 <Row>
-                  <Posted>
-                    Posted&nbsp;on &nbsp;24&nbsp; June&nbsp; 2021&nbsp;
-                  </Posted>
+                  <Posted>Posted on 24 June 2021</Posted>
                   <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
+                    <Pollended>Poll Ended</Pollended>
                   </TimeRemainingdiv>
                 </Row>
                 <Row>
@@ -312,13 +304,14 @@ export default function ViewAllProposal() {
                   <Status>Status :</Status>
                   <Passed>Passed</Passed>
                   <Positiondiv>
-                    <Numberofvotes>89&nbsp;votes</Numberofvotes>
+                    <Numberofvotes>89 votes</Numberofvotes>
                   </Positiondiv>
                 </Row>
                 <Row>
                   <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
+                    <Pollended>Poll Ended</Pollended>
                   </Mobileresponsive>
                 </Row>
               </Column>
@@ -327,125 +320,10 @@ export default function ViewAllProposal() {
             <div>
               <Column>
                 <Row>
-                  <Posted>
-                    Posted&nbsp;on &nbsp;24&nbsp; June&nbsp; 2021&nbsp;
-                  </Posted>
+                  <Posted>Posted on24 June 2021 </Posted>
                   <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
-                  </TimeRemainingdiv>
-                </Row>
-                <Row>
-                  <div className={classes.mobilemedia}>
-                    <Content>
-                      XDC-ABC Bootstrapping Partnership Proposal
-                    </Content>
-                    <Positiondivline>
-                      <Barline>
-                        <Greenline></Greenline>
-                        <Redline></Redline>
-                      </Barline>{" "}
-                    </Positiondivline>
-                  </div>
-                </Row>
-                <Row>
-                  <Status>Status :</Status>
-                  <Passed>Passed</Passed>
-                  <Positiondiv>
-                    <Numberofvotes>56&nbsp;votes</Numberofvotes>
-                  </Positiondiv>
-                </Row>
-                <Row>
-                  <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
-                  </Mobileresponsive>
-                </Row>
-              </Column>
-              <hr className={classes.line} />
-            </div>
-            <div>
-              <Column>
-                <Row>
-                  <Posted>Posted on 24 June 2021</Posted>
-                  <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
-                  </TimeRemainingdiv>
-                </Row>
-                <Row>
-                  <div className={classes.mobilemedia}>
-                    <Content>
-                      XDC-ABC Bootstrapping Partnership Proposal
-                    </Content>
-                    <Positiondivline>
-                      <Barline>
-                        <Greenline></Greenline>
-                        <Redline></Redline>
-                      </Barline>{" "}
-                    </Positiondivline>
-                  </div>
-                </Row>
-                <Row>
-                  <Status>Status :</Status>
-                  <Passed>Passed</Passed>
-                  <Positiondiv>
-                    <Numberofvotes>145&nbsp;votes</Numberofvotes>
-                  </Positiondiv>
-                </Row>
-                <Row>
-                  <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
-                  </Mobileresponsive>
-                </Row>
-              </Column>
-              <hr className={classes.line} />
-            </div>
-            <div>
-              <Column>
-                <Row>
-                  <Posted>Posted on 24 June 2021</Posted>
-                  <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
-                  </TimeRemainingdiv>
-                </Row>
-                <Row>
-                  <div className={classes.mobilemedia}>
-                    <Content>
-                      XDC-ABC Bootstrapping Partnership Proposal
-                    </Content>
-                    <Positiondivline>
-                      <Barline>
-                        <Greenline></Greenline>
-                        <Redline></Redline>
-                      </Barline>{" "}
-                    </Positiondivline>
-                  </div>
-                </Row>
-                <Row>
-                  <Status>Status :</Status>
-                  <Passed>Passed</Passed>
-                  <Positiondiv>
-                    <Numberofvotes>145&nbsp;votes</Numberofvotes>
-                  </Positiondiv>
-                </Row>
-                <Row>
-                  <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
-                  </Mobileresponsive>
-                </Row>
-              </Column>
-              <hr className={classes.line} />
-            </div>
-            <div>
-              <Column>
-                <Row>
-                  <Posted>Posted on 24 June 2021</Posted>
-                  <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
                     <Pollended>Poll Ended</Pollended>
                   </TimeRemainingdiv>
                 </Row>
@@ -466,13 +344,134 @@ export default function ViewAllProposal() {
                   <Status>Status :</Status>
                   <Passed>Passed</Passed>
                   <Positiondiv>
-                    <Numberofvotes>145&nbsp;votes</Numberofvotes>
+                    <Numberofvotes>56 votes</Numberofvotes>
                   </Positiondiv>
                 </Row>
                 <Row>
                   <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" /> &nbsp;
-                    <Pollended>Poll&nbsp;Ended</Pollended>
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
+                    <Pollended>Poll Ended</Pollended>
+                  </Mobileresponsive>
+                </Row>
+              </Column>
+              <hr className={classes.line} />
+            </div>
+            <div>
+              <Column>
+                <Row>
+                  <Posted>Posted on 24 June 2021</Posted>
+                  <TimeRemainingdiv>
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
+                    <Pollended>Poll Ended</Pollended>
+                  </TimeRemainingdiv>
+                </Row>
+                <Row>
+                  <div className={classes.mobilemedia}>
+                    <Content>
+                      XDC-ABC Bootstrapping Partnership Proposal
+                    </Content>
+                    <Positiondivline>
+                      <Barline>
+                        <Greenline></Greenline>
+                        <Redline></Redline>
+                      </Barline>{" "}
+                    </Positiondivline>
+                  </div>
+                </Row>
+                <Row>
+                  <Status>Status :</Status>
+                  <Passed>Passed</Passed>
+                  <Positiondiv>
+                    <Numberofvotes>145 votes</Numberofvotes>
+                  </Positiondiv>
+                </Row>
+                <Row>
+                  <Mobileresponsive>
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
+                    <Pollended>Poll Ended</Pollended>
+                  </Mobileresponsive>
+                </Row>
+              </Column>
+              <hr className={classes.line} />
+            </div>
+            <div>
+              <Column>
+                <Row>
+                  <Posted>Posted on 24 June 2021</Posted>
+                  <TimeRemainingdiv>
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
+                    <Pollended>Poll Ended</Pollended>
+                  </TimeRemainingdiv>
+                </Row>
+                <Row>
+                  <div className={classes.mobilemedia}>
+                    <Content>
+                      XDC-ABC Bootstrapping Partnership Proposal
+                    </Content>
+                    <Positiondivline>
+                      <Barline>
+                        <Greenline></Greenline>
+                        <Redline></Redline>
+                      </Barline>{" "}
+                    </Positiondivline>
+                  </div>
+                </Row>
+                <Row>
+                  <Status>Status :</Status>
+                  <Passed>Passed</Passed>
+                  <Positiondiv>
+                    <Numberofvotes>145 votes</Numberofvotes>
+                  </Positiondiv>
+                </Row>
+                <Row>
+                  <Mobileresponsive>
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
+                    <Pollended>Poll Ended</Pollended>
+                  </Mobileresponsive>
+                </Row>
+              </Column>
+              <hr className={classes.line} />
+            </div>
+            <div>
+              <Column>
+                <Row>
+                  <Posted>Posted on 24 June 2021</Posted>
+                  <TimeRemainingdiv>
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
+                    <Pollended>Poll Ended</Pollended>
+                  </TimeRemainingdiv>
+                </Row>
+                <Row>
+                  <div className={classes.mobilemedia}>
+                    <Content>
+                      XDC-ABC Bootstrapping Partnership Proposal
+                    </Content>
+                    <Positiondivline>
+                      <Barline>
+                        <Greenline></Greenline>
+                        <Redline></Redline>
+                      </Barline>{" "}
+                    </Positiondivline>
+                  </div>
+                </Row>
+                <Row>
+                  <Status>Status :</Status>
+                  <Passed>Passed</Passed>
+                  <Positiondiv>
+                    <Numberofvotes>145 votes</Numberofvotes>
+                  </Positiondiv>
+                </Row>
+                <Row>
+                  <Mobileresponsive>
+                    <Clockimage src="/images/Time-Inactive.svg" />
+                    &nbsp;
+                    <Pollended>Poll Ended</Pollended>
                   </Mobileresponsive>
                 </Row>
               </Column>
@@ -480,20 +479,20 @@ export default function ViewAllProposal() {
           </Div>
           <Pagingdiv>
             <Container>
-              <Show>Show &nbsp;</Show>
+              <Show>Show </Show>
               <Block>
-                <Span>10 &nbsp;</Span>
+                <Span>10 </Span>
               </Block>
 
-              <Properties>Properties&nbsp;</Properties>
+              <Properties>Properties </Properties>
             </Container>
             <SecondContainer>
               <Back>Back</Back>
               <Block>
-                <Span>1&nbsp;</Span>
+                <Span>1 </Span>
               </Block>
               <Block>
-                <Span>2&nbsp;</Span>
+                <Span>2 </Span>
               </Block>
               <NextBlock>
                 <Span>Next</Span>
@@ -564,17 +563,9 @@ const Properties = styled.span`
   opacity: 1;
   align-items: center;
   margin-left: 8px;
+  white-space: nowrap;
 `;
-const Hash = styled.span`
-  color: var(--unnamed-color-2a2a2a);
-  text-align: left;
-  font: normal normal normal 14px/19px Inter;
-  letter-spacing: 0px;
-  color: #2a2a2a;
-  opacity: 1;
-  margin-left: 13px;
-  margin-right: 13px;
-`;
+
 const TimeRemainingdiv = styled.div`
   position: absolute;
   right: 24%;
@@ -618,6 +609,7 @@ const Failed = styled.span`
   font-size: 12px;
   padding-top: 6px;
   color: #f43d3d;
+  whitespace: "nowrap";
 `;
 const Inputdiv = styled.div`
   display: flex;
@@ -642,6 +634,7 @@ const Pollended = styled.span`
   letter-spacing: 0px;
   color: #cecece;
   opacity: 1;
+  whitespace: "nowrap";
 `;
 const Clockimage = styled.img``;
 const Div = styled.div`
@@ -658,6 +651,7 @@ const Posted = styled.span`
   font-size: 12px;
   padding-top: 6px;
   margin-left: 13px;
+  whitespace: "nowrap";
 `;
 const Time = styled.span`
   text-align: left;
@@ -667,6 +661,7 @@ const Time = styled.span`
   opacity: 1;
   font-size: 12px;
   padding-top: 6px;
+  whitespace: "nowrap";
 `;
 const Button = styled.button`
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -675,18 +670,18 @@ const Button = styled.button`
   opacity: 1;
   color: var(--unnamed-color-2149b9);
   text-align: center;
-  // font: normal normal 600 15px/19px Inter;
   letter-spacing: 0px;
   color: #2149b9;
   margin-top: 10px;
   font-size: 14px;
   font-weight: 600;
   font-family: "Inter", sans-serif !important;
+  whitespace: "nowrap";
 `;
 const Content = styled.span`
   color: var(--unnamed-color-2a2a2a);
   text-align: left;
-  // font: normal normal 600 15px/26px Inter;
+  whiteSpace: "nowrap",
   font-size: 15px;
   font-weight: 600;
   font-family: "Inter", sans-serif !important;
@@ -704,6 +699,7 @@ const Status = styled.span`
   font-size: 12px;
   padding-top: 6px;
   margin-left: 13px;
+  whiteSpace: "nowrap",
   margin-bottom: 4px;
 `;
 const Open = styled.span`
@@ -715,6 +711,7 @@ const Open = styled.span`
   padding-top: 6px;
   font-size: 12px;
   margin-bottom: 4px;
+  whitespace: "nowrap";
 `;
 const Timerimg = styled.img``;
 const Passed = styled.span`
@@ -724,6 +721,7 @@ const Passed = styled.span`
   color: #3ab70d;
   font-size: 12px;
   padding-top: 6px;
+  whitespace: "nowrap";
 `;
 const Numberofvotes = styled.span`
   font: normal normal 600 14px/22px Inter;

@@ -10,11 +10,16 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "center",
-    paddingLeft: "21%",
-    paddingRight: "23%",
+    maxWidth: "800px",
     position: "absolute",
     top: "147px",
     width: "100%",
+    "@media (min-width: 400px) and (max-width: 767px)": {
+      maxWidth: "350px",
+    },
+    "@media (min-width: 767px) and (max-width: 1040px)": {
+      maxWidth: "700px",
+    },
   },
   rowdiv: {
     width: "100%",
@@ -30,6 +35,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "0px",
     marginBottom: "0px",
   },
+  maincontainer: {
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
+  },
 }));
 
 export default function Voterslist() {
@@ -41,69 +51,78 @@ export default function Voterslist() {
         Time: "5 min ago",
       },
       {
-        // Image:,
+        Image: "/images/network.svg",
         Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
         Time: "1 hr 5 min ago",
       },
       {
-        // Image:,
+        Image: "/images/network.svg",
         Name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
         Time: "10:30 AM,Today",
       },
       {
-        // Image:,
+        Image: "/images/network.svg",
         Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
         Time: "5.25 PM, 2 july",
       },
       {
-        // Image:,
+        Image: "/images/network.svg",
         Name: "xdc0b3693740427612142863616a56599e92bdc955a",
         Time: "Time and Date",
       },
       {
-        // Image:,
+        Image: "/images/network.svg",
         Name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
         Time: "Time and Date",
       },
       {
-        // Image:,
+        Image: "/images/network.svg",
         Name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
         Time: "Time and Date",
       },
       {
-        // Image:,
+        Image: "/images/network.svg",
         Name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
         Time: "Time and Date",
       },
       {
-        // Image:,
+        Image: "/images/network.svg",
         Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
         Time: "Time and Date",
       },
       {
-        // Image:,
-        Name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+        Image: "/images/network.svg",
+        Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
         Time: "Time and Date",
       },
       {
-        // Image:,
-        Name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+        Image: "/images/network.svg",
+        Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
         Time: "Time and Date",
       },
       {
-        // Image:,
+        Image: "/images/network.svg",
+        Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+        Time: "Time and Date",
+      },
+      {
+        Image: "/images/network.svg",
+        Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+        Time: "Time and Date",
+      },
+      {
+        Image: "/images/network.svg",
         Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
         Time: "Time and Date",
       },
     ];
 
     setAddress(
-      address.map((d) => {
+      address.map((object) => {
         return {
-          // select: false,
-          Image: d.Image,
-          Name: d.Name,
-          Time: d.Time,
+          Image: object.Image,
+          Name: object.Name,
+          Time: object.Time,
         };
       })
     );
@@ -115,59 +134,59 @@ export default function Voterslist() {
   return (
     <div>
       <div className="header-div-all">
-        <HeaderMain />{" "}
+        <HeaderMain />
       </div>
+      <div className={classes.maincontainer}>
+        <div className={classes.root}>
+          <Grid item xs={12}>
+            <Spacing>
+              <Container>
+                <Heading>All Voters</Heading>
+              </Container>
+              <SecondContainer>
+                <Leftcontainer>122 Votes</Leftcontainer>
+              </SecondContainer>
+            </Spacing>
+            <hr className={classes.line} />
+            {address.map((data) => {
+              return (
+                <Div>
+                  <Spacing>
+                    <Container>
+                      <ImageView src={data.Image} />
+                      <Hash>{data.Name}</Hash>
+                    </Container>
+                    <SecondContainer>
+                      <Leftcontainer>{data.Time}</Leftcontainer>
+                    </SecondContainer>
+                  </Spacing>
+                </Div>
+              );
+            })}
+            <Pagingdiv>
+              <Container>
+                <Show>Show </Show>
+                <Block>
+                  <Span>10 </Span>
+                </Block>
 
-      <div className={classes.root}>
-        <Grid item xs={12}>
-          <Spacing>
-            <Container>
-              <Heading>All Voters</Heading>
-            </Container>
-
-            <SecondContainer>
-              <Leftcontainer>122 Votes</Leftcontainer>
-            </SecondContainer>
-          </Spacing>
-          <hr className={classes.line} />
-          {address.map((row, index) => {
-            return (
-              <Div>
-                <Spacing>
-                  {/* <ImageView>{row.Image}</ImageView> */}
-                  <Container>
-                    <Hash>{row.Name}</Hash>
-                  </Container>
-                  <SecondContainer>
-                    <Leftcontainer>{row.Time}</Leftcontainer>
-                  </SecondContainer>
-                </Spacing>
-              </Div>
-            );
-          })}
-          <Pagingdiv>
-            <Container>
-              <Show>Show </Show>
-              <Block>
-                <Span>10 </Span>
-              </Block>
-
-              <Properties>Properties</Properties>
-            </Container>
-            <SecondContainer>
-              <Back>Back</Back>
-              <Block>
-                <Span>1</Span>
-              </Block>
-              <Block>
-                <Span>2</Span>
-              </Block>
-              <NextBlock>
-                <Span>Next</Span>
-              </NextBlock>
-            </SecondContainer>
-          </Pagingdiv>
-        </Grid>
+                <Properties>Properties</Properties>
+              </Container>
+              <SecondContainer>
+                <Back>Back</Back>
+                <Block>
+                  <Span>1</Span>
+                </Block>
+                <Block>
+                  <Span>2</Span>
+                </Block>
+                <NextBlock>
+                  <Span>Next</Span>
+                </NextBlock>
+              </SecondContainer>
+            </Pagingdiv>
+          </Grid>
+        </div>
       </div>
     </div>
   );
@@ -262,7 +281,8 @@ const Container = styled.div`
   display: flex;
   word-break: break-all;
   width: 100%;
-  max-width: 375px;
+  align-items: center;
+  max-width: 435px;
 `;
 const SecondContainer = styled.div`
   display: flex;
@@ -296,4 +316,7 @@ const Leftcontainer = styled.div`
   color: #acacac;
   opacity: 1;
 `;
-const ImageView = styled.img``;
+const ImageView = styled.img`
+  width: 35px;
+  margin-left: 8px;
+`;
