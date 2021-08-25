@@ -181,7 +181,6 @@ export default function RecentProposal() {
           </Table>
         </Grid>
       </Grid>
-      {/* </div> */}
 
       <div style={{ paddingTop: "10%" }}></div>
     </div>
