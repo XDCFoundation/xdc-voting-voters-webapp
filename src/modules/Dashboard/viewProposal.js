@@ -320,7 +320,7 @@ export default function ViewAllProposal() {
             <div>
               <Column>
                 <Row>
-                  <Posted>Posted on24 June 2021 </Posted>
+                  <Posted>Posted on 24 June 2021 </Posted>
                   <TimeRemainingdiv>
                     <Clockimage src="/images/Time-Inactive.svg" />
                     &nbsp;
