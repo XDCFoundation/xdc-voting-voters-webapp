@@ -9,6 +9,7 @@ import Header from "./modules/header/headerComponent";
 import { history } from "./managers/history";
 import BaseComponent from "./modules/baseComponent";
 import AllProposal from "./modules/Dashboard/viewProposal";
+import Createproposal from "./modules/Createnewproposal";
 class Routes extends BaseComponent {
   componentDidMount() {}
 
