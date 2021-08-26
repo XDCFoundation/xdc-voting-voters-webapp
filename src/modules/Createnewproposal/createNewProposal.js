@@ -17,8 +17,11 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: "190px",
     width: "100%",
-    "@media (min-width: 300px) and (max-width: 767px)": {
+    "@media (min-width: 300px) and (max-width: 567px)": {
       maxWidth: "300px",
+    },
+    "@media (min-width: 567px) and (max-width: 767px)": {
+      maxWidth: "500px",
     },
     "@media (min-width: 767px) and (max-width: 1040px)": {
       maxWidth: "700px",
@@ -206,7 +209,7 @@ const useStyles = makeStyles((theme) => ({
   row: {
     display: "flex",
     flexFlow: "row nowrap",
-    "@media (min-width: 400px) and (max-width: 767px)": {
+    "@media (min-width: 300px) and (max-width: 767px)": {
       display: "block !important",
       justifyContent: "center",
     },
