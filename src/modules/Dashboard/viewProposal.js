@@ -88,9 +88,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     width: "100%",
     justifyContent: "space-between",
-    "@media (min-width: 300px) and (max-width: 767px)": {
-      // display: "block",
-    },
+    "@media (min-width: 300px) and (max-width: 767px)": {},
   },
   maincontainer: {
     display: "flex",
@@ -424,16 +422,25 @@ const BarLine = styled.div`
   width: 200px;
   height: 3px;
   display: flex;
+  @media (min-width: 300px) and (max-width: 767px) {
+    width: 85px;
+  }
 `;
 const GreenLine = styled.div`
   background-color: #3ab70d;
   width: 100%;
   height: 3px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    width: 50%;
+  }
 `;
 const RedLine = styled.div`
   background-color: #f43d3d;
   width: 100%;
   height: 3px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    width: 50%;
+  }
 `;
 const SelectBox = styled.div`
   display: flex;

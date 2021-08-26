@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Row, Column } from "simple-flexbox";
 import HeaderMain from "../header/header";
 import "../../assets/styles/custom.css";
 import { makeStyles } from "@material-ui/core/styles";
@@ -147,13 +146,14 @@ export default function Voterslist() {
                 <Leftcontainer>122 Votes</Leftcontainer>
               </SecondContainer>
             </Spacing>
-            <hr className={classes.line} />
+
             {address.map((data) => {
               return (
                 <Div>
                   <Spacing>
                     <Container>
                       <ImageView src={data.image} />
+                      &nbsp;
                       <Hash>{data.name}</Hash>
                     </Container>
                     <SecondContainer>
@@ -253,28 +253,31 @@ const Properties = styled.span`
 `;
 const Hash = styled.span`
   color: var(--unnamed-color-2a2a2a);
-  text-align: left;
-  font: normal normal normal 14px/19px Inter;
-  letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  margin-left: 13px;
-  margin-right: 13px;
+
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+  }
 `;
 const Spacing = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   width: 100%;
-  height: 53px;
+  height: auto;
+  padding: 11px 24px;
   opacity: 1;
   background: #ffffff 0% 0% no-repeat padding-box;
   align-items: center;
   border-radius: 6px;
   @media (min-width: 300px) and (max-width: 767px) {
     display: block;
-
-    margin-top: 8px;
   }
 `;
 const Container = styled.div`
@@ -286,10 +289,9 @@ const Container = styled.div`
 `;
 const SecondContainer = styled.div`
   display: flex;
-  margin-right: 12px;
+
   align-items: center;
   @media (min-width: 300px) and (max-width: 767px) {
-    margin-left: 14px;
   }
 `;
 
@@ -301,13 +303,16 @@ const Div = styled.div`
 
 const Heading = styled.span`
   white-space: nowrap;
-  font: normal normal 600 19px/26px Inter;
+
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
   box-shadow: none;
   color: var(--unnamed-color-2a2a2a);
-  margin-left: 13px;
+
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
 `;
 const Leftcontainer = styled.div`
   text-align: right;
@@ -318,5 +323,4 @@ const Leftcontainer = styled.div`
 `;
 const ImageView = styled.img`
   width: 35px;
-  margin-left: 8px;
 `;
