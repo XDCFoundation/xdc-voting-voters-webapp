@@ -31,16 +31,23 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #E3E7EB",
     height: "30px",
     borderRadius: "4px",
-    width: "120px",
+    width: "100%",
+    maxWidth: "126px",
+    marginRight: "10px",
   },
   root: {
     display: "flex",
     justifyContent: "center",
-    paddingLeft: "21%",
-    paddingRight: "23%",
+    maxWidth: "800px",
     position: "absolute",
     top: "147px",
     width: "100%",
+    "@media (min-width: 300px) and (max-width: 767px)": {
+      maxWidth: "350px",
+    },
+    "@media (min-width: 767px) and (max-width: 1040px)": {
+      maxWidth: "700px",
+    },
   },
   rowdiv: {
     width: "100%",
@@ -50,10 +57,11 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "6px",
     opacity: "1",
     justifyContent: "space-between",
+    padding: "10px",
   },
 
   input: {
-    width: "120px",
+    width: "100%",
     height: "30px",
     background: "url(/images/Search.svg) no-repeat 1px",
     border: "solid 1px #aab1ff",
@@ -65,6 +73,7 @@ const useStyles = makeStyles((theme) => ({
     opacity: 1,
     fontSize: "11px",
     marginLeft: "10px",
+    maxWidth: "140px",
   },
 
   line: {
@@ -74,10 +83,16 @@ const useStyles = makeStyles((theme) => ({
   },
   mobilemedia: {
     display: "flex",
-    "@media (min-width: 400px) and (max-width: 767px)": {
+    width: "100%",
+    justifyContent: "space-between",
+    "@media (min-width: 300px) and (max-width: 767px)": {
       display: "block",
-      flexDirection: "Column",
     },
+  },
+  maincontainer: {
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
   },
 }));
 const Container = styled.div`
@@ -92,418 +107,229 @@ const SecondContainer = styled.div`
 `;
 
 export default function ViewAllProposal() {
+  React.useEffect(() => {
+    let address = [
+      {
+        date: "Posted on 24 June 2021",
+        name: "Adding more features to XDC Explorer 2.0",
+        status: "Passed",
+        poll: "Poll Ended",
+        bar: "Line",
+        vote: "145 votes",
+        id: 2,
+        time: "5 min ago",
+      },
+      {
+        date: "Posted on 24 June 2021",
+        name: "Relaunch of XinFin.org website",
+        status: "Passed",
+        poll: "Poll Ended",
+        bar: "Line",
+        vote: "89 votes",
+        id: 3,
+        time: "5 min ago",
+      },
+      {
+        date: "Posted on 24 June 2021",
+        name: "Launching NFT Marketplace to increase circulation of XDC",
+        status: "Passed",
+        poll: "Poll Ended",
+        bar: "Line",
+        vote: "89 votes",
+        id: 4,
+        time: "5 min ago",
+      },
+      {
+        date: "Posted on 24 June 2021",
+        name: "Partnership with Circle Stable Coin",
+        status: "Passed",
+        poll: "Poll Ended",
+        bar: "Line",
+        vote: "89 votes",
+        id: 5,
+        time: "5 min ago",
+      },
+      {
+        date: "Posted on 24 June 2021",
+        name: "Adding more features to XDC Explorer 2.0",
+        status: "Passed",
+        poll: "Poll Ended",
+        bar: "Line",
+        vote: "145 votes",
+        id: 6,
+        time: "5 min ago",
+      },
+    ];
+
+    setAddress(
+      address.map((object) => {
+        return {
+          date: object.date,
+          name: object.name,
+          status: object.status,
+          poll: object.poll,
+          bar: object.bar,
+          vote: object.vote,
+          id: object.id,
+          time: object.time,
+        };
+      })
+    );
+  }, []);
+
+  const [address, setAddress] = React.useState([]);
+
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
   return (
     <div>
       <div className="header-div-all">
-        <HeaderMain />{" "}
+        <HeaderMain />
       </div>
+      <div className={classes.maincontainer}>
+        <div className={classes.root}>
+          <Grid item xs={12}>
+            <Row className={classes.rowdiv}>
+              <Container>
+                <Heading>All Proposal</Heading>
 
-      <div className={classes.root}>
-        <Grid item xs={12}>
-          <Row className={classes.rowdiv}>
-            <Container>
-              <Heading>All Proposal</Heading>
+                <InputDiv>
+                  <input
+                    placeholder="Search"
+                    className={classes.input}
+                    type="text"
+                  />
+                </InputDiv>
+              </Container>
 
-              <Inputdiv>
-                <input
-                  placeholder="Search"
-                  className={classes.input}
-                  type="text"
-                />
-              </Inputdiv>
-            </Container>
+              <SecondContainer>
+                <SelectBox>
+                  <Row className={classes.row}>
+                    <Column className={classes.styleHead}>Status </Column>
+                    <select className={classes.styleContent}>
+                      <option>All</option>
+                      <option>On</option>
+                      <option>Off</option>
+                    </select>
+                  </Row>
+                </SelectBox>
 
-            <SecondContainer>
-              <SelectBox>
-                <Row className={classes.row}>
-                  <Column className={classes.styleHead}>Status </Column>
-                  <select className={classes.styleContent}>
-                    <option>All</option>
-                    <option>On</option>
-                    <option>Off</option>
-                  </select>
-                </Row>
-              </SelectBox>
+                <DatePicker onChange={onChange} value={value} range />
+              </SecondContainer>
+            </Row>
+            <hr className={classes.line} />
 
-              <DatePicker onChange={onChange} value={value} range />
-            </SecondContainer>
-          </Row>
-          <hr className={classes.line} />
+            <Div>
+              <div>
+                <Column>
+                  <RowSpacing>
+                    <Posted>Posted on 24 June 2021</Posted>
+                    <TimeRemainingDiv>
+                      <TimerImg src="/images/Time-Active.svg" />
+                      &nbsp;
+                      <Time>01:50:48 Remaining </Time>
+                    </TimeRemainingDiv>
+                  </RowSpacing>
+                  <RowSpacing>
+                    <Content>
+                      XDC-ABC Bootstrapping Partnership Proposal
+                    </Content>
 
-          <Div>
-            <div>
-              <Column>
-                <Row>
-                  <Posted>Posted on 24 June 2021</Posted>
-                  <TimeRemainingdiv>
-                    <Timerimg src="/images/Time-Active.svg" />
-                    &nbsp;
-                    <Time>01:50:48 Remaining </Time>
-                  </TimeRemainingdiv>
-                </Row>
-                <Row>
-                  <Content>XDC-ABC Bootstrapping Partnership Proposal</Content>
-                  <Positiondiv>
                     <Button>Details</Button>
-                  </Positiondiv>
-                </Row>
-                <Row>
-                  <Status>Status :</Status>
-                  <Passed>Passed</Passed>
-                </Row>
-                <Row>
-                  <Mobileresponsive>
-                    <Timerimg src="/images/Time-Active.svg" />
-                    &nbsp;
-                    <Time>01:50:48 Remaining</Time>
-                  </Mobileresponsive>
-                </Row>
-              </Column>
-              <hr className={classes.line} />
-            </div>
-            <div>
-              <Column>
-                <Row>
-                  <Posted>Posted on 24 June 2021</Posted>
+                  </RowSpacing>
+                  <Container>
+                    <Status>Status :</Status>
+                    <Passed>Passed</Passed>
+                  </Container>
+                  <SecondContainer>
+                    <MobileResponsive>
+                      <TimerImg src="/images/Time-Active.svg" />
+                      &nbsp;
+                      <Time>01:50:48 Remaining</Time>
+                    </MobileResponsive>
+                  </SecondContainer>
+                </Column>
+                <hr className={classes.line} />
+              </div>
+              {address.map((data) => {
+                return (
+                  <div>
+                    <Column>
+                      <RowSpacing>
+                        <Posted>{data.date}</Posted>
 
-                  <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </TimeRemainingdiv>
-                </Row>
-                <Row>
-                  <div className={classes.mobilemedia}>
-                    <Content> Addingmore features toXDC Explorer 2.0</Content>
-                    <Positiondivline>
-                      <Barline>
-                        <Greenline></Greenline>
-                        <Redline></Redline>
-                      </Barline>{" "}
-                    </Positiondivline>
-                  </div>
-                </Row>
-                <Row>
-                  <Status>Status :</Status>
-                  <Open>Open</Open>
-                  <Positiondiv>
-                    <Numberofvotes>98 votes</Numberofvotes>
-                  </Positiondiv>
-                </Row>
-                <Row>
-                  <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </Mobileresponsive>
-                </Row>
-              </Column>
-              <hr className={classes.line} />
-            </div>
-            <div>
-              <Column>
-                <Row>
-                  <Posted>Posted on 24 June 2021</Posted>
-                  <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </TimeRemainingdiv>
-                </Row>
-                <Row>
-                  <div className={classes.mobilemedia}>
-                    <Content>Relaunch of XinFin.org website</Content>
-                    <Positiondivline>
-                      <Barline>
-                        <Greenline></Greenline>
-                        <Redline></Redline>
-                      </Barline>{" "}
-                    </Positiondivline>
-                  </div>
-                </Row>
-                <Row>
-                  <Status>Status :</Status>
-                  <Failed>Failed</Failed>
-                  <Positiondiv>
-                    <Numberofvotes>120 votes</Numberofvotes>
-                  </Positiondiv>
-                </Row>
-                <Row>
-                  <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </Mobileresponsive>
-                </Row>
-              </Column>
-              <hr className={classes.line} />
-            </div>
+                        <TimeRemainingDiv>
+                          <ClockImage src="/images/Time-Inactive.svg" />
+                          &nbsp;
+                          <PollEnded>{data.poll}</PollEnded>
+                        </TimeRemainingDiv>
+                      </RowSpacing>
+                      <RowSpacing>
+                        <div className={classes.mobilemedia}>
+                          <Content>{data.name}</Content>
+                          <SecondContainer>
+                            <BarLine>
+                              <GreenLine></GreenLine>
+                              <RedLine></RedLine>
+                            </BarLine>
+                          </SecondContainer>
+                        </div>
+                      </RowSpacing>
+                      <RowSpacing>
+                        <Container>
+                          <Status>Status :</Status>
+                          <Open>Open</Open>
+                        </Container>
 
-            <div>
-              <Column>
-                <Row>
-                  <Posted>Posted on 24 June 2021</Posted>
-                  <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </TimeRemainingdiv>
-                </Row>
-                <Row>
-                  <div className={classes.mobilemedia}>
-                    <Content>Launching NFT Marketplace to of XDC</Content>
-                    <Positiondivline>
-                      <Barline>
-                        <Greenline></Greenline>
-                        <Redline></Redline>
-                      </Barline>{" "}
-                    </Positiondivline>
+                        <NumberOfVotes>{data.vote}</NumberOfVotes>
+                      </RowSpacing>
+                      <RowSpacing>
+                        <MobileResponsive>
+                          <ClockImage src="/images/Time-Inactive.svg" />
+                          &nbsp;
+                          <PollEnded>{data.poll}</PollEnded>
+                        </MobileResponsive>
+                      </RowSpacing>
+                    </Column>
+                    <hr className={classes.line} />
                   </div>
-                </Row>
-                <Row>
-                  <Status>Status :</Status>
-                  <Passed>Passed</Passed>
-                  <Positiondiv>
-                    <Numberofvotes>100 votes</Numberofvotes>
-                  </Positiondiv>
-                </Row>
-                <Row>
-                  <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </Mobileresponsive>
-                </Row>
-              </Column>
-              <hr className={classes.line} />
-            </div>
-            <div>
-              <Column>
-                <Row>
-                  <Posted>Posted on 24 June 2021</Posted>
-                  <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </TimeRemainingdiv>
-                </Row>
-                <Row>
-                  <div className={classes.mobilemedia}>
-                    <Content>Partnership with Circle Stable Coin</Content>
-                    <Positiondivline>
-                      <Barline>
-                        <Greenline></Greenline>
-                        <Redline></Redline>
-                      </Barline>{" "}
-                    </Positiondivline>
-                  </div>
-                </Row>
-                <Row>
-                  <Status>Status :</Status>
-                  <Passed>Passed</Passed>
-                  <Positiondiv>
-                    <Numberofvotes>89 votes</Numberofvotes>
-                  </Positiondiv>
-                </Row>
-                <Row>
-                  <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </Mobileresponsive>
-                </Row>
-              </Column>
-              <hr className={classes.line} />
-            </div>
-            <div>
-              <Column>
-                <Row>
-                  <Posted>Posted on 24 June 2021 </Posted>
-                  <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </TimeRemainingdiv>
-                </Row>
-                <Row>
-                  <div className={classes.mobilemedia}>
-                    <Content>
-                      XDC-ABC Bootstrapping Partnership Proposal
-                    </Content>
-                    <Positiondivline>
-                      <Barline>
-                        <Greenline></Greenline>
-                        <Redline></Redline>
-                      </Barline>{" "}
-                    </Positiondivline>
-                  </div>
-                </Row>
-                <Row>
-                  <Status>Status :</Status>
-                  <Passed>Passed</Passed>
-                  <Positiondiv>
-                    <Numberofvotes>56 votes</Numberofvotes>
-                  </Positiondiv>
-                </Row>
-                <Row>
-                  <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </Mobileresponsive>
-                </Row>
-              </Column>
-              <hr className={classes.line} />
-            </div>
-            <div>
-              <Column>
-                <Row>
-                  <Posted>Posted on 24 June 2021</Posted>
-                  <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </TimeRemainingdiv>
-                </Row>
-                <Row>
-                  <div className={classes.mobilemedia}>
-                    <Content>
-                      XDC-ABC Bootstrapping Partnership Proposal
-                    </Content>
-                    <Positiondivline>
-                      <Barline>
-                        <Greenline></Greenline>
-                        <Redline></Redline>
-                      </Barline>{" "}
-                    </Positiondivline>
-                  </div>
-                </Row>
-                <Row>
-                  <Status>Status :</Status>
-                  <Passed>Passed</Passed>
-                  <Positiondiv>
-                    <Numberofvotes>145 votes</Numberofvotes>
-                  </Positiondiv>
-                </Row>
-                <Row>
-                  <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </Mobileresponsive>
-                </Row>
-              </Column>
-              <hr className={classes.line} />
-            </div>
-            <div>
-              <Column>
-                <Row>
-                  <Posted>Posted on 24 June 2021</Posted>
-                  <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </TimeRemainingdiv>
-                </Row>
-                <Row>
-                  <div className={classes.mobilemedia}>
-                    <Content>
-                      XDC-ABC Bootstrapping Partnership Proposal
-                    </Content>
-                    <Positiondivline>
-                      <Barline>
-                        <Greenline></Greenline>
-                        <Redline></Redline>
-                      </Barline>{" "}
-                    </Positiondivline>
-                  </div>
-                </Row>
-                <Row>
-                  <Status>Status :</Status>
-                  <Passed>Passed</Passed>
-                  <Positiondiv>
-                    <Numberofvotes>145 votes</Numberofvotes>
-                  </Positiondiv>
-                </Row>
-                <Row>
-                  <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </Mobileresponsive>
-                </Row>
-              </Column>
-              <hr className={classes.line} />
-            </div>
-            <div>
-              <Column>
-                <Row>
-                  <Posted>Posted on 24 June 2021</Posted>
-                  <TimeRemainingdiv>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </TimeRemainingdiv>
-                </Row>
-                <Row>
-                  <div className={classes.mobilemedia}>
-                    <Content>
-                      XDC-ABC Bootstrapping Partnership Proposal
-                    </Content>
-                    <Positiondivline>
-                      <Barline>
-                        <Greenline></Greenline>
-                        <Redline></Redline>
-                      </Barline>{" "}
-                    </Positiondivline>
-                  </div>
-                </Row>
-                <Row>
-                  <Status>Status :</Status>
-                  <Passed>Passed</Passed>
-                  <Positiondiv>
-                    <Numberofvotes>145 votes</Numberofvotes>
-                  </Positiondiv>
-                </Row>
-                <Row>
-                  <Mobileresponsive>
-                    <Clockimage src="/images/Time-Inactive.svg" />
-                    &nbsp;
-                    <Pollended>Poll Ended</Pollended>
-                  </Mobileresponsive>
-                </Row>
-              </Column>
-            </div>
-          </Div>
-          <Pagingdiv>
-            <Container>
-              <Show>Show </Show>
-              <Block>
-                <Span>10 </Span>
-              </Block>
+                );
+              })}
+            </Div>
 
-              <Properties>Properties </Properties>
-            </Container>
-            <SecondContainer>
-              <Back>Back</Back>
-              <Block>
-                <Span>1 </Span>
-              </Block>
-              <Block>
-                <Span>2 </Span>
-              </Block>
-              <NextBlock>
-                <Span>Next</Span>
-              </NextBlock>
-            </SecondContainer>
-          </Pagingdiv>
-        </Grid>
+            <PagingDiv>
+              <Container>
+                <Show>Show </Show>
+                <Block>
+                  <Span>10 </Span>
+                </Block>
+                <Properties>Properties </Properties>
+              </Container>
+              <SecondContainer>
+                <Back>Back</Back>
+                <Block>
+                  <Span>1 </Span>
+                </Block>
+                <Block>
+                  <Span>2 </Span>
+                </Block>
+                <NextBlock>
+                  <Span>Next</Span>
+                </NextBlock>
+              </SecondContainer>
+            </PagingDiv>
+          </Grid>
+        </div>
       </div>
     </div>
   );
 }
+const RowSpacing = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+`;
+
 const Back = styled.span`
   text-align: left;
   font: normal normal normal 14px/17px Inter;
@@ -511,7 +337,7 @@ const Back = styled.span`
   color: #909090;
   opacity: 1;
 `;
-const Pagingdiv = styled.div`
+const PagingDiv = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -566,33 +392,31 @@ const Properties = styled.span`
   white-space: nowrap;
 `;
 
-const TimeRemainingdiv = styled.div`
-  position: absolute;
-  right: 24%;
+const TimeRemainingDiv = styled.div`
   @media (max-width: 767px) {
     display: none;
   }
 `;
-const Mobileresponsive = styled.div`
-  margin-left: 12px;
-  @media (min-width: 767px) and (max-width: 2000px) {
+const MobileResponsive = styled.div`
+  // margin-left: 12px;
+  @media (min-width: 767px) {
     display: none;
   }
-  @media (min-width: 400px) and (max-width: 767px) {
+  @media (min-width: 300px) and (max-width: 767px) {
     display: visible;
   }
 `;
-const Barline = styled.div`
+const BarLine = styled.div`
   width: 100%;
   height: 3px;
   display: flex;
 `;
-const Greenline = styled.div`
+const GreenLine = styled.div`
   background-color: #3ab70d;
   width: 100%;
   height: 3px;
 `;
-const Redline = styled.div`
+const RedLine = styled.div`
   background-color: #f43d3d;
   width: 60px;
   height: 3px;
@@ -607,27 +431,22 @@ const Failed = styled.span`
   letter-spacing: 0px;
   opacity: 1;
   font-size: 12px;
-  padding-top: 6px;
+  // padding-top: 6px;
   color: #f43d3d;
   whitespace: "nowrap";
 `;
-const Inputdiv = styled.div`
+const InputDiv = styled.div`
   display: flex;
   @media (min-width: 300px) and (max-width: 1038px) {
     display: none;
   }
 `;
-const Positiondiv = styled.div`
-  position: absolute;
-  right: 24%;
-`;
-const Positiondivline = styled.div`
-  position: absolute;
-  right: 24%;
+
+const PositionDivLine = styled.div`
   margin-top: 15px;
 `;
 
-const Pollended = styled.span`
+const PollEnded = styled.span`
   font-size: 12px;
   text-align: left;
   font: normal normal medium 14px/17px Inter;
@@ -636,11 +455,12 @@ const Pollended = styled.span`
   opacity: 1;
   whitespace: "nowrap";
 `;
-const Clockimage = styled.img``;
+const ClockImage = styled.img``;
 const Div = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
   height: auto;
+  // padding: 10px;
 `;
 const Posted = styled.span`
   text-align: left;
@@ -649,8 +469,7 @@ const Posted = styled.span`
   color: #909090;
   opacity: 1;
   font-size: 12px;
-  padding-top: 6px;
-  margin-left: 13px;
+  // padding-top: 6px;
   whitespace: "nowrap";
 `;
 const Time = styled.span`
@@ -660,7 +479,7 @@ const Time = styled.span`
   color: #909090;
   opacity: 1;
   font-size: 12px;
-  padding-top: 6px;
+  // padding-top: 6px;
   whitespace: "nowrap";
 `;
 const Button = styled.button`
@@ -672,11 +491,13 @@ const Button = styled.button`
   text-align: center;
   letter-spacing: 0px;
   color: #2149b9;
-  margin-top: 10px;
+  // margin-top: 10px;
   font-size: 14px;
   font-weight: 600;
   font-family: "Inter", sans-serif !important;
   whitespace: "nowrap";
+  width: 100%;
+  max-width: 90px;
 `;
 const Content = styled.span`
   color: var(--unnamed-color-2a2a2a);
@@ -688,8 +509,8 @@ const Content = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  padding-top: 6px;
-  margin-left: 13px;
+ 
+  
 `;
 const Status = styled.span`
   text-align: left;
@@ -697,10 +518,9 @@ const Status = styled.span`
   letter-spacing: 0px;
   opacity: 1;
   font-size: 12px;
-  padding-top: 6px;
-  margin-left: 13px;
-  whiteSpace: "nowrap",
-  margin-bottom: 4px;
+
+  whitespace: "nowrap";
+  // margin-bottom: 4px;
 `;
 const Open = styled.span`
   color: var(--unnamed-color-2149b9);
@@ -708,24 +528,24 @@ const Open = styled.span`
   font: normal normal normal 15px/19px Inter;
   letter-spacing: 0px;
   color: #2149b9;
-  padding-top: 6px;
+  // padding-top: 6px;
   font-size: 12px;
-  margin-bottom: 4px;
+  // margin-bottom: 4px;
   whitespace: "nowrap";
 `;
-const Timerimg = styled.img``;
+const TimerImg = styled.img``;
 const Passed = styled.span`
   text-align: left;
   font: normal normal normal 15px/19px Inter;
   letter-spacing: 0px;
   color: #3ab70d;
   font-size: 12px;
-  padding-top: 6px;
+  // padding-top: 6px;
   whitespace: "nowrap";
 `;
-const Numberofvotes = styled.span`
+const NumberOfVotes = styled.span`
   font: normal normal 600 14px/22px Inter;
-  @media (min-width: 400px) and (max-width: 767px) {
+  @media (min-width: 300px) and (max-width: 767px) {
     display: none;
   }
 `;
@@ -737,5 +557,4 @@ const Heading = styled.span`
   opacity: 1;
   box-shadow: none;
   color: var(--unnamed-color-2a2a2a);
-  margin-left: 13px;
 `;
