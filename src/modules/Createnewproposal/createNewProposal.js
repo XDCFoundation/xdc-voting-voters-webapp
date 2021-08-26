@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "center",
-    maxWidth: "800px",
+    maxWidth: "970px",
     position: "absolute",
     top: "190px",
     width: "100%",
