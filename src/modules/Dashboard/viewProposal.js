@@ -38,12 +38,15 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "center",
-    maxWidth: "800px",
+    maxWidth: "970px",
     position: "absolute",
     top: "147px",
     width: "100%",
-    "@media (min-width: 300px) and (max-width: 767px)": {
-      maxWidth: "350px",
+    "@media (min-width: 300px) and (max-width: 567px)": {
+      maxWidth: "300px",
+    },
+    "@media (min-width: 567px) and (max-width: 767px)": {
+      maxWidth: "500px",
     },
     "@media (min-width: 767px) and (max-width: 1040px)": {
       maxWidth: "700px",
@@ -57,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "6px",
     opacity: "1",
     justifyContent: "space-between",
-    padding: "10px",
+    padding: "24px",
   },
 
   input: {
@@ -86,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     justifyContent: "space-between",
     "@media (min-width: 300px) and (max-width: 767px)": {
-      display: "block",
+      // display: "block",
     },
   },
   maincontainer: {
@@ -191,7 +194,7 @@ export default function ViewAllProposal() {
           <Grid item xs={12}>
             <Row className={classes.rowdiv}>
               <Container>
-                <Heading>All Proposal</Heading>
+                <Heading>All Proposals</Heading>
 
                 <InputDiv>
                   <input
@@ -217,10 +220,9 @@ export default function ViewAllProposal() {
                 <DatePicker onChange={onChange} value={value} range />
               </SecondContainer>
             </Row>
-            <hr className={classes.line} />
 
             <Div>
-              <div>
+              <MainContainer>
                 <Column>
                   <RowSpacing>
                     <Posted>Posted on 24 June 2021</Posted>
@@ -238,7 +240,7 @@ export default function ViewAllProposal() {
                     <Button>Details</Button>
                   </RowSpacing>
                   <Container>
-                    <Status>Status :</Status>
+                    <Status>Status : </Status>
                     <Passed>Passed</Passed>
                   </Container>
                   <SecondContainer>
@@ -249,15 +251,13 @@ export default function ViewAllProposal() {
                     </MobileResponsive>
                   </SecondContainer>
                 </Column>
-                <hr className={classes.line} />
-              </div>
+              </MainContainer>
               {address.map((data) => {
                 return (
-                  <div>
+                  <MainContainer>
                     <Column>
                       <RowSpacing>
                         <Posted>{data.date}</Posted>
-
                         <TimeRemainingDiv>
                           <ClockImage src="/images/Time-Inactive.svg" />
                           &nbsp;
@@ -267,17 +267,17 @@ export default function ViewAllProposal() {
                       <RowSpacing>
                         <div className={classes.mobilemedia}>
                           <Content>{data.name}</Content>
-                          <SecondContainer>
+                          <PositionDivLine>
                             <BarLine>
                               <GreenLine></GreenLine>
                               <RedLine></RedLine>
                             </BarLine>
-                          </SecondContainer>
+                          </PositionDivLine>
                         </div>
                       </RowSpacing>
                       <RowSpacing>
                         <Container>
-                          <Status>Status :</Status>
+                          <Status>Status : </Status>
                           <Open>Open</Open>
                         </Container>
 
@@ -291,8 +291,7 @@ export default function ViewAllProposal() {
                         </MobileResponsive>
                       </RowSpacing>
                     </Column>
-                    <hr className={classes.line} />
-                  </div>
+                  </MainContainer>
                 );
               })}
             </Div>
@@ -324,6 +323,11 @@ export default function ViewAllProposal() {
     </div>
   );
 }
+const MainContainer = styled.div`
+  padding: 11px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+`;
+
 const RowSpacing = styled.div`
   display: flex;
   flex-flow: row nowrap;
@@ -332,7 +336,9 @@ const RowSpacing = styled.div`
 
 const Back = styled.span`
   text-align: left;
-  font: normal normal normal 14px/17px Inter;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
   letter-spacing: 0px;
   color: #909090;
   opacity: 1;
@@ -345,7 +351,9 @@ const PagingDiv = styled.div`
 `;
 const Span = styled.span`
   text-align: left;
-  font: normal normal normal 13px/17px Inter;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
   letter-spacing: 0px;
   color: #3b3b3b;
   opacity: 1;
@@ -356,7 +364,9 @@ const Span = styled.span`
 const Show = styled.span`
   display: flex;
   text-align: left;
-  font: normal normal normal 13px/17px Inter;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
   letter-spacing: 0px;
   color: #3b3b3b;
   opacity: 1;
@@ -370,6 +380,9 @@ const Block = styled.div`
   width: 25px;
   height: 22px;
   margin-left: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
 `;
 const NextBlock = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -383,7 +396,9 @@ const NextBlock = styled.div`
 const Properties = styled.span`
   display: flex;
   text-align: left;
-  font: normal normal normal 13px/17px Inter;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
   letter-spacing: 0px;
   color: #3b3b3b;
   opacity: 1;
@@ -398,7 +413,6 @@ const TimeRemainingDiv = styled.div`
   }
 `;
 const MobileResponsive = styled.div`
-  // margin-left: 12px;
   @media (min-width: 767px) {
     display: none;
   }
@@ -407,7 +421,7 @@ const MobileResponsive = styled.div`
   }
 `;
 const BarLine = styled.div`
-  width: 100%;
+  width: 200px;
   height: 3px;
   display: flex;
 `;
@@ -418,7 +432,7 @@ const GreenLine = styled.div`
 `;
 const RedLine = styled.div`
   background-color: #f43d3d;
-  width: 60px;
+  width: 100%;
   height: 3px;
 `;
 const SelectBox = styled.div`
@@ -426,12 +440,11 @@ const SelectBox = styled.div`
   align-items: center;
 `;
 const Failed = styled.span`
-  text-align: left;
-  font: normal normal normal 15px/19px Inter;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
   letter-spacing: 0px;
   opacity: 1;
-  font-size: 12px;
-  // padding-top: 6px;
   color: #f43d3d;
   whitespace: "nowrap";
 `;
@@ -444,12 +457,15 @@ const InputDiv = styled.div`
 
 const PositionDivLine = styled.div`
   margin-top: 15px;
+  @media (min-width: 300px) and (max-width: 1038px) {
+  }
 `;
 
 const PollEnded = styled.span`
-  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
   text-align: left;
-  font: normal normal medium 14px/17px Inter;
   letter-spacing: 0px;
   color: #cecece;
   opacity: 1;
@@ -460,27 +476,32 @@ const Div = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
   height: auto;
-  // padding: 10px;
 `;
 const Posted = styled.span`
   text-align: left;
-  font: normal normal medium 14px/17px Inter;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
   letter-spacing: 0px;
   color: #909090;
   opacity: 1;
-  font-size: 12px;
-  // padding-top: 6px;
   whitespace: "nowrap";
+  @media (min-width: 300px) and (max-width: 767px) {
+    font-size: 12px;
+  }
 `;
 const Time = styled.span`
   text-align: left;
-  font: normal normal medium 14px/17px Inter;
   letter-spacing: 0px;
   color: #909090;
   opacity: 1;
-  font-size: 12px;
-  // padding-top: 6px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
   whitespace: "nowrap";
+  @media (min-width: 300px) and (max-width: 767px) {
+    font-size: 12px;
+  }
 `;
 const Button = styled.button`
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -491,70 +512,88 @@ const Button = styled.button`
   text-align: center;
   letter-spacing: 0px;
   color: #2149b9;
-  // margin-top: 10px;
-  font-size: 14px;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
-  font-family: "Inter", sans-serif !important;
+  font-size: 14px;
   whitespace: "nowrap";
   width: 100%;
   max-width: 90px;
+  @media (min-width: 250px) and (max-width: 767px) {
+    font-size: 12px;
+    width: 100%;
+    max-width: 65px;
+    height: 25px;
+  }
 `;
 const Content = styled.span`
   color: var(--unnamed-color-2a2a2a);
   text-align: left;
   whiteSpace: "nowrap",
-  font-size: 15px;
-  font-weight: 600;
-  font-family: "Inter", sans-serif !important;
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
- 
-  
+  font-family: 'Inter',sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    font-size: 13px;
+  }
 `;
 const Status = styled.span`
-  text-align: left;
-  font: normal normal normal 15px/19px Inter;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
   letter-spacing: 0px;
   opacity: 1;
-  font-size: 12px;
-
   whitespace: "nowrap";
-  // margin-bottom: 4px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    font-size: 12px;
+  }
 `;
 const Open = styled.span`
   color: var(--unnamed-color-2149b9);
-  text-align: left;
-  font: normal normal normal 15px/19px Inter;
   letter-spacing: 0px;
   color: #2149b9;
-  // padding-top: 6px;
-  font-size: 12px;
-  // margin-bottom: 4px;
   whitespace: "nowrap";
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    font-size: 12px;
+  }
 `;
 const TimerImg = styled.img``;
 const Passed = styled.span`
-  text-align: left;
-  font: normal normal normal 15px/19px Inter;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
   letter-spacing: 0px;
   color: #3ab70d;
-  font-size: 12px;
-  // padding-top: 6px;
   whitespace: "nowrap";
+  @media (min-width: 300px) and (max-width: 767px) {
+    font-size: 12px;
+  }
 `;
 const NumberOfVotes = styled.span`
-  font: normal normal 600 14px/22px Inter;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
   @media (min-width: 300px) and (max-width: 767px) {
     display: none;
+    font-size: 12px;
   }
 `;
 const Heading = styled.span`
   white-space: nowrap;
-  font: normal normal 600 19px/26px Inter;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 21px;
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
   box-shadow: none;
   color: var(--unnamed-color-2a2a2a);
+  @media (min-width: 300px) and (max-width: 767px) {
+    font-size: 18px;
+  }
 `;
