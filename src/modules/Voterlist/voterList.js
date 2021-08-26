@@ -14,14 +14,14 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: "147px",
     width: "100%",
-    "@media (min-width: 400px) and (max-width: 767px)": {
+    "@media (min-width: 300px) and (max-width: 767px)": {
       maxWidth: "350px",
     },
     "@media (min-width: 767px) and (max-width: 1040px)": {
       maxWidth: "700px",
     },
   },
-  rowdiv: {
+  rowDiv: {
     width: "100%",
     alignItems: "center",
     height: "53px",
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "0px",
     marginBottom: "0px",
   },
-  maincontainer: {
+  mainContainer: {
     display: "flex",
     justifyContent: "center",
     width: "100%",
@@ -46,83 +46,83 @@ export default function Voterslist() {
   React.useEffect(() => {
     let address = [
       {
-        Image: "/images/network.svg",
-        Name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        Time: "5 min ago",
+        image: "/images/network.svg",
+        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+        time: "5 min ago",
       },
       {
-        Image: "/images/network.svg",
-        Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        Time: "1 hr 5 min ago",
+        image: "/images/network.svg",
+        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+        time: "1 hr 5 min ago",
       },
       {
-        Image: "/images/network.svg",
-        Name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        Time: "10:30 AM,Today",
+        image: "/images/network.svg",
+        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+        time: "10:30 AM,Today",
       },
       {
-        Image: "/images/network.svg",
-        Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        Time: "5.25 PM, 2 july",
+        image: "/images/network.svg",
+        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+        time: "5.25 PM, 2 july",
       },
       {
-        Image: "/images/network.svg",
-        Name: "xdc0b3693740427612142863616a56599e92bdc955a",
-        Time: "Time and Date",
+        image: "/images/network.svg",
+        name: "xdc0b3693740427612142863616a56599e92bdc955a",
+        time: "Time and Date",
       },
       {
-        Image: "/images/network.svg",
-        Name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        Time: "Time and Date",
+        image: "/images/network.svg",
+        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+        time: "Time and Date",
       },
       {
-        Image: "/images/network.svg",
-        Name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        Time: "Time and Date",
+        image: "/images/network.svg",
+        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+        time: "Time and Date",
       },
       {
-        Image: "/images/network.svg",
-        Name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        Time: "Time and Date",
+        image: "/images/network.svg",
+        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+        time: "Time and Date",
       },
       {
-        Image: "/images/network.svg",
-        Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        Time: "Time and Date",
+        image: "/images/network.svg",
+        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+        time: "Time and Date",
       },
       {
-        Image: "/images/network.svg",
-        Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        Time: "Time and Date",
+        image: "/images/network.svg",
+        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+        time: "Time and Date",
       },
       {
-        Image: "/images/network.svg",
-        Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        Time: "Time and Date",
+        image: "/images/network.svg",
+        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+        time: "Time and Date",
       },
       {
-        Image: "/images/network.svg",
-        Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        Time: "Time and Date",
+        image: "/images/network.svg",
+        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+        time: "Time and Date",
       },
       {
-        Image: "/images/network.svg",
-        Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        Time: "Time and Date",
+        image: "/images/network.svg",
+        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+        time: "Time and Date",
       },
       {
-        Image: "/images/network.svg",
-        Name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        Time: "Time and Date",
+        image: "/images/network.svg",
+        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+        time: "Time and Date",
       },
     ];
 
     setAddress(
       address.map((object) => {
         return {
-          Image: object.Image,
-          Name: object.Name,
-          Time: object.Time,
+          image: object.image,
+          name: object.name,
+          time: object.time,
         };
       })
     );
@@ -136,7 +136,7 @@ export default function Voterslist() {
       <div className="header-div-all">
         <HeaderMain />
       </div>
-      <div className={classes.maincontainer}>
+      <div className={classes.mainContainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
             <Spacing>
@@ -153,11 +153,11 @@ export default function Voterslist() {
                 <Div>
                   <Spacing>
                     <Container>
-                      <ImageView src={data.Image} />
-                      <Hash>{data.Name}</Hash>
+                      <ImageView src={data.image} />
+                      <Hash>{data.name}</Hash>
                     </Container>
                     <SecondContainer>
-                      <Leftcontainer>{data.Time}</Leftcontainer>
+                      <Leftcontainer>{data.time}</Leftcontainer>
                     </SecondContainer>
                   </Spacing>
                 </Div>
