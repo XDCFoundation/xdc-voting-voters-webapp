@@ -226,7 +226,7 @@ export default function ViewAllProposal() {
                     <Posted>Posted on 24 June 2021</Posted>
                     <TimeRemainingDiv>
                       <TimerImg src="/images/Time-Active.svg" />
-                      &nbsp;
+
                       <Time>01:50:48 Remaining </Time>
                     </TimeRemainingDiv>
                   </RowSpacing>
@@ -244,7 +244,7 @@ export default function ViewAllProposal() {
                   <SecondContainer>
                     <MobileResponsive>
                       <TimerImg src="/images/Time-Active.svg" />
-                      &nbsp;
+
                       <Time>01:50:48 Remaining</Time>
                     </MobileResponsive>
                   </SecondContainer>
@@ -273,18 +273,31 @@ export default function ViewAllProposal() {
                           </PositionDivLine>
                         </div>
                       </RowSpacing>
-                      <RowSpacing>
+                      <Media_for_container>
+                        <Container>
+                          <Status>Status : </Status>
+                          <Open>Open</Open>
+                        </Container>
+
+                        <MobileDivLine>
+                          <BarLine>
+                            <GreenLine></GreenLine>
+                            <RedLine></RedLine>
+                          </BarLine>
+                        </MobileDivLine>
+                      </Media_for_container>
+                      <DisplayNone>
                         <Container>
                           <Status>Status : </Status>
                           <Open>Open</Open>
                         </Container>
 
                         <NumberOfVotes>{data.vote}</NumberOfVotes>
-                      </RowSpacing>
+                      </DisplayNone>
                       <RowSpacing>
                         <MobileResponsive>
                           <ClockImage src="/images/Time-Inactive.svg" />
-                          &nbsp;
+
                           <PollEnded>{data.poll}</PollEnded>
                         </MobileResponsive>
                       </RowSpacing>
@@ -331,7 +344,22 @@ const RowSpacing = styled.div`
   flex-flow: row nowrap;
   justify-content: space-between;
 `;
-
+const Media_for_container = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  @media (min-width: 767px) and (max-width: 2000px) {
+    display: none;
+  }
+`;
+const DisplayNone = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  @media (min-width: 300px) and (max-width: 767px) {
+    display: none;
+  }
+`;
 const Back = styled.span`
   text-align: left;
   font-family: "Inter", sans-serif;
@@ -464,10 +492,18 @@ const InputDiv = styled.div`
 
 const PositionDivLine = styled.div`
   margin-top: 15px;
-  @media (min-width: 300px) and (max-width: 1038px) {
+  @media (min-width: 300px) and (max-width: 767px) {
+    display: none;
   }
 `;
-
+const MobileDivLine = styled.div`
+  @media (min-width: 767px) and (max-width: 2000px) {
+    display: none;
+  }
+  @media (min-width: 300px) and (max-width: 767px) {
+    margin-top: 7px;
+  }
+`;
 const PollEnded = styled.span`
   font-family: "Inter", sans-serif;
   font-weight: 600;
@@ -478,7 +514,9 @@ const PollEnded = styled.span`
   opacity: 1;
   whitespace: "nowrap";
 `;
-const ClockImage = styled.img``;
+const ClockImage = styled.img`
+  margin-right: 10px;
+`;
 const Div = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
@@ -569,7 +607,9 @@ const Open = styled.span`
     font-size: 12px;
   }
 `;
-const TimerImg = styled.img``;
+const TimerImg = styled.img`
+  margin-right: 10px;
+`;
 const Passed = styled.span`
   font-family: "Inter", sans-serif;
   font-weight: 600;
@@ -586,7 +626,6 @@ const NumberOfVotes = styled.span`
   font-weight: 600;
   font-size: 14px;
   @media (min-width: 300px) and (max-width: 767px) {
-    display: none;
     font-size: 12px;
   }
 `;
