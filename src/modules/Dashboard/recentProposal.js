@@ -156,9 +156,12 @@ export default function RecentProposal() {
            
             <div style={{ paddingTop: "10%" }}></div>
             {/* !+++++++++++++++++++++! */}
-            <div className="blockdiv" style={{backgroundColor:"white"}}>
+            {/* <div className="blockdiv" style={{backgroundColor:"white"}}>
                 <div>
                     <Row className="box-all">
+                        <Row className="box-all1">
+                           
+                        <Row className="mobile-box-block">
                         <Column className="know-about-xdc">
                         <img className="external-image" src={require("../../assets/styles/images/External-Link.svg")} ></img>
                         <Row><img className="time-inactive" src={require("../../assets/styles/images/Group 30.svg")} ></img></Row>
@@ -171,15 +174,20 @@ export default function RecentProposal() {
                         <Row className="know-about-xdc-heading">XDC Forum</Row>
                         <Row className="know-about-xdc-para">Mauris neque urna, sodales at molestie ut, pulvinar eu lorem.</Row>
                         </Column>
+                        </Row>
+                       
+                        <Row>
                         <Column className="community-tools">
                         <img className="external-image" src={require("../../assets/styles/images/External-Link.svg")} ></img>
                         <Row><img className="time-inactive" src={require("../../assets/styles/images/Community-Tools.svg")} ></img></Row>
                         <Row className="know-about-xdc-heading">Community Tools</Row>
                         <Row className="know-about-xdc-para">Cras porttitor iaculis sapien eu fringilla Cras in ligula egestas ipsum quis urna.</Row>
                         </Column>
+                        </Row>
+                        </Row>
                     </Row>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
