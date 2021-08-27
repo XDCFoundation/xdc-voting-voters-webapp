@@ -8,6 +8,7 @@ import utility from '../../utility';
 import HeaderMain from './header';
 import RecentProposal from '../Dashboard/recentProposal';
 import DivBlocksComponent from '../Dashboard/divComponent';
+import FooterComponent from '../footer/footerComponent';
 
 export default function Header() {
 
@@ -69,16 +70,18 @@ export default function Header() {
                         <Row onClick={handleView} className="view-all">View All Proposals</Row>
                         
                         <div ><DivBlocksComponent /></div>
+                     
                     </div>
                    
-                
+                   
                 </div>
                
                 
             
-
+               
             </Column>
-         
+            <div style={{marginTop:"780px",borderTop: "1px solid black"}}></div>
+            
         </div>
         
     )
