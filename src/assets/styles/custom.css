@@ -118,16 +118,22 @@ position: relative;
     .know-about-xdc{
         width: 100% !important;
         border-right:  2px solid #CEE6FD !important;
+        border-top:0px solid #CEE6FD !important; 
+        border-left: 0px solid #CEE6FD !important;
     }
     .xdc-forum{
         width: 100% !important;
         margin-top: 30px !important;
         border-right:  2px solid #CEE6FD !important;
+        border-top:0px solid #CEE6FD !important; 
+        border-left: 0px solid #CEE6FD !important;
     }
     .community-tools{
         width: 100% !important;
         margin-top: 30px !important;
         border-right:  2px solid #CEE6FD !important;
+        border-top:0px solid #CEE6FD !important; 
+        border-left: 0px solid #CEE6FD !important;
     }
     /* .mid-div{
         display: flex;
