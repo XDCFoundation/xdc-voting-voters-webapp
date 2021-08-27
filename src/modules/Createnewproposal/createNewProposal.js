@@ -43,10 +43,11 @@ const useStyles = makeStyles((theme) => ({
 
   heading: {
     fontSize: "15px",
-    marginTop: "2%",
-    paddingLeft: "4%",
+    marginTop: "17px",
+
     whiteSpace: "nowrap",
-    paddingLeft: "2%",
+    paddingLeft: "20px",
+
     font: " normal normal 600 22px/26px Inter",
     letterSpacing: "0px",
     color: "#2a2a2a",
@@ -102,7 +103,8 @@ const useStyles = makeStyles((theme) => ({
     color: "#2a2a2a",
     opacity: 1,
     paddingLeft: "21px",
-    paddingTop: "1%",
+    paddingTop: "7px",
+
     fontSize: "12px",
     whiteSpace: "nowrap",
     "@media (min-width: 300px) and (max-width: 767px)": {
@@ -122,8 +124,9 @@ const useStyles = makeStyles((theme) => ({
     opacity: " 1",
     fontSize: "12px",
     paddingLeft: "21px",
-    paddingTop: "1%",
+    paddingTop: "5px",
     whiteSpace: "nowrap",
+
     "@media (min-width: 300px) and (max-width: 767px)": {
       fontSize: "11px",
       paddingLeft: "8px",
@@ -184,9 +187,10 @@ const useStyles = makeStyles((theme) => ({
     color: "#2a2a2a",
     opacity: 1,
     fontSize: "12px",
-    paddingTop: "6%",
+    paddingTop: "50px",
     paddingLeft: "21px",
     whiteSpace: "nowrap",
+
     "@media (min-width: 300px) and (max-width: 767px)": {
       fontSize: "11px",
       paddingLeft: "8px",
@@ -197,11 +201,11 @@ const useStyles = makeStyles((theme) => ({
   },
 
   quillgrid: {
-    paddingTop: "4%",
+    paddingTop: "47px",
     background: "#FFFFFF 0% 0% no-repeat padding-box",
     marginLeft: "8px",
     borderRadius: "6px",
-    paddingRight: "4%",
+    paddingRight: "45px",
     opacity: 1,
     height: "215px",
   },
