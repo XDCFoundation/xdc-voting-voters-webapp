@@ -9,6 +9,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { history } from "../../managers/history";
+import FooterComponent from '../footer/footerComponent';
 
 export default function DivBlocksComponent() {
     
@@ -51,6 +52,7 @@ export default function DivBlocksComponent() {
                     </Row>
                 </div>
             </div>
+            <div><FooterComponent/></div>
         </div>
     )
 }
