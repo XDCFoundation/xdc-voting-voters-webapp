@@ -55,6 +55,9 @@ position: relative;
         max-width: 950px !important;
         padding-bottom: 50px !important;
     }
+    .mobile-box-block{
+        display: block !important;
+    }
     .div-box{
         /* margin-left: 17% !important; */
        /* justify-content: center; */
@@ -98,6 +101,7 @@ position: relative;
     }
     .griddiv{
         height: 600px !important;
+        margin-bottom: 260px !important;
         /* padding-right: 10px !important; */
     }
     .mobile-div-right{
@@ -159,11 +163,25 @@ position: relative;
     .recent-div{
         top:320px !important;
     }
-    /* .box-all1{
-        display: block !important;
-        max-width: 950px !important;
-        padding-bottom: 50px !important;
+    /* .mobile-box-block{
+        justify-content: space-between !important;
     } */
+    .box-all1{
+        display: block !important;
+        /* max-width: 950px !important; */
+        padding-bottom: 50px !important;
+    }
+    .know-about-xdc{
+        width: 100% !important;
+        margin-right: 135px !important;
+    }
+    .xdc-forum{
+        width: 100% !important;
+    }
+    .community-tools{
+        /* width: 330px !important; */
+        margin-top: 50px !important;
+    }
     .mid-div{
         display: flex;
         flex-direction: column;
@@ -524,15 +542,16 @@ opacity: 1;
     border-radius: 6px;
     opacity: 1;
  }
- .box-all{
+ .box-all1{
+     display: flex;
      /* margin-inline-end: 20px; */
  }
  .external-image{
-    margin-left: 240px;
+    margin-left: 95%;
     margin-top: -8px;
  }
  .know-about-xdc{
-    width: 380px;
+    width: 294px;
     height: 150px;
     background: #FDFEFF 0% 0% no-repeat padding-box;
     border-top: 1px solid #CEE6FD;
@@ -563,7 +582,7 @@ opacity: 1;
     padding-top: 8px;
  }
  .xdc-forum{
-    width: 380px;
+    width: 294px;
     height: 150px;
     background: #FDFEFF 0% 0% no-repeat padding-box;
     border-top: 1px solid #CEE6FD;
@@ -574,7 +593,7 @@ opacity: 1;
 
  }
  .community-tools{
-    width: 380px;
+    width: 294px;
     height: 150px;
     background: #FDFEFF 0% 0% no-repeat padding-box;
     border-top: 1px solid #CEE6FD;
