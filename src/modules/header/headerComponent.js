@@ -66,24 +66,28 @@ export default function Header() {
                             </Column>
                         </Row>
                         <div className="griddiv"><RecentProposal /></div>
-                       
+
                         <Row onClick={handleView} className="view-all">View All Proposals</Row>
-                        
+
                         <div ><DivBlocksComponent /></div>
-                     
+
                     </div>
-                   
-                   
+
+
                 </div>
-               
-                
-            
-               
+
+
+
+
             </Column>
-            <div style={{marginTop:"780px",borderTop: "1px solid black"}}></div>
-            
+
+
+            <div ><FooterComponent /></div>
+
+
+
         </div>
-        
+
     )
 }
 
