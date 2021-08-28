@@ -35,33 +35,48 @@ export default function FooterComponent() {
                         </Row>
                         </Column>
 
-                        <Column >
-                            <div className="footer-column">
-                            Community
-                            </div>
-                       
+                        <Column className="footer-column">
+                        <Row className="footer-column-heading" >Community</Row>
+                        <Row>Discord</Row>
+                        <Row>Github</Row>
+                        <Row>Twitter</Row>
+                        <Row>Telegram</Row>
+                        <Row>Forum</Row>
                         </Column>
 
-                        <Column >
-                            <div className="footer-column">
-                            Governance
-                            </div>
-                      
+                        <Column className="footer-column">
+                        <Row className="footer-column-heading" >Governance</Row>
+                        <Row>Overview  </Row>
+                        <Row>Forum</Row>
+                        <Row>FAQs</Row>
+    
                         </Column>
 
-                        <Column >
-                            <div className="footer-column3">
+                        <Column className="footer-column3">
+                            <Row className="footer-column-heading" >
                             New Proposal Alert
-                            </div>
+                            </Row>
+                            <Row>
+                                {/* <input className="footer-search">
+                                    Add Email
+
+                                </input> */}
+                                <span><input className="footer-search" type="email" placeholder="Add Email"></input>
+                                </span>
+                                    <span><img className="forward-image" src={require("../../assets/styles/images/ForwardLogo.svg")} ></img></span>
+                                
+                            </Row>
                       
                         </Column>
                         
                         </Row>
+                        <Row className="reserved">© 2021 XinFin. All Right Reserved</Row>
+                        
 
                         <Row>
-
+                        
                         </Row>
-
+                        
 
 
 
@@ -70,8 +85,11 @@ export default function FooterComponent() {
 
                        
                     </div>
+                   
                 </div>
+               
             </div>
+           
         </div>
     )
 }
