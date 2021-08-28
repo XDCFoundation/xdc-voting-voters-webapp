@@ -245,6 +245,12 @@ height: 45px;
 opacity: 1;
 
 }
+.footer-logo{
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+}
+
 .xdc{
 font: normal normal 600 22px/26px Inter;
 letter-spacing: 0px;
@@ -260,7 +266,37 @@ margin-top:"10px";
     margin-left: 0px;
     font-weight: 500;
 }
-
+.xdc-footer{
+    width: 52px;
+    height: 29px;
+    font: normal normal 600 24px/28px Inter;
+    letter-spacing: 0px;
+    color: #2149B9;
+    opacity: 1;
+    margin-top: 16px;
+    margin-left: 10px;
+    }
+.footer-column{
+    letter-spacing: 0px;
+    color: #2A2A2A;
+    opacity: 1;
+    font-size: 17px;
+    font-family: Inter,sans-serif;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-left: 85px;
+}
+.footer-column3{
+    letter-spacing: 0px;
+    color: #2A2A2A;
+    opacity: 1;
+    font-size: 17px;
+    font-family: Inter,sans-serif;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-left: 190px;
+}
+    
 .connect-wallet{
     /* padding-left: 5px; */
     margin-top: 17px;
@@ -410,6 +446,19 @@ opacity: 1;
     padding-left: 20px;
     padding-right: 20px;
 }
+.recent-div-footer{
+    /* width: 100%;
+    height: 100%; */
+
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    /* top: 236px; */
+    padding-left: 20px;
+    padding-right: 20px;
+}
 .all-div{
     /* width: 100%;
     height: 100%; */
@@ -447,18 +496,7 @@ opacity: 1;
     outline: none;
 }
  .recent-proposal-div{
-    /* margin-top: 0px; */
-    /* margin-left: 320px; */
-    /* width: 1280px;
-    height: 608px; */
-    /* width: 50%;
-    height: 60%;
-    justify-content: center;
-    align-items: center;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #E3E7EB;
-    border-radius: 6px;
-    opacity: 1; */
+   
 
 
 
@@ -475,6 +513,30 @@ opacity: 1;
     border-radius: 5px;
     opacity: 1;
      box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1);
+   
+ }
+ .main-footer{
+     margin-top:800px;
+     border: 1px solid #E3E7EB;
+ }
+ .recent-proposal-div-footer{
+   
+
+
+
+    margin-top: 0px;
+    /* margin-left: 320px; */
+    width: 100%;
+    max-width: 950px;
+    height: 250px;
+    justify-content: center;
+    align-items: center;
+    /* background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #E3E7EB;
+    border-color: #E3E7EB;
+    border-radius: 5px;
+    opacity: 1;
+     box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1); */
    
  }
  .row-2-width{
@@ -550,6 +612,9 @@ opacity: 1;
     border-color: #E3E7EB;
     border-radius: 6px;
     opacity: 1;
+ }
+ .footer{
+     justify-content: center;
  }
  .box-all1{
      display: flex;
