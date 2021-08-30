@@ -19,11 +19,11 @@ export default function FooterComponent() {
 
            
             <div className="main-footer"></div>
-            <div >
+            <div className="mobile-footer" >
                 <div className="recent-div-footer">
                     <div className="recent-proposal-div-footer">
 
-                        <Row>
+                        <Row className="mobile-footer-main-div">
                             <Column>
                             <Row>
                         <Column>
@@ -35,6 +35,9 @@ export default function FooterComponent() {
                         </Row>
                         </Column>
 
+                        <Row className="mobile-row">
+
+                        <Row className="mobile-footer-row-2">
                         <Column className="footer-column">
                         <Row className="footer-column-heading" >Community</Row>
                         <Column className="sub-column-heading">
@@ -56,6 +59,10 @@ export default function FooterComponent() {
     
                         </Column>
 
+                        </Row>
+
+                        <Row className="mobile-footer-row-1">
+
                         <Column className="footer-column3">
                             <Row className="footer-column-heading" >
                             New Proposal Alert
@@ -72,6 +79,9 @@ export default function FooterComponent() {
                             </Row>
                       
                         </Column>
+
+                        </Row>
+                        </Row>
                         
                         </Row>
                         <Row className="reserved">© 2021 XinFin. All Right Reserved</Row>
