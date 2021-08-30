@@ -37,18 +37,22 @@ export default function FooterComponent() {
 
                         <Column className="footer-column">
                         <Row className="footer-column-heading" >Community</Row>
+                        <Column className="sub-column-heading">
                         <Row>Discord</Row>
                         <Row>Github</Row>
                         <Row>Twitter</Row>
                         <Row>Telegram</Row>
                         <Row>Forum</Row>
                         </Column>
+                        </Column>
 
                         <Column className="footer-column">
                         <Row className="footer-column-heading" >Governance</Row>
+                        <Column className="sub-column-heading">
                         <Row>Overview  </Row>
                         <Row>Forum</Row>
                         <Row>FAQs</Row>
+                        </Column>
     
                         </Column>
 
