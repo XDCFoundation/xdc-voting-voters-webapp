@@ -8,6 +8,7 @@ import "react-quill/dist/quill.snow.css";
 import "react-quill/dist/quill.bubble.css";
 import HeaderMain from "../header/header";
 import "../../assets/styles/custom.css";
+import FooterComponent from "../footer/footerComponent";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -441,6 +442,9 @@ export default function Createnewproposal(props) {
             </div>
           </Grid>
         </div>
+      </div>
+      <div>
+        <FooterComponent />
       </div>
     </div>
   );
