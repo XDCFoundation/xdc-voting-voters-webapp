@@ -9,7 +9,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { history } from "../../managers/history";
-
+import divBlockComponent from './divComponent';
 export default function RecentProposal() {
   React.useEffect(() => {
     let address = [
@@ -124,7 +124,7 @@ export default function RecentProposal() {
                           {row.Status == "Open" ? (
                             <>
                               <Row>
-                                <span style={{ marginRight: "-135px" }}>
+                                <span style={{ marginRight: "-150px" }}>
                                   01:50:48 Remaining
                                 </span>
                                 <span style={{ marginRight: "5px" }}>
