@@ -10,6 +10,7 @@ import { history } from "./managers/history";
 import BaseComponent from "./modules/baseComponent";
 import AllProposal from "./modules/Dashboard/viewProposal";
 import Createproposal from "./modules/Createnewproposal";
+import Voter from "./modules/Voterlist";
 class Routes extends BaseComponent {
   componentDidMount() {}
 
@@ -22,6 +23,8 @@ class Routes extends BaseComponent {
             <Route exact path={"/view-all-proposals"} component={AllProposal} />
             <Route exact path={"/sign-up"} component={SignUp} />
             <Route exact path={"/create"} component={Createproposal} />
+            <Route exact path={"/voterslist"} component={Voter} />
+        
             <Redirect exact from="*" to="/" />
           </Switch>
         </Router>
