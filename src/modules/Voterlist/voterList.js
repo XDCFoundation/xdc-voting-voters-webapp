@@ -4,6 +4,7 @@ import HeaderMain from "../header/header";
 import "../../assets/styles/custom.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import FooterComponent from "../footer/footerComponent";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -107,16 +108,6 @@ export default function Voterslist() {
         name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
         time: "Time and Date",
       },
-      {
-        image: "/images/network.svg",
-        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        time: "Time and Date",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        time: "Time and Date",
-      },
     ];
 
     setAddress(
@@ -190,6 +181,9 @@ export default function Voterslist() {
             </Pagingdiv>
           </Grid>
         </div>
+      </div>
+      <div>
+        <FooterComponent />
       </div>
     </div>
   );
@@ -288,7 +282,8 @@ const Container = styled.div`
   word-break: break-all;
   width: 100%;
   align-items: center;
-  max-width: 435px;
+
+  max-width: 520px;
 `;
 const SecondContainer = styled.div`
   display: flex;

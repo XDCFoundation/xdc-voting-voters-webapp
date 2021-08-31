@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import DatePicker from "react-multi-date-picker";
 import styled from "styled-components";
 import "./datepicker.css";
+import FooterComponent from "../footer/footerComponent";
 
 const useStyles = makeStyles((theme) => ({
   selectOptions: { backgroundColor: "white" },
@@ -330,6 +331,9 @@ export default function ViewAllProposal() {
             </PagingDiv>
           </Grid>
         </div>
+      </div>
+      <div>
+        <FooterComponent />
       </div>
     </div>
   );

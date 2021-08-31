@@ -9,7 +9,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { history } from "../../managers/history";
-import divBlockComponent from './divComponent';
+import divBlockComponent from "./divComponent";
 export default function RecentProposal() {
   React.useEffect(() => {
     let address = [
