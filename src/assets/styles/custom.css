@@ -407,6 +407,8 @@ border: 1px solid #FFFCFC;
 border-radius: 4px;
 opacity: 1;
 display: flex;
+cursor: pointer;
+
 }
 .create-wallet p{
 
