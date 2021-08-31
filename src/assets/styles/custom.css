@@ -559,6 +559,16 @@ opacity: 1;
     padding-left: 20px;
     padding-right: 20px;
 }
+.all-div-proposal{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 93px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
 .input-search{
     margin: 14px;
    margin-left: -10px;
@@ -592,6 +602,26 @@ opacity: 1;
     width: 100%;
     max-width: 950px;
     height: 65px;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #E3E7EB;
+    border-color: #E3E7EB;
+    border-radius: 5px;
+    opacity: 1;
+     box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1);
+   
+ }
+ .recent-proposal-div-proposal{
+   
+
+
+
+    margin-top: 0px;
+    /* margin-left: 320px; */
+    width: 100%;
+    max-width: 950px;
+    height: 110px;
     justify-content: center;
     align-items: center;
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -657,6 +687,11 @@ opacity: 1;
  .recent-add-div{
      width: 100%;
      justify-content: space-between;
+ }
+ .recent-add-div-proposal{
+    width: 100%;
+    justify-content: space-between;
+    padding: 15px;
  }
  .heading{
     /* margin-top: 17px;
@@ -818,6 +853,7 @@ margin-left: 58px;
     margin-top: 5px;
     color: #2149B9 !important;
     font-weight: 600;
+    cursor: pointer;
  }
  .bar-line{
      width: 180px;

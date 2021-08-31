@@ -11,6 +11,10 @@ import TableRow from "@material-ui/core/TableRow";
 import { history } from "../../managers/history";
 import divBlockComponent from "./divComponent";
 export default function RecentProposal() {
+
+    const handleProposalDetails=()=>{
+        history.push('/proposal-details');
+    }
   React.useEffect(() => {
     let address = [
       {
@@ -141,7 +145,7 @@ export default function RecentProposal() {
                                 </span>
                               </Row>
                               <Row>
-                                <div className="details">Details</div>
+                                <div onClick={handleProposalDetails} className="details">Details</div>
                               </Row>
                             </>
                           ) : (
