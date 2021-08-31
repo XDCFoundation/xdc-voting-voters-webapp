@@ -7,7 +7,8 @@ import "../../assets/styles/custom.css";
 import utility from '../../utility';
 import HeaderMain from './header';
 import RecentProposal from '../Dashboard/recentProposal';
-
+import DivBlocksComponent from '../Dashboard/divComponent';
+import FooterComponent from '../footer/footerComponent';
 
 export default function Header() {
 
@@ -65,11 +66,24 @@ export default function Header() {
                             </Column>
                         </Row>
                         <div className="griddiv"><RecentProposal /></div>
+
                         <Row onClick={handleView} className="view-all">View All Proposals</Row>
+
+                        <div ><DivBlocksComponent /></div>
+
                     </div>
+
+
                 </div>
 
+
+
+
             </Column>
+
+
+            <div ><FooterComponent /></div>
+
 
 
         </div>
