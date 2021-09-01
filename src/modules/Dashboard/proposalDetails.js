@@ -20,19 +20,20 @@ export default function ProposalDetails() {
     return (
         <div>
             <div className="header-div-all"> <HeaderMain /></div>
+            {/* <Column></Column> */}
             <div className="all-div-proposal">
                 <div className="recent-proposal-div-proposal">
                     <Row className="recent-add-div-proposal">
                         <Column>
 
-                            <Row className="date">Posted on 2 July 2021</Row>
-                            <Row className="name">XDC-ABC Bootstrapping Partnership Proposal </Row>
-                            <Row className="status">Status: Open </Row>
+                            <Row className="date-proposal">Posted on 2 July 2021</Row>
+                            <Row className="name-proposal">XDC-ABC Bootstrapping Partnership Proposal </Row>
+                            <Row className="status-proposal">Status: <span>Open</span> </Row>
 
                         </Column>
                         <Column>
-                            <Row style={{ marginRight: "150px" }}>
-                                <span style={{ marginRight: "-160px" }}>
+                            <Row className="time-proposal">
+                                <span style={{ marginRight: "-170px" }}>
                                     01:50:48 Remaining
                                 </span>
                                 <span style={{ marginRight: "5px" }}>
