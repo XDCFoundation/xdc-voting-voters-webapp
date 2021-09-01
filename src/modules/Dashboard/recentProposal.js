@@ -9,7 +9,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { history } from "../../managers/history";
-
+import divBlockComponent from "./divComponent";
 export default function RecentProposal() {
   React.useEffect(() => {
     let address = [
@@ -80,10 +80,7 @@ export default function RecentProposal() {
 
   return (
     <div>
-      {/* <div className="griddiv"> */}
-
       <Grid lg={13} className="tablegrid_address">
-        {/* <Grid class="tabletop-header">Whitelisted Addresses</Grid> */}
         <Grid component={Paper} style={{ boxShadow: "0px 0px 0px 0px" }}>
           <Table
             className="table"
@@ -92,11 +89,8 @@ export default function RecentProposal() {
           >
             <TableHead></TableHead>
             <TableBody>
-              {/* {filteredProducts.map((product)=>{ */}
-
               {address.map((row, index) => {
                 return (
-                  // address={filteredData && filteredData.length ? filteredData : address}
                   <TableRow className="table-mid-line">
                     <Row className="table-between">
                       <Column>
@@ -130,7 +124,7 @@ export default function RecentProposal() {
                           {row.Status == "Open" ? (
                             <>
                               <Row>
-                                <span style={{ marginRight: "-135px" }}>
+                                <span style={{ marginRight: "-150px" }}>
                                   01:50:48 Remaining
                                 </span>
                                 <span style={{ marginRight: "5px" }}>
@@ -187,7 +181,6 @@ export default function RecentProposal() {
           </Table>
         </Grid>
       </Grid>
-      {/* </div> */}
 
       <div style={{ paddingTop: "10%" }}></div>
     </div>
