@@ -26,7 +26,7 @@ export default function HeaderMain() {
           </div>
         </Column>
       </Row>
-      <span>Back</span>
+      {/* <span>Back</span> */}
     </div>
   );
 }
