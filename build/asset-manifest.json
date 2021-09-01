@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4bc99e57.chunk.css",
+    "main.js": "/static/js/main.3294a5e5.chunk.js",
+    "main.js.map": "/static/js/main.3294a5e5.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.557b2043.js",
+    "runtime~main.js.map": "/static/js/runtime~main.557b2043.js.map",
+    "static/css/2.a22ef1a3.chunk.css": "/static/css/2.a22ef1a3.chunk.css",
+    "static/js/2.753338aa.chunk.js": "/static/js/2.753338aa.chunk.js",
+    "static/js/2.753338aa.chunk.js.map": "/static/js/2.753338aa.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.72d91b272c7f661e78ba49003873d464.js": "/precache-manifest.72d91b272c7f661e78ba49003873d464.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.a22ef1a3.chunk.css.map": "/static/css/2.a22ef1a3.chunk.css.map",
+    "static/css/main.4bc99e57.chunk.css.map": "/static/css/main.4bc99e57.chunk.css.map",
+    "static/media/Community-Tools.svg": "/static/media/Community-Tools.7d8743a4.svg",
+    "static/media/External-Link.svg": "/static/media/External-Link.acc9d2b7.svg",
+    "static/media/ForwardLogo.svg": "/static/media/ForwardLogo.24702179.svg",
+    "static/media/Group 30.svg": "/static/media/Group 30.14a1f5ad.svg",
+    "static/media/Group 32.svg": "/static/media/Group 32.930e9ca2.svg",
+    "static/media/Time-Active.svg": "/static/media/Time-Active.5eb1f37f.svg",
+    "static/media/Time-Inactive.svg": "/static/media/Time-Inactive.c942fc1d.svg",
+    "static/media/XDC-Logo-Blue.svg": "/static/media/XDC-Logo-Blue.2c5e7ac4.svg",
+    "static/media/xdc_logo.svg": "/static/media/xdc_logo.58e79672.svg"
+  }
+}
