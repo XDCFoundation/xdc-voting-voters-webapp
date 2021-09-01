@@ -207,7 +207,7 @@ export default function Xvdgovernance() {
 const Anchor = styled.a`
   text-decoration: none !important;
   color: black;
-  .a:hover {
+  &:hover{
     color: unset !important;
     text-decoration: underline;
   }
