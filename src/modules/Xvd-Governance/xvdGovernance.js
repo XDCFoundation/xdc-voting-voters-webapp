@@ -5,6 +5,7 @@ import HeaderMain from "../header/header";
 import "../../assets/styles/custom.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import FooterComponent from "../footer/footerComponent";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -147,13 +148,15 @@ export default function Xvdgovernance() {
 
                       <div id="section4">
                         <H2>
-                          <Anchor  href="#3">Off-chain Governance</Anchor>
+                          <Anchor href="#3">Off-chain Governance</Anchor>
                         </H2>
                       </div>
 
                       <div id="section5">
                         <H2>
-                          <Anchor href="#4" style={{textDecoration:"none"}}>On-chain Governance</Anchor>
+                          <Anchor href="#4" style={{ textDecoration: "none" }}>
+                            On-chain Governance
+                          </Anchor>
                         </H2>
                       </div>
                       <div id="section6">
@@ -195,17 +198,19 @@ export default function Xvdgovernance() {
           </Grid>
         </div>
       </div>
+      <div>
+        <FooterComponent />
+      </div>
     </div>
   );
 }
 const Anchor = styled.a`
-text-decoration:none !important;
-color:black;
-.a:hover {
+  text-decoration: none !important;
+  color: black;
+  .a:hover {
     color: unset !important;
     text-decoration: underline;
-}
-
+  }
 `;
 const SubparagraphOne = styled.span`
   color: var(--unnamed-color-2a2a2a);
@@ -284,7 +289,8 @@ const Sidemenu = styled.div`
   max-width: 320px;
   border-right: 1px solid #e3e7eb;
   background: #ffffff 0% 0% no-repeat padding-box;
-
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: flex-end;
   @media (min-width: 300px) and (max-width: 767px) {
@@ -362,7 +368,7 @@ const Container = styled.div`
 `;
 const Secondcontainer = styled.div`
   display: flex;
-  height: 900px;
+  height: 770px;
   float: left;
   width: 100%;
   overflow-y: auto;
