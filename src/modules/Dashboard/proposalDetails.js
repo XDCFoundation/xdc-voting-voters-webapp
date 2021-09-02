@@ -106,9 +106,20 @@ export default function ProposalDetails() {
                 </div>
                 </Column>
                 <Column>
+                <Row>
                 <div className="recent-proposal-div-proposal2">
                     <div className="div2-heading">Do you support this proposal?</div>
+                    <div className="button-div-support"><button className="support-button">Yes, I support</button></div>
+                    <div className="button-div-support"> <button className="reject-button">No, I Reject</button></div>
                     </div> 
+                    </Row>
+                    <Row>
+                    <div className="recent-proposal-div-proposal3">
+                    <div className="div2-heading">Do you support this proposal?</div>
+                    <div className="button-div-support"><button className="support-button">Yes, I support</button></div>
+                    <div className="button-div-support"> <button className="reject-button">No, I Reject</button></div>
+                    </div> 
+                    </Row>
             <div className="recent-add-div-proposal2"></div>
                 </Column>
             </div>
