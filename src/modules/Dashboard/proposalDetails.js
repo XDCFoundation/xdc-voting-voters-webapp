@@ -15,6 +15,57 @@ import FooterComponent from "../footer/footerComponent";
 
 export default function ProposalDetails() {
 
+    React.useEffect(() => {
+        let address = [
+          {
+            image: "/images/network.svg",
+            name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+            time: "1 hr 5 min ago",
+          },
+          {
+            image: "/images/network.svg",
+            name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+            time: "1 hr 5 min ago",
+          },
+          {
+            image: "/images/network.svg",
+            name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+            time: "10:30 AM,Today",
+          },
+          {
+            image: "/images/network.svg",
+            name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+            time: "5.25 PM, 2 july",
+          },
+          {
+            image: "/images/network.svg",
+            name: "xdc0b3693740427612142863616a56599e92bdc955a",
+            time: "1 hr 5 min ago",
+          },
+          
+        ];
+    
+        setAddress(
+          address.map((object) => {
+            return {
+              image: object.image,
+              name: object.name,
+              time: object.time,
+            };
+          })
+        );
+      }, []);
+    
+      const [address, setAddress] = React.useState([]);
+
+      function shorten(b, amountL = 13, amountR = 3, stars = 3) {
+        return `${b.slice(0, amountL)}${".".repeat(stars)}${b.slice(
+          b.length - 5,
+          b.length
+        )}`;
+      }
+    
+
 
 
     return (
@@ -115,9 +166,58 @@ export default function ProposalDetails() {
                     </Row>
                     <Row>
                     <div className="recent-proposal-div-proposal3">
-                    <div className="div2-heading">Do you support this proposal?</div>
-                    <div className="button-div-support"><button className="support-button">Yes, I support</button></div>
-                    <div className="button-div-support"> <button className="reject-button">No, I Reject</button></div>
+                    <div className="div2-voters">
+                        <div className="voter-heading">Voters</div>
+                        <div className="voter-number">122 Votes</div>
+                        </div>
+                        <div className="griddiv-voter">
+                        <TableBody>
+              {address.map((row, index) => {
+                return (
+                  <TableRow className="table-mid-line">
+                    <Row className="table-between">
+                        <Row>
+                      <Column>
+                        <TableCell style={{ border: "none" }}>
+                          <Row  ><span><img className="voter-image" src={row.image}></img></span></Row>
+
+                          
+                        </TableCell>
+                      </Column>
+
+                      <Column>
+                        <TableCell
+                          className="mobile-div-right"
+                          style={{ border: "none",marginLeft:"20px"}}
+                        >
+                            
+                              <Row className="vote-address">{shorten(row.name)}</Row>
+                           
+                        </TableCell>
+                      </Column>
+
+                      </Row>
+                      <Row>
+
+                      <Column>
+                        <TableCell
+                          className="mobile-div-right"
+                          style={{ border: "none" }}
+                        >
+                            
+                              <Row className="voter-number">{row.time}</Row>
+                           
+                        </TableCell>
+                      </Column>
+                      </Row>
+                    </Row>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+            </div>
+            <div className="view-voter">View All Voters</div>
+                    {/* <div className="button-div-support"> <button className="reject-button">No, I Reject</button></div> */}
                     </div> 
                     </Row>
             <div className="recent-add-div-proposal2"></div>
