@@ -649,17 +649,60 @@ opacity: 1;
     box-shadow: 0 1px 15px 0 rgb(0 0 0 / 10%);
     height: 273px;
     padding: 20px;
+    margin-bottom: 30px;
    
+ }
+ .voter-image{
+     width: 25px;
+     height: 25px;
+
  }
  .recent-proposal-div-proposal3{
     margin-left: 30px;
     width: 100%;
     max-width: 413px;
-    height: 273px;
+    height: 320px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #E3E7EB;
     border-radius: 6px;
     opacity: 1;
+    box-shadow: 0 1px 15px 0 rgb(0 0 0 / 10%);
+ }
+ .div2-voters{
+    letter-spacing: 0px;
+    color: #2A2A2A;
+    opacity: 1;
+    /* text-align: center; */
+    font: normal normal medium 22px/26px Inter;
+    font-size: 15px;
+    font-family: "Inter",sans-serif;
+    /* font-weight: 600; */
+    padding: 20px;
+    justify-content: space-between;
+    display: flex;
+ }
+ .voter-number{
+    letter-spacing: 0px;
+    color: #909090;
+    opacity: 1;
+    font-size: 13px;
+    font-family: "Inter",sans-serif;
+    margin-left: 30px;
+ }
+ .vote-address{
+    letter-spacing: 0px;
+    color: #2A2A2A;
+    opacity: 1;
+    font-size: 15px;
+    font-family: "Inter",sans-serif;
+    margin-left: -45px;
+ }
+ .griddiv-voter{
+    height: 220px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #E3E7EB;
+    border-color: #E3E7EB;
+    margin-top: -10px;
  }
  .div2-heading{
     
@@ -891,6 +934,7 @@ opacity: 1;
     opacity: 1;
     padding: 20px;
     max-width: 745px;
+    box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1);
  }
  .details-content{
    
@@ -967,6 +1011,25 @@ margin-right: 10px;
      justify-content: space-between;
      display: flex;
      margin-bottom: -15px;
+ }
+ .voter-heading{
+    
+    letter-spacing: 0px;
+    color: #2A2A2A;
+    opacity: 1;
+    font-size: 15px;
+    font-family: "Inter",sans-serif;
+    font-weight: 600;
+ }
+ .view-voter{
+    text-align: center;
+    letter-spacing: 0px;
+    color: #2149B9;
+    opacity: 1;
+    font-size: 15px;
+    font-family: "Inter",sans-serif;
+    font-weight: 600;
+    margin-top: 10px;
  }
  .table-mid-line{
     margin-top: 0px;
