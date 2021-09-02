@@ -6,6 +6,7 @@ import HeaderMain from "../header/header";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import FooterComponent from "../footer/footerComponent";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +44,24 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     width: "100%",
+  },
+  gridOne: {
+    display: "flex",
+    justifyContent: "center",
+    padding: "30px",
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+    width: "100%",
+    maxWidth: "230px",
+    display: "flex",
+    justifyContent: "center",
+    background: "#FDFEFF 0% 0% no-repeat padding-box",
+    border: "1px solid #E3E7EB",
+    borderRadius: "6px",
+    opacity: 1,
   },
 }));
 
@@ -110,11 +129,124 @@ export default function CommunityPage() {
               </Container>
             </Spacing>
             <Div>
-              <div>
-                <ImageDiv>
-                  <ImageView src="/images/XinPay.svg" />
-                </ImageDiv>
-              </div>
+              <Grid container spacing={5}>
+                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                  <Paper className={classes.paper} elevation={0}>
+                    <Column>
+                      <Row>
+                        <ImageView src="/images/XinPay.svg" />
+                      </Row>
+                      <Row>
+                        <Span>Block Explorer</Span>
+                      </Row>
+                    </Column>
+                  </Paper>
+                </Grid>
+                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                  <Paper className={classes.paper} elevation={0}>
+                    <Column>
+                      <Row>
+                        <ImageView src="/images/Network-Stats.svg" />
+                      </Row>
+                      <Row>
+                        <Span>Network Stats</Span>
+                      </Row>
+                    </Column>
+                  </Paper>
+                </Grid>
+                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                  <Paper className={classes.paper} elevation={0}>
+                    {" "}
+                    <Column>
+                      <Row>
+                        <ImageView src="/images/Master-Nodes.svg" />
+                      </Row>
+                      <Row>
+                        <Span>Masternodes</Span>
+                      </Row>
+                    </Column>
+                  </Paper>
+                </Grid>
+                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                  <Paper className={classes.paper} elevation={0}>
+                    <Column>
+                      <Row>
+                        <ImageView src="/images/XinPay.svg" />
+                      </Row>
+                      <Row>
+                        <Span>Web Wallet</Span>
+                      </Row>
+                    </Column>
+                  </Paper>
+                </Grid>
+              </Grid>
+              <Grid container spacing={5}>
+                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                  <Paper className={classes.paper} elevation={0}>
+                    {" "}
+                    <Column>
+                      <Row>
+                        <ImageView src="/images/Android-Wallet.svg" />
+                      </Row>
+                      <Row>
+                        <Span>Android Wallet</Span>
+                      </Row>
+                    </Column>
+                  </Paper>
+                </Grid>
+                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                  <Paper className={classes.paper} elevation={0}>
+                    <Column>
+                      <Row>
+                        <ImageView src="/images/XinPay.svg" />
+                      </Row>
+                      <Row>
+                        <Span>XinPay</Span>
+                      </Row>
+                    </Column>
+                  </Paper>
+                </Grid>
+                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                  <Paper className={classes.paper} elevation={0}>
+                    <Column>
+                      <Row>
+                        <ImageView src="/images/XinPay.svg" />
+                      </Row>
+                      <Row>
+                        <Span>XinFin API</Span>
+                      </Row>
+                    </Column>
+                  </Paper>
+                </Grid>
+                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                  <Paper className={classes.paper} elevation={0}>
+                    {" "}
+                    <Column>
+                      <Row>
+                        <ImageView src="/images/XinFin-Docs.svg" />
+                      </Row>
+                      <Row>
+                        <Span>XinFin API</Span>
+                      </Row>
+                    </Column>
+                  </Paper>
+                </Grid>
+              </Grid>
+              <Grid container spacing={5}>
+                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                  <Paper className={classes.paper} elevation={0}>
+                    {" "}
+                    <Column>
+                      <Row>
+                        <ImageView src="/images/One-Click-Install.svg" />
+                      </Row>
+                      <Row>
+                        <Span>XinFin Docs</Span>
+                      </Row>
+                    </Column>
+                  </Paper>
+                </Grid>
+              </Grid>
             </Div>
           </Grid>
         </div>
@@ -125,7 +257,14 @@ export default function CommunityPage() {
     </div>
   );
 }
-
+const Span = styled.span`
+  color: var(--unnamed-color-2a2a2a);
+  text-align: center;
+  font: normal normal medium 17px/20px Inter;
+  letter-spacing: 0px;
+  color: #2a2a2a;
+  opacity: 1;
+`;
 const Spacing = styled.div`
   display: flex;
   flex-flow: row nowrap;
@@ -135,7 +274,9 @@ const Spacing = styled.div`
   opacity: 1;
   background: #ffffff 0% 0% no-repeat padding-box;
   align-items: center;
-  border-radius: 6px;
+
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   @media (min-width: 300px) and (max-width: 767px) {
     display: block;
   }
@@ -146,19 +287,14 @@ const Container = styled.div`
   width: 100%;
   align-items: center;
 `;
-const SecondContainer = styled.div`
-  display: flex;
-
-  align-items: center;
-  @media (min-width: 300px) and (max-width: 767px) {
-  }
-`;
 
 const Div = styled.div`
+  height: auto;
+  padding: 46px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
-  border-radius: 5px;
-  height: 760px;
+  borderradius: 6px;
+  opacity: 1;
 `;
 
 const Heading = styled.span`
@@ -188,7 +324,7 @@ const ImageDiv = styled.div`
   border-radius: 6px;
   opacity: 1;
   width: 100%;
-  max-width: 240px;
+  max-width: 190px;
   min-height: 170px;
   height: 100%;
   align-items: center;
