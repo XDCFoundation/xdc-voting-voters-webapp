@@ -647,7 +647,7 @@ opacity: 1;
     border-radius: 6px;
     opacity: 1;
     box-shadow: 0 1px 15px 0 rgb(0 0 0 / 10%);
-    height: 273px;
+    height: 250px;
     padding: 15px;
     margin-bottom: 30px;
    
@@ -699,6 +699,7 @@ opacity: 1;
     opacity: 1;
     font-size: 15px;
     font-family: "Inter",sans-serif;
+    font-weight: 600;
  }
  .address-number{
     letter-spacing: 0px;
@@ -727,6 +728,7 @@ opacity: 1;
     font-size: 15px;
     font-family: "Inter",sans-serif;
     margin-left: -45px;
+    font-weight: 600;
  }
  .griddiv-voter{
     height: 220px;
@@ -764,6 +766,7 @@ padding: 15px;
     font-size: 16px;
     font-family: "Inter",sans-serif;
     font-weight: 600;
+    margin-top: 10px;
  }
  .reject-button{
     width: 272px;
@@ -1015,6 +1018,7 @@ opacity: 1;
     letter-spacing: 0px;
     color: #2149B9;
     opacity: 1;
+    font-weight: 600;
  }
  .doc-1{
     width: 703px;
@@ -1032,7 +1036,7 @@ height: 19px;
 margin-right: 10px;
  }
  .external-image-proposal{
-     margin-left: 400px;
+     margin-left: 390px;
  }
  .external-image-proposal2{
     margin-left: 655px;
@@ -1061,6 +1065,7 @@ margin-right: 10px;
     font-family: "Inter",sans-serif;
     font-weight: 600;
     margin-top: 8px;
+    cursor: pointer;
  }
  .table-mid-line{
     margin-top: 0px;
