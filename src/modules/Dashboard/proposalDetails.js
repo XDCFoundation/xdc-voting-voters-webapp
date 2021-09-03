@@ -65,7 +65,9 @@ export default function ProposalDetails() {
         )}`;
     }
 
-
+const handleClickVoter =()=>{
+    history.push('/voterslist');
+}
 
 
     return (
@@ -240,7 +242,7 @@ export default function ProposalDetails() {
                                         })}
                                     </TableBody>
                                 </div>
-                                <div className="view-voter">View All Voters</div>
+                                <div className="view-voter" onClick={handleClickVoter}>View All Voters</div>
                                 {/* <div className="button-div-support"> <button className="reject-button">No, I Reject</button></div> */}
                             </div>
                         </Row>
