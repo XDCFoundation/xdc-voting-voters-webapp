@@ -255,11 +255,11 @@ const Hash = styled.span`
 
   font-family: "Inter", sans-serif;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 13px;
   @media (min-width: 300px) and (max-width: 767px) {
     font-family: "Inter", sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
   }
 `;
 const Spacing = styled.div`
