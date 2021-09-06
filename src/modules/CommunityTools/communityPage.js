@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 300px) and (max-width: 767px)": {
       display: "flex",
       justifyContent: "center",
-      padding: "5px",
+      padding: "5px !important",
     },
   },
 
@@ -146,7 +146,9 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <ImageView src="/images/Block-Explorer.svg" />
+                        <a href="https://explorer.xinfin.network/home">
+                          <ImageView src="/images/Block-Explorer.svg" />
+                        </a>
                       </RowDiv>
                       <RowDiv>
                         <Span>Block Explorer</Span>
@@ -158,7 +160,9 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <ImageView src="/images/Network-Stats.svg" />
+                        <a href="http://stats.xinfin.network:3000/">
+                          <ImageView src="/images/Network-Stats.svg" />
+                        </a>
                       </RowDiv>
                       <RowDiv>
                         <Span>Network Stats</Span>
@@ -170,7 +174,9 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <ImageView src="/images/Master-Nodes.svg" />
+                        <a href="https://xinfin.org/setup-masternode.php">
+                          <ImageView src="/images/Master-Nodes.svg" />
+                        </a>
                       </RowDiv>
                       <RowDiv>
                         <Span>Masternodes</Span>
@@ -182,7 +188,9 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <ImageView src="/images/XinPay.svg" />
+                        <a href="https://wallet.xinfin.network/#/">
+                          <ImageView src="/images/XinPay.svg" />
+                        </a>
                       </RowDiv>
                       <RowDiv>
                         <Span>Web Wallet</Span>
@@ -194,7 +202,9 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <ImageView src="/images/Android-Wallet.svg" />
+                        <a href="https://play.google.com/store/apps/details?id=com.xdcwallet">
+                          <ImageView src="/images/Android-Wallet.svg" />
+                        </a>
                       </RowDiv>
                       <RowDiv>
                         <Span>Android Wallet</Span>
@@ -206,7 +216,9 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <ImageView src="/images/XinPay.svg" />
+                        <a href="https://chrome.google.com/webstore/detail/xinpay/bocpokimicclpaiekenaeelehdjllofo?hl=en">
+                          <ImageView src="/images/XinPay.svg" />
+                        </a>
                       </RowDiv>
                       <RowDiv>
                         <Span>XinPay</Span>
@@ -218,7 +230,9 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <ImageView src="/images/API-Documents.svg" />
+                        <a href="https://explorer.xinfin.network/publicAPIDoc">
+                          <ImageView src="/images/API-Documents.svg" />
+                        </a>
                       </RowDiv>
                       <RowDiv>
                         <Span>XinFin API</Span>
@@ -230,7 +244,9 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <ImageView src="/images/XinFin-Docs.svg" />
+                        <a href="https://docs.xinfin.org/">
+                          <ImageView src="/images/XinFin-Docs.svg" />
+                        </a>
                       </RowDiv>
                       <RowDiv>
                         <Span>XinFin Docs</Span>
@@ -242,7 +258,9 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <ImageView src="/images/One-Click-Install.svg" />
+                        <a href="https://medium.com/xinfin/xinfin-network-presents-one-click-installer-for-blockchain-node-setup-6ab2dce6ddc0">
+                          <ImageView src="/images/One-Click-Install.svg" />
+                        </a>
                       </RowDiv>
                       <RowDiv>
                         <Span>One Click Installer</Span>
@@ -288,7 +306,7 @@ const Span = styled.span`
   @media (min-width: 300px) and (max-width: 767px) {
     font-family: "Inter", sans-serif;
     margin-top: 10px;
-    font-size: 10px;
+    font-size: 11px;
   }
 `;
 const Spacing = styled.div`
