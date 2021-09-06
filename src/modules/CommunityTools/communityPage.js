@@ -49,7 +49,14 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     padding: "30px",
+    width: "100%",
+    "@media (min-width: 300px) and (max-width: 767px)": {
+      display: "flex",
+      justifyContent: "center",
+      padding: "5px",
+    },
   },
+
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
@@ -81,7 +88,7 @@ export default function CommunityPage() {
         name: "Masternodes",
       },
       {
-        image: "/images/Master-Nodes.svg",
+        image: "/images/XinPay.svg",
         name: "Web Wallet",
       },
       {
@@ -93,12 +100,17 @@ export default function CommunityPage() {
         name: "XinPay",
       },
       {
-        image: "/images/XinFin-Docs.svg",
+        image: "/images/API-Documents.svg",
         name: "XinFin API",
       },
       {
-        image: "/images/One-Click-Install.svg",
+        image: "/images/XinFin-Docs.svg",
         name: "XinFin Docs",
+      },
+
+      {
+        image: "/images/One-Click-Install.svg",
+        name: "One Click Installer",
       },
     ];
 
@@ -130,120 +142,112 @@ export default function CommunityPage() {
             </Spacing>
             <Div>
               <Grid container spacing={5}>
-                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
-                    <Column>
-                      <Row>
-                        <ImageView src="/images/XinPay.svg" />
-                      </Row>
-                      <Row>
+                    <ColumnDiv>
+                      <RowDiv>
+                        <ImageView src="/images/Block-Explorer.svg" />
+                      </RowDiv>
+                      <RowDiv>
                         <Span>Block Explorer</Span>
-                      </Row>
-                    </Column>
+                      </RowDiv>
+                    </ColumnDiv>
                   </Paper>
                 </Grid>
-                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
-                    <Column>
-                      <Row>
+                    <ColumnDiv>
+                      <RowDiv>
                         <ImageView src="/images/Network-Stats.svg" />
-                      </Row>
-                      <Row>
+                      </RowDiv>
+                      <RowDiv>
                         <Span>Network Stats</Span>
-                      </Row>
-                    </Column>
+                      </RowDiv>
+                    </ColumnDiv>
                   </Paper>
                 </Grid>
-                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
-                    {" "}
-                    <Column>
-                      <Row>
+                    <ColumnDiv>
+                      <RowDiv>
                         <ImageView src="/images/Master-Nodes.svg" />
-                      </Row>
-                      <Row>
+                      </RowDiv>
+                      <RowDiv>
                         <Span>Masternodes</Span>
-                      </Row>
-                    </Column>
+                      </RowDiv>
+                    </ColumnDiv>
                   </Paper>
                 </Grid>
-                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
-                    <Column>
-                      <Row>
+                    <ColumnDiv>
+                      <RowDiv>
                         <ImageView src="/images/XinPay.svg" />
-                      </Row>
-                      <Row>
+                      </RowDiv>
+                      <RowDiv>
                         <Span>Web Wallet</Span>
-                      </Row>
-                    </Column>
+                      </RowDiv>
+                    </ColumnDiv>
                   </Paper>
                 </Grid>
-              </Grid>
-              <Grid container spacing={5}>
-                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
-                    {" "}
-                    <Column>
-                      <Row>
+                    <ColumnDiv>
+                      <RowDiv>
                         <ImageView src="/images/Android-Wallet.svg" />
-                      </Row>
-                      <Row>
+                      </RowDiv>
+                      <RowDiv>
                         <Span>Android Wallet</Span>
-                      </Row>
-                    </Column>
+                      </RowDiv>
+                    </ColumnDiv>
                   </Paper>
                 </Grid>
-                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
-                    <Column>
-                      <Row>
+                    <ColumnDiv>
+                      <RowDiv>
                         <ImageView src="/images/XinPay.svg" />
-                      </Row>
-                      <Row>
+                      </RowDiv>
+                      <RowDiv>
                         <Span>XinPay</Span>
-                      </Row>
-                    </Column>
+                      </RowDiv>
+                    </ColumnDiv>
                   </Paper>
                 </Grid>
-                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
-                    <Column>
-                      <Row>
-                        <ImageView src="/images/XinPay.svg" />
-                      </Row>
-                      <Row>
+                    <ColumnDiv>
+                      <RowDiv>
+                        <ImageView src="/images/API-Documents.svg" />
+                      </RowDiv>
+                      <RowDiv>
                         <Span>XinFin API</Span>
-                      </Row>
-                    </Column>
+                      </RowDiv>
+                    </ColumnDiv>
                   </Paper>
                 </Grid>
-                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
-                    {" "}
-                    <Column>
-                      <Row>
+                    <ColumnDiv>
+                      <RowDiv>
                         <ImageView src="/images/XinFin-Docs.svg" />
-                      </Row>
-                      <Row>
-                        <Span>XinFin API</Span>
-                      </Row>
-                    </Column>
+                      </RowDiv>
+                      <RowDiv>
+                        <Span>XinFin Docs</Span>
+                      </RowDiv>
+                    </ColumnDiv>
                   </Paper>
                 </Grid>
-              </Grid>
-              <Grid container spacing={5}>
-                <Grid className={classes.gridOne} item xs={6} sm={3}>
+                <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
-                    {" "}
-                    <Column>
-                      <Row>
+                    <ColumnDiv>
+                      <RowDiv>
                         <ImageView src="/images/One-Click-Install.svg" />
-                      </Row>
-                      <Row>
-                        <Span>XinFin Docs</Span>
-                      </Row>
-                    </Column>
+                      </RowDiv>
+                      <RowDiv>
+                        <Span>One Click Installer</Span>
+                      </RowDiv>
+                    </ColumnDiv>
                   </Paper>
                 </Grid>
               </Grid>
@@ -257,13 +261,35 @@ export default function CommunityPage() {
     </div>
   );
 }
+const ColumnDiv = styled.div`
+  justify-content: center;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+`;
+const RowDiv = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  justify-content: center;
+`;
+
 const Span = styled.span`
   color: var(--unnamed-color-2a2a2a);
   text-align: center;
-  font: normal normal medium 17px/20px Inter;
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
+  white-space: nowrap;
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 10px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    font-family: "Inter", sans-serif;
+    margin-top: 10px;
+    font-size: 10px;
+  }
 `;
 const Spacing = styled.div`
   display: flex;
@@ -274,7 +300,6 @@ const Spacing = styled.div`
   opacity: 1;
   background: #ffffff 0% 0% no-repeat padding-box;
   align-items: center;
-
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   @media (min-width: 300px) and (max-width: 767px) {
@@ -308,26 +333,9 @@ const Heading = styled.span`
   font-weight: 600;
   font-size: 18px;
 `;
-const Leftcontainer = styled.div`
-  text-align: right;
-  font: normal normal normal 12px/17px Inter;
-  letter-spacing: 0px;
-  color: #acacac;
-  opacity: 1;
-`;
+
 const ImageView = styled.img`
-  width: 100px;
-`;
-const ImageDiv = styled.div`
-  background: #fdfeff 0% 0% no-repeat padding-box;
-  border: 1px solid #e3e7eb;
-  border-radius: 6px;
-  opacity: 1;
-  width: 100%;
-  max-width: 190px;
-  min-height: 170px;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+  @media (min-width: 300px) and (max-width: 767px) {
+    width: 60px;
+  }
 `;

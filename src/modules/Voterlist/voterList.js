@@ -272,7 +272,9 @@ const Spacing = styled.div`
   opacity: 1;
   background: #ffffff 0% 0% no-repeat padding-box;
   align-items: center;
-  border-radius: 6px;
+
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   @media (min-width: 300px) and (max-width: 767px) {
     display: block;
   }
