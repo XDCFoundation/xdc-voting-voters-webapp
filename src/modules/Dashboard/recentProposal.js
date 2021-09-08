@@ -10,6 +10,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { history } from "../../managers/history";
 import divBlockComponent from "./divComponent";
+import styled from "styled-components";
+
 export default function RecentProposal() {
   React.useEffect(() => {
     let address = [
@@ -124,9 +126,9 @@ export default function RecentProposal() {
                           {row.Status == "Open" ? (
                             <>
                               <Row>
-                                <span style={{ marginRight: "-150px" }}>
+                                <Span style={{ marginRight: "-150px" }}>
                                   01:50:48 Remaining
-                                </span>
+                                </Span>
                                 <span style={{ marginRight: "5px" }}>
                                   {" "}
                                   <img
@@ -186,3 +188,10 @@ export default function RecentProposal() {
     </div>
   );
 }
+
+const Span = styled.span`
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #909090;
+`;
