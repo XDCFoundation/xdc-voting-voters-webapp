@@ -150,6 +150,9 @@ position: relative;
     }
     .view-all{
         margin-top: -25px !important;
+        font-family: "Inter",sans-serif;
+    font-weight: 600;
+    font-size: 13px;
     }
     .details{
         margin-right: 10px !important;
@@ -503,7 +506,8 @@ margin-inline-end: 10px;
 .div-1-row{
     padding-top: 5px;
     padding-left: 10px;
-font: normal normal medium 32px/39px Inter;
+
+font-family: 'Inter';
 letter-spacing: 0px;
 color: #FFFFFF;
 opacity: 1;
@@ -513,17 +517,18 @@ font-size: 30px;
 .div-1-row1{
     padding-left: 10px;
     margin-top: -10px;
-    font: normal normal medium 18px/21px Inter;
+  
+    
 letter-spacing: 0px;
 color: #5CADFF;
 opacity: 1;
+font-family: 'Inter';
 }
 
 
  /* !****Recent Prosal Css****! */
 .recent-div{
-    /* width: 100%;
-    height: 100%; */
+    
 
     width: 100%;
     height: 100%;
@@ -535,21 +540,19 @@ opacity: 1;
     padding-right: 20px;
 }
 .recent-div-footer{
-    /* width: 100%;
-    height: 100%; */
+   
 
     width: 100%;
-    /* height: 100%; */
+    
     display: flex;
     justify-content: center;
     position: absolute;
-    /* top: 236px; */
+    
     padding-left: 20px;
     padding-right: 20px;
 }
 .all-div{
-    /* width: 100%;
-    height: 100%; */
+ 
 
     width: 100%;
     height: 100%;
@@ -573,7 +576,7 @@ opacity: 1;
     left: 20px;
 }
 .input-search input{
-    /* padding: 10px; */
+   
     padding-left: 25px;
     width: 150px;
     height: 33px;
@@ -589,7 +592,7 @@ opacity: 1;
 
 
     margin-top: 0px;
-    /* margin-left: 320px; */
+   
     width: 100%;
     max-width: 950px;
     height: 65px;
@@ -613,19 +616,13 @@ opacity: 1;
 
 
     margin-top: 0px;
-    /* margin-left: 320px; */
+   
     width: 100%;
     max-width: 950px;
     height: 210px;
     justify-content: center;
     align-items: center;
-    /* background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #E3E7EB;
-    border-color: #E3E7EB;
-    border-radius: 5px;
-    opacity: 1;
-     box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1); */
-
+   
      
      border-bottom: 1px solid #E3E7EB;
     margin-bottom: 50px;
@@ -647,12 +644,7 @@ opacity: 1;
     display: flex;
     justify-content: space-between;
     max-width: 950px;
-     /* max-width: 1000px; */
-/* 
-     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    max-width: 950px; */
+ 
  }
 
  .recent-add-div{
@@ -660,11 +652,10 @@ opacity: 1;
      justify-content: space-between;
  }
  .heading{
-    /* margin-top: 17px;
-    margin-right: 20px; */
+   
     margin: 15px;
     color: var(--unnamed-color-2a2a2a);
-/* text-align: left; */
+
 font: normal normal 600 22px/26px Inter;
 letter-spacing: 0px;
 color: #2A2A2A;
@@ -818,7 +809,10 @@ padding-top: 5px;
 margin-left: 58px;
     margin-top: 5px;
     color: #2149B9 !important;
+   
+    font-family: "Inter",sans-serif;
     font-weight: 600;
+    font-size: 13px;
  }
  .bar-line{
      width: 180px;
@@ -889,8 +883,11 @@ margin-left: 58px;
     letter-spacing: 0px;
     color: #2A2A2A;
     opacity: 1;
-    font-size: 12px;
+    
+    
+    font-family: "Inter",sans-serif;
     font-weight: 600;
+    font-size: 13px;
 }
 input:focus {
     border: solid 1px #0099ff;
