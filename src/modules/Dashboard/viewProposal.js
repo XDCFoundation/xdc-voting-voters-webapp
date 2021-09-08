@@ -58,10 +58,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     height: "53px",
     background: "#FFFFFF 0% 0% no-repeat padding-box",
-    borderRadius: "6px",
-    opacity: "1",
     justifyContent: "space-between",
     padding: "24px",
+    borderTopLeftRadius: "4px",
+    borderTopRightRadius: "4px",
   },
 
   input: {
