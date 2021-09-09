@@ -342,9 +342,9 @@ export default function Createnewproposal(props) {
     };
 
     const [err, response] = await AddNewProposalLive(reqObj);
-    if (err) {
-      Utility.apiFailureToast(err);
-    }
+    // if (err) {
+    //   Utility.apiFailureToast(err);
+    // }
   };
 
   React.useEffect(() => {
@@ -362,11 +362,12 @@ export default function Createnewproposal(props) {
               "italic",
               "strike",
               "blockquote",
-              {
-                list: "ordered",
-              },
+
               {
                 list: "bullet",
+              },
+              {
+                list: "ordered",
               },
 
               "link",
@@ -374,6 +375,7 @@ export default function Createnewproposal(props) {
               "image",
               "video",
               "clean",
+              "edit",
             ],
           ],
         },
@@ -464,7 +466,7 @@ export default function Createnewproposal(props) {
                   Description
                 </Grid>
                 <Grid xs={10} className={classes.quillgrid}>
-                  <Textarea
+                  <div
                     data-quill-placeholder="Quill WYSIWYG"
                     data-toggle="quill"
                     onChange={(e) => setDescription(e.target.value)}
