@@ -15,8 +15,9 @@ const useStyles = makeStyles((theme) => ({
   styleContent: {
     border: "0px",
     outline: "0px",
-    fontSize: "12px",
-    color: "#707070",
+    fontSize: "13px",
+    color: "#2149b9",
+    fontWeight: "600",
     textAlignLast: "right",
     marginLeft: "44px",
   },
@@ -27,6 +28,8 @@ const useStyles = makeStyles((theme) => ({
     border: "0px",
     outline: "0px",
     height: "30px",
+    fontFamily: "Inter",
+    fontWeight: "600",
   },
   row: {
     border: "1px solid #E3E7EB",
@@ -196,7 +199,7 @@ export default function ViewAllProposal() {
                 <Heading>All Proposals</Heading>
 
                 <InputDiv>
-                  <input
+                  <Input
                     placeholder="Search"
                     className={classes.input}
                     type="text"
@@ -215,8 +218,16 @@ export default function ViewAllProposal() {
                     </select>
                   </Row>
                 </SelectBox>
-
-                <DatePicker onChange={onChange} value={value} range />
+                <DatePickerDiv>
+                  <DateSpan>Date</DateSpan>
+                  <DatePicker
+                    arrow={true}
+                    format="D MMM YYYY"
+                    onChange={onChange}
+                    value={value}
+                    range
+                  />
+                </DatePickerDiv>
               </SecondContainer>
             </Row>
 
@@ -338,6 +349,28 @@ export default function ViewAllProposal() {
     </div>
   );
 }
+const DateSpan = styled.span`
+  letter-spacing: 0px;
+  color: #2a2a2a;
+  font-size: 13px;
+  font-family: "Inter";
+  font-weight: 600;
+`;
+const DatePickerDiv = styled.div`
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e3e7eb;
+  border-radius: 4px;
+
+  input:focus {
+    border: none !important;
+  }
+`;
+const Input = styled.input`
+  font-size: 12px;
+  font-family: "Inter";
+  color: #909090;
+  font-weight: 600;
+`;
 const MainContainer = styled.div`
   padding: 11px 24px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -511,7 +544,7 @@ const MobileDivLine = styled.div`
 const PollEnded = styled.span`
   font-family: "Inter", sans-serif;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
   text-align: left;
   letter-spacing: 0px;
   color: #cecece;
@@ -519,7 +552,8 @@ const PollEnded = styled.span`
   whitespace: "nowrap";
 `;
 const ClockImage = styled.img`
-  margin-right: 10px;
+  margin-right: 3px;
+  width: 14px;
 `;
 const Div = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
