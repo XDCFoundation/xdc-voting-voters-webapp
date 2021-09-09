@@ -265,30 +265,19 @@ position: relative;
     .para-div{
         max-width: 345px;
     }
-    /* .xdc-governance{
-        margin-left: 8% !important;
-    }
-    .header-left{
-        display: flex;
-        margin: 0% !important;
-    }
-    .connect-wallet{
-        margin-left: 70vw !important;
-    } */
+  
     .div-box{
-        /* margin-left: 17% !important; */
+     
        justify-content: center;
-       /* display: block !important; */
+       
     }
-    /* .mobile-divbox{
-        display: flex;
-    } */
+    
 }
 
 .header-left{
     display: flex;
     
-    /* justify-content: space-between; */
+    
 }
 .header-logo{
     margin-top: 10px;
@@ -336,7 +325,7 @@ margin-top:"10px";
     opacity: 1;
     font-size: 17px;
     font-family: Inter,sans-serif;
-    /* font-weight: 600; */
+   
     margin-top: 20px;
     margin-left: 85px;
 }
@@ -355,7 +344,7 @@ opacity: 1;
     opacity: 1;
     font-size: 17px;
     font-family: Inter,sans-serif;
-    /* font-weight: 600; */
+    
     margin-top: 20px;
     margin-left: 190px;
 }
@@ -387,10 +376,10 @@ opacity: 1;
 }
     
 .connect-wallet{
-    /* padding-left: 5px; */
+    
     margin-top: 17px;
     margin-right: 20px;
-/* margin-left: 82vw; */
+
 width: 140px;
 height: 32px;
 background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -398,11 +387,10 @@ border: 1px solid #FFFCFC;
 border-radius: 3px;
 opacity: 1;
 display: flex;
-/* float: right; */
+
 }
 .create-wallet{
-    /* margin-top: 17px;
-    margin-right: 20px; */
+   
 margin: 15px;
 width: 140px;
 height: 32px;
@@ -418,7 +406,7 @@ cursor: pointer;
 
     padding-top: 4px;
     padding-left: 10px;
-    /* color: var(--unnamed-color-2149b9); */
+ 
 text-align: center;
 font: normal normal medium 15px/19px Inter;
 letter-spacing: 0px;
@@ -429,7 +417,8 @@ font-size: 15px;
 
 .connect-wallet p{
     padding-top: 4px;
-    padding-left: 10px;
+    font-weight: 600;
+    padding-left: 5px;
     color: var(--unnamed-color-2149b9);
 text-align: center;
 font: normal normal medium 15px/19px Inter;
@@ -437,6 +426,7 @@ letter-spacing: 0px;
 color: #2149B9;
 opacity: 1;
 font-size: 14px;
+font-family: 'Inter';
 }
 .circle{
     padding-left: 11px;
@@ -448,16 +438,11 @@ background: #E3E7EB 0% 0% no-repeat padding-box;
 opacity: 1;
 border-radius: 10px;
 }
-/* .mid-div{
-    margin-top: 1%;
-margin-left: 22%;
-display: flex;
-  
-} */
+
 .row-2{
     justify-content:center;
     flex: auto;
-    /* width: 100%; */
+    
 }
 .xdc-governance{
     
@@ -468,7 +453,7 @@ opacity: 1;
 font-weight: 600;
 font-size: 35px;
 font-family: Inter;
-/* display: flex; */
+
 }
 .xdc-para{
     
@@ -478,7 +463,7 @@ letter-spacing: 0px;
 color: #FFFFFF;
 opacity: 1;
 font-size: 14px;
-/* display: flex; */
+
 }
 .div-1{
     width: 150px;
@@ -486,23 +471,22 @@ height: 70px;
 background: #1841B2 0% 0% no-repeat padding-box;
 border-radius: 6px;
 opacity: 1;
-/* display: flex; */
+
 margin-inline-end: 10px;
-/* text-align: center; */
+
 }
 .header-right{
     display: flex;
-    /* margin-top: 38px; */
+    
 }
+
 .div-box{
     margin-top: 4%;
-    /* display: flex; */
+  
     margin-left: 4%;
     
 }
-/* .mobile-alldiv{
-    margin-inline: 5%;
-} */
+
 .div-1-row{
     padding-top: 5px;
     padding-left: 10px;
@@ -672,13 +656,13 @@ border: 1px solid #E3E7EB;
 border-color: #E3E7EB;
 border-radius: 6px;
 opacity: 1;
- /* box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1); */
+ 
  }
  .blockdiv{
-    /* height: 300px; */
+  
     margin-bottom: 50px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
-    /* border: 1px solid #E3E7EB; */
+
     border-color: #E3E7EB;
     border-radius: 6px;
     opacity: 1;
@@ -686,7 +670,7 @@ opacity: 1;
  .blockdiv1{
     margin-bottom: 50px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
-    /* border: 1px solid #E3E7EB; */
+ 
     border-color: #E3E7EB;
     border-radius: 6px;
     opacity: 1;
