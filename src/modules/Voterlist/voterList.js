@@ -255,11 +255,11 @@ const Hash = styled.span`
 
   font-family: "Inter", sans-serif;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 13px;
   @media (min-width: 300px) and (max-width: 767px) {
     font-family: "Inter", sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
   }
 `;
 const Spacing = styled.div`
@@ -272,7 +272,9 @@ const Spacing = styled.div`
   opacity: 1;
   background: #ffffff 0% 0% no-repeat padding-box;
   align-items: center;
-  border-radius: 6px;
+
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   @media (min-width: 300px) and (max-width: 767px) {
     display: block;
   }

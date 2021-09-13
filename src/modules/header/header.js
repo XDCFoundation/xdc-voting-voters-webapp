@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Column, Row } from "simple-flexbox";
+import styled from "styled-components";
 
 export default function HeaderMain() {
   return (
@@ -30,3 +31,5 @@ export default function HeaderMain() {
     </div>
   );
 }
+
+const Connectwallet = styled.span``;
