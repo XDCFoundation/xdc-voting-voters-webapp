@@ -303,13 +303,11 @@ const Div = styled.div`
 
 const Heading = styled.span`
   white-space: nowrap;
-
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
   box-shadow: none;
   color: var(--unnamed-color-2a2a2a);
-
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 18px;
