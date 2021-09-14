@@ -99,6 +99,24 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     width: "100%",
   },
+  styleBlock: {
+    display: "flex",
+    marginTop: "6px",
+    fontSize: "11px",
+    border: "0px",
+    outline: "0px",
+    height: "30px",
+    fontFamily: "Inter",
+    fontWeight: "600",
+  },
+  stylePage: {
+    border: "0px",
+    outline: "0px",
+    fontSize: "13px",
+    color: "#2149b9",
+    fontWeight: "600",
+    textAlignLast: "right",
+  },
 }));
 const Container = styled.div`
   display: flex;
@@ -322,10 +340,18 @@ export default function ViewAllProposal() {
             <PagingDiv>
               <Container>
                 <Show>Show </Show>
-                <Block>
-                  <Span>10 </Span>
-                </Block>
-                <Properties>Properties </Properties>
+
+                <SelectBox>
+                  <Row className={classes.row}>
+                    <Column className={classes.styleBlock}> </Column>
+                    <select className={classes.stylePage}>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </Row>
+                </SelectBox>
+                <Proposals>Proposals </Proposals>
               </Container>
               <SecondContainer>
                 <Back>Back</Back>
@@ -355,6 +381,7 @@ const DateSpan = styled.span`
   font-size: 13px;
   font-family: "Inter";
   font-weight: 600;
+  margin-left: 10px;
 `;
 const DatePickerDiv = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -421,7 +448,7 @@ const Span = styled.span`
   color: #3b3b3b;
   opacity: 1;
   display: flex;
-  padding-left: 6px;
+  padding-left: 8px;
   padding-top: 2px;
 `;
 const Show = styled.span`
@@ -432,14 +459,15 @@ const Show = styled.span`
   font-size: 12px;
   letter-spacing: 0px;
   color: #3b3b3b;
-  opacity: 1;
+
   align-items: center;
+  margin-right: 10px;
 `;
 const Block = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
   border-radius: 4px;
-  opacity: 1;
+
   width: 25px;
   height: 22px;
   margin-left: 8px;
@@ -447,6 +475,7 @@ const Block = styled.div`
   font-weight: 600;
   font-size: 12px;
 `;
+
 const NextBlock = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
@@ -456,7 +485,7 @@ const NextBlock = styled.div`
   height: 22px;
   margin-left: 8px;
 `;
-const Properties = styled.span`
+const Proposals = styled.span`
   display: flex;
   text-align: left;
   font-family: "Inter", sans-serif;
