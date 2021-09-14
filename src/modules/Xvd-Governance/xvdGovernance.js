@@ -168,7 +168,7 @@ export default function Xvdgovernance() {
                   </Row__>
                 </Sidemenu>
 
-                <div style={{ padding: "25px" }}>
+                <Div >
                   {address.map((data, index) => {
                     return (
                       <SideContainer>
@@ -192,7 +192,7 @@ export default function Xvdgovernance() {
                       </SideContainer>
                     );
                   })}
-                </div>
+                </Div>
               </Secondcontainer>
             </Row>
           </Grid>
@@ -208,7 +208,7 @@ const Anchor = styled.a`
   text-decoration: none !important;
   color: black;
   &:hover{
-    color: unset !important;
+    // color: unset !important;
     text-decoration: underline;
   }
 `;
@@ -248,13 +248,17 @@ const SelectContainer = styled.div`
 const SelectOption = styled.select`
   border-radius: 4px;
   padding: 8px;
-  border: none;
+  
   background-color: #fffffff;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.19;
   font-size: 15px;
-  border: 1px solid rgb(227, 231, 235);
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid #E3E7EB;
+border-radius: 4px;
+opacity: 1;
+
 `;
 
 const Row__ = styled.div`
@@ -350,10 +354,12 @@ const Spacing = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 53px;
+  
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   opacity: 1;
   background: #ffffff 0% 0% no-repeat padding-box;
   align-items: center;
-  border-radius: 6px;
   padding: 11px 24px;
   @media (min-width: 300px) and (max-width: 767px) {
     display: block;
@@ -380,9 +386,8 @@ const Secondcontainer = styled.div`
 `;
 
 const Div = styled.div`
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #e3e7eb;
-  height: auto;
+ 
+  padding:25px;
 `;
 
 const Heading = styled.span`
