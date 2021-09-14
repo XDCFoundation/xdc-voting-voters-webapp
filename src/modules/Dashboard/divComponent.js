@@ -12,6 +12,15 @@ import { history } from "../../managers/history";
 import FooterComponent from "../footer/footerComponent";
 
 export default function DivBlocksComponent() {
+  const viewGovernance = () => {
+    history.push("/governance");
+  };
+  const viewCommunity = () => {
+    history.push("/community");
+  };
+  const viewXdcForm = () => {
+    history.push("/");
+  };
   return (
     <div>
       <div style={{ paddingTop: "10%" }}></div>
@@ -21,7 +30,7 @@ export default function DivBlocksComponent() {
           <Row className="box-all">
             <Row className="box-all1">
               <Row className="mobile-box-block">
-                <Column className="know-about-xdc">
+                <Column onClick={viewGovernance} className="know-about-xdc">
                   <img
                     className="external-image"
                     src={require("../../assets/styles/images/External-Link.svg")}
@@ -40,7 +49,7 @@ export default function DivBlocksComponent() {
                     quisque venenatis.
                   </Row>
                 </Column>
-                <Column className="xdc-forum">
+                <Column onClick={viewXdcForm} className="xdc-forum">
                   <img
                     className="external-image"
                     src={require("../../assets/styles/images/External-Link.svg")}
@@ -60,7 +69,7 @@ export default function DivBlocksComponent() {
               </Row>
 
               <Row>
-                <Column className="community-tools">
+                <Column onClick={viewCommunity} className="community-tools">
                   <img
                     className="external-image"
                     src={require("../../assets/styles/images/External-Link.svg")}
