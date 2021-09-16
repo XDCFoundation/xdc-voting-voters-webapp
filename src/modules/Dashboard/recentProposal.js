@@ -13,6 +13,10 @@ import divBlockComponent from "./divComponent";
 import styled from "styled-components";
 
 export default function RecentProposal() {
+
+    const handleProposalDetails=()=>{
+        history.push('/proposal-details');
+    }
   React.useEffect(() => {
     let address = [
       {
@@ -143,7 +147,7 @@ export default function RecentProposal() {
                                 </span>
                               </Row>
                               <Row>
-                                <div className="details">Details</div>
+                                <div onClick={handleProposalDetails} className="details">Details</div>
                               </Row>
                             </>
                           ) : (

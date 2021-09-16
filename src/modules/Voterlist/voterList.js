@@ -49,7 +49,7 @@ export default function Voterslist() {
   React.useEffect(() => {
     let address = [
       {
-        image: "/images/network.svg",
+        image: "/images/Attachment.svg",
         name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
         time: "5 min ago",
       },

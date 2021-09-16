@@ -12,6 +12,7 @@
     "components": "^0.1.0",
     "env-cmd": "^8.0.2",
     "history": "^4.9.0",
+    "html-react-parser": "^1.2.8",
     "material-ui": "^0.20.2",
     "moment": "^2.24.0",
     "react": "^16.9.0",
