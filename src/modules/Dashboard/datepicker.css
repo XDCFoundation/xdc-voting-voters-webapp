@@ -1,11 +1,13 @@
 .rmdp-input {
-    
     font-size: 13px;
-    /* border: 1px solid #c0c4d6; */
     padding: 2px 5px;
     height: 30px;
-    /* border-radius: 5px; */
     color: #2149b9;
     font-weight: 600;
     border: unset !important;
 }
+.rmdp-input:focus {
+    border: unset !important;
+    box-shadow: unset !important;
+    outline: none!important;
+    }
