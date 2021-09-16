@@ -861,22 +861,23 @@ margin-left: 58px;
 
  }
 
+.text-editor{
+    width:100%;
+  
+}
 
-
-
+.quill-editor{
+    height:130px !important;
+}
 
 .view-all{
     
     margin-top: -27px;
     justify-content: center;
     cursor: pointer;
-
-/* font: normal normal medium 15px/19px Inter; */
     letter-spacing: 0px;
     color: #2A2A2A;
     opacity: 1;
-    
-    
     font-family: "Inter",sans-serif;
     font-weight: 600;
     font-size: 13px;
