@@ -174,7 +174,7 @@ const handleClickVoter =()=>{
                                                         className="attachment-logo"
                                                         src={require("../../assets/styles/images/Attachment.svg")}
                                                     ></img></span>
-                                                   <a href={Pdf}> <span className="attachment-heading">Proposal Terms and Conditions.pdf</span></a>
+                                                   <a href={Pdf} target = "_blank"> <span className="attachment-heading">Proposal Terms and Conditions.pdf</span></a>
                                                     <span><img className="external-image-proposal" src={require("../../assets/styles/images/External-Link.svg")} ></img></span>
                                                 </div>
 
