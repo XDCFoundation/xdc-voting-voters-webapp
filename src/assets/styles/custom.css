@@ -228,13 +228,16 @@ position: relative;
     .know-about-xdc{
         width: 100% !important;
         margin-right: 135px !important;
+        cursor: pointer;
     }
     .xdc-forum{
         width: 100% !important;
+        cursor: pointer;
     }
     .community-tools{
         /* width: 330px !important; */
         margin-top: 50px !important;
+        cursor: pointer;
     }
     .mid-div{
         display: flex;
@@ -702,6 +705,7 @@ font-family: 'Inter';
      width: 15px;
      height: 15px;
      margin-left: 10px;
+     cursor: pointer;
  }
  .voter-number{
     letter-spacing: 0px;
@@ -883,6 +887,7 @@ opacity: 1;
  .external-image{
     margin-left: 95%;
     margin-top: -8px;
+    cursor: pointer;
  }
  .know-about-xdc{
     width: 294px;
@@ -1031,10 +1036,13 @@ margin-right: 10px;
  }
  .external-image-proposal{
      margin-left: 390px;
+     cursor: pointer;
  }
  .external-image-proposal2{
     margin-left: 655px;
     margin-top: -45px;
+    cursor: pointer;
+    
 }
  .table-between{
      justify-content: space-between;

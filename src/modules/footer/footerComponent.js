@@ -48,9 +48,9 @@ export default function FooterComponent() {
                         <a href="https://t.me/xinfin">Telegram</a>
                       </RowTag>
                       <RowTag>
-                        <a href="https://discord.com/invite/KZdD6pkFxp">
-                          Forum
-                        </a>
+                        {/* <a href="https://discord.com/invite/KZdD6pkFxp"> */}
+                        Forum
+                        {/* </a> */}
                       </RowTag>
                     </Column>
                   </Column>
@@ -73,10 +73,6 @@ export default function FooterComponent() {
                       New Proposal Alert
                     </Row>
                     <Row>
-                      {/* <input className="footer-search">
-                                    Add Email
-
-                                </input> */}
                       <span>
                         <input
                           className="footer-search"
