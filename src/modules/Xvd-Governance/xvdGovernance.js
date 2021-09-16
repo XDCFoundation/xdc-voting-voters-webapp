@@ -168,7 +168,7 @@ export default function Xvdgovernance() {
                   </Row__>
                 </Sidemenu>
 
-                <Div >
+                <Div>
                   {address.map((data, index) => {
                     return (
                       <SideContainer>
@@ -207,7 +207,7 @@ export default function Xvdgovernance() {
 const Anchor = styled.a`
   text-decoration: none !important;
   color: black;
-  &:hover{
+  &:hover {
     // color: unset !important;
     text-decoration: underline;
   }
@@ -248,17 +248,16 @@ const SelectContainer = styled.div`
 const SelectOption = styled.select`
   border-radius: 4px;
   padding: 8px;
-  
+
   background-color: #fffffff;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.19;
   font-size: 15px;
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-border: 1px solid #E3E7EB;
-border-radius: 4px;
-opacity: 1;
-
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e3e7eb;
+  border-radius: 4px;
+  opacity: 1;
 `;
 
 const Row__ = styled.div`
@@ -354,7 +353,7 @@ const Spacing = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 53px;
-  
+
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   opacity: 1;
@@ -386,8 +385,7 @@ const Secondcontainer = styled.div`
 `;
 
 const Div = styled.div`
- 
-  padding:25px;
+  padding: 25px;
 `;
 
 const Heading = styled.span`
