@@ -13,7 +13,8 @@ import HeaderMain from '../header/header';
 import RecentProposal from '../Dashboard/recentProposal';
 import FooterComponent from "../footer/footerComponent";
 import parse from 'html-react-parser';
-
+import Pdf from "../Dashboard/Proposal-ABC_ Terms & Conditions.pdf"
+import Doc from "../Dashboard/Proposal-ABC_ Terms & Conditions.docx"
 
 export default function ProposalDetails() {
 
@@ -173,7 +174,7 @@ const handleClickVoter =()=>{
                                                         className="attachment-logo"
                                                         src={require("../../assets/styles/images/Attachment.svg")}
                                                     ></img></span>
-                                                    <span className="attachment-heading">Proposal Terms and Conditions.pdf</span>
+                                                   <a href={Pdf}> <span className="attachment-heading">Proposal Terms and Conditions.pdf</span></a>
                                                     <span><img className="external-image-proposal" src={require("../../assets/styles/images/External-Link.svg")} ></img></span>
                                                 </div>
 
@@ -184,7 +185,7 @@ const handleClickVoter =()=>{
                                                         className="attachment-logo"
                                                         src={require("../../assets/styles/images/Attachment.svg")}
                                                     ></img></span>
-                                                    <span className="attachment-heading">About ABC Corporation.doc</span>
+                                                  <a href={Doc} target = "_blank">  <span className="attachment-heading">About ABC Corporation.doc</span></a>
                                                     <span><img className="external-image-proposal2" src={require("../../assets/styles/images/External-Link.svg")} ></img></span>
                                                 </div>
                                             </Row>
