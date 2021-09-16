@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import { Column, Row } from "simple-flexbox";
 import "../../assets/styles/custom.css";
-import TableCell from "@material-ui/core/TableCell";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import { history } from "../../managers/history";
+import styled from "styled-components";
 
 export default function FooterComponent() {
   return (
@@ -37,20 +30,39 @@ export default function FooterComponent() {
                   <Column className="footer-column">
                     <Row className="footer-column-heading">Community</Row>
                     <Column className="sub-column-heading">
-                      <Row>Discord</Row>
-                      <Row>Github</Row>
-                      <Row>Twitter</Row>
-                      <Row>Telegram</Row>
-                      <Row>Forum</Row>
+                      <RowTag>
+                        <a href="https://discord.com/invite/KZdD6pkFxp">
+                          Discord
+                        </a>
+                      </RowTag>
+
+                      <RowTag>
+                        <a href="https://github.com/XDCFoundation/">Github</a>
+                      </RowTag>
+                      <RowTag>
+                        <a href="https://twitter.com/XinFin_Official">
+                          Twitter
+                        </a>
+                      </RowTag>
+                      <RowTag>
+                        <a href="https://t.me/xinfin">Telegram</a>
+                      </RowTag>
+                      <RowTag>
+                        <a href="https://discord.com/invite/KZdD6pkFxp">
+                          Forum
+                        </a>
+                      </RowTag>
                     </Column>
                   </Column>
 
                   <Column className="footer-column">
                     <Row className="footer-column-heading">Governance</Row>
                     <Column className="sub-column-heading">
-                      <Row>Overview </Row>
-                      <Row>Forum</Row>
-                      <Row>FAQs</Row>
+                      <RowTag>Overview </RowTag>
+                      <RowTag>Forum</RowTag>
+                      <RowTag>
+                        <a href="https://howto.xinfin.org/general/faq/">FAQs</a>
+                      </RowTag>
                     </Column>
                   </Column>
                 </Row>
@@ -92,3 +104,7 @@ export default function FooterComponent() {
     </div>
   );
 }
+const RowTag = styled.div`
+  text-decoration: none !important;
+  color: black;
+`;
