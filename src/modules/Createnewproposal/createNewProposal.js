@@ -11,6 +11,7 @@ import "../../assets/styles/custom.css";
 import FooterComponent from "../footer/footerComponent";
 import Utility from "../../utility/index";
 import AddNewProposalLive from "../../services/proposalService";
+import ReactQuill from "react-quill";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -208,7 +209,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "6px",
     paddingRight: "45px",
     width: "100%",
-    height: "215px",
+    // height: "215px",
   },
 
   row: {
@@ -275,6 +276,7 @@ const useStyles = makeStyles((theme) => ({
     width: "90%",
     height: "35px",
     fontSize: "10px",
+    textAlign: "right",
   },
   image: {
     width: "27px",
@@ -327,63 +329,34 @@ export default function Createnewproposal(props) {
   const [proposalTitle, setProposalTitle] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [description, setDescription] = useState("");
+  const [discription, setdiscription] = useState("");
   const [uploadDocument, setUploadDocument] = useState("");
+  const inputFile = React.createRef();
 
+  const handleQuillChange = (event) => {
+    setdiscription(event);
+  };
+  const uploadFile = (event) => {
+    inputFile.current.click();
+  };
+  const setUpload = async (event) => {
+    event.target.files[0] && setUploadDocument(event.target.files);
+  };
   const createNewProposal = async () => {
+    let logoData = {};
     const reqObj = {
       proposalTitle: proposalTitle,
       startDate: startDate,
       endDate: endDate,
-      discription: description,
+      discription: discription,
       filepath: uploadDocument,
       pollingContract: "0011",
       status: "pending",
     };
 
-    const [err, response] = await AddNewProposalLive(reqObj);
-    // if (err) {
-    //   Utility.apiFailureToast(err);
-    // }
+    const response = await AddNewProposalLive(reqObj);
   };
 
-  React.useEffect(() => {
-    if (
-      document.querySelector('[data-toggle="quill"]').className !==
-      "ql-container ql-snow"
-    ) {
-      new Quill(document.querySelector('[data-toggle="quill"]'), {
-        modules: {
-          toolbar: [
-            [
-              { header: "1" },
-              { header: "2" },
-              "bold",
-              "italic",
-              "strike",
-              "blockquote",
-
-              {
-                list: "bullet",
-              },
-              {
-                list: "ordered",
-              },
-
-              "link",
-              "code",
-              "image",
-              "video",
-              "clean",
-              "edit",
-            ],
-          ],
-        },
-        placeholder: "",
-        theme: "snow",
-      });
-    }
-  }, []);
   const classes = useStyles();
   return (
     <div>
@@ -465,13 +438,18 @@ export default function Createnewproposal(props) {
                 <Grid xs={2} className={classes.description}>
                   Description
                 </Grid>
+
                 <Grid xs={10} className={classes.quillgrid}>
-                  <div
-                    data-quill-placeholder="Quill WYSIWYG"
-                    data-toggle="quill"
-                    onChange={(e) => setDescription(e.target.value)}
-                    value={description}
-                  />
+                  <div className="text-editor">
+                    <ReactQuill
+                      className="quill-editor"
+                      theme="snow"
+                      modules={props.state.modules}
+                      formats={props.state.formats}
+                      onChange={handleQuillChange}
+                      // onChange={(e) => setdiscription(e.target.value)}
+                    />
+                  </div>
                 </Grid>
               </div>
               <div className={classes.row}>
@@ -480,18 +458,33 @@ export default function Createnewproposal(props) {
                 </Grid>
                 <Grid xs={10} className={classes.uploadbox}>
                   <Row>
-                    <input
-                      type="file"
+                    <div
                       className={classes.input}
                       onChange={(e) => setUploadDocument(e.target.value)}
                       value={uploadDocument}
-                    />
+                    >
+                      <div style={{ textAlign: "left" }}>{uploadDocument}</div>
+                      <BrowseButton onClick={uploadFile}>
+                        Browse File
+                        <input
+                          ref={inputFile}
+                          id="fileButton"
+                          type="file"
+                          multiple={false}
+                          accept="image/*"
+                          style={{ display: "none" }}
+                          onChange={setUpload}
+                        />
+                      </BrowseButton>
+                    </div>
                     <img className={classes.image} src="/images/Add.svg" />
                   </Row>
                 </Grid>
               </div>
               <div className={classes.buttondiv}>
-                <Button onClick={createNewProposal}>Connect Wallet</Button>
+                <Button onClick={() => createNewProposal()}>
+                  Connect Wallet
+                </Button>
               </div>
             </div>
           </Grid>
@@ -503,6 +496,21 @@ export default function Createnewproposal(props) {
     </div>
   );
 }
+
+const BrowseButton = styled.button`
+  color: var(--unnamed-color-2149b9);
+  text-align: center;
+  letter-spacing: 0px;
+  color: #2149b9;
+  font-size: 14px;
+  font-family: "Inter";
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #2049b9;
+  border-radius: 4px;
+  opacity: 1;
+  margin-top: 4px;
+  margin-right: 3px;
+`;
 const Textarea = styled.textarea`
   width: 100%;
 `;
@@ -540,7 +548,6 @@ const Startdate = styled.div`
   padding-top: 1%;
   white-space: nowrap;
 
-  letter-spacing: 0px;
   padding-left: 10px;
 `;
 const Seconddiv = styled.div``;
