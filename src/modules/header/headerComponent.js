@@ -33,17 +33,14 @@ export default function Header() {
               <Row className="xdc-governance">XDC Governance</Row>
               <Row className="xdc-para">
                 <div className="para-div">
-                  {" "}
                   Decentralized community for maintaining the integrity of the
                   XinFin Blockchain through discussion and on-chain voting.
                 </div>
               </Row>
             </Column>
             <div className="mobile-alldiv">
-              {" "}
               <Row className="div-box">
                 <Row className="mobile-divbox">
-                  {" "}
                   <Column className="div-1">
                     <Row className="div-1-row">65</Row>
                     <Row className="div-1-row1">Proposal Passed</Row>
