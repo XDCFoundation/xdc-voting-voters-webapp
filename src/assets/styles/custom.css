@@ -728,7 +728,7 @@ opacity: 1;
     font-size: 15px;
     font-family: "Inter",sans-serif;
     margin-left: -45px;
-    font-weight: 600;
+    /* font-weight: 600; */
  }
  .griddiv-voter{
     height: 220px;

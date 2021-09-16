@@ -285,6 +285,8 @@ const handleClickVoter =()=>{
                     <FooterComponent />
                 </div>
             </Column>
+
+
         </div>
     )
 }
