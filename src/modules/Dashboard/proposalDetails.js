@@ -13,8 +13,22 @@ import HeaderMain from '../header/header';
 import RecentProposal from '../Dashboard/recentProposal';
 import FooterComponent from "../footer/footerComponent";
 import parse from 'html-react-parser';
-import Pdf from "../Dashboard/Proposal-ABC_ Terms & Conditions.pdf"
-import Doc from "../Dashboard/Proposal-ABC_ Terms & Conditions.docx"
+import Pdf from "../Dashboard/Proposal-ABC_ Terms & Conditions.pdf";
+import Doc from "../Dashboard/Proposal-ABC_ Terms & Conditions.docx";
+import { makeStyles, mergeClasses } from "@material-ui/styles";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+
+  const useStyles = makeStyles((theme) => ({
+    Alert: {
+      backgroundColor: "#00144D"
+    }
+}))
 
 export default function ProposalDetails() {
 
@@ -60,6 +74,7 @@ export default function ProposalDetails() {
     }, []);
 
     const [address, setAddress] = React.useState([]);
+    const [open3, setOpen3] = React.useState(false);
 
     function shorten(b, amountL = 13, amountR = 3, stars = 3) {
         return `${b.slice(0, amountL)}${".".repeat(stars)}${b.slice(
@@ -72,6 +87,20 @@ const handleClickVoter =()=>{
     history.push('/voterslist');
 }
 
+const handleCloseDailog = () => {
+
+    // setDialogOpen(false);
+    setOpen3(true);
+
+  };
+
+  const handleClose3 = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen3(false);
+  };
 
     return (
         <div>
@@ -206,7 +235,7 @@ const handleClickVoter =()=>{
                         <Row>
                             <div className="recent-proposal-div-proposal2">
                                 <div className="div2-heading">Do you support this proposal?</div>
-                                <div className="button-div-support"><button className="support-button">Yes, I support</button></div>
+                                <div className="button-div-support"><button onClick={handleCloseDailog} className="support-button">Yes, I support</button></div>
                                 <div className="button-div-support"> <button className="reject-button">No, I Reject</button></div>
                             </div>
                         </Row>
@@ -287,7 +316,24 @@ const handleClickVoter =()=>{
                 </div>
             </Column>
 
+ {/* ------Delete Toast Message----- */}
 
+ <Snackbar
+        open={open3}
+        autoHideDuration={3000}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        onClose={handleClose3}
+      >
+        <Alert severity="" className="alert">
+          <div className="alert-div">
+            <span className="alert-span" ><img className="done-logo" src={require("../../assets/styles/images/DONE.svg")} ></img></span>
+            <span>
+              <div className="toast-message">Your vote is successfully casted</div>
+              <div className="toast-address">Thank you for your contribution in adding transparency to XDC network</div>
+            </span>
+          </div>
+        </Alert>
+      </Snackbar>
         </div>
     )
 }
