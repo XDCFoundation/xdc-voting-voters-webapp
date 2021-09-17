@@ -8,6 +8,7 @@ import DatePicker from "react-multi-date-picker";
 import styled from "styled-components";
 import "./datepicker.css";
 import FooterComponent from "../footer/footerComponent";
+import { history } from "../../managers/history";
 
 const useStyles = makeStyles((theme) => ({
   selectOptions: { backgroundColor: "white" },
@@ -56,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     },
     "@media (min-width: 767px) and (max-width: 2080px)": {
       maxWidth: "700px",
-      top: "217px",
+      top: "183px",
       maxWidth: "970px",
     },
   },
@@ -146,6 +147,9 @@ const SecondContainer = styled.div`
 `;
 
 export default function ViewAllProposal() {
+  const backButton = () => {
+    history.push("/community");
+  };
   React.useEffect(() => {
     let address = [
       {
@@ -225,9 +229,20 @@ export default function ViewAllProposal() {
       <div className="header-div-all">
         <HeaderMain />
       </div>
+
       <div className={classes.maincontainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
+            <div
+              style={{ marginBottom: "11px" }}
+              onClick={backButton}
+            >
+              <img
+                src="/images/Back-Arrow.svg"
+                style={{ width: "15px", marginRight: "8px" }}
+              />
+              <Back>Back</Back>
+            </div>
             <Row className={classes.rowdiv}>
               <Container>
                 <Heading>All Proposals</Heading>
@@ -261,6 +276,7 @@ export default function ViewAllProposal() {
                     value={value}
                     range
                   />
+                  <ArrowImg src="/images/XDC-Dropdown.svg" />
                 </DatePickerDiv>
               </SecondContainer>
             </Row>
@@ -391,6 +407,11 @@ export default function ViewAllProposal() {
     </div>
   );
 }
+const ArrowImg = styled.img`
+  margin-top: -2px;
+  margin-right: 7px;
+  width: 5%;
+`;
 const SecondDiv = styled.div`
   display: flex;
   align-items: center;
@@ -461,11 +482,10 @@ const DisplayNone = styled.div`
 const Back = styled.span`
   text-align: left;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0px;
-  color: #909090;
-  opacity: 1;
+
+  font-size: 17px;
+
+  color: #ffffff;
 `;
 const PagingDiv = styled.div`
   display: flex;
