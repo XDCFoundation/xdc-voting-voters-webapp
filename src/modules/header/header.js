@@ -27,9 +27,6 @@ export default function HeaderMain() {
           </div>
         </Column>
       </Row>
-      {/* <span>Back</span> */}
     </div>
   );
 }
-
-const Connectwallet = styled.span``;
