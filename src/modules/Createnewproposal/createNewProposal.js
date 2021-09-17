@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles/";
 import Grid from "@material-ui/core/Grid";
 import { Row, Column } from "simple-flexbox";
 import styled from "styled-components";
-import Quill from "quill";
 import "react-quill/dist/quill.snow.css";
 import "react-quill/dist/quill.bubble.css";
 import HeaderMain from "../header/header";
@@ -12,6 +11,7 @@ import FooterComponent from "../footer/footerComponent";
 import Utility from "../../utility/index";
 import AddNewProposalLive from "../../services/proposalService";
 import ReactQuill from "react-quill";
+import { history } from "../../managers/history";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     maxWidth: "970px",
     position: "absolute",
-    top: "190px",
+    top: "154px",
+
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
       maxWidth: "300px",
@@ -324,8 +325,17 @@ const Headerdiv = styled.div`
   background: #2049b9 0% 0% no-repeat padding-box;
   position: relative;
 `;
+const Back = styled.span`
+  text-align: left;
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  color: #ffffff;
+`;
 
 export default function Createnewproposal(props) {
+  const backButton = () => {
+    history.push("/");
+  };
   const [proposalTitle, setProposalTitle] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -366,6 +376,13 @@ export default function Createnewproposal(props) {
       <div className={classes.maincontainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
+            <div style={{ marginBottom: "11px" }} onClick={backButton}>
+              <img
+                src="/images/Back-Arrow.svg"
+                style={{ width: "15px", marginRight: "8px" }}
+              />
+              <Back>Back</Back>
+            </div>
             <div className={classes.div}>
               <Grid className={classes.heading} xs={4}>
                 Create New Proposal

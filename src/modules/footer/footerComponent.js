@@ -31,26 +31,28 @@ export default function FooterComponent() {
                     <Row className="footer-column-heading">Community</Row>
                     <Column className="sub-column-heading">
                       <RowTag>
-                        <a href="https://discord.com/invite/KZdD6pkFxp">
+                        <Anchor href="https://discord.com/invite/KZdD6pkFxp">
                           Discord
-                        </a>
+                        </Anchor>
                       </RowTag>
 
                       <RowTag>
-                        <a href="https://github.com/XDCFoundation/">Github</a>
+                        <Anchor href="https://github.com/XDCFoundation/">
+                          Github
+                        </Anchor>
                       </RowTag>
                       <RowTag>
-                        <a href="https://twitter.com/XinFin_Official">
+                        <Anchor href="https://twitter.com/XinFin_Official">
                           Twitter
-                        </a>
+                        </Anchor>
                       </RowTag>
                       <RowTag>
-                        <a href="https://t.me/xinfin">Telegram</a>
+                        <Anchor href="https://t.me/xinfin">Telegram</Anchor>
                       </RowTag>
                       <RowTag>
-                        {/* <a href="https://discord.com/invite/KZdD6pkFxp"> */}
+                        {/* <Anchor href="https://discord.com/invite/KZdD6pkFxp"> */}
                         Forum
-                        {/* </a> */}
+                        {/* </Anchor> */}
                       </RowTag>
                     </Column>
                   </Column>
@@ -61,7 +63,9 @@ export default function FooterComponent() {
                       <RowTag>Overview </RowTag>
                       <RowTag>Forum</RowTag>
                       <RowTag>
-                        <a href="https://howto.xinfin.org/general/faq/">FAQs</a>
+                        <Anchor href="https://howto.xinfin.org/general/faq/">
+                          FAQs
+                        </Anchor>
                       </RowTag>
                     </Column>
                   </Column>
@@ -100,6 +104,14 @@ export default function FooterComponent() {
     </div>
   );
 }
+const Anchor = styled.a`
+  text-decoration: none !important;
+  color: black;
+  &:hover {
+    // color: unset !important;
+    text-decoration: underline;
+  }
+`;
 const RowTag = styled.div`
   text-decoration: none !important;
   color: black;
