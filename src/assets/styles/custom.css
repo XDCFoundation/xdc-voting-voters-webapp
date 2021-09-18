@@ -133,6 +133,25 @@ position: relative;
     .footer-logo{
         width: 30px !important;
     }
+    .mobile-rightdiv{
+        margin-top: 280% !important;
+    }
+    .name-proposal{
+        font-size: 9px !important;
+    }
+    .table-between{
+        width: 86vw !important;
+    }
+    .doc-1{
+        width: 353px !important;
+    }
+    .external-image-proposal2 {
+        margin-left: 85px !important;
+        margin-top: -5px !important;
+    }
+    .external-image-proposal{
+        margin-left: 40px !important;
+    }
     .div-box{
         /* margin-left: 17% !important; */
        /* justify-content: center; */
@@ -231,6 +250,43 @@ position: relative;
         background: #2049B9 0% 0% no-repeat padding-box;
         width: 100%;
         height:370px;
+    }
+    .all-div-proposal{
+        display: block !important;
+    }
+    .griddiv-1{
+        max-width: 730px !important;
+    }
+    .mobile-rightdiv{
+        margin-top: 103%;
+    }
+    .proposalpage-footer{
+        margin-top: 450px;
+    }
+    .recent-proposal-div-proposal2{
+        max-width: 730px !important;
+        margin-left: 0px !important;
+    }
+    .recent-proposal-div-proposal3{
+        max-width: 730px !important;
+        margin-left: 0px !important;
+    }
+    .recent-proposal-div-proposal4{
+        max-width: 730px !important;
+        margin-left: 0px !important;
+    }
+    .button-div-support{
+        max-width: 600px !important;
+    margin-left: 5% !important;
+    }
+    .support-button{
+        width: 100% !important;
+    }
+    .reject-button{
+        width: 100% !important;
+    }
+    .table-between{
+        width: 91vw;
     }
     .row-2{
         display: block !important;
