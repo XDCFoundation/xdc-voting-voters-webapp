@@ -6,6 +6,7 @@ import "../../assets/styles/custom.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import FooterComponent from "../footer/footerComponent";
+import { history } from "../../managers/history";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,6 +48,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Xvdgovernance() {
+  const backButton = () => {
+    history.push("/");
+  };
   React.useEffect(() => {
     let address = [
       {
@@ -107,6 +111,13 @@ export default function Xvdgovernance() {
       <div className={classes.maincontainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
+            <div style={{ marginBottom: "11px" }} onClick={backButton}>
+              <img
+                src="/images/Back-Arrow.svg"
+                style={{ width: "15px", marginRight: "8px" }}
+              />
+              <Back>Back</Back>
+            </div>
             <Spacing>
               <Container>
                 <Heading>Know about XDC Governance</Heading>
@@ -211,6 +222,12 @@ const Anchor = styled.a`
     // color: unset !important;
     text-decoration: underline;
   }
+`;
+const Back = styled.span`
+  text-align: left;
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  color: #ffffff;
 `;
 const SubparagraphOne = styled.span`
   color: var(--unnamed-color-2a2a2a);
@@ -378,10 +395,7 @@ const Secondcontainer = styled.div`
   width: 100%;
   overflow-y: auto;
   background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #e3e7eb;
-
-  @media (min-width: 300px) and (max-width: 767px) {
-  }
+  // border: 0.5px solid #e3e7eb;
 `;
 
 const Div = styled.div`
@@ -396,11 +410,4 @@ const Heading = styled.span`
   opacity: 1;
   box-shadow: none;
   color: var(--unnamed-color-2a2a2a);
-`;
-const Leftcontainer = styled.div`
-  text-align: right;
-  font: normal normal normal 12px/17px Inter;
-  letter-spacing: 0px;
-  color: #acacac;
-  opacity: 1;
 `;
