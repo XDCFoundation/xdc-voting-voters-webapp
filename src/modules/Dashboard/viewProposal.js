@@ -648,8 +648,12 @@ const ClockImage = styled.img`
 `;
 const Div = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #e3e7eb;
+  // border: 1px solid #e3e7eb;
   height: auto;
+  border-radius: 0 0 10px 10px;
+  border-top: 1px solid #e3e7eb;
+  border-left: 1px solid #e3e7eb;
+  border-right: 1px solid #e3e7eb;
 `;
 const Posted = styled.span`
   text-align: left;
