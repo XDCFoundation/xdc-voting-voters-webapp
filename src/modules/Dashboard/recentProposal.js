@@ -13,10 +13,9 @@ import divBlockComponent from "./divComponent";
 import styled from "styled-components";
 
 export default function RecentProposal() {
-
-    const handleProposalDetails=()=>{
-        history.push('/proposal-details');
-    }
+  const handleProposalDetails = () => {
+    history.push("/proposal-details");
+  };
   React.useEffect(() => {
     let address = [
       {
@@ -105,7 +104,7 @@ export default function RecentProposal() {
 
                           <Row className="name">{row.Name} </Row>
                           <Row className="status">
-                            <p>Status:</p>
+                            <p>Status: </p>
 
                             <span
                               className={
@@ -147,7 +146,12 @@ export default function RecentProposal() {
                                 </span>
                               </Row>
                               <Row>
-                                <div onClick={handleProposalDetails} className="details">Details</div>
+                                <div
+                                  onClick={handleProposalDetails}
+                                  className="details"
+                                >
+                                  Details
+                                </div>
                               </Row>
                             </>
                           ) : (

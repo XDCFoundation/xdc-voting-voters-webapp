@@ -8,6 +8,7 @@ import DatePicker from "react-multi-date-picker";
 import styled from "styled-components";
 import "./datepicker.css";
 import FooterComponent from "../footer/footerComponent";
+import { history } from "../../managers/history";
 
 const useStyles = makeStyles((theme) => ({
   selectOptions: { backgroundColor: "white" },
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#2149b9",
     fontWeight: "600",
     textAlignLast: "right",
-    marginLeft: "44px",
+    marginLeft: "7px",
   },
   styleHead: {
     display: "flex",
@@ -49,23 +50,31 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
       maxWidth: "300px",
+      top: "91px",
     },
     "@media (min-width: 567px) and (max-width: 767px)": {
       maxWidth: "500px",
     },
-    "@media (min-width: 767px) and (max-width: 1040px)": {
+    "@media (min-width: 767px) and (max-width: 2080px)": {
       maxWidth: "700px",
+      top: "183px",
+      maxWidth: "970px",
     },
   },
   rowdiv: {
     width: "100%",
     alignItems: "center",
-    height: "53px",
+    // height: "53px",
     background: "#FFFFFF 0% 0% no-repeat padding-box",
     justifyContent: "space-between",
     padding: "24px",
     borderTopLeftRadius: "4px",
     borderTopRightRadius: "4px",
+
+    "@media (min-width: 300px) and (max-width: 780px)": {
+      display: "block !important",
+      marginTop: "10px",
+    },
   },
 
   input: {
@@ -82,6 +91,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "11px",
     marginLeft: "10px",
     maxWidth: "140px",
+    "@media (min-width: 300px) and (max-width: 780px)": {
+      width: "100%",
+      maxWidth: "610px",
+    },
   },
 
   line: {
@@ -116,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "13px",
     color: "#2149b9",
     fontWeight: "600",
-    textAlignLast: "right",
+    // textAlignLast: "right",
   },
 }));
 const Container = styled.div`
@@ -128,12 +141,15 @@ const Container = styled.div`
 const SecondContainer = styled.div`
   display: flex;
   align-items: center;
-  @media (min-width: 300px) and (max-width: 1038px) {
-    // display: block;
+  @media (min-width: 300px) and (max-width: 780px) {
+    display: block;
   }
 `;
 
 export default function ViewAllProposal() {
+  const backButton = () => {
+    history.push("/community");
+  };
   React.useEffect(() => {
     let address = [
       {
@@ -213,9 +229,17 @@ export default function ViewAllProposal() {
       <div className="header-div-all">
         <HeaderMain />
       </div>
+
       <div className={classes.maincontainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
+            <div style={{ marginBottom: "11px" }} onClick={backButton}>
+              <img
+                src="/images/Back-Arrow.svg"
+                style={{ width: "15px", marginRight: "8px" }}
+              />
+              <Back>Back</Back>
+            </div>
             <Row className={classes.rowdiv}>
               <Container>
                 <Heading>All Proposals</Heading>
@@ -249,6 +273,7 @@ export default function ViewAllProposal() {
                     value={value}
                     range
                   />
+                  <ArrowImg src="/images/XDC-Dropdown.svg" />
                 </DatePickerDiv>
               </SecondContainer>
             </Row>
@@ -342,7 +367,7 @@ export default function ViewAllProposal() {
             </Div>
 
             <PagingDiv>
-              <Container>
+              <FirstDiv>
                 <Show>Show </Show>
 
                 <SelectBox>
@@ -356,8 +381,8 @@ export default function ViewAllProposal() {
                   </Row>
                 </SelectBox>
                 <Proposals>Proposals </Proposals>
-              </Container>
-              <SecondContainer>
+              </FirstDiv>
+              <SecondDiv>
                 <Back>Back</Back>
                 <Block>
                   <Span>1 </Span>
@@ -368,7 +393,7 @@ export default function ViewAllProposal() {
                 <NextBlock>
                   <Span>Next</Span>
                 </NextBlock>
-              </SecondContainer>
+              </SecondDiv>
             </PagingDiv>
           </Grid>
         </div>
@@ -379,6 +404,24 @@ export default function ViewAllProposal() {
     </div>
   );
 }
+const ArrowImg = styled.img`
+  margin-top: -2px;
+  margin-right: 7px;
+  width: 5%;
+`;
+const SecondDiv = styled.div`
+  display: flex;
+  align-items: center;
+  @media (min-width: 300px) and (max-width: 780px) {
+    // display: block;
+    margin-top: 10px;
+  }
+`;
+const FirstDiv = styled.div`
+  display: flex;
+  @media (min-width: 300px) and (max-width: 767px) {
+  }
+`;
 const DateSpan = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
@@ -394,6 +437,11 @@ const DatePickerDiv = styled.div`
 
   input:focus {
     border: none !important;
+  }
+  @media (min-width: 400px) and (max-width: 780px) {
+    width: 100%;
+    max-width: 230px;
+    margin-top: 10px;
   }
 `;
 const Input = styled.input`
@@ -431,17 +479,20 @@ const DisplayNone = styled.div`
 const Back = styled.span`
   text-align: left;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0px;
-  color: #909090;
-  opacity: 1;
+
+  font-size: 17px;
+
+  color: #ffffff;
 `;
 const PagingDiv = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+
+  margin-top: 35px;
   margin-bottom: 20px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    display: block;
+  }
 `;
 const Span = styled.span`
   text-align: left;
@@ -463,7 +514,6 @@ const Show = styled.span`
   font-size: 12px;
   letter-spacing: 0px;
   color: #3b3b3b;
-
   align-items: center;
   margin-right: 10px;
 `;
@@ -546,6 +596,9 @@ const SelectBox = styled.div`
   @media (min-width: 300px) and (max-width: 1038px) {
     display: block;
   }
+  @media (min-width: 300px) and (max-width: 780px) {
+    margin-top: 10px;
+  }
 `;
 const Failed = styled.span`
   font-family: "Inter", sans-serif;
@@ -558,8 +611,10 @@ const Failed = styled.span`
 `;
 const InputDiv = styled.div`
   display: flex;
-  @media (min-width: 300px) and (max-width: 1038px) {
+  @media (min-width: 300px) and (max-width: 780px) {
     display: block;
+    margin-top: 10px;
+    margin-left: -9px;
   }
 `;
 
@@ -637,6 +692,7 @@ const Button = styled.button`
   whitespace: "nowrap";
   width: 100%;
   max-width: 90px;
+  margin-top: 8px;
   @media (min-width: 250px) and (max-width: 767px) {
     font-size: 12px;
     width: 100%;
