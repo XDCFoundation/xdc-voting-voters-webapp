@@ -231,7 +231,7 @@ const handleCloseDailog = () => {
                             </div>
                         </div>
                     </Column>
-                    <Column>
+                    <Column className="mobile-rightdiv">
                         <Row>
                             <div className="recent-proposal-div-proposal2">
                                 <div className="div2-heading">Do you support this proposal?</div>
@@ -311,7 +311,7 @@ const handleCloseDailog = () => {
                 {/* <div className="recent-proposal-div-proposal"></div> 
             <div className="recent-add-div-proposal"></div> */}
 
-                <div>
+                <div className="proposalpage-footer">
                     <FooterComponent />
                 </div>
             </Column>
