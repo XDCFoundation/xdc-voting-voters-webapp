@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#2149b9",
     fontWeight: "600",
     textAlignLast: "right",
-    marginLeft: "36px",
+    marginLeft: "7px",
   },
   styleHead: {
     display: "flex",
@@ -129,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "13px",
     color: "#2149b9",
     fontWeight: "600",
-    textAlignLast: "right",
+    // textAlignLast: "right",
   },
 }));
 const Container = styled.div`
@@ -233,10 +233,7 @@ export default function ViewAllProposal() {
       <div className={classes.maincontainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
-            <div
-              style={{ marginBottom: "11px" }}
-              onClick={backButton}
-            >
+            <div style={{ marginBottom: "11px" }} onClick={backButton}>
               <img
                 src="/images/Back-Arrow.svg"
                 style={{ width: "15px", marginRight: "8px" }}
@@ -490,7 +487,8 @@ const Back = styled.span`
 const PagingDiv = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+
+  margin-top: 35px;
   margin-bottom: 20px;
   @media (min-width: 300px) and (max-width: 767px) {
     display: block;
@@ -694,6 +692,7 @@ const Button = styled.button`
   whitespace: "nowrap";
   width: 100%;
   max-width: 90px;
+  margin-top: 8px;
   @media (min-width: 250px) and (max-width: 767px) {
     font-size: 12px;
     width: 100%;
