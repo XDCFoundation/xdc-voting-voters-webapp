@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     maxWidth: "970px",
     position: "absolute",
-    top: "147px",
+    top: "251px",
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
       maxWidth: "300px",
@@ -167,7 +167,9 @@ export default function Voterslist() {
                 <Properties>Properties</Properties>
               </Container>
               <SecondContainer>
-                <Back>Back</Back>
+                <BackBlock>
+                  <Back>Back</Back>
+                </BackBlock>
                 <Block>
                   <Span>1</Span>
                 </Block>
@@ -188,9 +190,18 @@ export default function Voterslist() {
     </div>
   );
 }
+const BackBlock = styled.div`
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e3e7eb;
+  border-radius: 4px;
+  text-align: center;
+  width: 40%;
+`;
 const Back = styled.span`
   text-align: left;
-  font: normal normal normal 14px/17px Inter;
+  
+  font-size: 15px;
+  font-family:'Inter'
   letter-spacing: 0px;
   color: #909090;
   opacity: 1;
