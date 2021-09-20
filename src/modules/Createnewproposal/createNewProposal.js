@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles/";
 import Grid from "@material-ui/core/Grid";
 import { Row, Column } from "simple-flexbox";
 import styled from "styled-components";
-import Quill from "quill";
 import "react-quill/dist/quill.snow.css";
 import "react-quill/dist/quill.bubble.css";
 import HeaderMain from "../header/header";
@@ -12,6 +11,7 @@ import FooterComponent from "../footer/footerComponent";
 import Utility from "../../utility/index";
 import AddNewProposalLive from "../../services/proposalService";
 import ReactQuill from "react-quill";
+import { history } from "../../managers/history";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     maxWidth: "970px",
     position: "absolute",
-    top: "190px",
+    top: "154px",
+
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
       maxWidth: "300px",
@@ -84,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
     height: "35px",
     fontSize: "10px",
     width: "100%",
-    maxWidth: "215px",
+    maxWidth: "295px",
     whiteSpace: "nowrap",
 
     "@media (min-width: 300px) and (max-width: 767px)": {
@@ -145,7 +146,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "10px",
     height: "35px",
     width: "100%",
-    maxWidth: "215px",
+    maxWidth: "295px",
 
     "@media (min-width: 300px) and (max-width: 767px)": {
       marginLeft: "6px",
@@ -162,7 +163,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     letterSpacing: "0px",
     color: "#2a2a2a",
-
+    fontFamily: "Inter",
     fontSize: "12px",
     alignItems: "center",
     display: "flex",
@@ -205,7 +206,7 @@ const useStyles = makeStyles((theme) => ({
   quillgrid: {
     paddingTop: "47px",
     background: "#FFFFFF 0% 0% no-repeat padding-box",
-    marginLeft: "8px",
+    marginLeft: "2px",
     borderRadius: "6px",
     paddingRight: "45px",
     width: "100%",
@@ -317,6 +318,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     marginTop: "50px",
   },
+  gridSix: {
+    marginLeft: "25px",
+  },
 }));
 const Headerdiv = styled.div`
   width: 100%;
@@ -324,8 +328,17 @@ const Headerdiv = styled.div`
   background: #2049b9 0% 0% no-repeat padding-box;
   position: relative;
 `;
+const Back = styled.span`
+  text-align: left;
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  color: #ffffff;
+`;
 
 export default function Createnewproposal(props) {
+  const backButton = () => {
+    history.push("/");
+  };
   const [proposalTitle, setProposalTitle] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -366,6 +379,13 @@ export default function Createnewproposal(props) {
       <div className={classes.maincontainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
+            <div style={{ marginBottom: "11px" }} onClick={backButton}>
+              <img
+                src="/images/Back-Arrow.svg"
+                style={{ width: "15px", marginRight: "8px" }}
+              />
+              <Back>Back</Back>
+            </div>
             <div className={classes.div}>
               <Grid className={classes.heading} xs={4}>
                 Create New Proposal
@@ -393,7 +413,7 @@ export default function Createnewproposal(props) {
                   Start Date
                 </Grid>
 
-                <Grid xs={4}>
+                <Grid xs={6} className={classes.gridSix}>
                   <input
                     className={classes.startdateinput}
                     type="date"
@@ -520,7 +540,7 @@ const Button = styled.button`
   border-radius: 4px;
   color: #ffffff;
   width: 170px;
-  height: 30px;
+  height: 38px;
   font-size: 12px;
   margin-bottom: 10%;
   @media (min-width: 300px) and (max-width: 767px) {
