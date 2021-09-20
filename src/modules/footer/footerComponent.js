@@ -84,12 +84,32 @@ export default function FooterComponent() {
                           placeholder="Add Email"
                         ></input>
                       </span>
-                      <span>
+                      {/* <div style={{ width: "100%", maxWidth: "50px" }}>
                         <img
                           className="forward-image"
                           src={require("../../assets/styles/images/ForwardLogo.svg")}
                         ></img>
-                      </span>
+                      </div> */}
+                      <div
+                        style={{
+                          borderLeft: "1px solid #E3E7EB",
+                          width: "100%",
+                          maxWidth: "40px",
+
+                          marginTop: "10px",
+                          marginLeft: "-40px",
+                          alignItems: "center",
+                        }}
+                      >
+                        <img
+                          style={{
+                            width: "23px",
+                            marginLeft: "5px",
+                            marginTop: "3px",
+                          }}
+                          src={require("../../assets/styles/images/ForwardLogo.svg")}
+                        />
+                      </div>
                     </Row>
                   </Column>
                 </Row>
