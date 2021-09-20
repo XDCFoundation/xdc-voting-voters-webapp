@@ -246,7 +246,7 @@ export default function ProposalDetails() {
 
                                     <PieChart className="piechart"
                                         data={[
-                                            { title: 'support', lengthAngle: -360, value: 78, color: '#3AB70D' },
+                                            { title: 'support',value: 78, color: '#3AB70D' },
                                             { title: 'reject', value: 22, color: '#F43D3D' },
 
                                         ]}
