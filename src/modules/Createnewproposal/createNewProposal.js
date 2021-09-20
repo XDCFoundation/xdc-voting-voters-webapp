@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
     height: "35px",
     fontSize: "10px",
     width: "100%",
-    maxWidth: "215px",
+    maxWidth: "295px",
     whiteSpace: "nowrap",
 
     "@media (min-width: 300px) and (max-width: 767px)": {
@@ -146,7 +146,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "10px",
     height: "35px",
     width: "100%",
-    maxWidth: "215px",
+    maxWidth: "295px",
 
     "@media (min-width: 300px) and (max-width: 767px)": {
       marginLeft: "6px",
@@ -163,7 +163,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     letterSpacing: "0px",
     color: "#2a2a2a",
-
+    fontFamily: "Inter",
     fontSize: "12px",
     alignItems: "center",
     display: "flex",
@@ -206,7 +206,7 @@ const useStyles = makeStyles((theme) => ({
   quillgrid: {
     paddingTop: "47px",
     background: "#FFFFFF 0% 0% no-repeat padding-box",
-    marginLeft: "8px",
+    marginLeft: "2px",
     borderRadius: "6px",
     paddingRight: "45px",
     width: "100%",
@@ -318,6 +318,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     marginTop: "50px",
   },
+  gridSix: {
+    marginLeft: "25px",
+  },
 }));
 const Headerdiv = styled.div`
   width: 100%;
@@ -410,7 +413,7 @@ export default function Createnewproposal(props) {
                   Start Date
                 </Grid>
 
-                <Grid xs={4}>
+                <Grid xs={6} className={classes.gridSix}>
                   <input
                     className={classes.startdateinput}
                     type="date"
