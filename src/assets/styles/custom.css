@@ -1311,7 +1311,8 @@ margin-left: 58px;
 }
 
 .view-all{
-    
+    height: 30px;
+    align-items: center;
     margin-top: -31px;
     justify-content: center;
     cursor: pointer;
