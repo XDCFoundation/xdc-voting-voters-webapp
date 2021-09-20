@@ -89,8 +89,6 @@ export default function ProposalDetails() {
     }
 
     const handleCloseDailog = () => {
-
-        // setDialogOpen(false);
         setOpen3(true);
         setIsButtonClicked(true)
 
