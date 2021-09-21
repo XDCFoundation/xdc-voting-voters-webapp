@@ -5,6 +5,7 @@ import "../../assets/styles/custom.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import FooterComponent from "../footer/footerComponent";
+import { history } from "../../managers/history";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     maxWidth: "970px",
     position: "absolute",
-    top: "251px",
+    top: "186px",
+
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
       maxWidth: "300px",
@@ -46,6 +48,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Voterslist() {
+  const backButton = () => {
+    history.push("/");
+  };
   React.useEffect(() => {
     let address = [
       {
@@ -132,6 +137,25 @@ export default function Voterslist() {
       <div className={classes.mainContainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
+            <div
+              style={{
+                marginBottom: "11px",
+                marginTop: "-21px",
+                cursor: "pointer",
+              }}
+              onClick={backButton}
+            >
+              <img
+                src="/images/Back-Arrow.svg"
+                style={{ width: "15px", marginRight: "8px" }}
+              />
+              <Back>Back</Back>
+            </div>
+            <div style={{ marginBottom: "20px" }}>
+              <MainHeading>
+                XDC-ABC Bootstrapping Partnership Proposal
+              </MainHeading>
+            </div>
             <Spacing>
               <Container>
                 <Heading>All Voters</Heading>
@@ -167,18 +191,16 @@ export default function Voterslist() {
                 <Properties>Properties</Properties>
               </Container>
               <SecondContainer>
-                <BackBlock>
-                  <Back>Back</Back>
-                </BackBlock>
+                <BackButton>Back</BackButton>
+
                 <Block>
                   <Span>1</Span>
                 </Block>
                 <Block>
                   <Span>2</Span>
                 </Block>
-                <NextBlock>
-                  <Span>Next</Span>
-                </NextBlock>
+
+                <NextButton>Next</NextButton>
               </SecondContainer>
             </Pagingdiv>
           </Grid>
@@ -190,21 +212,30 @@ export default function Voterslist() {
     </div>
   );
 }
-const BackBlock = styled.div`
+const MainHeading = styled.span`
+  text-align: left;
+
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+`;
+
+const Back = styled.span`
+  text-align: left;
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  color: #ffffff;
+`;
+const BackButton = styled.button`
+  text-align: left;
+
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0px;
+  color: #909090;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
   border-radius: 4px;
-  text-align: center;
-  width: 40%;
-`;
-const Back = styled.span`
-  text-align: left;
-  
-  font-size: 15px;
-  font-family:'Inter'
-  letter-spacing: 0px;
-  color: #909090;
-  opacity: 1;
 `;
 const Pagingdiv = styled.div`
   display: flex;
@@ -217,11 +248,23 @@ const Span = styled.span`
   font: normal normal normal 13px/17px Inter;
   letter-spacing: 0px;
   color: #3b3b3b;
-  opacity: 1;
+
   display: flex;
   padding-left: 6px;
   padding-top: 2px;
 `;
+const NextButton = styled.button`
+  color: var(--unnamed-color-2149b9);
+
+  font: normal normal normal 14px/17px Inter;
+
+  color: #2149b9;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e3e7eb;
+  border-radius: 4px;
+  margin-left: 5px;
+`;
+
 const Show = styled.span`
   display: flex;
   text-align: left;
@@ -235,34 +278,25 @@ const Block = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
   border-radius: 4px;
-  opacity: 1;
+
   width: 25px;
   height: 22px;
   margin-left: 8px;
 `;
-const NextBlock = styled.div`
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #e3e7eb;
-  border-radius: 4px;
-  opacity: 1;
-  width: 43px;
-  height: 22px;
-  margin-left: 8px;
-`;
+
 const Properties = styled.span`
   display: flex;
   text-align: left;
   font: normal normal normal 13px/17px Inter;
   letter-spacing: 0px;
   color: #3b3b3b;
-  opacity: 1;
+
   align-items: center;
   margin-left: 8px;
 `;
 const Hash = styled.span`
   color: var(--unnamed-color-2a2a2a);
   color: #2a2a2a;
-  opacity: 1;
 
   font-family: "Inter", sans-serif;
   font-weight: 600;
@@ -280,7 +314,7 @@ const Spacing = styled.div`
   width: 100%;
   height: auto;
   padding: 11px 24px;
-  opacity: 1;
+
   background: #ffffff 0% 0% no-repeat padding-box;
   align-items: center;
 
@@ -316,7 +350,7 @@ const Heading = styled.span`
   white-space: nowrap;
   letter-spacing: 0px;
   color: #2a2a2a;
-  opacity: 1;
+
   box-shadow: none;
   color: var(--unnamed-color-2a2a2a);
   font-family: "Inter", sans-serif;
@@ -328,7 +362,6 @@ const Leftcontainer = styled.div`
   font: normal normal normal 12px/17px Inter;
   letter-spacing: 0px;
   color: #acacac;
-  opacity: 1;
 `;
 const ImageView = styled.img`
   width: 35px;
