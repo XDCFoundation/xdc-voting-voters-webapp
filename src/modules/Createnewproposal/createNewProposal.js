@@ -321,6 +321,14 @@ const useStyles = makeStyles((theme) => ({
   gridSix: {
     marginLeft: "25px",
   },
+  circle: {
+    borderRadius: "50%",
+    width: "10px",
+    height: "10px",
+    background: "#E3E7EB 0% 0% no-repeat padding-box",
+    marginRight: "43px",
+    marginLeft: "10px",
+  },
 }));
 const Headerdiv = styled.div`
   width: 100%;
@@ -503,6 +511,7 @@ export default function Createnewproposal(props) {
               </div>
               <div className={classes.buttondiv}>
                 <Button onClick={() => createNewProposal()}>
+                  <span className={classes.circle}></span>
                   Connect Wallet
                 </Button>
               </div>
@@ -539,11 +548,15 @@ const Button = styled.button`
   border: 1px solid #fffcfc;
   border-radius: 4px;
   color: #ffffff;
-  width: 170px;
+
   height: 38px;
   font-size: 12px;
   margin-bottom: 10%;
-  @media (min-width: 300px) and (max-width: 767px) {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 213px;
+  justify-content: center @media (min-width: 300px) and (max-width: 767px) {
     width: 120px;
   }
 `;
