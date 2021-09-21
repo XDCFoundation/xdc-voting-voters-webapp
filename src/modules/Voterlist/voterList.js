@@ -138,7 +138,11 @@ export default function Voterslist() {
         <div className={classes.root}>
           <Grid item xs={12}>
             <div
-              style={{ marginBottom: "11px", marginTop: "-21px" }}
+              style={{
+                marginBottom: "11px",
+                marginTop: "-21px",
+                cursor: "pointer",
+              }}
               onClick={backButton}
             >
               <img
