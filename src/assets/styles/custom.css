@@ -434,6 +434,7 @@ letter-spacing: 0px;
 color: #FFFFFF;
 opacity: 1;
 margin-top:"10px";
+cursor:pointer;
 }
 .xdc p{
     height: 10px;
@@ -1311,7 +1312,8 @@ margin-left: 58px;
 }
 
 .view-all{
-    
+    height: 30px;
+    align-items: center;
     margin-top: -31px;
     justify-content: center;
     cursor: pointer;
