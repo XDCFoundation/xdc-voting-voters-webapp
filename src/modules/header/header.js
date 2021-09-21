@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Column, Row } from "simple-flexbox";
 import styled from "styled-components";
+import { history } from "../../managers/history";
 
 export default function HeaderMain() {
+  const reDirect = () => {
+    history.push("/");
+  };
   return (
     <div>
       <Row className="row-1">
@@ -15,7 +19,7 @@ export default function HeaderMain() {
               ></img>
             </Column>
             <Column className="xdc">
-              <p>XDC</p>
+              <p onClick={reDirect}>XDC</p>
             </Column>
           </Row>
         </Column>
