@@ -54,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
     },
     "@media (min-width: 567px) and (max-width: 767px)": {
       maxWidth: "500px",
+      top: "65px",
     },
     "@media (min-width: 767px) and (max-width: 2080px)": {
       maxWidth: "700px",
@@ -129,7 +130,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "13px",
     color: "#2149b9",
     fontWeight: "600",
-    // textAlignLast: "right",
   },
 }));
 const Container = styled.div`
@@ -233,7 +233,10 @@ export default function ViewAllProposal() {
       <div className={classes.maincontainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
-            <div style={{ marginBottom: "11px" }} onClick={backButton}>
+            <div
+              style={{ marginBottom: "11px", cursor: "pointer" }}
+              onClick={backButton}
+            >
               <img
                 src="/images/Back-Arrow.svg"
                 style={{ width: "15px", marginRight: "8px" }}
