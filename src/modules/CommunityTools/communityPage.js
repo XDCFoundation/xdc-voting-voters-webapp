@@ -140,7 +140,10 @@ export default function CommunityPage() {
       <div className={classes.mainContainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
-            <div style={{ marginBottom: "11px" }} onClick={backButton}>
+            <div
+              style={{ marginBottom: "11px", cursor: "pointer" }}
+              onClick={backButton}
+            >
               <img
                 src="/images/Back-Arrow.svg"
                 style={{ width: "15px", marginRight: "8px" }}
