@@ -1,42 +1,71 @@
 import React from "react";
-import { Row, Column } from "simple-flexbox";
+import {Row, Column} from "simple-flexbox";
 import BaseComponent from "../baseComponent";
 import Createnewproposal from "./createNewProposal";
 import Web3 from 'web3';
+import Utils from "../../utility";
+import AwsService from "../../services/awsService"
+
+const {extname} = require('path');
+
 let masterContractAbi = require('../../common/abis/masterContractAbi.json').abi;
 
 export default class Createproposal extends BaseComponent {
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            proposalDocuments: []
+        }
+    }
 
-  createProposal = async (reqObj)=>{
-    let web3;
-    web3 = new Web3(window.web3.currentProvider);
-    window.ethereum.enable();
-    web3.eth.getAccounts().then(async (accounts) => {
-      const acc = accounts[0];
-      console.log(accounts,"errAcc");
-      const contract = new web3.eth.Contract(masterContractAbi, "0x2de1e22971ae076ad311ceac235abd82066862f3");
-      const createProposalResponse = await contract.methods.create_New_Proposal(
-          "testTitle",
-          "12/12/21",
-          "12/10/21",
-          "Test desc",
-          "doc url",
-          false,
-          acc
-      ).send({from:acc});
-      console.log("createProposalResponse ",createProposalResponse)
-    })
-  }
+    uploadFileToS3 = async (file) => {
+        let extName = extname(file.name);
+        let fileName = "proposal-documents/" + Utils.generateCompanyLogoKey() + extName;
+        let mimeType = file.type;
+        try {
+            let responseObj = await AwsService.uploadFileToS3(file, fileName, mimeType, false).catch(err => {
+                console.log(err)
+            });
+            this.state.proposalDocuments.push(responseObj.key)
+        } catch (err) {
+            Utils.apiFailureToast("Unable to upload document")
+        }
+    }
 
-  render() {
-    return (
-      <div>
-        <Createnewproposal
-            createProposal={this.createProposal}/>
-      </div>
-    );
-  }
+    createProposal = async (reqObj) => {
+        console.log("reqObj ",reqObj)
+        if(!reqObj.proposalTitle || !reqObj.startDate || !reqObj.endDate || !reqObj.description)
+            Utils.apiFailureToast("Please provide all the inputs");
+        let web3;
+        web3 = new Web3(window.web3.currentProvider);
+        window.ethereum.enable();
+        web3.eth.getAccounts().then(async (accounts) => {
+            if(!accounts || !accounts.length) {
+                Utils.apiFailureToast("Please login to metamask");
+            }
+            const acc = accounts[0];
+            const contract = new web3.eth.Contract(masterContractAbi, "0x2de1e22971ae076ad311ceac235abd82066862f3");
+            const createProposalResponse = await contract.methods.create_New_Proposal(
+                reqObj.proposalTitle,
+                reqObj.endDate,
+                reqObj.startDate,
+                reqObj.description,
+                this.state.proposalDocuments.length ? this.state.proposalDocuments[0] : '',
+                false,
+                acc
+            ).send({from: acc});
+            console.log(createProposalResponse)
+            Utils.apiSuccessToast("Proposal Created Successfully");
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                <Createnewproposal
+                    createProposal={this.createProposal}
+                    uploadFileToS3={this.uploadFileToS3}/>
+            </div>
+        );
+    }
 }
