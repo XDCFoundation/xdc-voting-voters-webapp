@@ -6,7 +6,7 @@ import { history } from "../../managers/history";
 import "../../assets/styles/custom.css";
 import utility from "../../utility";
 import HeaderMain from "./header";
-import RecentProposal from "../Dashboard/recentProposal";
+import RecentProposal from "../Dashboard/";
 import DivBlocksComponent from "../Dashboard/divComponent";
 import FooterComponent from "../footer/footerComponent";
 

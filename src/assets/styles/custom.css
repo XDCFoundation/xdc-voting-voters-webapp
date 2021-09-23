@@ -12,7 +12,18 @@ html, body {
 }
  
 
+.p-t-6{
+    padding-top: 6px;
+}
 
+.p-l-sm{
+    padding-left: 10px;
+}
+
+
+.m-b-4{
+    margin-bottom: 4px;
+}
 
 .header-div{
 width: 100%;
@@ -243,8 +254,7 @@ opacity: 1;
         padding-right: 0px !important;
     }
     .view-all{
-        margin-top: -25px !important;
-        font-family: "Inter",sans-serif;
+    font-family: "Inter",sans-serif;
     font-weight: 600;
     font-size: 13px;
     }
@@ -1172,7 +1182,6 @@ margin-right: 10px;
  .table-between{
      justify-content: space-between;
      display: flex;
-     margin-bottom: -15px;
  }
  .voter-heading{
     
