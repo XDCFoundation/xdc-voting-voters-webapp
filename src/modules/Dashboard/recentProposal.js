@@ -12,7 +12,7 @@ import { history } from "../../managers/history";
 import divBlockComponent from "./divComponent";
 import styled from "styled-components";
 
-export default function RecentProposal() {
+export default function RecentProposal(props) {
   React.useEffect(() => {
     let address = [
       {
@@ -91,28 +91,26 @@ export default function RecentProposal() {
           >
             <TableHead></TableHead>
             <TableBody>
-              {address.map((row, index) => {
+              {props.proposals.map((proposal, index) => {
                 return (
                   <TableRow className="table-mid-line">
                     <Row className="table-between">
                       <Column>
                         <TableCell style={{ border: "none" }}>
-                          <Row className="date">{row.Date}</Row>
-
-                          <Row className="name">{row.Name} </Row>
+                          <Row className="date">Posted on {proposal["postedOn"]}</Row>
+                          <Row className="name">{proposal["title"]} </Row>
                           <Row className="status">
-                            <p>Status:</p>
-
+                            <p>Status: &nbsp;</p>
                             <span
                               className={
-                                row.Status === "Open"
+                                proposal.status === "Open"
                                   ? "fc-blue"
-                                  : row.Status === "Passed"
+                                  : proposal.status === "Passed"
                                   ? "fc-green"
                                   : "fc-red"
                               }
                             >
-                              {row.Status}
+                              {proposal.status}
                             </span>
                           </Row>
                         </TableCell>
@@ -123,24 +121,23 @@ export default function RecentProposal() {
                           className="mobile-div-right"
                           style={{ border: "none" }}
                         >
-                          {row.Status == "Open" ? (
+                          {proposal.status === "Open" ? (
                             <>
                               <Row>
-                                <Span style={{ marginRight: "-150px" }}>
-                                  01:50:48 Remaining
-                                </Span>
                                 <span style={{ marginRight: "5px" }}>
                                   {" "}
                                   <img
                                     style={{
                                       height: "14px",
-                                      width: "14px",
-                                      marginTop: "-3px",
+                                      width: "14px"
                                     }}
-                                    className="time-inactive"
+                                    className="m-b-4"
                                     src={require("../../assets/styles/images/Time-Active.svg")}
-                                  ></img>
+                                  />
                                 </span>
+                                <Span>
+                                  {proposal.timeRemaining} Remaining
+                                </Span>
                               </Row>
                               <Row>
                                 <div className="details">Details</div>
@@ -162,7 +159,7 @@ export default function RecentProposal() {
                                     src={require("../../assets/styles/images/Time-Inactive.svg")}
                                   ></img>
                                 </span>{" "}
-                                {row.Poll}
+                                Poll Ended
                               </Row>
                               <Row className="percent-line">
                                 <div className="bar-line">
@@ -170,7 +167,7 @@ export default function RecentProposal() {
                                   <div className="line-2"></div>
                                 </div>{" "}
                               </Row>
-                              <Row className="vote-number">{row.Vote}</Row>
+                              <Row className="vote-number">{proposal.passedVoteCount + proposal.failVoteCount} votes</Row>
                             </>
                           )}
                         </TableCell>

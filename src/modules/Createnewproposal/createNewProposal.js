@@ -326,7 +326,7 @@ export default function Createnewproposal(props) {
             proposalTitle: proposalTitle,
             startDate: startDate,
             endDate: endDate,
-            discription: description,
+            description: "Dummy Description", //quill editor is not working
             filepath: uploadDocument,
             pollingContract: "0011",
             status: "pending",
@@ -449,7 +449,6 @@ export default function Createnewproposal(props) {
                                     />
                                 </Seconddiv>
                             </Mobile>
-
                             <div className={classes.row}>
                                 <Grid xs={2} className={classes.description}>
                                     Description
@@ -458,7 +457,10 @@ export default function Createnewproposal(props) {
                                     <div
                                         data-quill-placeholder="Quill WYSIWYG"
                                         data-toggle="quill"
-                                        onChange={(e) => setDescription(e.target.value)}
+                                        onChange={(e) => {
+                                            console.log(e.target)
+                                            setDescription(e.target.value)
+                                        }}
                                         value={description}
                                     />
                                 </Grid>
@@ -471,9 +473,8 @@ export default function Createnewproposal(props) {
                                     <Row>
                                         <input
                                             type="file"
-                                            className={classes.input}
-                                            onChange={(e) => setUploadDocument(e.target.value)}
-                                            value={uploadDocument}
+                                            className={classes.input + " p-t-6 p-l-sm"}
+                                            onChange={(e) => props.uploadFileToS3(e.target.files[0])}
                                         />
                                         <img className={classes.image} src="/images/Add.svg"/>
                                     </Row>
