@@ -12,7 +12,18 @@ html, body {
 }
  
 
+.p-t-6{
+    padding-top: 6px;
+}
 
+.p-l-sm{
+    padding-left: 10px;
+}
+
+
+.m-b-4{
+    margin-bottom: 4px;
+}
 
 .header-div{
 width: 100%;
@@ -149,8 +160,7 @@ position: relative;
         padding-right: 0px !important;
     }
     .view-all{
-        margin-top: -25px !important;
-        font-family: "Inter",sans-serif;
+    font-family: "Inter",sans-serif;
     font-weight: 600;
     font-size: 13px;
     }
@@ -750,7 +760,6 @@ opacity: 1;
  .table-between{
      justify-content: space-between;
      display: flex;
-     margin-bottom: -15px;
  }
  .table-mid-line{
     margin-top: 0px;
