@@ -8,6 +8,7 @@ import DatePicker from "react-multi-date-picker";
 import styled from "styled-components";
 import "./datepicker.css";
 import FooterComponent from "../footer/footerComponent";
+import { history } from "../../managers/history";
 
 const useStyles = makeStyles((theme) => ({
   selectOptions: { backgroundColor: "white" },
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#2149b9",
     fontWeight: "600",
     textAlignLast: "right",
-    marginLeft: "44px",
+    marginLeft: "7px",
   },
   styleHead: {
     display: "flex",
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     height: "30px",
     fontFamily: "Inter",
     fontWeight: "600",
+    marginLeft: "8px",
   },
   row: {
     border: "1px solid #E3E7EB",
@@ -48,23 +50,32 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
       maxWidth: "300px",
+      top: "91px",
     },
     "@media (min-width: 567px) and (max-width: 767px)": {
       maxWidth: "500px",
+      top: "65px",
     },
-    "@media (min-width: 767px) and (max-width: 1040px)": {
+    "@media (min-width: 767px) and (max-width: 2080px)": {
       maxWidth: "700px",
+      top: "183px",
+      maxWidth: "970px",
     },
   },
   rowdiv: {
     width: "100%",
     alignItems: "center",
-    height: "53px",
+    // height: "53px",
     background: "#FFFFFF 0% 0% no-repeat padding-box",
     justifyContent: "space-between",
     padding: "24px",
     borderTopLeftRadius: "4px",
     borderTopRightRadius: "4px",
+
+    "@media (min-width: 300px) and (max-width: 780px)": {
+      display: "block !important",
+      marginTop: "10px",
+    },
   },
 
   input: {
@@ -81,6 +92,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "11px",
     marginLeft: "10px",
     maxWidth: "140px",
+    "@media (min-width: 300px) and (max-width: 780px)": {
+      width: "100%",
+      maxWidth: "610px",
+    },
   },
 
   line: {
@@ -99,19 +114,42 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     width: "100%",
   },
+  styleBlock: {
+    display: "flex",
+    marginTop: "6px",
+    fontSize: "11px",
+    border: "0px",
+    outline: "0px",
+    height: "30px",
+    fontFamily: "Inter",
+    fontWeight: "600",
+  },
+  stylePage: {
+    border: "0px",
+    outline: "0px",
+    fontSize: "13px",
+    color: "#2149b9",
+    fontWeight: "600",
+  },
 }));
 const Container = styled.div`
   display: flex;
+  @media (min-width: 300px) and (max-width: 767px) {
+    display: block;
+  }
 `;
 const SecondContainer = styled.div`
   display: flex;
   align-items: center;
-  @media (min-width: 300px) and (max-width: 1038px) {
-    display: none;
+  @media (min-width: 300px) and (max-width: 780px) {
+    display: block;
   }
 `;
 
 export default function ViewAllProposal() {
+  const backButton = () => {
+    history.push("/community");
+  };
   React.useEffect(() => {
     let address = [
       {
@@ -191,9 +229,20 @@ export default function ViewAllProposal() {
       <div className="header-div-all">
         <HeaderMain />
       </div>
+
       <div className={classes.maincontainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
+            <div
+              style={{ marginBottom: "11px", cursor: "pointer" }}
+              onClick={backButton}
+            >
+              <img
+                src="/images/Back-Arrow.svg"
+                style={{ width: "15px", marginRight: "8px" }}
+              />
+              <Back>Back</Back>
+            </div>
             <Row className={classes.rowdiv}>
               <Container>
                 <Heading>All Proposals</Heading>
@@ -227,6 +276,7 @@ export default function ViewAllProposal() {
                     value={value}
                     range
                   />
+                  <ArrowImg src="/images/XDC-Dropdown.svg" />
                 </DatePickerDiv>
               </SecondContainer>
             </Row>
@@ -250,7 +300,7 @@ export default function ViewAllProposal() {
                     <Button>Details</Button>
                   </RowSpacing>
                   <Container>
-                    <Status>Status : </Status>
+                    <Status>Status:&ensp;</Status>
                     <Passed>Passed</Passed>
                   </Container>
                   <SecondContainer>
@@ -270,7 +320,7 @@ export default function ViewAllProposal() {
                         <Posted>{data.date}</Posted>
                         <TimeRemainingDiv>
                           <ClockImage src="/images/Time-Inactive.svg" />
-                          &nbsp;
+                          &ensp;
                           <PollEnded>{data.poll}</PollEnded>
                         </TimeRemainingDiv>
                       </RowSpacing>
@@ -287,7 +337,7 @@ export default function ViewAllProposal() {
                       </RowSpacing>
                       <Media_for_container>
                         <Container>
-                          <Status>Status : </Status>
+                          <Status>Status:&ensp;</Status>
                           <Open>Open</Open>
                         </Container>
 
@@ -300,7 +350,7 @@ export default function ViewAllProposal() {
                       </Media_for_container>
                       <DisplayNone>
                         <Container>
-                          <Status>Status : </Status>
+                          <Status>Status:&ensp;</Status>
                           <Open>Open</Open>
                         </Container>
 
@@ -320,14 +370,22 @@ export default function ViewAllProposal() {
             </Div>
 
             <PagingDiv>
-              <Container>
+              <FirstDiv>
                 <Show>Show </Show>
-                <Block>
-                  <Span>10 </Span>
-                </Block>
-                <Properties>Properties </Properties>
-              </Container>
-              <SecondContainer>
+
+                <SelectBox>
+                  <Row className={classes.row}>
+                    <Column className={classes.styleBlock}> </Column>
+                    <select className={classes.stylePage}>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </Row>
+                </SelectBox>
+                <Proposals>Proposals </Proposals>
+              </FirstDiv>
+              <SecondDiv>
                 <Back>Back</Back>
                 <Block>
                   <Span>1 </Span>
@@ -338,7 +396,7 @@ export default function ViewAllProposal() {
                 <NextBlock>
                   <Span>Next</Span>
                 </NextBlock>
-              </SecondContainer>
+              </SecondDiv>
             </PagingDiv>
           </Grid>
         </div>
@@ -349,12 +407,31 @@ export default function ViewAllProposal() {
     </div>
   );
 }
+const ArrowImg = styled.img`
+  margin-top: -2px;
+  margin-right: 7px;
+  width: 5%;
+`;
+const SecondDiv = styled.div`
+  display: flex;
+  align-items: center;
+  @media (min-width: 300px) and (max-width: 780px) {
+    // display: block;
+    margin-top: 10px;
+  }
+`;
+const FirstDiv = styled.div`
+  display: flex;
+  @media (min-width: 300px) and (max-width: 767px) {
+  }
+`;
 const DateSpan = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   font-size: 13px;
   font-family: "Inter";
   font-weight: 600;
+  margin-left: 8px;
 `;
 const DatePickerDiv = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -363,6 +440,11 @@ const DatePickerDiv = styled.div`
 
   input:focus {
     border: none !important;
+  }
+  @media (min-width: 400px) and (max-width: 780px) {
+    width: 100%;
+    max-width: 230px;
+    margin-top: 10px;
   }
 `;
 const Input = styled.input`
@@ -400,17 +482,20 @@ const DisplayNone = styled.div`
 const Back = styled.span`
   text-align: left;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0px;
-  color: #909090;
-  opacity: 1;
+
+  font-size: 17px;
+
+  color: #ffffff;
 `;
 const PagingDiv = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+
+  margin-top: 35px;
   margin-bottom: 20px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    display: block;
+  }
 `;
 const Span = styled.span`
   text-align: left;
@@ -421,7 +506,7 @@ const Span = styled.span`
   color: #3b3b3b;
   opacity: 1;
   display: flex;
-  padding-left: 6px;
+  padding-left: 8px;
   padding-top: 2px;
 `;
 const Show = styled.span`
@@ -432,14 +517,14 @@ const Show = styled.span`
   font-size: 12px;
   letter-spacing: 0px;
   color: #3b3b3b;
-  opacity: 1;
   align-items: center;
+  margin-right: 10px;
 `;
 const Block = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
   border-radius: 4px;
-  opacity: 1;
+
   width: 25px;
   height: 22px;
   margin-left: 8px;
@@ -447,6 +532,7 @@ const Block = styled.div`
   font-weight: 600;
   font-size: 12px;
 `;
+
 const NextBlock = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
@@ -456,7 +542,7 @@ const NextBlock = styled.div`
   height: 22px;
   margin-left: 8px;
 `;
-const Properties = styled.span`
+const Proposals = styled.span`
   display: flex;
   text-align: left;
   font-family: "Inter", sans-serif;
@@ -510,6 +596,12 @@ const RedLine = styled.div`
 const SelectBox = styled.div`
   display: flex;
   align-items: center;
+  @media (min-width: 300px) and (max-width: 1038px) {
+    display: block;
+  }
+  @media (min-width: 300px) and (max-width: 780px) {
+    margin-top: 10px;
+  }
 `;
 const Failed = styled.span`
   font-family: "Inter", sans-serif;
@@ -522,8 +614,10 @@ const Failed = styled.span`
 `;
 const InputDiv = styled.div`
   display: flex;
-  @media (min-width: 300px) and (max-width: 1038px) {
-    display: none;
+  @media (min-width: 300px) and (max-width: 780px) {
+    display: block;
+    margin-top: 10px;
+    margin-left: -9px;
   }
 `;
 
@@ -557,8 +651,12 @@ const ClockImage = styled.img`
 `;
 const Div = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #e3e7eb;
+  // border: 1px solid #e3e7eb;
   height: auto;
+  border-radius: 0 0 10px 10px;
+  border-top: 1px solid #e3e7eb;
+  border-left: 1px solid #e3e7eb;
+  border-right: 1px solid #e3e7eb;
 `;
 const Posted = styled.span`
   text-align: left;
@@ -601,6 +699,7 @@ const Button = styled.button`
   whitespace: "nowrap";
   width: 100%;
   max-width: 90px;
+  margin-top: 8px;
   @media (min-width: 250px) and (max-width: 767px) {
     font-size: 12px;
     width: 100%;
@@ -628,6 +727,8 @@ const Status = styled.span`
   font-size: 14px;
   letter-spacing: 0px;
   opacity: 1;
+  color: #2a2a2a;
+
   whitespace: "nowrap";
   @media (min-width: 300px) and (max-width: 767px) {
     font-size: 12px;

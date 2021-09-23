@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import FooterComponent from "../footer/footerComponent";
 import Paper from "@material-ui/core/Paper";
+import { history } from "../../managers/history";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     maxWidth: "970px",
     position: "absolute",
-    top: "150px",
+    top: "215px",
+
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
       maxWidth: "300px",
@@ -73,6 +75,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CommunityPage() {
+  const backButton = () => {
+    history.push("/");
+  };
   React.useEffect(() => {
     let address = [
       {
@@ -135,6 +140,16 @@ export default function CommunityPage() {
       <div className={classes.mainContainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
+            <div
+              style={{ marginBottom: "11px", cursor: "pointer" }}
+              onClick={backButton}
+            >
+              <img
+                src="/images/Back-Arrow.svg"
+                style={{ width: "15px", marginRight: "8px" }}
+              />
+              <Back>Back</Back>
+            </div>
             <Spacing>
               <Container>
                 <Heading>Community Tools</Heading>
@@ -290,6 +305,12 @@ const RowDiv = styled.div`
   flex-flow: row nowrap;
   width: 100%;
   justify-content: center;
+`;
+const Back = styled.span`
+  text-align: left;
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  color: #ffffff;
 `;
 
 const Span = styled.span`
