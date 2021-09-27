@@ -696,7 +696,7 @@ font-family: 'Inter';
     display: flex;
     justify-content: center;
     position: absolute;
-    
+    border-top: 1px solid #E3E7EB;
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -935,7 +935,7 @@ text-align: center;
  }
  .main-footer{
      margin-top:800px;
-     border: .5px solid #E3E7EB;
+     /* border: .5px solid #E3E7EB; */
  }
  .recent-proposal-div-footer{
    
