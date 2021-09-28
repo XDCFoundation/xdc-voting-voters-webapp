@@ -11,6 +11,7 @@ import "../../assets/styles/custom.css";
 import FooterComponent from "../footer/footerComponent";
 import Utility from "../../utility/index";
 import AddNewProposalLive from "../../services/proposalService";
+import { history } from "../../managers/history";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         maxWidth: "970px",
         position: "absolute",
-        top: "190px",
+        top: "154px",
         width: "100%",
         "@media (min-width: 300px) and (max-width: 567px)": {
             maxWidth: "300px",
@@ -313,14 +314,26 @@ const Headerdiv = styled.div`
   background: #2049b9 0% 0% no-repeat padding-box;
   position: relative;
 `;
+const Back = styled.span`
+  text-align: left;
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  color: #ffffff;
+`;
 
 export default function Createnewproposal(props) {
+
+    const backButton = () => {
+        history.push("/");
+      }
     const [proposalTitle, setProposalTitle] = useState("");
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [description, setDescription] = useState("");
     const [uploadDocument, setUploadDocument] = useState("");
 
+
+    
     const createNewProposal = async () => {
         const reqObj = {
             proposalTitle: proposalTitle,
@@ -382,6 +395,16 @@ export default function Createnewproposal(props) {
             <div className={classes.maincontainer}>
                 <div className={classes.root}>
                     <Grid item xs={12}>
+                    <div
+              style={{ marginBottom: "11px", cursor: "pointer" }}
+              onClick={backButton}
+            >
+              <img
+                src="/images/Back-Arrow.svg"
+                style={{ width: "15px", marginRight: "8px" }}
+              />
+              <Back>Back</Back>
+            </div>
                         <div className={classes.div}>
                             <Grid className={classes.heading} xs={4}>
                                 Create New Proposal
