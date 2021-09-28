@@ -377,7 +377,7 @@ export default function Createnewproposal(props) {
     };
     const response = await AddNewProposalLive(reqObj);
     // const [err, response] = await AddNewProposalLive(reqObj);
-    // props.createProposal(reqObj);
+    props.createProposal(reqObj);
   };
 
   // React.useEffect(() => {
