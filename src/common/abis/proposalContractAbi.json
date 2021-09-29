@@ -25,11 +25,15 @@
         },
         {
           "name": "",
-          "type": "string"
+          "type": "uint256"
         },
         {
           "name": "",
-          "type": "string"
+          "type": "uint256"
+        },
+        {
+          "name": "",
+          "type": "uint256"
         },
         {
           "name": "",
@@ -133,19 +137,23 @@
           "type": "string"
         },
         {
-          "name": "_endDate",
-          "type": "string"
+          "name": "_startDate",
+          "type": "uint256"
         },
         {
-          "name": "_startDate",
-          "type": "string"
+          "name": "_endDate",
+          "type": "uint256"
+        },
+        {
+          "name": "_postedDate",
+          "type": "uint256"
         },
         {
           "name": "_description",
           "type": "string"
         },
         {
-          "name": "_documentURL",
+          "name": "_documentURLs",
           "type": "string"
         },
         {

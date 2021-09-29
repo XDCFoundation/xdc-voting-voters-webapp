@@ -1,17 +1,31 @@
 {
   "abi": [
     {
-      "constant": false,
-      "inputs": [
+      "constant": true,
+      "inputs": [],
+      "name": "get_list_of_whitelisted_address",
+      "outputs": [
         {
-          "name": "_address",
-          "type": "address"
+          "name": "",
+          "type": "address[]"
         }
       ],
-      "name": "add_whitelist_address",
-      "outputs": [],
       "payable": false,
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "get_total_passed_proposals",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -22,19 +36,23 @@
           "type": "string"
         },
         {
-          "name": "_endDate",
-          "type": "string"
+          "name": "_startDate",
+          "type": "uint256"
         },
         {
-          "name": "_startDate",
-          "type": "string"
+          "name": "_endDate",
+          "type": "uint256"
+        },
+        {
+          "name": "_postedDate",
+          "type": "uint256"
         },
         {
           "name": "_description",
           "type": "string"
         },
         {
-          "name": "_documentURL",
+          "name": "_documentURLs",
           "type": "string"
         },
         {
@@ -53,37 +71,9 @@
       "type": "function"
     },
     {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "addr",
-          "type": "address"
-        }
-      ],
-      "name": "delete_whitelisted_address",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
       "constant": true,
       "inputs": [],
       "name": "created_Proposal_list",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "get_list_of_whitelisted_address",
       "outputs": [
         {
           "name": "",
@@ -110,7 +100,15 @@
         },
         {
           "name": "",
-          "type": "string"
+          "type": "uint256"
+        },
+        {
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "name": "",
+          "type": "uint256"
         },
         {
           "name": "",
@@ -123,10 +121,6 @@
         {
           "name": "",
           "type": "bool"
-        },
-        {
-          "name": "",
-          "type": "address"
         }
       ],
       "payable": false,
@@ -134,17 +128,31 @@
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [],
-      "name": "get_total_passed_proposals",
-      "outputs": [
+      "constant": false,
+      "inputs": [
         {
-          "name": "",
-          "type": "uint256"
+          "name": "addr",
+          "type": "address"
         }
       ],
+      "name": "delete_whitelisted_address",
+      "outputs": [],
       "payable": false,
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "add_whitelist_address",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
       "type": "function"
     }
   ]

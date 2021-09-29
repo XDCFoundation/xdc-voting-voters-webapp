@@ -16,6 +16,10 @@ html, body {
     padding-top: 6px;
 }
 
+.p-t-sm{
+    padding-top: 10px;
+}
+
 .p-l-sm{
     padding-left: 10px;
 }
@@ -23,6 +27,26 @@ html, body {
 
 .m-b-4{
     margin-bottom: 4px;
+}
+
+.m-t-4{
+    margin-top: 4px;
+}
+
+.m-l-4{
+    margin-left: 4px;
+}
+
+.width-27{
+    width: 27px;
+}
+
+.height-27{
+    height: 27px;
+}
+
+.flex-direction-column{
+    flex-direction: column;
 }
 
 .header-div{
