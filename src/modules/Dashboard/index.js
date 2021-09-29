@@ -27,9 +27,13 @@ export default class Dashboard extends BaseComponent {
     getContractAddresses = async () => {
         let web3;
         web3 = new Web3(window.web3.currentProvider);
+        console.log(window.web3.currentProvider)
         window.ethereum.enable();
-        const contract = new web3.eth.Contract(masterContractAbi, "0x2de1e22971ae076ad311ceac235abd82066862f3");
-        const createProposalResponse = await contract.methods.created_Proposal_list().call()
+        const contract = new web3.eth.Contract(masterContractAbi, "0x89CfE6bb2a708A336dEBcD8A6DE028146Ab1f841");
+        const createProposalResponse = await contract.methods.created_Proposal_list().call().catch(err => {
+            console.log(err,"====")
+        })
+        console.log(createProposalResponse,"====")
         return createProposalResponse;
     }
 
@@ -45,21 +49,21 @@ export default class Dashboard extends BaseComponent {
         }
         proposals.length = 4;
         proposals =  this.parseProposalList(proposals);
+        console.log(proposals,"proposals===")
         this.setState({proposals})
     }
 
     parseProposalList =  (proposals) => {
+        console.log(proposals, "proposals === ")
         proposals = proposals.map( proposal => {
             proposal.title = proposal["0"]
-            proposal.startDate = proposal["2"]
-            proposal.endDate = proposal["1"]
-            proposal.postedOn = moment(proposal["2"], "YYYY-M-D").format("DD MMM YYYY")
-            proposal.description = proposal["3"]
-            proposal.documentURL = proposal["4"]
-            proposal.status = this.getStatus(proposal["1"])
-            proposal.timeRemaining = this.timeRemaining(proposal["1"], proposal.status)
-            proposal.passedVoteCount = proposal.status !== "Open" ? 0 : 0
-            proposal.failVoteCount = proposal.status !== "Open" ? 0 : 0
+            proposal.startDate = proposal["1"]
+            proposal.endDate = proposal["2"]
+            proposal.postedOn = moment(Number(proposal["3"])).format("DD MMM YYYY")
+            proposal.description = proposal["4"]
+            proposal.documentURLs = proposal["5"]
+            proposal.status = this.getStatus(Number(proposal["2"]), proposal.passedVoteCount, proposal.failVoteCount)
+            proposal.timeRemaining = this.timeRemaining(Number(proposal["2"]), proposal.status)
             return proposal;
         })
         return proposals;
@@ -70,7 +74,10 @@ export default class Dashboard extends BaseComponent {
         web3 = new Web3(window.web3.currentProvider);
         window.ethereum.enable();
         const contract = new web3.eth.Contract(proposalContractAbi, address);
-        return await contract.methods.get_yes_voter_list().call();
+        const count = await contract.methods.get_yes_voter_list().call();
+        if(count <= 0)
+            return 0;
+        return count;
     }
 
     getFailedVote = async (address, status) => {
@@ -78,21 +85,27 @@ export default class Dashboard extends BaseComponent {
         web3 = new Web3(window.web3.currentProvider);
         window.ethereum.enable();
         const contract = new web3.eth.Contract(proposalContractAbi, address);
-        return await contract.methods.get_no_voter_list().call();
+        const count = await contract.methods.get_no_voter_list().call();
+        if(count <= 0)
+            return 0;
+        return count;
     }
 
     timeRemaining = (date, status) => {
         if (status === "Open") {
-            const endTime = moment(date, "YYYY-MM-DD").add(1, 'days');
+            const endTime = moment(date).add(1, 'days');
             return moment.duration(endTime.diff(moment())).humanize()
         }
     }
 
-    getStatus = (endDate) => {
-        endDate = moment(endDate, "YYYY-MM-DD").add(1, 'days').unix();
+    getStatus = (endDate, passVotesCount, failVotesCount) => {
+        endDate = moment(endDate).add(1, 'days').unix();
         if (Date.now() < endDate * 1000)
             return "Open"
-        return "Passed";
+        if(passVotesCount < failVotesCount)
+         return "Failed";
+        else
+            return "Passed"
     }
 
     getProposalInfoByAddress = async (address) => {
