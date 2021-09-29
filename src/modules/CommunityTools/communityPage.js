@@ -357,7 +357,7 @@ const Div = styled.div`
   padding: 46px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
-  // borderradius: 6px;
+  border-radius: 0% 0% 6px 6px;
   opacity: 1;
 `;
 
