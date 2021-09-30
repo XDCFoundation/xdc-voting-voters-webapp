@@ -351,7 +351,7 @@ export default function Createnewproposal(props) {
   const handleQuillChange = (event) => {
     setDescription(event);
   };
-  const uploadFile = (event) => {
+  const uploadFile = () => {
     inputFile.current.click();
   };
 
@@ -365,8 +365,6 @@ export default function Createnewproposal(props) {
       pollingContract: "0011",
       status: "pending",
     };
-    // const response = await AddNewProposalLive(reqObj);
-    // const [err, response] = await AddNewProposalLive(reqObj);
     props.createProposal(reqObj);
   };
 
@@ -495,21 +493,23 @@ export default function Createnewproposal(props) {
                                 >
                                   {doc}
                                 </div>
-                                <BrowseButton for={"fileButton" + index}>
+                                <BrowseButton for={"fileButton"+index}>
                                   Browse File
                                   <input
                                     ref={inputFile}
-                                    id={"fileButton" + index}
-                                    name={"fileButton" + index}
+                                    id={"fileButton"+index}
+                                    name="fileButton"
                                     type="file"
                                     multiple={false}
                                     accept="*"
-                                    style={{ visibility: "hidden" }}
-                                    onChange={(e) =>
+                                    style={{ display: "none" }}
+                                    onChange={(e) => {
+                                      console.log(index,"+++")
                                       props.uploadFileToS3(
-                                        e.target.files[0],
-                                        index
+                                          e.target.files[0],
+                                          index
                                       )
+                                    }
                                     }
                                   />
                                 </BrowseButton>
@@ -551,7 +551,7 @@ export default function Createnewproposal(props) {
     </div>
   );
 }
-const BrowseButton = styled.button`
+const BrowseButton = styled.label`
   color: var(--unnamed-color-2149b9);
   text-align: center;
   letter-spacing: 0px;
@@ -562,6 +562,8 @@ const BrowseButton = styled.button`
   border: 1px solid #2049b9;
   border-radius: 4px;
   opacity: 1;
+  padding-left: 6px;
+  padding-right: 6px;
   margin-top: 4px;
   margin-bottom: 4px;
   margin-right: 3px;

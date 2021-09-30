@@ -19,6 +19,6 @@ export const httpConstants = {
     WEB: "web",
   },
   API_END_POINT: {
-    ADD_NEW_PROPOSAL: "/add-new-proposal",
+    ADD_NEW_PROPOSAL: "add-proposal",
   },
 };
