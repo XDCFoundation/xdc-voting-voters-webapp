@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Inter",
     fontWeight: "600",
     marginLeft: "8px",
+    color: "#2A2A2A",
   },
   row: {
     border: "1px solid #E3E7EB",
@@ -128,8 +129,9 @@ const useStyles = makeStyles((theme) => ({
     border: "0px",
     outline: "0px",
     fontSize: "13px",
-    color: "#2149b9",
+    // color: "#2A2A2A",
     fontWeight: "600",
+    color: "#2149B9",
   },
 }));
 const Container = styled.div`
@@ -148,7 +150,7 @@ const SecondContainer = styled.div`
 
 export default function ViewAllProposal() {
   const backButton = () => {
-    history.push("/community");
+    history.push("/");
   };
   React.useEffect(() => {
     let address = [
@@ -386,7 +388,7 @@ export default function ViewAllProposal() {
                 <Proposals>Proposals </Proposals>
               </FirstDiv>
               <SecondDiv>
-                <Back>Back</Back>
+                <BackButton>Back</BackButton>
                 <Block>
                   <Span>1 </Span>
                 </Block>
@@ -482,10 +484,18 @@ const DisplayNone = styled.div`
 const Back = styled.span`
   text-align: left;
   font-family: "Inter", sans-serif;
-
   font-size: 17px;
-
   color: #ffffff;
+`;
+const BackButton = styled.button`
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e3e7eb;
+  border-radius: 4px;
+  text-align: left;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0px;
+  color: #909090;
 `;
 const PagingDiv = styled.div`
   display: flex;
@@ -727,7 +737,7 @@ const Status = styled.span`
   font-size: 14px;
   letter-spacing: 0px;
   opacity: 1;
-  color: #3B3B3B;
+  color: #3b3b3b;
 
   whitespace: "nowrap";
   @media (min-width: 300px) and (max-width: 767px) {
@@ -764,7 +774,7 @@ const NumberOfVotes = styled.span`
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 14px;
-  color: #2A2A2A;
+  color: #2a2a2a;
   @media (min-width: 300px) and (max-width: 767px) {
     font-size: 12px;
   }
