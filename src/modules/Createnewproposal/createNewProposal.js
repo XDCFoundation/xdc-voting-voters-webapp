@@ -66,8 +66,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "4px",
     opacity: "1",
     width: "95%",
-    height: "35px",
+    height: "30px",
     fontSize: "12px",
+
     whiteSpace: "nowrap",
 
     "@media (min-width: 300px) and (max-width: 767px)": {
@@ -82,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #E3E7EB",
     borderRadius: "4px",
     opacity: "1",
-    height: "35px",
+    height: "30px",
     fontSize: "10px",
     width: "100%",
     maxWidth: "295px",
@@ -107,7 +108,6 @@ const useStyles = makeStyles((theme) => ({
     color: "#2a2a2a",
     paddingLeft: "21px",
     paddingTop: "7px",
-
     fontSize: "12px",
     whiteSpace: "nowrap",
     "@media (min-width: 300px) and (max-width: 767px)": {
@@ -142,7 +142,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "4px",
 
     fontSize: "10px",
-    height: "35px",
+    height: "30px",
     width: "100%",
     maxWidth: "295px",
 
@@ -184,7 +184,6 @@ const useStyles = makeStyles((theme) => ({
     font: "normal normal normal 15px/19px Inter",
     letterSpacing: "0px",
     color: "#2a2a2a",
-
     fontSize: "12px",
     paddingTop: "50px",
     paddingLeft: "21px",
@@ -200,13 +199,12 @@ const useStyles = makeStyles((theme) => ({
   },
 
   quillgrid: {
-    paddingTop: "47px",
     background: "#FFFFFF 0% 0% no-repeat padding-box",
-    marginLeft: "2px",
+    maxWidth: "766px",
     borderRadius: "6px",
-    paddingRight: "45px",
     width: "100%",
-    // height: "215px",
+    border: "1px solid #e3e7eb",
+    marginTop: "47px",
   },
 
   row: {
@@ -270,7 +268,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "4px",
     opacity: "1",
     width: "90%",
-    height: "35px",
+    height: "30px",
     fontSize: "10px",
     textAlign: "right",
   },
@@ -561,10 +559,12 @@ const BrowseButton = styled.button`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #2049b9;
   border-radius: 4px;
-  opacity: 1;
-  margin-top: 4px;
-  margin-bottom: 4px;
+
+  margin-top: 3px;
+  margin-bottom: 3px;
   margin-right: 3px;
+  width: 100%;
+  max-width: 120px;
 `;
 const Textarea = styled.textarea`
   width: 100%;
