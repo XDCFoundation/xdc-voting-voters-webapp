@@ -13,7 +13,8 @@ import Utility from "../../utility/index";
 import AddNewProposalLive from "../../services/proposalService";
 import { history } from "../../managers/history";
 import ReactQuill from "react-quill";
-
+import DatePicker from "react-multi-date-picker";
+import TextField from "@material-ui/core/TextField";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -32,6 +33,19 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 767px) and (max-width: 1040px)": {
       maxWidth: "700px",
     },
+  },
+  containerOne: {
+    display: "flex",
+    flexWrap: "wrap",
+    fontSize: "13px",
+  },
+  textField: {
+    marginRight: theme.spacing.unit,
+    width: 200,
+    background: "#FFFFFF 0% 0% no-repeat padding-box",
+    border: "1px solid #E3E7EB",
+    borderRadius: "4px",
+    fontSize: "12px",
   },
   container: {
     width: "100%",
@@ -369,6 +383,7 @@ export default function Createnewproposal(props) {
   };
 
   const classes = useStyles();
+  const [value, onChange] = useState(new Date());
   return (
     <div>
       <Headerdiv>
@@ -415,12 +430,37 @@ export default function Createnewproposal(props) {
                 </Grid>
 
                 <Grid xs={6} className={classes.gridSix}>
-                  <input
+                  {/* <input
                     className={classes.startdateinput}
                     type="date"
                     onChange={(e) => setStartDate(e.target.value)}
                     value={startDate}
-                  />
+                  /> */}
+                  {/* <DateDiv>
+                    <DatePicker
+                      // className={classes.startdateinput}
+                      arrow={true}
+                      // format="D MMM YYYY"
+                      onChange={onChange}
+                      value={value}
+                    />
+                    <img
+                      src="/images/Calendar.svg"
+                      style={{ width: "18px", marginLeft: "150px" }}
+                    />
+                  </DateDiv> */}
+
+                  <form className={classes.containerOne} noValidate>
+                    <TextField
+                      id="date"
+                      type="date"
+                      // defaultValue="2017-05-24"
+                      className={classes.textField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
+                  </form>
                 </Grid>
 
                 <Grid xs={1} className={classes.enddate}>
@@ -428,12 +468,23 @@ export default function Createnewproposal(props) {
                 </Grid>
 
                 <Grid xs={5}>
-                  <input
+                  {/* <input
                     className={classes.enddateinput}
                     type="date"
                     onChange={(e) => setEndDate(e.target.value)}
                     value={endDate}
-                  />
+                  /> */}
+                  <form className={classes.containerOne} noValidate>
+                    <TextField
+                      id="date"
+                      type="date"
+                      // defaultValue="2017-05-24"
+                      className={classes.textField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
+                  </form>
                 </Grid>
               </div>
               <Mobile>
@@ -549,6 +600,13 @@ export default function Createnewproposal(props) {
     </div>
   );
 }
+const DateDiv = styled.div`
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e3e7eb;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 350px;
+`;
 const BrowseButton = styled.button`
   color: var(--unnamed-color-2149b9);
   text-align: center;

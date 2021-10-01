@@ -58,8 +58,8 @@ const useStyles = makeStyles((theme) => ({
       top: "65px",
     },
     "@media (min-width: 767px) and (max-width: 2080px)": {
-      maxWidth: "700px",
-      top: "183px",
+      // maxWidth: "700px",
+      top: "189px",
       maxWidth: "970px",
     },
   },
@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
     // height: "53px",
     background: "#FFFFFF 0% 0% no-repeat padding-box",
     justifyContent: "space-between",
-    padding: "24px",
+    padding: "20px 17px",
     borderTopLeftRadius: "4px",
     borderTopRightRadius: "4px",
 
@@ -456,7 +456,7 @@ const Input = styled.input`
   font-weight: 600;
 `;
 const MainContainer = styled.div`
-  padding: 11px 24px;
+  padding: 20px 17px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
