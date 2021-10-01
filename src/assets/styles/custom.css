@@ -593,7 +593,7 @@ font-size: 15px;
 .create-wallet p{
 
     padding-top: 4px;
-    padding-left: 10px;
+    padding-left: 12px;
  
 text-align: center;
 font: normal normal medium 15px/19px Inter;
@@ -660,7 +660,7 @@ background: #1841B2 0% 0% no-repeat padding-box;
 border-radius: 6px;
 opacity: 1;
 
-margin-inline-end: 10px;
+margin-inline-end: 20px;
 
 }
 .header-right{
