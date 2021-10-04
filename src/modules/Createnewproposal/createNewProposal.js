@@ -359,6 +359,8 @@ export default function Createnewproposal(props) {
   const [endDate, setEndDate] = useState("");
   const [description, setDescription] = useState("");
   const [uploadDocument, setUploadDocument] = useState("");
+  const [open, setOpen] = useState(false);
+
   const inputFile = React.createRef();
   const handleQuillChange = (event) => {
     setDescription(event);
@@ -366,7 +368,10 @@ export default function Createnewproposal(props) {
   const uploadFile = () => {
     inputFile.current.click();
   };
-
+  const handleOpen = () => {
+    setOpen(true);
+    console.log({ open });
+  };
   const createNewProposal = async () => {
     const reqObj = {
       proposalTitle: proposalTitle,
@@ -433,19 +438,29 @@ export default function Createnewproposal(props) {
                     type="date"
                     onChange={(e) => setStartDate(e.target.value)}
                     value={startDate}
-                    min="<?= date('m-d-y'); ?>"
+                   
                   /> */}
                   <DateDiv>
                     <DatePicker
                       // className={classes.startdateinput}
                       arrow={true}
                       minDate={new Date()}
+                      // onOpen={() => open}
+                      onOpen={() => open}
+                      dateFormat="yyyy/MM/dd"
                       onChange={onChange}
+                      placeholderText="MM/DD/YYYY"
                       value={value}
+                      style={{
+                        color: "black",
+                        fontWeight: "normal",
+                        // pointerEvents: "none",
+                      }}
                     />
                     <img
                       src="/images/Calendar.svg"
                       style={{ width: "18px", marginLeft: "150px" }}
+                      onClick={() => handleOpen()}
                     />
                   </DateDiv>
                 </Grid>
@@ -467,12 +482,21 @@ export default function Createnewproposal(props) {
                       // className={classes.startdateinput}
                       arrow={true}
                       onChange={onChange}
+                      onOpen={true}
                       value={value}
+                      dateFormat="yyyy/MM/dd"
                       minDate={new Date()}
+                      placeholderText="MM/DD/YYYY"
+                      style={{
+                        color: "black",
+                        fontWeight: "normal",
+                        // pointerEvents: "none",
+                      }}
                     />
                     <img
                       src="/images/Calendar.svg"
                       style={{ width: "18px", marginLeft: "150px" }}
+                      onClick={setOpen}
                     />
                   </DateDiv>
                 </Grid>
@@ -591,7 +615,13 @@ export default function Createnewproposal(props) {
     </div>
   );
 }
-const DateDiv = styled.div``;
+const DateDiv = styled.div`
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e3e7eb;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 345px;
+`;
 const BrowseButton = styled.label`
   color: var(--unnamed-color-2149b9);
   text-align: center;
