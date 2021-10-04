@@ -12,7 +12,76 @@ import { history } from "../../managers/history";
 import divBlockComponent from "./divComponent";
 import styled from "styled-components";
 
-export default function RecentProposal(props) {
+export default function RecentProposal() {
+  const handleProposalDetails = () => {
+    history.push("/proposal-details");
+  };
+  React.useEffect(() => {
+    let address = [
+      {
+        Date: "Posted on 2 July 2021",
+        Name: "XDC-ABC Bootstrapping Partnership Proposal",
+        Status: "Open",
+        Poll: "Poll Ended",
+        Bar: "Line",
+        Vote: "145 votes",
+        id: 1,
+      },
+      {
+        Date: "Posted on 24 June 2021",
+        Name: "Adding more features to XDC Explorer 2.0",
+        Status: "Passed",
+        Poll: "Poll Ended",
+        Bar: "Line",
+        Vote: "120 votes",
+        id: 2,
+      },
+      {
+        Date: "Posted on 16 June 2021",
+        Name: "Relaunch of XinFin.org website",
+        Status: "Failed",
+        Poll: "Poll Ended",
+        Bar: "Line",
+        Vote: "135 votes",
+        id: 3,
+      },
+      {
+        Date: "Posted on 24 June 2021",
+        Name: "Launching NFT Marketplace to increase circulation of XDC",
+        Status: "Passed",
+        Poll: "Poll Ended",
+        Bar: "Line",
+        Vote: "125 votes",
+        id: 4,
+      },
+      {
+        Date: "Posted on 24 June 2021",
+        Name: "Partnership with Circle Stable Coin",
+        Status: "Passed",
+        Poll: "Poll Ended",
+        Bar: "Line",
+        Vote: "89 votes",
+        id: 5,
+      },
+    ];
+
+    setAddress(
+      address.map((d) => {
+        return {
+          select: false,
+          Date: d.Date,
+          Name: d.Name,
+          Status: d.Status,
+          Poll: d.Poll,
+          Bar: d.Bar,
+          Vote: d.Vote,
+          id: d.id,
+        };
+      })
+    );
+  }, []);
+
+  const [address, setAddress] = React.useState([]);
 
   return (
     <div>
@@ -25,26 +94,28 @@ export default function RecentProposal(props) {
           >
             <TableHead></TableHead>
             <TableBody>
-              {props.proposals.map((proposal, index) => {
+              {address.map((row, index) => {
                 return (
                   <TableRow className="table-mid-line">
                     <Row className="table-between">
                       <Column>
                         <TableCell style={{ border: "none" }}>
-                          <Row className="date">Posted on {proposal["postedOn"]}</Row>
-                          <Row className="name">{proposal["title"]} </Row>
+                          <Row className="date">{row.Date}</Row>
+
+                          <Row className="name">{row.Name} </Row>
                           <Row className="status">
-                            <p>Status: &nbsp;</p>
+                            <p>Status: </p>
+
                             <span
                               className={
-                                proposal.status === "Open"
+                                row.Status === "Open"
                                   ? "fc-blue"
-                                  : proposal.status === "Passed"
+                                  : row.Status === "Passed"
                                   ? "fc-green"
                                   : "fc-red"
                               }
                             >
-                              {proposal.status}
+                              {row.Status}
                             </span>
                           </Row>
                         </TableCell>
@@ -55,26 +126,32 @@ export default function RecentProposal(props) {
                           className="mobile-div-right"
                           style={{ border: "none" }}
                         >
-                          {proposal.status === "Open" ? (
+                          {row.Status == "Open" ? (
                             <>
                               <Row>
+                                <Span style={{ marginRight: "-150px" }}>
+                                  01:50:48 Remaining
+                                </Span>
                                 <span style={{ marginRight: "5px" }}>
                                   {" "}
                                   <img
                                     style={{
                                       height: "14px",
-                                      width: "14px"
+                                      width: "14px",
+                                      marginTop: "-3px",
                                     }}
-                                    className="m-b-4"
+                                    className="time-inactive"
                                     src={require("../../assets/styles/images/Time-Active.svg")}
-                                  />
+                                  ></img>
                                 </span>
-                                <Span>
-                                  {proposal.timeRemaining} Remaining
-                                </Span>
                               </Row>
                               <Row>
-                                <div className="details">Details</div>
+                                <div
+                                  onClick={handleProposalDetails}
+                                  className="details"
+                                >
+                                  Details
+                                </div>
                               </Row>
                             </>
                           ) : (
@@ -93,7 +170,7 @@ export default function RecentProposal(props) {
                                     src={require("../../assets/styles/images/Time-Inactive.svg")}
                                   ></img>
                                 </span>{" "}
-                                Poll Ended
+                                {row.Poll}
                               </Row>
                               <Row className="percent-line">
                                 <div className="bar-line">
@@ -101,7 +178,7 @@ export default function RecentProposal(props) {
                                   <div className="line-2"></div>
                                 </div>{" "}
                               </Row>
-                              <Row className="vote-number">{proposal.passedVoteCount + proposal.failVoteCount} votes</Row>
+                              <Row className="vote-number">{row.Vote}</Row>
                             </>
                           )}
                         </TableCell>
