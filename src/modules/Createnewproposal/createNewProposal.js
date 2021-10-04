@@ -363,7 +363,7 @@ export default function Createnewproposal(props) {
   const handleQuillChange = (event) => {
     setDescription(event);
   };
-  const uploadFile = (event) => {
+  const uploadFile = () => {
     inputFile.current.click();
   };
 
@@ -377,8 +377,6 @@ export default function Createnewproposal(props) {
       pollingContract: "0011",
       status: "pending",
     };
-    // const response = await AddNewProposalLive(reqObj);
-    // const [err, response] = await AddNewProposalLive(reqObj);
     props.createProposal(reqObj);
   };
 
@@ -541,17 +539,18 @@ export default function Createnewproposal(props) {
                                   <input
                                     ref={inputFile}
                                     id={"fileButton" + index}
-                                    name={"fileButton" + index}
+                                    name="fileButton"
                                     type="file"
                                     multiple={false}
                                     accept="*"
-                                    style={{ visibility: "hidden" }}
-                                    onChange={(e) =>
+                                    style={{ display: "none" }}
+                                    onChange={(e) => {
+                                      console.log(index, "+++");
                                       props.uploadFileToS3(
                                         e.target.files[0],
                                         index
-                                      )
-                                    }
+                                      );
+                                    }}
                                   />
                                 </BrowseButton>
                               </div>
@@ -592,14 +591,8 @@ export default function Createnewproposal(props) {
     </div>
   );
 }
-const DateDiv = styled.div`
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #e3e7eb;
-  border-radius: 4px;
-  width: 100%;
-  max-width: 350px;
-`;
-const BrowseButton = styled.button`
+const DateDiv = styled.div``;
+const BrowseButton = styled.label`
   color: var(--unnamed-color-2149b9);
   text-align: center;
   letter-spacing: 0px;
@@ -609,9 +602,11 @@ const BrowseButton = styled.button`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #2049b9;
   border-radius: 4px;
-
-  margin-top: 3px;
-  margin-bottom: 3px;
+  opacity: 1;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-top: 4px;
+  margin-bottom: 4px;
   margin-right: 3px;
   width: 100%;
   max-width: 120px;
