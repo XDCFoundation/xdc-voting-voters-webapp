@@ -435,12 +435,13 @@ export default function Createnewproposal(props) {
                     type="date"
                     onChange={(e) => setStartDate(e.target.value)}
                     value={startDate}
+                    min="<?= date('m-d-y'); ?>"
                   /> */}
-                  {/* <DateDiv>
+                  <DateDiv>
                     <DatePicker
                       // className={classes.startdateinput}
                       arrow={true}
-                      // format="D MMM YYYY"
+                      minDate={new Date()}
                       onChange={onChange}
                       value={value}
                     />
@@ -448,19 +449,7 @@ export default function Createnewproposal(props) {
                       src="/images/Calendar.svg"
                       style={{ width: "18px", marginLeft: "150px" }}
                     />
-                  </DateDiv> */}
-
-                  <form className={classes.containerOne} noValidate>
-                    <TextField
-                      id="date"
-                      type="date"
-                      // defaultValue="2017-05-24"
-                      className={classes.textField}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </form>
+                  </DateDiv>
                 </Grid>
 
                 <Grid xs={1} className={classes.enddate}>
@@ -474,17 +463,20 @@ export default function Createnewproposal(props) {
                     onChange={(e) => setEndDate(e.target.value)}
                     value={endDate}
                   /> */}
-                  <form className={classes.containerOne} noValidate>
-                    <TextField
-                      id="date"
-                      type="date"
-                      // defaultValue="2017-05-24"
-                      className={classes.textField}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
+
+                  <DateDiv>
+                    <DatePicker
+                      // className={classes.startdateinput}
+                      arrow={true}
+                      onChange={onChange}
+                      value={value}
+                      minDate={new Date()}
                     />
-                  </form>
+                    <img
+                      src="/images/Calendar.svg"
+                      style={{ width: "18px", marginLeft: "150px" }}
+                    />
+                  </DateDiv>
                 </Grid>
               </div>
               <Mobile>
