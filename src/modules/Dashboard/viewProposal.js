@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "12px",
     border: "0px",
     outline: "0px",
-    height: "30px",
+    height: "31px",
     fontFamily: "Inter",
     fontWeight: "600",
     marginLeft: "8px",
@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
     border: "solid 1px #aab1ff",
     color: "#09184b",
     backgroundSize: "14px",
-    paddingLeft: "20px",
+    padding: "16px 22px",
     border: "1px solid #E3E7EB",
     borderRadius: "4px",
     opacity: 1,
@@ -147,8 +147,15 @@ const SecondContainer = styled.div`
     display: block;
   }
 `;
+function ProgressBar() {
+  return (
+    <div>
+      <ViewAllProposal name="deepali" />
+    </div>
+  );
+}
 
-export default function ViewAllProposal() {
+export default function ViewAllProposal(props) {
   const backButton = () => {
     history.push("/");
   };
@@ -223,7 +230,7 @@ export default function ViewAllProposal() {
   }, []);
 
   const [address, setAddress] = React.useState([]);
-
+  ProgressBar();
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
   return (
@@ -284,7 +291,7 @@ export default function ViewAllProposal() {
             </Row>
 
             <Div>
-              <MainContainer>
+              <MainContainer isTextArea={true}>
                 <Column>
                   <RowSpacing>
                     <Posted>Posted on 24 June 2021</Posted>
@@ -316,7 +323,7 @@ export default function ViewAllProposal() {
               </MainContainer>
               {address.map((data) => {
                 return (
-                  <MainContainer>
+                  <MainContainer isTextArea={true}>
                     <Column>
                       <RowSpacing>
                         <Posted>{data.date}</Posted>
@@ -331,7 +338,7 @@ export default function ViewAllProposal() {
                           <Content>{data.name}</Content>
                           <PositionDivLine>
                             <BarLine>
-                              <GreenLine></GreenLine>
+                              <GreenLine>{props.name}</GreenLine>
                               <RedLine></RedLine>
                             </BarLine>
                           </PositionDivLine>
@@ -457,7 +464,12 @@ const Input = styled.input`
 `;
 const MainContainer = styled.div`
   padding: 20px 17px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: ${(props) =>
+    props.isTextArea ? `1px solid rgba(0, 0, 0, 0.1);` : `unset`};
+  // border-radius: 6px;
+
+  border-radius: ${(props) => (props.isTextArea ? `6px;` : `unset`)};
 `;
 
 const RowSpacing = styled.div`
