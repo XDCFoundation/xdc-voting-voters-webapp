@@ -85,9 +85,6 @@ export default function ProposalDetails() {
   const handleClickVoter = () => {
     history.push("/voterslist");
   };
-  const backButton = () => {
-    history.push("/");
-  };
 
   const handleCloseDailog = () => {
     setOpen3(true);
@@ -108,22 +105,9 @@ export default function ProposalDetails() {
         {" "}
         <HeaderMain />
       </div>
-     
       <Column>
-     
         <div className="all-div-proposal">
-       
           <Column>
-          <div
-             className="back-image"
-              onClick={backButton}
-            >
-              <img
-                src="/images/Back-Arrow.svg"
-                style={{ width: "15px" }}
-              />
-              <div className="back-button">Back</div>
-            </div>
             <div className="recent-proposal-div-proposal">
               <Row className="recent-add-div-proposal">
                 <Column>

@@ -357,7 +357,7 @@ const Div = styled.div`
   padding: 46px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
-  // borderradius: 6px;
+  borderradius: 6px;
   opacity: 1;
 `;
 
@@ -367,7 +367,7 @@ const Heading = styled.span`
   color: #2a2a2a;
   opacity: 1;
   box-shadow: none;
-
+  color: var(--unnamed-color-2a2a2a);
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 18px;
