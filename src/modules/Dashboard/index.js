@@ -3,8 +3,11 @@ import BaseComponent from "../baseComponent";
 import RecentProposal from "./recentProposal";
 import Web3 from 'web3';
 import moment from "moment";
+import Loader from "../../assets/styles/images/NewLoader.gif";
 
-const {extname} = require('path');
+
+
+const { extname } = require('path');
 
 let proposalContractAbi = require('../../common/abis/proposalContractAbi.json').abi;
 let masterContractAbi = require('../../common/abis/masterContractAbi.json').abi;
@@ -14,14 +17,22 @@ export default class Dashboard extends BaseComponent {
         super(props);
         this.state = {
             proposalDocuments: [],
-            proposals: []
+            proposals: [],
+            isLoader: false,
         }
     }
 
+
     async componentDidMount() {
         const proposalsAddresses = await this.getContractAddresses();
-        this.getProposalsData(proposalsAddresses);
+        await this.getProposalsData(proposalsAddresses);
+
+        this.setState({ isLoader: true })
+
+
     }
+
+
 
 
     getContractAddresses = async () => {
@@ -31,9 +42,20 @@ export default class Dashboard extends BaseComponent {
         window.ethereum.enable();
         const contract = new web3.eth.Contract(masterContractAbi, "0x89CfE6bb2a708A336dEBcD8A6DE028146Ab1f841");
         const createProposalResponse = await contract.methods.created_Proposal_list().call().catch(err => {
-            console.log(err,"====")
+            console.log(err, "====")
         })
-        console.log(createProposalResponse,"====")
+        console.log(createProposalResponse, "====")
+
+
+        // this.setState({isLoader:true})
+        //    if(createProposalResponse){
+        //     this.setState({isLoader:true}) 
+
+        //     console.log(createProposalResponse,"loaderrrrrrrrrrrrrrrrrrrrrrrrrrr");
+        //    }
+        //    else{
+
+        //    }
         return createProposalResponse;
     }
 
@@ -48,14 +70,14 @@ export default class Dashboard extends BaseComponent {
             proposals.push(proposalDetails)
         }
         proposals.length = 4;
-        proposals =  this.parseProposalList(proposals);
-        console.log(proposals,"proposals===")
-        this.setState({proposals})
+        proposals = this.parseProposalList(proposals);
+        console.log(proposals, "proposals===")
+        this.setState({ proposals })
     }
 
-    parseProposalList =  (proposals) => {
+    parseProposalList = (proposals) => {
         console.log(proposals, "proposals === ")
-        proposals = proposals.map( proposal => {
+        proposals = proposals.map(proposal => {
             proposal.title = proposal["0"]
             proposal.startDate = proposal["1"]
             proposal.endDate = proposal["2"]
@@ -75,7 +97,7 @@ export default class Dashboard extends BaseComponent {
         window.ethereum.enable();
         const contract = new web3.eth.Contract(proposalContractAbi, address);
         const count = await contract.methods.get_yes_voter_list().call();
-        if(count <= 0)
+        if (count <= 0)
             return 0;
         return count;
     }
@@ -86,7 +108,7 @@ export default class Dashboard extends BaseComponent {
         window.ethereum.enable();
         const contract = new web3.eth.Contract(proposalContractAbi, address);
         const count = await contract.methods.get_no_voter_list().call();
-        if(count <= 0)
+        if (count <= 0)
             return 0;
         return count;
     }
@@ -102,8 +124,8 @@ export default class Dashboard extends BaseComponent {
         endDate = moment(endDate).add(1, 'days').unix();
         if (Date.now() < endDate * 1000)
             return "Open"
-        if(passVotesCount < failVotesCount)
-         return "Failed";
+        if (passVotesCount < failVotesCount)
+            return "Failed";
         else
             return "Passed"
     }
@@ -119,11 +141,14 @@ export default class Dashboard extends BaseComponent {
 
     render() {
         return (
-            <div>
-                <RecentProposal
-                    proposals={this.state.proposals}
-                />
-            </div>
+            <>
+                {this.state.isLoader == false ? <img className="load" src={Loader} /> : <div>
+                    <RecentProposal
+                        proposals={this.state.proposals}
+                    />
+                </div>
+                }
+            </>
         );
     }
 }
