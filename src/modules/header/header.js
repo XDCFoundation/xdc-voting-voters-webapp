@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { Column, Row } from "simple-flexbox";
 import styled from "styled-components";
 import { history } from "../../managers/history";
+import ReactDOM from "react-dom";
+import { DAppProvider } from "@usedapp/core";
+import App from "../../App";
+
 
 export default function HeaderMain() {
   const reDirect = () => {
     history.push("/");
-  };
+  };  
   return (
     <div>
       <Row className="row-1">
@@ -23,12 +27,8 @@ export default function HeaderMain() {
             </Column>
           </Row>
         </Column>
-        <Column>
-          <div className="connect-wallet">
-            <div className="circle"></div>
-
-            <p>Connect Wallet</p>
-          </div>
+        <Column>                       
+          <React.StrictMode> <DAppProvider config={{}}> <App /> </DAppProvider> </React.StrictMode>         
         </Column>
       </Row>
     </div>

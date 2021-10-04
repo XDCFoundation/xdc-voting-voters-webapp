@@ -7,7 +7,6 @@ import {Provider} from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import './assets/styles/custom.css';
 
-
 function LIMBApp() {
     return (
         <BrowserRouter>

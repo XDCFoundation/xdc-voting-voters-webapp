@@ -17,7 +17,6 @@ import Voter from "./modules/Voterlist";
 import ProposalDetails from "./modules/Dashboard/proposalDetails";
 class Routes extends BaseComponent {
   componentDidMount() {}
-
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
