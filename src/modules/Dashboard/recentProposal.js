@@ -14,6 +14,13 @@ import styled from "styled-components";
 
 export default function RecentProposal(props) {
 
+  const proposalRedirect =()=>{
+    history.push('/proposal-details');
+  }
+  const handleView = () => {
+    history.push("/view-all-proposals");
+  };
+
   return (
     <div>
       <Grid lg={13} className="tablegrid_address">
@@ -27,6 +34,7 @@ export default function RecentProposal(props) {
             <TableBody>
               {props.proposals.map((proposal, index) => {
                 return (
+                
                   <TableRow className="table-mid-line">
                     <Row className="table-between">
                       <Column>
@@ -74,7 +82,7 @@ export default function RecentProposal(props) {
                                 </Span>
                               </Row>
                               <Row>
-                                <div className="details">Details</div>
+                                <div className="details" onClick={proposalRedirect}>Details</div>
                               </Row>
                             </>
                           ) : (
@@ -107,9 +115,16 @@ export default function RecentProposal(props) {
                         </TableCell>
                       </Column>
                     </Row>
+                    
                   </TableRow>
+                 
+                 
                 );
+                
               })}
+              <Row onClick={handleView} className="view-all">
+              View All Proposals
+            </Row>
             </TableBody>
           </Table>
         </Grid>

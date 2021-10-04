@@ -348,6 +348,9 @@ opacity: 1;
     .mobile-rightdiv{
         margin-top: 103%;
     }
+    img.load{
+        margin-left: 150px !important;
+    }
     .proposalpage-footer{
         margin-top: 450px;
     }
@@ -1359,11 +1362,23 @@ margin-left: 58px;
 .quill-editor{
     height:130px !important;
 }
+.load{
+    /* width: 30px;
+    height: 30px; */
+}
+img.load{
+    /* width: 25vw; */
+    display: flex;
+    justify-content: center;
+   /* margin-left: 22vw; */
+    margin-left: 260px;
+   
+}
 
 .view-all{
-    height: 30px;
+    height: 40px;
     align-items: center;
-    margin-top: -31px;
+    /* margin-top: -63px; */
     justify-content: center;
     cursor: pointer;
     letter-spacing: 0px;
