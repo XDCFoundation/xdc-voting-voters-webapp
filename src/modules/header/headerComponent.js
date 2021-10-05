@@ -11,9 +11,7 @@ import DivBlocksComponent from "../Dashboard/divComponent";
 import FooterComponent from "../footer/footerComponent";
 
 export default function Header() {
-  const handleView = () => {
-    history.push("/view-all-proposals");
-  };
+ 
   const createView = () => {
     history.push("/create");
   };
@@ -74,9 +72,9 @@ export default function Header() {
               <RecentProposal />
             </div>
 
-            <Row onClick={handleView} className="view-all">
+            {/* <Row onClick={handleView} className="view-all">
               View All Proposals
-            </Row>
+            </Row> */}
 
             <div>
               <DivBlocksComponent />
