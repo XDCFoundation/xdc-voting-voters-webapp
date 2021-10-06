@@ -72,7 +72,7 @@ export default function Header(props) {
       console.log(err);
     });
 
-    setGetTotalVoting(response.countData);
+    setGetTotalVoting(response.length);
 
   }
 
