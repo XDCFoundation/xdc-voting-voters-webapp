@@ -447,7 +447,7 @@ export default function Createnewproposal(props) {
                       minDate={new Date()}
                       // onOpen={() => open}
                       onOpen={() => open}
-                      dateFormat="yyyy/MM/dd"
+                      // dateFormat="yyyy/MM/dd"
                       onChange={onChange}
                       placeholderText="MM/DD/YYYY"
                       value={value}
@@ -473,7 +473,7 @@ export default function Createnewproposal(props) {
                   {/* <input
                     className={classes.enddateinput}
                     type="date"
-                    onChange={(e) => setEndDate(e.target.value)}
+                    // onChange={(e) => setEndDate(e.target.value)}
                     value={endDate}
                   /> */}
 
@@ -487,6 +487,7 @@ export default function Createnewproposal(props) {
                       dateFormat="yyyy/MM/dd"
                       minDate={new Date()}
                       placeholderText="MM/DD/YYYY"
+                      // onChange={(e) => setEndDate(e.target.value)}
                       style={{
                         color: "black",
                         fontWeight: "normal",
