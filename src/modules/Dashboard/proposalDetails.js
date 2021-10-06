@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Column, Row } from "simple-flexbox";
 import "../../assets/styles/custom.css";
 import TableCell from "@material-ui/core/TableCell";
@@ -19,6 +19,10 @@ import { makeStyles, mergeClasses } from "@material-ui/styles";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { PieChart } from "react-minimal-pie-chart";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import Utils from "../../utility";
+import { ProposalService } from "../../services/index";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -30,7 +34,57 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProposalDetails() {
+export default function ProposalDetails(props) {
+  const { proposal } = useParams();
+
+  const [transactions, setTransactions] = useState([]);
+  // useEffect(() => {
+  //   transactionDetail();
+  // }, []);
+  // const transactionDetail = async () => {
+  //   let urlPath = `/${proposal}`;
+  //   let [error, ProposalDetail] = await Utils.parseResponse(
+  //     TransactionService.getProposalDetail(urlPath, {})
+  //   );
+  //   if (error || !ProposalDetail) return;
+  //   setTransactions(ProposalDetail);
+  // };
+  // useEffect(() => {
+  //       // setPageNumber((pagecount)/10);
+  //       getDetails();
+        
+  //     }, []);
+
+  // const getDetails = async () => {
+  //      const response = await ProposalService().catch(err => {
+  //        console.log(err);
+  //      });
+   
+  //      setTransactions(response.countData);
+   
+  //    }
+  useEffect(async () => {
+    let urlPath = `/${proposal}`;
+
+    let [error, ProposalDetail] = await Utils.parseResponse(
+     ProposalService.getProposalDetail(urlPath, {})
+    );
+
+    if (error || !ProposalDetail) return;
+
+    setTransactions(ProposalDetail);
+
+    const interval = setInterval(async () => {
+      let [error, ProposalDetail] = await Utils.parseResponse(
+       ProposalService.getProposalDetail(urlPath, {})
+      );
+
+      setTransactions(ProposalDetail);
+    }, 45000);
+  }, []);
+
+  console.log("transaction====", transactions);
+
   React.useEffect(() => {
     let address = [
       {
@@ -108,20 +162,12 @@ export default function ProposalDetails() {
         {" "}
         <HeaderMain />
       </div>
-     
+
       <Column>
-     
         <div className="all-div-proposal">
-       
           <Column>
-          <div
-             className="back-image"
-              onClick={backButton}
-            >
-              <img
-                src="/images/Back-Arrow.svg"
-                style={{ width: "15px" }}
-              />
+            <div className="back-image" onClick={backButton}>
+              <img src="/images/Back-Arrow.svg" style={{ width: "15px" }} />
               <div className="back-button">Back</div>
             </div>
             <div className="recent-proposal-div-proposal">
