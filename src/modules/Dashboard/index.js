@@ -7,6 +7,7 @@ import Loader from "../../assets/styles/images/NewLoader.gif";
 
 
 
+
 const { extname } = require('path');
 
 let proposalContractAbi = require('../../common/abis/proposalContractAbi.json').abi;
