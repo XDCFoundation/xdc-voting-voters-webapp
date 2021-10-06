@@ -19,7 +19,13 @@ import { makeStyles, mergeClasses } from "@material-ui/styles";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { PieChart } from "react-minimal-pie-chart";
+import Web3 from "web3";
+import Utils from "../../utility";
 
+// let masterContractAbi = require("../../common/abis/masterContractAbi.json").abi;
+
+let proposalContractAbi =
+  require("../../common/abis/proposalContractAbi.json").abi;
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -72,9 +78,11 @@ export default function ProposalDetails() {
   }, []);
 
   const [address, setAddress] = React.useState([]);
+  const [option, setOption] = React.useState("");
+  const [votingTime, setVotingTime] = React.useState("");
   const [open3, setOpen3] = React.useState(false);
   const [isButtonClicked, setIsButtonClicked] = React.useState(false);
-
+  const [count, setCount] = React.useState(0);
   function shorten(b, amountL = 13, amountR = 3, stars = 3) {
     return `${b.slice(0, amountL)}${".".repeat(stars)}${b.slice(
       b.length - 5,
@@ -98,30 +106,62 @@ export default function ProposalDetails() {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen3(false);
   };
 
+  const castProposalVote = async (reqData) => {
+    // const reqObj = {
+    //   option: reqData._option,
+    //   votingTime: new Date(reqData._votingTime).getTime(),
+    // };
+    console.log("reqData", reqData);
+    let web3;
+    web3 = new Web3(window.web3.currentProvider);
+    console.log(window.web3.currentProvider);
+    window.ethereum.enable();
+
+    web3.eth.getAccounts().then(async (accounts) => {
+      if (!accounts || !accounts.length) {
+        Utils.apiFailureToast("Please login to Xinpay extension");
+        return;
+      }
+      const contract = new web3.eth.Contract(
+        proposalContractAbi,
+        "0x3821145c2C71d2062627efacab2e21684b26C07d"
+      );
+      console.log("contract", contract);
+      // debugger;
+      const acc = accounts[0];
+      console.log("account", accounts);
+      const castProposalResponse = await contract.methods
+        .cast_vote_for_proposal(true, Date.now())
+        .send({ from: acc })
+        .catch((err) => {
+          console.log(err, "error in votecast");
+        })
+        .then(async (response) => {
+          console.log("response data after vote", response);
+        });
+      console.log("methods in contract====>", contract.methods);
+      setOpen3(true);
+      setIsButtonClicked(true);
+      // this.setState({ open3: true, isButtonClicked: true });
+      console.log("castProposalResponse", castProposalResponse);
+      return castProposalResponse;
+    });
+  };
   return (
     <div>
       <div className="header-div-all">
         {" "}
         <HeaderMain />
       </div>
-     
+
       <Column>
-     
         <div className="all-div-proposal">
-       
           <Column>
-          <div
-             className="back-image"
-              onClick={backButton}
-            >
-              <img
-                src="/images/Back-Arrow.svg"
-                style={{ width: "15px" }}
-              />
+            <div className="back-image" onClick={backButton}>
+              <img src="/images/Back-Arrow.svg" style={{ width: "15px" }} />
               <div className="back-button">Back</div>
             </div>
             <div className="recent-proposal-div-proposal">
@@ -167,19 +207,6 @@ export default function ProposalDetails() {
                       style={{ boxShadow: "0px 0px 0px 0px" }}
                     >
                       <Column className="text-main">
-                        {/* <div className="details-content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Quisque venenatis magna at sem consectetur, vitae ultrices sem molestie. Maecenas vitae dolor eu lectus maximus ultrices. Curabitur vestibulum nec quam in dictum. Duis malesuada iaculis dapibus mauris blandit rhonc:
-                                                1. Proin a tristique augue integer mauris magna. 2. Vivamus tempus dapibus lectus ac rutrum.
-                                                3. Duis malesuada iaculis dapibus. Maecenas id arcu lacus. Integer arcu ligula, tristique vitae bibendum ac, ultrices id diam. Aliquam vel est scelerisque, volutpat felis id, cursus erat.
-                                                Vestibulum consectetur, orci in convallis tempor, ligula augue ullamcorper nibh, id pulvinar lectus libero sed nulla. Ut egestas justo urna, et euismod nibh tristique sed.
-                                                Pellentesque tristique enim egestas lorem imperdiet, id lobortis odio auctor. Suspendisse sodales sagittis libero. Vivamus in ullamcorper eros, a luctus mauris. Nulla facilisi.
-                                                Fusce viverra turpis vulputate eros faucibus, quis consectetur leo egestas. Proin placerat arcu ac dui placerat commodo. Curabitur mollis orci augue, vitae porttitor risus euismod eu. Ut nec posuere arcu. Vivamus pulvinar arcu et faucibus maximus. Duis malesuada iaculis dapibus.
-                                                Mauris blandit rhoncus tellus rutrum tempor. In pretium nulla eget dolor molestie, non lobortis lorem tempus. Aenean ullamcorper urna non nisi tempor auctor. Suspendisse et ipsum bibendum, malesuada diam eget, congue erat. Duis lobortis elementum gravida. Sed ut dapibus arcu. Cras porttitor iaculis sapien eu fringilla. Cras in ligula urna.
-                                                Vestibulum feugiat convallis felis ac dignissim. Duis placerat velit quam, vitae imperdiet elit maximus vel. Nam tincidunt ultricies ultrices. Nullam ac odio convallis dui volutpat luctus. Morbi luctus ornare pellentesque. Praesent rhoncus lectus id suscipit cursus. Morbi purus metus, tempor quis eleifend vitae, lacinia sit amet urna. Proin egestas ipsum quis tellus fermentum finibus et non urna.
-                                            </div> */}
-                        {/* {parse(
-                                                '<body><Row>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis magna at sem consectetur, vitae ultrices sem molestie. Maecenas vitae dolor eu lectus maximus ultrices. Curabitur vestibulum nec quam in dictum. Duis malesuada iaculis dapibus mauris blandit rhonc: 1. Proin a tristique augue integer mauris magna. 2. Vivamus tempus dapibus lectus ac rutrum. 3. Duis malesuada iaculis dapibus. Maecenas id arcu lacus. Integer arcu ligula, tristique vitae bibendum ac, ultrices id diam. Aliquam vel est scelerisque, volutpat felis id, cursus erat. Vestibulum consectetur, orci in convallis tempor, ligula augue ullamcorper nibh, id pulvinar lectus libero sed nulla. Ut egestas justo urna, et euismod nibh tristique sed. Pellentesque tristique enim egestas lorem imperdiet, id lobortis odio auctor. Suspendisse sodales sagittis libero. Vivamus in ullamcorper eros, a luctus mauris. Nulla facilisi. Fusce viverra turpis vulputate eros faucibus, quis consectetur leo egestas. Proin placerat arcu ac dui placerat commodo. Curabitur mollis orci augue, vitae porttitor risus euismod eu. Ut nec posuere arcu. Vivamus pulvinar arcu et faucibus maximus. Duis malesuada iaculis dapibus. Mauris blandit rhoncus tellus rutrum tempor. In pretium nulla eget dolor molestie, non lobortis lorem tempus. Aenean ullamcorper urna non nisi tempor auctor. Suspendisse et ipsum bibendum, malesuada diam eget, congue erat. Duis lobortis elementum gravida. Sed ut dapibus arcu. Cras porttitor iaculis sapien eu fringilla. Cras in ligula urna. Vestibulum feugiat convallis felis ac dignissim. Duis placerat velit quam, vitae imperdiet elit maximus vel. Nam tincidunt ultricies ultrices. Nullam ac odio convallis dui volutpat luctus. Morbi luctus ornare pellentesque. Praesent rhoncus lectus id suscipit cursus. Morbi purus metus, tempor quis eleifend vitae, lacinia sit amet urna. Proin egestas ipsum quis tellus fermentum finibus et non urna.</Row></body>')} */}
-                        {/* {parse(` */}
                         <Row className="heading-1">
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Quisque venenatis magna at sem consectetur,
@@ -303,7 +330,10 @@ export default function ProposalDetails() {
                   </div>
                   <div className="button-div-support">
                     <button
-                      onClick={handleCloseDailog}
+                      onClick={() => {
+                        handleCloseDailog();
+                        castProposalVote(true);
+                      }}
                       className="support-button"
                     >
                       Yes, I support
@@ -311,7 +341,14 @@ export default function ProposalDetails() {
                   </div>
                   <div className="button-div-support">
                     {" "}
-                    <button className="reject-button">No, I Reject</button>
+                    <button
+                      onClick={() => {
+                        castProposalVote(false);
+                      }}
+                      className="reject-button"
+                    >
+                      No, I Reject
+                    </button>
                   </div>
                 </div>
               ) : (
