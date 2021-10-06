@@ -25,7 +25,7 @@ class Routes extends BaseComponent {
           <Switch>
             <Route exact path={"/"} component={Header} />
             <Route exact path={"/view-all-proposals"} component={AllProposal} />
-            <Route exact path={"/proposal-details"} component={ProposalDetails} />
+            <Route exact path={"/proposal-details/:proposal"} component={ProposalDetails} />
             <Route exact path={"/sign-up"} component={SignUp} />
             <Route exact path={"/create"} component={Createproposal} />
             <Route exact path={"/voterslist"} component={Voter} />
