@@ -70,7 +70,6 @@ export default function FooterComponent() {
                     </Column>
                   </Column>
                 </Row>
-
                 <Row className="mobile-footer-row-1">
                   <Column className="footer-column3">
                     <Row className="footer-column-heading">
