@@ -17,10 +17,10 @@ export async function addNewProposal(reqObj) {
 }
 
 
- async function getProposalDetail(reqObj) {
+ async function getProposalDetail() {
     const url = process.env.REACT_APP_GET_VOTERS_LIST_BY_PROPOSAL ;
     return httpService(
-        httpConstants.METHOD_TYPE.POST, {"Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON},reqObj, url)
+        httpConstants.METHOD_TYPE.POST, {"Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON},{"proposalTitle":"Testing"}, url)
         .then((response) => {
             if (!response.success || response.responseCode !== 200 || !response.responseData || response.responseData.length === 0)
                 return Promise.reject();

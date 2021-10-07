@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ProposalDetails(props) {
   const { proposal } = useParams();
 
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useState({});
   // useEffect(() => {
   //   transactionDetail();
   // }, []);
@@ -52,36 +52,59 @@ export default function ProposalDetails(props) {
   // useEffect(() => {
   //       // setPageNumber((pagecount)/10);
   //       getDetails();
-        
+
   //     }, []);
 
   // const getDetails = async () => {
   //      const response = await ProposalService().catch(err => {
   //        console.log(err);
   //      });
-   
+
   //      setTransactions(response.countData);
-   
+
   //    }
-  useEffect(async () => {
-    let urlPath = `/${proposal}`;
 
-    let [error, ProposalDetail] = await Utils.parseResponse(
-     ProposalService.getProposalDetail(urlPath, {})
-    );
+  // useEffect(async () => {
+  //   let urlPath = `/${proposal}`;
 
-    if (error || !ProposalDetail) return;
+  //   let [error, ProposalDetail] = await Utils.parseResponse(
+  //    ProposalService.getProposalDetail(urlPath, {})
+  //   );
 
-    setTransactions(ProposalDetail);
+  //   if (error || !ProposalDetail) return;
 
-    const interval = setInterval(async () => {
-      let [error, ProposalDetail] = await Utils.parseResponse(
-       ProposalService.getProposalDetail(urlPath, {})
-      );
+  //   setTransactions(ProposalDetail);
 
-      setTransactions(ProposalDetail);
-    }, 45000);
-  }, []);
+  //   const interval = setInterval(async () => {
+  //     let [error, ProposalDetail] = await Utils.parseResponse(
+  //      ProposalService.getProposalDetail(urlPath, {})
+  //     );
+
+  //     setTransactions(ProposalDetail);
+  //   }, 45000);
+  // }, []);
+
+  fetch(
+    "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getSingleProposalDetail",
+    {
+      "method": "GET",
+
+      "headers": {
+        "proposalTitle": "Testing",
+        "content-type": "application/json",
+         "accept": "application/json",
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      //console.log("result===",res.data.responseData)
+      setTransactions(res);
+    })
+
+    .catch((err) => {
+      console.log(err);
+    });
 
   console.log("transaction====", transactions);
 
