@@ -5,7 +5,7 @@ import { history } from "../../managers/history";
 import ReactDOM from "react-dom";
 import { DAppProvider } from "@usedapp/core";
 import App from "../../App";
-
+//import { XdcConnect, Disconnect } from "xdc-connect";
 
 export default function HeaderMain() {
   const reDirect = () => {
