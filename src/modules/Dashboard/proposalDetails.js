@@ -23,6 +23,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Utils from "../../utility";
 import { ProposalService } from "../../services/index";
+import moment from "moment";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -36,65 +37,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ProposalDetails(props) {
   const { proposal } = useParams();
+  
 
-  const [transactions, setTransactions] = useState({});
-  // useEffect(() => {
-  //   transactionDetail();
-  // }, []);
-  // const transactionDetail = async () => {
-  //   let urlPath = `/${proposal}`;
-  //   let [error, ProposalDetail] = await Utils.parseResponse(
-  //     TransactionService.getProposalDetail(urlPath, {})
-  //   );
-  //   if (error || !ProposalDetail) return;
-  //   setTransactions(ProposalDetail);
-  // };
-  // useEffect(() => {
-  //       // setPageNumber((pagecount)/10);
-  //       getDetails();
+  const [transactions, setTransactions] = useState([]);
 
-  //     }, []);
-
-  // const getDetails = async () => {
-  //      const response = await ProposalService().catch(err => {
-  //        console.log(err);
-  //      });
-
-  //      setTransactions(response.countData);
-
-  //    }
-
-  // useEffect(async () => {
-  //   let urlPath = `/${proposal}`;
-
-  //   let [error, ProposalDetail] = await Utils.parseResponse(
-  //    ProposalService.getProposalDetail(urlPath, {})
-  //   );
-
-  //   if (error || !ProposalDetail) return;
-
-  //   setTransactions(ProposalDetail);
-
-  //   const interval = setInterval(async () => {
-  //     let [error, ProposalDetail] = await Utils.parseResponse(
-  //      ProposalService.getProposalDetail(urlPath, {})
-  //     );
-
-  //     setTransactions(ProposalDetail);
-  //   }, 45000);
-  // }, []);
+  
 
   fetch(
-    "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getSingleProposalDetail",
-    {
-      "method": "GET",
+    "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getProposalDetail/"+proposal,
 
-      "headers": {
-        "proposalTitle": "Testing",
-        "content-type": "application/json",
-         "accept": "application/json",
-      },
-    }
   )
     .then((res) => res.json())
     .then((res) => {
@@ -106,7 +57,35 @@ export default function ProposalDetails(props) {
       console.log(err);
     });
 
-  console.log("transaction====", transactions);
+  
+
+  // useEffect(async () => {
+  //   let urlPath = `/${proposal}`;
+
+  //   let [error, proposalDetail] = await Utils.parseResponse(
+  //     ProposalService.getProposalDetail(urlPath, {})
+  //   );
+
+  //   if (error || !proposalDetail) return;
+
+  //   setTransactions(proposalDetail);
+
+  //   const interval = setInterval(async () => {
+  //     let [error, proposalDetail] = await Utils.parseResponse(
+  //       ProposalService.getProposalDetail(urlPath, {})
+  //     );
+
+  //     setTransactions(proposalDetail);
+  //   }, 45000);
+  // }, []);
+
+  
+
+  console.log("transaction====", transactions?.responseData);
+  let detail= transactions?.responseData?.proposalTitle
+  let time= transactions?.responseData?.createdOn
+  let formatedTime=moment(time).format('LL');
+  let statusDetail = transactions?.responseData?.status
 
   React.useEffect(() => {
     let address = [
@@ -196,12 +175,12 @@ export default function ProposalDetails(props) {
             <div className="recent-proposal-div-proposal">
               <Row className="recent-add-div-proposal">
                 <Column>
-                  <Row className="date-proposal">Posted on 2 July 2021</Row>
+                  <Row className="date-proposal">Posted on {formatedTime}</Row>
                   <Row className="name-proposal">
-                    XDC-ABC Bootstrapping Partnership Proposal{" "}
+                   {detail}{" "}
                   </Row>
                   <Row className="status-proposal">
-                    Status: <span>Open</span>{" "}
+                    Status: <span>{statusDetail}</span>{" "}
                   </Row>
                 </Column>
                 <Column>

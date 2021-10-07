@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,  useEffect} from "react";
 import { Column, Row } from "simple-flexbox";
 import "../../assets/styles/custom.css";
 import HeaderMain from "../header/header";
@@ -9,6 +9,9 @@ import styled from "styled-components";
 import "./datepicker.css";
 import FooterComponent from "../footer/footerComponent";
 import { history } from "../../managers/history";
+import { useParams } from "react-router-dom";
+import Utils from "../../utility";
+import { ProposalService } from "../../services/index";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -148,6 +151,53 @@ const SecondContainer = styled.div`
 `;
 
 export default function ViewAllProposal() {
+  const { proposal } = useParams();
+
+  const [transactions, setTransactions] = useState({});
+
+  // useEffect(async () => {
+  //   let urlPath = `/${proposal}`;
+
+  //   let [error, ProposalDetail] = await Utils.parseResponse(
+  //    ProposalService.getProposalDetail(urlPath, {})
+  //   );
+
+  //   if (error || !ProposalDetail) return;
+
+  //   setTransactions(ProposalDetail);
+
+  //   const interval = setInterval(async () => {
+  //     let [error, ProposalDetail] = await Utils.parseResponse(
+  //      ProposalService.getProposalDetail(urlPath, {})
+  //     );
+
+  //     setTransactions(ProposalDetail);
+  //   }, 45000);
+  // }, []);
+
+  // fetch(
+  //   "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getProposalDetail/615c2dcc1d5ed80035e2dcb8",
+  //   {
+  //     "method": "GET",
+
+  //     "headers": {
+  //       "proposalTitle": "Testing",
+  //       "content-type": "application/json",
+  //        "accept": "application/json",
+  //     },
+  //   }
+  // )
+  //   .then((res) => res.json())
+  //   .then((res) => {
+  //     //console.log("result===",res.data.responseData)
+  //     setTransactions(res);
+  //   })
+
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+
+  //   console.log("transaction====", transactions);
   const backButton = () => {
     history.push("/community");
   };
@@ -295,10 +345,15 @@ export default function ViewAllProposal() {
                   </RowSpacing>
                   <RowSpacing>
                     <Content>
-                      XDC-ABC Bootstrapping Partnership Proposal
+                      XDC-ABC Bootstrapping Partnership Proposal...
                     </Content>
 
-                    <Button>Details</Button>
+                    {/* <Button>Details</Button> */}
+
+                    <a href={"/proposal-details/"+"615c31771d5ed80035e2dcca"}>
+                                <button className="details" >Details</button>
+                                </a>
+
                   </RowSpacing>
                   <Container>
                     <Status>Status:&ensp;</Status>
