@@ -2,10 +2,8 @@ import { httpService } from "../utility/httpService";
 import { httpConstants } from "../constants";
 
 export default addNewProposalLive;
-
 async function addNewProposalLive(reqObj) {
   const url = process.env.REACT_APP_PROPOSAL_SVC;
-
   return httpService(
     httpConstants.METHOD_TYPE.POST,
     { "Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON },
@@ -20,7 +18,6 @@ async function addNewProposalLive(reqObj) {
         response.responseData.length === 0
       )
         return Promise.reject();
-      console.log("respnse data is", response.responseData);
       return Promise.resolve(response.responseData);
     })
     .catch(function (err) {
