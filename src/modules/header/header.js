@@ -1,18 +1,43 @@
 import React, { useState } from "react";
+import { XdcConnect, Disconnect } from "xdc-connect";
 import { Column, Row } from "simple-flexbox";
 import styled from "styled-components";
 import { history } from "../../managers/history";
-import ReactDOM from "react-dom";
-import { DAppProvider } from "@usedapp/core";
-import App from "../../App";
-//import { XdcConnect, Disconnect } from "xdc-connect";
+import { makeStyles } from "@material-ui/core/styles/";
 
-export default function HeaderMain() {
-  const reDirect = () => {
-    history.push("/");
-  };  
-  return (
-    <div>
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  buttondiv: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "6px",
+    marginRight: "12px",
+  },
+  btnCss: {
+    background: "#ffffff 0% 0% no-repeat padding-box !important",
+    color: "#2149b9!important",    
+  },
+  circle: {
+    borderRadius: "50%",
+    width: "10px",
+    height: "10px",
+    background: "##ffffff 0% 0% no-repeat padding-box",
+    marginRight: "43px",
+    marginLeft: "10px",
+  },
+}));
+
+function Header() {
+const classes = useStyles();
+const [wallet, setwallet] = useState({});
+console.log("wallet", wallet);
+const reDirect = () => {
+  history.push("/");
+};
+return (
+  <div>
       <Row className="row-1">
         <Column>
           <Row>
@@ -27,10 +52,18 @@ export default function HeaderMain() {
             </Column>
           </Row>
         </Column>
-        <Column>                       
-          <React.StrictMode> <DAppProvider config={{}}> <App /> </DAppProvider> </React.StrictMode>         
+        <Column>            
+   <div className={classes.buttondiv}>               
+     <XdcConnect
+       btnClass={  wallet.connected  ? classes.btnCss   : classes.btnCss  }
+       btnName={wallet.connected ? wallet.address : "Connect wallet"}
+       onConnect={(wallet) => { setwallet(wallet); }} onDisconnect={(wallet) => { setwallet(wallet);}} />
+     {/* {wallet.connected ? <button onClick={Disconnect}>Logout</button> : ""} */}
+  </div>
         </Column>
       </Row>
     </div>
-  );
+ );
 }
+export default Header;
+

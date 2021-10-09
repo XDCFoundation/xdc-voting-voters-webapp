@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles/";
 import Grid from "@material-ui/core/Grid";
 import { Row, Column } from "simple-flexbox";
 import styled from "styled-components";
+import Quill from "quill";
 import "react-quill/dist/quill.snow.css";
 import "react-quill/dist/quill.bubble.css";
 import HeaderMain from "../header/header";
@@ -10,8 +11,8 @@ import "../../assets/styles/custom.css";
 import FooterComponent from "../footer/footerComponent";
 import Utility from "../../utility/index";
 import AddNewProposalLive from "../../services/proposalService";
-import ReactQuill from "react-quill";
 import { history } from "../../managers/history";
+import ReactQuill from "react-quill";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,7 +58,6 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "0px",
     color: "#2a2a2a",
     opacity: "1",
-    whiteSpace: "nowrap",
   },
   line: { width: "100%" },
   proposalinput: {
@@ -101,7 +101,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
   proposaltitle: {
-    color: "var(--unnamed-color-2a2a2a)",
     textAlign: "left",
     font: "normal normal normal 15px/19px Inter",
     letterSpacing: "0px",
@@ -120,7 +119,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   startdate: {
-    color: "var(--unnamed-color-2a2a2a)",
     textAlign: "left",
     font: "normal normal normal 15px/19px Inter",
     letterSpacing: "0px",
@@ -159,7 +157,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   enddate: {
-    color: "var(--unnamed-color-2a2a2a)",
     textAlign: "left",
     letterSpacing: "0px",
     color: "#2a2a2a",
@@ -183,7 +180,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   description: {
-    color: "var(--unnamed-color-2a2a2a)",
     textAlign: "left",
     font: "normal normal normal 15px/19px Inter",
     letterSpacing: "0px",
@@ -223,7 +219,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
   upload: {
-    color: "var(--unnamed-color-2a2a2a)",
     textAlign: "left",
     font: "normal normal normal 15px/19px Inter",
     letterSpacing: "0px",
@@ -350,32 +345,29 @@ export default function Createnewproposal(props) {
   const [proposalTitle, setProposalTitle] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [discription, setdiscription] = useState("");
+  const [description, setDescription] = useState("");
   const [uploadDocument, setUploadDocument] = useState("");
   const inputFile = React.createRef();
-
   const handleQuillChange = (event) => {
-    setdiscription(event);
+    setDescription(event);
   };
   const uploadFile = (event) => {
     inputFile.current.click();
   };
-  const setUpload = async (event) => {
-    event.target.files[0] && setUploadDocument(event.target.files);
-  };
+
   const createNewProposal = async () => {
-    let logoData = {};
     const reqObj = {
       proposalTitle: proposalTitle,
       startDate: startDate,
       endDate: endDate,
-      discription: discription,
+      description: description,
       filepath: uploadDocument,
       pollingContract: "0011",
       status: "pending",
     };
-
-    const response = await AddNewProposalLive(reqObj);
+    // const response = await AddNewProposalLive(reqObj);
+    // const [err, response] = await AddNewProposalLive(reqObj);
+    props.createProposal(reqObj);
   };
 
   const classes = useStyles();
@@ -464,12 +456,10 @@ export default function Createnewproposal(props) {
                   />
                 </Seconddiv>
               </Mobile>
-
               <div className={classes.row}>
                 <Grid xs={2} className={classes.description}>
                   Description
                 </Grid>
-
                 <Grid xs={10} className={classes.quillgrid}>
                   <div className="text-editor">
                     <ReactQuill
@@ -478,7 +468,6 @@ export default function Createnewproposal(props) {
                       modules={props.state.modules}
                       formats={props.state.formats}
                       onChange={handleQuillChange}
-                      // onChange={(e) => setdiscription(e.target.value)}
                     />
                   </div>
                 </Grid>
@@ -488,32 +477,66 @@ export default function Createnewproposal(props) {
                   Upload Document
                 </Grid>
                 <Grid xs={10} className={classes.uploadbox}>
-                  <Row>
-                    <div
-                      className={classes.input}
-                      onChange={(e) => setUploadDocument(e.target.value)}
-                      value={uploadDocument}
-                    >
-                      <div style={{ textAlign: "left" }}>{uploadDocument}</div>
-                      <BrowseButton onClick={uploadFile}>
-                        Browse File
-                        <input
-                          ref={inputFile}
-                          id="fileButton"
-                          type="file"
-                          multiple={false}
-                          accept="image/*"
-                          style={{ display: "none" }}
-                          onChange={setUpload}
-                        />
-                      </BrowseButton>
-                    </div>
-                    <img className={classes.image} src="/images/Add.svg" />
-                  </Row>
+                  <Column>
+                    {props.state.proposalDocuments.length > 0
+                      ? props.state.proposalDocuments.map((doc, index) => {
+                          return (
+                            <div className="display-flex m-t-4">
+                              <div
+                                className={
+                                  classes.input +
+                                  " display-flex justify-content-between"
+                                }
+                                value={uploadDocument}
+                              >
+                                <div
+                                  style={{ textAlign: "left" }}
+                                  className="p-l-sm p-t-sm"
+                                >
+                                  {doc}
+                                </div>
+                                <BrowseButton for={"fileButton" + index}>
+                                  Browse File
+                                  <input
+                                    ref={inputFile}
+                                    id={"fileButton" + index}
+                                    name={"fileButton" + index}
+                                    type="file"
+                                    multiple={false}
+                                    accept="*"
+                                    style={{ visibility: "hidden" }}
+                                    onChange={(e) =>
+                                      props.uploadFileToS3(
+                                        e.target.files[0],
+                                        index
+                                      )
+                                    }
+                                  />
+                                </BrowseButton>
+                              </div>
+                              {index ===
+                              props.state.proposalDocuments.length - 1 ? (
+                                <img
+                                  className={classes.imag}
+                                  onClick={props.addDocumentRow}
+                                  src="/images/Add.svg"
+                                />
+                              ) : (
+                                <img
+                                  className={" height-27 m-t-4 width-27 m-l-4"}
+                                  onClick={() => props.deleteDocumentRow(index)}
+                                  src="/images/substract.png"
+                                />
+                              )}
+                            </div>
+                          );
+                        })
+                      : ""}
+                  </Column>
                 </Grid>
               </div>
               <div className={classes.buttondiv}>
-                <Button onClick={() => createNewProposal()}>
+                <Button onClick={createNewProposal}>
                   <span className={classes.circle}></span>
                   Connect Wallet
                 </Button>
@@ -528,7 +551,6 @@ export default function Createnewproposal(props) {
     </div>
   );
 }
-
 const BrowseButton = styled.button`
   color: var(--unnamed-color-2149b9);
   text-align: center;
@@ -541,6 +563,7 @@ const BrowseButton = styled.button`
   border-radius: 4px;
   opacity: 1;
   margin-top: 4px;
+  margin-bottom: 4px;
   margin-right: 3px;
 `;
 const Textarea = styled.textarea`
@@ -559,7 +582,7 @@ const Button = styled.button`
   align-items: center;
   width: 100%;
   max-width: 213px;
-  justify-content: center @media (min-width: 300px) and (max-width: 767px) {
+  justify-content: center @media (min-width: 300 px) and (max-width: 767 px) {
     width: 120px;
   }
 `;
