@@ -727,7 +727,7 @@ const Status = styled.span`
   font-size: 14px;
   letter-spacing: 0px;
   opacity: 1;
-  color: #2a2a2a;
+  color: #3B3B3B;
 
   whitespace: "nowrap";
   @media (min-width: 300px) and (max-width: 767px) {
@@ -764,6 +764,7 @@ const NumberOfVotes = styled.span`
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 14px;
+  color: #2A2A2A;
   @media (min-width: 300px) and (max-width: 767px) {
     font-size: 12px;
   }

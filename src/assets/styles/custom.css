@@ -12,7 +12,42 @@ html, body {
 }
  
 
+.p-t-6{
+    padding-top: 6px;
+}
 
+.p-t-sm{
+    padding-top: 10px;
+}
+
+.p-l-sm{
+    padding-left: 10px;
+}
+
+
+.m-b-4{
+    margin-bottom: 4px;
+}
+
+.m-t-4{
+    margin-top: 4px;
+}
+
+.m-l-4{
+    margin-left: 4px;
+}
+
+.width-27{
+    width: 27px;
+}
+
+.height-27{
+    height: 27px;
+}
+
+.flex-direction-column{
+    flex-direction: column;
+}
 
 .header-div{
 width: 100%;
@@ -32,6 +67,19 @@ opacity: 1;
 
 position: relative;
 
+}
+.back-button{
+    /* text-align: left; */
+    font-family: "Inter", sans-serif;
+    font-size: 17px;
+    color: #ffffff;
+    margin-left: 5px;
+}
+.back-image{
+    display:flex; 
+    cursor: pointer;
+    margin-top: -40px;
+    margin-bottom: 15px;
 }
 .row-1{
     width: 100%;
@@ -243,8 +291,7 @@ opacity: 1;
         padding-right: 0px !important;
     }
     .view-all{
-        margin-top: -25px !important;
-        font-family: "Inter",sans-serif;
+    font-family: "Inter",sans-serif;
     font-weight: 600;
     font-size: 13px;
     }
@@ -259,23 +306,23 @@ opacity: 1;
     }
     .know-about-xdc{
         width: 100% !important;
-        border-right:  2px solid #CEE6FD !important;
+        /* border-right:  2px solid #CEE6FD !important;
         border-top:0px solid #CEE6FD !important; 
-        border-left: 0px solid #CEE6FD !important;
+        border-left: 0px solid #CEE6FD !important; */
     }
     .xdc-forum{
         width: 100% !important;
         margin-top: 30px !important;
-        border-right:  2px solid #CEE6FD !important;
+        /* border-right:  2px solid #CEE6FD !important;
         border-top:0px solid #CEE6FD !important; 
-        border-left: 0px solid #CEE6FD !important;
+        border-left: 0px solid #CEE6FD !important; */
     }
     .community-tools{
         width: 100% !important;
         margin-top: 30px !important;
-        border-right:  2px solid #CEE6FD !important;
+        /* border-right:  2px solid #CEE6FD !important;
         border-top:0px solid #CEE6FD !important; 
-        border-left: 0px solid #CEE6FD !important;
+        border-left: 0px solid #CEE6FD !important; */
     }
     /* .mid-div{
         display: flex;
@@ -300,6 +347,9 @@ opacity: 1;
     }
     .mobile-rightdiv{
         margin-top: 103%;
+    }
+    img.load{
+        margin-left: 150px !important;
     }
     .proposalpage-footer{
         margin-top: 450px;
@@ -466,6 +516,9 @@ cursor:pointer;
 }
 .footer-column-heading{
     font-weight: 600;
+    color: #2A2A2A;
+    font-size: 17px;
+    font-family: "Inter",sans-serif;
 }
 .sub-column-heading{
     font: normal normal normal 15px/28px Inter;
@@ -493,9 +546,9 @@ opacity: 1;
     padding-left: 10px;
     color: #909090;
     letter-spacing: 0px;
-    font-size: 15px;
-    font-family: Inter,sans-serif;
-    padding-top: 3px;
+    font-size: 13px;
+    font-family: "Inter",sans-serif;
+    /* padding-top: 3px; */
     outline: none;
     margin-top: 10px;
 }
@@ -543,7 +596,7 @@ font-size: 15px;
 .create-wallet p{
 
     padding-top: 4px;
-    padding-left: 10px;
+    padding-left: 12px;
  
 text-align: center;
 font: normal normal medium 15px/19px Inter;
@@ -610,7 +663,7 @@ background: #1841B2 0% 0% no-repeat padding-box;
 border-radius: 6px;
 opacity: 1;
 
-margin-inline-end: 10px;
+margin-inline-end: 20px;
 
 }
 .header-right{
@@ -670,7 +723,7 @@ font-family: 'Inter';
     display: flex;
     justify-content: center;
     position: absolute;
-    
+    border-top: 1px solid #E3E7EB;
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -692,7 +745,7 @@ font-family: 'Inter';
     display: flex;
     justify-content: center;
     position: absolute;
-    top: 192px;
+    top: 190px;
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -745,7 +798,7 @@ font-family: 'Inter';
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #E3E7EB;
     border-color: #E3E7EB;
-    border-radius: 5px;
+    border-radius: 2px;
     opacity: 1;
      box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1);
    
@@ -779,7 +832,7 @@ font-family: 'Inter';
     margin-left: 30px;
     width: 100%;
     max-width: 413px;
-    height: 300px;
+    height: 370px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #E3E7EB;
     border-radius: 6px;
@@ -850,7 +903,7 @@ font-family: 'Inter';
     /* font-weight: 600; */
  }
  .griddiv-voter{
-    height: 220px;
+    /* height: 220px; */
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #E3E7EB;
     border-color: #E3E7EB;
@@ -909,7 +962,7 @@ text-align: center;
  }
  .main-footer{
      margin-top:800px;
-     border: .5px solid #E3E7EB;
+     /* border: .5px solid #E3E7EB; */
  }
  .recent-proposal-div-footer{
    
@@ -1018,8 +1071,8 @@ opacity: 1;
     width: 294px;
     height: 150px;
     background: #FDFEFF 0% 0% no-repeat padding-box;
-    border-top: 1px solid #CEE6FD;
-    border-right: 1px solid #CEE6FD;
+    border: 1px solid #CEE6FD;
+    /* border-right: 1px solid #CEE6FD; */
     border-radius: 6px;
     opacity: 1;
     margin-right: 30px;
@@ -1049,7 +1102,7 @@ opacity: 1;
     width: 294px;
     height: 150px;
     background: #FDFEFF 0% 0% no-repeat padding-box;
-    border-top: 1px solid #CEE6FD;
+    border: 1px solid #CEE6FD;
     border-radius: 6px;
     opacity: 1;
     margin-right: 30px;
@@ -1060,8 +1113,8 @@ opacity: 1;
     width: 294px;
     height: 150px;
     background: #FDFEFF 0% 0% no-repeat padding-box;
-    border-top: 1px solid #CEE6FD;
-    border-left: 1px solid #CEE6FD;
+    border: 1px solid #CEE6FD;
+    /* border-left: 1px solid #CEE6FD; */
     border-radius: 6px;
     opacity: 1;
     padding: 20px;
@@ -1072,7 +1125,7 @@ opacity: 1;
     background: #FFFFFF 0% 0% no-repeat padding-box;
    
     border: 1px solid #E3E7EB;
-    border-radius: 6px;
+    border-radius: 2px;
     opacity: 1;
     padding: 20px;
     max-width: 610px;
@@ -1172,7 +1225,6 @@ margin-right: 10px;
  .table-between{
      justify-content: space-between;
      display: flex;
-     margin-bottom: -15px;
  }
  .voter-heading{
     
@@ -1310,11 +1362,23 @@ margin-left: 58px;
 .quill-editor{
     height:130px !important;
 }
+.load{
+    /* width: 30px;
+    height: 30px; */
+}
+img.load{
+    /* width: 25vw; */
+    display: flex;
+    justify-content: center;
+   /* margin-left: 22vw; */
+    margin-left: 260px;
+   
+}
 
 .view-all{
-    height: 30px;
+    height: 40px;
     align-items: center;
-    margin-top: -31px;
+    /* margin-top: -63px; */
     justify-content: center;
     cursor: pointer;
     letter-spacing: 0px;

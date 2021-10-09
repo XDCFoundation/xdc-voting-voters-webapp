@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Column, Row } from "simple-flexbox";
 import { Button } from "@material-ui/core";
 import CustomInput from "../../common/components/CustomInput";
@@ -6,25 +5,23 @@ import { history } from "../../managers/history";
 import "../../assets/styles/custom.css";
 import utility from "../../utility";
 import HeaderMain from "./header";
-import RecentProposal from "../Dashboard/recentProposal";
+import RecentProposal from "../Dashboard/";
 import DivBlocksComponent from "../Dashboard/divComponent";
 import FooterComponent from "../footer/footerComponent";
-
+import React from "react";
 export default function Header() {
-  const handleView = () => {
-    history.push("/view-all-proposals");
-  };
+
   const createView = () => {
     history.push("/create");
   };
+  // const [wallet, setwallet] = useState({});
   return (
-    <div>
+    <div>         
       <Column className="header-div">
         <div>
           {" "}
-          <HeaderMain />{" "}
+          <HeaderMain/> {" "}
         </div>
-
         {/* !***********************!  */}
 
         <Row className="row-2">
@@ -74,9 +71,9 @@ export default function Header() {
               <RecentProposal />
             </div>
 
-            <Row onClick={handleView} className="view-all">
+            {/* <Row onClick={handleView} className="view-all">
               View All Proposals
-            </Row>
+            </Row> */}
 
             <div>
               <DivBlocksComponent />
