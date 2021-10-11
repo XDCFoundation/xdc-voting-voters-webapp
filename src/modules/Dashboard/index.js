@@ -3,6 +3,7 @@ import BaseComponent from "../baseComponent";
 import RecentProposal from "./recentProposal";
 import Web3 from "web3";
 import moment from "moment";
+import Loader from "../../assets/styles/images/NewLoader.gif";
 
 const { extname } = require("path");
 
@@ -16,46 +17,17 @@ export default class Dashboard extends BaseComponent {
     this.state = {
       proposalDocuments: [],
       proposals: [],
-      open3: false,
-      isButtonClicked: false,
+      isLoader: false,
     };
   }
 
   async componentDidMount() {
     const proposalsAddresses = await this.getContractAddresses();
-    this.getProposalsData(proposalsAddresses);
+    await this.getProposalsData(proposalsAddresses);
+
+    this.setState({ isLoader: true });
   }
-  handleClose3 = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
 
-    this.setState({ open3: false });
-  };
-
-  //////////////////////////////////////////////////////////////////////////////
-  // castProposalVote = async () => {
-  //   let web3;
-  //   web3 = new Web3(window.web3.currentProvider);
-  //   console.log(window.web3.currentProvider);
-  //   window.ethereum.enable();
-  //   const contract = new web3.eth.Contract(
-  //     masterContractAbi,
-  //     "0x89CfE6bb2a708A336dEBcD8A6DE028146Ab1f841"
-  //   );
-
-  //   const castProposalResponse = await contract.methods
-  //     .cast_vote_for_proposal()
-  //     .call()
-  //     .catch((err) => {
-  //       console.log(err, "error in votecast");
-  //     });
-  //   console.log("castProposalResponse", castProposalResponse);
-  //   this.setState({ open3: true, isButtonClicked: true });
-
-  //   return castProposalResponse;
-  // };
-  //////////////////////////////////////////////////////////////////////////
   getContractAddresses = async () => {
     let web3;
     web3 = new Web3(window.web3.currentProvider);
@@ -72,6 +44,16 @@ export default class Dashboard extends BaseComponent {
         console.log(err, "====");
       });
     console.log(createProposalResponse, "====");
+
+    // this.setState({isLoader:true})
+    //    if(createProposalResponse){
+    //     this.setState({isLoader:true})
+
+    //     console.log(createProposalResponse,"loaderrrrrrrrrrrrrrrrrrrrrrrrrrr");
+    //    }
+    //    else{
+
+    //    }
     return createProposalResponse;
   };
 
@@ -164,9 +146,15 @@ export default class Dashboard extends BaseComponent {
 
   render() {
     return (
-      <div>
-        <RecentProposal proposals={this.state.proposals} />
-      </div>
+      <>
+        {this.state.isLoader == false ? (
+          <img className="load" src={Loader} />
+        ) : (
+          <div>
+            <RecentProposal proposals={this.state.proposals} />
+          </div>
+        )}
+      </>
     );
   }
 }
