@@ -14,10 +14,7 @@ import styled from "styled-components";
 
 export default function RecentProposal(props) {
 
-  // const [proposalTitle, setProposalTitle] = useState("");
-  // const [created, setCreatedDate] = useState("");
-  // const [status, setStatus] = useState("");
-  // const [description, setDescription] = useState("");
+  
 
   const proposalRedirect =()=>{
     history.push('/proposal-details');
@@ -26,19 +23,6 @@ export default function RecentProposal(props) {
     history.push("/view-all-proposals");
   };
 
-  
-
-
-  // const proposalDetail = async () => {
-  //   const reqObj = {
-  //     proposalTitle: proposalTitle,
-  //     createdDate: created,
-  //     status: status,
-  //     description: description,
-      
-  //   };
-  //   props.singleProposalDetail(reqObj);
-  // };
 
   return (
     <div>
@@ -102,7 +86,7 @@ export default function RecentProposal(props) {
                               </Row>
                               <Row>
                                 {/* <div className="details" onClick={proposalRedirect}>Details</div> */}
-                                <a href={"/proposal-details/"+proposal["title"]}>
+                                <a href={"/proposal-details/"+proposal["_id"]}>
                                 <button className="details" >Details</button>
                                 </a>
                                     

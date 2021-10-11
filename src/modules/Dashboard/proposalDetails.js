@@ -86,6 +86,7 @@ export default function ProposalDetails(props) {
   let time= transactions?.responseData?.createdOn
   let formatedTime=moment(time).format('LL');
   let statusDetail = transactions?.responseData?.status
+  let descrition = transactions?.responseData?.description
 
   React.useEffect(() => {
     let address = [
@@ -229,11 +230,12 @@ export default function ProposalDetails(props) {
                                                 '<body><Row>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis magna at sem consectetur, vitae ultrices sem molestie. Maecenas vitae dolor eu lectus maximus ultrices. Curabitur vestibulum nec quam in dictum. Duis malesuada iaculis dapibus mauris blandit rhonc: 1. Proin a tristique augue integer mauris magna. 2. Vivamus tempus dapibus lectus ac rutrum. 3. Duis malesuada iaculis dapibus. Maecenas id arcu lacus. Integer arcu ligula, tristique vitae bibendum ac, ultrices id diam. Aliquam vel est scelerisque, volutpat felis id, cursus erat. Vestibulum consectetur, orci in convallis tempor, ligula augue ullamcorper nibh, id pulvinar lectus libero sed nulla. Ut egestas justo urna, et euismod nibh tristique sed. Pellentesque tristique enim egestas lorem imperdiet, id lobortis odio auctor. Suspendisse sodales sagittis libero. Vivamus in ullamcorper eros, a luctus mauris. Nulla facilisi. Fusce viverra turpis vulputate eros faucibus, quis consectetur leo egestas. Proin placerat arcu ac dui placerat commodo. Curabitur mollis orci augue, vitae porttitor risus euismod eu. Ut nec posuere arcu. Vivamus pulvinar arcu et faucibus maximus. Duis malesuada iaculis dapibus. Mauris blandit rhoncus tellus rutrum tempor. In pretium nulla eget dolor molestie, non lobortis lorem tempus. Aenean ullamcorper urna non nisi tempor auctor. Suspendisse et ipsum bibendum, malesuada diam eget, congue erat. Duis lobortis elementum gravida. Sed ut dapibus arcu. Cras porttitor iaculis sapien eu fringilla. Cras in ligula urna. Vestibulum feugiat convallis felis ac dignissim. Duis placerat velit quam, vitae imperdiet elit maximus vel. Nam tincidunt ultricies ultrices. Nullam ac odio convallis dui volutpat luctus. Morbi luctus ornare pellentesque. Praesent rhoncus lectus id suscipit cursus. Morbi purus metus, tempor quis eleifend vitae, lacinia sit amet urna. Proin egestas ipsum quis tellus fermentum finibus et non urna.</Row></body>')} */}
                         {/* {parse(` */}
                         <Row className="heading-1">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          {descrition}
+                          {/* Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Quisque venenatis magna at sem consectetur,
                           vitae ultrices sem molestie. Maecenas vitae dolor eu
                           lectus maximus ultrices. Curabitur vestibulum nec quam
-                          in dictum.
+                          in dictum. */}
                         </Row>
 
                         <Row className="lower-text">
