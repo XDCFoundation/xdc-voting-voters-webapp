@@ -43,50 +43,50 @@ export default function ProposalDetails(props) {
 
   
 
-  fetch(
-    "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getProposalDetail/"+proposal,
+  // fetch(
+  //   "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getProposalDetail/"+proposal,
 
-  )
-    .then((res) => res.json())
-    .then((res) => {
-      //console.log("result===",res.data.responseData)
-      setTransactions(res);
-    })
+  // )
+  //   .then((res) => res.json())
+  //   .then((res) => {
+  //     //console.log("result===",res.data.responseData)
+  //     setTransactions(res);
+  //   })
 
-    .catch((err) => {
-      console.log(err);
-    });
-
-  
-
-  // useEffect(async () => {
-  //   let urlPath = `/${proposal}`;
-
-  //   let [error, proposalDetail] = await Utils.parseResponse(
-  //     ProposalService.getProposalDetail(urlPath, {})
-  //   );
-
-  //   if (error || !proposalDetail) return;
-
-  //   setTransactions(proposalDetail);
-
-  //   const interval = setInterval(async () => {
-  //     let [error, proposalDetail] = await Utils.parseResponse(
-  //       ProposalService.getProposalDetail(urlPath, {})
-  //     );
-
-  //     setTransactions(proposalDetail);
-  //   }, 45000);
-  // }, []);
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
 
   
 
-  console.log("transaction====", transactions?.responseData);
-  let detail= transactions?.responseData?.proposalTitle
-  let time= transactions?.responseData?.createdOn
+  useEffect(async () => {
+    let urlPath = `${proposal}`;
+
+    let [error, proposalDetail] = await Utils.parseResponse(
+      ProposalService.getProposalDetail(urlPath, {})
+    );
+
+    if (error || !proposalDetail) return;
+
+    setTransactions(proposalDetail);
+
+    const interval = setInterval(async () => {
+      let [error, proposalDetail] = await Utils.parseResponse(
+        ProposalService.getProposalDetail(urlPath, {})
+      );
+      console.log("transaction====", transactions?.responseData);
+      setTransactions(proposalDetail);
+    }, 45000);
+  }, []);
+
+  
+
+ 
+  let detail= transactions?.proposalTitle
+  let time= transactions?.createdOn
   let formatedTime=moment(time).format('LL');
-  let statusDetail = transactions?.responseData?.status
-  let descrition = transactions?.responseData?.description
+  let statusDetail = transactions?.status
+  let descrition = transactions?.description
 
   React.useEffect(() => {
     let address = [
@@ -238,7 +238,7 @@ export default function ProposalDetails(props) {
                           in dictum. */}
                         </Row>
 
-                        <Row className="lower-text">
+                        {/* <Row className="lower-text">
                           Duis malesuada iaculis dapibus mauris blandit rhonc:
                         </Row>
                         <Row className="mid-text">
@@ -287,7 +287,7 @@ export default function ProposalDetails(props) {
                           purus metus, tempor quis eleifend vitae, lacinia sit
                           amet urna. Proin egestas ipsum quis tellus fermentum
                           finibus et non urna.
-                        </Row>
+                        </Row> */}
                         {/* `)} */}
                       </Column>
                       <Row className="doc-1">

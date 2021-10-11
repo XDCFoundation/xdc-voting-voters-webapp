@@ -86,7 +86,8 @@ export default function RecentProposal(props) {
                               </Row>
                               <Row>
                                 {/* <div className="details" onClick={proposalRedirect}>Details</div> */}
-                                <a href={"/proposal-details/"+proposal["_id"]}>
+                                {/* <a href={"/proposal-details/"+proposal.id}> */}
+                                <a href={"/proposal-details/"+"615c31771d5ed80035e2dcca"}>
                                 <button className="details" >Details</button>
                                 </a>
                                     
