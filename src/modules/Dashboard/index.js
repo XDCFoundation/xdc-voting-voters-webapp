@@ -7,6 +7,7 @@ import Loader from "../../assets/styles/images/NewLoader.gif";
 
 
 
+
 const { extname } = require('path');
 
 let proposalContractAbi = require('../../common/abis/proposalContractAbi.json').abi;
@@ -74,6 +75,8 @@ export default class Dashboard extends BaseComponent {
         console.log(proposals, "proposals===")
         this.setState({ proposals })
     }
+
+    
 
     parseProposalList = (proposals) => {
         console.log(proposals, "proposals === ")

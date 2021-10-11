@@ -398,31 +398,8 @@ export default function ViewAllProposal() {
                           <Content>{data.name}</Content>
                           <PositionDivLine>
                             <BarLine>
-                            <Chart
-                              width={"100%"}
-                              height={"8px"}
-                              chartType="BarChart"
-                              data={[
-                                ["", "",{ role: 'style' }, "", { role: 'style' }, {
-                                  sourceColumn: 0,
-                                  role: 'annotation',
-                                  type: 'string',
-                                  calc: 'stringify',
-                                }],
-                                ["", 47,"color:#3ab70d", 98,"color:red",null],
-                               
-                              ]}
-                              options={{
-                                title: "votes",
-                                chartArea: { width: "100%" },
-                                isStacked: true,
-                                grid:{position: 'none' },
-                                legend: { position: 'none' }
-                                
-                              }}
-                              // For tests
-                              rootProps={{ "data-testid": "1" }}
-                            />
+                            <GreenLine></GreenLine>
+                            <RedLine></RedLine>
                             </BarLine>
                           </PositionDivLine>
                         </div>
@@ -662,11 +639,8 @@ const MobileResponsive = styled.div`
   }
 `;
 const BarLine = styled.div`
-  width: 200px;
-  height: 1px;
-  margin-bottom:31px
-  margin-right:-25px
-  margin-top:-15px
+width: 200px;
+height: 3px;
 
   display: flex;
   @media (min-width: 300px) and (max-width: 767px) {
