@@ -1,4 +1,4 @@
-import React, { useState ,  useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Column, Row } from "simple-flexbox";
 import "../../assets/styles/custom.css";
 import HeaderMain from "../header/header";
@@ -12,6 +12,10 @@ import { history } from "../../managers/history";
 import { useParams } from "react-router-dom";
 import Utils from "../../utility";
 import { ProposalService } from "../../services/index";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, CartesianAxis } from "recharts";
+
+import Chart from "react-google-charts";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -174,30 +178,29 @@ export default function ViewAllProposal() {
   //     setTransactions(ProposalDetail);
   //   }, 45000);
   // }, []);
+  //let proposalId =document.getElementById("proposalInput").value;
+  fetch(
+    "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getProposalDetail/615c2dcc1d5ed80035e2dcb8"
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      //console.log("result===",res.data.responseData)
+      setTransactions(res);
+    })
 
-  // fetch(
-  //   "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getProposalDetail/615c2dcc1d5ed80035e2dcb8",
-  //   {
-  //     "method": "GET",
+    .catch((err) => {
+      console.log(err);
+    });
 
-  //     "headers": {
-  //       "proposalTitle": "Testing",
-  //       "content-type": "application/json",
-  //        "accept": "application/json",
-  //     },
-  //   }
-  // )
-  //   .then((res) => res.json())
-  //   .then((res) => {
-  //     //console.log("result===",res.data.responseData)
-  //     setTransactions(res);
-  //   })
+  //console.log("transaction====", transactions?.responseData);
+  // // let detail= transactions?.responseData?.proposalTitle
+  // // let time= transactions?.responseData?.createdOn
+  // // let formatedTime=moment(time).format('LL');
+  // // let statusDetail = transactions?.responseData?.status
+  // // let descrition = transactions?.responseData?.description
+  //   let id=transactions?.responseData?._id
+  let res = transactions?.responseData;
 
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-
-  //   console.log("transaction====", transactions);
   const backButton = () => {
     history.push("/community");
   };
@@ -275,6 +278,15 @@ export default function ViewAllProposal() {
 
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
+
+  // const searchProposal=()=>{
+  //  let response = res
+  //  //console.log( response)
+  //  return response
+  // }
+  //document.getElementById("proposalInput").onkeyup = function() {searchProposal()};
+  
+  
   return (
     <div>
       <div className="header-div-all">
@@ -303,6 +315,8 @@ export default function ViewAllProposal() {
                     placeholder="Search"
                     className={classes.input}
                     type="text"
+                    onKeyUp={console.log("hello")}
+                    id="proposalInput"
                   />
                 </InputDiv>
               </Container>
@@ -345,15 +359,14 @@ export default function ViewAllProposal() {
                   </RowSpacing>
                   <RowSpacing>
                     <Content>
-                      XDC-ABC Bootstrapping Partnership Proposal...
+                      XDC-ABC Bootstrapping Partnership Proposal
                     </Content>
 
                     {/* <Button>Details</Button> */}
 
-                    <a href={"/proposal-details/"+"615c31771d5ed80035e2dcca"}>
-                                <button className="details" >Details</button>
-                                </a>
-
+                    <a href={"/proposal-details/" + "615c31771d5ed80035e2dcca"}>
+                      <button className="details">Details</button>
+                    </a>
                   </RowSpacing>
                   <Container>
                     <Status>Status:&ensp;</Status>
@@ -385,8 +398,31 @@ export default function ViewAllProposal() {
                           <Content>{data.name}</Content>
                           <PositionDivLine>
                             <BarLine>
-                              <GreenLine></GreenLine>
-                              <RedLine></RedLine>
+                            <Chart
+                              width={"100%"}
+                              height={"8px"}
+                              chartType="BarChart"
+                              data={[
+                                ["", "",{ role: 'style' }, "", { role: 'style' }, {
+                                  sourceColumn: 0,
+                                  role: 'annotation',
+                                  type: 'string',
+                                  calc: 'stringify',
+                                }],
+                                ["", 47,"color:#3ab70d", 98,"color:red",null],
+                               
+                              ]}
+                              options={{
+                                title: "votes",
+                                chartArea: { width: "100%" },
+                                isStacked: true,
+                                grid:{position: 'none' },
+                                legend: { position: 'none' }
+                                
+                              }}
+                              // For tests
+                              rootProps={{ "data-testid": "1" }}
+                            />
                             </BarLine>
                           </PositionDivLine>
                         </div>
@@ -627,7 +663,11 @@ const MobileResponsive = styled.div`
 `;
 const BarLine = styled.div`
   width: 200px;
-  height: 3px;
+  height: 1px;
+  margin-bottom:31px
+  margin-right:-25px
+  margin-top:-15px
+
   display: flex;
   @media (min-width: 300px) and (max-width: 767px) {
     width: 85px;
@@ -783,7 +823,7 @@ const Status = styled.span`
   font-size: 14px;
   letter-spacing: 0px;
   opacity: 1;
-  color: #3B3B3B;
+  color: #3b3b3b;
 
   whitespace: "nowrap";
   @media (min-width: 300px) and (max-width: 767px) {
@@ -820,7 +860,7 @@ const NumberOfVotes = styled.span`
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 14px;
-  color: #2A2A2A;
+  color: #2a2a2a;
   @media (min-width: 300px) and (max-width: 767px) {
     font-size: 12px;
   }
