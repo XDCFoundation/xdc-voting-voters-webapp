@@ -180,7 +180,7 @@ export default function ViewAllProposal() {
   // }, []);
   //let proposalId =document.getElementById("proposalInput").value;
   fetch(
-    "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getProposalDetail/615c2dcc1d5ed80035e2dcb8"
+    "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getProposalDetail/6164220cc20c490035c32e34"
   )
     .then((res) => res.json())
     .then((res) => {
