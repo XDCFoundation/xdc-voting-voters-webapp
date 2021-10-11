@@ -82,7 +82,7 @@ export default function ProposalDetails() {
   const [votingTime, setVotingTime] = React.useState("");
   const [open3, setOpen3] = React.useState(false);
   const [isButtonClicked, setIsButtonClicked] = React.useState(false);
-  const [count, setCount] = React.useState(0);
+
   function shorten(b, amountL = 13, amountR = 3, stars = 3) {
     return `${b.slice(0, amountL)}${".".repeat(stars)}${b.slice(
       b.length - 5,
