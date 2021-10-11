@@ -2,6 +2,9 @@ import { httpService } from "../utility/httpService";
 import { httpConstants } from "../constants";
 export default { getProposalDetail };
 
+
+
+// export default{getTotalVotesCasted}
 export async function addNewProposal(reqObj) {
   const url =
     process.env.REACT_APP_PROPOSAL_SVC +
@@ -63,14 +66,62 @@ async function getProposalDetail(path, data) {
       if (
         !response.success ||
         response.responseCode !== 200 ||
-        !response.responseData ||
-        response.responseData.length === 0
+        !response.responseData 
       )
         return Promise.reject();
+        console.log(response.responseData)
 
       return Promise.resolve(response.responseData);
     })
     .catch(function (err) {
       return Promise.reject(err);
     });
+}
+
+
+  export  async function getTotalVotesCasted() {
+    let url = process.env.REACT_APP_PROPOSAL_SVC+"getProposalDetail/";
+    // +`?skip=${skip}&limit=${limit}`;
+    return httpService(httpConstants.METHOD_TYPE.GET, { 'Content-Type': httpConstants.CONTENT_TYPE.APPLICATION_JSON }, {}, url)
+        .then(
+            response => {
+                if (!response.success || response.responseCode !== 200 || !response.responseData || response.responseData.length === 0)
+                    return Promise.reject();
+                return Promise.resolve(response.responseData);
+
+            }
+        ).catch(function (err) {
+            return Promise.reject(err);
+        });
+}
+export  async function getTotalPassedProposals() {
+    let url = process.env.REACT_APP_GET_TOTAL_PASSED_PROPOSALS;
+    // +`?skip=${skip}&limit=${limit}`;
+    return httpService(httpConstants.METHOD_TYPE.GET, { 'Content-Type': httpConstants.CONTENT_TYPE.APPLICATION_JSON }, {}, url)
+        .then(
+            response => {
+                if (!response.success || response.responseCode !== 200 || !response.responseData || response.responseData.length === 0)
+                    return Promise.reject();
+                return Promise.resolve(response.responseData);
+
+            }
+        ).catch(function (err) {
+            return Promise.reject(err);
+        });
+}
+
+export  async function getTotalVotingAddress() {
+    let url = process.env.REACT_APP_GET_TOTAL_VOTING_ADDRESS;
+    // +`?skip=${skip}&limit=${limit}`;
+    return httpService(httpConstants.METHOD_TYPE.GET, { 'Content-Type': httpConstants.CONTENT_TYPE.APPLICATION_JSON }, {}, url)
+        .then(
+            response => {
+                if (!response.success || response.responseCode !== 200 || !response.responseData || response.responseData.length === 0)
+                    return Promise.reject();
+                return Promise.resolve(response.responseData);
+
+            }
+        ).catch(function (err) {
+            return Promise.reject(err);
+        });
 }
