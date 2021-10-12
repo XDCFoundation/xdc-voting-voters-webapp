@@ -78,8 +78,7 @@ export default function ProposalDetails() {
   }, []);
 
   const [address, setAddress] = React.useState([]);
-  const [option, setOption] = React.useState("");
-  const [votingTime, setVotingTime] = React.useState("");
+
   const [open3, setOpen3] = React.useState(false);
   const [isButtonClicked, setIsButtonClicked] = React.useState(false);
 
@@ -108,7 +107,9 @@ export default function ProposalDetails() {
     }
     setOpen3(false);
   };
-
+  // const yesISupport = () => {
+  //   history.push("");
+  // };
   const castProposalVote = async (reqData) => {
     // const reqObj = {
     //   option: reqData._option,
@@ -138,10 +139,10 @@ export default function ProposalDetails() {
         .send({ from: acc })
         .catch((err) => {
           console.log(err, "error in votecast");
-        })
-        .then(async (response) => {
-          console.log("response data after vote", response);
         });
+      // .then(async (response) => {
+      //   console.log("response data after vote", response);
+      // });
       console.log("methods in contract====>", contract.methods);
       setOpen3(true);
       setIsButtonClicked(true);
@@ -333,6 +334,7 @@ export default function ProposalDetails() {
                       onClick={() => {
                         handleCloseDailog();
                         castProposalVote(true);
+                        // yesISupport();
                       }}
                       className="support-button"
                     >
