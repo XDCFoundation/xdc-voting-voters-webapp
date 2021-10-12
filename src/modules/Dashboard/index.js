@@ -71,6 +71,7 @@ export default class Dashboard extends BaseComponent {
       proposalDetails["failVoteCount"] = await this.getFailedVote(
         addresses[index]
       );
+      proposalDetails['address'] = addresses[index]
       proposals.push(proposalDetails);
     }
     proposals.length = 4;
@@ -80,7 +81,6 @@ export default class Dashboard extends BaseComponent {
   };
 
   parseProposalList = (proposals) => {
-    console.log(proposals, "proposals === ");
     proposals = proposals.map((proposal) => {
       proposal.title = proposal["0"];
       proposal.startDate = proposal["1"];
