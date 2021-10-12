@@ -17,6 +17,7 @@ export default class Dashboard extends BaseComponent {
     this.state = {
       proposalDocuments: [],
       proposals: [],
+      proposalResponse: [],
       isLoader: false,
     };
   }
@@ -43,7 +44,7 @@ export default class Dashboard extends BaseComponent {
       .catch((err) => {
         console.log(err, "====");
       });
-    console.log(createProposalResponse, "====");
+    console.log("====createProp====", createProposalResponse);
 
     // this.setState({isLoader:true})
     //    if(createProposalResponse){
@@ -151,7 +152,9 @@ export default class Dashboard extends BaseComponent {
           <img className="load" src={Loader} />
         ) : (
           <div>
-            <RecentProposal proposals={this.state.proposals} />
+              <RecentProposal proposals={this.state.proposals}
+               getContractAddresses={this.state.getContractAddresses}
+              />
           </div>
         )}
       </>
