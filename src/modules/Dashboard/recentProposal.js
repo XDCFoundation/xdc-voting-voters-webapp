@@ -11,10 +11,12 @@ import TableRow from "@material-ui/core/TableRow";
 import { history } from "../../managers/history";
 import divBlockComponent from "./divComponent";
 import styled from "styled-components";
+import ReactDOM from "react-dom";
+import Countdown from "react-countdown";
 
 export default function RecentProposal(props) {
 
-  const proposalRedirect =()=>{
+  const proposalRedirect = () => {
     history.push('/proposal-details');
   }
   const handleView = () => {
@@ -34,7 +36,7 @@ export default function RecentProposal(props) {
             <TableBody>
               {props.proposals.map((proposal, index) => {
                 return (
-                
+
                   <TableRow className="table-mid-line">
                     <Row className="table-between">
                       <Column>
@@ -48,8 +50,8 @@ export default function RecentProposal(props) {
                                 proposal.status === "Open"
                                   ? "fc-blue"
                                   : proposal.status === "Passed"
-                                  ? "fc-green"
-                                  : "fc-red"
+                                    ? "fc-green"
+                                    : "fc-red"
                               }
                             >
                               {proposal.status}
@@ -77,8 +79,10 @@ export default function RecentProposal(props) {
                                     src={require("../../assets/styles/images/Time-Active.svg")}
                                   />
                                 </span>
-                                <Span>
-                                  {proposal.timeRemaining} Remaining
+                                <Span >
+                                  <Countdown className="count-down" date={Date.now() + 24 * 60 * 60000 * parseInt((proposal.timeRemaining).split(" ")[0])} />
+                                  Remaining
+
                                 </Span>
                               </Row>
                               <Row>
@@ -115,16 +119,16 @@ export default function RecentProposal(props) {
                         </TableCell>
                       </Column>
                     </Row>
-                    
+
                   </TableRow>
-                 
-                 
+
+
                 );
-                
+
               })}
               <Row onClick={handleView} className="view-all">
-              View All Proposals
-            </Row>
+                View All Proposals
+              </Row>
             </TableBody>
           </Table>
         </Grid>
