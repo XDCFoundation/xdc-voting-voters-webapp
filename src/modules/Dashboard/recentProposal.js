@@ -14,10 +14,8 @@ import styled from "styled-components";
 
 export default function RecentProposal(props) {
   const proposalRedirect = (address) => {
-    console.log("proposalresponse", address);
     history.push({
-      pathname: `/proposal-details/${address}`,
-      // state: { proposalResponse: props.createProposalResponse },
+      pathname: `/proposal-details/${address}`
     });
   };
   const handleView = () => {
@@ -36,7 +34,6 @@ export default function RecentProposal(props) {
             <TableHead></TableHead>
             <TableBody>
               {props.proposals.map((proposal, index) => {
-                console.log(proposal, "proposals=============================");
                 return (
                   <TableRow className="table-mid-line">
                     <Row className="table-between">
@@ -88,7 +85,7 @@ export default function RecentProposal(props) {
                                 <div
                                   className="details"
                                   onClick={() =>
-                                    proposalRedirect(proposal["7"])
+                                    proposalRedirect(proposal["address"])
                                   }
                                 >
                                   Details

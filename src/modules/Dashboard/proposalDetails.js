@@ -21,6 +21,7 @@ import MuiAlert from "@material-ui/lab/Alert";
 import { PieChart } from "react-minimal-pie-chart";
 import Web3 from "web3";
 import Utils from "../../utility";
+import {useLocation, useParams} from "react-router";
 
 // let masterContractAbi = require("../../common/abis/masterContractAbi.json").abi;
 
@@ -37,6 +38,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ProposalDetails() {
+
+  const [proposalAddress,setProposalAddress] = useState("");
+  const proposalAddressObject = useParams();
+
   React.useEffect(() => {
     let address = [
       {
@@ -65,7 +70,6 @@ export default function ProposalDetails() {
         time: "1 hr 5 min ago",
       },
     ];
-
     setAddress(
       address.map((object) => {
         return {
@@ -75,6 +79,7 @@ export default function ProposalDetails() {
         };
       })
     );
+    setProposalAddress(proposalAddressObject.address)
   }, []);
 
   const [address, setAddress] = React.useState([]);
