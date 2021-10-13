@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ProposalDetails(props) {
-  const { proposal } = useParams();
+  const {address } = useParams();
 
   const [transactions, setTransactions] = useState([]);
 
@@ -68,7 +68,8 @@ export default function ProposalDetails(props) {
   //   });
 
   useEffect(async () => {
-    let urlPath = `${proposal}`;
+
+    let urlPath = `${address}`;
 
     let [error, proposalDetail] = await Utils.parseResponse(
       ProposalService.getProposalDetail(urlPath, {})
@@ -100,7 +101,7 @@ export default function ProposalDetails(props) {
   const proposalAddressObject = useParams();
 
   React.useEffect(() => {
-    let address = [
+    let newaddress = [
       {
         image: "/images/network.svg",
         name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
@@ -128,7 +129,7 @@ export default function ProposalDetails(props) {
       },
     ];
     setAddress(
-      address.map((object) => {
+      newaddress.map((object) => {
         return {
           image: object.image,
           name: object.name,
@@ -139,7 +140,7 @@ export default function ProposalDetails(props) {
     setProposalAddress(proposalAddressObject.address)
   }, []);
 
-  const [address, setAddress] = React.useState([]);
+  const [newaddress, setAddress] = React.useState([]);
 
   const [open3, setOpen3] = React.useState(false);
   const [isButtonClicked, setIsButtonClicked] = React.useState(false);
@@ -449,7 +450,7 @@ export default function ProposalDetails(props) {
                 </div>
                 <div className="griddiv-voter">
                   <TableBody>
-                    {address.map((row, index) => {
+                    {newaddress.map((row, index) => {
                       return (
                         <TableRow className="table-mid-line">
                           <Row className="table-between">
