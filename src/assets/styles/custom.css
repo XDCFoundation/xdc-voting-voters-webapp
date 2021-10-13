@@ -48,7 +48,9 @@ html, body {
 .flex-direction-column{
     flex-direction: column;
 }
-
+.displayNon{
+    display: none;
+}
 .header-div{
 width: 100%;
 height: 300px;
@@ -593,6 +595,11 @@ font-family: 'Inter';
 font-size: 15px;
 
 }
+.create-wallet-hide{
+   
+    display: none;
+   
+    }
 .create-wallet p{
 
     padding-top: 4px;

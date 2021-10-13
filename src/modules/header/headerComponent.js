@@ -9,9 +9,8 @@ import RecentProposal from "../Dashboard/";
 import DivBlocksComponent from "../Dashboard/divComponent";
 import FooterComponent from "../footer/footerComponent";
 import React from "react";
-export default function Header() {
-
-  const createView = () => {
+export default function Header(props) {
+    const createView = () => {
     history.push("/create");
   };
   // const [wallet, setwallet] = useState({});
@@ -61,8 +60,8 @@ export default function Header() {
           <div className="recent-proposal-div">
             <Row className="recent-add-div">
               <Column className="heading">Recent Proposals</Column>
-              <Column>
-                <div onClick={createView} className="create-wallet">
+              <Column>             
+                <div id="div_create_prop" onClick={createView} className="create-wallet-hide">
                   <p>Create Proposal</p>
                 </div>
               </Column>
@@ -70,7 +69,7 @@ export default function Header() {
             <div className="griddiv">
               <RecentProposal />
             </div>
-
+            
             {/* <Row onClick={handleView} className="view-all">
               View All Proposals
             </Row> */}

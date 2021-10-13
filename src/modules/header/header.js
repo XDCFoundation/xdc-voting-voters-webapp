@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect,useState } from "react";
 import { XdcConnect, Disconnect } from "xdc-connect";
 import { Column, Row } from "simple-flexbox";
 import styled from "styled-components";
@@ -33,6 +33,31 @@ function Header() {
 const classes = useStyles();
 const [wallet, setwallet] = useState({});
 console.log("wallet", wallet);
+//new
+
+  const [address, setAddress] = useState({data:""});
+  
+  const url = "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/searchbyaddess/";
+  const fetchData = async (param) => {    
+    
+    try {
+        const response = await fetch(url+param);//'xdc44444444444444444444444444444444444444444');
+        const data = await response.json();
+        setAddress({data:data.responseData.address});
+        console.log(data);
+        if(data.responseData.permission.allowProposalCreation)
+        {
+        document.getElementById("div_create_prop").className="create-wallet"; 
+        }
+        else
+        {
+          document.getElementById("div_create_prop").className="create-wallet-hide"; 
+        }     
+    } catch (error) {
+        console.log("error", error);
+    }
+};
+//new22
 const reDirect = () => {
   history.push("/");
 };
@@ -52,13 +77,18 @@ return (
             </Column>
           </Row>
         </Column>
-        <Column>            
-   <div className={classes.buttondiv}>               
+        <Column>                  
+   <div className={classes.buttondiv}>   
+
      <XdcConnect
-       btnClass={  wallet.connected  ? classes.btnCss   : classes.btnCss  }
+       btnClass={  wallet.connected  ? classes.btnCss : classes.btnCss  }
        btnName={wallet.connected ? wallet.address : "Connect wallet"}
-       onConnect={(wallet) => { setwallet(wallet); }} onDisconnect={(wallet) => { setwallet(wallet);}} />
+       onConnect={         
+        (wallet) => {setwallet(wallet);fetchData(wallet.address);}             
+      } 
+       onDisconnect={(wallet) => { setwallet(wallet);}} />
      {/* {wallet.connected ? <button onClick={Disconnect}>Logout</button> : ""} */}
+     
   </div>
         </Column>
       </Row>
