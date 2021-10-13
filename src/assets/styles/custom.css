@@ -120,6 +120,9 @@ position: relative;
         width: 30px; 
         margin-top: 10px;
     }
+    .count-down{
+        margin-right: 6px !important;
+    }
     .spt{
         font: normal normal medium 14px/17px Inter;
         letter-spacing: 0px;
@@ -1284,7 +1287,7 @@ border-radius: 4px;
 opacity: 1;
 text-align: center;
 padding-top: 5px;
-margin-left: 58px;
+margin-left: 98px;
     margin-top: 5px;
     color: #2149B9 !important;
    
