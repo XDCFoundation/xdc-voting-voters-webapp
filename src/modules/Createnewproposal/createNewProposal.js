@@ -413,18 +413,19 @@ export default function Createnewproposal(props) {
               <hr className={classes.line} />
 
               <div className={classes.row}>
-                <Grid xs={2} className={classes.proposaltitle}>
+                {/* <Grid xs={2} className={classes.proposaltitle}>
                   Proposal Title
-                </Grid>
+                </Grid> */}
+                <div className={classes.proposaltitle}>Proposal Title</div>
 
-                <Grid xs={10}>
+                <Div>
                   <input
                     className={classes.proposalinput}
                     type="text"
                     onChange={(e) => setProposalTitle(e.target.value)}
                     value={proposalTitle}
                   />
-                </Grid>
+                </Div>
               </div>
 
               <div className={classes.secondrow}>
@@ -446,21 +447,19 @@ export default function Createnewproposal(props) {
                       arrow={true}
                       minDate={new Date()}
                       // onOpen={() => open}
-                      onOpen={() => open}
-                      // dateFormat="yyyy/MM/dd"
+                      // onOpen={() => open}
                       onChange={onChange}
                       placeholderText="MM/DD/YYYY"
                       value={value}
                       style={{
                         color: "black",
                         fontWeight: "normal",
-                        // pointerEvents: "none",
                       }}
                     />
                     <img
                       src="/images/Calendar.svg"
                       style={{ width: "18px", marginLeft: "150px" }}
-                      onClick={() => handleOpen()}
+                      // onClick={() => handleOpen()}
                     />
                   </DateDiv>
                 </Grid>
@@ -476,8 +475,28 @@ export default function Createnewproposal(props) {
                     // onChange={(e) => setEndDate(e.target.value)}
                     value={endDate}
                   /> */}
-
                   <DateDiv>
+                    <DatePicker
+                      // className={classes.startdateinput}
+                      arrow={true}
+                      minDate={new Date()}
+                      // onOpen={() => open}
+                      onOpen={() => open}
+                      onChange={onChange}
+                      placeholderText="MM/DD/YYYY"
+                      value={value}
+                      style={{
+                        color: "black",
+                        fontWeight: "normal",
+                      }}
+                    />
+                    <img
+                      src="/images/Calendar.svg"
+                      style={{ width: "18px", marginLeft: "150px" }}
+                      // onClick={() => handleOpen()}
+                    />
+                  </DateDiv>
+                  {/* <DateDiv>
                     <DatePicker
                       // className={classes.startdateinput}
                       arrow={true}
@@ -499,7 +518,7 @@ export default function Createnewproposal(props) {
                       style={{ width: "18px", marginLeft: "150px" }}
                       onClick={setOpen}
                     />
-                  </DateDiv>
+                  </DateDiv> */}
                 </Grid>
               </div>
               <Mobile>
@@ -616,6 +635,11 @@ export default function Createnewproposal(props) {
     </div>
   );
 }
+const Div = styled.div`
+  width: 100%;
+  max-width: 805px;
+  margin-left: 62px;
+`;
 const DateDiv = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
