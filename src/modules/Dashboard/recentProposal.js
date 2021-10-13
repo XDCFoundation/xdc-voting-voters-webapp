@@ -15,7 +15,7 @@ import styled from "styled-components";
 export default function RecentProposal(props) {
   const proposalRedirect = (address) => {
     history.push({
-      pathname: `/proposal-details/${address}`
+      pathname: `/proposal-details/${address}`,
     });
   };
   const handleView = () => {
