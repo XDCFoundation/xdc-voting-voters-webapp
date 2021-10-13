@@ -86,6 +86,7 @@ export default function ProposalDetails(props) {
   const [support, setsupport] = React.useState("");
   const [reject, setReject] = React.useState("");
   const [open3, setOpen3] = React.useState(false);
+  const [pieData, setPieData] = React.useState([]);
   const [isButtonClicked, setIsButtonClicked] = React.useState(false);
 
   useEffect(() => {
@@ -120,8 +121,17 @@ export default function ProposalDetails(props) {
 
   const getVotePercentage = async () => {
     const getVote = await getVotePercentageOnProposal();
-    return getVote;
     console.log("getvotepercentage", getVote);
+    const data = [
+      {
+        title: "support",
+        value: getVote.yes,
+        color: "#3AB70D",
+      },
+      { title: "reject", value: getVote.No, color: "#F43D3D" },
+    ];
+    setPieData(data);
+    return getVote;
   };
   const castProposal = async (reqData) => {
     console.log("requestdata", reqData);
@@ -384,25 +394,15 @@ export default function ProposalDetails(props) {
                 <div className="recent-proposal-div-proposal2">
                   <div className="div2-heading">Vote Breakdown</div>
 
-                  <PieChart
-                    className="piechart"
-                    data={[
-                      {
-                        title: "support",
-                        value: { support },
-                        color: "#3AB70D",
-                      },
-                      { title: "reject", value: { reject }, color: "#F43D3D" },
-                    ]}
-                  />
+                  <PieChart className="piechart" data={pieData} />
                   <div className="piediv">
                     <div className="display-flex">
                       <div className="box-support"></div>
-                      <div className="spt">{support}</div>
+                      <div className="spt">Support({pieData.yes}%)</div>
                     </div>
                     <div className="display-flex">
                       <div className="box-reject"></div>
-                      <div className="rjt">{reject}</div>
+                      <div className="rjt">Reject({pieData.No}%)</div>
                     </div>
                   </div>
                   {/* <div className="button-div-support"><button onClick={handleCloseDailog} className="support-button">Yes, I support</button></div>
