@@ -13,12 +13,11 @@ import divBlockComponent from "./divComponent";
 import styled from "styled-components";
 
 export default function RecentProposal(props) {
-
-  
-
-  const proposalRedirect =()=>{
-    history.push('/proposal-details');
-  }
+  const proposalRedirect = (address) => {
+    history.push({
+      pathname: `/proposal-details/${address}`
+    });
+  };
   const handleView = () => {
     history.push("/view-all-proposals");
   };
@@ -37,12 +36,13 @@ export default function RecentProposal(props) {
             <TableBody>
               {props.proposals.map((proposal, index) => {
                 return (
-                
                   <TableRow className="table-mid-line">
                     <Row className="table-between">
                       <Column>
                         <TableCell style={{ border: "none" }}>
-                          <Row className="date">Posted on {proposal["postedOn"]}</Row>
+                          <Row className="date">
+                            Posted on {proposal["postedOn"]}
+                          </Row>
                           <Row className="name">{proposal["title"]} </Row>
                           <Row className="status">
                             <p>Status: &nbsp;</p>
@@ -74,24 +74,23 @@ export default function RecentProposal(props) {
                                   <img
                                     style={{
                                       height: "14px",
-                                      width: "14px"
+                                      width: "14px",
                                     }}
                                     className="m-b-4"
                                     src={require("../../assets/styles/images/Time-Active.svg")}
                                   />
                                 </span>
-                                <Span>
-                                  {proposal.timeRemaining} Remaining
-                                </Span>
+                                <Span>{proposal.timeRemaining} Remaining</Span>
                               </Row>
                               <Row>
-                                {/* <div className="details" onClick={proposalRedirect}>Details</div> */}
-                                {/* <a href={"/proposal-details/"+proposal.id}> */}
-                                <a href={"/proposal-details/"+"6164220cc20c490035c32e34"}>
-                                <button className="details" >Details</button>
-                                </a>
-                                    
-                                
+                                <div
+                                  className="details"
+                                  onClick={() =>
+                                    proposalRedirect(proposal["address"])
+                                  }
+                                >
+                                  Details
+                                </div>
                               </Row>
                             </>
                           ) : (
@@ -118,22 +117,22 @@ export default function RecentProposal(props) {
                                   <div className="line-2"></div>
                                 </div>{" "}
                               </Row>
-                              <Row className="vote-number">{proposal.passedVoteCount + proposal.failVoteCount} votes</Row>
+                              <Row className="vote-number">
+                                {proposal.passedVoteCount +
+                                  proposal.failVoteCount}{" "}
+                                votes
+                              </Row>
                             </>
                           )}
                         </TableCell>
                       </Column>
                     </Row>
-                    
                   </TableRow>
-                 
-                 
                 );
-                
               })}
               <Row onClick={handleView} className="view-all">
-              View All Proposals
-            </Row>
+                View All Proposals
+              </Row>
             </TableBody>
           </Table>
         </Grid>
