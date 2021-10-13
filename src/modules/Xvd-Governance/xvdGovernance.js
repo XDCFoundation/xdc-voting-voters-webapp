@@ -14,7 +14,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     maxWidth: "970px",
     position: "absolute",
-    top: "147px",
+    top: "211px",
+
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
       maxWidth: "300px",
@@ -61,7 +62,7 @@ export default function Xvdgovernance() {
           " Aliquam dictum sapien mi, at imperdiet mi eleifend vitae. Cras sed vehicula leo, pretium auctor quam. In elementum tincidunt vestibulum. Nullam interdum diam sit amet tortor rhoncus vestibulum. Aenean semper ante ut orci imperdiet auctor. Fusce placerat arcu eu condimentum commodo. Vivamus at nibh purus. Suspendisse potenti. Maecenas efficitur malesuada dapibus. Duis laoreet varius facilisis. Cras commodo neque massa, lacinia dapibus justo pellentesque vitae. Aenean facilisis volutpat risus at auctor",
       },
       {
-        heading: "How Voting works",
+        heading: "How voting works",
         paragraph:
           "Suspendisse sodales posuere urna, sit amet fringilla libero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vestibulum tristique. Vestibulum vestibulum nisl vitae Leo malesuada varius. Aenean tincidunt justo non lectus porta egestas. Ut non malesuada diam, in accumsan elit. Nunc vitae tincidunt ligula. Quisque ultricies dui ut odio maximus pretium. Nam quis tortor justo. Cras ornare, mi id sodales maximus, dolor nunc interdum lacus, a ullamcorper tortor nunc vel eros. Suspendisse gravida sapien et sapien congue, eu interdum risus tristique. Praesent fermentum lorem ipsum, vitae euismod felis hendrerit ac. Nam dignissim dui blandit, consectetur dolor nec, dapibus est. In consectetur orci quam, ut dignissim lacus ultricies vel. Donec posuere ante eget imperdiet sollicitudin. Duis quam tellus, maximus laoreet ante sit amet, euismod pellentesque tellus. Nullam mi erat, finibus vitae fermentum eu, consectetur a tortor. Praesent faucibus eros nec eros faucibus commodo. Nulla a feugiat arcu. Duis et aliquam dui. Aenean fermentum sollicitudin tempus. Nulla tincidunt felis ante, ac commodo nisi fermentum sit amet. Proin pretium metus sed leo dignissim porttitor. Etiam eleifend id odio non dictum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras quis molestie orci. Pellentesque vehicula libero a sem sodales, ac rutrum leo tincidunt. Praesent tempus consequat lectus, vitae bibendum est hendrerit ut. Donec id venenatis massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum at tellus sit amet imperdiet. Vestibulum metus orci, luctus vel blandit gravida, laoreet sit amet nisl. Fusce efficitur lorem in dignissim commodo. Sed eu lorem ac tortor volutpat malesuada id a nibh. Morbi finibus ex sed est rhoncus, eu tempor arcu faucibus. Donec at bibendum metus, eget suscipit metus. Integer vel aliquet lorem. Nullam ex nunc, dictum sit amet turpis non, bibendum finibus orci. Proin et vulputate urna, in maximus lacus.",
         subparagraphone:
@@ -127,7 +128,6 @@ export default function Xvdgovernance() {
               </Container>
             </Spacing>
 
-            <hr className={classes.line} />
             <SelectBoxDiv>
               <SelectContainer>
                 <SelectOption>
@@ -140,45 +140,50 @@ export default function Xvdgovernance() {
                 </SelectOption>
               </SelectContainer>
             </SelectBoxDiv>
-            <Row>
+            <Row
+              style={{
+                border: ".5px solid #e3e7eb",
+                borderRadius: "0% 0% 6px 6px",
+              }}
+            >
               <Secondcontainer>
                 <Sidemenu>
                   <Row__>
                     <Column>
-                      <div id="section1">
+                      <SectionDiv id="section1">
                         <H1>
                           <Anchor href="#0">Introduction</Anchor>
                         </H1>
-                      </div>
-                      <div id="section2">
+                      </SectionDiv>
+                      <SectionDiv id="section2">
                         <H2>
                           <Anchor href="#1">How voting works</Anchor>
                         </H2>
-                      </div>
-                      <div id="section3">
-                        <H2>
+                      </SectionDiv>
+                      <SectionDiv id="section3">
+                        <H3>
                           <Anchor href="#2">Voting Wallet Setup</Anchor>
-                        </H2>
-                      </div>
+                        </H3>
+                      </SectionDiv>
 
-                      <div id="section4">
-                        <H2>
+                      <SectionDiv id="section4">
+                        <H4>
                           <Anchor href="#3">Off-Chain Governance</Anchor>
-                        </H2>
-                      </div>
+                        </H4>
+                      </SectionDiv>
 
-                      <div id="section5">
-                        <H2>
+                      <SectionDiv id="section5">
+                        <H5>
                           <Anchor href="#4" style={{ textDecoration: "none" }}>
                             On-chain Governance
                           </Anchor>
-                        </H2>
-                      </div>
-                      <div id="section6">
-                        <H2>
+                        </H5>
+                      </SectionDiv>
+                      <SectionDiv id="section6">
+                        <H6>
                           <Anchor href="#5">Governance FAQs</Anchor>
-                        </H2>
-                      </div>
+                        </H6>
+                      </SectionDiv>
                     </Column>
                   </Row__>
                 </Sidemenu>
@@ -198,7 +203,7 @@ export default function Xvdgovernance() {
                           <SubparagraphOne>
                             {data.subparagraphone}
                           </SubparagraphOne>
-                          <br />
+
                           <SubparagraphTwo>
                             {data.subparagraphTwo}
                           </SubparagraphTwo>
@@ -219,6 +224,9 @@ export default function Xvdgovernance() {
     </div>
   );
 }
+const SectionDiv = styled.div`
+  margin-top: 12px;
+`;
 const Anchor = styled.a`
   text-decoration: none !important;
   color: black;
@@ -234,24 +242,18 @@ const Back = styled.span`
   color: #ffffff;
 `;
 const SubparagraphOne = styled.span`
-  color: var(--unnamed-color-2a2a2a);
   text-align: left;
   font: normal normal normal 15px/19px Inter;
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  margin-bottom: 12px;
-  margin-top: 12px;
 `;
 const SubparagraphTwo = styled.span`
-  color: var(--unnamed-color-2a2a2a);
   text-align: left;
   font: normal normal normal 15px/19px Inter;
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  margin-bottom: 12px;
-  margin-top: 12px;
 `;
 
 const SelectBoxDiv = styled.div`
@@ -331,7 +333,7 @@ const H1 = styled.span`
 const H2 = styled.span`
   font-weight: 600;
   font-family: "Inter", sans-serif !important;
-  margin-top: 8px;
+  // margin-top: 20px;
   white-space: nowrap;
   text-decoration:none;
 }
@@ -339,7 +341,7 @@ const H2 = styled.span`
 const H3 = styled.span`
   font-weight: 600;
   font-family: "Inter", sans-serif !important;
-  margin-top: 8px;
+  // margin-top: 20px;
   white-space: nowrap;
   text-decoration:none;
 }
@@ -347,7 +349,7 @@ const H3 = styled.span`
 const H4 = styled.span`
   font-weight: 600;
   font-family: "Inter", sans-serif !important;
-  margin-top: 8px;
+  // margin-top: 20px;
   white-space: nowrap;
   text-decoration:none;
 }
@@ -355,7 +357,7 @@ const H4 = styled.span`
 const H5 = styled.span`
   font-weight: 600;
   font-family: "Inter", sans-serif !important;
-  margin-top: 8px;
+  // margin-top: 20px;
   white-space: nowrap;
 }
 `;
@@ -363,7 +365,7 @@ const H5 = styled.span`
 const H6 = styled.span`
   font-weight: 600;
   font-family: "Inter", sans-serif !important;
-  margin-top: 8px;
+  // margin-top: 20px;
   white-space: nowrap;
 }
 `;
@@ -374,13 +376,13 @@ const Spacing = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 53px;
-
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  opacity: 1;
+
   background: #ffffff 0% 0% no-repeat padding-box;
   align-items: center;
   padding: 11px 24px;
+
   @media (min-width: 300px) and (max-width: 767px) {
     display: block;
   }
@@ -399,7 +401,7 @@ const Secondcontainer = styled.div`
   width: 100%;
   overflow-y: auto;
   background: #ffffff 0% 0% no-repeat padding-box;
-  // border: 0.5px solid #e3e7eb;
+  border-radius: 0% 0% 6px 6px;
 `;
 
 const Div = styled.div`
@@ -409,9 +411,8 @@ const Div = styled.div`
 const Heading = styled.span`
   white-space: nowrap;
   font: normal normal 600 19px/26px Inter;
-  letter-spacing: 0px;
+
   color: #2a2a2a;
-  opacity: 1;
+
   box-shadow: none;
-  color: var(--unnamed-color-2a2a2a);
 `;
