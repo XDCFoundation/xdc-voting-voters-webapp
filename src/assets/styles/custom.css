@@ -1355,12 +1355,21 @@ margin-left: 58px;
  }
 
 .text-editor{
-    width:100%;
-  
+    width:100%;  
 }
 
+.ql-container.ql-snow {
+    border: unset !important;
+}
+.ql-toolbar.ql-snow {
+    border: unset !important;
+  
+    border-bottom: 1px solid #E3E7EB !important;
+}
+
+
 .quill-editor{
-    height:130px !important;
+    padding-bottom: 100px;
 }
 .load{
     /* width: 30px;

@@ -36,10 +36,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "12px",
     border: "0px",
     outline: "0px",
-    height: "30px",
+    height: "31px",
     fontFamily: "Inter",
     fontWeight: "600",
     marginLeft: "8px",
+    color: "#2A2A2A",
   },
   row: {
     border: "1px solid #E3E7EB",
@@ -65,8 +66,8 @@ const useStyles = makeStyles((theme) => ({
       top: "65px",
     },
     "@media (min-width: 767px) and (max-width: 2080px)": {
-      maxWidth: "700px",
-      top: "183px",
+      // maxWidth: "700px",
+      top: "189px",
       maxWidth: "970px",
     },
   },
@@ -76,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
     // height: "53px",
     background: "#FFFFFF 0% 0% no-repeat padding-box",
     justifyContent: "space-between",
-    padding: "24px",
+    padding: "20px 17px",
     borderTopLeftRadius: "4px",
     borderTopRightRadius: "4px",
 
@@ -93,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
     border: "solid 1px #aab1ff",
     color: "#09184b",
     backgroundSize: "14px",
-    paddingLeft: "20px",
+    padding: "16px 22px",
     border: "1px solid #E3E7EB",
     borderRadius: "4px",
     opacity: 1,
@@ -136,8 +137,9 @@ const useStyles = makeStyles((theme) => ({
     border: "0px",
     outline: "0px",
     fontSize: "13px",
-    color: "#2149b9",
+    // color: "#2A2A2A",
     fontWeight: "600",
+    color: "#2149B9",
   },
 }));
 const Container = styled.div`
@@ -153,6 +155,13 @@ const SecondContainer = styled.div`
     display: block;
   }
 `;
+function ProgressBar() {
+  return (
+    <div>
+      <ViewAllProposal name="deepali" />
+    </div>
+  );
+}
 
 export default function ViewAllProposal() {
   const { proposal } = useParams();
@@ -201,8 +210,9 @@ export default function ViewAllProposal() {
   //   let id=transactions?.responseData?._id
   let res = transactions?.responseData;
 
+
   const backButton = () => {
-    history.push("/community");
+    history.push("/");
   };
   React.useEffect(() => {
     let address = [
@@ -275,7 +285,7 @@ export default function ViewAllProposal() {
   }, []);
 
   const [address, setAddress] = React.useState([]);
-
+  ProgressBar();
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
 
@@ -347,7 +357,7 @@ export default function ViewAllProposal() {
             </Row>
 
             <Div>
-              <MainContainer>
+              <MainContainer isTextArea={true}>
                 <Column>
                   <RowSpacing>
                     <Posted>Posted on 24 June 2021</Posted>
@@ -383,7 +393,7 @@ export default function ViewAllProposal() {
               </MainContainer>
               {address.map((data) => {
                 return (
-                  <MainContainer>
+                  <MainContainer isTextArea={true}>
                     <Column>
                       <RowSpacing>
                         <Posted>{data.date}</Posted>
@@ -455,7 +465,7 @@ export default function ViewAllProposal() {
                 <Proposals>Proposals </Proposals>
               </FirstDiv>
               <SecondDiv>
-                <Back>Back</Back>
+                <BackButton>Back</BackButton>
                 <Block>
                   <Span>1 </Span>
                 </Block>
@@ -523,8 +533,13 @@ const Input = styled.input`
   font-weight: 600;
 `;
 const MainContainer = styled.div`
-  padding: 11px 24px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 20px 17px;
+  // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: ${(props) =>
+    props.isTextArea ? `1px solid rgba(0, 0, 0, 0.1);` : `unset`};
+  // border-radius: 6px;
+
+  border-radius: ${(props) => (props.isTextArea ? `6px;` : `unset`)};
 `;
 
 const RowSpacing = styled.div`
@@ -551,10 +566,18 @@ const DisplayNone = styled.div`
 const Back = styled.span`
   text-align: left;
   font-family: "Inter", sans-serif;
-
   font-size: 17px;
-
   color: #ffffff;
+`;
+const BackButton = styled.button`
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e3e7eb;
+  border-radius: 4px;
+  text-align: left;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0px;
+  color: #909090;
 `;
 const PagingDiv = styled.div`
   display: flex;
