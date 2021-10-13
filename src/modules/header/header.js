@@ -81,7 +81,7 @@ return (
    <div className={classes.buttondiv}>   
 
      <XdcConnect
-       btnClass={  wallet.connected  ? classes.btnCss : classes.btnCss  }
+       btnClass={  wallet.connected  ? classes.btnCss  : classes.btnCss  }
        btnName={wallet.connected ? wallet.address : "Connect wallet"}
        onConnect={         
         (wallet) => {setwallet(wallet);fetchData(wallet.address);}             
