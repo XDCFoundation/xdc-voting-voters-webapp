@@ -11,11 +11,13 @@ import TableRow from "@material-ui/core/TableRow";
 import { history } from "../../managers/history";
 import divBlockComponent from "./divComponent";
 import styled from "styled-components";
+import ReactDOM from "react-dom";
+import Countdown from "react-countdown";
 
 export default function RecentProposal(props) {
   const proposalRedirect = (address) => {
     history.push({
-      pathname: `/proposal-details/${address}`
+      pathname: `/proposal-details/${address}`,
     });
   };
   const handleView = () => {
@@ -51,8 +53,8 @@ export default function RecentProposal(props) {
                                 proposal.status === "Open"
                                   ? "fc-blue"
                                   : proposal.status === "Passed"
-                                  ? "fc-green"
-                                  : "fc-red"
+                                    ? "fc-green"
+                                    : "fc-red"
                               }
                             >
                               {proposal.status}
@@ -80,7 +82,11 @@ export default function RecentProposal(props) {
                                     src={require("../../assets/styles/images/Time-Active.svg")}
                                   />
                                 </span>
-                                <Span>{proposal.timeRemaining} Remaining</Span>
+                                <Span >
+                                  <Countdown className="count-down" date={Date.now() + 24 * 60 * 60000 * parseInt((proposal.timeRemaining).split(" ")[0])} />
+                                  Remaining
+
+                                </Span>
                               </Row>
                               <Row>
                                 <div
