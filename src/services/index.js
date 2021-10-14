@@ -4,4 +4,5 @@
 //export all services from index file -
 
 // export * from './user'
+export { default as ProposalService } from "./proposalService"
 export { default as getVotes } from "./proposalService";

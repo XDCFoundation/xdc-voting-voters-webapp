@@ -15,6 +15,7 @@ let moment = require('moment');
 const cookies = new Cookies();
 const utility = {
     getHeader,
+    parseResponse,
     apiFailureToast,
     apiSuccessToast,
     getAddedByObject,
@@ -190,6 +191,14 @@ function validationAlert(message, type = 'info') {
         title: message,
         icon: type
     })
+}
+
+function parseResponse(promise) {
+    return promise
+        .then((data) => {
+            return [null, data];
+        })
+        .catch((err) => [err]);
 }
 
 function getTimeDifference(timeStampTo) {
