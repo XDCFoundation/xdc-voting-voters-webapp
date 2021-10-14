@@ -166,49 +166,7 @@ function ProgressBar() {
 export default function ViewAllProposal() {
   const { proposal } = useParams();
 
-  const [transactions, setTransactions] = useState({});
-
-  // useEffect(async () => {
-  //   let urlPath = `/${proposal}`;
-
-  //   let [error, ProposalDetail] = await Utils.parseResponse(
-  //    ProposalService.getProposalDetail(urlPath, {})
-  //   );
-
-  //   if (error || !ProposalDetail) return;
-
-  //   setTransactions(ProposalDetail);
-
-  //   const interval = setInterval(async () => {
-  //     let [error, ProposalDetail] = await Utils.parseResponse(
-  //      ProposalService.getProposalDetail(urlPath, {})
-  //     );
-
-  //     setTransactions(ProposalDetail);
-  //   }, 45000);
-  // }, []);
-  //let proposalId =document.getElementById("proposalInput").value;
-  fetch(
-    "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getProposalDetail/6164220cc20c490035c32e34"
-  )
-    .then((res) => res.json())
-    .then((res) => {
-      //console.log("result===",res.data.responseData)
-      setTransactions(res);
-    })
-
-    .catch((err) => {
-      console.log(err);
-    });
-
-  //console.log("transaction====", transactions?.responseData);
-  // // let detail= transactions?.responseData?.proposalTitle
-  // // let time= transactions?.responseData?.createdOn
-  // // let formatedTime=moment(time).format('LL');
-  // // let statusDetail = transactions?.responseData?.status
-  // // let descrition = transactions?.responseData?.description
-  //   let id=transactions?.responseData?._id
-  let res = transactions?.responseData;
+  
 
 
   const backButton = () => {
@@ -374,7 +332,7 @@ export default function ViewAllProposal() {
 
                     {/* <Button>Details</Button> */}
 
-                    <a href={"/proposal-details/" + "615c31771d5ed80035e2dcca"}>
+                    <a href={"/proposal-details/" + "0x45f5815e7051cA72EF2b11e3E52DC42Aa4cf8439"}>
                       <button className="details">Details</button>
                     </a>
                   </RowSpacing>
