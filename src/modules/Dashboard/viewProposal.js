@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Column, Row } from "simple-flexbox";
 import "../../assets/styles/custom.css";
 import HeaderMain from "../header/header";
@@ -9,6 +9,14 @@ import styled from "styled-components";
 import "./datepicker.css";
 import FooterComponent from "../footer/footerComponent";
 import { history } from "../../managers/history";
+import { useParams } from "react-router-dom";
+import Utils from "../../utility";
+import { ProposalService } from "../../services/index";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, CartesianAxis } from "recharts";
+
+import Chart from "react-google-charts";
+
+
 
 const useStyles = makeStyles((theme) => ({
   selectOptions: { backgroundColor: "white" },
@@ -155,7 +163,12 @@ function ProgressBar() {
   );
 }
 
-export default function ViewAllProposal(props) {
+export default function ViewAllProposal() {
+  const { proposal } = useParams();
+
+  
+
+
   const backButton = () => {
     history.push("/");
   };
@@ -233,6 +246,15 @@ export default function ViewAllProposal(props) {
   ProgressBar();
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
+
+  // const searchProposal=()=>{
+  //  let response = res
+  //  //console.log( response)
+  //  return response
+  // }
+  //document.getElementById("proposalInput").onkeyup = function() {searchProposal()};
+  
+  
   return (
     <div>
       <div className="header-div-all">
@@ -261,6 +283,8 @@ export default function ViewAllProposal(props) {
                     placeholder="Search"
                     className={classes.input}
                     type="text"
+                    onKeyUp={console.log("hello")}
+                    id="proposalInput"
                   />
                 </InputDiv>
               </Container>
@@ -306,7 +330,11 @@ export default function ViewAllProposal(props) {
                       XDC-ABC Bootstrapping Partnership Proposal
                     </Content>
 
-                    <Button>Details</Button>
+                    {/* <Button>Details</Button> */}
+
+                    <a href={"/proposal-details/" + "0x45f5815e7051cA72EF2b11e3E52DC42Aa4cf8439"}>
+                      <button className="details">Details</button>
+                    </a>
                   </RowSpacing>
                   <Container>
                     <Status>Status:&ensp;</Status>
@@ -338,8 +366,8 @@ export default function ViewAllProposal(props) {
                           <Content>{data.name}</Content>
                           <PositionDivLine>
                             <BarLine>
-                              <GreenLine>{props.name}</GreenLine>
-                              <RedLine></RedLine>
+                            <GreenLine></GreenLine>
+                            <RedLine></RedLine>
                             </BarLine>
                           </PositionDivLine>
                         </div>
@@ -592,8 +620,9 @@ const MobileResponsive = styled.div`
   }
 `;
 const BarLine = styled.div`
-  width: 200px;
-  height: 3px;
+width: 200px;
+height: 3px;
+
   display: flex;
   @media (min-width: 300px) and (max-width: 767px) {
     width: 85px;
