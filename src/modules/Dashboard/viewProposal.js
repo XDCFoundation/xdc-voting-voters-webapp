@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Column, Row } from "simple-flexbox";
 import "../../assets/styles/custom.css";
 import HeaderMain from "../header/header";
@@ -9,6 +9,14 @@ import styled from "styled-components";
 import "./datepicker.css";
 import FooterComponent from "../footer/footerComponent";
 import { history } from "../../managers/history";
+import { useParams } from "react-router-dom";
+import Utils from "../../utility";
+import { VotersPercentageService } from "../../services";
+
+
+import Chart from "react-google-charts";
+
+
 
 const useStyles = makeStyles((theme) => ({
   selectOptions: { backgroundColor: "white" },
@@ -147,6 +155,83 @@ const SecondContainer = styled.div`
 `;
 
 export default function ViewAllProposal() {
+ // let urlPath = ""
+  const [getVotesPercentage, setGetVotesPercentage] = useState({})
+  // useEffect(async () => {
+
+  //   let [error, votePercentage] = await Utils.parseResponse(
+      
+  //     VotersPercentageService.getVotersPercentage()
+  //   );
+  //   console.log("vote",votePercentage)
+
+  //   if (error || !votePercentage) return;
+
+  //   setGetVotesPercentage(votePercentage);
+   
+  //   const interval = setInterval(async () => {
+  //     let [error,votePercentage] = await Utils.parseResponse(
+  //       VotersPercentageService.getVotersPercentage()
+  //     );
+  //     console.log("transaction====", getVotesPercentage);
+  //     setGetVotesPercentage(votePercentage);
+  //   }, 45000);
+  // }, []);
+  
+
+
+
+  //const [graphAccounts,  setGetVotesPercentage] = useState([]);
+
+
+
+  // useEffect(async () => {
+
+  //     let [error, votePercentage] = await Utils.parseResponse(getVotersPercentageService.getVotersPercentage())
+
+  //     if (error || !votePercentage)
+
+  //         return
+
+  //      setGetVotesPercentage(votePercentage)
+  //      console.log("====",getVotesPercentage)
+  //     const interval = setInterval(async () => {
+
+  //         let [error, votePercentage] = await Utils.parseResponse(getVotersPercentageService.getVotersPercentage())
+
+  //          setGetVotesPercentage(votePercentage);
+
+         
+
+  //     }, 30000)
+  //   },[]);
+
+  fetch(
+    "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getVotingPercentage"
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      console.log("result===",res.responseData.yes,"No",res.responseData.No)
+      setGetVotesPercentage(res);
+    })
+
+    .catch((err) => {
+      console.log(err);
+    });
+
+     let passVote=getVotesPercentage?.responseData?.yes
+     let yes=Math.floor(passVote)
+     console.log(yes,"yes")
+
+
+     let rejectedVote=getVotesPercentage?.responseData?.No
+     let rejected=Math.floor(rejectedVote)
+     console.log(rejected,"===")
+
+
+  
+
+
   const backButton = () => {
     history.push("/community");
   };
@@ -224,6 +309,15 @@ export default function ViewAllProposal() {
 
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
+
+  // const searchProposal=()=>{
+  //  let response = res
+  //  //console.log( response)
+  //  return response
+  // }
+  //document.getElementById("proposalInput").onkeyup = function() {searchProposal()};
+  
+  
   return (
     <div>
       <div className="header-div-all">
@@ -252,6 +346,8 @@ export default function ViewAllProposal() {
                     placeholder="Search"
                     className={classes.input}
                     type="text"
+                    onKeyUp={console.log("hello")}
+                    id="proposalInput"
                   />
                 </InputDiv>
               </Container>
@@ -297,7 +393,11 @@ export default function ViewAllProposal() {
                       XDC-ABC Bootstrapping Partnership Proposal
                     </Content>
 
-                    <Button>Details</Button>
+                    {/* <Button>Details</Button> */}
+
+                    <a href={"/proposal-details/" + "615c31771d5ed80035e2dcca"}>
+                      <button className="details">Details</button>
+                    </a>
                   </RowSpacing>
                   <Container>
                     <Status>Status:&ensp;</Status>
@@ -328,9 +428,36 @@ export default function ViewAllProposal() {
                         <div className={classes.mobilemedia}>
                           <Content>{data.name}</Content>
                           <PositionDivLine>
-                            <BarLine>
-                              <GreenLine></GreenLine>
-                              <RedLine></RedLine>
+                            <BarLine >
+
+                              <RedLine>{yes}</RedLine>
+                              <GreenLine>{rejected}</GreenLine>
+                            {/* <Chart
+                              width={"100%"}
+                              height={"8px"}
+                              chartType="BarChart"
+                              data={[
+                                ["", "",{ role: 'style' }, "", { role: 'style' }, {
+                                  sourceColumn: 0,
+                                  role: 'annotation',
+                                  type: 'string',
+                                  calc: 'stringify',
+                                }],
+                                ["", 1,"color:#3ab70d",5,"color:red",null],
+                                
+                               
+                              ]}
+                              options={{
+                                title: "votes",
+                                chartArea: { width: "100%" },
+                                isStacked: true,
+                                grid:{position: 'none' },
+                                legend: { position: 'none' }
+                                
+                              }}
+                              // For tests
+                              rootProps={{ "data-testid": "1" }}
+                            /> */}
                             </BarLine>
                           </PositionDivLine>
                         </div>
@@ -570,8 +697,10 @@ const MobileResponsive = styled.div`
   }
 `;
 const BarLine = styled.div`
-  width: 200px;
-  height: 3px;
+  width: 220px;
+  height: 1px;
+  
+
   display: flex;
   @media (min-width: 300px) and (max-width: 767px) {
     width: 85px;
@@ -727,7 +856,7 @@ const Status = styled.span`
   font-size: 14px;
   letter-spacing: 0px;
   opacity: 1;
-  color: #3B3B3B;
+  color: #3b3b3b;
 
   whitespace: "nowrap";
   @media (min-width: 300px) and (max-width: 767px) {
@@ -764,7 +893,7 @@ const NumberOfVotes = styled.span`
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 14px;
-  color: #2A2A2A;
+  color: #2a2a2a;
   @media (min-width: 300px) and (max-width: 767px) {
     font-size: 12px;
   }
