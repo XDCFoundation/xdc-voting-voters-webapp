@@ -15,6 +15,7 @@ let moment = require('moment');
 const cookies = new Cookies();
 const utility = {
     getHeader,
+    parseResponse,
     apiFailureToast,
     apiSuccessToast,
     getAddedByObject,
@@ -76,6 +77,14 @@ function trackEvent(event, eventData) {
     //     console.log(err)
     // }
 }
+
+function parseResponse(promise) {
+    return promise
+        .then((data) => {
+            return [null, data];
+        })
+        .catch((err) => [err]);
+} 
 
 function getDateFormat() {
     var my_date = new Date(2019, 0, 31);
