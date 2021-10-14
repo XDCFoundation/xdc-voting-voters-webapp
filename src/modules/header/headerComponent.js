@@ -65,8 +65,9 @@ export default function Header(props) {
       console.log(err);
     });
 
-    setGetVotesCasted(response.countData);
-  };
+    //setGetVotesCasted(response.countData);
+
+  }
 
   const getVoting = async () => {
     const response = await getTotalVotingAddress().catch((err) => {
