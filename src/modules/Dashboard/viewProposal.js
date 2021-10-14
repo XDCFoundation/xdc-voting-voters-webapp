@@ -156,77 +156,96 @@ function ProgressBar() {
 }
 
 export default function ViewAllProposal(props) {
+
+
   const backButton = () => {
     history.push("/");
   };
   React.useEffect(() => {
-    let address = [
-      {
-        date: "Posted on 24 June 2021",
-        name: "Adding more features to XDC Explorer 2.0",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "145 votes",
-        id: 2,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Relaunch of XinFin.org website",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "89 votes",
-        id: 3,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Launching NFT Marketplace to increase circulation of XDC",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "89 votes",
-        id: 4,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Partnership with Circle Stable Coin",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "89 votes",
-        id: 5,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Adding more features to XDC Explorer 2.0",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "145 votes",
-        id: 6,
-        time: "5 min ago",
-      },
-    ];
+    // let urlPath = `${address}`;
 
-    setAddress(
-      address.map((object) => {
-        return {
-          date: object.date,
-          name: object.name,
-          status: object.status,
-          poll: object.poll,
-          bar: object.bar,
-          vote: object.vote,
-          id: object.id,
-          time: object.time,
-        };
-      })
+    let [error, proposalDetail] = await Utils.parseResponse(
+      ProposalService.getProposalDetail( {})
     );
+
+    if (error || !proposalDetail) return;
+
+    setTransactions(proposalDetail);
+
+    const interval = setInterval(async () => {
+      let [error, proposalDetail] = await Utils.parseResponse(
+        ProposalService.getProposalDetail(urlPath, {})
+      );
+      console.log("transaction====", transactions?.responseData);
+      setTransactions(proposalDetail);
+    }, 45000);
+    // let address = [
+    //   {
+    //     date: "Posted on 24 June 2021",
+    //     name: "Adding more features to XDC Explorer 2.0",
+    //     status: "Passed",
+    //     poll: "Poll Ended",
+    //     bar: "Line",
+    //     vote: "145 votes",
+    //     id: 2,
+    //     time: "5 min ago",
+    //   },
+    //   {
+    //     date: "Posted on 24 June 2021",
+    //     name: "Relaunch of XinFin.org website",
+    //     status: "Passed",
+    //     poll: "Poll Ended",
+    //     bar: "Line",
+    //     vote: "89 votes",
+    //     id: 3,
+    //     time: "5 min ago",
+    //   },
+    //   {
+    //     date: "Posted on 24 June 2021",
+    //     name: "Launching NFT Marketplace to increase circulation of XDC",
+    //     status: "Passed",
+    //     poll: "Poll Ended",
+    //     bar: "Line",
+    //     vote: "89 votes",
+    //     id: 4,
+    //     time: "5 min ago",
+    //   },
+    //   {
+    //     date: "Posted on 24 June 2021",
+    //     name: "Partnership with Circle Stable Coin",
+    //     status: "Passed",
+    //     poll: "Poll Ended",
+    //     bar: "Line",
+    //     vote: "89 votes",
+    //     id: 5,
+    //     time: "5 min ago",
+    //   },
+    //   {
+    //     date: "Posted on 24 June 2021",
+    //     name: "Adding more features to XDC Explorer 2.0",
+    //     status: "Passed",
+    //     poll: "Poll Ended",
+    //     bar: "Line",
+    //     vote: "145 votes",
+    //     id: 6,
+    //     time: "5 min ago",
+    //   },
+    // ];
+
+    // setAddress(
+    //   address.map((object) => {
+    //     return {
+    //       date: object.date,
+    //       name: object.name,
+    //       status: object.status,
+    //       poll: object.poll,
+    //       bar: object.bar,
+    //       vote: object.vote,
+    //       id: object.id,
+    //       time: object.time,
+    //     };
+    //   })
+    // );
   }, []);
 
   const [address, setAddress] = React.useState([]);
