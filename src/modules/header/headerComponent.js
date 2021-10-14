@@ -65,7 +65,7 @@ export default function Header(props) {
       console.log(err);
     });
 
-    setGetVotesCasted(response.countData);
+    //setGetVotesCasted(response.countData);
 
   }
 

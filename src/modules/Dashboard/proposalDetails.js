@@ -20,15 +20,16 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { PieChart } from "react-minimal-pie-chart";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import ReactDOM from "react-dom";
 import Utils from "../../utility";
 import { ProposalService } from "../../services/index";
 import moment from "moment";
 import Web3 from "web3";
 
-import {useLocation} from "react-router";
 
+import { useLocation, useParams } from "react-router";
+import { castVotingProposal } from "../../services/proposalService";
+import { getVotePercentageOnProposal } from "../../services/proposalService";
 // let masterContractAbi = require("../../common/abis/masterContractAbi.json").abi;
 
 let proposalContractAbi =
@@ -95,9 +96,7 @@ export default function ProposalDetails(props) {
   let des = transactions?.description;
   let descrition=removeTags(des)
   
-
-
-  const [proposalAddress,setProposalAddress] = useState("");
+  const [proposalAddress, setProposalAddress] = useState("");
   const proposalAddressObject = useParams();
 
   React.useEffect(() => {
@@ -137,13 +136,18 @@ export default function ProposalDetails(props) {
         };
       })
     );
-    setProposalAddress(proposalAddressObject.address)
+    setProposalAddress(proposalAddressObject.address);
   }, []);
 
   const [newaddress, setAddress] = React.useState([]);
-
+  const [support, setsupport] = React.useState("");
+  const [reject, setReject] = React.useState("");
   const [open3, setOpen3] = React.useState(false);
   const [isButtonClicked, setIsButtonClicked] = React.useState(false);
+
+  useEffect(() => {
+    getVotePercentage();
+  }, []);
 
   function shorten(b, amountL = 13, amountR = 3, stars = 3) {
     return `${b.slice(0, amountL)}${".".repeat(stars)}${b.slice(
@@ -170,15 +174,20 @@ export default function ProposalDetails(props) {
     }
     setOpen3(false);
   };
-  // const yesISupport = () => {
-  //   history.push("");
-  // };
-  const castProposalVote = async (reqData) => {
-    // const reqObj = {
-    //   option: reqData._option,
-    //   votingTime: new Date(reqData._votingTime).getTime(),
-    // };
-    console.log("reqData", reqData);
+
+  const getVotePercentage = async () => {
+    const getVote = await getVotePercentageOnProposal();
+    return getVote;
+    console.log("getvotepercentage", getVote);
+  };
+  const castProposal = async (reqData) => {
+    console.log("requestdata", reqData);
+
+    const result = await castVotingProposal(reqData);
+    console.log("result", result);
+  };
+  const castProposalVote = async (isSupport) => {
+    console.log("isSupport", isSupport);
     let web3;
     web3 = new Web3(window.web3.currentProvider);
     console.log(window.web3.currentProvider);
@@ -191,7 +200,8 @@ export default function ProposalDetails(props) {
       }
       const contract = new web3.eth.Contract(
         proposalContractAbi,
-        "0x3821145c2C71d2062627efacab2e21684b26C07d"
+        // "0x0790Fd3D408BB723438990Fc8958f1B9D65Dd35a"
+        proposalAddress
       );
       console.log("contract", contract);
       // debugger;
@@ -211,6 +221,14 @@ export default function ProposalDetails(props) {
       setIsButtonClicked(true);
       // this.setState({ open3: true, isButtonClicked: true });
       console.log("castProposalResponse", castProposalResponse);
+      const reqData = {
+        pollingContract: "ueufheu",
+        voterAddress: proposalAddress,
+        support: isSupport,
+      };
+      castProposal(reqData);
+
+      getVotePercentage();
       return castProposalResponse;
     });
   };
@@ -397,7 +415,8 @@ export default function ProposalDetails(props) {
                       onClick={() => {
                         handleCloseDailog();
                         castProposalVote(true);
-                        // yesISupport();
+                        getVotePercentage();
+                        // castProposal();
                       }}
                       className="support-button"
                     >
@@ -409,6 +428,8 @@ export default function ProposalDetails(props) {
                     <button
                       onClick={() => {
                         castProposalVote(false);
+                        getVotePercentage();
+                        // castProposal();
                       }}
                       className="reject-button"
                     >
@@ -423,18 +444,22 @@ export default function ProposalDetails(props) {
                   <PieChart
                     className="piechart"
                     data={[
-                      { title: "support", value: 78, color: "#3AB70D" },
-                      { title: "reject", value: 22, color: "#F43D3D" },
+                      {
+                        title: "support",
+                        value: { support },
+                        color: "#3AB70D",
+                      },
+                      { title: "reject", value: { reject }, color: "#F43D3D" },
                     ]}
                   />
                   <div className="piediv">
                     <div className="display-flex">
                       <div className="box-support"></div>
-                      <div className="spt">Support (78%)</div>
+                      <div className="spt">{support}</div>
                     </div>
                     <div className="display-flex">
                       <div className="box-reject"></div>
-                      <div className="rjt">Reject (22%)</div>
+                      <div className="rjt">{reject}</div>
                     </div>
                   </div>
                   {/* <div className="button-div-support"><button onClick={handleCloseDailog} className="support-button">Yes, I support</button></div>
