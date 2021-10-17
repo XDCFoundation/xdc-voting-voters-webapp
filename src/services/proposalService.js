@@ -1,6 +1,6 @@
 import { httpService } from "../utility/httpService";
 import { httpConstants } from "../constants";
-export default { getProposalDetail };
+export default { getProposalDetail ,proposalList};
 
 
 
