@@ -21,6 +21,7 @@ export default function RecentProposal(props) {
     history.push("/view-all-proposals");
   };
 
+
   return (
     <div>
       <Grid lg={13} className="tablegrid_address">

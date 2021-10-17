@@ -19,9 +19,23 @@ import { makeStyles, mergeClasses } from "@material-ui/styles";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { PieChart } from "react-minimal-pie-chart";
+import Utils from "../../utility";
+import { ProposalService } from "../../services/index";
+import moment from "moment";
+import Web3 from "web3";
+
+
+import { useLocation, useParams } from "react-router";
+import { castVotingProposal } from "../../services/proposalService";
+import { getVotePercentageOnProposal } from "../../services/proposalService";
+// let masterContractAbi = require("../../common/abis/masterContractAbi.json").abi;
 
 function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+function removeTags(str) {
+  return <div dangerouslySetInnerHTML={{ __html: str}}>
+  </div>;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -30,9 +44,58 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProposalDetails() {
+export default function ProposalDetails(props) {
+  const {address } = useParams();
+
+  const [transactions, setTransactions] = useState([]);
+
+  // fetch(
+  //   "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getProposalDetail/"+proposal,
+
+  // )
+  //   .then((res) => res.json())
+  //   .then((res) => {
+  //     //console.log("result===",res.data.responseData)
+  //     setTransactions(res);
+  //   })
+
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+
+  useEffect(async () => {
+
+    let urlPath = `${address}`;
+
+    let [error, proposalDetail] = await Utils.parseResponse(
+      ProposalService.getProposalDetail(urlPath, {})
+    );
+
+    if (error || !proposalDetail) return;
+
+    setTransactions(proposalDetail);
+
+    const interval = setInterval(async () => {
+      let [error, proposalDetail] = await Utils.parseResponse(
+        ProposalService.getProposalDetail(urlPath, {})
+      );
+      console.log("transaction====", transactions?.responseData);
+      setTransactions(proposalDetail);
+    }, 45000);
+  }, []);
+
+  let detail = transactions?.proposalTitle;
+  let time = transactions?.createdOn;
+  let formatedTime = moment(time).format("LL");
+  let statusDetail = transactions?.status;
+  let des = transactions?.description;
+  let descrition=removeTags(des)
+  
+  const [proposalAddress, setProposalAddress] = useState("");
+  const proposalAddressObject = useParams();
+
   React.useEffect(() => {
-    let address = [
+    let newaddress = [
       {
         image: "/images/network.svg",
         name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
@@ -61,7 +124,7 @@ export default function ProposalDetails() {
     ];
 
     setAddress(
-      address.map((object) => {
+      newaddress.map((object) => {
         return {
           image: object.image,
           name: object.name,
@@ -71,7 +134,9 @@ export default function ProposalDetails() {
     );
   }, []);
 
-  const [address, setAddress] = React.useState([]);
+  const [newaddress, setAddress] = React.useState([]);
+  const [support, setsupport] = React.useState("");
+  const [reject, setReject] = React.useState("");
   const [open3, setOpen3] = React.useState(false);
   const [isButtonClicked, setIsButtonClicked] = React.useState(false);
 
@@ -127,12 +192,10 @@ export default function ProposalDetails() {
             <div className="recent-proposal-div-proposal">
               <Row className="recent-add-div-proposal">
                 <Column>
-                  <Row className="date-proposal">Posted on 2 July 2021</Row>
-                  <Row className="name-proposal">
-                    XDC-ABC Bootstrapping Partnership Proposal{" "}
-                  </Row>
+                  <Row className="date-proposal">Posted on {formatedTime}</Row>
+                  <Row className="name-proposal">{detail} </Row>
                   <Row className="status-proposal">
-                    Status: <span>Open</span>{" "}
+                    Status: <span>{statusDetail}</span>{" "}
                   </Row>
                 </Column>
                 <Column>
@@ -181,14 +244,16 @@ export default function ProposalDetails() {
                                                 '<body><Row>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis magna at sem consectetur, vitae ultrices sem molestie. Maecenas vitae dolor eu lectus maximus ultrices. Curabitur vestibulum nec quam in dictum. Duis malesuada iaculis dapibus mauris blandit rhonc: 1. Proin a tristique augue integer mauris magna. 2. Vivamus tempus dapibus lectus ac rutrum. 3. Duis malesuada iaculis dapibus. Maecenas id arcu lacus. Integer arcu ligula, tristique vitae bibendum ac, ultrices id diam. Aliquam vel est scelerisque, volutpat felis id, cursus erat. Vestibulum consectetur, orci in convallis tempor, ligula augue ullamcorper nibh, id pulvinar lectus libero sed nulla. Ut egestas justo urna, et euismod nibh tristique sed. Pellentesque tristique enim egestas lorem imperdiet, id lobortis odio auctor. Suspendisse sodales sagittis libero. Vivamus in ullamcorper eros, a luctus mauris. Nulla facilisi. Fusce viverra turpis vulputate eros faucibus, quis consectetur leo egestas. Proin placerat arcu ac dui placerat commodo. Curabitur mollis orci augue, vitae porttitor risus euismod eu. Ut nec posuere arcu. Vivamus pulvinar arcu et faucibus maximus. Duis malesuada iaculis dapibus. Mauris blandit rhoncus tellus rutrum tempor. In pretium nulla eget dolor molestie, non lobortis lorem tempus. Aenean ullamcorper urna non nisi tempor auctor. Suspendisse et ipsum bibendum, malesuada diam eget, congue erat. Duis lobortis elementum gravida. Sed ut dapibus arcu. Cras porttitor iaculis sapien eu fringilla. Cras in ligula urna. Vestibulum feugiat convallis felis ac dignissim. Duis placerat velit quam, vitae imperdiet elit maximus vel. Nam tincidunt ultricies ultrices. Nullam ac odio convallis dui volutpat luctus. Morbi luctus ornare pellentesque. Praesent rhoncus lectus id suscipit cursus. Morbi purus metus, tempor quis eleifend vitae, lacinia sit amet urna. Proin egestas ipsum quis tellus fermentum finibus et non urna.</Row></body>')} */}
                         {/* {parse(` */}
                         <Row className="heading-1">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          
+                          {descrition}
+                          {/* Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Quisque venenatis magna at sem consectetur,
                           vitae ultrices sem molestie. Maecenas vitae dolor eu
                           lectus maximus ultrices. Curabitur vestibulum nec quam
-                          in dictum.
+                          in dictum. */}
                         </Row>
 
-                        <Row className="lower-text">
+                        {/* <Row className="lower-text">
                           Duis malesuada iaculis dapibus mauris blandit rhonc:
                         </Row>
                         <Row className="mid-text">
@@ -237,7 +302,7 @@ export default function ProposalDetails() {
                           purus metus, tempor quis eleifend vitae, lacinia sit
                           amet urna. Proin egestas ipsum quis tellus fermentum
                           finibus et non urna.
-                        </Row>
+                        </Row> */}
                         {/* `)} */}
                       </Column>
                       <Row className="doc-1">
@@ -348,7 +413,7 @@ export default function ProposalDetails() {
                 </div>
                 <div className="griddiv-voter">
                   <TableBody>
-                    {address.map((row, index) => {
+                    {newaddress.map((row, index) => {
                       return (
                         <TableRow className="table-mid-line">
                           <Row className="table-between">

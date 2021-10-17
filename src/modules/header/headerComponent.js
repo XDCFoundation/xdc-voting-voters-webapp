@@ -10,7 +10,66 @@ import DivBlocksComponent from "../Dashboard/divComponent";
 import FooterComponent from "../footer/footerComponent";
 import React from "react";
 export default function Header(props) {
-    const createView = () => {
+  //  const getPassedVote = async () => {
+  //     let web3;
+  //     web3 = new Web3(window.web3.currentProvider);
+  //     window.ethereum.enable();
+  //     const contract = new web3.eth.Contract(proposalContractAbi);
+  //     const count = await contract.methods.get_total_passed_proposals().call();
+  //     console.log(count,"counttttttttttttttt");
+  //     if (count <= 0)
+  //         return 0;
+  //     return count;
+
+  // }
+  // getProposalPassed = async () => {
+  //   let web3;
+  //   web3 = new Web3(window.web3.currentProvider);
+  //   console.log(window.web3.currentProvider)
+  //   window.ethereum.enable();
+  //   const contract = new web3.eth.Contract(masterContractAbi, "0x89CfE6bb2a708A336dEBcD8A6DE028146Ab1f841");
+  //   const createProposalResponse = await contract.methods.created_Proposal_list().call().catch(err => {
+  //       console.log(err, "====")
+  //   })
+  //   console.log(createProposalResponse, "====")
+  // }
+  const [getVotesCasted, setGetVotesCasted] = useState([]);
+  const [getPassedProposals, setGetPassedProposals] = useState([]);
+  const [getTotalVoting, setGetTotalVoting] = useState([]);
+
+  useEffect(() => {
+    // setPageNumber((pagecount)/10);
+    getVotes();
+    getPassed();
+    getVoting();
+  }, []);
+
+  const getVotes = async () => {
+    const response = await getTotalVotesCasted().catch((err) => {
+      console.log(err);
+    });
+
+    setGetVotesCasted(response.countData);
+
+  }
+
+  const getVoting = async () => {
+    const response = await getTotalVotingAddress().catch((err) => {
+      console.log(err);
+    });
+
+    setGetTotalVoting(response.length);
+  };
+
+  const getPassed = async () => {
+    const response = await getTotalPassedProposals().catch((err) => {
+      console.log(err);
+    });
+
+    setGetPassedProposals(response.length);
+  };
+
+  const createView = () => {
     history.push("/create");
   };
   // const [wallet, setwallet] = useState({});
