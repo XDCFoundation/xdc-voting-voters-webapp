@@ -19,15 +19,15 @@ export default class Createproposal extends BaseComponent {
             modules: {
                 toolbar: [
                     [
-                        {header: "1"},
-                        {header: "2"},
-                        "bold",
-                        "italic",
-                        "strike",
+                     "strike",
                         "blockquote",
                     ],
 
-                    [{list: "bullet"}, {list: "ordered"}],
+                         {header: "1"},
+                        {header: "2"},
+                        "bold",
+                        "italic",
+                      [{list: "bullet"}, {list: "ordered"}],
                     ["link", "code", "image", "video", "clean", "edit"],
                 ],
             },
