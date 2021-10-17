@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { Column, Row } from "simple-flexbox";
 import { Button } from "@material-ui/core";
 import CustomInput from "../../common/components/CustomInput";
@@ -8,7 +9,22 @@ import HeaderMain from "./header";
 import RecentProposal from "../Dashboard/";
 import DivBlocksComponent from "../Dashboard/divComponent";
 import FooterComponent from "../footer/footerComponent";
-import React from "react";
+// import {getTotalVotesCasted} from "../../services/proposalService";
+import Utils from "../../utility";
+import {
+  getTotalVotesCasted,
+  getTotalPassedProposals,
+  getTotalVotingAddress,
+} from "../../services/proposalService";
+
+// import {Passed} from "../Dashboard/index";
+
+// import BaseComponent from "../baseComponent";
+
+// import Web3 from 'web3';
+
+// let proposalContractAbi = require('../../common/abis/proposalContractAbi.json').abi;
+
 export default function Header(props) {
   //  const getPassedVote = async () => {
   //     let web3;
@@ -72,14 +88,14 @@ export default function Header(props) {
   const createView = () => {
     history.push("/create");
   };
-  // const [wallet, setwallet] = useState({});
   return (
-    <div>         
+    <div>
       <Column className="header-div">
         <div>
           {" "}
-          <HeaderMain/> {" "}
+          <HeaderMain />{" "}
         </div>
+
         {/* !***********************!  */}
 
         <Row className="row-2">
@@ -97,17 +113,17 @@ export default function Header(props) {
               <Row className="div-box">
                 <Row className="mobile-divbox">
                   <Column className="div-1">
-                    <Row className="div-1-row">65</Row>
+                    <Row className="div-1-row">{getPassedProposals}</Row>
                     <Row className="div-1-row1">Proposal Passed</Row>
                   </Column>
                   <Column className="div-1">
-                    <Row className="div-1-row">150</Row>
+                    <Row className="div-1-row">{getTotalVoting}</Row>
                     <Row className="div-1-row1">Voting Address</Row>
                   </Column>
                 </Row>
                 <Row className="mobile-lower-div">
                   <Column className="div-1">
-                    <Row className="div-1-row">4538</Row>
+                    <Row className="div-1-row">{getVotesCasted}</Row>
                     <Row className="div-1-row1">Votes Casted</Row>
                   </Column>
                 </Row>
@@ -119,8 +135,8 @@ export default function Header(props) {
           <div className="recent-proposal-div">
             <Row className="recent-add-div">
               <Column className="heading">Recent Proposals</Column>
-              <Column>             
-                <div id="div_create_prop" onClick={createView} className="create-wallet-hide">
+              <Column>
+                <div onClick={createView} className="create-wallet">
                   <p>Create Proposal</p>
                 </div>
               </Column>
@@ -128,7 +144,7 @@ export default function Header(props) {
             <div className="griddiv">
               <RecentProposal />
             </div>
-            
+
             {/* <Row onClick={handleView} className="view-all">
               View All Proposals
             </Row> */}

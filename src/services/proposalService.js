@@ -4,14 +4,16 @@ export default { getProposalDetail };
 
 
 
-export default addNewProposalLive;
-async function addNewProposalLive(reqObj) {
-  const url = process.env.REACT_APP_PROPOSAL_SVC;
+// export default{getTotalVotesCasted}
+export async function addNewProposal(reqObj) {
+  const url =
+    process.env.REACT_APP_PROPOSAL_SVC +
+    httpConstants.API_END_POINT.ADD_NEW_PROPOSAL;
   return httpService(
     httpConstants.METHOD_TYPE.POST,
     { "Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON },
     reqObj,
-    url + httpConstants.API_END_POINT.ADD_NEW_PROPOSAL
+    url
   )
     .then((response) => {
       if (
