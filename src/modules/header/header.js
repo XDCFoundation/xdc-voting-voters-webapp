@@ -33,7 +33,7 @@ function Header() {
 const classes = useStyles();
 const [wallet, setwallet] = useState({});
 console.log("wallet", wallet);
-//new
+
 
   const [address, setAddress] = useState({data:""});
   
@@ -57,7 +57,7 @@ console.log("wallet", wallet);
         console.log("error", error);
     }
 };
-//new22
+
 const reDirect = () => {
   history.push("/");
 };
@@ -78,8 +78,7 @@ return (
           </Row>
         </Column>
         <Column>                  
-   <div className={classes.buttondiv}>   
-
+   <div className={classes.buttondiv}> 
      <XdcConnect
        btnClass={  wallet.connected  ? classes.btnCss  : classes.btnCss  }
        btnName={wallet.connected ? wallet.address : "Connect wallet"}
