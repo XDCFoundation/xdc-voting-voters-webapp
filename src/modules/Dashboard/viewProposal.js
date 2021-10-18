@@ -11,9 +11,10 @@ import FooterComponent from "../footer/footerComponent";
 import { history } from "../../managers/history";
 import { useParams } from "react-router-dom";
 import Utils from "../../utility";
-import { ProposalService } from "../../services/index";
+import { ProposalList } from "../../services/index";
+import moment from "moment";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, CartesianAxis } from "recharts";
-
+import Countdown from "react-countdown";
 import Chart from "react-google-charts";
 
 
@@ -165,6 +166,30 @@ function ProgressBar() {
 
 export default function ViewAllProposal() {
   const { proposal } = useParams();
+  const [allProposalList, setProposalList] = useState([]);
+
+  const reqObj = {
+
+    "skip":"0",
+    "limit":"6"
+  }
+
+  useEffect(async () => {
+    console.log("result")
+    let [error, proposalList] = await Utils.parseResponse(
+      ProposalList.proposalList(reqObj)
+    );
+    
+    if (error || !proposalList) return;
+
+        setProposalList(proposalList.proposalList);
+    
+     
+  }, []);
+
+  console.log("transaction====", allProposalList?.proposalList);
+  console.log("transaction====", allProposalList?.countData);
+  let list=allProposalList?.proposalList
 
   
 
@@ -172,88 +197,12 @@ export default function ViewAllProposal() {
   const backButton = () => {
     history.push("/");
   };
-  React.useEffect(() => {
-    let address = [
-      {
-        date: "Posted on 24 June 2021",
-        name: "Adding more features to XDC Explorer 2.0",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "145 votes",
-        id: 2,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Relaunch of XinFin.org website",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "89 votes",
-        id: 3,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Launching NFT Marketplace to increase circulation of XDC",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "89 votes",
-        id: 4,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Partnership with Circle Stable Coin",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "89 votes",
-        id: 5,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Adding more features to XDC Explorer 2.0",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "145 votes",
-        id: 6,
-        time: "5 min ago",
-      },
-    ];
-
-    setAddress(
-      address.map((object) => {
-        return {
-          date: object.date,
-          name: object.name,
-          status: object.status,
-          poll: object.poll,
-          bar: object.bar,
-          vote: object.vote,
-          id: object.id,
-          time: object.time,
-        };
-      })
-    );
-  }, []);
-
-  const [address, setAddress] = React.useState([]);
+  
   ProgressBar();
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
 
-  // const searchProposal=()=>{
-  //  let response = res
-  //  //console.log( response)
-  //  return response
-  // }
-  //document.getElementById("proposalInput").onkeyup = function() {searchProposal()};
-  
+ 
   
   return (
     <div>
@@ -315,55 +264,27 @@ export default function ViewAllProposal() {
             </Row>
 
             <Div>
-              <MainContainer isTextArea={true}>
-                <Column>
-                  <RowSpacing>
-                    <Posted>Posted on 24 June 2021</Posted>
-                    <TimeRemainingDiv>
-                      <TimerImg src="/images/Time-Active.svg" />
+             
+              {allProposalList && allProposalList.length >=1 && allProposalList?.map((data) => {
+                console.log(data,"data===")
+               let title=data?.proposalTitle
+               let status=data?.status
+               let formatedTime = moment(data?.createdOn).format("LL");
 
-                      <Time>01:50:48 Remaining </Time>
-                    </TimeRemainingDiv>
-                  </RowSpacing>
-                  <RowSpacing>
-                    <Content>
-                      XDC-ABC Bootstrapping Partnership Proposal
-                    </Content>
-
-                    {/* <Button>Details</Button> */}
-
-                    <a href={"/proposal-details/" + "0x45f5815e7051cA72EF2b11e3E52DC42Aa4cf8439"}>
-                      <button className="details">Details</button>
-                    </a>
-                  </RowSpacing>
-                  <Container>
-                    <Status>Status:&ensp;</Status>
-                    <Passed>Passed</Passed>
-                  </Container>
-                  <SecondContainer>
-                    <MobileResponsive>
-                      <TimerImg src="/images/Time-Active.svg" />
-
-                      <Time>01:50:48 Remaining</Time>
-                    </MobileResponsive>
-                  </SecondContainer>
-                </Column>
-              </MainContainer>
-              {address.map((data) => {
                 return (
                   <MainContainer isTextArea={true}>
                     <Column>
                       <RowSpacing>
-                        <Posted>{data.date}</Posted>
+                        <Posted>Posted on &nbsp;{formatedTime}</Posted>
                         <TimeRemainingDiv>
                           <ClockImage src="/images/Time-Inactive.svg" />
                           &ensp;
-                          <PollEnded>{data.poll}</PollEnded>
+                          <PollEnded>Poll Ended</PollEnded>
                         </TimeRemainingDiv>
                       </RowSpacing>
                       <RowSpacing>
                         <div className={classes.mobilemedia}>
-                          <Content>{data.name}</Content>
+                          <Content>{title}</Content>
                           <PositionDivLine>
                             <BarLine>
                             <GreenLine></GreenLine>
@@ -375,7 +296,7 @@ export default function ViewAllProposal() {
                       <Media_for_container>
                         <Container>
                           <Status>Status:&ensp;</Status>
-                          <Open>Open</Open>
+                          <Open>{status}</Open>
                         </Container>
 
                         <MobileDivLine>
@@ -388,16 +309,18 @@ export default function ViewAllProposal() {
                       <DisplayNone>
                         <Container>
                           <Status>Status:&ensp;</Status>
-                          <Open>Open</Open>
+                          <Open>{status}</Open>
                         </Container>
 
-                        <NumberOfVotes>{data.vote}</NumberOfVotes>
+                        <NumberOfVotes>25 votes</NumberOfVotes>
                       </DisplayNone>
                       <RowSpacing>
                         <MobileResponsive>
                           <ClockImage src="/images/Time-Inactive.svg" />
 
-                          <PollEnded>{data.poll}</PollEnded>
+                         
+
+                          <PollEnded></PollEnded>
                         </MobileResponsive>
                       </RowSpacing>
                     </Column>
