@@ -14,7 +14,7 @@ import Utils from "../../utility";
 import { ProposalList } from "../../services/index";
 import moment from "moment";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, CartesianAxis } from "recharts";
-
+import Countdown from "react-countdown";
 import Chart from "react-google-charts";
 
 
@@ -166,45 +166,30 @@ function ProgressBar() {
 
 export default function ViewAllProposal() {
   const { proposal } = useParams();
-  const [allProposalList, setProposalList] = useState({});
+  const [allProposalList, setProposalList] = useState([]);
 
   const reqObj = {
 
     "skip":"0",
-    "limit":"10"
+    "limit":"6"
   }
 
   useEffect(async () => {
+    console.log("result")
     let [error, proposalList] = await Utils.parseResponse(
       ProposalList.proposalList(reqObj)
     );
-      //console.log("==",proposalList)
+    
     if (error || !proposalList) return;
 
-
-    console.log("==",proposalList?.proposalList)
         setProposalList(proposalList.proposalList);
     
-    //console.log("aa==", setProposalList)
-    
-
-    const interval = setInterval(async () => {
-      let [error, proposalList] = await Utils.parseResponse(
-        ProposalList.proposalList(reqObj)
-      );
-      
-      setProposalList(proposalList);
      
-    }, 45000);
   }, []);
 
   console.log("transaction====", allProposalList?.proposalList);
   console.log("transaction====", allProposalList?.countData);
   let list=allProposalList?.proposalList
-  //console.log("list",list)
-  // let time = proposalList?.proposalList?.createdOn;
-  // let formatedTime = moment(time).format("LL");
-  // console.log(time,"Time")
 
   
 
@@ -212,110 +197,12 @@ export default function ViewAllProposal() {
   const backButton = () => {
     history.push("/");
   };
-  React.useEffect(() => {
-    // let urlPath = `${address}`;
-    let address =
-    [
-      {
-        date: "Posted on 24 June 2021",
-        name: "Adding more features to XDC Explorer 2.0",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "145 votes",
-        id: 2,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Relaunch of XinFin.org website",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "89 votes",
-        id: 3,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Launching NFT Marketplace to increase circulation of XDC",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "89 votes",
-        id: 4,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Partnership with Circle Stable Coin",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "89 votes",
-        id: 5,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Adding more features to XDC Explorer 2.0",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "145 votes",
-        id: 6,
-        time: "5 min ago",
-      },
-    ];
-
-    let abc=allProposalList
-    console.log(abc,"abc===")
-    setAddress(
-      address.map((object) => {
-        return {
-          date: object.date,
-          name: object.name,
-          status: object.status,
-          poll: object.poll,
-          bar: object.bar,
-          vote: object.vote,
-          id: object.id,
-          time: object.time,
-        };
-      })
-    );
-  }, []);
-
-//   setAddress(
-//     address.map((object) => {
-//       return {
-//         date: object.proposalList.createdOn,
-//         name: object.proposalTitle,
-//         status: object.status,
-//         poll: object.pollingContract,
-//         // bar: object.bar,
-//         // vote: object.vote,
-//         bar: "line",
-//         vote: 45,
-//         id: object._id,
-//         time: object.startDate,
-//       };
-//     })
-//   );
-// }, []);
-
-  const [address, setAddress] = React.useState([]);
+  
   ProgressBar();
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
 
-  // const searchProposal=()=>{
-  //  let response = res
-  //  //console.log( response)
-  //  return response
-  // }
-  //document.getElementById("proposalInput").onkeyup = function() {searchProposal()};
-  
+ 
   
   return (
     <div>
@@ -377,41 +264,8 @@ export default function ViewAllProposal() {
             </Row>
 
             <Div>
-              <MainContainer isTextArea={true}>
-                <Column>
-                  <RowSpacing>
-                    <Posted>Posted on 24 June 2021</Posted>
-                    <TimeRemainingDiv>
-                      <TimerImg src="/images/Time-Active.svg" />
-
-                      <Time>01:50:48 Remaining </Time>
-                    </TimeRemainingDiv>
-                  </RowSpacing>
-                  <RowSpacing>
-                    <Content>
-                      XDC-ABC Bootstrapping Partnership Proposal
-                    </Content>
-
-                    {/* <Button>Details</Button> */}
-
-                    <a href={"/proposal-details/" + "0x45f5815e7051cA72EF2b11e3E52DC42Aa4cf8439"}>
-                      <button className="details">Details</button>
-                    </a>
-                  </RowSpacing>
-                  <Container>
-                    <Status>Status:&ensp;</Status>
-                    <Passed>Passed</Passed>
-                  </Container>
-                  <SecondContainer>
-                    <MobileResponsive>
-                      <TimerImg src="/images/Time-Active.svg" />
-
-                      <Time>01:50:48 Remaining</Time>
-                    </MobileResponsive>
-                  </SecondContainer>
-                </Column>
-              </MainContainer>
-              {list && list.length >=1 && list?.map((data) => {
+             
+              {allProposalList && allProposalList.length >=1 && allProposalList?.map((data) => {
                 console.log(data,"data===")
                let title=data?.proposalTitle
                let status=data?.status
@@ -425,7 +279,7 @@ export default function ViewAllProposal() {
                         <TimeRemainingDiv>
                           <ClockImage src="/images/Time-Inactive.svg" />
                           &ensp;
-                          <PollEnded></PollEnded>
+                          <PollEnded>Poll Ended</PollEnded>
                         </TimeRemainingDiv>
                       </RowSpacing>
                       <RowSpacing>
@@ -442,7 +296,7 @@ export default function ViewAllProposal() {
                       <Media_for_container>
                         <Container>
                           <Status>Status:&ensp;</Status>
-                          <Open>Open</Open>
+                          <Open>{status}</Open>
                         </Container>
 
                         <MobileDivLine>
@@ -458,11 +312,13 @@ export default function ViewAllProposal() {
                           <Open>{status}</Open>
                         </Container>
 
-                        <NumberOfVotes></NumberOfVotes>
+                        <NumberOfVotes>25 votes</NumberOfVotes>
                       </DisplayNone>
                       <RowSpacing>
                         <MobileResponsive>
                           <ClockImage src="/images/Time-Inactive.svg" />
+
+                         
 
                           <PollEnded></PollEnded>
                         </MobileResponsive>
