@@ -9,13 +9,7 @@ import HeaderMain from "./header";
 import RecentProposal from "../Dashboard/";
 import DivBlocksComponent from "../Dashboard/divComponent";
 import FooterComponent from "../footer/footerComponent";
-// import {getTotalVotesCasted} from "../../services/proposalService";
-import Utils from "../../utility";
-import {
-  getTotalVotesCasted,
-  getTotalPassedProposals,
-  getTotalVotingAddress,
-} from "../../services/proposalService";
+import { getTotalVotesCasted, getTotalPassedProposals, getTotalVotingAddress } from "../../services/proposalService";
 
 // import {Passed} from "../Dashboard/index";
 
@@ -65,7 +59,7 @@ export default function Header(props) {
       console.log(err);
     });
 
-    setGetVotesCasted(response.countData);
+    //setGetVotesCasted(response.countData);
 
   }
 
@@ -136,7 +130,7 @@ export default function Header(props) {
             <Row className="recent-add-div">
               <Column className="heading">Recent Proposals</Column>
               <Column>
-                <div onClick={createView} className="create-wallet">
+                <div onClick={createView} id="div_create_prop" className="create-wallet-hide">
                   <p>Create Proposal</p>
                 </div>
               </Column>
