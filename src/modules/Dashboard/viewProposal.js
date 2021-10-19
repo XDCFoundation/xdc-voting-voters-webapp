@@ -16,6 +16,7 @@ import moment from "moment";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, CartesianAxis } from "recharts";
 import Countdown from "react-countdown";
 import Chart from "react-google-charts";
+import { searchProposal } from "../../services/proposalService";
 
 
 
@@ -201,6 +202,22 @@ export default function ViewAllProposal() {
   ProgressBar();
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
+  const [searchInput, setSearchInput]=useState("")
+
+  const searchingProposal = async (e) => {
+    setSearchInput(e.target.value);
+    const reqObj={
+      "proposalTitle":searchInput
+    }
+    const response = await searchProposal(reqObj).catch((err) => {
+      console.log(err);
+    });
+    console.log(response,"seachresponse");
+    setProposalList(response);
+
+
+   
+  };
 
  
   
@@ -234,6 +251,13 @@ export default function ViewAllProposal() {
                     type="text"
                     onKeyUp={console.log("hello")}
                     id="proposalInput"
+                    value={searchInput}
+                    onChange={(e)=>{
+                      // setSearchInput(e.target.value);
+                      console.log(searchInput,"searchInput")
+                      searchingProposal(e);
+                    }}
+                  
                   />
                 </InputDiv>
               </Container>
