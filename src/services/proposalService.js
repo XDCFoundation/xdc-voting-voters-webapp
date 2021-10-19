@@ -67,7 +67,7 @@ export  async function getTotalVotingAddress() {
 
 export  async function getVotersPercentage() {
     let url = process.env.REACT_APP_GET_VOTING_PERCENTAGE;
-    return httpService(httpConstants.METHOD_TYPE.GET, { 'Content-Type': httpConstants.CONTENT_TYPE.APPLICATION_JSON }, {}, url)
+    return httpService(httpConstants.METHOD_TYPE.GET, { 'Content-Type': httpConstants.CONTENT_TYPE.APPLICATION_JSON },{}, url)
         .then(
             response => {
                 if (!response.success || response.responseCode !== 200 || !response.responseData )

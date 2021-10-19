@@ -156,77 +156,71 @@ const SecondContainer = styled.div`
 
 export default function ViewAllProposal() {
  // let urlPath = ""
-  const [getVotesPercentage, setGetVotesPercentage] = useState({})
-  // useEffect(async () => {
+   const [getVotesPercentage, setGetVotesPercentage] = useState([])
+  useEffect(async () => {
 
-  //   let [error, votePercentage] = await Utils.parseResponse(
+    let [error, votePercentage] = await Utils.parseResponse(
       
-  //     VotersPercentageService.getVotersPercentage()
-  //   );
-  //   console.log("vote",votePercentage)
+      VotersPercentageService.getVotersPercentage()
+    );
+    console.log("vote",votePercentage)
 
-  //   if (error || !votePercentage) return;
+    if (error || !votePercentage) return;
 
-  //   setGetVotesPercentage(votePercentage);
-   
-  //   const interval = setInterval(async () => {
-  //     let [error,votePercentage] = await Utils.parseResponse(
-  //       VotersPercentageService.getVotersPercentage()
-  //     );
-  //     console.log("transaction====", getVotesPercentage);
-  //     setGetVotesPercentage(votePercentage);
-  //   }, 45000);
-  // }, []);
+    setGetVotesPercentage(votePercentage);
+    
+  }, []);
+
+  console.log("transaction====", getVotesPercentage);
   
-
+  let passVote=getVotesPercentage.supportpercentage?.yes
+  console.log(passVote,"yes")
+  let yes=Math.floor(passVote)
+  let rejectedVote=getVotesPercentage.supportpercentage?.No
+  console.log(rejectedVote,"noo")
+  let rejected=Math.floor(rejectedVote)
 
 
   //const [graphAccounts,  setGetVotesPercentage] = useState([]);
 
-
+  // const reqObj = {
+  //   "proposalId": "12345"
+  // }
 
   // useEffect(async () => {
-
-  //     let [error, votePercentage] = await Utils.parseResponse(getVotersPercentageService.getVotersPercentage())
+  //     let [error, votePercentage] = await Utils.parseResponse(VotersPercentageService.getVotersPercentage(reqObj))
 
   //     if (error || !votePercentage)
 
   //         return
-
+  //     console.log("-",votePercentage)
   //      setGetVotesPercentage(votePercentage)
   //      console.log("====",getVotesPercentage)
-  //     const interval = setInterval(async () => {
-
-  //         let [error, votePercentage] = await Utils.parseResponse(getVotersPercentageService.getVotersPercentage())
-
-  //          setGetVotesPercentage(votePercentage);
-
-         
-
-  //     }, 30000)
   //   },[]);
 
-  fetch(
-    "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getVotingPercentage"
-  )
-    .then((res) => res.json())
-    .then((res) => {
-      console.log("result===",res.responseData.yes,"No",res.responseData.No)
-      setGetVotesPercentage(res);
-    })
+   // console.log(getVotesPercentage,"==")
 
-    .catch((err) => {
-      console.log(err);
-    });
+  // fetch(
+  //   "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getVotingPercentage/05"
+  // )
+  //   .then((res) => res.json())
+  //   .then((res) => {
+  //     console.log("result===",res.responseData.yes,"No",res.responseData.No)
+  //     setGetVotesPercentage(res);
+  //   })
 
-     let passVote=getVotesPercentage?.responseData?.yes
-     let yes=Math.floor(passVote)
-     console.log(yes,"yes")
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+
+  //    let passVote=getVotesPercentage?.responseData?.yes
+  //    let yes=Math.floor(passVote)
+  //    console.log(yes,"yes")
 
 
-     let rejectedVote=getVotesPercentage?.responseData?.No
-     let rejected=Math.floor(rejectedVote)
-     console.log(rejected,"===")
+  //    let rejectedVote=getVotesPercentage?.responseData?.No
+  //    let rejected=Math.floor(rejectedVote)
+  //    console.log(rejected,"===")
 
 
   
@@ -351,7 +345,7 @@ export default function ViewAllProposal() {
                   />
                 </InputDiv>
               </Container>
-
+              
               <SecondContainer>
                 <SelectBox>
                   <Row className={classes.row}>
@@ -430,9 +424,11 @@ export default function ViewAllProposal() {
                           <PositionDivLine>
                             <BarLine >
 
-                              <RedLine>{yes}</RedLine>
-                              <GreenLine>{rejected}</GreenLine>
-                            {/* <Chart
+                              {/* <RedLine>30</RedLine>
+                              <GreenLine>70</GreenLine> */}
+                            <Chart
+                            let yes={yes}
+                            let no={rejected}
                               width={"100%"}
                               height={"8px"}
                               chartType="BarChart"
@@ -443,7 +439,7 @@ export default function ViewAllProposal() {
                                   type: 'string',
                                   calc: 'stringify',
                                 }],
-                                ["", 1,"color:#3ab70d",5,"color:red",null],
+                                ["", yes,"color:#3ab70d",rejected,"color:red",null],
                                 
                                
                               ]}
@@ -457,7 +453,7 @@ export default function ViewAllProposal() {
                               }}
                               // For tests
                               rootProps={{ "data-testid": "1" }}
-                            /> */}
+                            />
                             </BarLine>
                           </PositionDivLine>
                         </div>
