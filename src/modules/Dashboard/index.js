@@ -109,7 +109,7 @@ export default class Dashboard extends BaseComponent {
     const contract = new web3.eth.Contract(proposalContractAbi, address);
     const count = await contract.methods.get_yes_voter_list().call();
     if (count <= 0) return 0;
-    return count;
+    return count.length;
   };
 
   getFailedVote = async (address, status) => {
@@ -119,7 +119,7 @@ export default class Dashboard extends BaseComponent {
     const contract = new web3.eth.Contract(proposalContractAbi, address);
     const count = await contract.methods.get_no_voter_list().call();
     if (count <= 0) return 0;
-    return count;
+    return count.length;
   };
 
   timeRemaining = (date, status) => {
