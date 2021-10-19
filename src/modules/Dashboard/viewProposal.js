@@ -207,7 +207,9 @@ export default function ViewAllProposal() {
   const searchingProposal = async (e) => {
     setSearchInput(e.target.value);
     const reqObj={
-      "proposalTitle":searchInput
+      "proposalTitle":searchInput,
+      "skip":"0",
+      "limit":"6"
     }
     const response = await searchProposal(reqObj).catch((err) => {
       console.log(err);
