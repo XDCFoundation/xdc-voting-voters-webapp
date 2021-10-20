@@ -4,9 +4,6 @@ import RecentProposal from "./recentProposal";
 import Web3 from "web3";
 import moment from "moment";
 import Loader from "../../assets/styles/images/NewLoader.gif";
-
-const { extname } = require("path");
-
 let proposalContractAbi =
   require("../../common/abis/proposalContractAbi.json").abi;
 let masterContractAbi = require("../../common/abis/masterContractAbi.json").abi;
@@ -44,17 +41,6 @@ export default class Dashboard extends BaseComponent {
       .catch((err) => {
         console.log(err, "====");
       });
-    console.log("====createProp====", createProposalResponse);
-
-    // this.setState({isLoader:true})
-    //    if(createProposalResponse){
-    //     this.setState({isLoader:true})
-
-    //     console.log(createProposalResponse,"loaderrrrrrrrrrrrrrrrrrrrrrrrrrr");
-    //    }
-    //    else{
-
-    //    }
     return createProposalResponse;
   };
 
@@ -109,7 +95,7 @@ export default class Dashboard extends BaseComponent {
     const contract = new web3.eth.Contract(proposalContractAbi, address);
     const count = await contract.methods.get_yes_voter_list().call();
     if (count <= 0) return 0;
-    return count;
+    return count.length;
   };
 
   getFailedVote = async (address, status) => {
@@ -119,7 +105,7 @@ export default class Dashboard extends BaseComponent {
     const contract = new web3.eth.Contract(proposalContractAbi, address);
     const count = await contract.methods.get_no_voter_list().call();
     if (count <= 0) return 0;
-    return count;
+    return count.length;
   };
 
   timeRemaining = (date, status) => {

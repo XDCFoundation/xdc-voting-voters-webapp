@@ -13,7 +13,7 @@ import Community from "./modules/CommunityTools";
 import Governance from "./modules/Xvd-Governance";
 import Createproposal from "./modules/Createnewproposal";
 import Voter from "./modules/Voterlist";
-import ProposalDetails from "./modules/Dashboard/proposalDetails";
+import ProposalDetails from "./modules/ProposalDetails";
 class Routes extends BaseComponent {
   componentDidMount() {}
 
