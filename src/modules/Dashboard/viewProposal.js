@@ -11,10 +11,11 @@ import FooterComponent from "../footer/footerComponent";
 import { history } from "../../managers/history";
 import { useParams } from "react-router-dom";
 import Utils from "../../utility";
+import { VotersPercentageService } from "../../services";
 import { ProposalList } from "../../services/index";
 import moment from "moment";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, CartesianAxis } from "recharts";
-import Countdown from "react-countdown";
+
+
 import Chart from "react-google-charts";
 import { searchProposal } from "../../services/proposalService";
 
@@ -167,6 +168,38 @@ function ProgressBar() {
 
 export default function ViewAllProposal() {
   const { proposal } = useParams();
+  const backButton = () => {
+    history.push("/community");
+  };
+ // let urlPath = ""
+   const [getVotesPercentage, setGetVotesPercentage] = useState([])
+
+  // useEffect(async () => {
+  //   // let urlPath = ``;
+  //   let [error, votePercentage] = await Utils.parseResponse(
+      
+  //     VotersPercentageService.getVotersPercentage("0x45f5815e7051cA72EF2b11e3E52DC42Aa4cf8439")
+  //   );
+  //   console.log("vote",votePercentage)
+
+  //   if (error || !votePercentage) return;
+
+  //   setGetVotesPercentage(votePercentage);
+    
+  // }, []);
+
+  // console.log("transaction====", getVotesPercentage);
+  
+  // let passVote=getVotesPercentage.supportpercentage?.yes
+  // console.log(passVote,"yes")
+  // let yes=Math.floor(passVote)
+  // let rejectedVote=getVotesPercentage.supportpercentage?.No
+  // console.log(rejectedVote,"noo")
+  // let rejected=Math.floor(rejectedVote)
+
+  
+  
+  
   const [allProposalList, setProposalList] = useState([]);
 
   const reqObj = {
@@ -195,9 +228,7 @@ export default function ViewAllProposal() {
   
 
 
-  const backButton = () => {
-    history.push("/");
-  };
+  
   
   ProgressBar();
   const classes = useStyles();
@@ -263,7 +294,7 @@ export default function ViewAllProposal() {
                   />
                 </InputDiv>
               </Container>
-
+              
               <SecondContainer>
                 <SelectBox>
                   <Row className={classes.row}>
@@ -312,10 +343,39 @@ export default function ViewAllProposal() {
                         <div className={classes.mobilemedia}>
                           <Content>{title}</Content>
                           <PositionDivLine>
-                            <BarLine>
-                            <GreenLine></GreenLine>
-                            <RedLine></RedLine>
-                            </BarLine>
+                            <BarLine >
+
+                              <RedLine></RedLine>
+                              <GreenLine></GreenLine>
+                            {/* <Chart
+                            // let yes={yes}
+                            // let no={rejected}
+                              width={"100%"}
+                              height={"8px"}
+                              chartType="BarChart"
+                              data={[
+                                ["", "",{ role: 'style' }, "", { role: 'style' }, {
+                                  sourceColumn: 0,
+                                  role: 'annotation',
+                                  type: 'string',
+                                  calc: 'stringify',
+                                }],
+                                ["", 14,"color:#3ab70d",30,"color:red",null],
+                                
+                               
+                              ]}
+                              options={{
+                                title: "votes",
+                                chartArea: { width: "100%" },
+                                isStacked: true,
+                                grid:{position: 'none' },
+                                legend: { position: 'none' }
+                                
+                              }}
+                              // For tests
+                              rootProps={{ "data-testid": "1" }}
+                            /> */}
+                             </BarLine>
                           </PositionDivLine>
                         </div>
                       </RowSpacing>
@@ -569,8 +629,9 @@ const MobileResponsive = styled.div`
   }
 `;
 const BarLine = styled.div`
-width: 200px;
-height: 3px;
+  width: 220px;
+  height: 1px;
+  
 
   display: flex;
   @media (min-width: 300px) and (max-width: 767px) {

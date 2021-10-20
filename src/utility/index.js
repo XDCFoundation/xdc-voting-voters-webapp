@@ -78,6 +78,14 @@ function trackEvent(event, eventData) {
     // }
 }
 
+function parseResponse(promise) {
+    return promise
+        .then((data) => {
+            return [null, data];
+        })
+        .catch((err) => [err]);
+} 
+
 function getDateFormat() {
     var my_date = new Date(2019, 0, 31);
     console.log(my_date.toLocaleDateString());
@@ -193,13 +201,6 @@ function validationAlert(message, type = 'info') {
     })
 }
 
-function parseResponse(promise) {
-    return promise
-        .then((data) => {
-            return [null, data];
-        })
-        .catch((err) => [err]);
-}
 
 function getTimeDifference(timeStampTo) {
     let minFive = 300000;
