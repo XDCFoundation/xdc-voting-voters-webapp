@@ -57,8 +57,8 @@ async function getProposalDetail(path, data) {
 }
 
 
-export async function getTotalVotesCasted() {
-    let url = process.env.REACT_APP_PROPOSAL_SVC + "getProposalDetail/";
+  export  async function getTotalVotesCasted() {
+    let url = process.env.REACT_APP_GET_TOTAL_CASTED_VOTES;
     // +`?skip=${skip}&limit=${limit}`;
     return httpService(httpConstants.METHOD_TYPE.GET, {'Content-Type': httpConstants.CONTENT_TYPE.APPLICATION_JSON}, {}, url)
         .then(
@@ -208,4 +208,27 @@ export async function getVotersPercentage(path) {
         ).catch(function (err) {
             return Promise.reject(err);
         });
+}
+
+export async function searchProposal(reqObj) {
+  const url =process.env.REACT_APP_SEARCH_PROPOSAL 
+  return httpService(
+    httpConstants.METHOD_TYPE.POST,
+    { "Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON },
+    reqObj,
+    url
+  )
+    .then((response) => {
+      if (
+        !response.success ||
+        response.responseCode !== 200 ||
+        !response.responseData ||
+        response.responseData.length === 0
+      )
+        return Promise.reject();
+      return Promise.resolve(response.responseData);
+    })
+    .catch(function (err) {
+      return Promise.reject(err);
+    });
 }
