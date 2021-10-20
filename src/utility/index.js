@@ -201,6 +201,7 @@ function validationAlert(message, type = 'info') {
     })
 }
 
+
 function getTimeDifference(timeStampTo) {
     let minFive = 300000;
     let oneDay = 86400000;
