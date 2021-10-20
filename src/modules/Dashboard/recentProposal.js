@@ -12,6 +12,7 @@ import { history } from "../../managers/history";
 import divBlockComponent from "./divComponent";
 import styled from "styled-components";
 import ReactDOM from "react-dom";
+import Countdown from "react-countdown";
 
 export default function RecentProposal(props) {
   const proposalRedirect = (address) => {
@@ -82,7 +83,7 @@ export default function RecentProposal(props) {
                                   />
                                 </span>
                                 <Span >
-                                  {/* <Countdown className="count-down" date={Date.now() + 24 * 60 * 60000 * parseInt((proposal.timeRemaining).split(" ")[0])} /> */}
+                                  <Countdown className="count-down" date={Date.now() + 24 * 60 * 60000 * parseInt((proposal.timeRemaining).split(" ")[0])} />
                                   Remaining
 
                                 </Span>
