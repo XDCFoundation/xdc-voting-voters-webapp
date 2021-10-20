@@ -16,6 +16,7 @@ import { ProposalList } from "../../services/index";
 import moment from "moment";
 
 
+
 import Chart from "react-google-charts";
 import { searchProposal } from "../../services/proposalService";
 
