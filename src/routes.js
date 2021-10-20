@@ -11,7 +11,6 @@ import BaseComponent from "./modules/baseComponent";
 import AllProposal from "./modules/Dashboard/viewProposal";
 import Community from "./modules/CommunityTools";
 import Governance from "./modules/Xvd-Governance";
-
 import Createproposal from "./modules/Createnewproposal";
 import Voter from "./modules/Voterlist";
 import ProposalDetails from "./modules/Dashboard/proposalDetails";
@@ -25,7 +24,11 @@ class Routes extends BaseComponent {
           <Switch>
             <Route exact path={"/"} component={Header} />
             <Route exact path={"/view-all-proposals"} component={AllProposal} />
-            <Route exact path={"/proposal-details"} component={ProposalDetails} />
+            <Route
+              exact
+              path={"/proposal-details/:address"}
+              component={ProposalDetails}
+            />
             <Route exact path={"/sign-up"} component={SignUp} />
             <Route exact path={"/create"} component={Createproposal} />
             <Route exact path={"/voterslist"} component={Voter} />

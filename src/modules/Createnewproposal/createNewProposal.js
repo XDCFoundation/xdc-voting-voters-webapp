@@ -13,7 +13,8 @@ import Utility from "../../utility/index";
 import AddNewProposalLive from "../../services/proposalService";
 import { history } from "../../managers/history";
 import ReactQuill from "react-quill";
-
+import DatePicker from "react-multi-date-picker";
+import TextField from "@material-ui/core/TextField";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -32,6 +33,19 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 767px) and (max-width: 1040px)": {
       maxWidth: "700px",
     },
+  },
+  containerOne: {
+    display: "flex",
+    flexWrap: "wrap",
+    fontSize: "13px",
+  },
+  textField: {
+    marginRight: theme.spacing.unit,
+    width: 200,
+    background: "#FFFFFF 0% 0% no-repeat padding-box",
+    border: "1px solid #E3E7EB",
+    borderRadius: "4px",
+    fontSize: "12px",
   },
   container: {
     width: "100%",
@@ -66,8 +80,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "4px",
     opacity: "1",
     width: "95%",
-    height: "35px",
+    height: "30px",
     fontSize: "12px",
+
     whiteSpace: "nowrap",
 
     "@media (min-width: 300px) and (max-width: 767px)": {
@@ -82,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #E3E7EB",
     borderRadius: "4px",
     opacity: "1",
-    height: "35px",
+    height: "30px",
     fontSize: "10px",
     width: "100%",
     maxWidth: "295px",
@@ -107,7 +122,6 @@ const useStyles = makeStyles((theme) => ({
     color: "#2a2a2a",
     paddingLeft: "21px",
     paddingTop: "7px",
-
     fontSize: "12px",
     whiteSpace: "nowrap",
     "@media (min-width: 300px) and (max-width: 767px)": {
@@ -142,7 +156,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "4px",
 
     fontSize: "10px",
-    height: "35px",
+    height: "30px",
     width: "100%",
     maxWidth: "295px",
 
@@ -184,7 +198,6 @@ const useStyles = makeStyles((theme) => ({
     font: "normal normal normal 15px/19px Inter",
     letterSpacing: "0px",
     color: "#2a2a2a",
-
     fontSize: "12px",
     paddingTop: "50px",
     paddingLeft: "21px",
@@ -200,13 +213,12 @@ const useStyles = makeStyles((theme) => ({
   },
 
   quillgrid: {
-    paddingTop: "47px",
     background: "#FFFFFF 0% 0% no-repeat padding-box",
-    marginLeft: "2px",
+    maxWidth: "766px",
     borderRadius: "6px",
-    paddingRight: "45px",
     width: "100%",
-    // height: "215px",
+    border: "1px solid #e3e7eb",
+    marginTop: "47px",
   },
 
   row: {
@@ -270,7 +282,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "4px",
     opacity: "1",
     width: "90%",
-    height: "35px",
+    height: "30px",
     fontSize: "10px",
     textAlign: "right",
   },
@@ -347,14 +359,19 @@ export default function Createnewproposal(props) {
   const [endDate, setEndDate] = useState("");
   const [description, setDescription] = useState("");
   const [uploadDocument, setUploadDocument] = useState("");
+  const [open, setOpen] = useState(false);
+
   const inputFile = React.createRef();
   const handleQuillChange = (event) => {
     setDescription(event);
   };
-  const uploadFile = (event) => {
+  const uploadFile = () => {
     inputFile.current.click();
   };
-
+  const handleOpen = () => {
+    setOpen(true);
+    console.log({ open });
+  };
   const createNewProposal = async () => {
     const reqObj = {
       proposalTitle: proposalTitle,
@@ -365,12 +382,11 @@ export default function Createnewproposal(props) {
       pollingContract: "0011",
       status: "pending",
     };
-    // const response = await AddNewProposalLive(reqObj);
-    // const [err, response] = await AddNewProposalLive(reqObj);
     props.createProposal(reqObj);
   };
 
   const classes = useStyles();
+  const [value, onChange] = useState(new Date());
   return (
     <div>
       <Headerdiv>
@@ -397,18 +413,19 @@ export default function Createnewproposal(props) {
               <hr className={classes.line} />
 
               <div className={classes.row}>
-                <Grid xs={2} className={classes.proposaltitle}>
+                {/* <Grid xs={2} className={classes.proposaltitle}>
                   Proposal Title
-                </Grid>
+                </Grid> */}
+                <div className={classes.proposaltitle}>Proposal Title</div>
 
-                <Grid xs={10}>
+                <Div>
                   <input
                     className={classes.proposalinput}
                     type="text"
                     onChange={(e) => setProposalTitle(e.target.value)}
                     value={proposalTitle}
                   />
-                </Grid>
+                </Div>
               </div>
 
               <div className={classes.secondrow}>
@@ -417,12 +434,34 @@ export default function Createnewproposal(props) {
                 </Grid>
 
                 <Grid xs={6} className={classes.gridSix}>
-                  <input
+                  {/* <input
                     className={classes.startdateinput}
                     type="date"
                     onChange={(e) => setStartDate(e.target.value)}
                     value={startDate}
-                  />
+                   
+                  /> */}
+                  <DateDiv>
+                    <DatePicker
+                      // className={classes.startdateinput}
+                      arrow={true}
+                      minDate={new Date()}
+                      // onOpen={() => open}
+                      // onOpen={() => open}
+                      onChange={onChange}
+                      placeholderText="MM/DD/YYYY"
+                      value={value}
+                      style={{
+                        color: "black",
+                        fontWeight: "normal",
+                      }}
+                    />
+                    <img
+                      src="/images/Calendar.svg"
+                      style={{ width: "18px", marginLeft: "150px" }}
+                      // onClick={() => handleOpen()}
+                    />
+                  </DateDiv>
                 </Grid>
 
                 <Grid xs={1} className={classes.enddate}>
@@ -430,12 +469,56 @@ export default function Createnewproposal(props) {
                 </Grid>
 
                 <Grid xs={5}>
-                  <input
+                  {/* <input
                     className={classes.enddateinput}
                     type="date"
-                    onChange={(e) => setEndDate(e.target.value)}
+                    // onChange={(e) => setEndDate(e.target.value)}
                     value={endDate}
-                  />
+                  /> */}
+                  <DateDiv>
+                    <DatePicker
+                      // className={classes.startdateinput}
+                      arrow={true}
+                      minDate={new Date()}
+                      // onOpen={() => open}
+                      onOpen={() => open}
+                      onChange={onChange}
+                      placeholderText="MM/DD/YYYY"
+                      value={value}
+                      style={{
+                        color: "black",
+                        fontWeight: "normal",
+                      }}
+                    />
+                    <img
+                      src="/images/Calendar.svg"
+                      style={{ width: "18px", marginLeft: "150px" }}
+                      // onClick={() => handleOpen()}
+                    />
+                  </DateDiv>
+                  {/* <DateDiv>
+                    <DatePicker
+                      // className={classes.startdateinput}
+                      arrow={true}
+                      onChange={onChange}
+                      onOpen={true}
+                      value={value}
+                      dateFormat="yyyy/MM/dd"
+                      minDate={new Date()}
+                      placeholderText="MM/DD/YYYY"
+                      // onChange={(e) => setEndDate(e.target.value)}
+                      style={{
+                        color: "black",
+                        fontWeight: "normal",
+                        // pointerEvents: "none",
+                      }}
+                    />
+                    <img
+                      src="/images/Calendar.svg"
+                      style={{ width: "18px", marginLeft: "150px" }}
+                      onClick={setOpen}
+                    />
+                  </DateDiv> */}
                 </Grid>
               </div>
               <Mobile>
@@ -500,17 +583,18 @@ export default function Createnewproposal(props) {
                                   <input
                                     ref={inputFile}
                                     id={"fileButton" + index}
-                                    name={"fileButton" + index}
+                                    name="fileButton"
                                     type="file"
                                     multiple={false}
                                     accept="*"
-                                    style={{ visibility: "hidden" }}
-                                    onChange={(e) =>
+                                    style={{ display: "none" }}
+                                    onChange={(e) => {
+                                      console.log(index, "+++");
                                       props.uploadFileToS3(
                                         e.target.files[0],
                                         index
-                                      )
-                                    }
+                                      );
+                                    }}
                                   />
                                 </BrowseButton>
                               </div>
@@ -551,7 +635,19 @@ export default function Createnewproposal(props) {
     </div>
   );
 }
-const BrowseButton = styled.button`
+const Div = styled.div`
+  width: 100%;
+  max-width: 805px;
+  margin-left: 62px;
+`;
+const DateDiv = styled.div`
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e3e7eb;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 345px;
+`;
+const BrowseButton = styled.label`
   color: var(--unnamed-color-2149b9);
   text-align: center;
   letter-spacing: 0px;
@@ -562,9 +658,13 @@ const BrowseButton = styled.button`
   border: 1px solid #2049b9;
   border-radius: 4px;
   opacity: 1;
+  padding-left: 6px;
+  padding-right: 6px;
   margin-top: 4px;
   margin-bottom: 4px;
   margin-right: 3px;
+  width: 100%;
+  max-width: 120px;
 `;
 const Textarea = styled.textarea`
   width: 100%;
