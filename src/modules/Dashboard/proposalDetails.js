@@ -133,12 +133,14 @@ export default function ProposalDetails(props) {
     setPieData(data);
     return getVote;
   };
+
   const castProposal = async (reqData) => {
     console.log("requestdata", reqData);
 
     const result = await castVotingProposal(reqData);
     console.log("result", result);
   };
+
   const castProposalVote = async (isSupport) => {
     console.log("isSupport", isSupport);
     let web3;
@@ -175,13 +177,13 @@ export default function ProposalDetails(props) {
       // this.setState({ open3: true, isButtonClicked: true });
       console.log("castProposalResponse", castProposalResponse);
       const reqData = {
-        pollingContract: "ueufheu",
+        pollingContract: "string",
         voterAddress: proposalAddress,
         support: isSupport,
       };
       castProposal(reqData);
 
-      getVotePercentage();
+      getVotePercentage(proposalAddress);
       return castProposalResponse;
     });
   };
