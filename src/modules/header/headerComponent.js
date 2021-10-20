@@ -10,8 +10,12 @@ import RecentProposal from "../Dashboard/";
 import DivBlocksComponent from "../Dashboard/divComponent";
 import FooterComponent from "../footer/footerComponent";
 // import {getTotalVotesCasted} from "../../services/proposalService";
-import Utils from '../../utility';
-import { getTotalVotesCasted, getTotalPassedProposals, getTotalVotingAddress } from '../../services/proposalService';
+import Utils from "../../utility";
+import {
+  getTotalVotesCasted,
+  getTotalPassedProposals,
+  getTotalVotingAddress,
+} from "../../services/proposalService";
 
 // import {Passed} from "../Dashboard/index";
 
@@ -22,8 +26,6 @@ import { getTotalVotesCasted, getTotalPassedProposals, getTotalVotingAddress } f
 // let proposalContractAbi = require('../../common/abis/proposalContractAbi.json').abi;
 
 export default function Header(props) {
-
-
   //  const getPassedVote = async () => {
   //     let web3;
   //     web3 = new Web3(window.web3.currentProvider);
@@ -47,9 +49,9 @@ export default function Header(props) {
   //   })
   //   console.log(createProposalResponse, "====")
   // }
-  const [getVotesCasted, setGetVotesCasted] = useState([])
-  const [getPassedProposals, setGetPassedProposals] = useState([])
-  const [getTotalVoting, setGetTotalVoting] = useState([])
+  const [getVotesCasted, setGetVotesCasted] = useState([]);
+  const [getPassedProposals, setGetPassedProposals] = useState([]);
+  const [getTotalVoting, setGetTotalVoting] = useState([]);
 
   useEffect(() => {
     // setPageNumber((pagecount)/10);
@@ -59,33 +61,28 @@ export default function Header(props) {
   }, []);
 
   const getVotes = async () => {
-    const response = await getTotalVotesCasted().catch(err => {
+    const response = await getTotalVotesCasted().catch((err) => {
       console.log(err);
     });
 
-    setGetVotesCasted(response.countData);
-
+    setGetVotesCasted(response?.countData);
   }
 
   const getVoting = async () => {
-    const response = await getTotalVotingAddress().catch(err => {
+    const response = await getTotalVotingAddress().catch((err) => {
       console.log(err);
     });
 
     setGetTotalVoting(response.length);
-
-  }
-
+  };
 
   const getPassed = async () => {
-    const response = await getTotalPassedProposals().catch(err => {
+    const response = await getTotalPassedProposals().catch((err) => {
       console.log(err);
     });
 
     setGetPassedProposals(response.length);
-
-  }
-
+  };
 
   const createView = () => {
     history.push("/create");

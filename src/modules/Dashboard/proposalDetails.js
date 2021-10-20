@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Column, Row } from "simple-flexbox";
 import "../../assets/styles/custom.css";
 import TableCell from "@material-ui/core/TableCell";
@@ -19,9 +19,27 @@ import { makeStyles, mergeClasses } from "@material-ui/styles";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { PieChart } from "react-minimal-pie-chart";
+import ReactDOM from "react-dom";
+import Utils from "../../utility";
+import { ProposalService } from "../../services/index";
+import moment from "moment";
+import Web3 from "web3";
 
+
+import { useLocation, useParams } from "react-router";
+import { castVotingProposal } from "../../services/proposalService";
+import { getVotePercentageOnProposal } from "../../services/proposalService";
+// let masterContractAbi = require("../../common/abis/masterContractAbi.json").abi;
+
+let proposalContractAbi =
+  require("../../common/abis/proposalContractAbi.json").abi;
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+function removeTags(str) {
+  return <div dangerouslySetInnerHTML={{ __html: str}}>
+  </div>;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -30,9 +48,58 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProposalDetails() {
+export default function ProposalDetails(props) {
+  const {address } = useParams();
+
+  const [transactions, setTransactions] = useState([]);
+
+  // fetch(
+  //   "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getProposalDetail/"+proposal,
+
+  // )
+  //   .then((res) => res.json())
+  //   .then((res) => {
+  //     //console.log("result===",res.data.responseData)
+  //     setTransactions(res);
+  //   })
+
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+
+  useEffect(async () => {
+
+    let urlPath = `${address}`;
+
+    let [error, proposalDetail] = await Utils.parseResponse(
+      ProposalService.getProposalDetail(urlPath, {})
+    );
+
+    if (error || !proposalDetail) return;
+
+    setTransactions(proposalDetail);
+
+    const interval = setInterval(async () => {
+      let [error, proposalDetail] = await Utils.parseResponse(
+        ProposalService.getProposalDetail(urlPath, {})
+      );
+      console.log("transaction====", transactions?.responseData);
+      setTransactions(proposalDetail);
+    }, 45000);
+  }, []);
+
+  let detail = transactions?.proposalTitle;
+  let time = transactions?.createdOn;
+  let formatedTime = moment(time).format("LL");
+  let statusDetail = transactions?.status;
+  let des = transactions?.description;
+  let descrition=removeTags(des)
+  
+  const [proposalAddress, setProposalAddress] = useState("");
+  const proposalAddressObject = useParams();
+
   React.useEffect(() => {
-    let address = [
+    let newaddress = [
       {
         image: "/images/network.svg",
         name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
@@ -59,9 +126,8 @@ export default function ProposalDetails() {
         time: "1 hr 5 min ago",
       },
     ];
-
     setAddress(
-      address.map((object) => {
+      newaddress.map((object) => {
         return {
           image: object.image,
           name: object.name,
@@ -69,11 +135,18 @@ export default function ProposalDetails() {
         };
       })
     );
+    setProposalAddress(proposalAddressObject.address);
   }, []);
 
-  const [address, setAddress] = React.useState([]);
+  const [newaddress, setAddress] = React.useState([]);
+  const [support, setsupport] = React.useState("");
+  const [reject, setReject] = React.useState("");
   const [open3, setOpen3] = React.useState(false);
   const [isButtonClicked, setIsButtonClicked] = React.useState(false);
+
+  useEffect(() => {
+    getVotePercentage();
+  }, []);
 
   function shorten(b, amountL = 13, amountR = 3, stars = 3) {
     return `${b.slice(0, amountL)}${".".repeat(stars)}${b.slice(
@@ -98,41 +171,87 @@ export default function ProposalDetails() {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen3(false);
   };
 
+  const getVotePercentage = async () => {
+    const getVote = await getVotePercentageOnProposal();
+    return getVote;
+    console.log("getvotepercentage", getVote);
+  };
+  const castProposal = async (reqData) => {
+    console.log("requestdata", reqData);
+
+    const result = await castVotingProposal(reqData);
+    console.log("result", result);
+  };
+  const castProposalVote = async (isSupport) => {
+    console.log("isSupport", isSupport);
+    let web3;
+    web3 = new Web3(window.web3.currentProvider);
+    console.log(window.web3.currentProvider);
+    window.ethereum.enable();
+
+    web3.eth.getAccounts().then(async (accounts) => {
+      if (!accounts || !accounts.length) {
+        Utils.apiFailureToast("Please login to Xinpay extension");
+        return;
+      }
+      const contract = new web3.eth.Contract(
+        proposalContractAbi,
+        // "0x0790Fd3D408BB723438990Fc8958f1B9D65Dd35a"
+        proposalAddress
+      );
+      console.log("contract", contract);
+      // debugger;
+      const acc = accounts[0];
+      console.log("account", accounts);
+      const castProposalResponse = await contract.methods
+        .cast_vote_for_proposal(true, Date.now())
+        .send({ from: acc })
+        .catch((err) => {
+          console.log(err, "error in votecast");
+        });
+      // .then(async (response) => {
+      //   console.log("response data after vote", response);
+      // });
+      console.log("methods in contract====>", contract.methods);
+      setOpen3(true);
+      setIsButtonClicked(true);
+      // this.setState({ open3: true, isButtonClicked: true });
+      console.log("castProposalResponse", castProposalResponse);
+      const reqData = {
+        pollingContract: "ueufheu",
+        voterAddress: proposalAddress,
+        support: isSupport,
+      };
+      castProposal(reqData);
+
+      getVotePercentage();
+      return castProposalResponse;
+    });
+  };
   return (
     <div>
       <div className="header-div-all">
         {" "}
         <HeaderMain />
       </div>
-     
+
       <Column>
-     
         <div className="all-div-proposal">
-       
           <Column>
-          <div
-             className="back-image"
-              onClick={backButton}
-            >
-              <img
-                src="/images/Back-Arrow.svg"
-                style={{ width: "15px" }}
-              />
+            <div className="back-image" onClick={backButton}>
+              <img src="/images/Back-Arrow.svg" style={{ width: "15px" }} />
               <div className="back-button">Back</div>
             </div>
             <div className="recent-proposal-div-proposal">
               <Row className="recent-add-div-proposal">
                 <Column>
-                  <Row className="date-proposal">Posted on 2 July 2021</Row>
-                  <Row className="name-proposal">
-                    XDC-ABC Bootstrapping Partnership Proposal{" "}
-                  </Row>
+                  <Row className="date-proposal">Posted on {formatedTime}</Row>
+                  <Row className="name-proposal">{detail} </Row>
                   <Row className="status-proposal">
-                    Status: <span>Open</span>{" "}
+                    Status: <span>{statusDetail}</span>{" "}
                   </Row>
                 </Column>
                 <Column>
@@ -167,28 +286,17 @@ export default function ProposalDetails() {
                       style={{ boxShadow: "0px 0px 0px 0px" }}
                     >
                       <Column className="text-main">
-                        {/* <div className="details-content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Quisque venenatis magna at sem consectetur, vitae ultrices sem molestie. Maecenas vitae dolor eu lectus maximus ultrices. Curabitur vestibulum nec quam in dictum. Duis malesuada iaculis dapibus mauris blandit rhonc:
-                                                1. Proin a tristique augue integer mauris magna. 2. Vivamus tempus dapibus lectus ac rutrum.
-                                                3. Duis malesuada iaculis dapibus. Maecenas id arcu lacus. Integer arcu ligula, tristique vitae bibendum ac, ultrices id diam. Aliquam vel est scelerisque, volutpat felis id, cursus erat.
-                                                Vestibulum consectetur, orci in convallis tempor, ligula augue ullamcorper nibh, id pulvinar lectus libero sed nulla. Ut egestas justo urna, et euismod nibh tristique sed.
-                                                Pellentesque tristique enim egestas lorem imperdiet, id lobortis odio auctor. Suspendisse sodales sagittis libero. Vivamus in ullamcorper eros, a luctus mauris. Nulla facilisi.
-                                                Fusce viverra turpis vulputate eros faucibus, quis consectetur leo egestas. Proin placerat arcu ac dui placerat commodo. Curabitur mollis orci augue, vitae porttitor risus euismod eu. Ut nec posuere arcu. Vivamus pulvinar arcu et faucibus maximus. Duis malesuada iaculis dapibus.
-                                                Mauris blandit rhoncus tellus rutrum tempor. In pretium nulla eget dolor molestie, non lobortis lorem tempus. Aenean ullamcorper urna non nisi tempor auctor. Suspendisse et ipsum bibendum, malesuada diam eget, congue erat. Duis lobortis elementum gravida. Sed ut dapibus arcu. Cras porttitor iaculis sapien eu fringilla. Cras in ligula urna.
-                                                Vestibulum feugiat convallis felis ac dignissim. Duis placerat velit quam, vitae imperdiet elit maximus vel. Nam tincidunt ultricies ultrices. Nullam ac odio convallis dui volutpat luctus. Morbi luctus ornare pellentesque. Praesent rhoncus lectus id suscipit cursus. Morbi purus metus, tempor quis eleifend vitae, lacinia sit amet urna. Proin egestas ipsum quis tellus fermentum finibus et non urna.
-                                            </div> */}
-                        {/* {parse(
-                                                '<body><Row>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis magna at sem consectetur, vitae ultrices sem molestie. Maecenas vitae dolor eu lectus maximus ultrices. Curabitur vestibulum nec quam in dictum. Duis malesuada iaculis dapibus mauris blandit rhonc: 1. Proin a tristique augue integer mauris magna. 2. Vivamus tempus dapibus lectus ac rutrum. 3. Duis malesuada iaculis dapibus. Maecenas id arcu lacus. Integer arcu ligula, tristique vitae bibendum ac, ultrices id diam. Aliquam vel est scelerisque, volutpat felis id, cursus erat. Vestibulum consectetur, orci in convallis tempor, ligula augue ullamcorper nibh, id pulvinar lectus libero sed nulla. Ut egestas justo urna, et euismod nibh tristique sed. Pellentesque tristique enim egestas lorem imperdiet, id lobortis odio auctor. Suspendisse sodales sagittis libero. Vivamus in ullamcorper eros, a luctus mauris. Nulla facilisi. Fusce viverra turpis vulputate eros faucibus, quis consectetur leo egestas. Proin placerat arcu ac dui placerat commodo. Curabitur mollis orci augue, vitae porttitor risus euismod eu. Ut nec posuere arcu. Vivamus pulvinar arcu et faucibus maximus. Duis malesuada iaculis dapibus. Mauris blandit rhoncus tellus rutrum tempor. In pretium nulla eget dolor molestie, non lobortis lorem tempus. Aenean ullamcorper urna non nisi tempor auctor. Suspendisse et ipsum bibendum, malesuada diam eget, congue erat. Duis lobortis elementum gravida. Sed ut dapibus arcu. Cras porttitor iaculis sapien eu fringilla. Cras in ligula urna. Vestibulum feugiat convallis felis ac dignissim. Duis placerat velit quam, vitae imperdiet elit maximus vel. Nam tincidunt ultricies ultrices. Nullam ac odio convallis dui volutpat luctus. Morbi luctus ornare pellentesque. Praesent rhoncus lectus id suscipit cursus. Morbi purus metus, tempor quis eleifend vitae, lacinia sit amet urna. Proin egestas ipsum quis tellus fermentum finibus et non urna.</Row></body>')} */}
-                        {/* {parse(` */}
                         <Row className="heading-1">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          
+                          {descrition}
+                          {/* Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Quisque venenatis magna at sem consectetur,
                           vitae ultrices sem molestie. Maecenas vitae dolor eu
                           lectus maximus ultrices. Curabitur vestibulum nec quam
-                          in dictum.
+                          in dictum. */}
                         </Row>
 
-                        <Row className="lower-text">
+                        {/* <Row className="lower-text">
                           Duis malesuada iaculis dapibus mauris blandit rhonc:
                         </Row>
                         <Row className="mid-text">
@@ -237,7 +345,7 @@ export default function ProposalDetails() {
                           purus metus, tempor quis eleifend vitae, lacinia sit
                           amet urna. Proin egestas ipsum quis tellus fermentum
                           finibus et non urna.
-                        </Row>
+                        </Row> */}
                         {/* `)} */}
                       </Column>
                       <Row className="doc-1">
@@ -303,7 +411,12 @@ export default function ProposalDetails() {
                   </div>
                   <div className="button-div-support">
                     <button
-                      onClick={handleCloseDailog}
+                      onClick={() => {
+                        handleCloseDailog();
+                        castProposalVote(true);
+                        getVotePercentage();
+                        // castProposal();
+                      }}
                       className="support-button"
                     >
                       Yes, I support
@@ -311,7 +424,16 @@ export default function ProposalDetails() {
                   </div>
                   <div className="button-div-support">
                     {" "}
-                    <button className="reject-button">No, I Reject</button>
+                    <button
+                      onClick={() => {
+                        castProposalVote(false);
+                        getVotePercentage();
+                        // castProposal();
+                      }}
+                      className="reject-button"
+                    >
+                      No, I Reject
+                    </button>
                   </div>
                 </div>
               ) : (
@@ -321,18 +443,22 @@ export default function ProposalDetails() {
                   <PieChart
                     className="piechart"
                     data={[
-                      { title: "support", value: 78, color: "#3AB70D" },
-                      { title: "reject", value: 22, color: "#F43D3D" },
+                      {
+                        title: "support",
+                        value: { support },
+                        color: "#3AB70D",
+                      },
+                      { title: "reject", value: { reject }, color: "#F43D3D" },
                     ]}
                   />
                   <div className="piediv">
                     <div className="display-flex">
                       <div className="box-support"></div>
-                      <div className="spt">Support (78%)</div>
+                      <div className="spt">{support}</div>
                     </div>
                     <div className="display-flex">
                       <div className="box-reject"></div>
-                      <div className="rjt">Reject (22%)</div>
+                      <div className="rjt">{reject}</div>
                     </div>
                   </div>
                   {/* <div className="button-div-support"><button onClick={handleCloseDailog} className="support-button">Yes, I support</button></div>
@@ -348,7 +474,7 @@ export default function ProposalDetails() {
                 </div>
                 <div className="griddiv-voter">
                   <TableBody>
-                    {address.map((row, index) => {
+                    {newaddress.map((row, index) => {
                       return (
                         <TableRow className="table-mid-line">
                           <Row className="table-between">

@@ -120,6 +120,9 @@ position: relative;
         width: 30px; 
         margin-top: 10px;
     }
+    .count-down{
+        margin-right: 6px !important;
+    }
     .spt{
         font: normal normal medium 14px/17px Inter;
         letter-spacing: 0px;
@@ -1284,7 +1287,7 @@ border-radius: 4px;
 opacity: 1;
 text-align: center;
 padding-top: 5px;
-margin-left: 58px;
+margin-left: 98px;
     margin-top: 5px;
     color: #2149B9 !important;
    
@@ -1355,12 +1358,21 @@ margin-left: 58px;
  }
 
 .text-editor{
-    width:100%;
-  
+    width:100%;  
 }
 
+.ql-container.ql-snow {
+    border: unset !important;
+}
+.ql-toolbar.ql-snow {
+    border: unset !important;
+  
+    border-bottom: 1px solid #E3E7EB !important;
+}
+
+
 .quill-editor{
-    height:130px !important;
+    padding-bottom: 100px;
 }
 .load{
     /* width: 30px;
