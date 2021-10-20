@@ -103,7 +103,7 @@ export async function castVotingProposal(reqData) {
   return httpService(
     httpConstants.METHOD_TYPE.POST,
     { "Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON },
-    {},
+    reqData,
     url
   )
     .then((response) => {
@@ -138,7 +138,7 @@ export async function getVotePercentageOnProposal() {
         response.responseData.length === 0
       )
         return Promise.reject();
-      console.log("respnseforvotepercentageproposal", response.responseData);
+      console.log("responseforvotepercentageproposal", response.responseData);
       return Promise.resolve(response.responseData);
     })
     .catch(function (err) {

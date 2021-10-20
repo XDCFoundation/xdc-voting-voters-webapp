@@ -166,6 +166,8 @@ export default function ProposalDetails(props) {
         .cast_vote_for_proposal(true, Date.now())
         .send({ from: acc })
         .catch((err) => {
+          Utils.apiFailureToast("you have already voted for this proposal");
+          return;
           console.log(err, "error in votecast");
         });
       // .then(async (response) => {
@@ -177,13 +179,13 @@ export default function ProposalDetails(props) {
       // this.setState({ open3: true, isButtonClicked: true });
       console.log("castProposalResponse", castProposalResponse);
       const reqData = {
-        pollingContract: "string",
-        voterAddress: proposalAddress,
-        support: isSupport,
+        pollingContract: proposalAddress,
+        voterAddress: acc,
+        support: Boolean(isSupport),
       };
       castProposal(reqData);
 
-      getVotePercentage(proposalAddress);
+      getVotePercentage();
       return castProposalResponse;
     });
   };
