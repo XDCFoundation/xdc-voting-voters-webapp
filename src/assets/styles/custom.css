@@ -51,6 +51,9 @@ html, body {
 .flex-direction-column{
     flex-direction: column;
 }
+.displayNon{
+    display: none;
+}
 
 .header-div{
 width: 100%;
@@ -123,9 +126,9 @@ position: relative;
         width: 30px; 
         margin-top: 10px;
     }
-    .count-down{
+    /* .count-down{
         margin-right: 6px !important;
-    }
+    } */
     .spt{
         font: normal normal medium 14px/17px Inter;
         letter-spacing: 0px;
@@ -610,6 +613,9 @@ letter-spacing: 0px;
 color: white;
 opacity: 1;
 font-size: 15px;
+}
+.create-wallet-hide{
+    display: none;
 }
 
 .connect-wallet p{
@@ -1290,7 +1296,7 @@ border-radius: 4px;
 opacity: 1;
 text-align: center;
 padding-top: 5px;
-margin-left: 98px;
+margin-left: 58px;
     margin-top: 5px;
     color: #2149B9 !important;
    
@@ -1375,7 +1381,7 @@ margin-left: 98px;
 
 
 .quill-editor{
-    padding-bottom: 100px;
+    height:130px !important;
 }
 .load{
     /* width: 30px;
