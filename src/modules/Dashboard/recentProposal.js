@@ -13,6 +13,7 @@ import divBlockComponent from "./divComponent";
 import styled from "styled-components";
 import ReactDOM from "react-dom";
 import Countdown from "react-countdown";
+import moment from "moment";
 
 export default function RecentProposal(props) {
   const proposalRedirect = (address) => {
@@ -36,7 +37,20 @@ export default function RecentProposal(props) {
           >
             <TableHead></TableHead>
             <TableBody>
-              {props.proposals.map((proposal, index) => {
+              {props?.state?.proposalsList.map((proposal, index) => {
+                let status = proposal?.endDate > Date.now() ? 'Open' : 'Closed'
+                let formatedTime = moment(proposal?.createdOn).format("LL");
+                const yesVotes = proposal?.yesVotes?.length;
+                const noVotes = proposal?.noVotes?.length;
+                const yesVotesWidth = 100 * yesVotes / (yesVotes + noVotes)
+                const noVotesWidth = 100 * noVotes / (yesVotes + noVotes)
+                if(status === 'Closed'){
+                  if(yesVotes < noVotes)
+                    status="Passed"
+                  else
+                    status="Failed"
+                }
+
                 return (
                   <TableRow className="table-mid-line">
                     <Row className="table-between">
@@ -45,19 +59,19 @@ export default function RecentProposal(props) {
                           <Row className="date">
                             Posted on {proposal["postedOn"]}
                           </Row>
-                          <Row className="name">{proposal["title"]} </Row>
+                          <Row className="name">{proposal["proposalTitle"]} </Row>
                           <Row className="status">
                             <p>Status: &nbsp;</p>
                             <span
                               className={
-                                proposal.status === "Open"
+                                status === "Open"
                                   ? "fc-blue"
-                                  : proposal.status === "Passed"
+                                  : status === "Passed"
                                     ? "fc-green"
                                     : "fc-red"
                               }
                             >
-                              {proposal.status}
+                              {status}
                             </span>
                           </Row>
                         </TableCell>
@@ -68,7 +82,7 @@ export default function RecentProposal(props) {
                           className="mobile-div-right"
                           style={{ border: "none" }}
                         >
-                          {proposal.status === "Open" ? (
+                          {status === "Open" ? (
                             <>
                               <Row>
                                 <span style={{ marginRight: "5px" }}>
@@ -83,16 +97,15 @@ export default function RecentProposal(props) {
                                   />
                                 </span>
                                 <Span >
-                                  <Countdown className="count-down" date={Date.now() + 24 * 60 * 60000 * parseInt((proposal.timeRemaining).split(" ")[0])} />
+                                  <Countdown className="count-down" date={proposal.endDate} />
                                   Remaining
-
                                 </Span>
                               </Row>
                               <Row>
                                 <div
                                   className="details"
                                   onClick={() =>
-                                    proposalRedirect(proposal["address"])
+                                    proposalRedirect(proposal["pollingContract"])
                                   }
                                 >
                                   Details
@@ -124,8 +137,8 @@ export default function RecentProposal(props) {
                                 </div>{" "}
                               </Row>
                               <Row className="vote-number">
-                                {proposal.passedVoteCount +
-                                  proposal.failVoteCount}{" "}
+                                {yesVotes +
+                                  noVotes}{" "}
                                 votes
                               </Row>
                             </>

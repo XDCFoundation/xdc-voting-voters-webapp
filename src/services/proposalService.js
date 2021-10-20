@@ -172,7 +172,7 @@ export async function getVotePercentageOnProposal() {
 
 
 export async function proposalList(reqObj) {
-    const url = process.env.REACT_APP_GET_PROPOSAL_LIST
+    const url = "http://localhost:3001/getProposalList";//process.env.REACT_APP_GET_PROPOSAL_LIST
     return httpService(
         httpConstants.METHOD_TYPE.POST,
         {"Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON},
