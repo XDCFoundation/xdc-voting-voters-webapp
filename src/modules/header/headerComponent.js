@@ -67,7 +67,6 @@ export default function Header(props) {
     });
 
     setGetVotesCasted(response?.countData);
-
   }
 
   const getVoting = async () => {
