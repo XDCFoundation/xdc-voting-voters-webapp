@@ -45,7 +45,6 @@ function removeTags(str) {
 
 export default function ProposalDetails(props) {
 
-
     React.useEffect(() => {
         let newaddress = [
             {
