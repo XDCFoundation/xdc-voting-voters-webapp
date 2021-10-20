@@ -4,9 +4,6 @@ import RecentProposal from "./recentProposal";
 import Web3 from "web3";
 import moment from "moment";
 import Loader from "../../assets/styles/images/NewLoader.gif";
-
-const { extname } = require("path");
-
 let proposalContractAbi =
   require("../../common/abis/proposalContractAbi.json").abi;
 let masterContractAbi = require("../../common/abis/masterContractAbi.json").abi;
@@ -44,17 +41,6 @@ export default class Dashboard extends BaseComponent {
       .catch((err) => {
         console.log(err, "====");
       });
-    console.log("====createProp====", createProposalResponse);
-
-    // this.setState({isLoader:true})
-    //    if(createProposalResponse){
-    //     this.setState({isLoader:true})
-
-    //     console.log(createProposalResponse,"loaderrrrrrrrrrrrrrrrrrrrrrrrrrr");
-    //    }
-    //    else{
-
-    //    }
     return createProposalResponse;
   };
 
