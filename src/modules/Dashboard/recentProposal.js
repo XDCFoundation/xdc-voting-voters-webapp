@@ -12,7 +12,6 @@ import { history } from "../../managers/history";
 import divBlockComponent from "./divComponent";
 import styled from "styled-components";
 import ReactDOM from "react-dom";
-//import Countdown from "react-countdown";
 
 export default function RecentProposal(props) {
   const proposalRedirect = (address) => {
