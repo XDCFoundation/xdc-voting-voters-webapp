@@ -173,28 +173,28 @@ export default function ViewAllProposal() {
  // let urlPath = ""
    const [getVotesPercentage, setGetVotesPercentage] = useState([])
 
-  useEffect(async () => {
-    // let urlPath = ``;
-    let [error, votePercentage] = await Utils.parseResponse(
+  // useEffect(async () => {
+  //   // let urlPath = ``;
+  //   let [error, votePercentage] = await Utils.parseResponse(
       
-      VotersPercentageService.getVotersPercentage("0x45f5815e7051cA72EF2b11e3E52DC42Aa4cf8439")
-    );
-    console.log("vote",votePercentage)
+  //     VotersPercentageService.getVotersPercentage("0x45f5815e7051cA72EF2b11e3E52DC42Aa4cf8439")
+  //   );
+  //   console.log("vote",votePercentage)
 
-    if (error || !votePercentage) return;
+  //   if (error || !votePercentage) return;
 
-    setGetVotesPercentage(votePercentage);
+  //   setGetVotesPercentage(votePercentage);
     
-  }, []);
+  // }, []);
 
-  console.log("transaction====", getVotesPercentage);
+  // console.log("transaction====", getVotesPercentage);
   
-  let passVote=getVotesPercentage.supportpercentage?.yes
-  console.log(passVote,"yes")
-  let yes=Math.floor(passVote)
-  let rejectedVote=getVotesPercentage.supportpercentage?.No
-  console.log(rejectedVote,"noo")
-  let rejected=Math.floor(rejectedVote)
+  // let passVote=getVotesPercentage.supportpercentage?.yes
+  // console.log(passVote,"yes")
+  // let yes=Math.floor(passVote)
+  // let rejectedVote=getVotesPercentage.supportpercentage?.No
+  // console.log(rejectedVote,"noo")
+  // let rejected=Math.floor(rejectedVote)
 
   
   
@@ -319,11 +319,11 @@ export default function ViewAllProposal() {
                           <PositionDivLine>
                             <BarLine >
 
-                              {/* <RedLine>30</RedLine>
-                              <GreenLine>70</GreenLine> */}
-                            <Chart
-                            let yes={yes}
-                            let no={rejected}
+                              <RedLine></RedLine>
+                              <GreenLine></GreenLine>
+                            {/* <Chart
+                            // let yes={yes}
+                            // let no={rejected}
                               width={"100%"}
                               height={"8px"}
                               chartType="BarChart"
@@ -334,7 +334,7 @@ export default function ViewAllProposal() {
                                   type: 'string',
                                   calc: 'stringify',
                                 }],
-                                ["", yes,"color:#3ab70d",rejected,"color:red",null],
+                                ["", 14,"color:#3ab70d",30,"color:red",null],
                                 
                                
                               ]}
@@ -348,8 +348,8 @@ export default function ViewAllProposal() {
                               }}
                               // For tests
                               rootProps={{ "data-testid": "1" }}
-                            />
-                            </BarLine>
+                            /> */}
+                             </BarLine>
                           </PositionDivLine>
                         </div>
                       </RowSpacing>
@@ -603,14 +603,9 @@ const MobileResponsive = styled.div`
   }
 `;
 const BarLine = styled.div`
-<<<<<<< HEAD
   width: 220px;
   height: 1px;
   
-=======
-width: 200px;
-height: 3px;
->>>>>>> 3f2d75ae27fe006548b93861ec7b0c4f12808098
 
   display: flex;
   @media (min-width: 300px) and (max-width: 767px) {
