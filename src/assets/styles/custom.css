@@ -51,6 +51,7 @@ html, body {
 .displayNon{
     display: none;
 }
+
 .header-div{
 width: 100%;
 height: 300px;
@@ -122,6 +123,9 @@ position: relative;
         width: 30px; 
         margin-top: 10px;
     }
+    /* .count-down{
+        margin-right: 6px !important;
+    } */
     .spt{
         font: normal normal medium 14px/17px Inter;
         letter-spacing: 0px;
@@ -595,11 +599,6 @@ font-family: 'Inter';
 font-size: 15px;
 
 }
-.create-wallet-hide{
-   
-    display: none;
-   
-    }
 .create-wallet p{
 
     padding-top: 4px;
@@ -611,6 +610,9 @@ letter-spacing: 0px;
 color: white;
 opacity: 1;
 font-size: 15px;
+}
+.create-wallet-hide{
+    display: none;
 }
 
 .connect-wallet p{
@@ -1362,9 +1364,18 @@ margin-left: 58px;
  }
 
 .text-editor{
-    width:100%;
-  
+    width:100%;  
 }
+
+.ql-container.ql-snow {
+    border: unset !important;
+}
+.ql-toolbar.ql-snow {
+    border: unset !important;
+  
+    border-bottom: 1px solid #E3E7EB !important;
+}
+
 
 .quill-editor{
     height:130px !important;

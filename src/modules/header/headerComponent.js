@@ -9,7 +9,14 @@ import HeaderMain from "./header";
 import RecentProposal from "../Dashboard/";
 import DivBlocksComponent from "../Dashboard/divComponent";
 import FooterComponent from "../footer/footerComponent";
-import { getTotalVotesCasted, getTotalPassedProposals, getTotalVotingAddress } from "../../services/proposalService";
+//import { getTotalVotesCasted, getTotalPassedProposals, getTotalVotingAddress } from "../../services/proposalService";
+import Utils from "../../utility";
+import {
+  getTotalVotesCasted,
+  getTotalPassedProposals,
+  getTotalVotingAddress,
+} from "../../services/proposalService";
+
 
 // import {Passed} from "../Dashboard/index";
 
@@ -59,7 +66,7 @@ export default function Header(props) {
       console.log(err);
     });
 
-    //setGetVotesCasted(response.countData);
+    setGetVotesCasted(response?.countData);
 
   }
 
