@@ -434,34 +434,33 @@ export default function Createnewproposal(props) {
                 </Grid>
 
                 <Grid xs={6} className={classes.gridSix}>
-                  {/* <input
+                  {<input
                     className={classes.startdateinput}
                     type="date"
                     onChange={(e) => setStartDate(e.target.value)}
                     value={startDate}
-                   
-                  /> */}
-                  <DateDiv>
-                    <DatePicker
-                      // className={classes.startdateinput}
-                      arrow={true}
-                      minDate={new Date()}
-                      // onOpen={() => open}
-                      // onOpen={() => open}
-                      onChange={onChange}
-                      placeholderText="MM/DD/YYYY"
-                      value={value}
-                      style={{
-                        color: "black",
-                        fontWeight: "normal",
-                      }}
-                    />
-                    <img
-                      src="/images/Calendar.svg"
-                      style={{ width: "18px", marginLeft: "150px" }}
-                      // onClick={() => handleOpen()}
-                    />
-                  </DateDiv>
+                  />}
+                  {/*<DateDiv>*/}
+                  {/*  <DatePicker*/}
+                  {/*    // className={classes.startdateinput}*/}
+                  {/*    arrow={true}*/}
+                  {/*    minDate={new Date()}*/}
+                  {/*    // onOpen={() => open}*/}
+                  {/*    // onOpen={() => open}*/}
+                  {/*    onChange={onChange}*/}
+                  {/*    placeholderText="MM/DD/YYYY"*/}
+                  {/*    value={value}*/}
+                  {/*    style={{*/}
+                  {/*      color: "black",*/}
+                  {/*      fontWeight: "normal",*/}
+                  {/*    }}*/}
+                  {/*  />*/}
+                  {/*  <img*/}
+                  {/*    src="/images/Calendar.svg"*/}
+                  {/*    style={{ width: "18px", marginLeft: "150px" }}*/}
+                  {/*    // onClick={() => handleOpen()}*/}
+                  {/*  />*/}
+                  {/*</DateDiv>*/}
                 </Grid>
 
                 <Grid xs={1} className={classes.enddate}>
@@ -469,33 +468,33 @@ export default function Createnewproposal(props) {
                 </Grid>
 
                 <Grid xs={5}>
-                  {/* <input
+                  {<input
                     className={classes.enddateinput}
                     type="date"
-                    // onChange={(e) => setEndDate(e.target.value)}
+                    onChange={(e) => setEndDate(e.target.value)}
                     value={endDate}
-                  /> */}
-                  <DateDiv>
-                    <DatePicker
-                      // className={classes.startdateinput}
-                      arrow={true}
-                      minDate={new Date()}
-                      // onOpen={() => open}
-                      onOpen={() => open}
-                      onChange={onChange}
-                      placeholderText="MM/DD/YYYY"
-                      value={value}
-                      style={{
-                        color: "black",
-                        fontWeight: "normal",
-                      }}
-                    />
-                    <img
-                      src="/images/Calendar.svg"
-                      style={{ width: "18px", marginLeft: "150px" }}
-                      // onClick={() => handleOpen()}
-                    />
-                  </DateDiv>
+                  /> }
+                  {/*<DateDiv>*/}
+                  {/*  <DatePicker*/}
+                  {/*    // className={classes.startdateinput}*/}
+                  {/*    arrow={true}*/}
+                  {/*    minDate={new Date()}*/}
+                  {/*    // onOpen={() => open}*/}
+                  {/*    onOpen={() => open}*/}
+                  {/*    onChange={onChange}*/}
+                  {/*    placeholderText="MM/DD/YYYY"*/}
+                  {/*    value={value}*/}
+                  {/*    style={{*/}
+                  {/*      color: "black",*/}
+                  {/*      fontWeight: "normal",*/}
+                  {/*    }}*/}
+                  {/*  />*/}
+                  {/*  <img*/}
+                  {/*    src="/images/Calendar.svg"*/}
+                  {/*    style={{ width: "18px", marginLeft: "150px" }}*/}
+                  {/*    // onClick={() => handleOpen()}*/}
+                  {/*  />*/}
+                  {/*</DateDiv>*/}
                   {/* <DateDiv>
                     <DatePicker
                       // className={classes.startdateinput}
