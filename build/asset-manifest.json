@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.ca4a489d.chunk.css",
-    "main.js": "/static/js/main.a27b980a.chunk.js",
-    "main.js.map": "/static/js/main.a27b980a.chunk.js.map",
+    "main.css": "/static/css/main.9088d97b.chunk.css",
+    "main.js": "/static/js/main.982b1543.chunk.js",
+    "main.js.map": "/static/js/main.982b1543.chunk.js.map",
     "runtime~main.js": "/static/js/runtime~main.557b2043.js",
     "runtime~main.js.map": "/static/js/runtime~main.557b2043.js.map",
-    "static/css/2.a22ef1a3.chunk.css": "/static/css/2.a22ef1a3.chunk.css",
-    "static/js/2.7f099aa9.chunk.js": "/static/js/2.7f099aa9.chunk.js",
-    "static/js/2.7f099aa9.chunk.js.map": "/static/js/2.7f099aa9.chunk.js.map",
+    "static/css/2.bc6519fd.chunk.css": "/static/css/2.bc6519fd.chunk.css",
+    "static/js/2.fdfd2c5f.chunk.js": "/static/js/2.fdfd2c5f.chunk.js",
+    "static/js/2.fdfd2c5f.chunk.js.map": "/static/js/2.fdfd2c5f.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.e68f978bcdbf779bc2f7b9d0fadaafbc.js": "/precache-manifest.e68f978bcdbf779bc2f7b9d0fadaafbc.js",
+    "precache-manifest.a058954c5f122319e31dc70383d3a294.js": "/precache-manifest.a058954c5f122319e31dc70383d3a294.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.a22ef1a3.chunk.css.map": "/static/css/2.a22ef1a3.chunk.css.map",
-    "static/css/main.ca4a489d.chunk.css.map": "/static/css/main.ca4a489d.chunk.css.map",
+    "static/css/2.bc6519fd.chunk.css.map": "/static/css/2.bc6519fd.chunk.css.map",
+    "static/css/main.9088d97b.chunk.css.map": "/static/css/main.9088d97b.chunk.css.map",
     "static/media/Attachment.svg": "/static/media/Attachment.0d24a8d4.svg",
     "static/media/Community-Tools.svg": "/static/media/Community-Tools.7d8743a4.svg",
     "static/media/DONE.svg": "/static/media/DONE.80cd404e.svg",
@@ -26,6 +26,10 @@
     "static/media/Time-Active.svg": "/static/media/Time-Active.5eb1f37f.svg",
     "static/media/Time-Inactive.svg": "/static/media/Time-Inactive.c942fc1d.svg",
     "static/media/XDC-Logo-Blue.svg": "/static/media/XDC-Logo-Blue.2c5e7ac4.svg",
-    "static/media/xdc_logo.svg": "/static/media/xdc_logo.58e79672.svg"
+    "static/media/dcent-logo.png": "/static/media/dcent-logo.5d17a80e.png",
+    "static/media/keystore-logo.png": "/static/media/keystore-logo.0fb9ee97.png",
+    "static/media/privatekey-logo.png": "/static/media/privatekey-logo.9fb82e29.png",
+    "static/media/xdc_logo.svg": "/static/media/xdc_logo.58e79672.svg",
+    "static/media/xinpay-logo.png": "/static/media/xinpay-logo.19332433.png"
   }
 }
