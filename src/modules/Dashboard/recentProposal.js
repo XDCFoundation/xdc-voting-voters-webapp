@@ -24,7 +24,6 @@ export default function RecentProposal(props) {
     history.push("/view-all-proposals");
   };
 
-
   return (
     <div>
       <Grid lg={13} className="tablegrid_address">
@@ -53,8 +52,8 @@ export default function RecentProposal(props) {
                                 proposal.status === "Open"
                                   ? "fc-blue"
                                   : proposal.status === "Passed"
-                                    ? "fc-green"
-                                    : "fc-red"
+                                  ? "fc-green"
+                                  : "fc-red"
                               }
                             >
                               {proposal.status}
@@ -82,10 +81,20 @@ export default function RecentProposal(props) {
                                     src={require("../../assets/styles/images/Time-Active.svg")}
                                   />
                                 </span>
-                                <Span >
-                                  <Countdown className="count-down" date={Date.now() + 24 * 60 * 60000 * parseInt((proposal.timeRemaining).split(" ")[0])} />
+                                <Span>
+                                  <Countdown
+                                    className="count-down"
+                                    date={
+                                      Date.now() +
+                                      24 *
+                                        60 *
+                                        60000 *
+                                        parseInt(
+                                          proposal.timeRemaining.split(" ")[0]
+                                        )
+                                    }
+                                  />
                                   Remaining
-
                                 </Span>
                               </Row>
                               <Row>
