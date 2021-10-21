@@ -34,6 +34,10 @@ html, body {
     padding-top: 15px;
 }
 
+.p-t-50{
+    padding-top: 50px;
+}
+
 .p-l-sm{
     padding-left: 10px;
 }
@@ -626,7 +630,7 @@ opacity: 1;
 font-size: 15px;
 }
 .create-wallet-hide{
-    display: none;
+    /*display: none;*/
 }
 
 .connect-wallet p{

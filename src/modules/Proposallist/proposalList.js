@@ -164,6 +164,7 @@ export default function ViewAllProposal(props) {
     const backButton = () => {
         history.push("/community");
     };
+
     const classes = useStyles();
     const [value, onChange] = useState(new Date());
 
@@ -209,10 +210,10 @@ export default function ViewAllProposal(props) {
                                 <SelectBox>
                                     <Row className={classes.row}>
                                         <Column className={classes.styleHead}>Status </Column>
-                                        <select className={classes.styleContent}>
+                                        <select className={classes.styleContent} onChange={props.onStatusChange}>
                                             <option>All</option>
-                                            <option>On</option>
-                                            <option>Off</option>
+                                            <option value={"Open"}>Open</option>
+                                            <option value={"Closed"}>Closed</option>
                                         </select>
                                     </Row>
                                 </SelectBox>
@@ -232,7 +233,7 @@ export default function ViewAllProposal(props) {
 
                         <Div>
 
-                            {props.state.proposalsList && props.state.proposalsList.length >= 1 && props.state.proposalsList.map((data) => {
+                            {props.state.proposalsList && props.state.proposalsList.length >= 1 ? props.state.proposalsList.map((data) => {
                                 console.log(data, "data===")
                                 let title = data?.proposalTitle
                                 let status = data?.endDate > Date.now() ? 'Open' : 'Closed'
@@ -320,7 +321,9 @@ export default function ViewAllProposal(props) {
                                         </Column>
                                     </MainContainer>
                                 );
-                            })}
+                            }):
+                                <div className="display-flex justify-content-center p-t-50"> No Record found</div>
+                                }
                         </Div>
                         <div className="display-flex justify-content-end p-t-15">
                             <Pagination

@@ -38,6 +38,14 @@ export default class Listui extends BaseComponent {
         this.setState({proposalsList:proposals.proposalList})
     };
 
+    onStatusChange = async (e) => {
+        console.log("+++",e)
+        const reqObj = {"skip": 0, "limit": this.state.limit, status: e.target.value}
+        let [error, proposals] = await Utils.parseResponse(proposalList(reqObj));
+        console.log("=== ",proposals)
+        this.setState({proposalsList:proposals.proposalList})
+    };
+
     handlePageChange=(e)=>{
         this.getProposalList((e-1)*this.state.limit)
     }
@@ -56,6 +64,7 @@ export default class Listui extends BaseComponent {
                     searchingProposal={this.searchingProposal}
                     handlePageChange={this.handlePageChange}
                     proposalRedirect={this.proposalRedirect}
+                    onStatusChange={this.onStatusChange}
                 />
             </div>
         );

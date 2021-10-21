@@ -51,7 +51,7 @@ console.log("wallet", wallet);
         }
         else
         {
-          document.getElementById("div_create_prop").className="create-wallet-hide"; 
+          // document.getElementById("div_create_prop").className="create-wallet-hide";
         }     
     } catch (error) {
         console.log("error", error);
