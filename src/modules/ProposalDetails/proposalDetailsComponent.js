@@ -68,10 +68,11 @@ export default function ProposalDetails(props) {
   }, []);
 
   const [newaddress, setAddress] = React.useState([]);
-  const [support, setsupport] = React.useState("");
-  const [reject, setReject] = React.useState("");
+
   const [open3, setOpen3] = React.useState(false);
   const [pieData, setPieData] = React.useState([]);
+  const [no, setNotSupport] = React.useState(0);
+  const [yes, setSupport] = React.useState(0);
 
   const [isButtonClicked, setIsButtonClicked] = React.useState(false);
   const [proposalAddress, setProposalAddress] = useState("");
@@ -100,11 +101,11 @@ export default function ProposalDetails(props) {
         .cast_vote_for_proposal(true, Date.now())
         .send({ from: acc })
         .catch((err) => {
-          Utils.apiFailureToast("you have already voted for this proposal");
+          Utils.apiFailureToast("You have already voted for this proposal");
           return;
           console.log(err, "error in votecast");
         });
-      console.log("methods in contract====>", contract.methods);
+      //   console.log("methods in contract====>", contract.methods);
       setOpen3(true);
       setIsButtonClicked(true);
       console.log("castProposalResponse", castProposalResponse);
@@ -163,19 +164,25 @@ export default function ProposalDetails(props) {
   const getVotePercentage = async () => {
     const getVote = await getVotePercentageOnProposal(proposalAddress);
     console.log("getvotepercentage", getVote);
-    const data = [
-      {
-        title: "support",
-        value: getVote.yes,
-        color: "#3AB70D",
-      },
-      { title: "reject", value: getVote.No, color: "#F43D3D" },
-    ];
-    setPieData(data);
+    const yes = getVote.supportpercentage.yes;
+    const no = getVote.supportpercentage.No;
+    setSupport(getVote.supportpercentage.yes);
+    setNotSupport(getVote.supportpercentage.No);
+
+    // const data = [
+    //   {
+    //     title: "support",
+    //     value: getVote.yes,
+    //     color: "#3AB70D",
+    //   },
+    //   { title: "reject", value: getVote.No, color: "#F43D3D" },
+    // ];
+    // setPieData(data);
     return getVote;
   };
   const castProposal = async (reqData) => {
     const result = await castVotingProposal(reqData);
+    console.log("result", result);
   };
 
   return (
@@ -337,20 +344,25 @@ export default function ProposalDetails(props) {
                     data={[
                       {
                         title: "support",
-                        value: { support },
+                        value: { yes },
                         color: "#3AB70D",
                       },
-                      { title: "reject", value: { reject }, color: "#F43D3D" },
+                      {
+                        title: "reject",
+                        value: { no },
+                        color: "#F43D3D",
+                      },
                     ]}
+                    // data={pieData}
                   />
                   <div className="piediv">
                     <div className="display-flex">
                       <div className="box-support"></div>
-                      <div className="spt">Support{support}%</div>
+                      <div className="spt">Support{yes}%</div>
                     </div>
                     <div className="display-flex">
                       <div className="box-reject"></div>
-                      <div className="rjt">Reject{reject}%</div>
+                      <div className="rjt">Reject{no}%</div>
                     </div>
                   </div>
                 </div>
