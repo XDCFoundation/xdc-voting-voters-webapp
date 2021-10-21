@@ -580,9 +580,7 @@ export default function Createnewproposal(props) {
                                 >
                                   {doc}
                                 </div>
-                                <BrowseButton for={"fileButton" + index}>
-                                  Browse File
-                                  <input
+                                <input
                                     ref={inputFile}
                                     id={"fileButton" + index}
                                     name="fileButton"
@@ -593,11 +591,13 @@ export default function Createnewproposal(props) {
                                     onChange={(e) => {
                                       console.log(index, "+++");
                                       props.uploadFileToS3(
-                                        e.target.files[0],
-                                        index
+                                          e.target.files[0],
+                                          index
                                       );
                                     }}
-                                  />
+                                />
+                                <BrowseButton for={"fileButton" + index}>
+                                  Browse File
                                 </BrowseButton>
                               </div>
                               {index ===

@@ -9,11 +9,9 @@ import styled from "styled-components";
 import "../Dashboard/datepicker.css";
 import FooterComponent from "../footer/footerComponent";
 import {history} from "../../managers/history";
-import {useParams} from "react-router-dom";
 import moment from "moment";
 import Pagination from "react-js-pagination";
 import Countdown from "react-countdown";
-// require("bootstrap-less/bootstrap/bootstrap.less");
 
 const useStyles = makeStyles((theme) => ({
     selectOptions: {backgroundColor: "white"},
@@ -162,7 +160,7 @@ function ProgressBar() {
 
 export default function ViewAllProposal(props) {
     const backButton = () => {
-        history.push("/community");
+        history.push("/");
     };
 
     const classes = useStyles();
@@ -222,7 +220,7 @@ export default function ViewAllProposal(props) {
                                     <DatePicker
                                         arrow={true}
                                         format="D MMM YYYY"
-                                        onChange={onChange}
+                                        onChange={props.onDateChange}
                                         value={value}
                                         range
                                     />
@@ -253,17 +251,16 @@ export default function ViewAllProposal(props) {
                                                         (<>
                                                             <Row>
                                                      <span style={{marginRight: "5px"}}>
-                                                     {" "}
                                     <img className="m-b-4" src={require("../../assets/styles/images/Time-Active.svg")}
                                     />
                                 </span>
                                                                 <Span>
                                                                     <Countdown className="count-down"
                                                                                date={data.endDate}/>
-                                                                    Remaining
+                                                                    &nbsp;Remaining
                                                                 </Span>
                                                             </Row>
-                                                            <Row>
+                                                            <Row className="justify-content-end">
                                                                 <div
                                                                     className="details"
                                                                     onClick={() =>
@@ -283,12 +280,12 @@ export default function ViewAllProposal(props) {
                                             <RowSpacing>
                                                 <div className={classes.mobilemedia}>
                                                     <Content>{title}</Content>
-                                                    <PositionDivLine>
+                                                    {status === "Open" ? "":<PositionDivLine>
                                                         <BarLine>
                                                             <RedLine style={{width: noVotesWidth + "%"}}></RedLine>
                                                             <GreenLine style={{width: yesVotesWidth + "%"}}></GreenLine>
                                                         </BarLine>
-                                                    </PositionDivLine>
+                                                    </PositionDivLine>}
                                                 </div>
                                             </RowSpacing>
                                             <Media_for_container>
@@ -298,10 +295,10 @@ export default function ViewAllProposal(props) {
                                                 </Container>
 
                                                 <MobileDivLine>
-                                                    <BarLine>
+                                                    {status === "Open" ? "":<BarLine>
                                                         <GreenLine style={{width: yesVotesWidth + "%"}}></GreenLine>
                                                         <RedLine style={{width: noVotesWidth + "%"}}></RedLine>
-                                                    </BarLine>
+                                                    </BarLine>}
                                                 </MobileDivLine>
                                             </Media_for_container>
                                             <DisplayNone>
@@ -310,7 +307,7 @@ export default function ViewAllProposal(props) {
                                                     <Open>{status}</Open>
                                                 </Container>
 
-                                                <NumberOfVotes>{Number(yesVotes) + Number(noVotes)} votes</NumberOfVotes>
+                                                {status === "Open" ? "":<NumberOfVotes>{Number(yesVotes) + Number(noVotes)} votes</NumberOfVotes>}
                                             </DisplayNone>
                                             <RowSpacing>
                                                 <MobileResponsive>
@@ -507,7 +504,7 @@ const MobileResponsive = styled.div`
     display: none;
   }
   @media (min-width: 300px) and (max-width: 767px) {
-    display: visible;
+    display: block;
   }
 `;
 const BarLine = styled.div`

@@ -1,61 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Column, Row } from "simple-flexbox";
-import { Button } from "@material-ui/core";
-import CustomInput from "../../common/components/CustomInput";
 import { history } from "../../managers/history";
 import "../../assets/styles/custom.css";
-import utility from "../../utility";
 import HeaderMain from "./header";
 import RecentProposal from "../Dashboard/";
 import DivBlocksComponent from "../Dashboard/divComponent";
 import FooterComponent from "../footer/footerComponent";
-//import { getTotalVotesCasted, getTotalPassedProposals, getTotalVotingAddress } from "../../services/proposalService";
-import Utils from "../../utility";
 import {
   getTotalVotesCasted,
   getTotalPassedProposals,
   getTotalVotingAddress,
 } from "../../services/proposalService";
 
-
-// import {Passed} from "../Dashboard/index";
-
-// import BaseComponent from "../baseComponent";
-
-// import Web3 from 'web3';
-
-// let proposalContractAbi = require('../../common/abis/proposalContractAbi.json').abi;
-
 export default function Header(props) {
-  //  const getPassedVote = async () => {
-  //     let web3;
-  //     web3 = new Web3(window.web3.currentProvider);
-  //     window.ethereum.enable();
-  //     const contract = new web3.eth.Contract(proposalContractAbi);
-  //     const count = await contract.methods.get_total_passed_proposals().call();
-  //     console.log(count,"counttttttttttttttt");
-  //     if (count <= 0)
-  //         return 0;
-  //     return count;
-
-  // }
-  // getProposalPassed = async () => {
-  //   let web3;
-  //   web3 = new Web3(window.web3.currentProvider);
-  //   console.log(window.web3.currentProvider)
-  //   window.ethereum.enable();
-  //   const contract = new web3.eth.Contract(masterContractAbi, "0x89CfE6bb2a708A336dEBcD8A6DE028146Ab1f841");
-  //   const createProposalResponse = await contract.methods.created_Proposal_list().call().catch(err => {
-  //       console.log(err, "====")
-  //   })
-  //   console.log(createProposalResponse, "====")
-  // }
   const [getVotesCasted, setGetVotesCasted] = useState([]);
   const [getPassedProposals, setGetPassedProposals] = useState([]);
   const [getTotalVoting, setGetTotalVoting] = useState([]);
 
   useEffect(() => {
-    // setPageNumber((pagecount)/10);
     getVotes();
     getPassed();
     getVoting();
