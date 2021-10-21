@@ -63,6 +63,7 @@ const utility = {
 export default utility;
 
 
+
 export const dispatchAction = (type, data) => {
     return dispatch => dispatch({type, data});
 };

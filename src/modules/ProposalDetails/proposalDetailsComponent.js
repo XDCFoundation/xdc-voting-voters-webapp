@@ -139,6 +139,28 @@ export default function ProposalDetails(props) {
     setIsButtonClicked(true);
   };
 
+  //   const getVotePercentage = async (proposalAddress) => {
+  //     // const getVote = await getVotePercentageOnProposal();
+  //     // setsupport(getVote.yes);
+  //     // console.log("yes", getVote.yes);
+
+  //     const response = await getVotePercentageOnProposal().catch((err) => {
+  //       console.log(err);
+  //     });
+  //     console.log("yes", response);
+  //     // setsupport(response.yes);
+  //     const data = [
+  //       {
+  //         title: "support",
+  //         value: getVote.yes,
+  //         color: "#3AB70D",
+  //       },
+  //       { title: "reject", value: getVote.No, color: "#F43D3D" },
+  //     ];
+  //     setPieData(data);
+  //     return getVote;
+  //   };
+
   const getVotePercentage = async () => {
     const getVote = await getVotePercentageOnProposal(proposalAddress);
     console.log("getvotepercentage", getVote);
@@ -162,6 +184,8 @@ export default function ProposalDetails(props) {
     const result = await castVotingProposal(reqData);
     console.log("result", result);
   };
+  const notSupport = data.no;
+  const support = data.yes;
 
   return (
     <div>
@@ -336,11 +360,11 @@ export default function ProposalDetails(props) {
                   <div className="piediv">
                     <div className="display-flex">
                       <div className="box-support"></div>
-                      <div className="spt">Support {yes}%</div>
+                      <div className="spt">Support{yes}%</div>
                     </div>
                     <div className="display-flex">
                       <div className="box-reject"></div>
-                      <div className="rjt">Reject {no}%</div>
+                      <div className="rjt">Reject{data.no}%</div>
                     </div>
                   </div>
                 </div>
