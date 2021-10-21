@@ -9,10 +9,24 @@ import TableBody from "@material-ui/core/TableBody";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { history } from "../../managers/history";
-import divBlockComponent from "./divComponent";
 import styled from "styled-components";
-import ReactDOM from "react-dom";
 import Countdown from "react-countdown";
+import moment from "moment";
+
+const GreenLine = styled.div`
+  background-color: #3ab70d;
+  height: 3px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    width: 50%;
+  }
+`;
+const RedLine = styled.div`
+  background-color: #f43d3d;
+  height: 3px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    width: 50%;
+  }
+`;
 
 export default function RecentProposal(props) {
   const proposalRedirect = (address) => {
@@ -35,118 +49,138 @@ export default function RecentProposal(props) {
           >
             <TableHead></TableHead>
             <TableBody>
-              {props.proposals.map((proposal, index) => {
-                return (
-                  <TableRow className="table-mid-line">
-                    <Row className="table-between">
-                      <Column>
-                        <TableCell style={{ border: "none" }}>
-                          <Row className="date">
-                            Posted on {proposal["postedOn"]}
-                          </Row>
-                          <Row className="name">{proposal["title"]} </Row>
-                          <Row className="status">
-                            <p>Status: &nbsp;</p>
-                            <span
-                              className={
-                                proposal.status === "Open"
-                                  ? "fc-blue"
-                                  : proposal.status === "Passed"
-                                  ? "fc-green"
-                                  : "fc-red"
-                              }
-                            >
-                              {proposal.status}
-                            </span>
-                          </Row>
-                        </TableCell>
-                      </Column>
+              {props?.state?.proposalsList &&
+              props?.state?.proposalsList.length ? (
+                props?.state?.proposalsList.map((proposal, index) => {
+                  let status =
+                    proposal?.endDate > Date.now() ? "Open" : "Closed";
+                  let formatedTime = moment(proposal?.createdOn).format("LL");
+                  const yesVotes = proposal?.yesVotes?.length;
+                  const noVotes = proposal?.noVotes?.length;
+                  const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
+                  const noVotesWidth = (100 * noVotes) / (yesVotes + noVotes);
+                  if (status === "Closed") {
+                    if (yesVotes > noVotes) status = "Passed";
+                    else status = "Failed";
+                  }
 
-                      <Column>
-                        <TableCell
-                          className="mobile-div-right"
-                          style={{ border: "none" }}
-                        >
-                          {proposal.status === "Open" ? (
-                            <>
-                              <Row>
-                                <span style={{ marginRight: "5px" }}>
-                                  {" "}
-                                  <img
-                                    style={{
-                                      height: "14px",
-                                      width: "14px",
-                                    }}
-                                    className="m-b-4"
-                                    src={require("../../assets/styles/images/Time-Active.svg")}
-                                  />
-                                </span>
-                                <Span>
-                                  <Countdown
-                                    className="count-down"
-                                    date={
-                                      Date.now() +
-                                      24 *
-                                        60 *
-                                        60000 *
-                                        parseInt(
-                                          proposal.timeRemaining.split(" ")[0]
-                                        )
+                  return (
+                    <TableRow className="table-mid-line">
+                      <Row className="table-between">
+                        <Column>
+                          <TableCell style={{ border: "none" }}>
+                            <Row className="date">
+                              Posted on {proposal["postedOn"]}
+                            </Row>
+                            <Row className="name">
+                              {proposal["proposalTitle"]}{" "}
+                            </Row>
+                            <Row className="status">
+                              <p>Status: &nbsp;</p>
+                              <span
+                                className={
+                                  status === "Open"
+                                    ? "fc-blue"
+                                    : status === "Passed"
+                                    ? "fc-green"
+                                    : "fc-red"
+                                }
+                              >
+                                {status}
+                              </span>
+                            </Row>
+                          </TableCell>
+                        </Column>
+
+                        <Column>
+                          <TableCell
+                            className="mobile-div-right"
+                            style={{ border: "none" }}
+                          >
+                            {status === "Open" ? (
+                              <>
+                                <Row>
+                                  <span style={{ marginRight: "5px" }}>
+                                    {" "}
+                                    <img
+                                      style={{
+                                        height: "14px",
+                                        width: "14px",
+                                      }}
+                                      className="m-b-4"
+                                      src={require("../../assets/styles/images/Time-Active.svg")}
+                                    />
+                                  </span>
+                                  <Span>
+                                    <Countdown
+                                      className="count-down"
+                                      date={proposal.endDate}
+                                    />
+                                    &nbsp;Remaining
+                                  </Span>
+                                </Row>
+                                <Row className="justify-content-end">
+                                  <div
+                                    className="details justify-content-end"
+                                    onClick={() =>
+                                      proposalRedirect(
+                                        proposal["pollingContract"]
+                                      )
                                     }
-                                  />
-                                  Remaining
-                                </Span>
-                              </Row>
-                              <Row>
-                                <div
-                                  className="details"
-                                  onClick={() =>
-                                    proposalRedirect(proposal["address"])
-                                  }
-                                >
-                                  Details
-                                </div>
-                              </Row>
-                            </>
-                          ) : (
-                            <>
-                              <Row className="poll-ended">
-                                {" "}
-                                <span style={{ marginRight: "5px" }}>
+                                  >
+                                    Details
+                                  </div>
+                                </Row>
+                              </>
+                            ) : (
+                              <>
+                                <Row className="poll-ended">
                                   {" "}
-                                  <img
-                                    style={{
-                                      height: "14px",
-                                      width: "14px",
-                                      marginTop: "-2px",
-                                    }}
-                                    className="time-inactive"
-                                    src={require("../../assets/styles/images/Time-Inactive.svg")}
-                                  ></img>
-                                </span>{" "}
-                                Poll Ended
-                              </Row>
-                              <Row className="percent-line">
-                                <div className="bar-line">
-                                  <div className="line-1"></div>
-                                  <div className="line-2"></div>
-                                </div>{" "}
-                              </Row>
-                              <Row className="vote-number">
-                                {proposal.passedVoteCount +
-                                  proposal.failVoteCount}{" "}
-                                votes
-                              </Row>
-                            </>
-                          )}
-                        </TableCell>
-                      </Column>
-                    </Row>
-                  </TableRow>
-                );
-              })}
+                                  <span style={{ marginRight: "5px" }}>
+                                    {" "}
+                                    <img
+                                      style={{
+                                        height: "14px",
+                                        width: "14px",
+                                        marginTop: "-2px",
+                                      }}
+                                      className="time-inactive"
+                                      src={require("../../assets/styles/images/Time-Inactive.svg")}
+                                    ></img>
+                                  </span>{" "}
+                                  Poll Ended
+                                </Row>
+                                <Row className="percent-line">
+                                  <div className="bar-line">
+                                    <GreenLine
+                                      style={{ width: yesVotesWidth + "%" }}
+                                    ></GreenLine>
+                                    <RedLine
+                                      style={{ width: noVotesWidth + "%" }}
+                                    ></RedLine>
+                                  </div>{" "}
+                                </Row>
+                                <Row className="vote-number">
+                                  {yesVotes + noVotes} votes
+                                </Row>
+                              </>
+                            )}
+                          </TableCell>
+                        </Column>
+                      </Row>
+                    </TableRow>
+                  );
+                })
+              ) : (
+                <div className="display-flex justify-content-center p-t-50">
+                  {" "}
+                  No Record found
+                </div>
+              )}
               <Row onClick={handleView} className="view-all">
-                View All Proposals
+                {props?.state?.proposalsList.length > 0
+                  ? "View All Proposals"
+                  : ""}
               </Row>
             </TableBody>
           </Table>
