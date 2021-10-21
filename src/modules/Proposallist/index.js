@@ -4,7 +4,7 @@ import {Row, Column} from "simple-flexbox";
 import BaseComponent from "../baseComponent";
 import ProposalList from "./proposalList";
 import Utils from "../../utility";
-import {searchProposal, proposalList} from "../../services/proposalService";
+import { proposalList} from "../../services/proposalService";
 import {history} from "../../managers/history";
 import moment from 'moment'
 
