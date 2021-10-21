@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #E3E7EB",
     borderRadius: "4px",
     fontSize: "12px",
-  },
+  },  
   container: {
     width: "100%",
     margin: "0px",
@@ -82,6 +82,7 @@ const useStyles = makeStyles((theme) => ({
     width: "95%",
     height: "30px",
     fontSize: "12px",
+    marginLeft:"2px!important",
 
     whiteSpace: "nowrap",
 
@@ -214,11 +215,12 @@ const useStyles = makeStyles((theme) => ({
 
   quillgrid: {
     background: "#FFFFFF 0% 0% no-repeat padding-box",
-    maxWidth: "766px",
+    maxWidth: "765px",
     borderRadius: "6px",
     width: "100%",
     border: "1px solid #e3e7eb",
     marginTop: "47px",
+    marginLeft: "1px"
   },
 
   row: {
@@ -275,6 +277,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "12px",
       marginTop: "12%",
     },
+    marginLeft:"1px"
   },
   input: {
     background: "#ffffff 0% 0% no-repeat padding-box",
