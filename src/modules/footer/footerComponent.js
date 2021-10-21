@@ -105,7 +105,7 @@ export default function FooterComponent() {
                           style={{
                             width: "23px",
                             marginLeft: "5px",
-                            marginTop: "3px",
+                            marginTop: "7px",
                           }}
                           src={require("../../assets/styles/images/ForwardLogo.svg")}
                         />
