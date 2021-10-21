@@ -13,6 +13,22 @@ import styled from "styled-components";
 import Countdown from "react-countdown";
 import moment from "moment";
 
+const GreenLine = styled.div`
+  background-color: #3ab70d;
+  height: 3px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    width: 50%;
+  }
+`;
+const RedLine = styled.div`
+  background-color: #f43d3d;
+  height: 3px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    width: 50%;
+  }
+`;
+
+
 export default function RecentProposal(props) {
   const proposalRedirect = (address) => {
     history.push({
@@ -96,12 +112,12 @@ export default function RecentProposal(props) {
                                 </span>
                                 <Span >
                                   <Countdown className="count-down" date={proposal.endDate} />
-                                  Remaining
+                                  &nbsp;Remaining
                                 </Span>
                               </Row>
-                              <Row>
+                              <Row className="justify-content-end">
                                 <div
-                                  className="details"
+                                  className="details justify-content-end"
                                   onClick={() =>
                                     proposalRedirect(proposal["pollingContract"])
                                   }
@@ -130,8 +146,8 @@ export default function RecentProposal(props) {
                               </Row>
                               <Row className="percent-line">
                                 <div className="bar-line">
-                                  <div className="line-1"></div>
-                                  <div className="line-2"></div>
+                                  <GreenLine style={{width: yesVotesWidth + "%"}}></GreenLine>
+                                  <RedLine style={{width: noVotesWidth + "%"}}></RedLine>
                                 </div>{" "}
                               </Row>
                               <Row className="vote-number">
@@ -148,7 +164,7 @@ export default function RecentProposal(props) {
                 );
               }):<div className="display-flex justify-content-center p-t-50"> No Record found</div>}
               <Row onClick={handleView} className="view-all">
-                {props?.state?.proposalsList.length > 4 ? "View All Proposals":''}
+                {props?.state?.proposalsList.length > 0 ? "View All Proposals":''}
               </Row>
             </TableBody>
           </Table>
