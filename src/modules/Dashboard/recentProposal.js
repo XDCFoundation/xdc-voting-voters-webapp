@@ -9,9 +9,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { history } from "../../managers/history";
-import divBlockComponent from "./divComponent";
 import styled from "styled-components";
-import ReactDOM from "react-dom";
 import Countdown from "react-countdown";
 import moment from "moment";
 
@@ -37,7 +35,7 @@ export default function RecentProposal(props) {
           >
             <TableHead></TableHead>
             <TableBody>
-              {props?.state?.proposalsList.map((proposal, index) => {
+              {props?.state?.proposalsList && props?.state?.proposalsList.length ? props?.state?.proposalsList.map((proposal, index) => {
                 let status = proposal?.endDate > Date.now() ? 'Open' : 'Closed'
                 let formatedTime = moment(proposal?.createdOn).format("LL");
                 const yesVotes = proposal?.yesVotes?.length;
@@ -148,9 +146,9 @@ export default function RecentProposal(props) {
                     </Row>
                   </TableRow>
                 );
-              })}
+              }):<div className="display-flex justify-content-center p-t-50"> No Record found</div>}
               <Row onClick={handleView} className="view-all">
-                View All Proposals
+                {props?.state?.proposalsList.length > 4 ? "View All Proposals":''}
               </Row>
             </TableBody>
           </Table>
