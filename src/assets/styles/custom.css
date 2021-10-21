@@ -605,8 +605,8 @@ display: flex;
 .create-wallet{
    
 margin: 15px;
-width: 140px;
-height: 32px;
+width: 168px;
+height: 36px;
 background: #2149B9 0% 0% no-repeat padding-box;
 border: 1px solid #FFFCFC;
 border-radius: 4px;
@@ -619,8 +619,8 @@ font-size: 15px;
 }
 .create-wallet p{
 
-    padding-top: 4px;
-    padding-left: 12px;
+    padding-top: 5px;
+    padding-left: 23px;
  
 text-align: center;
 font: normal normal medium 15px/19px Inter;
@@ -669,7 +669,7 @@ letter-spacing: 0px;
 color: #FFFFFF;
 opacity: 1;
 font-weight: 600;
-font-size: 35px;
+font-size: 40px;
 font-family: Inter;
 
 }
@@ -680,7 +680,7 @@ font: normal normal normal 18px/21px Inter;
 letter-spacing: 0px;
 color: #FFFFFF;
 opacity: 1;
-font-size: 14px;
+font-size: 18px;
 
 }
 .div-1{
@@ -807,8 +807,8 @@ font-family: 'Inter';
     /* border: 1px solid #E3E7EB; */
     border-color: #E3E7EB;
     box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1);
-     border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+     border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
    
  }
  .recent-proposal-div-proposal{

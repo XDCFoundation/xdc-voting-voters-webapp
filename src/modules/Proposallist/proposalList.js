@@ -88,13 +88,13 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         height: "30px",
         background: "url(/images/Search.svg) no-repeat 1px",
-        color: "#09184b",
+        color: "#909090",
         backgroundSize: "14px",
         padding: "16px 22px",
         border: "1px solid #E3E7EB",
         borderRadius: "4px",
         opacity: 1,
-        fontSize: "11px",
+        fontSize: "14px",
         marginLeft: "10px",
         maxWidth: "140px",
         "@media (min-width: 300px) and (max-width: 780px)": {
@@ -183,7 +183,7 @@ export default function ViewAllProposal(props) {
                         >
                             <img
                                 src="/images/Back-Arrow.svg"
-                                style={{width: "15px", marginRight: "8px"}}
+                                style={{width: "20px", marginRight: "8px", marginBottom:"8px"}}
                             />
                             <Back>Back</Back>
                         </div>
@@ -714,7 +714,7 @@ const Heading = styled.span`
   white-space: nowrap;
   font-family: "Inter", sans-serif;
   font-weight: 600;
-  font-size: 21px;
+  font-size: 22px;
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
