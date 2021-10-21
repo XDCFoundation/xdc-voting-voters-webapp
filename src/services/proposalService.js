@@ -57,7 +57,7 @@ async function getProposalDetail(path, data) {
 }
 
 
-  export  async function getTotalVotesCasted() {
+export async function getTotalVotesCasted() {
     let url = process.env.REACT_APP_GET_TOTAL_CASTED_VOTES;
     // +`?skip=${skip}&limit=${limit}`;
     return httpService(httpConstants.METHOD_TYPE.GET, {'Content-Type': httpConstants.CONTENT_TYPE.APPLICATION_JSON}, {}, url)
@@ -122,14 +122,8 @@ export async function getTotalVotingAddress() {
 }
 
 export async function castVotingProposal(reqData) {
-    let url = process.env.REACT_APP_CAST_PROPOSAL_VOTE;
-    // +`?skip=${skip}&limit=${limit}`;
-    return httpService(
-        httpConstants.METHOD_TYPE.POST,
-        {"Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON},
-        {},
-        url
-    )
+    let url = process.env.REACT_APP_PROPOSAL_SVC + "castProposalVote";
+    return httpService(httpConstants.METHOD_TYPE.POST, {"Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON}, reqData, url)
         .then((response) => {
             if (
                 !response.success ||
@@ -172,7 +166,7 @@ export async function getVotePercentageOnProposal() {
 
 
 export async function proposalList(reqObj) {
-    const url = process.env.REACT_APP_PROPOSAL_SVC+"getProposalList";
+    const url = process.env.REACT_APP_PROPOSAL_SVC + "getProposalList";
     return httpService(
         httpConstants.METHOD_TYPE.POST,
         {"Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON},
@@ -211,24 +205,24 @@ export async function getVotersPercentage(path) {
 }
 
 export async function searchProposal(reqObj) {
-  const url =process.env.REACT_APP_SEARCH_PROPOSAL 
-  return httpService(
-    httpConstants.METHOD_TYPE.POST,
-    { "Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON },
-    reqObj,
-    url
-  )
-    .then((response) => {
-      if (
-        !response.success ||
-        response.responseCode !== 200 ||
-        !response.responseData ||
-        response.responseData.length === 0
-      )
-        return Promise.reject();
-      return Promise.resolve(response.responseData);
-    })
-    .catch(function (err) {
-      return Promise.reject(err);
-    });
+    const url = process.env.REACT_APP_SEARCH_PROPOSAL
+    return httpService(
+        httpConstants.METHOD_TYPE.POST,
+        {"Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON},
+        reqObj,
+        url
+    )
+        .then((response) => {
+            if (
+                !response.success ||
+                response.responseCode !== 200 ||
+                !response.responseData ||
+                response.responseData.length === 0
+            )
+                return Promise.reject();
+            return Promise.resolve(response.responseData);
+        })
+        .catch(function (err) {
+            return Promise.reject(err);
+        });
 }
