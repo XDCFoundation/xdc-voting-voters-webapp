@@ -115,7 +115,7 @@ export default function FooterComponent() {
                 </Row>
               </Row>
             </Row>
-            <Row className="reserved">© 2021 XinFin. All Right Reserved</Row>
+            <Row className="reserved">© 2021 XDC. All Right Reserved</Row>
 
             <Row></Row>
           </div>
