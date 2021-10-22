@@ -59,10 +59,9 @@ export default function RecentProposal(props) {
                 const yesVotesWidth = 100 * yesVotes / (yesVotes + noVotes)
                 const noVotesWidth = 100 * noVotes / (yesVotes + noVotes)
                 if(status === 'Closed'){
-                  if(yesVotes > noVotes)
+                  if(yesVotesWidth >=66)
                     status="Passed"
-                  else
-                    status="Failed"
+                  else status = "Failed"
                 }
 
                 return (
