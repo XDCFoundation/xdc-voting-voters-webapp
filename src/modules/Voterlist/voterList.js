@@ -6,6 +6,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import FooterComponent from "../footer/footerComponent";
 import { history } from "../../managers/history";
+import Pagination from "react-js-pagination";
+import Utils from "../../utility";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,86 +49,86 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Voterslist() {
+export default function Voterslist(props) {
   const backButton = () => {
     history.push("/");
   };
-  React.useEffect(() => {
-    let address = [
-      {
-        image: "/images/network.svg",
-        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        time: "5 min ago",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        time: "1 hr 5 min ago",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        time: "10:30 AM,Today",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        time: "5.25 PM, 2 july",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdc0b3693740427612142863616a56599e92bdc955a",
-        time: "Time and Date",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        time: "Time and Date",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        time: "Time and Date",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        time: "Time and Date",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        time: "Time and Date",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        time: "Time and Date",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        time: "Time and Date",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        time: "Time and Date",
-      },
-    ];
+  // React.useEffect(() => {
+  //   let address = [
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+  //       time: "5 min ago",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+  //       time: "1 hr 5 min ago",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+  //       time: "10:30 AM,Today",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+  //       time: "5.25 PM, 2 july",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdc0b3693740427612142863616a56599e92bdc955a",
+  //       time: "Time and Date",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+  //       time: "Time and Date",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+  //       time: "Time and Date",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+  //       time: "Time and Date",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+  //       time: "Time and Date",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+  //       time: "Time and Date",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+  //       time: "Time and Date",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+  //       time: "Time and Date",
+  //     },
+  //   ];
+  //
+  //   setAddress(
+  //     address.map((object) => {
+  //       return {
+  //         image: object.image,
+  //         name: object.name,
+  //         time: object.time,
+  //       };
+  //     })
+  //   );
+  // }, []);
 
-    setAddress(
-      address.map((object) => {
-        return {
-          image: object.image,
-          name: object.name,
-          time: object.time,
-        };
-      })
-    );
-  }, []);
-
-  const [address, setAddress] = React.useState([]);
+  // const [address, setAddress] = React.useState([]);
 
   const classes = useStyles();
   return (
@@ -153,7 +155,7 @@ export default function Voterslist() {
             </div>
             <div style={{ marginBottom: "20px" }}>
               <MainHeading>
-                XDC-ABC Bootstrapping Partnership Proposal
+                {props?.state?.proposalDetails?.proposalTitle}
               </MainHeading>
             </div>
             <Spacing>
@@ -161,47 +163,40 @@ export default function Voterslist() {
                 <Heading>All Voters</Heading>
               </Container>
               <SecondContainer>
-                <Leftcontainer>122 Votes</Leftcontainer>
+                <Leftcontainer>{props.state.votes.length}</Leftcontainer>
               </SecondContainer>
             </Spacing>
 
-            {address.map((data) => {
+            {props?.state?.votes.map((data) => {
               return (
                 <Div>
                   <Spacing>
                     <Container>
                       <ImageView src={data.image} />
                       &nbsp;
-                      <Hash>{data.name}</Hash>
+                      <Hash>{data.voterAddress}</Hash>
                     </Container>
                     <SecondContainer>
-                      <Leftcontainer>{data.time}</Leftcontainer>
+                      <Leftcontainer>{Utils.epocToPrettyTime(data.createdOn)}</Leftcontainer>
                     </SecondContainer>
                   </Spacing>
                 </Div>
               );
             })}
-            <Pagingdiv>
-              <Container>
-                <Show>Show </Show>
-                <Block>
-                  <Span>10 </Span>
-                </Block>
-
-                <Properties>Properties</Properties>
-              </Container>
-              <SecondContainer>
-                <BackButton>Back</BackButton>
-
-                <Block>
-                  <Span>1</Span>
-                </Block>
-                <Block>
-                  <Span>2</Span>
-                </Block>
-
-                <NextButton>Next</NextButton>
-              </SecondContainer>
+            <Pagingdiv className="display-flex justify-content-end">
+              <div className="display-flex justify-content-end p-t-15">
+                <Pagination
+                    prevPageText='Previous' nextPageText='Next'
+                    hideFirstLastPages linkClassNext="table-pagination"
+                    linkClassPrev="table-pagination" activeLinkClass="fc-black"
+                    linkClass="table-pagination"
+                    activePage={props.state.activePage}
+                    itemsCountPerPage={props.state.itemsPerPage}
+                    pageRangeDisplayed="5"
+                    totalItemsCount={props.state.totalVotersCount}
+                    onChange={props.handlePageChange}
+                />
+              </div>
             </Pagingdiv>
           </Grid>
         </div>
