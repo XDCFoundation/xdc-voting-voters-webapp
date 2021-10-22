@@ -700,7 +700,7 @@ const Passed = styled.span`
 `;
 const NumberOfVotes = styled.span`
   font-family: "Inter", sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 14px;
   color: #2a2a2a;
   @media (min-width: 300px) and (max-width: 767px) {
