@@ -51,8 +51,9 @@ function Header() {
     const [address, setAddress] = useState({data: ""});
     const fetchData = async (param) => {
         const addresses = await getTotalVotingAddress();
+        console.log("addresses ",addresses)
         let isAllowedToCreateProposal = false;
-        addresses.map(address => {
+        addresses.dataList.map(address => {
             if (address.address === param) {
                 if (address.permission.allowProposalCreation === true)
                     isAllowedToCreateProposal = true
