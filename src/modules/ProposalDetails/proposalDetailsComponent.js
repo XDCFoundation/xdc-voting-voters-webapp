@@ -60,8 +60,8 @@ export default function ProposalDetails(props) {
                                         <span style={{marginRight: "5px"}}>
                                             <img
                                                 style={{
-                                                    height: "14px",
-                                                    width: "14px",
+                                                    height: "17px",
+                                                    width: "17px",
                                                     marginTop: "-3px",
                                                 }}
                                                 className="time-inactive"
@@ -74,6 +74,9 @@ export default function ProposalDetails(props) {
                                      <Countdown className="count-down" date={props.state.proposalDetails.endDate}/> : ""
                                     }
                     </span>
+                                        </span>
+                                        <span>
+                                            Remaining
                                         </span>
                                     </Row>
                                 </Column>
