@@ -8,7 +8,7 @@ import {history} from "../../managers/history";
 import ProposalComponent from "./proposalDetailsComponent"
 import Web3 from "web3";
 import {abi as proposalContractAbi} from "../../common/abis/proposalContractAbi.json";
-import {castVotingProposal} from "../../services/proposalService";
+import {castVotingProposal, getTotalVotingAddress} from "../../services/proposalService";
 
 export default class ProposalDetails extends BaseComponent {
     constructor(props) {
@@ -17,12 +17,36 @@ export default class ProposalDetails extends BaseComponent {
             proposalAddress: "",
             proposalDetails: {},
             isButtonClicked: false,
-            open: false
+            open: false,
+            isAllowedToVoting: false
         };
     }
 
     async componentDidMount() {
         this.getProposalDetails();
+        this.isUserAllowedForVoting()
+    }
+
+    isUserAllowedForVoting = ()=>{
+        let web3;
+        web3 = new Web3(window.web3.currentProvider);
+        console.log(window.web3.currentProvider);
+        window.ethereum.enable();
+        web3.eth.getAccounts().then(async accounts => {
+            if (!accounts || !accounts.length) {
+                Utils.apiFailureToast("Wallet is not connected")
+                return;
+            }
+            const addresses = await getTotalVotingAddress();
+            let isAllowedToVoting = false
+            addresses.dataList.map(address => {
+                if (address.address === accounts[0]) {
+                    if (address.permission.allowVoting === true) {
+                        this.setState({isAllowedToVoting: true})
+                    }
+                }
+            })
+        });
     }
 
     getProposalDetails = async () => {
@@ -45,10 +69,8 @@ export default class ProposalDetails extends BaseComponent {
     isAlreadyVoted = async (proposalDetail) => {
         let web3;
         web3 = new Web3(window.web3.currentProvider);
-        console.log(window.web3.currentProvider);
         window.ethereum.enable();
         const accounts = await web3.eth.getAccounts()
-        console.log(accounts)
         if (!accounts || !accounts.length) {
             Utils.apiFailureToast("Please login to Xin pay extension");
             return;
@@ -67,7 +89,7 @@ export default class ProposalDetails extends BaseComponent {
     }
 
     handleClickVoter = () => {
-        history.push("/voterslist");
+        history.push("/voterslist/"+this.state.proposalAddress);
     };
 
     backButton = () => {
@@ -75,6 +97,10 @@ export default class ProposalDetails extends BaseComponent {
     };
 
     castProposalVote = async (isSupport) => {
+        if(!this.state.isAllowedToVoting) {
+            Utils.apiFailureToast("You are not allowed to vote")
+            return;
+        }
         let web3;
         web3 = new Web3(window.web3.currentProvider);
         console.log(window.web3.currentProvider);
