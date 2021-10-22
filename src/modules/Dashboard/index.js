@@ -4,9 +4,8 @@ import RecentProposal from "./recentProposal";
 import Web3 from "web3";
 import moment from "moment";
 import Loader from "../../assets/styles/images/NewLoader.gif";
-
-const { extname } = require("path");
-
+import Utils from "../../utility";
+import {proposalList} from "../../services/proposalService";
 let proposalContractAbi =
   require("../../common/abis/proposalContractAbi.json").abi;
 let masterContractAbi = require("../../common/abis/masterContractAbi.json").abi;
@@ -17,16 +16,25 @@ export default class Dashboard extends BaseComponent {
     this.state = {
       proposalDocuments: [],
       proposals: [],
+      proposalsList:[],
       proposalResponse: [],
       isLoader: false,
+      limit:4
     };
   }
 
   async componentDidMount() {
     const proposalsAddresses = await this.getContractAddresses();
-    await this.getProposalsData(proposalsAddresses);
-
+    // await this.getProposalsData(proposalsAddresses);
     this.setState({ isLoader: true });
+    this.getProposalList()
+  }
+
+  getProposalList = async (skip=0) => {
+    const reqObj = {"skip": skip, "limit": this.state.limit}
+    let [error, proposals] = await Utils.parseResponse(proposalList(reqObj));
+    this.setState({proposalsList: proposals.proposalList})
+    // this.setState({ isLoader: false });
   }
 
   getContractAddresses = async () => {
@@ -44,17 +52,6 @@ export default class Dashboard extends BaseComponent {
       .catch((err) => {
         console.log(err, "====");
       });
-    console.log("====createProp====", createProposalResponse);
-
-    // this.setState({isLoader:true})
-    //    if(createProposalResponse){
-    //     this.setState({isLoader:true})
-
-    //     console.log(createProposalResponse,"loaderrrrrrrrrrrrrrrrrrrrrrrrrrr");
-    //    }
-    //    else{
-
-    //    }
     return createProposalResponse;
   };
 
@@ -71,7 +68,7 @@ export default class Dashboard extends BaseComponent {
       proposalDetails["failVoteCount"] = await this.getFailedVote(
         addresses[index]
       );
-      proposalDetails['address'] = addresses[index]
+      proposalDetails["address"] = addresses[index];
       proposals.push(proposalDetails);
     }
     proposals.length = 4;
@@ -109,7 +106,7 @@ export default class Dashboard extends BaseComponent {
     const contract = new web3.eth.Contract(proposalContractAbi, address);
     const count = await contract.methods.get_yes_voter_list().call();
     if (count <= 0) return 0;
-    return count;
+    return count.length;
   };
 
   getFailedVote = async (address, status) => {
@@ -119,13 +116,14 @@ export default class Dashboard extends BaseComponent {
     const contract = new web3.eth.Contract(proposalContractAbi, address);
     const count = await contract.methods.get_no_voter_list().call();
     if (count <= 0) return 0;
-    return count;
+    return count.length;
   };
 
   timeRemaining = (date, status) => {
     if (status === "Open") {
-      const endTime = moment(date).add(1, "days");
-      return moment.duration(endTime.diff(moment())).humanize();
+      const endTime = moment(date).unix();
+      // return
+      return endTime
     }
   };
 
@@ -152,9 +150,11 @@ export default class Dashboard extends BaseComponent {
           <img className="load" src={Loader} />
         ) : (
           <div>
-              <RecentProposal proposals={this.state.proposals}
-               getContractAddresses={this.state.getContractAddresses}
-              />
+            <RecentProposal
+                state={this.state}
+              proposals={this.state.proposals}
+              getContractAddresses={this.state.getContractAddresses}
+            />
           </div>
         )}
       </>

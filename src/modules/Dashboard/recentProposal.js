@@ -9,13 +9,30 @@ import TableBody from "@material-ui/core/TableBody";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { history } from "../../managers/history";
-import divBlockComponent from "./divComponent";
 import styled from "styled-components";
+import Countdown from "react-countdown";
+import moment from "moment";
+
+const GreenLine = styled.div`
+  background-color: #3ab70d;
+  height: 3px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    width: 50%;
+  }
+`;
+const RedLine = styled.div`
+  background-color: #f43d3d;
+  height: 3px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    width: 50%;
+  }
+`;
+
 
 export default function RecentProposal(props) {
   const proposalRedirect = (address) => {
     history.push({
-      pathname: `/proposal-details/${address}`
+      pathname: `/proposal-details/${address}`,
     });
   };
   const handleView = () => {
@@ -34,7 +51,20 @@ export default function RecentProposal(props) {
           >
             <TableHead></TableHead>
             <TableBody>
-              {props.proposals.map((proposal, index) => {
+              {props?.state?.proposalsList && props?.state?.proposalsList.length ? props?.state?.proposalsList.map((proposal, index) => {
+                let status = proposal?.endDate > Date.now() ? 'Open' : 'Closed'
+                let formatedTime = moment(proposal?.createdOn).format("LL");
+                const yesVotes = proposal?.yesVotes?.length;
+                const noVotes = proposal?.noVotes?.length;
+                const yesVotesWidth = 100 * yesVotes / (yesVotes + noVotes)
+                const noVotesWidth = 100 * noVotes / (yesVotes + noVotes)
+                if(status === 'Closed'){
+                  if(yesVotes > noVotes)
+                    status="Passed"
+                  else
+                    status="Failed"
+                }
+
                 return (
                   <TableRow className="table-mid-line">
                     <Row className="table-between">
@@ -43,19 +73,19 @@ export default function RecentProposal(props) {
                           <Row className="date">
                             Posted on {proposal["postedOn"]}
                           </Row>
-                          <Row className="name">{proposal["title"]} </Row>
+                          <Row className="name">{proposal["proposalTitle"]} </Row>
                           <Row className="status">
                             <p>Status: &nbsp;</p>
                             <span
                               className={
-                                proposal.status === "Open"
+                                status === "Open"
                                   ? "fc-blue"
-                                  : proposal.status === "Passed"
-                                  ? "fc-green"
-                                  : "fc-red"
+                                  : status === "Passed"
+                                    ? "fc-green"
+                                    : "fc-red"
                               }
                             >
-                              {proposal.status}
+                              {status}
                             </span>
                           </Row>
                         </TableCell>
@@ -66,7 +96,7 @@ export default function RecentProposal(props) {
                           className="mobile-div-right"
                           style={{ border: "none" }}
                         >
-                          {proposal.status === "Open" ? (
+                          {status === "Open" ? (
                             <>
                               <Row>
                                 <span style={{ marginRight: "5px" }}>
@@ -80,13 +110,16 @@ export default function RecentProposal(props) {
                                     src={require("../../assets/styles/images/Time-Active.svg")}
                                   />
                                 </span>
-                                <Span>{proposal.timeRemaining} Remaining</Span>
+                                <Span >
+                                  <Countdown className="count-down" date={proposal.endDate} />
+                                  &nbsp;Remaining
+                                </Span>
                               </Row>
-                              <Row>
+                              <Row className="justify-content-end">
                                 <div
-                                  className="details"
+                                  className="details justify-content-end"
                                   onClick={() =>
-                                    proposalRedirect(proposal["address"])
+                                    proposalRedirect(proposal["pollingContract"])
                                   }
                                 >
                                   Details
@@ -113,13 +146,13 @@ export default function RecentProposal(props) {
                               </Row>
                               <Row className="percent-line">
                                 <div className="bar-line">
-                                  <div className="line-1"></div>
-                                  <div className="line-2"></div>
+                                  <GreenLine style={{width: yesVotesWidth + "%"}}></GreenLine>
+                                  <RedLine style={{width: noVotesWidth + "%"}}></RedLine>
                                 </div>{" "}
                               </Row>
                               <Row className="vote-number">
-                                {proposal.passedVoteCount +
-                                  proposal.failVoteCount}{" "}
+                                {yesVotes +
+                                  noVotes}{" "}
                                 votes
                               </Row>
                             </>
@@ -129,9 +162,9 @@ export default function RecentProposal(props) {
                     </Row>
                   </TableRow>
                 );
-              })}
+              }):<div className="display-flex justify-content-center p-t-50"> No Record found</div>}
               <Row onClick={handleView} className="view-all">
-                View All Proposals
+                {props?.state?.proposalsList.length > 0 ? "View All Proposals":''}
               </Row>
             </TableBody>
           </Table>

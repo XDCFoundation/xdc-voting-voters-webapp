@@ -8,12 +8,12 @@ import { Login, SignUp } from "./modules";
 import Header from "./modules/header/headerComponent";
 import { history } from "./managers/history";
 import BaseComponent from "./modules/baseComponent";
-import AllProposal from "./modules/Dashboard/viewProposal";
+import AllProposal from "./modules/Proposallist";
 import Community from "./modules/CommunityTools";
 import Governance from "./modules/Xvd-Governance";
 import Createproposal from "./modules/Createnewproposal";
 import Voter from "./modules/Voterlist";
-import ProposalDetails from "./modules/Dashboard/proposalDetails";
+import ProposalDetails from "./modules/ProposalDetails";
 class Routes extends BaseComponent {
   componentDidMount() {}
 

@@ -413,18 +413,19 @@ export default function Createnewproposal(props) {
               <hr className={classes.line} />
 
               <div className={classes.row}>
-                <Grid xs={2} className={classes.proposaltitle}>
+                {/* <Grid xs={2} className={classes.proposaltitle}>
                   Proposal Title
-                </Grid>
+                </Grid> */}
+                <div className={classes.proposaltitle}>Proposal Title</div>
 
-                <Grid xs={10}>
+                <Div>
                   <input
                     className={classes.proposalinput}
                     type="text"
                     onChange={(e) => setProposalTitle(e.target.value)}
                     value={proposalTitle}
                   />
-                </Grid>
+                </Div>
               </div>
 
               <div className={classes.secondrow}>
@@ -433,36 +434,33 @@ export default function Createnewproposal(props) {
                 </Grid>
 
                 <Grid xs={6} className={classes.gridSix}>
-                  {/* <input
+                  {<input
                     className={classes.startdateinput}
                     type="date"
                     onChange={(e) => setStartDate(e.target.value)}
                     value={startDate}
-                   
-                  /> */}
-                  <DateDiv>
-                    <DatePicker
-                      // className={classes.startdateinput}
-                      arrow={true}
-                      minDate={new Date()}
-                      // onOpen={() => open}
-                      onOpen={() => open}
-                      // dateFormat="yyyy/MM/dd"
-                      onChange={onChange}
-                      placeholderText="MM/DD/YYYY"
-                      value={value}
-                      style={{
-                        color: "black",
-                        fontWeight: "normal",
-                        // pointerEvents: "none",
-                      }}
-                    />
-                    <img
-                      src="/images/Calendar.svg"
-                      style={{ width: "18px", marginLeft: "150px" }}
-                      onClick={() => handleOpen()}
-                    />
-                  </DateDiv>
+                  />}
+                  {/*<DateDiv>*/}
+                  {/*  <DatePicker*/}
+                  {/*    // className={classes.startdateinput}*/}
+                  {/*    arrow={true}*/}
+                  {/*    minDate={new Date()}*/}
+                  {/*    // onOpen={() => open}*/}
+                  {/*    // onOpen={() => open}*/}
+                  {/*    onChange={onChange}*/}
+                  {/*    placeholderText="MM/DD/YYYY"*/}
+                  {/*    value={value}*/}
+                  {/*    style={{*/}
+                  {/*      color: "black",*/}
+                  {/*      fontWeight: "normal",*/}
+                  {/*    }}*/}
+                  {/*  />*/}
+                  {/*  <img*/}
+                  {/*    src="/images/Calendar.svg"*/}
+                  {/*    style={{ width: "18px", marginLeft: "150px" }}*/}
+                  {/*    // onClick={() => handleOpen()}*/}
+                  {/*  />*/}
+                  {/*</DateDiv>*/}
                 </Grid>
 
                 <Grid xs={1} className={classes.enddate}>
@@ -470,14 +468,34 @@ export default function Createnewproposal(props) {
                 </Grid>
 
                 <Grid xs={5}>
-                  {/* <input
+                  {<input
                     className={classes.enddateinput}
                     type="date"
-                    // onChange={(e) => setEndDate(e.target.value)}
+                    onChange={(e) => setEndDate(e.target.value)}
                     value={endDate}
-                  /> */}
-
-                  <DateDiv>
+                  /> }
+                  {/*<DateDiv>*/}
+                  {/*  <DatePicker*/}
+                  {/*    // className={classes.startdateinput}*/}
+                  {/*    arrow={true}*/}
+                  {/*    minDate={new Date()}*/}
+                  {/*    // onOpen={() => open}*/}
+                  {/*    onOpen={() => open}*/}
+                  {/*    onChange={onChange}*/}
+                  {/*    placeholderText="MM/DD/YYYY"*/}
+                  {/*    value={value}*/}
+                  {/*    style={{*/}
+                  {/*      color: "black",*/}
+                  {/*      fontWeight: "normal",*/}
+                  {/*    }}*/}
+                  {/*  />*/}
+                  {/*  <img*/}
+                  {/*    src="/images/Calendar.svg"*/}
+                  {/*    style={{ width: "18px", marginLeft: "150px" }}*/}
+                  {/*    // onClick={() => handleOpen()}*/}
+                  {/*  />*/}
+                  {/*</DateDiv>*/}
+                  {/* <DateDiv>
                     <DatePicker
                       // className={classes.startdateinput}
                       arrow={true}
@@ -499,7 +517,7 @@ export default function Createnewproposal(props) {
                       style={{ width: "18px", marginLeft: "150px" }}
                       onClick={setOpen}
                     />
-                  </DateDiv>
+                  </DateDiv> */}
                 </Grid>
               </div>
               <Mobile>
@@ -559,9 +577,7 @@ export default function Createnewproposal(props) {
                                 >
                                   {doc}
                                 </div>
-                                <BrowseButton for={"fileButton" + index}>
-                                  Browse File
-                                  <input
+                                <input
                                     ref={inputFile}
                                     id={"fileButton" + index}
                                     name="fileButton"
@@ -572,11 +588,13 @@ export default function Createnewproposal(props) {
                                     onChange={(e) => {
                                       console.log(index, "+++");
                                       props.uploadFileToS3(
-                                        e.target.files[0],
-                                        index
+                                          e.target.files[0],
+                                          index
                                       );
                                     }}
-                                  />
+                                />
+                                <BrowseButton for={"fileButton" + index}>
+                                  Browse File
                                 </BrowseButton>
                               </div>
                               {index ===
@@ -616,6 +634,11 @@ export default function Createnewproposal(props) {
     </div>
   );
 }
+const Div = styled.div`
+  width: 100%;
+  max-width: 805px;
+  margin-left: 62px;
+`;
 const DateDiv = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
