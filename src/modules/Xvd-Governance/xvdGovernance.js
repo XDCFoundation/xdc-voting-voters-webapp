@@ -410,7 +410,7 @@ const Div = styled.div`
 
 const Heading = styled.span`
   white-space: nowrap;
-  font: normal normal 600 19px/26px Inter;
+  font: normal normal 600 22px/26px Inter;
 
   color: #2a2a2a;
 
