@@ -1049,7 +1049,7 @@ text-align: center;
  .recent-add-div-proposal{
     width: 100%;
     justify-content: space-between;
-    padding: 15px;
+    padding: 15px 15px 11px 15px;
  }
  .recent-add-div-proposal2{
     width: 100%;
@@ -1188,6 +1188,7 @@ opacity: 1;
     font-family: "Inter",sans-serif;
     font-weight: 600;
     margin-top: 2px;
+    padding: 3px 0px 3px 0px;
  }
  .date-proposal{
     letter-spacing: 0px;
