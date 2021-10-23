@@ -18,11 +18,12 @@ const useStyles = makeStyles((theme) => ({
 
   styleContent: {
     border: "0px",
+    webkitAppearance: "none",
     outline: "0px",
     fontSize: "13px",
     color: "#2149b9",
     fontWeight: "600",
-    textAlignLast: "right",
+
     marginLeft: "7px",
   },
   styleHead: {
@@ -34,8 +35,10 @@ const useStyles = makeStyles((theme) => ({
     height: "31px",
     fontFamily: "Inter",
     fontWeight: "600",
-    marginLeft: "8px",
+    // marginLeft: "8px",
     color: "#2A2A2A",
+    width: "100%",
+    paddingLeft: "10px",
   },
   row: {
     border: "1px solid #E3E7EB",
@@ -212,7 +215,8 @@ export default function ViewAllProposal(props) {
                   <Row className={classes.row}>
                     <Column className={classes.styleHead}>Status </Column>
                     <select
-                      className={classes.styleContent}
+                      // className={classes.styleContent}
+                      className="select-box"
                       onChange={props.onStatusChange}
                     >
                       <option>All</option>
@@ -597,8 +601,8 @@ const SelectBox = styled.div`
 `;
 const Failed = styled.span`
   font-family: "Inter", sans-serif;
-  font-weight: 600;
-  font-size: 12px;
+
+  font-size: 14px;
   letter-spacing: 0px;
   opacity: 1;
   color: #f43d3d;
@@ -653,7 +657,7 @@ const Div = styled.div`
 const Posted = styled.span`
   text-align: left;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
+
   font-size: 14px;
   letter-spacing: 0px;
   color: #909090;
@@ -715,7 +719,7 @@ const Content = styled.span`
 `;
 const Status = styled.span`
   font-family: "Inter", sans-serif;
-  font-weight: 600;
+
   font-size: 14px;
   letter-spacing: 0px;
   opacity: 1;
@@ -732,7 +736,7 @@ const Open = styled.span`
   color: #2149b9;
   whitespace: "nowrap";
   font-family: "Inter", sans-serif;
-  font-weight: 600;
+
   font-size: 14px;
   @media (min-width: 300px) and (max-width: 767px) {
     font-size: 12px;
@@ -743,7 +747,6 @@ const TimerImg = styled.img`
 `;
 const Passed = styled.span`
   font-family: "Inter", sans-serif;
-  font-weight: 600;
   font-size: 14px;
   letter-spacing: 0px;
   color: #3ab70d;
