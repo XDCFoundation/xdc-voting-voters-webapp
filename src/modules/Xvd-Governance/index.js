@@ -4,9 +4,12 @@ import BaseComponent from "../baseComponent";
 import Xvdgovernance from './xvdGovernance';
 
 export default class Governance extends BaseComponent {
+  componentDidMount() {
+    
+  }
   render() {
     return (
-      <div>
+      <div onClick={() => window.scrollTo({top: 0,behavior:"smooth",})}>
         <Xvdgovernance/>
       </div>
     );

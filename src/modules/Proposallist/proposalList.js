@@ -555,11 +555,12 @@ const SelectBox = styled.div`
 const Failed = styled.span`
   font-family: "Inter", sans-serif;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0px;
   opacity: 1;
   color: #f43d3d;
   whitespace: "nowrap";
+  align-self:center;
 `;
 const InputDiv = styled.div`
   display: flex;

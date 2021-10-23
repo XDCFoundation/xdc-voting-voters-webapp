@@ -1167,7 +1167,7 @@ opacity: 1;
     border: 1px solid #E3E7EB;
     border-radius: 2px;
     opacity: 1;
-    padding: 20px;
+    padding: 18px 15px 2px 17px;
     max-width: 610px;
     box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1);
  }
@@ -1228,7 +1228,7 @@ opacity: 1;
     border-radius: 6px;
     opacity: 1;
     padding: 15px;
-    margin-top: 30px;
+    margin-top: 13px;
     margin-bottom: 30px;
  }
  .attachment-logo{
