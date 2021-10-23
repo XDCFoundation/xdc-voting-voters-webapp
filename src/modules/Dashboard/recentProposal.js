@@ -49,14 +49,13 @@ export default function RecentProposal(props) {
           >
             <TableHead></TableHead>
             <TableBody>
-              {props?.state?.proposalsList &&
-              props?.state?.proposalsList.length ? (
-                props?.state?.proposalsList.map((proposal, index) => {
+              {props.state.proposalsList && props.state.proposalsList.length ? (
+                props.state.proposalsList.map((proposal, index) => {
                   let status =
-                    proposal?.endDate > Date.now() ? "Open" : "Closed";
-                  let formatedTime = moment(proposal?.createdOn).format("LL");
-                  const yesVotes = proposal?.yesVotes?.length;
-                  const noVotes = proposal?.noVotes?.length;
+                    proposal.endDate > Date.now() ? "Open" : "Closed";
+                  let formatedTime = moment(proposal.createdOn).format("LL");
+                  const yesVotes = proposal.yesVotes.length;
+                  const noVotes = proposal.noVotes.length;
                   const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
                   const noVotesWidth = (100 * noVotes) / (yesVotes + noVotes);
                   if (status === "Closed") {
@@ -178,7 +177,7 @@ export default function RecentProposal(props) {
                 </div>
               )}
               <Row onClick={handleView} className="view-all">
-                {props?.state?.proposalsList.length > 0
+                {props.state.proposalsList.length > 0
                   ? "View All Proposals"
                   : ""}
               </Row>

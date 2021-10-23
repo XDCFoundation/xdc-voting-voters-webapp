@@ -1,37 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Column, Row } from "simple-flexbox";
 import "../../assets/styles/custom.css";
-import TableCell from "@material-ui/core/TableCell";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import { history } from "../../managers/history";
 import HeaderMain from "../header/header";
-import RecentProposal from "../Dashboard/recentProposal";
 import FooterComponent from "../footer/footerComponent";
-import parse from "html-react-parser";
 import Pdf from "../Dashboard/Proposal-ABC_ Terms & Conditions.pdf";
 import Doc from "../Dashboard/Proposal-ABC_ Terms & Conditions.docx";
-import { makeStyles, mergeClasses } from "@material-ui/styles";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { PieChart } from "react-minimal-pie-chart";
-import ReactDOM from "react-dom";
 import Utils from "../../utility";
-import { ProposalService } from "../../services/index";
 import moment from "moment";
-import Web3 from "web3";
-
-import { useLocation, useParams } from "react-router";
-import { castVotingProposal } from "../../services/proposalService";
-import { getVotePercentageOnProposal } from "../../services/proposalService";
-// let masterContractAbi = require("../../common/abis/masterContractAbi.json").abi;
-
-let proposalContractAbi =
-  require("../../common/abis/proposalContractAbi.json").abi;
+import Countdown from "react-countdown";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -42,150 +23,12 @@ function removeTags(str) {
 }
 
 export default function ProposalDetails(props) {
-  React.useEffect(() => {
-    let newaddress = [
-      {
-        image: "/images/network.svg",
-        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        time: "1 hr 5 min ago",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        time: "1 hr 5 min ago",
-      },
-    ];
-    setAddress(
-      newaddress.map((object) => {
-        return {
-          image: object.image,
-          name: object.name,
-          time: object.time,
-        };
-      })
-    );
-    setProposalAddress(proposalAddressObject.address);
-  }, []);
-
-  const [newaddress, setAddress] = React.useState([]);
-
-  const [open3, setOpen3] = React.useState(false);
-  const [pieData, setPieData] = React.useState([]);
-  const [no, setNotSupport] = React.useState(0);
-  const [yes, setSupport] = React.useState(0);
-
-  const [isButtonClicked, setIsButtonClicked] = React.useState(false);
-  const [proposalAddress, setProposalAddress] = useState("");
-  const proposalAddressObject = useParams();
-  useEffect(() => {
-    getVotePercentage();
-  }, []);
-
-  const castProposalVote = async (isSupport) => {
-    let web3;
-    web3 = new Web3(window.web3.currentProvider);
-    console.log(window.web3.currentProvider);
-    window.ethereum.enable();
-
-    web3.eth.getAccounts().then(async (accounts) => {
-      if (!accounts || !accounts.length) {
-        Utils.apiFailureToast("Please login to Xinpay extension");
-        return;
-      }
-      const contract = new web3.eth.Contract(
-        proposalContractAbi,
-        proposalAddress
-      );
-      const acc = accounts[0];
-      const castProposalResponse = await contract.methods
-        .cast_vote_for_proposal(true, Date.now())
-        .send({ from: acc })
-        .catch((err) => {
-          Utils.apiFailureToast("You have already voted for this proposal");
-          return;
-          console.log(err, "error in votecast");
-        });
-      //   console.log("methods in contract====>", contract.methods);
-      setOpen3(true);
-      setIsButtonClicked(true);
-      console.log("castProposalResponse", castProposalResponse);
-      const reqData = {
-        pollingContract: proposalAddress,
-        voterAddress: acc,
-        support: Boolean(isSupport),
-      };
-      castProposal(reqData);
-      getVotePercentage(proposalAddress);
-      return castProposalResponse;
-    });
-  };
-
   function shorten(b, amountL = 13, amountR = 3, stars = 3) {
     return `${b.slice(0, amountL)}${".".repeat(stars)}${b.slice(
       b.length - 5,
       b.length
     )}`;
   }
-
-  const handleClose3 = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen3(false);
-  };
-
-  const handleCloseDailog = () => {
-    setOpen3(true);
-    setIsButtonClicked(true);
-  };
-
-  //   const getVotePercentage = async (proposalAddress) => {
-  //     // const getVote = await getVotePercentageOnProposal();
-  //     // setsupport(getVote.yes);
-  //     // console.log("yes", getVote.yes);
-
-  //     const response = await getVotePercentageOnProposal().catch((err) => {
-  //       console.log(err);
-  //     });
-  //     console.log("yes", response);
-  //     // setsupport(response.yes);
-  //     const data = [
-  //       {
-  //         title: "support",
-  //         value: getVote.yes,
-  //         color: "#3AB70D",
-  //       },
-  //       { title: "reject", value: getVote.No, color: "#F43D3D" },
-  //     ];
-  //     setPieData(data);
-  //     return getVote;
-  //   };
-
-  const getVotePercentage = async () => {
-    const getVote = await getVotePercentageOnProposal(proposalAddress);
-    console.log("getvotepercentage", getVote);
-    const yes = getVote.supportpercentage.yes;
-    const no = getVote.supportpercentage.No;
-    setSupport(getVote.supportpercentage.yes);
-    setNotSupport(getVote.supportpercentage.No);
-
-    // const data = [
-    //   {
-    //     title: "support",
-    //     value: getVote.yes,
-    //     color: "#3AB70D",
-    //   },
-    //   { title: "reject", value: getVote.No, color: "#F43D3D" },
-    // ];
-    // setPieData(data);
-    return getVote;
-  };
-  const castProposal = async (reqData) => {
-    const result = await castVotingProposal(reqData);
-    console.log("result", result);
-  };
-  const notSupport = data.no;
-  const support = data.yes;
 
   return (
     <div>
@@ -212,16 +55,13 @@ export default function ProposalDetails(props) {
                     {props.state.proposalDetails.proposalTitle}{" "}
                   </Row>
                   <Row className="status-proposal">
-                    Status: <span>{props.state.proposalDetails.status}</span>{" "}
+                    Status: &nbsp;
+                    <span>{props.state.proposalDetails.status}</span>{" "}
                   </Row>
                 </Column>
                 <Column>
                   <Row className="time-proposal">
-                    <span style={{ marginRight: "-170px" }}>
-                      01:50:48 Remaining
-                    </span>
                     <span style={{ marginRight: "5px" }}>
-                      {" "}
                       <img
                         style={{
                           height: "14px",
@@ -231,6 +71,13 @@ export default function ProposalDetails(props) {
                         className="time-inactive"
                         src={require("../../assets/styles/images/Time-Active.svg")}
                       ></img>
+                      &nbsp;
+                      <span>
+                        {
+                          props.state.proposalDetails.endDate
+                          //  <Countdown className="count-down" date={props.state.proposalDetails.endDate}/> : ""
+                        }
+                      </span>
                     </span>
                   </Row>
                 </Column>
@@ -307,7 +154,7 @@ export default function ProposalDetails(props) {
           </Column>
           <Column className="mobile-rightdiv">
             <Row>
-              {!isButtonClicked ? (
+              {!props.state.isButtonClicked ? (
                 <div className="recent-proposal-div-proposal2">
                   <div className="div2-heading">
                     Do you support this proposal?
@@ -315,9 +162,7 @@ export default function ProposalDetails(props) {
                   <div className="button-div-support">
                     <button
                       onClick={() => {
-                        handleCloseDailog();
-                        castProposalVote(true);
-                        getVotePercentage();
+                        props.castProposalVote(true);
                       }}
                       className="support-button"
                     >
@@ -328,8 +173,7 @@ export default function ProposalDetails(props) {
                     {" "}
                     <button
                       onClick={() => {
-                        castProposalVote(false);
-                        getVotePercentage();
+                        props.castProposalVote(false);
                       }}
                       className="reject-button"
                     >
@@ -346,25 +190,28 @@ export default function ProposalDetails(props) {
                     data={[
                       {
                         title: "support",
-                        value: { yes },
+                        value: props.state.proposalDetails.yesVotes.length,
                         color: "#3AB70D",
                       },
                       {
                         title: "reject",
-                        value: { no },
+                        value: props.state.proposalDetails.noVotes.length,
                         color: "#F43D3D",
                       },
                     ]}
-                    // data={pieData}
                   />
                   <div className="piediv">
                     <div className="display-flex">
                       <div className="box-support"></div>
-                      <div className="spt">Support{yes}%</div>
+                      <div className="spt">
+                        {props.state.proposalDetails.yesVotes.length}
+                      </div>
                     </div>
                     <div className="display-flex">
                       <div className="box-reject"></div>
-                      <div className="rjt">Reject{data.no}%</div>
+                      <div className="rjt">
+                        {props.state.proposalDetails.noVotes.length}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -374,54 +221,19 @@ export default function ProposalDetails(props) {
               <div className="recent-proposal-div-proposal3">
                 <div className="div2-voters">
                   <div className="voter-heading">Voters</div>
-                  <div className="voter-number">122 Votes</div>
+                  <div className="voter-number">
+                    {Number(props.state.proposalDetails.yesVotes.length) +
+                      Number(props.state.proposalDetails.NoVotes.length)}{" "}
+                    Votes
+                  </div>
                 </div>
                 <div className="griddiv-voter">
-                  <TableBody>
-                    {newaddress.map((row, index) => {
-                      return (
-                        <TableRow className="table-mid-line">
-                          <Row className="table-between">
-                            <Row>
-                              <Column>
-                                <TableCell style={{ border: "none" }}>
-                                  <Row>
-                                    <span>
-                                      <img
-                                        className="voter-image"
-                                        src={row.image}
-                                      ></img>
-                                    </span>
-                                  </Row>
-                                </TableCell>
-                              </Column>
-
-                              <Column>
-                                <TableCell
-                                  className="mobile-div-right"
-                                  style={{ border: "none", marginLeft: "20px" }}
-                                >
-                                  <Row className="vote-address">
-                                    {shorten(row.name)}
-                                  </Row>
-                                </TableCell>
-                              </Column>
-                            </Row>
-                            <Row>
-                              <Column>
-                                <TableCell
-                                  className="mobile-div-right"
-                                  style={{ border: "none" }}
-                                >
-                                  <Row className="voter-number">{row.time}</Row>
-                                </TableCell>
-                              </Column>
-                            </Row>
-                          </Row>
-                        </TableRow>
-                      );
-                    })}
-                  </TableBody>
+                  {props.state.proposalDetails.yesVotes.map((row, index) => {
+                    return AddressComponent(row);
+                  })}
+                  {props.state.proposalDetails.noVotes.map((row, index) => {
+                    return AddressComponent(row);
+                  })}
                 </div>
                 <div className="view-voter" onClick={props.handleClickVoter}>
                   View All Voters
@@ -454,10 +266,10 @@ export default function ProposalDetails(props) {
       </Column>
 
       <Snackbar
-        open={open3}
+        open={props.open}
         autoHideDuration={3000}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        onClose={handleClose3}
+        onClose={props.handleClose}
       >
         <Alert severity="" className="alert">
           <div className="alert-div">
@@ -480,5 +292,24 @@ export default function ProposalDetails(props) {
         </Alert>
       </Snackbar>
     </div>
+  );
+}
+
+function AddressComponent(row) {
+  return (
+    <>
+      <Row className="p-8 justify-content-between">
+        <Row>
+          <div className="b-r-50">
+            <img className="voter-image b-r-50" src={row.image}></img>
+          </div>
+          <div className="fs-15 color-2A2A2A p-l-sm">
+            {row.voterAddress.substr(0, 13)}...
+            {row.voterAddress.substr(row.voterAddress.length - 5, 5)}
+          </div>
+        </Row>
+        <div>{Utils.epocToPrettyTime(row.createdOn)}</div>
+      </Row>
+    </>
   );
 }
