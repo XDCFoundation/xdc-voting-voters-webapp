@@ -241,6 +241,13 @@ export default function ViewAllProposal(props) {
                                 const yesVotesWidth = 100 * yesVotes / (yesVotes + noVotes)
                                 const noVotesWidth = 100 * noVotes / (yesVotes + noVotes)
 
+                                if(status==="Closed"){
+                                    if(yesVotesWidth >=66)
+                                        status="Passed"
+                                    else status = "Failed"
+                                }
+
+
                                 return (
                                     <MainContainer isTextArea={true}>
                                         <Column>
@@ -291,7 +298,7 @@ export default function ViewAllProposal(props) {
                                             <Media_for_container>
                                                 <Container>
                                                     <Status>Status:&ensp;</Status>
-                                                    <Open>{status}</Open>
+                                                    <Open>{status}2</Open>
                                                 </Container>
 
                                                 <MobileDivLine>
@@ -304,7 +311,11 @@ export default function ViewAllProposal(props) {
                                             <DisplayNone>
                                                 <Container>
                                                     <Status>Status:&ensp;</Status>
-                                                    <Open>{status}</Open>
+                                                    {
+                                                        status=="Open" ? <Open>{status}</Open> : (
+                                                            status==="Passed" ? <Passed>{status}</Passed> : <Failed>{status}</Failed>
+                                                        )
+                                                    }
                                                 </Container>
 
                                                 {status === "Open" ? "":<NumberOfVotes>{Number(yesVotes) + Number(noVotes)} votes</NumberOfVotes>}

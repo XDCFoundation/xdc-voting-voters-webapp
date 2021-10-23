@@ -31,7 +31,7 @@ class Routes extends BaseComponent {
             />
             <Route exact path={"/sign-up"} component={SignUp} />
             <Route exact path={"/create"} component={Createproposal} />
-            <Route exact path={"/voterslist"} component={Voter} />
+            <Route exact path={"/voterslist/:address"} component={Voter} />
             <Route exact path={"/community"} component={Community} />
             <Route exact path={"/governance"} component={Governance} />
 
