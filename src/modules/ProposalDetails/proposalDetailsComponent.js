@@ -31,6 +31,17 @@ export default function ProposalDetails(props) {
         )}`;
     }
 
+    let totalVotes = [];
+    if (props.state && props.state.proposalDetails && props.state.proposalDetails.yesVotes
+        && props.state.proposalDetails.yesVotes.length)
+        totalVotes = [...props.state.proposalDetails.yesVotes]
+
+    if (props.state && props.state.proposalDetails && props.state.proposalDetails.noVotes
+        && props.state.proposalDetails.noVotes.length)
+        totalVotes = [...totalVotes, ...props.state.proposalDetails.noVotes]
+    if (totalVotes.length > 6)
+        totalVotes.length = 6
+
     return (
         <div>
             <div className="header-div-all">
@@ -70,8 +81,9 @@ export default function ProposalDetails(props) {
                                             &nbsp;
                                             <span>
                                     {
-                                     props.state.proposalDetails.endDate?
-                                     <Countdown className="count-down" date={props.state.proposalDetails.endDate}/> : ""
+                                        props.state.proposalDetails.endDate ?
+                                            <Countdown className="count-down"
+                                                       date={props.state.proposalDetails.endDate}/> : ""
                                     }
                     </span>
                                         </span>
@@ -216,18 +228,17 @@ export default function ProposalDetails(props) {
                             <div className="recent-proposal-div-proposal3">
                                 <div className="div2-voters">
                                     <div className="voter-heading">Voters</div>
-                                    <div className="voter-number">{
-                                        Number(props?.state?.proposalDetails?.yesVotes?.length) + Number(props?.state?.proposalDetails?.NoVotes?.length)
-                                    } Votes
+                                    <div className="voter-number">
+                                        {totalVotes.length}&nbsp; Votes
                                     </div>
                                 </div>
                                 <div className="griddiv-voter">
-                                    {props?.state?.proposalDetails?.yesVotes?.map((row, index) => {
+                                    {totalVotes?.map((row, index) => {
                                         return AddressComponent(row)
                                     })}
-                                    {props?.state?.proposalDetails?.noVotes?.map((row, index) => {
-                                        return AddressComponent(row)
-                                    })}
+                                    {/*{props?.state?.proposalDetails?.noVotes?.map((row, index) => {*/}
+                                    {/*    return AddressComponent(row)*/}
+                                    {/*})}*/}
                                 </div>
                                 <div className="view-voter" onClick={props.handleClickVoter}>
                                     View All Voters
