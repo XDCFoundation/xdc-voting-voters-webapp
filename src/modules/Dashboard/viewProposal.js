@@ -158,7 +158,7 @@ const SecondContainer = styled.div`
 function ProgressBar() {
   return (
     <div>
-      <ViewAllProposal name="deepali" />
+      <ViewAllProposal />
     </div>
   );
 }
@@ -699,7 +699,7 @@ const Div = styled.div`
 const Posted = styled.span`
   text-align: left;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
+  // font-weight: 600;
   font-size: 14px;
   letter-spacing: 0px;
   color: #909090;

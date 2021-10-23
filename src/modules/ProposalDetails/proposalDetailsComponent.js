@@ -13,6 +13,7 @@ import { PieChart } from "react-minimal-pie-chart";
 import Utils from "../../utility";
 import moment from "moment";
 import Countdown from "react-countdown";
+import styled from "styled-components";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -57,7 +58,7 @@ export default function ProposalDetails(props) {
 
       <Column>
         <div className="all-div-proposal">
-          <Column>
+          <ColumnDiv>
             <div className="back-image" onClick={props.backButton}>
               <img src="/images/Back-Arrow.svg" style={{ width: "15px" }} />
               <div className="back-button">Back</div>
@@ -174,7 +175,7 @@ export default function ProposalDetails(props) {
                 <Row></Row>
               </div>
             </div>
-          </Column>
+          </ColumnDiv>
           <Column className="mobile-rightdiv">
             <Row>
               {!props.state.isButtonClicked ? (
@@ -210,30 +211,30 @@ export default function ProposalDetails(props) {
 
                   <PieChart
                     className="piechart"
-                    data={[
-                      {
-                        title: "support",
-                        value: props.state.proposalDetails.yesVotes.length,
-                        color: "#3AB70D",
-                      },
-                      {
-                        title: "reject",
-                        value: props.state.proposalDetails.noVotes.length,
-                        color: "#F43D3D",
-                      },
-                    ]}
+                    // data={[
+                    //   {
+                    //     title: "support",
+                    //     value: props.state.proposalDetails.yesVotes.length,
+                    //     color: "#3AB70D",
+                    //   },
+                    //   {
+                    //     title: "reject",
+                    //     value: props.state.proposalDetails.noVotes.length,
+                    //     color: "#F43D3D",
+                    //   },
+                    // ]}
                   />
                   <div className="piediv">
                     <div className="display-flex">
                       <div className="box-support"></div>
                       <div className="spt">
-                        {props.state.proposalDetails.yesVotes.length}
+                        {/* {props.state.proposalDetails.yesVotes.length} */}
                       </div>
                     </div>
                     <div className="display-flex">
                       <div className="box-reject"></div>
                       <div className="rjt">
-                        {props.state.proposalDetails.noVotes.length}
+                        {/* {props.state.proposalDetails.noVotes.length} */}
                       </div>
                     </div>
                   </div>
@@ -329,8 +330,16 @@ function AddressComponent(row) {
             {row.voterAddress.substr(row.voterAddress.length - 5, 5)}
           </div>
         </Row>
-        <div>{Utils.epocToPrettyTime(row.createdOn)}</div>
+        <div style={{ color: "#ACACAC", fontSize: "13px" }}>
+          {Utils.epocToPrettyTime(row.createdOn)}
+        </div>
       </Row>
     </>
   );
 }
+const ColumnDiv = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  max-width: 650px;
+`;
