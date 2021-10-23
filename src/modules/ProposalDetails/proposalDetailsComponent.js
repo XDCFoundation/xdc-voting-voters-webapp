@@ -30,6 +30,24 @@ export default function ProposalDetails(props) {
     )}`;
   }
 
+  let totalVotes = [];
+  if (
+    props.state &&
+    props.state.proposalDetails &&
+    props.state.proposalDetails.yesVotes &&
+    props.state.proposalDetails.yesVotes.length
+  )
+    totalVotes = [...props.state.proposalDetails.yesVotes];
+
+  if (
+    props.state &&
+    props.state.proposalDetails &&
+    props.state.proposalDetails.noVotes &&
+    props.state.proposalDetails.noVotes.length
+  )
+    totalVotes = [...totalVotes, ...props.state.proposalDetails.noVotes];
+  if (totalVotes.length > 6) totalVotes.length = 6;
+
   return (
     <div>
       <div className="header-div-all">
@@ -64,8 +82,8 @@ export default function ProposalDetails(props) {
                     <span style={{ marginRight: "5px" }}>
                       <img
                         style={{
-                          height: "14px",
-                          width: "14px",
+                          height: "17px",
+                          width: "17px",
                           marginTop: "-3px",
                         }}
                         className="time-inactive"
@@ -73,12 +91,17 @@ export default function ProposalDetails(props) {
                       ></img>
                       &nbsp;
                       <span>
-                        {
-                          props.state.proposalDetails.endDate
-                          //  <Countdown className="count-down" date={props.state.proposalDetails.endDate}/> : ""
-                        }
+                        {props.state.proposalDetails.endDate ? (
+                          <Countdown
+                            className="count-down"
+                            date={props.state.proposalDetails.endDate}
+                          />
+                        ) : (
+                          ""
+                        )}
                       </span>
                     </span>
+                    <span>Remaining</span>
                   </Row>
                 </Column>
               </Row>
@@ -222,18 +245,16 @@ export default function ProposalDetails(props) {
                 <div className="div2-voters">
                   <div className="voter-heading">Voters</div>
                   <div className="voter-number">
-                    {Number(props.state.proposalDetails.yesVotes.length) +
-                      Number(props.state.proposalDetails.NoVotes.length)}{" "}
-                    Votes
+                    {totalVotes.length}&nbsp; Votes
                   </div>
                 </div>
                 <div className="griddiv-voter">
-                  {props.state.proposalDetails.yesVotes.map((row, index) => {
+                  {totalVotes.map((row, index) => {
                     return AddressComponent(row);
                   })}
-                  {props.state.proposalDetails.noVotes.map((row, index) => {
-                    return AddressComponent(row);
-                  })}
+                  {/*{props?.state?.proposalDetails?.noVotes?.map((row, index) => {*/}
+                  {/*    return AddressComponent(row)*/}
+                  {/*})}*/}
                 </div>
                 <div className="view-voter" onClick={props.handleClickVoter}>
                   View All Voters

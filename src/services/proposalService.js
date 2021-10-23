@@ -105,7 +105,7 @@ export async function getTotalVotingAddress() {
   return httpService(
     httpConstants.METHOD_TYPE.POST,
     { "Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON },
-    {},
+    { skip: 0 },
     url
   )
     .then((response) => {

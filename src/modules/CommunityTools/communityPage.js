@@ -236,7 +236,7 @@ export default function CommunityPage() {
                         </a>
                       </RowDiv>
                       <RowDiv>
-                        <Span>XinPay</Span>
+                        <Span>XDCPay</Span>
                       </RowDiv>
                     </ColumnDiv>
                   </Paper>
@@ -250,7 +250,7 @@ export default function CommunityPage() {
                         </a>
                       </RowDiv>
                       <RowDiv>
-                        <Span>XinFin API</Span>
+                        <Span>XDC API</Span>
                       </RowDiv>
                     </ColumnDiv>
                   </Paper>
@@ -264,7 +264,7 @@ export default function CommunityPage() {
                         </a>
                       </RowDiv>
                       <RowDiv>
-                        <Span>XinFin Docs</Span>
+                        <Span>XDC Docs</Span>
                       </RowDiv>
                     </ColumnDiv>
                   </Paper>

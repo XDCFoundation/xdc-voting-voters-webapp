@@ -12,6 +12,7 @@ import { history } from "../../managers/history";
 import styled from "styled-components";
 import Countdown from "react-countdown";
 import moment from "moment";
+import Utils from "../../utility";
 
 const GreenLine = styled.div`
   background-color: #3ab70d;
@@ -59,7 +60,7 @@ export default function RecentProposal(props) {
                   const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
                   const noVotesWidth = (100 * noVotes) / (yesVotes + noVotes);
                   if (status === "Closed") {
-                    if (yesVotes > noVotes) status = "Passed";
+                    if (yesVotesWidth >= 66) status = "Passed";
                     else status = "Failed";
                   }
 
@@ -69,7 +70,8 @@ export default function RecentProposal(props) {
                         <Column>
                           <TableCell style={{ border: "none" }}>
                             <Row className="date">
-                              Posted on {proposal["postedOn"]}
+                              Posted on{" "}
+                              {Utils.epocToPrettyTime(proposal["cretaedOn"])}
                             </Row>
                             <Row className="name">
                               {proposal["proposalTitle"]}{" "}
