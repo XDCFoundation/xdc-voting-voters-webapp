@@ -1,140 +1,140 @@
-import React, {useState, useEffect} from "react";
-import {Column, Row} from "simple-flexbox";
+import React, { useState, useEffect } from "react";
+import { Column, Row } from "simple-flexbox";
 import "../../assets/styles/custom.css";
 import HeaderMain from "../header/header";
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import DatePicker from "react-multi-date-picker";
 import styled from "styled-components";
 import "../Dashboard/datepicker.css";
 import FooterComponent from "../footer/footerComponent";
-import {history} from "../../managers/history";
+import { history } from "../../managers/history";
 import moment from "moment";
 import Pagination from "react-js-pagination";
 import Countdown from "react-countdown";
 
 const useStyles = makeStyles((theme) => ({
-    selectOptions: {backgroundColor: "white"},
+  selectOptions: { backgroundColor: "white" },
 
-    styleContent: {
-        border: "0px",
-        outline: "0px",
-        fontSize: "13px",
-        color: "#2149b9",
-        fontWeight: "600",
-        textAlignLast: "right",
-        marginLeft: "7px",
+  styleContent: {
+    border: "0px",
+    outline: "0px",
+    fontSize: "13px",
+    color: "#2149b9",
+    fontWeight: "600",
+    textAlignLast: "right",
+    marginLeft: "7px",
+  },
+  styleHead: {
+    display: "flex",
+    marginTop: "6px",
+    fontSize: "12px",
+    border: "0px",
+    outline: "0px",
+    height: "31px",
+    fontFamily: "Inter",
+    fontWeight: "600",
+    marginLeft: "8px",
+    color: "#2A2A2A",
+  },
+  row: {
+    border: "1px solid #E3E7EB",
+    height: "30px",
+    borderRadius: "4px",
+    width: "100%",
+    maxWidth: "126px",
+    marginRight: "10px",
+  },
+  root: {
+    display: "flex",
+    justifyContent: "center",
+    maxWidth: "970px",
+    position: "absolute",
+    top: "147px",
+    width: "100%",
+    "@media (min-width: 300px) and (max-width: 567px)": {
+      maxWidth: "300px",
+      top: "91px",
     },
-    styleHead: {
-        display: "flex",
-        marginTop: "6px",
-        fontSize: "12px",
-        border: "0px",
-        outline: "0px",
-        height: "31px",
-        fontFamily: "Inter",
-        fontWeight: "600",
-        marginLeft: "8px",
-        color: "#2A2A2A",
+    "@media (min-width: 567px) and (max-width: 767px)": {
+      maxWidth: "500px",
+      top: "65px",
     },
-    row: {
-        border: "1px solid #E3E7EB",
-        height: "30px",
-        borderRadius: "4px",
-        width: "100%",
-        maxWidth: "126px",
-        marginRight: "10px",
+    "@media (min-width: 767px) and (max-width: 2080px)": {
+      // maxWidth: "700px",
+      top: "189px",
+      maxWidth: "970px",
     },
-    root: {
-        display: "flex",
-        justifyContent: "center",
-        maxWidth: "970px",
-        position: "absolute",
-        top: "147px",
-        width: "100%",
-        "@media (min-width: 300px) and (max-width: 567px)": {
-            maxWidth: "300px",
-            top: "91px",
-        },
-        "@media (min-width: 567px) and (max-width: 767px)": {
-            maxWidth: "500px",
-            top: "65px",
-        },
-        "@media (min-width: 767px) and (max-width: 2080px)": {
-            // maxWidth: "700px",
-            top: "189px",
-            maxWidth: "970px",
-        },
-    },
-    rowdiv: {
-        width: "100%",
-        alignItems: "center",
-        // height: "53px",
-        background: "#FFFFFF 0% 0% no-repeat padding-box",
-        justifyContent: "space-between",
-        padding: "20px 17px",
-        borderTopLeftRadius: "4px",
-        borderTopRightRadius: "4px",
+  },
+  rowdiv: {
+    width: "100%",
+    alignItems: "center",
+    // height: "53px",
+    background: "#FFFFFF 0% 0% no-repeat padding-box",
+    justifyContent: "space-between",
+    padding: "20px 17px",
+    borderTopLeftRadius: "4px",
+    borderTopRightRadius: "4px",
 
-        "@media (min-width: 300px) and (max-width: 780px)": {
-            display: "block !important",
-            marginTop: "10px",
-        },
+    "@media (min-width: 300px) and (max-width: 780px)": {
+      display: "block !important",
+      marginTop: "10px",
     },
+  },
 
-    input: {
-        width: "100%",
-        height: "30px",
-        background: "url(/images/Search.svg) no-repeat 1px",
-        color: "#09184b",
-        backgroundSize: "14px",
-        padding: "16px 22px",
-        border: "1px solid #E3E7EB",
-        borderRadius: "4px",
-        opacity: 1,
-        fontSize: "11px",
-        marginLeft: "10px",
-        maxWidth: "140px",
-        "@media (min-width: 300px) and (max-width: 780px)": {
-            width: "100%",
-            maxWidth: "610px",
-        },
+  input: {
+    width: "100%",
+    height: "30px",
+    background: "url(/images/Search.svg) no-repeat 1px",
+    color: "#09184b",
+    backgroundSize: "14px",
+    padding: "16px 22px",
+    border: "1px solid #E3E7EB",
+    borderRadius: "4px",
+    opacity: 1,
+    fontSize: "11px",
+    marginLeft: "10px",
+    maxWidth: "140px",
+    "@media (min-width: 300px) and (max-width: 780px)": {
+      width: "100%",
+      maxWidth: "610px",
     },
+  },
 
-    line: {
-        width: "100%",
-        marginTop: "0px",
-        marginBottom: "0px",
-    },
-    mobilemedia: {
-        display: "flex",
-        width: "100%",
-        justifyContent: "space-between",
-        "@media (min-width: 300px) and (max-width: 767px)": {},
-    },
-    maincontainer: {
-        display: "flex",
-        justifyContent: "center",
-        width: "100%",
-    },
-    styleBlock: {
-        display: "flex",
-        marginTop: "6px",
-        fontSize: "11px",
-        border: "0px",
-        outline: "0px",
-        height: "30px",
-        fontFamily: "Inter",
-        fontWeight: "600",
-    },
-    stylePage: {
-        border: "0px",
-        outline: "0px",
-        fontSize: "13px",
-        // color: "#2A2A2A",
-        fontWeight: "600",
-        color: "#2149B9",
-    },
+  line: {
+    width: "100%",
+    marginTop: "0px",
+    marginBottom: "0px",
+  },
+  mobilemedia: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "space-between",
+    "@media (min-width: 300px) and (max-width: 767px)": {},
+  },
+  maincontainer: {
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
+  },
+  styleBlock: {
+    display: "flex",
+    marginTop: "6px",
+    fontSize: "11px",
+    border: "0px",
+    outline: "0px",
+    height: "30px",
+    fontFamily: "Inter",
+    fontWeight: "600",
+  },
+  stylePage: {
+    border: "0px",
+    outline: "0px",
+    fontSize: "13px",
+    // color: "#2A2A2A",
+    fontWeight: "600",
+    color: "#2149B9",
+  },
 }));
 const Container = styled.div`
   display: flex;
@@ -151,198 +151,238 @@ const SecondContainer = styled.div`
 `;
 
 function ProgressBar() {
-    return (
-        <div>
-            <ViewAllProposal name="deepali"/>
-        </div>
-    );
+  return (
+    <div>
+      <ViewAllProposal name="deepali" />
+    </div>
+  );
 }
 
 export default function ViewAllProposal(props) {
-    const backButton = () => {
-        history.push("/");
-    };
+  const backButton = () => {
+    history.push("/");
+  };
 
-    const classes = useStyles();
-    const [value, onChange] = useState(new Date());
+  const classes = useStyles();
+  const [value, onChange] = useState(new Date());
 
-    return (
-        <div>
-            <div className="header-div-all">
-                <HeaderMain/>
+  return (
+    <div>
+      <div className="header-div-all">
+        <HeaderMain />
+      </div>
+
+      <div className={classes.maincontainer}>
+        <div className={classes.root}>
+          <Grid item xs={12}>
+            <div
+              style={{ marginBottom: "11px", cursor: "pointer" }}
+              onClick={backButton}
+            >
+              <img
+                src="/images/Back-Arrow.svg"
+                style={{ width: "15px", marginRight: "8px" }}
+              />
+              <Back>Back</Back>
             </div>
+            <Row className={classes.rowdiv}>
+              <Container>
+                <Heading>All Proposals</Heading>
 
-            <div className={classes.maincontainer}>
-                <div className={classes.root}>
-                    <Grid item xs={12}>
-                        <div
-                            style={{marginBottom: "11px", cursor: "pointer"}}
-                            onClick={backButton}
-                        >
-                            <img
-                                src="/images/Back-Arrow.svg"
-                                style={{width: "15px", marginRight: "8px"}}
-                            />
-                            <Back>Back</Back>
-                        </div>
-                        <Row className={classes.rowdiv}>
-                            <Container>
-                                <Heading>All Proposals</Heading>
+                <InputDiv>
+                  <Input
+                    placeholder="Search"
+                    className={classes.input}
+                    type="text"
+                    onKeyUp={console.log("hello")}
+                    id="proposalInput"
+                    onChange={(e) => {
+                      props.searchingProposal(e);
+                    }}
+                  />
+                </InputDiv>
+              </Container>
 
-                                <InputDiv>
-                                    <Input
-                                        placeholder="Search"
-                                        className={classes.input}
-                                        type="text"
-                                        onKeyUp={console.log("hello")}
-                                        id="proposalInput"
-                                        onChange={(e) => {
-                                            props.searchingProposal(e);
-                                        }}
+              <SecondContainer>
+                <SelectBox>
+                  <Row className={classes.row}>
+                    <Column className={classes.styleHead}>Status </Column>
+                    <select
+                      className={classes.styleContent}
+                      onChange={props.onStatusChange}
+                    >
+                      <option>All</option>
+                      <option value={"Open"}>Open</option>
+                      <option value={"Closed"}>Closed</option>
+                    </select>
+                  </Row>
+                </SelectBox>
+                <DatePickerDiv>
+                  <DateSpan>Date</DateSpan>
+                  <DatePicker
+                    arrow={true}
+                    format="D MMM YYYY"
+                    onChange={props.onDateChange}
+                    value={value}
+                    range
+                  />
+                  <ArrowImg src="/images/XDC-Dropdown.svg" />
+                </DatePickerDiv>
+              </SecondContainer>
+            </Row>
 
+            <Div>
+              {props.state.proposalsList &&
+              props.state.proposalsList.length >= 1 ? (
+                props.state.proposalsList.map((data) => {
+                  console.log(data, "data===");
+                  let title = data.proposalTitle;
+                  let status = data.endDate > Date.now() ? "Open" : "Closed";
+                  let formatedTime = moment(data.createdOn).format("LL");
+                  const yesVotes = data.yesVotes.length;
+                  const noVotes = data.noVotes.length;
+                  const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
+                  const noVotesWidth = (100 * noVotes) / (yesVotes + noVotes);
+
+                  return (
+                    <MainContainer isTextArea={true}>
+                      <Column>
+                        <RowSpacing>
+                          <Posted>Posted on &nbsp;{formatedTime}</Posted>
+                          <TimeRemainingDiv>
+                            {status === "Open" ? (
+                              <>
+                                <Row>
+                                  <span style={{ marginRight: "5px" }}>
+                                    <img
+                                      className="m-b-4"
+                                      src={require("../../assets/styles/images/Time-Active.svg")}
                                     />
-                                </InputDiv>
-                            </Container>
-
-                            <SecondContainer>
-                                <SelectBox>
-                                    <Row className={classes.row}>
-                                        <Column className={classes.styleHead}>Status </Column>
-                                        <select className={classes.styleContent} onChange={props.onStatusChange}>
-                                            <option>All</option>
-                                            <option value={"Open"}>Open</option>
-                                            <option value={"Closed"}>Closed</option>
-                                        </select>
-                                    </Row>
-                                </SelectBox>
-                                <DatePickerDiv>
-                                    <DateSpan>Date</DateSpan>
-                                    <DatePicker
-                                        arrow={true}
-                                        format="D MMM YYYY"
-                                        onChange={props.onDateChange}
-                                        value={value}
-                                        range
+                                  </span>
+                                  <Span>
+                                    <Countdown
+                                      className="count-down"
+                                      date={data.endDate}
                                     />
-                                    <ArrowImg src="/images/XDC-Dropdown.svg"/>
-                                </DatePickerDiv>
-                            </SecondContainer>
-                        </Row>
+                                    &nbsp;Remaining
+                                  </Span>
+                                </Row>
+                                <Row className="justify-content-end">
+                                  <div
+                                    className="details"
+                                    onClick={() =>
+                                      props.proposalRedirect(
+                                        data.pollingContract
+                                      )
+                                    }
+                                  >
+                                    Details
+                                  </div>
+                                </Row>
+                              </>
+                            ) : (
+                              <>
+                                <ClockImage src="/images/Time-Inactive.svg" />
+                                <PollEnded>Poll Ended</PollEnded>
+                              </>
+                            )}
+                          </TimeRemainingDiv>
+                        </RowSpacing>
+                        <RowSpacing>
+                          <div className={classes.mobilemedia}>
+                            <Content>{title}</Content>
+                            {status === "Open" ? (
+                              ""
+                            ) : (
+                              <PositionDivLine>
+                                <BarLine>
+                                  <RedLine
+                                    style={{ width: noVotesWidth + "%" }}
+                                  ></RedLine>
+                                  <GreenLine
+                                    style={{ width: yesVotesWidth + "%" }}
+                                  ></GreenLine>
+                                </BarLine>
+                              </PositionDivLine>
+                            )}
+                          </div>
+                        </RowSpacing>
+                        <Media_for_container>
+                          <Container>
+                            <Status>Status:&ensp;</Status>
+                            <Open>{status}</Open>
+                          </Container>
 
-                        <Div>
+                          <MobileDivLine>
+                            {status === "Open" ? (
+                              ""
+                            ) : (
+                              <BarLine>
+                                <GreenLine
+                                  style={{ width: yesVotesWidth + "%" }}
+                                ></GreenLine>
+                                <RedLine
+                                  style={{ width: noVotesWidth + "%" }}
+                                ></RedLine>
+                              </BarLine>
+                            )}
+                          </MobileDivLine>
+                        </Media_for_container>
+                        <DisplayNone>
+                          <Container>
+                            <Status>Status:&ensp;</Status>
+                            <Open>{status}</Open>
+                          </Container>
 
-                            {props.state.proposalsList && props.state.proposalsList.length >= 1 ? props.state.proposalsList.map((data) => {
-                                console.log(data, "data===")
-                                let title = data?.proposalTitle
-                                let status = data?.endDate > Date.now() ? 'Open' : 'Closed'
-                                let formatedTime = moment(data?.createdOn).format("LL");
-                                const yesVotes = data?.yesVotes?.length;
-                                const noVotes = data?.noVotes?.length;
-                                const yesVotesWidth = 100 * yesVotes / (yesVotes + noVotes)
-                                const noVotesWidth = 100 * noVotes / (yesVotes + noVotes)
-
-                                return (
-                                    <MainContainer isTextArea={true}>
-                                        <Column>
-                                            <RowSpacing>
-                                                <Posted>Posted on &nbsp;{formatedTime}</Posted>
-                                                <TimeRemainingDiv>
-                                                    {status === "Open" ?
-                                                        (<>
-                                                            <Row>
-                                                     <span style={{marginRight: "5px"}}>
-                                    <img className="m-b-4" src={require("../../assets/styles/images/Time-Active.svg")}
-                                    />
-                                </span>
-                                                                <Span>
-                                                                    <Countdown className="count-down"
-                                                                               date={data.endDate}/>
-                                                                    &nbsp;Remaining
-                                                                </Span>
-                                                            </Row>
-                                                            <Row className="justify-content-end">
-                                                                <div
-                                                                    className="details"
-                                                                    onClick={() =>
-                                                                        props.proposalRedirect(data.pollingContract)
-                                                                    }
-                                                                >
-                                                                    Details
-                                                                </div>
-                                                            </Row>
-                                                        </>
-                                                    ) : <>
-                                                        <ClockImage src="/images/Time-Inactive.svg" />
-                                                        <PollEnded>Poll Ended</PollEnded>
-                                                        </>}
-                                                </TimeRemainingDiv>
-                                            </RowSpacing>
-                                            <RowSpacing>
-                                                <div className={classes.mobilemedia}>
-                                                    <Content>{title}</Content>
-                                                    {status === "Open" ? "":<PositionDivLine>
-                                                        <BarLine>
-                                                            <RedLine style={{width: noVotesWidth + "%"}}></RedLine>
-                                                            <GreenLine style={{width: yesVotesWidth + "%"}}></GreenLine>
-                                                        </BarLine>
-                                                    </PositionDivLine>}
-                                                </div>
-                                            </RowSpacing>
-                                            <Media_for_container>
-                                                <Container>
-                                                    <Status>Status:&ensp;</Status>
-                                                    <Open>{status}</Open>
-                                                </Container>
-
-                                                <MobileDivLine>
-                                                    {status === "Open" ? "":<BarLine>
-                                                        <GreenLine style={{width: yesVotesWidth + "%"}}></GreenLine>
-                                                        <RedLine style={{width: noVotesWidth + "%"}}></RedLine>
-                                                    </BarLine>}
-                                                </MobileDivLine>
-                                            </Media_for_container>
-                                            <DisplayNone>
-                                                <Container>
-                                                    <Status>Status:&ensp;</Status>
-                                                    <Open>{status}</Open>
-                                                </Container>
-
-                                                {status === "Open" ? "":<NumberOfVotes>{Number(yesVotes) + Number(noVotes)} votes</NumberOfVotes>}
-                                            </DisplayNone>
-                                            <RowSpacing>
-                                                <MobileResponsive>
-                                                    <ClockImage src="/images/Time-Inactive.svg"/>
-                                                    <PollEnded></PollEnded>
-                                                </MobileResponsive>
-                                            </RowSpacing>
-                                        </Column>
-                                    </MainContainer>
-                                );
-                            }):
-                                <div className="display-flex justify-content-center p-t-50"> No Record found</div>
-                                }
-                        </Div>
-                        <div className="display-flex justify-content-end p-t-15">
-                            <Pagination
-                                prevPageText='Previous' nextPageText='Next'
-                                hideFirstLastPages linkClassNext="table-pagination"
-                                linkClassPrev="table-pagination" activeLinkClass="fc-black"
-                                linkClass="table-pagination"
-                                activePage={props.state.activePage}
-                                itemsCountPerPage="10"
-                                pageRangeDisplayed="5"
-                                totalItemsCount={props.state.totalProposalsCount}
-                                onChange={props.handlePageChange}
-                            />
-                        </div>
-                    </Grid>
+                          {status === "Open" ? (
+                            ""
+                          ) : (
+                            <NumberOfVotes>
+                              {Number(yesVotes) + Number(noVotes)} votes
+                            </NumberOfVotes>
+                          )}
+                        </DisplayNone>
+                        <RowSpacing>
+                          <MobileResponsive>
+                            <ClockImage src="/images/Time-Inactive.svg" />
+                            <PollEnded></PollEnded>
+                          </MobileResponsive>
+                        </RowSpacing>
+                      </Column>
+                    </MainContainer>
+                  );
+                })
+              ) : (
+                <div className="display-flex justify-content-center p-t-50">
+                  {" "}
+                  No Record found
                 </div>
+              )}
+            </Div>
+            <div className="display-flex justify-content-end p-t-15">
+              <Pagination
+                prevPageText="Previous"
+                nextPageText="Next"
+                hideFirstLastPages
+                linkClassNext="table-pagination"
+                linkClassPrev="table-pagination"
+                activeLinkClass="fc-black"
+                linkClass="table-pagination"
+                activePage={props.state.activePage}
+                itemsCountPerPage="10"
+                pageRangeDisplayed="5"
+                totalItemsCount={props.state.totalProposalsCount}
+                onChange={props.handlePageChange}
+              />
             </div>
-            <div>
-                <FooterComponent/>
-            </div>
+          </Grid>
         </div>
-    );
+      </div>
+      <div>
+        <FooterComponent />
+      </div>
+    </div>
+  );
 }
 const ArrowImg = styled.img`
   margin-top: -2px;
@@ -382,7 +422,7 @@ const MainContainer = styled.div`
   padding: 20px 17px;
   // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: ${(props) =>
-          props.isTextArea ? `1px solid rgba(0, 0, 0, 0.1);` : `unset`};
+    props.isTextArea ? `1px solid rgba(0, 0, 0, 0.1);` : `unset`};
   // border-radius: 6px;
 
   border-radius: ${(props) => (props.isTextArea ? `6px;` : `unset`)};
@@ -510,7 +550,6 @@ const MobileResponsive = styled.div`
 const BarLine = styled.div`
   width: 220px;
   height: 1px;
-
 
   display: flex;
   @media (min-width: 300px) and (max-width: 767px) {
