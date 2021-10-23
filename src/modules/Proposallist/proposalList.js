@@ -304,7 +304,7 @@ export default function ViewAllProposal(props) {
                                                 <MobileDivLine>
                                                     {status === "Open" ? "":<BarLine>
                                                         <GreenLine style={{width: yesVotesWidth + "%"}}></GreenLine>
-                                                        <RedLine style={{width: noVotesWidth + "%"}}></RedLine>
+                                                        <RedLine ></RedLine>
                                                     </BarLine>}
                                                 </MobileDivLine>
                                             </Media_for_container>

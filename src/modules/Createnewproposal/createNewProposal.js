@@ -229,7 +229,6 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "center",
     },
   },
-
   upload: {
     textAlign: "left",
     font: "normal normal normal 15px/19px Inter",
@@ -281,8 +280,8 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #e3e7eb",
     borderRadius: "4px",
     opacity: "1",
-    width: "90%",
-    height: "30px",
+    width: "87%",
+    height: "40px",
     fontSize: "10px",
     textAlign: "right",
   },
@@ -600,7 +599,7 @@ export default function Createnewproposal(props) {
                               {index ===
                               props.state.proposalDocuments.length - 1 ? (
                                 <img
-                                  className={classes.imag}
+                                  className="image-11"
                                   onClick={props.addDocumentRow}
                                   src="/images/Add.svg"
                                 />
@@ -659,11 +658,13 @@ const BrowseButton = styled.label`
   opacity: 1;
   padding-left: 6px;
   padding-right: 6px;
-  margin-top: 4px;
+  margin-top: 4.5px;
   margin-bottom: 4px;
-  margin-right: 3px;
+  margin-right: 6px;
   width: 100%;
-  max-width: 120px;
+  max-width: 111px;
+  height: 29px;
+  padding-top: 2.5px;
 `;
 const Textarea = styled.textarea`
   width: 100%;
