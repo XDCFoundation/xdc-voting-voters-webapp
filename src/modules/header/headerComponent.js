@@ -35,8 +35,7 @@ export default function Header(props) {
     const response = await getTotalVotingAddress().catch((err) => {
       console.log(err);
     });
-
-    setGetTotalVoting(response.length);
+    setGetTotalVoting(response?.dataList.length);
   };
 
   const getPassed = async () => {
@@ -44,7 +43,7 @@ export default function Header(props) {
       console.log(err);
     });
 
-    setGetPassedProposals(response.length);
+    setGetPassedProposals(2);
   };
 
   const createView = () => {

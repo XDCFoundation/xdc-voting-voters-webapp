@@ -1,9 +1,7 @@
 import { httpService } from "../utility/httpService";
 import { httpConstants } from "../constants";
 
-export default { getProposalDetail, proposalList, getVotersPercentage };
-
-// export default{getTotalVotesCasted}
+export default { getProposalDetail, proposalList };
 
 export async function addNewProposal(reqObj) {
   const url =
@@ -55,7 +53,7 @@ async function getProposalDetail(path, data) {
 }
 
 export async function getTotalVotesCasted() {
-  let url = process.env.REACT_APP_GET_TOTAL_CASTED_VOTES;
+  let url = process.env.REACT_APP_PROPOSAL_SVC + "getTotalCastVotes";
   // +`?skip=${skip}&limit=${limit}`;
   return httpService(
     httpConstants.METHOD_TYPE.GET,
@@ -103,10 +101,9 @@ export async function getTotalPassedProposals() {
 }
 
 export async function getTotalVotingAddress() {
-  let url = process.env.REACT_APP_GET_TOTAL_VOTING_ADDRESS;
-  // +`?skip=${skip}&limit=${limit}`;
+  let url = process.env.REACT_APP_PROPOSAL_SVC + "getListOfWhitelistedAddress";
   return httpService(
-    httpConstants.METHOD_TYPE.GET,
+    httpConstants.METHOD_TYPE.POST,
     { "Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON },
     {},
     url
@@ -177,51 +174,6 @@ export async function getVotePercentageOnProposal(proposalAddress) {
 
 export async function proposalList(reqObj) {
   const url = process.env.REACT_APP_PROPOSAL_SVC + "getProposalList";
-  return httpService(
-    httpConstants.METHOD_TYPE.POST,
-    { "Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON },
-    reqObj,
-    url
-  )
-    .then((response) => {
-      if (
-        !response.success ||
-        response.responseCode !== 200 ||
-        !response.responseData ||
-        response.responseData.length === 0
-      )
-        return Promise.reject();
-      return Promise.resolve(response.responseData);
-    })
-    .catch(function (err) {
-      return Promise.reject(err);
-    });
-}
-
-export async function getVotersPercentage(path) {
-  let url = process.env.REACT_APP_GET_VOTING_PERCENTAGE + path;
-  return httpService(
-    httpConstants.METHOD_TYPE.GET,
-    { "Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON },
-    {},
-    url
-  )
-    .then((response) => {
-      if (
-        !response.success ||
-        response.responseCode !== 200 ||
-        !response.responseData
-      )
-        return Promise.reject();
-      return Promise.resolve(response.responseData);
-    })
-    .catch(function (err) {
-      return Promise.reject(err);
-    });
-}
-
-export async function searchProposal(reqObj) {
-  const url = process.env.REACT_APP_SEARCH_PROPOSAL;
   return httpService(
     httpConstants.METHOD_TYPE.POST,
     { "Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON },
