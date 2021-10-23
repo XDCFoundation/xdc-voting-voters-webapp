@@ -155,7 +155,7 @@ export default function Voterslist(props) {
             </div>
             <div style={{ marginBottom: "20px" }}>
               <MainHeading>
-                {props?.state?.proposalDetails?.proposalTitle}
+                {props.state.proposalDetails.proposalTitle}
               </MainHeading>
             </div>
             <Spacing>
@@ -167,7 +167,7 @@ export default function Voterslist(props) {
               </SecondContainer>
             </Spacing>
 
-            {props?.state?.votes.map((data) => {
+            {props.state.votes.map((data) => {
               return (
                 <Div>
                   <Spacing>
@@ -177,7 +177,9 @@ export default function Voterslist(props) {
                       <Hash>{data.voterAddress}</Hash>
                     </Container>
                     <SecondContainer>
-                      <Leftcontainer>{Utils.epocToPrettyTime(data.createdOn)}</Leftcontainer>
+                      <Leftcontainer>
+                        {Utils.epocToPrettyTime(data.createdOn)}
+                      </Leftcontainer>
                     </SecondContainer>
                   </Spacing>
                 </Div>
@@ -186,15 +188,18 @@ export default function Voterslist(props) {
             <Pagingdiv className="display-flex justify-content-end">
               <div className="display-flex justify-content-end p-t-15">
                 <Pagination
-                    prevPageText='Previous' nextPageText='Next'
-                    hideFirstLastPages linkClassNext="table-pagination"
-                    linkClassPrev="table-pagination" activeLinkClass="fc-black"
-                    linkClass="table-pagination"
-                    activePage={props.state.activePage}
-                    itemsCountPerPage={props.state.itemsPerPage}
-                    pageRangeDisplayed="5"
-                    totalItemsCount={props.state.totalVotersCount}
-                    onChange={props.handlePageChange}
+                  prevPageText="Previous"
+                  nextPageText="Next"
+                  hideFirstLastPages
+                  linkClassNext="table-pagination"
+                  linkClassPrev="table-pagination"
+                  activeLinkClass="fc-black"
+                  linkClass="table-pagination"
+                  activePage={props.state.activePage}
+                  itemsCountPerPage={props.state.itemsPerPage}
+                  pageRangeDisplayed="5"
+                  totalItemsCount={props.state.totalVotersCount}
+                  onChange={props.handlePageChange}
                 />
               </div>
             </Pagingdiv>
