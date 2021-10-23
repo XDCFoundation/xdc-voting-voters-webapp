@@ -53,9 +53,9 @@ export default function Xvdgovernance() {
     history.push("/");
   };
   React.useEffect(() => {
-    var x=window.scrollX;
-    var y=window.scrollY;
-    window.onscroll=function(){window.scrollTo(x, {top: 0});};
+    // var x=window.scrollX;
+    // var y=window.scrollY;
+    // window.onscroll=function(){window.scrollTo(x, {top: 0});};
     
     let address = [
       {
