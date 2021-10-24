@@ -291,7 +291,7 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     width: "27px",
-    marginLeft: "6px",
+    marginLeft: "12px",
   },
 
   row_one: {
@@ -603,7 +603,7 @@ export default function Createnewproposal(props) {
                               {index ===
                               props.state.proposalDocuments.length - 1 ? (
                                 <img
-                                  className={classes.imag}
+                                  className={classes.image}
                                   onClick={props.addDocumentRow}
                                   src="/images/Add.svg"
                                 />
