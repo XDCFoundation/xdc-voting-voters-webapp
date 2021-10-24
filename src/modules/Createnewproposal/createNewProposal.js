@@ -404,7 +404,7 @@ export default function Createnewproposal(props) {
             >
               <img
                 src="/images/Back-Arrow.svg"
-                style={{ width: "15px", marginRight: "8px" }}
+                style={{ width: "15px", marginRight: "8px", marginBottom: "4px", }}
               />
               <Back>Back</Back>
             </div>
@@ -666,7 +666,7 @@ const BrowseButton = styled.label`
   margin-bottom: 4px;
   margin-right: 3px;
   width: 100%;
-  max-width: 120px;
+  max-width: 90px;
 `;
 const Textarea = styled.textarea`
   width: 100%;
