@@ -16,6 +16,8 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         marginTop: "6px",
         marginRight: "12px",
+        
+        
     },
     btnCss: {
         background: "#ffffff 0% 0% no-repeat padding-box !important",
