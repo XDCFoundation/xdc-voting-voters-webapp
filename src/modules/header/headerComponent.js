@@ -66,7 +66,7 @@ export default function Header(props) {
               <Row className="xdc-para">
                 <div className="para-div">
                   Decentralized community for maintaining the integrity of the
-                  XinFin Blockchain through discussion and on-chain voting.
+                  XDC Blockchain through discussion and on-chain voting.
                 </div>
               </Row>
             </Column>
