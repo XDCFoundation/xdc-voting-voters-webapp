@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     },
     row: {
         border: "1px solid #E3E7EB",
-        height: "30px",
+        height: "34px",
         borderRadius: "4px",
         width: "100%",
         maxWidth: "126px",
