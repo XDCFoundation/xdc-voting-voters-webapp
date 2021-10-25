@@ -116,7 +116,7 @@ position: relative;
     display:flex;
     cursor: pointer;
     margin-top: -40px;
-    margin-bottom: 15px;
+    margin-bottom: 17px;
 }
 .row-1{
     width: 100%;
@@ -202,6 +202,12 @@ opacity: 1;
     display: flex;
     margin-top: 5px;
 }
+@media  (max-width:360px) {
+   .post{
+    font-size: 10px !important;
+   }
+}
+
 @media (max-width:767px){
     .header-div{
         background: #2049B9 0% 0% no-repeat padding-box;

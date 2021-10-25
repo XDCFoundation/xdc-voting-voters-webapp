@@ -207,10 +207,12 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 300px) and (max-width: 767px)": {
       fontSize: "11px",
       paddingLeft: "8px",
+      
     },
     "@media (min-width: 900px) and (max-width: 977px)": {
       fontSize: "12px",
     },
+   
   },
 
   quillgrid: {
@@ -290,8 +292,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "right",
   },
   image: {
-    width: "27px",
+    width: "26px",
     marginLeft: "12px",
+    height: "28px!important",
   },
 
   row_one: {
