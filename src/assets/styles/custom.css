@@ -27,7 +27,9 @@ html, body {
 }
 
 .p-polling-contract {
-    padding: 3px 6px 4px 10px;
+    padding: 10px 6px 4px 10px;
+    /* align-items: center; */
+    white-space: nowrap;
 }
 
 .p-8{
@@ -374,10 +376,13 @@ opacity: 1;
     } */
 }
 @media  (max-width:1023px) {
+    .recent-div-footer{
+        padding-top: 329px;
+    }
     .header-div{
         background: #2049B9 0% 0% no-repeat padding-box;
         width: 100%;
-        height:370px;
+        height:410px;
     }
     .all-div-proposal{
         display: block !important;
@@ -396,7 +401,7 @@ opacity: 1;
     }
     .recent-proposal-div-proposal2{
         max-width: 730px !important;
-        margin-left: 0px !important;
+        margin-left: 0px !important;   
     }
     .recent-proposal-div-proposal3{
         max-width: 730px !important;
@@ -409,6 +414,7 @@ opacity: 1;
     .button-div-support{
         max-width: 600px !important;
     margin-left: 5% !important;
+    padding-left: 27px;
     }
     .support-button{
         width: 100% !important;
@@ -447,16 +453,16 @@ opacity: 1;
         margin-left: 30px !important;
     }
     .know-about-xdc{
-        width: 100% !important;
-        margin-right: 135px !important;
+        width: 348px !important;
+        margin-right: 30px !important;
         cursor: pointer;
     }
     .xdc-forum{
-        width: 100% !important;
+        width: 348px !important;
         cursor: pointer;
     }
     .community-tools{
-        /* width: 330px !important; */
+        width: 350px !important;
         margin-top: 50px !important;
         cursor: pointer;
     }
@@ -472,6 +478,7 @@ opacity: 1;
         justify-content: center !important;
         font-size: 30px !important;
         font-weight: 500 !important;
+        padding-top: 30px;
         /* margin-left: 8% !important; */
 
     }
@@ -495,6 +502,10 @@ opacity: 1;
        justify-content: center;
 
     }
+    .xdc-connect{
+        padding-top: 10px;
+    }
+    
 
 }
 
@@ -621,8 +632,8 @@ display: flex;
 .create-wallet{
 
 margin: 15px;
-width: 140px;
-height: 32px;
+width: 168px;
+height: 36px;
 background: #2149B9 0% 0% no-repeat padding-box;
 border: 1px solid #FFFCFC;
 border-radius: 4px;
@@ -635,9 +646,9 @@ font-size: 15px;
 }
 .create-wallet p{
 
-    padding-top: 4px;
-    padding-left: 12px;
-
+    padding-top: 5px;
+    padding-left: 23px;
+ 
 text-align: center;
 font: normal normal medium 15px/19px Inter;
 letter-spacing: 0px;
@@ -685,7 +696,7 @@ letter-spacing: 0px;
 color: #FFFFFF;
 opacity: 1;
 font-weight: 600;
-font-size: 35px;
+font-size: 40px;
 font-family: Inter;
 
 }
@@ -696,7 +707,7 @@ font: normal normal normal 18px/21px Inter;
 letter-spacing: 0px;
 color: #FFFFFF;
 opacity: 1;
-font-size: 14px;
+font-size: 18px;
 
 }
 .div-1{
@@ -813,7 +824,7 @@ font-family: 'Inter';
     outline: none;
 }
  .recent-proposal-div{
-   margin-top: 0px;
+   margin-top: 30px;
     width: 100%;
     max-width: 950px;
     height: 65px;
@@ -823,9 +834,9 @@ font-family: 'Inter';
     /* border: 1px solid #E3E7EB; */
     border-color: #E3E7EB;
     box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1);
-     border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-
+     border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+   
  }
  .recent-proposal-div-proposal{
    margin-top: 0px;
@@ -909,6 +920,7 @@ font-family: 'Inter';
     font-size: 15px;
     font-family: "Inter",sans-serif;
     font-weight: 600;
+    padding: 3px 0px 0px 0px;
  }
  .address-number{
     letter-spacing: 0px;
@@ -918,6 +930,10 @@ font-family: 'Inter';
     font-family: "Inter",sans-serif;
      overflow: hidden;
      text-overflow: ellipsis;
+     white-space: nowrap;
+     padding: 0px 0px 20px 20px;
+    margin-top: -3px;
+    
  }
  .external-image-proposal4{
      width: 15px;
@@ -948,6 +964,7 @@ font-family: 'Inter';
     border: 1px solid #E3E7EB;
     border-color: #E3E7EB;
     margin-top: -10px;
+    padding: 15px 15px 0px 15px;
  }
  .div2-heading{
 
@@ -1048,7 +1065,7 @@ text-align: center;
  .recent-add-div-proposal{
     width: 100%;
     justify-content: space-between;
-    padding: 15px;
+    padding: 15px 15px 11px 15px;
  }
  .recent-add-div-proposal2{
     width: 100%;
@@ -1187,6 +1204,7 @@ opacity: 1;
     font-family: "Inter",sans-serif;
     font-weight: 600;
     margin-top: 2px;
+    padding: 3px 0px 3px 0px;
  }
  .date-proposal{
     letter-spacing: 0px;
