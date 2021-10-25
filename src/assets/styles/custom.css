@@ -376,6 +376,9 @@ opacity: 1;
     } */
 }
 @media  (max-width:1023px) {
+    .recent-div-footer{
+        padding-top: 329px;
+    }
     .header-div{
         background: #2049B9 0% 0% no-repeat padding-box;
         width: 100%;
