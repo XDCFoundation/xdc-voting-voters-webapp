@@ -333,35 +333,6 @@ export default function ViewAllProposal(props) {
                                 <div className="display-flex justify-content-center p-t-50"> No Record found</div>
                                 }
                         </Div>
-                         <PagingDiv>
-              <FirstDiv>
-                <Show>Show </Show>
-
-                <SelectBox>
-                  <Row className={classes.row}>
-                    <Column className={classes.styleBlock}> </Column>
-                    <select className={classes.stylePage}>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                    </select>
-                  </Row>
-                </SelectBox>
-                <Proposals>Proposals </Proposals>
-              </FirstDiv>
-              <SecondDiv>
-                <Back>Back</Back>
-                <Block>
-                  <Span>1 </Span>
-                </Block>
-                <Block>
-                  <Span>2 </Span>
-                </Block>
-                <NextBlock>
-                  <Span>Next</Span>
-                </NextBlock>
-              </SecondDiv>
-            </PagingDiv>
                         <div className="display-flex justify-content-end p-t-15">
                             <Pagination
                                 prevPageText='Previous' nextPageText='Next'
