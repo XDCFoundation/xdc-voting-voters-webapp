@@ -13,6 +13,8 @@ import styled from "styled-components";
 import Countdown from "react-countdown";
 import moment from "moment";
 import Utils from "../../utility";
+import DivBlocksComponent from "../Dashboard/divComponent";
+import FooterComponent from "../footer/footerComponent";
 
 const GreenLine = styled.div`
   background-color: #3ab70d;
@@ -187,8 +189,12 @@ export default function RecentProposal(props) {
           </Table>
         </Grid>
       </Grid>
-
-      <div style={{ paddingTop: "10%" }}></div>
+      <div>
+        <DivBlocksComponent />
+      </div>
+      <div>
+        <FooterComponent />
+      </div>
     </div>
   );
 }
