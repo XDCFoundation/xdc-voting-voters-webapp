@@ -204,6 +204,9 @@ opacity: 1;
     display: flex;
     margin-top: 5px;
 }
+.recent-proposal-div{
+    margin-top: 8px;
+}
 @media (max-width:767px){
    
     .header-div{
@@ -307,7 +310,7 @@ opacity: 1;
         margin-top: 15px;
     }
     .recent-div{
-        margin-top:190px !important;
+        margin-top:207px !important;
     }
     .xdc-para{
         /* justify-content:auto; */
@@ -831,7 +834,7 @@ font-family: 'Inter';
     outline: none;
 }
  .recent-proposal-div{
-   margin-top: 30px;
+   margin-top: 8px;
     width: 100%;
     max-width: 950px;
     height: 65px;
