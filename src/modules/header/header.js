@@ -85,9 +85,9 @@ function Header() {
                     </Row>
                 </Column>
                 <Column>
-                    <div className={classes.buttondiv}>
+                    <div className={classes.buttondiv}> 
                         <XdcConnect
-                            btnClass={wallet.connected ? classes.btnCss : classes.btnCss}
+                            btnClass={wallet.connected ? classes.btnCss : classes.btnCss} 
                             btnName={wallet.connected ? wallet.address : "Connect wallet"}
                             onConnect={
                                 (wallet) => {

@@ -411,7 +411,7 @@ export default function Createnewproposal(props) {
               />
               <Back>Back</Back>
             </div>
-            <div className={classes.div}>
+            <div className={classes.div} style={{marginLeft:"-20px",width:"105%"}}>
               <Grid className={classes.heading} xs={4}>
                 Create New Proposal
               </Grid>
@@ -544,7 +544,7 @@ export default function Createnewproposal(props) {
                   />
                 </Seconddiv>
               </Mobile>
-              <div className={classes.row}>
+              <div className={classes.row} style={{paddingRight:"25px"}}>
                 <Grid xs={2} className={classes.description}>
                   Description
                 </Grid>
