@@ -677,7 +677,8 @@ border-radius: 10px;
 
 .row-2{
     justify-content:center;
-    flex: auto;
+   
+    padding:24px;
 
 }
 .xdc-governance{
@@ -702,8 +703,9 @@ font-size: 14px;
 
 }
 .div-1{
-    width: 165px;
-height: 70px;
+    width: 180px;
+    height: 76px;
+  
 background: #1841B2 0% 0% no-repeat padding-box;
 border-radius: 6px;
 opacity: 1;
@@ -732,13 +734,13 @@ font-family: 'Inter';
 color: #FFFFFF;
 
 font-weight: 500;
-font-size: 29px;
+font-size: 32px;
 }
 .div-1-row1{
  padding-left: 13px;
 margin-top: -10px;
 
-font-size: 17px;
+font-size: 18px;
 white-space: nowrap;
 letter-spacing: 0px;
 color: #5CADFF;
@@ -816,7 +818,7 @@ width: 100%;
  .recent-proposal-div{
    margin-top: 0px;
     width: 100%;
-    max-width: 950px;
+    max-width: 1280px;
     height: 65px;
     justify-content: center;
     align-items: center;
@@ -1038,7 +1040,7 @@ text-align: center;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    max-width: 950px;
+    max-width: 1280px;
 
  }
 
@@ -1049,7 +1051,8 @@ text-align: center;
  .recent-add-div-proposal{
     width: 100%;
     justify-content: space-between;
-    padding: 15px;
+   
+    padding: 23px 20px 10px 33px
  }
  .recent-add-div-proposal2{
     width: 100%;
@@ -1168,10 +1171,8 @@ opacity: 1;
     max-width: 650px;
     border-bottom: 1px solid #E3E7EB;
     border-radius: 2px;
-   
-    padding: 20px;
-   
-    box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1);
+    padding: 39px 42px 0px 33px;
+     box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1);
  }
  .details-content{
 

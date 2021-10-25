@@ -109,21 +109,13 @@ export default function Header(props) {
             <div className="griddiv">
               <RecentProposal />
             </div>
-
-            {/* <Row onClick={handleView} className="view-all">
-              View All Proposals
-            </Row> */}
-
-            <div>
-              <DivBlocksComponent />
-            </div>
           </div>
         </div>
       </Column>
 
-      <div>
+      {/* <div>
         <FooterComponent />
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -263,8 +263,10 @@ const SelectBoxDiv = styled.div`
 
 const SelectContainer = styled.div`
   margin-left: 15px;
-
-  @media (min-width: 767px) {
+  // @media (min-width: 768px) and (max-width: 1024px) {
+  //   display: none;
+  // }
+  @media (min-width: 1024px) {
     display: none;
   }
 `;
@@ -319,7 +321,7 @@ const Sidemenu = styled.div`
   top: 0;
   display: flex;
   justify-content: flex-end;
-  @media (min-width: 300px) and (max-width: 767px) {
+  @media (min-width: 200px) and (max-width: 1024px) {
     display: none;
   }
 `;
