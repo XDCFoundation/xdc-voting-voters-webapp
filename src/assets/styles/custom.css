@@ -398,7 +398,7 @@ opacity: 1;
     }
     .recent-proposal-div-proposal2{
         max-width: 730px !important;
-        margin-left: 0px !important;
+        margin-left: 0px !important;   
     }
     .recent-proposal-div-proposal3{
         max-width: 730px !important;
@@ -411,6 +411,7 @@ opacity: 1;
     .button-div-support{
         max-width: 600px !important;
     margin-left: 5% !important;
+    padding-left: 27px;
     }
     .support-button{
         width: 100% !important;
@@ -497,6 +498,9 @@ opacity: 1;
 
        justify-content: center;
 
+    }
+    .xdc-connect{
+        padding-top: 10px;
     }
     
 
