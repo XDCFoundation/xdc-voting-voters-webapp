@@ -71,8 +71,8 @@ export default function ProposalDetails(props) {
                                         <span style={{marginRight: "5px"}}>
                                             <img
                                                 style={{
-                                                    height: "14px",
-                                                    width: "14px",
+                                                    height: "17px",
+                                                    width: "17px",
                                                     marginTop: "-3px",
                                                 }}
                                                 className="time-inactive"
@@ -86,6 +86,9 @@ export default function ProposalDetails(props) {
                                                        date={props.state.proposalDetails.endDate}/> : ""
                                     }
                     </span>
+                                        </span>
+                                        <span>
+                                            Remaining
                                         </span>
                                     </Row>
                                 </Column>
@@ -248,13 +251,7 @@ export default function ProposalDetails(props) {
                                 <div className="display-flex p-polling-contract">
                                     <div className="polling-heading">Polling Contract</div>
                                     <div className="address-number">
-                                        {props.state.proposalAddress}
-                                        <span>
-                      <img
-                          className="external-image-proposal4"
-                          src={require("../../assets/styles/images/External-Link.svg")}
-                      ></img>
-                    </span>
+                                        {proposalAddressComponent(props.state.proposalAddress)}
                                     </div>
                                 </div>
                             </div>
@@ -316,6 +313,25 @@ function AddressComponent(row) {
                 <div>
                     {Utils.epocToPrettyTime(row.createdOn)}
                 </div>
+            </Row>
+        </>
+    );
+}
+
+
+function proposalAddressComponent(row) {
+    return (
+        <>
+            <Row className="p-8 justify-content-between">
+                <Row>
+                    <div className="fs-15 color-2A2A2A p-l-sm">
+                        {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
+                    </div>
+                </Row>
+                <img
+                          className="external-image-proposal4"
+                          src={require("../../assets/styles/images/External-Link.svg")}
+                      ></img>
             </Row>
         </>
     );
