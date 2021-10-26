@@ -208,6 +208,12 @@ opacity: 1;
     margin-top: 8px;
 }
 @media (max-width:767px){
+    .date{
+        white-space: nowrap;
+    }
+    .name{
+        white-space: nowrap;
+    }
     
     .mobile-logo-row-1{
         margin-top: -333px;
