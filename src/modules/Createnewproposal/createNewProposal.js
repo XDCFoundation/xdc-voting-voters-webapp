@@ -19,9 +19,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "center",
-    maxWidth: "970px",
+    maxWidth: "1280px",
     position: "absolute",
-    top: "154px",
+    top: "145px",
 
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
@@ -30,23 +30,15 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 567px) and (max-width: 767px)": {
       maxWidth: "500px",
     },
-    "@media (min-width: 767px) and (max-width: 1040px)": {
-      maxWidth: "700px",
+    "@media (min-width: 767px) and (max-width: 1440px)": {
+      maxWidth: "1000px",
     },
   },
   containerOne: {
     display: "flex",
     flexWrap: "wrap",
-    fontSize: "13px",
   },
-  textField: {
-    marginRight: theme.spacing.unit,
-    width: 200,
-    background: "#FFFFFF 0% 0% no-repeat padding-box",
-    border: "1px solid #E3E7EB",
-    borderRadius: "4px",
-    fontSize: "12px",
-  },
+
   container: {
     width: "100%",
     margin: "0px",
@@ -57,38 +49,37 @@ const useStyles = makeStyles((theme) => ({
     background: "#FFFFFF 0% 0% no-repeat padding-box",
     border: "1px solid #E3E7EB",
     borderRadius: "6px",
-    opacity: "1",
+
     marginBottom: "50px",
   },
 
   heading: {
-    fontSize: "15px",
-    marginTop: "17px",
-
     whiteSpace: "nowrap",
-    paddingLeft: "20px",
-
+    padding: " 21px 30px 21px 25px",
     font: " normal normal 600 22px/26px Inter",
     letterSpacing: "0px",
     color: "#2a2a2a",
-    opacity: "1",
   },
-  line: { width: "100%" },
+  line: {
+    width: "100%",
+    marginTop: "0px",
+    marginBottom: "0px",
+  },
   proposalinput: {
     background: "#ffffff 0% 0% no-repeat padding-box",
     border: "1px solid #e3e7eb",
     borderRadius: "4px",
-    opacity: "1",
-    width: "95%",
-    height: "30px",
-    fontSize: "12px",
+    width: "100%",
+    padding: "6px",
+    font: "normal normal normal 15px/19px Inter",
+    maxWidth: "1024px",
 
     whiteSpace: "nowrap",
 
     "@media (min-width: 300px) and (max-width: 767px)": {
       display: "block",
-      marginLeft: "7px",
-      width: "113%",
+      font: "normal normal normal 15px/19px Inter",
+      width: "100%",
     },
   },
 
@@ -96,22 +87,21 @@ const useStyles = makeStyles((theme) => ({
     background: "#FFFFFF 0% 0% no-repeat padding-box",
     border: "1px solid #E3E7EB",
     borderRadius: "4px",
-    opacity: "1",
-    height: "30px",
-    fontSize: "10px",
+    padding: "6px",
+    font: "normal normal normal 15px/19px Inter",
     width: "100%",
-    maxWidth: "295px",
     whiteSpace: "nowrap",
 
+    maxWidth: "368px",
+
     "@media (min-width: 300px) and (max-width: 767px)": {
-      width: "85%",
-      marginLeft: "-9px",
-      marginTop: "2px",
+      width: "100%",
+      font: "normal normal normal 15px/19px Inter",
     },
 
     "@media (min-width: 767px) and (max-width: 1024px)": {
-      width: "74%",
-      marginLeft: "30px",
+      width: "100%",
+      font: "normal normal normal 15px/19px Inter",
     },
   },
 
@@ -120,76 +110,67 @@ const useStyles = makeStyles((theme) => ({
     font: "normal normal normal 15px/19px Inter",
     letterSpacing: "0px",
     color: "#2a2a2a",
-    paddingLeft: "21px",
+
     paddingTop: "7px",
-    fontSize: "12px",
     whiteSpace: "nowrap",
     "@media (min-width: 300px) and (max-width: 767px)": {
-      fontSize: "11px",
+      font: "normal normal normal 15px/19px Inter",
       paddingLeft: "8px",
     },
     "@media (min-width: 900px) and (max-width: 977px)": {
-      fontSize: "12px",
+      font: "normal normal normal 15px/19px Inter",
     },
   },
   startdate: {
     textAlign: "left",
     font: "normal normal normal 15px/19px Inter",
-    letterSpacing: "0px",
     color: " #2a2a2a",
-    fontSize: "12px",
-    paddingLeft: "21px",
-    paddingTop: "5px",
+
     whiteSpace: "nowrap",
 
     "@media (min-width: 300px) and (max-width: 767px)": {
-      fontSize: "11px",
-      paddingLeft: "8px",
+      font: "normal normal normal 15px/19px Inter",
     },
     "@media (min-width: 900px) and (max-width: 977px)": {
-      fontSize: "12px",
+      font: "normal normal normal 15px/19px Inter",
     },
   },
   startdateinput: {
     background: " #FFFFFF 0% 0% no-repeat padding-box",
     border: " 1px solid #E3E7EB",
     borderRadius: "4px",
-
-    fontSize: "10px",
-    height: "30px",
+    font: "normal normal normal 15px/19px Inter",
+    padding: "6px",
     width: "100%",
-    maxWidth: "295px",
+    maxWidth: "368px",
 
     "@media (min-width: 300px) and (max-width: 767px)": {
-      marginLeft: "6px",
-      fontSize: "11px",
-      width: "85%",
+      font: "normal normal normal 15px/19px Inter",
+      width: "100%",
     },
     "@media (min-width: 767px) and (max-width: 980px)": {
-      width: "74%",
-      marginLeft: "5px",
+      width: "100%",
     },
   },
   enddate: {
     textAlign: "left",
     letterSpacing: "0px",
     color: "#2a2a2a",
-    fontFamily: "Inter",
-    fontSize: "12px",
+
+    font: "normal normal normal 15px/19px Inter",
     alignItems: "center",
     display: "flex",
     overflow: "hidden",
     whiteSpace: "nowrap",
 
     "@media (min-width: 767px) and (max-width: 1024px)": {
-      fontSize: "12px",
-      marginLeft: "18px",
-      overflow: "hidden",
+      font: "normal normal normal 15px/19px Inter",
+
       whiteSpace: "nowrap",
     },
     "@media (min-width: 300px) and (max-width: 767px)": {
-      fontSize: "11px",
-      overflow: "hidden",
+      font: "normal normal normal 15px/19px Inter",
+
       whiteSpace: "nowrap",
     },
   },
@@ -198,32 +179,31 @@ const useStyles = makeStyles((theme) => ({
     font: "normal normal normal 15px/19px Inter",
     letterSpacing: "0px",
     color: "#2a2a2a",
-    fontSize: "12px",
-    paddingTop: "50px",
-    paddingLeft: "21px",
+
     whiteSpace: "nowrap",
 
     "@media (min-width: 300px) and (max-width: 767px)": {
-      fontSize: "11px",
-      paddingLeft: "8px",
+      font: "normal normal normal 15px/19px Inter",
     },
     "@media (min-width: 900px) and (max-width: 977px)": {
-      fontSize: "12px",
+      font: "normal normal normal 15px/19px Inter",
     },
   },
 
   quillgrid: {
     background: "#FFFFFF 0% 0% no-repeat padding-box",
-    maxWidth: "766px",
+    maxWidth: "1024px",
     borderRadius: "6px",
     width: "100%",
     border: "1px solid #e3e7eb",
-    marginTop: "47px",
+    font: "normal normal normal 15px/19px Inter",
+    marginLeft: "139px",
   },
 
   row: {
     display: "flex",
     flexFlow: "row nowrap",
+
     "@media (min-width: 300px) and (max-width: 767px)": {
       display: "block !important",
       justifyContent: "center",
@@ -235,54 +215,47 @@ const useStyles = makeStyles((theme) => ({
     font: "normal normal normal 15px/19px Inter",
     letterSpacing: "0px",
     color: "#2a2a2a",
+    marginTop: "15px",
 
-    fontSize: "12px",
-    marginTop: "10%",
-    paddingLeft: "21px",
     whiteSpace: "nowrap",
     "@media (min-width: 300px) and (max-width: 767px)": {
-      fontSize: "12px",
-      paddingLeft: "8px",
-      marginTop: "109px",
+      font: "normal normal normal 15px/19px Inter",
     },
     "@media (min-width: 767px) and (max-width: 900px)": {
-      fontSize: "9px",
-      marginTop: "23%",
+      font: "normal normal normal 15px/19px Inter",
     },
     "@media (min-width: 900px) and (max-width: 977px)": {
-      fontSize: "12px",
-      marginTop: "20%",
+      font: "normal normal normal 15px/19px Inter",
     },
     "@media (min-width: 977px) and (max-width: 1080px)": {
-      fontSize: "9px",
-      marginTop: "13%",
+      font: "normal normal normal 15px/19px Inter",
     },
   },
   uploadbox: {
-    marginTop: "9%",
+    marginLeft: "93px",
+    width: "100%",
+    maxWidth: "1019px",
     "@media (min-width: 300px) and (max-width: 767px)": {
-      marginLeft: "7px",
+      font: "normal normal normal 15px/19px Inter",
     },
     "@media (min-width: 767px) and (max-width: 900px)": {
-      fontSize: "11px",
-      marginTop: "22%",
+      font: "normal normal normal 15px/19px Inter",
     },
     "@media (min-width: 900px) and (max-width: 977px)": {
-      fontSize: "9px",
-      marginTop: "18%",
+      font: "normal normal normal 15px/19px Inter",
     },
     "@media (min-width: 977px) and (max-width: 1080px)": {
-      fontSize: "12px",
-      marginTop: "12%",
+      font: "normal normal normal 15px/19px Inter",
     },
   },
   input: {
     background: "#ffffff 0% 0% no-repeat padding-box",
     border: "1px solid #e3e7eb",
+    font: "normal normal normal 15px/19px Inter",
     borderRadius: "4px",
-    opacity: "1",
-    width: "90%",
-    height: "30px",
+
+    width: "100%",
+    padding: "6px",
     fontSize: "10px",
     textAlign: "right",
   },
@@ -295,20 +268,19 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 767px) and (max-width: 2000px)": {
       display: "flex",
       flexDirection: "row",
-      marginTop: "23px",
-      marginLeft: "21px",
     },
     "@media (min-width: 300px) and (max-width: 2000px)": {
       display: "flex",
       flexDirection: "row",
-      marginTop: "23px",
+
       width: "100%",
     },
   },
   secondrow: {
+    width: "100%",
     display: "flex",
     flexFlow: "row nowrap",
-    marginTop: "20px",
+    marginTop: "30px",
     alignItems: "center",
 
     "@media (min-width: 200px) and (max-width: 767px)": {
@@ -325,9 +297,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     marginTop: "50px",
   },
-  gridSix: {
-    marginLeft: "25px",
-  },
+
   circle: {
     borderRadius: "50%",
     width: "10px",
@@ -406,178 +376,99 @@ export default function Createnewproposal(props) {
               <Back>Back</Back>
             </div>
             <div className={classes.div}>
-              <Grid className={classes.heading} xs={4}>
-                Create New Proposal
-              </Grid>
+              <div className={classes.heading}>Create New Proposal</div>
 
               <hr className={classes.line} />
+              <Container>
+                <div className={classes.row}>
+                  <div className={classes.proposaltitle}>Proposal Title</div>
 
-              <div className={classes.row}>
-                {/* <Grid xs={2} className={classes.proposaltitle}>
-                  Proposal Title
-                </Grid> */}
-                <div className={classes.proposaltitle}>Proposal Title</div>
-
-                <Div>
-                  <input
-                    className={classes.proposalinput}
-                    type="text"
-                    onChange={(e) => setProposalTitle(e.target.value)}
-                    value={proposalTitle}
-                  />
-                </Div>
-              </div>
-
-              <div className={classes.secondrow}>
-                <Grid xs={2} className={classes.startdate}>
-                  Start Date
-                </Grid>
-
-                <Grid xs={6} className={classes.gridSix}>
-                  {<input
-                    className={classes.startdateinput}
-                    type="date"
-                    onChange={(e) => setStartDate(e.target.value)}
-                    value={startDate}
-                  />}
-                  {/*<DateDiv>*/}
-                  {/*  <DatePicker*/}
-                  {/*    // className={classes.startdateinput}*/}
-                  {/*    arrow={true}*/}
-                  {/*    minDate={new Date()}*/}
-                  {/*    // onOpen={() => open}*/}
-                  {/*    // onOpen={() => open}*/}
-                  {/*    onChange={onChange}*/}
-                  {/*    placeholderText="MM/DD/YYYY"*/}
-                  {/*    value={value}*/}
-                  {/*    style={{*/}
-                  {/*      color: "black",*/}
-                  {/*      fontWeight: "normal",*/}
-                  {/*    }}*/}
-                  {/*  />*/}
-                  {/*  <img*/}
-                  {/*    src="/images/Calendar.svg"*/}
-                  {/*    style={{ width: "18px", marginLeft: "150px" }}*/}
-                  {/*    // onClick={() => handleOpen()}*/}
-                  {/*  />*/}
-                  {/*</DateDiv>*/}
-                </Grid>
-
-                <Grid xs={1} className={classes.enddate}>
-                  End Date
-                </Grid>
-
-                <Grid xs={5}>
-                  {<input
-                    className={classes.enddateinput}
-                    type="date"
-                    onChange={(e) => setEndDate(e.target.value)}
-                    value={endDate}
-                  /> }
-                  {/*<DateDiv>*/}
-                  {/*  <DatePicker*/}
-                  {/*    // className={classes.startdateinput}*/}
-                  {/*    arrow={true}*/}
-                  {/*    minDate={new Date()}*/}
-                  {/*    // onOpen={() => open}*/}
-                  {/*    onOpen={() => open}*/}
-                  {/*    onChange={onChange}*/}
-                  {/*    placeholderText="MM/DD/YYYY"*/}
-                  {/*    value={value}*/}
-                  {/*    style={{*/}
-                  {/*      color: "black",*/}
-                  {/*      fontWeight: "normal",*/}
-                  {/*    }}*/}
-                  {/*  />*/}
-                  {/*  <img*/}
-                  {/*    src="/images/Calendar.svg"*/}
-                  {/*    style={{ width: "18px", marginLeft: "150px" }}*/}
-                  {/*    // onClick={() => handleOpen()}*/}
-                  {/*  />*/}
-                  {/*</DateDiv>*/}
-                  {/* <DateDiv>
-                    <DatePicker
-                      // className={classes.startdateinput}
-                      arrow={true}
-                      onChange={onChange}
-                      onOpen={true}
-                      value={value}
-                      dateFormat="yyyy/MM/dd"
-                      minDate={new Date()}
-                      placeholderText="MM/DD/YYYY"
-                      // onChange={(e) => setEndDate(e.target.value)}
-                      style={{
-                        color: "black",
-                        fontWeight: "normal",
-                        // pointerEvents: "none",
-                      }}
+                  <Div>
+                    <input
+                      className={classes.proposalinput}
+                      type="text"
+                      onChange={(e) => setProposalTitle(e.target.value)}
+                      value={proposalTitle}
                     />
-                    <img
-                      src="/images/Calendar.svg"
-                      style={{ width: "18px", marginLeft: "150px" }}
-                      onClick={setOpen}
+                  </Div>
+                </div>
+
+                <div className={classes.secondrow}>
+                  <StartDiv>
+                    <div className={classes.startdate}>Start Date</div>
+
+                    <input
+                      className={classes.startdateinput}
+                      type="date"
+                      onChange={(e) => setStartDate(e.target.value)}
+                      value={startDate}
                     />
-                  </DateDiv> */}
-                </Grid>
-              </div>
-              <Mobile>
-                <Firstdiv>
-                  <Startdate>Start Date</Startdate>
-                  <Inputstartdate
-                    type="date"
-                    onChange={(e) => setStartDate(e.target.value)}
-                    value={startDate}
-                  />
-                </Firstdiv>
-                <Seconddiv>
-                  <Enddate>End Date</Enddate>
-                  <Inputenddate
-                    type="date"
-                    onChange={(e) => setEndDate(e.target.value)}
-                    value={endDate}
-                  />
-                </Seconddiv>
-              </Mobile>
-              <div className={classes.row}>
-                <Grid xs={2} className={classes.description}>
-                  Description
-                </Grid>
-                <Grid xs={10} className={classes.quillgrid}>
-                  <div className="text-editor">
-                    <ReactQuill
-                      className="quill-editor"
-                      theme="snow"
-                      modules={props.state.modules}
-                      formats={props.state.formats}
-                      onChange={handleQuillChange}
+                  </StartDiv>
+                  <EndDiv>
+                    <div className={classes.enddate}>End Date</div>
+
+                    <input
+                      className={classes.enddateinput}
+                      type="date"
+                      onChange={(e) => setEndDate(e.target.value)}
+                      value={endDate}
                     />
+                  </EndDiv>
+                </div>
+                <Mobile>
+                  <Firstdiv>
+                    <Startdate>Start Date</Startdate>
+                    <Inputstartdate
+                      type="date"
+                      onChange={(e) => setStartDate(e.target.value)}
+                      value={startDate}
+                    />
+                  </Firstdiv>
+                  <Seconddiv>
+                    <Enddate>End Date</Enddate>
+                    <Inputenddate
+                      type="date"
+                      onChange={(e) => setEndDate(e.target.value)}
+                      value={endDate}
+                    />
+                  </Seconddiv>
+                </Mobile>
+                <div className={classes.row}>
+                  <div className={classes.description}>Description</div>
+                  <div className={classes.quillgrid}>
+                    <div className="text-editor">
+                      <ReactQuill
+                        className="quill-editor"
+                        theme="snow"
+                        modules={props.state.modules}
+                        formats={props.state.formats}
+                        onChange={handleQuillChange}
+                      />
+                    </div>
                   </div>
-                </Grid>
-              </div>
-              <div className={classes.row}>
-                <Grid xs={2} className={classes.upload}>
-                  Upload Document
-                </Grid>
-                <Grid xs={10} className={classes.uploadbox}>
-                  <Column>
-                    {props.state.proposalDocuments.length > 0
-                      ? props.state.proposalDocuments.map((doc, index) => {
-                          return (
-                            <div className="display-flex m-t-4">
-                              <div
-                                className={
-                                  classes.input +
-                                  " display-flex justify-content-between"
-                                }
-                                value={uploadDocument}
-                              >
+                </div>
+                <div className={classes.row}>
+                  <div className={classes.upload}>Upload Document</div>
+                  <div className={classes.uploadbox}>
+                    <Column>
+                      {props.state.proposalDocuments.length > 0
+                        ? props.state.proposalDocuments.map((doc, index) => {
+                            return (
+                              <div className="display-flex m-t-4">
                                 <div
-                                  style={{ textAlign: "left" }}
-                                  className="p-l-sm p-t-sm"
+                                  className={
+                                    classes.input +
+                                    " display-flex justify-content-between"
+                                  }
+                                  value={uploadDocument}
                                 >
-                                  {doc}
-                                </div>
-                                <input
+                                  <div
+                                    style={{ textAlign: "left" }}
+                                    className="p-l-sm p-t-sm"
+                                  >
+                                    {doc}
+                                  </div>
+                                  <input
                                     ref={inputFile}
                                     id={"fileButton" + index}
                                     name="fileButton"
@@ -588,42 +479,47 @@ export default function Createnewproposal(props) {
                                     onChange={(e) => {
                                       console.log(index, "+++");
                                       props.uploadFileToS3(
-                                          e.target.files[0],
-                                          index
+                                        e.target.files[0],
+                                        index
                                       );
                                     }}
-                                />
-                                <BrowseButton for={"fileButton" + index}>
-                                  Browse File
-                                </BrowseButton>
+                                  />
+                                  <BrowseButton for={"fileButton" + index}>
+                                    Browse File
+                                  </BrowseButton>
+                                </div>
+                                {index ===
+                                props.state.proposalDocuments.length - 1 ? (
+                                  <img
+                                    className={classes.imag}
+                                    onClick={props.addDocumentRow}
+                                    src="/images/Add.svg"
+                                  />
+                                ) : (
+                                  <img
+                                    className={
+                                      " height-27 m-t-4 width-27 m-l-4"
+                                    }
+                                    onClick={() =>
+                                      props.deleteDocumentRow(index)
+                                    }
+                                    src="/images/substract.png"
+                                  />
+                                )}
                               </div>
-                              {index ===
-                              props.state.proposalDocuments.length - 1 ? (
-                                <img
-                                  className={classes.imag}
-                                  onClick={props.addDocumentRow}
-                                  src="/images/Add.svg"
-                                />
-                              ) : (
-                                <img
-                                  className={" height-27 m-t-4 width-27 m-l-4"}
-                                  onClick={() => props.deleteDocumentRow(index)}
-                                  src="/images/substract.png"
-                                />
-                              )}
-                            </div>
-                          );
-                        })
-                      : ""}
-                  </Column>
-                </Grid>
-              </div>
-              <div className={classes.buttondiv}>
-                <Button onClick={createNewProposal}>
-                  <span className={classes.circle}></span>
-                  Connect Wallet
-                </Button>
-              </div>
+                            );
+                          })
+                        : ""}
+                    </Column>
+                  </div>
+                </div>
+                <div className={classes.buttondiv}>
+                  <Button onClick={createNewProposal}>
+                    <span className={classes.circle}></span>
+                    Connect Wallet
+                  </Button>
+                </div>
+              </Container>
             </div>
           </Grid>
         </div>
@@ -634,10 +530,16 @@ export default function Createnewproposal(props) {
     </div>
   );
 }
+const Container = styled.div`
+  padding: 25px;
+`;
 const Div = styled.div`
   width: 100%;
-  max-width: 805px;
-  margin-left: 62px;
+  margin-left: 126px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    width: 100%;
+    margin-left: 8px;
+  }
 `;
 const DateDiv = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -651,8 +553,8 @@ const BrowseButton = styled.label`
   text-align: center;
   letter-spacing: 0px;
   color: #2149b9;
-  font-size: 14px;
-  font-family: "Inter";
+  font: normal normal normal 15px/19px Inter;
+
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #2049b9;
   border-radius: 4px;
@@ -665,9 +567,7 @@ const BrowseButton = styled.label`
   width: 100%;
   max-width: 120px;
 `;
-const Textarea = styled.textarea`
-  width: 100%;
-`;
+
 const Button = styled.button`
   background: #2149b9 0% 0% no-repeat padding-box;
   border: 1px solid #fffcfc;
@@ -675,13 +575,14 @@ const Button = styled.button`
   color: #ffffff;
 
   height: 38px;
-  font-size: 12px;
+  font: normal normal normal 15px/19px Inter;
   margin-bottom: 10%;
   display: flex;
   align-items: center;
   width: 100%;
   max-width: 213px;
-  justify-content: center @media (min-width: 300 px) and (max-width: 767 px) {
+  justify-content: center;
+  @media (min-width: 300 px) and (max-width: 767 px) {
     width: 120px;
   }
 `;
@@ -690,7 +591,7 @@ const Mobile = styled.div`
   display: flex;
   flex-flow: row nowrap;
   margin-top: 20px;
-  @media (min-width: 767px) and (max-width: 2000px) {
+  @media (min-width: 768px) {
     display: none;
   }
 `;
@@ -700,46 +601,41 @@ const Firstdiv = styled.div`
 const Startdate = styled.div`
   font: normal normal normal 15px/19px Inter;
   color: #2a2a2a;
-  opacity: 1;
-  font-size: 12px;
   text-align: left;
-  padding-top: 1%;
   white-space: nowrap;
-
   padding-left: 10px;
 `;
 const Seconddiv = styled.div``;
 const Enddate = styled.div`
   font: normal normal normal 15px/19px Inter;
   color: #2a2a2a;
-  opacity: 1;
-  font-size: 12px;
-  text-align: left;
-  padding-top: 1%;
   white-space: nowrap;
-  padding-left: 21px;
-  letter-spacing: 0px;
-  margin-left: 24px;
 `;
 const Inputenddate = styled.input`
   border: 1px solid #e3e7eb;
-  height: 35px;
-  opacity: 1;
-  font-size: 10px;
+  font: normal normal normal 15px/19px Inter;
   max-width: 215px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border-radius: 4px;
-  margin-left: 44px;
-  width: 72%;
+
+  width: 100%;
 `;
 const Inputstartdate = styled.input`
   width: 100%;
-  margin-left: 7px;
   border: 1px solid #e3e7eb;
-  height: 35px;
-  opacity: 1;
-  font-size: 10px;
+  padding: 6px;
+  font: normal normal normal 15px/19px Inter;
   max-width: 215px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border-radius: 4px;
+`;
+const StartDiv = styled.div`
+  display: flex;
+  align-items: center;
+  width: 50%;
+`;
+const EndDiv = styled.div`
+  display: flex;
+  align-items: center;
+  width: 50%;
 `;
