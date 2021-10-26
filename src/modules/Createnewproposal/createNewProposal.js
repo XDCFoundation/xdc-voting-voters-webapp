@@ -87,8 +87,8 @@ const useStyles = makeStyles((theme) => ({
 
     "@media (min-width: 300px) and (max-width: 767px)": {
       display: "block",
-      marginLeft: "7px",
-      width: "113%",
+      marginLeft: "-63px",
+      width: "92%",
     },
   },
 
@@ -126,7 +126,7 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: "nowrap",
     "@media (min-width: 300px) and (max-width: 767px)": {
       fontSize: "11px",
-      paddingLeft: "8px",
+      paddingLeft: "0px",
     },
     "@media (min-width: 900px) and (max-width: 977px)": {
       fontSize: "12px",
@@ -219,6 +219,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     border: "1px solid #e3e7eb",
     marginTop: "47px",
+    "@media (min-width: 300px) and (max-width: 767px)": {
+      height:"250px"
+    },
   },
 
   row: {
@@ -227,6 +230,7 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 300px) and (max-width: 767px)": {
       display: "block !important",
       justifyContent: "center",
+      paddingLeft:"9px"
     },
   },
 
@@ -243,7 +247,7 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 300px) and (max-width: 767px)": {
       fontSize: "12px",
       paddingLeft: "8px",
-      marginTop: "109px",
+      marginTop: "75px",
     },
     "@media (min-width: 767px) and (max-width: 900px)": {
       fontSize: "9px",
