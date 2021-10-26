@@ -130,7 +130,7 @@ const FirstBlock = styled.div`
   border: 1px solid #cee6fd;
   border-radius: 6px;
   width: 100%;
-  height: 150px;
+  height: 158px;
   padding: 20px;
   max-width: 380px;
 `;
@@ -139,7 +139,7 @@ const SecondBlock = styled.div`
   border: 1px solid #cee6fd;
   border-radius: 6px;
   width: 100%;
-  height: 150px;
+  height: 158px;
   max-width: 380px;
   padding: 20px;
 `;
@@ -156,7 +156,7 @@ const ThirdBlock = styled.div`
   border: 1px solid #cee6fd;
   border-radius: 6px;
   width: 100%;
-  height: 150px;
+  height: 158px;
   padding: 20px;
   max-width: 380px;
 `;
