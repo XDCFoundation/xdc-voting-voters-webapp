@@ -410,7 +410,7 @@ opacity: 1;
         margin-top: 3px;
     }
     .recent-div-footer{
-        padding-top: 329px;
+        padding-top: 73px;
     }
     .header-div{
         background: #2049B9 0% 0% no-repeat padding-box;
@@ -538,7 +538,12 @@ opacity: 1;
     .xdc-connect{
         padding-top: 10px;
     }
-    
+    .div-1{
+        width: 209px !important;
+    }
+    .recent-proposal-div{
+        margin-top: 37px !important;
+    }
 
 }
 

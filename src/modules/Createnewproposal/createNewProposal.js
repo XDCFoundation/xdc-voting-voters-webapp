@@ -222,6 +222,9 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 300px) and (max-width: 767px)": {
       height:"250px"
     },
+    "@media (min-width: 767px) and (max-width: 1024px)":{
+       height:"360px"
+    }
   },
 
   row: {
@@ -232,6 +235,9 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "center",
       paddingLeft:"9px"
     },
+    
+
+
   },
 
   upload: {
@@ -352,6 +358,9 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 200px) and (max-width: 767px)": {
      paddingLeft:"8px"
     },
+    "@media (min-width: 767px) and (max-width: 1024px)":{
+      paddingBottom:"8px"
+   }
   }
 }));
 const Headerdiv = styled.div`
@@ -429,7 +438,7 @@ export default function Createnewproposal(props) {
 
               <hr className={classes.line} />
 
-              <div className={classes.row}>
+              <div className={classes.row }>
                 {/* <Grid xs={2} className={classes.proposaltitle}>
                   Proposal Title
                 </Grid> */}
@@ -555,7 +564,7 @@ export default function Createnewproposal(props) {
                   />
                 </Seconddiv>
               </Mobile>
-              <div className={classes.row} style={{paddingRight:"25px"}}>
+              <div className={classes.row } style={{paddingRight:"25px"}}>
                 <Grid xs={2} className={classes.description}>
                   Description
                 </Grid>
