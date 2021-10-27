@@ -32,7 +32,7 @@ export default function DivBlocksComponent() {
   return (
     <Div>
       <Grid item xs={12}>
-        <Grid container spacing={5}>
+        <Grid container spacing={6}>
           <Grid className={classes.gridOne} item xs={12} sm={6} md={4}>
             <FirstBlock>
               <Row
@@ -117,6 +117,7 @@ const Div = styled.div`
   width: 100%;
   max-width: 1280px;
   margin-top: 50px;
+  margin-bottom: 60px;
 `;
 const Img = styled.img`
   width: 20px;
