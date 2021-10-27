@@ -208,8 +208,11 @@ opacity: 1;
     margin-top: 8px;
 }
 @media (max-width:767px){
+    .box-all1{
+        margin-right: 20px !important;
+    }
     .recent-div-footer{
-      padding-top: 330px !important;  
+      padding-top: 800px !important;  
     }
     .date{
         white-space: nowrap;
@@ -373,7 +376,7 @@ opacity: 1;
         margin-left: 100px !important;
     }
     .know-about-xdc{
-        width: 100% !important;
+        width: 320px !important;
         /* border-right:  2px solid #CEE6FD !important;
         border-top:0px solid #CEE6FD !important;
         border-left: 0px solid #CEE6FD !important; */
@@ -413,7 +416,7 @@ opacity: 1;
         margin-top: 3px;
     }
     .recent-div-footer{
-        padding-top: 73px;
+        padding-top: 143px;
     }
     .header-div{
         background: #2049B9 0% 0% no-repeat padding-box;
