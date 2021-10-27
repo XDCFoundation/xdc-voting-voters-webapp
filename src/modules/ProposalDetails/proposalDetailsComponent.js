@@ -59,7 +59,7 @@ export default function ProposalDetails(props) {
                         <div className="recent-proposal-div-proposal">
                             <Row className="recent-add-div-proposal">
                                 <Column>
-                                    <Row className="date-proposal">Posted
+                                    <Row className="date-proposal post">Posted
                                         on {moment(props.state.proposalDetails?.createdOn).format("LL")}</Row>
                                     <Row className="name-proposal">{props.state.proposalDetails?.proposalTitle} </Row>
                                     <Row className="status-proposal">
@@ -67,7 +67,7 @@ export default function ProposalDetails(props) {
                                     </Row>
                                 </Column>
                                 <Column>
-                                    <Row className="time-proposal">
+                                    <Row className="time-proposal post">
                                         <span style={{marginRight: "5px"}}>
                                             <img
                                                 style={{
