@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
         outline: "0px",
         fontSize: "13px",
         color: "#2149b9",
-        fontWeight: "600",
+        fontWeight: "400",
         textAlignLast: "right",
         marginLeft: "7px",
     },
@@ -33,13 +33,13 @@ const useStyles = makeStyles((theme) => ({
         outline: "0px",
         height: "31px",
         fontFamily: "Inter",
-        fontWeight: "600",
+        fontWeight: "400",
         marginLeft: "8px",
         color: "#2A2A2A",
     },
     row: {
         border: "1px solid #E3E7EB",
-        height: "30px",
+        height: "34px",
         borderRadius: "4px",
         width: "100%",
         maxWidth: "126px",
@@ -125,14 +125,14 @@ const useStyles = makeStyles((theme) => ({
         outline: "0px",
         height: "30px",
         fontFamily: "Inter",
-        fontWeight: "600",
+        fontWeight: "400",
     },
     stylePage: {
         border: "0px",
         outline: "0px",
         fontSize: "13px",
         // color: "#2A2A2A",
-        fontWeight: "600",
+        fontWeight: "400",
         color: "#2149B9",
     },
 }));
@@ -365,7 +365,7 @@ const DateSpan = styled.span`
   color: #2a2a2a;
   font-size: 13px;
   font-family: "Inter";
-  font-weight: 600;
+  font-weight: 400;
   margin-left: 8px;
 `;
 const DatePickerDiv = styled.div`
@@ -387,7 +387,7 @@ const Input = styled.input`
   font-size: 12px;
   font-family: "Inter";
   color: #909090;
-  font-weight: 600;
+  font-weight: 400;
 `;
 const MainContainer = styled.div`
   padding: 20px 17px;
@@ -449,7 +449,7 @@ const PagingDiv = styled.div`
 const Span = styled.span`
   text-align: left;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 12px;
   letter-spacing: 0px;
   color: #3b3b3b;
@@ -462,7 +462,7 @@ const Show = styled.span`
   display: flex;
   text-align: left;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 12px;
   letter-spacing: 0px;
   color: #3b3b3b;
@@ -478,7 +478,7 @@ const Block = styled.div`
   height: 22px;
   margin-left: 8px;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 12px;
 `;
 
