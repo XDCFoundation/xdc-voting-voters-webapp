@@ -20,7 +20,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     maxWidth: "1280px",
-    position: "absolute",
+    // position: "absolute",
+    marginTop: "-104px",
+    marginBottom: "40px",
+    zIndex: "1",
     top: "145px",
 
     width: "100%",
@@ -31,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "500px",
     },
     "@media (min-width: 767px) and (max-width: 1440px)": {
-      maxWidth: "1000px",
+      maxWidth: "900px",
     },
   },
   containerOne: {
@@ -110,12 +113,11 @@ const useStyles = makeStyles((theme) => ({
     font: "normal normal normal 15px/19px Inter",
     letterSpacing: "0px",
     color: "#2a2a2a",
-
-    paddingTop: "7px",
+    // paddingTop: "7px",
     whiteSpace: "nowrap",
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
-      paddingLeft: "8px",
+      paddingBottom: "12px",
     },
     "@media (min-width: 900px) and (max-width: 977px)": {
       font: "normal normal normal 15px/19px Inter",
@@ -125,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     font: "normal normal normal 15px/19px Inter",
     color: " #2a2a2a",
-
+    paddingRight: "151px",
     whiteSpace: "nowrap",
 
     "@media (min-width: 300px) and (max-width: 767px)": {
@@ -156,6 +158,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     letterSpacing: "0px",
     color: "#2a2a2a",
+    paddingLeft: "81px",
+
+    paddingRight: "99px",
 
     font: "normal normal normal 15px/19px Inter",
     alignItems: "center",
@@ -184,6 +189,7 @@ const useStyles = makeStyles((theme) => ({
 
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
+      paddingBottom: "12px",
     },
     "@media (min-width: 900px) and (max-width: 977px)": {
       font: "normal normal normal 15px/19px Inter",
@@ -192,12 +198,16 @@ const useStyles = makeStyles((theme) => ({
 
   quillgrid: {
     background: "#FFFFFF 0% 0% no-repeat padding-box",
-    maxWidth: "1024px",
+    maxWidth: "1002px",
     borderRadius: "6px",
     width: "100%",
     border: "1px solid #e3e7eb",
     font: "normal normal normal 15px/19px Inter",
-    marginLeft: "139px",
+    marginLeft: "143px",
+    "@media (min-width: 300px) and (max-width: 767px)": {
+      font: "normal normal normal 15px/19px Inter",
+      marginLeft: "0px",
+    },
   },
 
   row: {
@@ -209,7 +219,26 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "center",
     },
   },
+  rowThird: {
+    display: "flex",
+    flexFlow: "row nowrap",
+    marginTop: "31px",
 
+    "@media (min-width: 300px) and (max-width: 767px)": {
+      display: "block !important",
+      justifyContent: "center",
+    },
+  },
+  rowFourth: {
+    display: "flex",
+    flexFlow: "row nowrap",
+    marginTop: "31px",
+
+    "@media (min-width: 300px) and (max-width: 767px)": {
+      display: "block !important",
+      justifyContent: "center",
+    },
+  },
   upload: {
     textAlign: "left",
     font: "normal normal normal 15px/19px Inter",
@@ -220,6 +249,7 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: "nowrap",
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
+      paddingBottom: "12px",
     },
     "@media (min-width: 767px) and (max-width: 900px)": {
       font: "normal normal normal 15px/19px Inter",
@@ -237,6 +267,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "1019px",
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
+      marginLeft: "0px",
     },
     "@media (min-width: 767px) and (max-width: 900px)": {
       font: "normal normal normal 15px/19px Inter",
@@ -303,8 +334,8 @@ const useStyles = makeStyles((theme) => ({
     width: "10px",
     height: "10px",
     background: "#E3E7EB 0% 0% no-repeat padding-box",
-    marginRight: "43px",
-    marginLeft: "10px",
+    marginRight: "26px",
+    marginLeft: "-22px",
   },
 }));
 const Headerdiv = styled.div`
@@ -433,7 +464,7 @@ export default function Createnewproposal(props) {
                     />
                   </Seconddiv>
                 </Mobile>
-                <div className={classes.row}>
+                <div className={classes.rowThird}>
                   <div className={classes.description}>Description</div>
                   <div className={classes.quillgrid}>
                     <div className="text-editor">
@@ -447,7 +478,7 @@ export default function Createnewproposal(props) {
                     </div>
                   </div>
                 </div>
-                <div className={classes.row}>
+                <div className={classes.rowFourth}>
                   <div className={classes.upload}>Upload Document</div>
                   <div className={classes.uploadbox}>
                     <Column>
@@ -524,9 +555,8 @@ export default function Createnewproposal(props) {
           </Grid>
         </div>
       </div>
-      <div>
-        <FooterComponent />
-      </div>
+
+      <FooterComponent />
     </div>
   );
 }
@@ -538,7 +568,7 @@ const Div = styled.div`
   margin-left: 126px;
   @media (min-width: 300px) and (max-width: 767px) {
     width: 100%;
-    margin-left: 8px;
+    margin-left: 0px;
   }
 `;
 const DateDiv = styled.div`
@@ -573,7 +603,6 @@ const Button = styled.button`
   border: 1px solid #fffcfc;
   border-radius: 4px;
   color: #ffffff;
-
   height: 38px;
   font: normal normal normal 15px/19px Inter;
   margin-bottom: 10%;
@@ -582,42 +611,65 @@ const Button = styled.button`
   width: 100%;
   max-width: 213px;
   justify-content: center;
-  @media (min-width: 300 px) and (max-width: 767 px) {
-    width: 120px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    width: 100%;
+    max-width: 185px;
+    height: 35px;
   }
 `;
 
 const Mobile = styled.div`
   display: flex;
+  width: 100%;
   flex-flow: row nowrap;
   margin-top: 20px;
+
   @media (min-width: 768px) {
     display: none;
+  }
+  @media (min-width: 300px) and (max-width: 570px) {
+    padding-right: 0px;
+    width: 100%;
+    max-width: 122px;
   }
 `;
 const Firstdiv = styled.div`
   display: block;
+  padding-right: 91px;
+  width: 100%;
+  @media (min-width: 300px) and (max-width: 767px) {
+    padding-right: 0px;
+    width: 100%;
+    margin-right: 5px !important;
+  }
 `;
 const Startdate = styled.div`
   font: normal normal normal 15px/19px Inter;
   color: #2a2a2a;
   text-align: left;
   white-space: nowrap;
-  padding-left: 10px;
+  @media (min-width: 300px) and (max-width: 600px) {
+    padding-bottom: 12px;
+  }
 `;
-const Seconddiv = styled.div``;
+const Seconddiv = styled.div`
+  width: 100%;
+`;
 const Enddate = styled.div`
   font: normal normal normal 15px/19px Inter;
   color: #2a2a2a;
   white-space: nowrap;
+  @media (min-width: 300px) and (max-width: 600px) {
+    padding-bottom: 12px;
+  }
 `;
 const Inputenddate = styled.input`
   border: 1px solid #e3e7eb;
   font: normal normal normal 15px/19px Inter;
-  max-width: 215px;
+
   background: #ffffff 0% 0% no-repeat padding-box;
   border-radius: 4px;
-
+  padding: 6px;
   width: 100%;
 `;
 const Inputstartdate = styled.input`
@@ -625,7 +677,7 @@ const Inputstartdate = styled.input`
   border: 1px solid #e3e7eb;
   padding: 6px;
   font: normal normal normal 15px/19px Inter;
-  max-width: 215px;
+
   background: #ffffff 0% 0% no-repeat padding-box;
   border-radius: 4px;
 `;

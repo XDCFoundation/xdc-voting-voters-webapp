@@ -222,12 +222,10 @@ opacity: 1;
     .mobile-box-block{
         display: block !important;
     }
-    /* .main-footer{
-        margin-top: 1450px !important;
-    } */
+    
     .mobile-footer{
-        /* margin-top: 466px !important; */
-
+       
+        width: 100%;
     }
     .mobile-footer-row-2{
         margin-left: -60px;
@@ -321,9 +319,7 @@ opacity: 1;
         font-size: 14px !important;
     }
     .griddiv{
-        /* height: 600px !important;
-        margin-bottom: 260px !important; */
-        /* padding-right: 10px !important; */
+      
     }
     .mobile-div-right{
         padding-right: 0px !important;
@@ -344,32 +340,19 @@ opacity: 1;
     }
     .know-about-xdc{
         width: 100% !important;
-        /* border-right:  2px solid #CEE6FD !important;
-        border-top:0px solid #CEE6FD !important;
-        border-left: 0px solid #CEE6FD !important; */
+        
     }
     .xdc-forum{
         width: 100% !important;
         margin-top: 30px !important;
-        /* border-right:  2px solid #CEE6FD !important;
-        border-top:0px solid #CEE6FD !important;
-        border-left: 0px solid #CEE6FD !important; */
+      
     }
     .community-tools{
         width: 100% !important;
         margin-top: 30px !important;
-        /* border-right:  2px solid #CEE6FD !important;
-        border-top:0px solid #CEE6FD !important;
-        border-left: 0px solid #CEE6FD !important; */
+      
     }
-    /* .mid-div{
-        display: flex;
-        flex-direction: column;
-    }
-    .display-flex{
-        display: flex;
-        flex-direction: column;
-    } */
+  
 }
 @media  (max-width:1023px) {
     .header-div{
@@ -475,9 +458,9 @@ opacity: 1;
         text-align:center !important;
         width: 100% !important;
         justify-content: center !important;
-        /* font-size: 13px !important; */
+      
         font-weight: 400 !important;
-        /* margin-left: 100px; */
+        
 
 
     }
@@ -503,7 +486,7 @@ opacity: 1;
 margin-left: 10px;
 width: 45px;
 height: 45px;
-/* border: 2px solid #FFFFFF; */
+
 opacity: 1;
 
 }
@@ -762,9 +745,8 @@ font-family: 'Inter';
     width: 100%;
     display: flex;
     justify-content: center;
-
-    padding-left: 20px;
-    padding-right: 20px;
+    max-width: 1280px;
+   
 }
 .all-div{
 width: 100%;
@@ -1001,13 +983,7 @@ text-align: center;
      /* border: .5px solid #E3E7EB; */
  }
  .recent-proposal-div-footer{
-    margin-top: 0px;
-    width: 100%;
-    max-width: 950px;
-    height: 210px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
+    
 
  }
  .reserved{
