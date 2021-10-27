@@ -214,11 +214,11 @@ export default function ProposalDetails(props) {
                                     <div className="piediv">
                                         <div className="display-flex">
                                             <div className="box-support"></div>
-                                            <div className="spt">{props?.state?.proposalDetails?.yesVotes?.length}</div>
+                                            <div className="spt">Support({props?.state?.proposalDetails?.yesVotes?.length}%)</div>
                                         </div>
                                         <div className="display-flex">
                                             <div className="box-reject"></div>
-                                            <div className="rjt">{props?.state?.proposalDetails?.noVotes?.length}</div>
+                                            <div className="rjt">Reject({props?.state?.proposalDetails?.noVotes?.length}%)</div>
                                         </div>
                                     </div>
                                 </div>
