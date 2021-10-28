@@ -6,24 +6,28 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import DatePicker from "react-multi-date-picker";
 import styled from "styled-components";
-import "../Dashboard/datepicker.css";
+import "./datepicker.css";
 import FooterComponent from "../footer/footerComponent";
 import { history } from "../../managers/history";
+import { useParams } from "react-router-dom";
+import Utils from "../../utility";
+import { VotersPercentageService } from "../../services";
+import { ProposalList } from "../../services/index";
 import moment from "moment";
-import Pagination from "react-js-pagination";
-import Countdown from "react-countdown";
+
+import Chart from "react-google-charts";
+import { searchProposal } from "../../services/proposalService";
 
 const useStyles = makeStyles((theme) => ({
   selectOptions: { backgroundColor: "white" },
 
   styleContent: {
     border: "0px",
-    webkitAppearance: "none",
     outline: "0px",
     fontSize: "13px",
     color: "#2149b9",
     fontWeight: "600",
-
+    textAlignLast: "right",
     marginLeft: "7px",
   },
   styleHead: {
@@ -35,10 +39,8 @@ const useStyles = makeStyles((theme) => ({
     height: "31px",
     fontFamily: "Inter",
     fontWeight: "600",
-    // marginLeft: "8px",
+    marginLeft: "8px",
     color: "#2A2A2A",
-    width: "100%",
-    paddingLeft: "10px",
   },
   row: {
     border: "1px solid #E3E7EB",
@@ -89,13 +91,14 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "30px",
     background: "url(/images/Search.svg) no-repeat 1px",
-    color: "#909090",
+    border: "solid 1px #aab1ff",
+    color: "#09184b",
     backgroundSize: "14px",
     padding: "16px 22px",
     border: "1px solid #E3E7EB",
     borderRadius: "4px",
     opacity: 1,
-    fontSize: "14px",
+    fontSize: "11px",
     marginLeft: "10px",
     maxWidth: "140px",
     "@media (min-width: 300px) and (max-width: 780px)": {
@@ -152,22 +155,85 @@ const SecondContainer = styled.div`
     display: block;
   }
 `;
-
 function ProgressBar() {
   return (
     <div>
-      <ViewAllProposal name="deepali" />
+      <ViewAllProposal />
     </div>
   );
 }
 
-export default function ViewAllProposal(props) {
+export default function ViewAllProposal() {
+  const { proposal } = useParams();
   const backButton = () => {
-    history.push("/");
+    history.push("/community");
+  };
+  // let urlPath = ""
+  const [getVotesPercentage, setGetVotesPercentage] = useState([]);
+
+  // useEffect(async () => {
+  //   // let urlPath = ``;
+  //   let [error, votePercentage] = await Utils.parseResponse(
+
+  //     VotersPercentageService.getVotersPercentage("0x45f5815e7051cA72EF2b11e3E52DC42Aa4cf8439")
+  //   );
+  //   console.log("vote",votePercentage)
+
+  //   if (error || !votePercentage) return;
+
+  //   setGetVotesPercentage(votePercentage);
+
+  // }, []);
+
+  // console.log("transaction====", getVotesPercentage);
+
+  // let passVote=getVotesPercentage.supportpercentage?.yes
+  // console.log(passVote,"yes")
+  // let yes=Math.floor(passVote)
+  // let rejectedVote=getVotesPercentage.supportpercentage?.No
+  // console.log(rejectedVote,"noo")
+  // let rejected=Math.floor(rejectedVote)
+
+  const [allProposalList, setProposalList] = useState([]);
+
+  const reqObj = {
+    skip: "0",
+    limit: "6",
   };
 
+  useEffect(async () => {
+    console.log("result");
+    let [error, proposalList] = await Utils.parseResponse(
+      ProposalList.proposalList(reqObj)
+    );
+
+    if (error || !proposalList) return;
+
+    setProposalList(proposalList.proposalList);
+  }, []);
+
+  console.log("transaction====", allProposalList.proposalList);
+  console.log("transaction====", allProposalList.countData);
+  let list = allProposalList.proposalList;
+
+  ProgressBar();
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
+  const [searchInput, setSearchInput] = useState("");
+
+  const searchingProposal = async (e) => {
+    setSearchInput(e.target.value);
+    const reqObj = {
+      proposalTitle: searchInput,
+      skip: "0",
+      limit: "6",
+    };
+    const response = await searchProposal(reqObj).catch((err) => {
+      console.log(err);
+    });
+    console.log(response, "seachresponse");
+    setProposalList(response);
+  };
 
   return (
     <div>
@@ -184,11 +250,7 @@ export default function ViewAllProposal(props) {
             >
               <img
                 src="/images/Back-Arrow.svg"
-                style={{
-                  width: "20px",
-                  marginRight: "8px",
-                  marginBottom: "8px",
-                }}
+                style={{ width: "15px", marginRight: "8px" }}
               />
               <Back>Back</Back>
             </div>
@@ -203,8 +265,11 @@ export default function ViewAllProposal(props) {
                     type="text"
                     onKeyUp={console.log("hello")}
                     id="proposalInput"
+                    value={searchInput}
                     onChange={(e) => {
-                      props.searchingProposal(e);
+                      // setSearchInput(e.target.value);
+                      console.log(searchInput, "searchInput");
+                      searchingProposal(e);
                     }}
                   />
                 </InputDiv>
@@ -214,14 +279,10 @@ export default function ViewAllProposal(props) {
                 <SelectBox>
                   <Row className={classes.row}>
                     <Column className={classes.styleHead}>Status </Column>
-                    <select
-                      // className={classes.styleContent}
-                      className="select-box"
-                      onChange={props.onStatusChange}
-                    >
+                    <select className={classes.styleContent}>
                       <option>All</option>
-                      <option value={"Open"}>Open</option>
-                      <option value={"Closed"}>Closed</option>
+                      <option>On</option>
+                      <option>Off</option>
                     </select>
                   </Row>
                 </SelectBox>
@@ -230,7 +291,7 @@ export default function ViewAllProposal(props) {
                   <DatePicker
                     arrow={true}
                     format="D MMM YYYY"
-                    onChange={props.onDateChange}
+                    onChange={onChange}
                     value={value}
                     range
                   />
@@ -240,22 +301,13 @@ export default function ViewAllProposal(props) {
             </Row>
 
             <Div>
-              {props.state.proposalsList &&
-              props.state.proposalsList.length >= 1 ? (
-                props.state.proposalsList.map((data) => {
+              {allProposalList &&
+                allProposalList.length >= 1 &&
+                allProposalList.map((data) => {
                   console.log(data, "data===");
                   let title = data.proposalTitle;
-                  let status = data.endDate > Date.now() ? "Open" : "Closed";
+                  let status = data.status;
                   let formatedTime = moment(data.createdOn).format("LL");
-                  const yesVotes = data.yesVotes.length;
-                  const noVotes = data.noVotes.length;
-                  const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
-                  const noVotesWidth = (100 * noVotes) / (yesVotes + noVotes);
-
-                  if (status === "Closed") {
-                    if (yesVotesWidth >= 66) status = "Passed";
-                    else status = "Failed";
-                  }
 
                   return (
                     <MainContainer isTextArea={true}>
@@ -263,137 +315,113 @@ export default function ViewAllProposal(props) {
                         <RowSpacing>
                           <Posted>Posted on &nbsp;{formatedTime}</Posted>
                           <TimeRemainingDiv>
-                            {status === "Open" ? (
-                              <>
-                                <Row>
-                                  <span style={{ marginRight: "5px" }}>
-                                    <img
-                                      className="m-b-4"
-                                      src={require("../../assets/styles/images/Time-Active.svg")}
-                                    />
-                                  </span>
-                                  <Span>
-                                    <Countdown
-                                      className="count-down"
-                                      date={data.endDate}
-                                    />
-                                    &nbsp;Remaining
-                                  </Span>
-                                </Row>
-                                <Row className="justify-content-end">
-                                  <div
-                                    className="details"
-                                    onClick={() =>
-                                      props.proposalRedirect(
-                                        data.pollingContract
-                                      )
-                                    }
-                                  >
-                                    Details
-                                  </div>
-                                </Row>
-                              </>
-                            ) : (
-                              <>
-                                <ClockImage src="/images/Time-Inactive.svg" />
-                                <PollEnded>Poll Ended</PollEnded>
-                              </>
-                            )}
+                            <ClockImage src="/images/Time-Inactive.svg" />
+                            &ensp;
+                            <PollEnded>Poll Ended</PollEnded>
                           </TimeRemainingDiv>
                         </RowSpacing>
                         <RowSpacing>
                           <div className={classes.mobilemedia}>
                             <Content>{title}</Content>
-                            {status === "Open" ? (
-                              ""
-                            ) : (
-                              <PositionDivLine>
-                                <BarLine>
-                                  <RedLine
-                                    style={{ width: noVotesWidth + "%" }}
-                                  ></RedLine>
-                                  <GreenLine
-                                    style={{ width: yesVotesWidth + "%" }}
-                                  ></GreenLine>
-                                </BarLine>
-                              </PositionDivLine>
-                            )}
+                            <PositionDivLine>
+                              <BarLine>
+                                <RedLine></RedLine>
+                                <GreenLine></GreenLine>
+                                {/* <Chart
+                            // let yes={yes}
+                            // let no={rejected}
+                              width={"100%"}
+                              height={"8px"}
+                              chartType="BarChart"
+                              data={[
+                                ["", "",{ role: 'style' }, "", { role: 'style' }, {
+                                  sourceColumn: 0,
+                                  role: 'annotation',
+                                  type: 'string',
+                                  calc: 'stringify',
+                                }],
+                                ["", 14,"color:#3ab70d",30,"color:red",null],
+                                
+                               
+                              ]}
+                              options={{
+                                title: "votes",
+                                chartArea: { width: "100%" },
+                                isStacked: true,
+                                grid:{position: 'none' },
+                                legend: { position: 'none' }
+                                
+                              }}
+                              // For tests
+                              rootProps={{ "data-testid": "1" }}
+                            /> */}
+                              </BarLine>
+                            </PositionDivLine>
                           </div>
                         </RowSpacing>
                         <Media_for_container>
                           <Container>
                             <Status>Status:&ensp;</Status>
-                            <Open>{status}2</Open>
+                            <Open>{status}</Open>
                           </Container>
 
                           <MobileDivLine>
-                            {status === "Open" ? (
-                              ""
-                            ) : (
-                              <BarLine>
-                                <GreenLine
-                                  style={{ width: yesVotesWidth + "%" }}
-                                ></GreenLine>
-                                <RedLine
-                                  style={{ width: noVotesWidth + "%" }}
-                                ></RedLine>
-                              </BarLine>
-                            )}
+                            <BarLine>
+                              <GreenLine></GreenLine>
+                              <RedLine></RedLine>
+                            </BarLine>
                           </MobileDivLine>
                         </Media_for_container>
                         <DisplayNone>
                           <Container>
                             <Status>Status:&ensp;</Status>
-                            {status == "Open" ? (
-                              <Open>{status}</Open>
-                            ) : status === "Passed" ? (
-                              <Passed>{status}</Passed>
-                            ) : (
-                              <Failed>{status}</Failed>
-                            )}
+                            <Open>{status}</Open>
                           </Container>
 
-                          {status === "Open" ? (
-                            ""
-                          ) : (
-                            <NumberOfVotes>
-                              {Number(yesVotes) + Number(noVotes)} votes
-                            </NumberOfVotes>
-                          )}
+                          <NumberOfVotes>25 votes</NumberOfVotes>
                         </DisplayNone>
                         <RowSpacing>
                           <MobileResponsive>
                             <ClockImage src="/images/Time-Inactive.svg" />
+
                             <PollEnded></PollEnded>
                           </MobileResponsive>
                         </RowSpacing>
                       </Column>
                     </MainContainer>
                   );
-                })
-              ) : (
-                <div className="display-flex justify-content-center p-t-50">
-                  {" "}
-                  No Record found
-                </div>
-              )}
+                })}
             </Div>
-            <div className="display-flex justify-content-end p-t-15">
-              <Pagination
-                prevPageText="Previous"
-                nextPageText="Next"
-                hideFirstLastPages
-                linkClassNext="table-pagination"
-                linkClassPrev="table-pagination"
-                activeLinkClass="fc-black"
-                linkClass="table-pagination"
-                activePage={props.state.activePage}
-                itemsCountPerPage="10"
-                pageRangeDisplayed="5"
-                totalItemsCount={props.state.totalProposalsCount}
-                onChange={props.handlePageChange}
-              />
-            </div>
+
+            <PagingDiv>
+              <FirstDiv>
+                <Show>Show </Show>
+
+                <SelectBox>
+                  <Row className={classes.row}>
+                    <Column className={classes.styleBlock}> </Column>
+                    <select className={classes.stylePage}>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </Row>
+                </SelectBox>
+                <Proposals>Proposals </Proposals>
+              </FirstDiv>
+              <SecondDiv>
+                <BackButton>Back</BackButton>
+                <Block>
+                  <Span>1 </Span>
+                </Block>
+                <Block>
+                  <Span>2 </Span>
+                </Block>
+                <NextBlock>
+                  <Span>Next</Span>
+                </NextBlock>
+              </SecondDiv>
+            </PagingDiv>
           </Grid>
         </div>
       </div>
@@ -408,12 +436,25 @@ const ArrowImg = styled.img`
   margin-right: 7px;
   width: 5%;
 `;
+const SecondDiv = styled.div`
+  display: flex;
+  align-items: center;
+  @media (min-width: 300px) and (max-width: 780px) {
+    // display: block;
+    margin-top: 10px;
+  }
+`;
+const FirstDiv = styled.div`
+  display: flex;
+  @media (min-width: 300px) and (max-width: 767px) {
+  }
+`;
 const DateSpan = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   font-size: 13px;
   font-family: "Inter";
-  font-weight: 400;
+  font-weight: 600;
   margin-left: 8px;
 `;
 const DatePickerDiv = styled.div`
@@ -424,7 +465,6 @@ const DatePickerDiv = styled.div`
   input:focus {
     border: none !important;
   }
-
   @media (min-width: 400px) and (max-width: 780px) {
     width: 100%;
     max-width: 230px;
@@ -435,13 +475,10 @@ const Input = styled.input`
   font-size: 12px;
   font-family: "Inter";
   color: #909090;
-  font-weight: 400;
+  font-weight: 600;
 `;
 const MainContainer = styled.div`
   padding: 20px 17px;
-  @media (min-width: 300px) and (max-width: 767px) {
-    padding: 20px 8px 17px 8px;
-  }
   // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: ${(props) =>
     props.isTextArea ? `1px solid rgba(0, 0, 0, 0.1);` : `unset`};
@@ -500,7 +537,7 @@ const PagingDiv = styled.div`
 const Span = styled.span`
   text-align: left;
   font-family: "Inter", sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 12px;
   letter-spacing: 0px;
   color: #3b3b3b;
@@ -513,7 +550,7 @@ const Show = styled.span`
   display: flex;
   text-align: left;
   font-family: "Inter", sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 12px;
   letter-spacing: 0px;
   color: #3b3b3b;
@@ -529,7 +566,7 @@ const Block = styled.div`
   height: 22px;
   margin-left: 8px;
   font-family: "Inter", sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 12px;
 `;
 
@@ -566,7 +603,7 @@ const MobileResponsive = styled.div`
     display: none;
   }
   @media (min-width: 300px) and (max-width: 767px) {
-    display: block;
+    display: visible;
   }
 `;
 const BarLine = styled.div`
@@ -580,6 +617,7 @@ const BarLine = styled.div`
 `;
 const GreenLine = styled.div`
   background-color: #3ab70d;
+  width: 100%;
   height: 3px;
   @media (min-width: 300px) and (max-width: 767px) {
     width: 50%;
@@ -587,6 +625,7 @@ const GreenLine = styled.div`
 `;
 const RedLine = styled.div`
   background-color: #f43d3d;
+  width: 100%;
   height: 3px;
   @media (min-width: 300px) and (max-width: 767px) {
     width: 50%;
@@ -600,13 +639,12 @@ const SelectBox = styled.div`
   }
   @media (min-width: 300px) and (max-width: 780px) {
     margin-top: 10px;
-    margin-bottom: 10px;
   }
 `;
 const Failed = styled.span`
   font-family: "Inter", sans-serif;
-
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 12px;
   letter-spacing: 0px;
   opacity: 1;
   color: #f43d3d;
@@ -661,7 +699,7 @@ const Div = styled.div`
 const Posted = styled.span`
   text-align: left;
   font-family: "Inter", sans-serif;
-
+  // font-weight: 600;
   font-size: 14px;
   letter-spacing: 0px;
   color: #909090;
@@ -714,7 +752,7 @@ const Content = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter',sans-serif;
   font-weight: 600;
   font-size: 18px;
   @media (min-width: 300px) and (max-width: 767px) {
@@ -723,7 +761,7 @@ const Content = styled.span`
 `;
 const Status = styled.span`
   font-family: "Inter", sans-serif;
-
+  font-weight: 600;
   font-size: 14px;
   letter-spacing: 0px;
   opacity: 1;
@@ -740,7 +778,7 @@ const Open = styled.span`
   color: #2149b9;
   whitespace: "nowrap";
   font-family: "Inter", sans-serif;
-
+  font-weight: 600;
   font-size: 14px;
   @media (min-width: 300px) and (max-width: 767px) {
     font-size: 12px;
@@ -751,6 +789,7 @@ const TimerImg = styled.img`
 `;
 const Passed = styled.span`
   font-family: "Inter", sans-serif;
+  font-weight: 600;
   font-size: 14px;
   letter-spacing: 0px;
   color: #3ab70d;
@@ -761,7 +800,7 @@ const Passed = styled.span`
 `;
 const NumberOfVotes = styled.span`
   font-family: "Inter", sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 14px;
   color: #2a2a2a;
   @media (min-width: 300px) and (max-width: 767px) {
@@ -772,7 +811,7 @@ const Heading = styled.span`
   white-space: nowrap;
   font-family: "Inter", sans-serif;
   font-weight: 600;
-  font-size: 22px;
+  font-size: 21px;
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;

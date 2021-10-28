@@ -28,14 +28,14 @@ export default function Header(props) {
       console.log(err);
     });
 
-    setGetVotesCasted(response?.countData);
-  }
+    setGetVotesCasted(response.countData);
+  };
 
   const getVoting = async () => {
     const response = await getTotalVotingAddress().catch((err) => {
       console.log(err);
     });
-    setGetTotalVoting(response?.dataList.length);
+    setGetTotalVoting(response.dataList.length);
   };
 
   const getPassed = async () => {
@@ -97,7 +97,11 @@ export default function Header(props) {
             <Row className="recent-add-div">
               <Column className="heading">Recent Proposals</Column>
               <Column>
-                <div onClick={createView} id="div_create_prop" className="create-wallet-hide create-wallet">
+                <div
+                  onClick={createView}
+                  id="div_create_prop"
+                  className="create-wallet-hide create-wallet"
+                >
                   <p>Create Proposal</p>
                 </div>
               </Column>
@@ -105,21 +109,13 @@ export default function Header(props) {
             <div className="griddiv">
               <RecentProposal />
             </div>
-
-            {/* <Row onClick={handleView} className="view-all">
-              View All Proposals
-            </Row> */}
-
-            <div>
-              <DivBlocksComponent />
-            </div>
           </div>
         </div>
       </Column>
 
-      <div>
+      {/* <div>
         <FooterComponent />
-      </div>
+      </div> */}
     </div>
   );
 }
