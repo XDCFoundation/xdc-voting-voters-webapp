@@ -6,6 +6,7 @@ import Web3 from "web3";
 import Utils from "../../utility";
 import AwsService from "../../services/awsService";
 import { addNewProposal } from "../../services/proposalService";
+import { uploadFile } from "../../services/fileUploaderService";
 
 const { extname } = require("path");
 
@@ -66,16 +67,10 @@ export default class Createproposal extends BaseComponent {
 
   uploadFileToS3 = async (file, index) => {
     let extName = extname(file.name);
-    let fileName =
-      "proposal-documents/" + Utils.generateCompanyLogoKey() + extName;
+    let fileName = "proposal-documents/" + Utils.generateCompanyLogoKey() + extName;
     let mimeType = file.type;
     try {
-      let responseObj = await AwsService.uploadFileToS3(
-        file,
-        fileName,
-        mimeType,
-        false
-      ).catch((err) => {
+      let responseObj = await uploadFile({isSignedURL: true, uploadedFile: file}).catch((err) => {
         console.log(err);
       });
       this.state.proposalDocuments[index] = responseObj.key;
