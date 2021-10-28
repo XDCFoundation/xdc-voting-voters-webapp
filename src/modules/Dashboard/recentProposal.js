@@ -70,7 +70,7 @@ export default function RecentProposal(props) {
                     <TableRow className="table-mid-line">
                       <Row className="table-between">
                         <Column>
-                          <TableCell style={{ border: "none" }}>
+                          <TableCell class="table-cell" style={{ border: "none" }}>
                             <Row className="date">
                               Posted on{" "}
                               {Utils.epocToPrettyTime(proposal["cretaedOn"])}
@@ -92,17 +92,61 @@ export default function RecentProposal(props) {
                                 {status}
                               </span>
                             </Row>
+                            {status === "Open" ? (
+                              <>
+                                <Row>
+                                  <span style={{ marginRight: "5px" }}>
+                                    {" "}
+                                    <img
+                                      style={{
+                                        height: "14px",
+                                        width: "14px",
+                                      }}
+                                      className="m-b-4"
+                                      src={require("../../assets/styles/images/Time-Active.svg")}
+                                    />
+                                  </span>
+                                  <Span>
+                                    <Countdown
+                                      className="count-down"
+                                      date={proposal.endDate}
+                                    />
+                                    &nbsp;Remaining
+                                  </Span>
+                                </Row>
+                                
+                              </>
+                            ) : (
+                              <>
+                            <Row class="poll-ended-mobile">
+                            {" "}
+                                  <span style={{ marginRight: "5px" }}>
+                                    {" "}
+                                    <img
+                                      style={{
+                                        height: "14px",
+                                        width: "14px",
+                                        marginTop: "-2px",
+                                      }}
+                                      className="time-inactive-1"
+                                      src={require("../../assets/styles/images/Time-Inactive.svg")}
+                                    ></img>
+                                  </span>{" "}
+                                  Poll Ended
+                            </Row>
+                            </>
+                            )}
                           </TableCell>
                         </Column>
 
-                        <Column>
+                        <Column >
                           <TableCell
                             className="mobile-div-right"
                             style={{ border: "none" }}
                           >
                             {status === "Open" ? (
                               <>
-                                <Row>
+                                <Row class="count-down-mobile">
                                   <span style={{ marginRight: "5px" }}>
                                     {" "}
                                     <img
