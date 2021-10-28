@@ -595,6 +595,7 @@ cursor:pointer;
     color: #2A2A2A;
     font-size: 17px;
     font-family: "Inter",sans-serif;
+    margin-bottom: 10px;
 }
 .sub-column-heading{
     font: normal normal normal 15px/28px Inter;
@@ -1051,13 +1052,14 @@ text-align: center;
 
  }
  .reserved{
-
+    border-top: 1px solid #E3E7EB;
      justify-content: center;
-    margin-top: 40px;
-    font: normal normal normal 15px/28px Inter;
+    margin-top: 70px;
+   
     letter-spacing: 0px;
     color: #909090;
     opacity: 1;
+    font: normal normal normal 15px/28px Inter;
  }
  .row-2-width{
 
