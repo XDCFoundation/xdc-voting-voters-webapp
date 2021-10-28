@@ -122,52 +122,25 @@ export default function ProposalDetails(props) {
                           {removeTags(props.state.proposalDetails.description)}
                         </Row>
                       </Column>
-                      <Row className="doc-1">
-                        <div>
-                          <span>
-                            {" "}
+                        {props.state && props.state.proposalDetails && props.state.proposalDetails.proposalDocuments
+                        && props.state.proposalDetails.proposalDocuments.length
+                        && props.state.proposalDetails.proposalDocuments.map(doc => {
+                            return (<Row className="doc-1">
+                                                <span>
+                                                    {" "}
+                                                    <img className="attachment-logo" src={require("../../assets/styles/images/Attachment.svg")}/>
+                                                </span>
+                                <a href={props.state.proposalDetails.proposalDocumentsUrl[doc]} target="_blank">
+                                    <span className="attachment-heading">{doc.replace('images/','')}</span>
+                                </a>
+                                <span>
                             <img
-                              className="attachment-logo"
-                              src={require("../../assets/styles/images/Attachment.svg")}
+                                className="external-image-proposal"
+                                src={require("../../assets/styles/images/External-Link.svg")}
                             ></img>
-                          </span>
-                          <a href={Pdf} target="_blank">
-                            {" "}
-                            <span className="attachment-heading">
-                              Proposal Terms and Conditions.pdf
-                            </span>
-                          </a>
-                          <span>
-                            <img
-                              className="external-image-proposal"
-                              src={require("../../assets/styles/images/External-Link.svg")}
-                            ></img>
-                          </span>
-                        </div>
-                      </Row>
-                      <Row className="doc-1">
-                        <div>
-                          <span>
-                            {" "}
-                            <img
-                              className="attachment-logo"
-                              src={require("../../assets/styles/images/Attachment.svg")}
-                            ></img>
-                          </span>
-                          <a href={Doc} target="_blank">
-                            {" "}
-                            <span className="attachment-heading">
-                              About ABC Corporation.doc
-                            </span>
-                          </a>
-                          <span>
-                            <img
-                              className="external-image-proposal2"
-                              src={require("../../assets/styles/images/External-Link.svg")}
-                            ></img>
-                          </span>
-                        </div>
-                      </Row>
+                          </span></Row>)
+                        })}
+
                     </Grid>
                   </Grid>
                 </Row>

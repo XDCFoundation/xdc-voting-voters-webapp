@@ -66,14 +66,21 @@ export default class Createproposal extends BaseComponent {
   };
 
   uploadFileToS3 = async (file, index) => {
+    console.log("file ",file)
     let extName = extname(file.name);
-    let fileName = "proposal-documents/" + Utils.generateCompanyLogoKey() + extName;
     let mimeType = file.type;
+    let fileName =  Utils.generateCompanyLogoKey() + extName;
+
     try {
-      let responseObj = await uploadFile({isSignedURL: true, uploadedFile: file}).catch((err) => {
+      const data = new FormData();
+      data.append("name", fileName);
+      data.append("images", file);
+      let responseObj = await uploadFile(data).catch((err) => {
         console.log(err);
       });
-      this.state.proposalDocuments[index] = responseObj.key;
+      if(!responseObj || !responseObj.length || !responseObj[0].sourceFileName )
+        Utils.apiFailureToast("Unable to upload document");
+      this.state.proposalDocuments[index] = responseObj[0].sourceFileName;
       this.setState({ proposalDocuments: this.state.proposalDocuments });
     } catch (err) {
       Utils.apiFailureToast("Unable to upload document");
