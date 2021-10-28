@@ -79,7 +79,7 @@ export default function Header(props) {
                   </Column>
                   <Column className="div-1">
                     <Row className="div-1-row">{getTotalVoting}</Row>
-                    <Row className="div-1-row1">Voting Address</Row>
+                    <Row className="div-1-row1">Voting Addresses</Row>
                   </Column>
                 </Row>
                 <Row className="mobile-lower-div">
