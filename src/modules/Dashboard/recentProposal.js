@@ -70,7 +70,10 @@ export default function RecentProposal(props) {
                     <TableRow className="table-mid-line">
                       <Row className="table-between">
                         <Column>
-                          <TableCell class="table-cell" style={{ border: "none" }}>
+                          <TableCell
+                            class="table-cell"
+                            style={{ border: "none" }}
+                          >
                             <Row className="date">
                               Posted on{" "}
                               {Utils.epocToPrettyTime(proposal["cretaedOn"])}
@@ -114,12 +117,11 @@ export default function RecentProposal(props) {
                                     &nbsp;Remaining
                                   </Span>
                                 </Row>
-                                
                               </>
                             ) : (
                               <>
-                            <Row class="poll-ended-mobile">
-                            {" "}
+                                <Row class="poll-ended-mobile">
+                                  {" "}
                                   <span style={{ marginRight: "5px" }}>
                                     {" "}
                                     <img
@@ -133,13 +135,13 @@ export default function RecentProposal(props) {
                                     ></img>
                                   </span>{" "}
                                   Poll Ended
-                            </Row>
-                            </>
+                                </Row>
+                              </>
                             )}
                           </TableCell>
                         </Column>
 
-                        <Column >
+                        <Column>
                           <TableCell
                             className="mobile-div-right"
                             style={{ border: "none" }}
