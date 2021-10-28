@@ -413,7 +413,7 @@ const DateSpan = styled.span`
   color: #2a2a2a;
   font-size: 13px;
   font-family: "Inter";
-  font-weight: 600;
+  font-weight: 400;
   margin-left: 8px;
 `;
 const DatePickerDiv = styled.div`
@@ -435,7 +435,7 @@ const Input = styled.input`
   font-size: 12px;
   font-family: "Inter";
   color: #909090;
-  font-weight: 600;
+  font-weight: 400;
 `;
 const MainContainer = styled.div`
   padding: 20px 17px;
@@ -497,7 +497,7 @@ const PagingDiv = styled.div`
 const Span = styled.span`
   text-align: left;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 12px;
   letter-spacing: 0px;
   color: #3b3b3b;
@@ -510,7 +510,7 @@ const Show = styled.span`
   display: flex;
   text-align: left;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 12px;
   letter-spacing: 0px;
   color: #3b3b3b;
@@ -526,7 +526,7 @@ const Block = styled.div`
   height: 22px;
   margin-left: 8px;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 12px;
 `;
 

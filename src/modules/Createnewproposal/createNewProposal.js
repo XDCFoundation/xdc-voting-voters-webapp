@@ -278,6 +278,7 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 977px) and (max-width: 1080px)": {
       font: "normal normal normal 15px/19px Inter",
     },
+    marginLeft: "1px",
   },
   input: {
     background: "#ffffff 0% 0% no-repeat padding-box",
@@ -291,8 +292,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "right",
   },
   image: {
-    width: "27px",
-    marginLeft: "6px",
+    width: "26px",
+    marginLeft: "12px",
+    height: "28px!important",
   },
 
   row_one: {
@@ -402,7 +404,11 @@ export default function Createnewproposal(props) {
             >
               <img
                 src="/images/Back-Arrow.svg"
-                style={{ width: "15px", marginRight: "8px" }}
+                style={{
+                  width: "15px",
+                  marginRight: "8px",
+                  marginBottom: "4px",
+                }}
               />
               <Back>Back</Back>
             </div>
@@ -595,7 +601,7 @@ const BrowseButton = styled.label`
   margin-bottom: 4px;
   margin-right: 3px;
   width: 100%;
-  max-width: 120px;
+  max-width: 90px;
 `;
 
 const Button = styled.button`
