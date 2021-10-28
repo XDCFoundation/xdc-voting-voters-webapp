@@ -184,30 +184,30 @@ export default function ProposalDetails(props) {
 
                   <PieChart
                     className="piechart"
-                    // data={[
-                    //   {
-                    //     title: "support",
-                    //     value: props.state.proposalDetails.yesVotes.length,
-                    //     color: "#3AB70D",
-                    //   },
-                    //   {
-                    //     title: "reject",
-                    //     value: props.state.proposalDetails.noVotes.length,
-                    //     color: "#F43D3D",
-                    //   },
-                    // ]}
+                    data={[
+                      {
+                        title: "support",
+                        value: props?.state?.proposalDetails?.yesVotes?.length,
+                        color: "#3AB70D",
+                      },
+                      {
+                        title: "reject",
+                        value: props?.state?.proposalDetails?.noVotes?.length,
+                        color: "#F43D3D",
+                      },
+                    ]}
                   />
                   <div className="piediv">
                     <div className="display-flex">
                       <div className="box-support"></div>
                       <div className="spt">
-                        {/* {props.state.proposalDetails.yesVotes.length} */}
+                         {props?.state?.proposalDetails?.yesVotes?.length}
                       </div>
                     </div>
                     <div className="display-flex">
                       <div className="box-reject"></div>
                       <div className="rjt">
-                        {/* {props.state.proposalDetails.noVotes.length} */}
+                         {props?.state?.proposalDetails?.noVotes?.length}
                       </div>
                     </div>
                   </div>
