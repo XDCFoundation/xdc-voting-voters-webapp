@@ -12,7 +12,7 @@ export default function FooterComponent() {
           <div className="recent-proposal-div-footer">
             <Row className="mobile-footer-main-div">
               <Column>
-                <Row>
+                <Row class="mobile-logo-row-1">
                   <Column>
                     <img
                       className="footer-logo"
@@ -90,7 +90,7 @@ export default function FooterComponent() {
                           src={require("../../assets/styles/images/ForwardLogo.svg")}
                         ></img>
                       </div> */}
-                      <div
+                      <div 
                         style={{
                           borderLeft: "1px solid #E3E7EB",
                           width: "100%",
@@ -101,11 +101,11 @@ export default function FooterComponent() {
                           alignItems: "center",
                         }}
                       >
-                        <img
+                        <img class="footer-arrow"
                           style={{
                             width: "23px",
-                            marginLeft: "5px",
-                            marginTop: "3px",
+                            // marginLeft: "5px",
+                            // marginTop: "3px",
                           }}
                           src={require("../../assets/styles/images/ForwardLogo.svg")}
                         />

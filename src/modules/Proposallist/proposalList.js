@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         "@media (min-width: 300px) and (max-width: 567px)": {
             maxWidth: "300px",
-            top: "91px",
+            top: "223px",
         },
         "@media (min-width: 567px) and (max-width: 767px)": {
             maxWidth: "500px",
@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
 
         "@media (min-width: 300px) and (max-width: 780px)": {
             display: "block !important",
-            marginTop: "10px",
+            marginTop: "13px",
         },
     },
 
@@ -135,6 +135,11 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: "400",
         color: "#2149B9",
     },
+    backdiv:{
+      "@media (min-width: 300px) and (max-width: 767px)": {
+        marginTop:"20px"
+      },
+    }
 }));
 const Container = styled.div`
   display: flex;
@@ -175,8 +180,8 @@ export default function ViewAllProposal(props) {
             <div className={classes.maincontainer}>
                 <div className={classes.root}>
                     <Grid item xs={12}>
-                        <div
-                            style={{marginBottom: "11px", cursor: "pointer"}}
+                        <div className="backdiv"
+                            style={{ cursor: "pointer"}}
                             onClick={backButton}
                         >
                             <img
@@ -391,6 +396,9 @@ const Input = styled.input`
 `;
 const MainContainer = styled.div`
   padding: 20px 17px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    padding:20px 8px 17px 8px;
+  }
   // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: ${(props) =>
           props.isTextArea ? `1px solid rgba(0, 0, 0, 0.1);` : `unset`};
@@ -550,6 +558,7 @@ const SelectBox = styled.div`
   }
   @media (min-width: 300px) and (max-width: 780px) {
     margin-top: 10px;
+    margin-bottom:10px;
   }
 `;
 const Failed = styled.span`
