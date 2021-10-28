@@ -217,7 +217,6 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 300px) and (max-width: 767px)": {
       display: "block !important",
       justifyContent: "center",
-      paddingLeft: "9px",
     },
   },
   rowThird: {
@@ -279,7 +278,6 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 977px) and (max-width: 1080px)": {
       font: "normal normal normal 15px/19px Inter",
     },
-    marginLeft: "1px",
   },
   input: {
     background: "#ffffff 0% 0% no-repeat padding-box",
@@ -293,9 +291,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "right",
   },
   image: {
-    width: "26px",
-    marginLeft: "12px",
-    height: "28px!important",
+    width: "27px",
+    marginLeft: "6px",
   },
 
   row_one: {
@@ -339,19 +336,6 @@ const useStyles = makeStyles((theme) => ({
     background: "#E3E7EB 0% 0% no-repeat padding-box",
     marginRight: "26px",
     marginLeft: "-22px",
-  },
-  uploadboxRow: {
-    "@media (min-width: 200px) and (max-width: 767px)": {
-      width: "265px",
-    },
-  },
-  imag: {
-    "@media (min-width: 200px) and (max-width: 767px)": {
-      paddingLeft: "8px",
-    },
-    "@media (min-width: 767px) and (max-width: 1024px)": {
-      paddingBottom: "8px",
-    },
   },
 }));
 const Headerdiv = styled.div`
@@ -418,11 +402,7 @@ export default function Createnewproposal(props) {
             >
               <img
                 src="/images/Back-Arrow.svg"
-                style={{
-                  width: "15px",
-                  marginRight: "8px",
-                  marginBottom: "4px",
-                }}
+                style={{ width: "15px", marginRight: "8px" }}
               />
               <Back>Back</Back>
             </div>
@@ -615,7 +595,7 @@ const BrowseButton = styled.label`
   margin-bottom: 4px;
   margin-right: 3px;
   width: 100%;
-  max-width: 90px;
+  max-width: 120px;
 `;
 
 const Button = styled.button`
