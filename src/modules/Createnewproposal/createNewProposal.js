@@ -217,6 +217,7 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 300px) and (max-width: 767px)": {
       display: "block !important",
       justifyContent: "center",
+      paddingLeft: "9px",
     },
   },
   rowThird: {
@@ -338,6 +339,19 @@ const useStyles = makeStyles((theme) => ({
     background: "#E3E7EB 0% 0% no-repeat padding-box",
     marginRight: "26px",
     marginLeft: "-22px",
+  },
+  uploadboxRow: {
+    "@media (min-width: 200px) and (max-width: 767px)": {
+      width: "265px",
+    },
+  },
+  imag: {
+    "@media (min-width: 200px) and (max-width: 767px)": {
+      paddingLeft: "8px",
+    },
+    "@media (min-width: 767px) and (max-width: 1024px)": {
+      paddingBottom: "8px",
+    },
   },
 }));
 const Headerdiv = styled.div`

@@ -439,6 +439,9 @@ const Input = styled.input`
 `;
 const MainContainer = styled.div`
   padding: 20px 17px;
+  @media (min-width: 300px) and (max-width: 767px) {
+    padding: 20px 8px 17px 8px;
+  }
   // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: ${(props) =>
     props.isTextArea ? `1px solid rgba(0, 0, 0, 0.1);` : `unset`};
@@ -597,6 +600,7 @@ const SelectBox = styled.div`
   }
   @media (min-width: 300px) and (max-width: 780px) {
     margin-top: 10px;
+    margin-bottom: 10px;
   }
 `;
 const Failed = styled.span`

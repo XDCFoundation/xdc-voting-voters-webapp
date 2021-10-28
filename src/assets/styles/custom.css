@@ -204,6 +204,9 @@ opacity: 1;
     display: flex;
     margin-top: 5px;
 }
+.recent-proposal-div{
+    margin-top: 8px;
+}
 @media  (max-width:360px) {
    .post{
     font-size: 10px !important;
@@ -211,10 +214,37 @@ opacity: 1;
 }
 
 @media (max-width:767px){
+
+    .div-1{
+        width: 155px !important;
+    }
+    .box-all1{
+        margin-right: 20px !important;
+    }
+    .recent-div-footer{
+      padding-top: 816px !important;  
+    }
+    .date{
+        white-space: nowrap;
+    }
+    .name{
+        white-space: nowrap;
+    }
+    
+    .mobile-logo-row-1{
+        margin-top: -333px;
+    }
+
+    .footer-arrow{
+        width: 20px !important;
+        margin-left: 9px !important;
+        margin-top: 9px !important;
+    }
+   
     .header-div{
         background: #2049B9 0% 0% no-repeat padding-box;
         width: 100%;
-        height:500px !important;
+        height:592px !important;
     }
     .forward-image{
         margin-top: 10px;
@@ -237,6 +267,7 @@ opacity: 1;
     }
     .mobile-footer-row-2{
         margin-left: -60px;
+        margin-top: -11px;
     }
     .mobile-footer-row-1{
         display: flex;
@@ -247,6 +278,7 @@ opacity: 1;
         display: flex !important;
         flex-flow: column nowrap !important;
         flex-direction: column-reverse !important;
+        margin-top: -300px;
 
     }
     .mobile-footer-main-div{
@@ -307,7 +339,7 @@ opacity: 1;
         margin-top: 15px;
     }
     .recent-div{
-        margin-top:100px !important;
+        margin-top:207px !important;
     }
     .xdc-para{
         
@@ -363,8 +395,13 @@ opacity: 1;
   
 }
 @media  (max-width:1023px) {
+
+    .footer-arrow{
+        margin-left: 5px;
+        margin-top: 3px;
+    }
     .recent-div-footer{
-        padding-top: 329px;
+        padding-top: 143px;
     }
     .header-div{
         background: #2049B9 0% 0% no-repeat padding-box;
@@ -488,7 +525,12 @@ opacity: 1;
     .xdc-connect{
         padding-top: 10px;
     }
-    
+    .div-1{
+        width: 209px !important;
+    }
+    .recent-proposal-div{
+        margin-top: 37px !important;
+    }
 
 }
 
@@ -808,7 +850,7 @@ width: 100%;
     outline: none;
 }
  .recent-proposal-div{
-   margin-top: 30px;
+   margin-top: 8px;
     width: 100%;
     max-width: 1280px;
     height: 65px;
@@ -959,7 +1001,7 @@ width: 100%;
 font: normal normal medium 22px/26px Inter;
 font-size: 22px;
 font-family: "Inter",sans-serif;
-font-weight: 600;
+font-weight: 500;
 padding: 15px;
 
  }
