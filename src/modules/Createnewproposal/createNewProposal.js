@@ -88,8 +88,8 @@ const useStyles = makeStyles((theme) => ({
 
     "@media (min-width: 300px) and (max-width: 767px)": {
       display: "block",
-      marginLeft: "7px",
-      width: "113%",
+      marginLeft: "-63px",
+      width: "92%",
     },
   },
 
@@ -127,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: "nowrap",
     "@media (min-width: 300px) and (max-width: 767px)": {
       fontSize: "11px",
-      paddingLeft: "8px",
+      paddingLeft: "0px",
     },
     "@media (min-width: 900px) and (max-width: 977px)": {
       fontSize: "12px",
@@ -222,6 +222,12 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     border: "1px solid #e3e7eb",
     marginTop: "47px",
+    "@media (min-width: 300px) and (max-width: 767px)": {
+      height:"250px"
+    },
+    "@media (min-width: 767px) and (max-width: 1024px)":{
+       height:"360px"
+    },
     marginLeft: "1px"
   },
 
@@ -231,7 +237,11 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 300px) and (max-width: 767px)": {
       display: "block !important",
       justifyContent: "center",
+      paddingLeft:"9px"
     },
+    
+
+
   },
 
   upload: {
@@ -247,7 +257,7 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 300px) and (max-width: 767px)": {
       fontSize: "12px",
       paddingLeft: "8px",
-      marginTop: "109px",
+      marginTop: "15px",
     },
     "@media (min-width: 767px) and (max-width: 900px)": {
       fontSize: "9px",
@@ -287,6 +297,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "4px",
     opacity: "1",
     width: "90%",
+    "@media (min-width: 300px) and (max-width: 767px)": {
+      width: "90%"
+    },
     height: "30px",
     fontSize: "10px",
     textAlign: "right",
@@ -342,6 +355,19 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "43px",
     marginLeft: "10px",
   },
+  uploadboxRow:{
+    "@media (min-width: 200px) and (max-width: 767px)": {
+      width:"265px"
+    },
+  },
+  imag:{
+    "@media (min-width: 200px) and (max-width: 767px)": {
+     paddingLeft:"8px"
+    },
+    "@media (min-width: 767px) and (max-width: 1024px)":{
+      paddingBottom:"8px"
+   }
+  }
 }));
 const Headerdiv = styled.div`
   width: 100%;
@@ -418,7 +444,7 @@ export default function Createnewproposal(props) {
 
               <hr className={classes.line} />
 
-              <div className={classes.row}>
+              <div className={classes.row }>
                 {/* <Grid xs={2} className={classes.proposaltitle}>
                   Proposal Title
                 </Grid> */}
@@ -544,7 +570,7 @@ export default function Createnewproposal(props) {
                   />
                 </Seconddiv>
               </Mobile>
-              <div className={classes.row} style={{paddingRight:"25px"}}>
+              <div className={classes.row } style={{paddingRight:"25px"}}>
                 <Grid xs={2} className={classes.description}>
                   Description
                 </Grid>
@@ -565,7 +591,7 @@ export default function Createnewproposal(props) {
                   Upload Document
                 </Grid>
                 <Grid xs={10} className={classes.uploadbox}>
-                  <Column>
+                  <Column className={classes.uploadboxRow}>
                     {props.state.proposalDocuments.length > 0
                       ? props.state.proposalDocuments.map((doc, index) => {
                           return (
