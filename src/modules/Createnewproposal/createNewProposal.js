@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #E3E7EB",
     borderRadius: "4px",
     fontSize: "12px",
-  },
+  },  
   container: {
     width: "100%",
     margin: "0px",
@@ -82,6 +82,7 @@ const useStyles = makeStyles((theme) => ({
     width: "95%",
     height: "30px",
     fontSize: "12px",
+    marginLeft:"2px!important",
 
     whiteSpace: "nowrap",
 
@@ -206,15 +207,17 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 300px) and (max-width: 767px)": {
       fontSize: "11px",
       paddingLeft: "8px",
+      
     },
     "@media (min-width: 900px) and (max-width: 977px)": {
       fontSize: "12px",
     },
+   
   },
 
   quillgrid: {
     background: "#FFFFFF 0% 0% no-repeat padding-box",
-    maxWidth: "766px",
+    maxWidth: "765px",
     borderRadius: "6px",
     width: "100%",
     border: "1px solid #e3e7eb",
@@ -224,7 +227,8 @@ const useStyles = makeStyles((theme) => ({
     },
     "@media (min-width: 767px) and (max-width: 1024px)":{
        height:"360px"
-    }
+    },
+    marginLeft: "1px"
   },
 
   row: {
@@ -285,6 +289,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "12px",
       marginTop: "12%",
     },
+    marginLeft:"1px"
   },
   input: {
     background: "#ffffff 0% 0% no-repeat padding-box",
@@ -300,8 +305,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "right",
   },
   image: {
-    width: "27px",
-    marginLeft: "6px",
+    width: "26px",
+    marginLeft: "12px",
+    height: "28px!important",
   },
 
   row_one: {
@@ -427,7 +433,7 @@ export default function Createnewproposal(props) {
             >
               <img
                 src="/images/Back-Arrow.svg"
-                style={{ width: "15px", marginRight: "8px" }}
+                style={{ width: "15px", marginRight: "8px", marginBottom: "4px", }}
               />
               <Back>Back</Back>
             </div>
@@ -626,7 +632,7 @@ export default function Createnewproposal(props) {
                               {index ===
                               props.state.proposalDocuments.length - 1 ? (
                                 <img
-                                  className={classes.imag}
+                                  className={classes.image}
                                   onClick={props.addDocumentRow}
                                   src="/images/Add.svg"
                                 />
@@ -689,7 +695,7 @@ const BrowseButton = styled.label`
   margin-bottom: 4px;
   margin-right: 3px;
   width: 100%;
-  max-width: 120px;
+  max-width: 90px;
 `;
 const Textarea = styled.textarea`
   width: 100%;

@@ -118,7 +118,7 @@ position: relative;
     display:flex;
     cursor: pointer;
     margin-top: -40px;
-    margin-bottom: 15px;
+    margin-bottom: 17px;
 }
 .row-1{
     width: 100%;
@@ -207,6 +207,12 @@ opacity: 1;
 .recent-proposal-div{
     margin-top: 8px;
 }
+@media  (max-width:360px) {
+   .post{
+    font-size: 10px !important;
+   }
+}
+
 @media (max-width:767px){
 
     .div-1{
@@ -1475,7 +1481,7 @@ margin-left: 58px;
 
 
 .quill-editor{
-    height:130px !important;
+    height:340px !important;
 }
 .load{
     /* width: 30px;
@@ -1501,7 +1507,7 @@ img.load{
     opacity: 1;
     font-family: "Inter",sans-serif;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 15px;
     border-bottom: 1px solid #E3E7EB;
     border-right: 1px solid #E3E7EB;
     border-left: 1px solid #E3E7EB;
