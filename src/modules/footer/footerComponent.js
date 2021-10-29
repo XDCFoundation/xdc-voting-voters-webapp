@@ -5,89 +5,18 @@ import styled from "styled-components";
 
 export default function FooterComponent() {
   return (
-    // <Div>
-    //   <MainContainer>
-    //     <Container>
-    //       <ColumnOne>
-    //         <Row>
-    //           <img
-    //             className="footer-logo"
-    //             src={require("../../assets/styles/images/XDC-Logo-Blue.svg")}
-    //           ></img>
-    //           <div className="xdc-footer">XDC</div>
-    //         </Row>
-    //       </ColumnOne>
-    //       <ColumnSecond>
-    //         <Row className="footer-column-heading">Community</Row>
-    //         <RowTag>
-    //           <Anchor href="https://discord.com/invite/KZdD6pkFxp">
-    //             Discord
-    //           </Anchor>
-    //         </RowTag>
-    //         <RowTag>
-    //           <Anchor href="https://github.com/XDCFoundation/">Github</Anchor>
-    //         </RowTag>
-    //         <RowTag>
-    //           <Anchor href="https://twitter.com/XinFin_Official">
-    //             Twitter
-    //           </Anchor>
-    //         </RowTag>
-    //         <RowTag>
-    //           <Anchor href="https://t.me/xinfin">Telegram</Anchor>
-    //         </RowTag>
-    //         <RowTag>
-    //           {/* <Anchor href="https://discord.com/invite/KZdD6pkFxp"> */}
-    //           Forum
-    //           {/* </Anchor> */}
-    //         </RowTag>
-    //       </ColumnSecond>
-    //       <ColumnThird>
-    //         <Row className="footer-column-heading">Governance</Row>
-    //         <RowTag>Overview </RowTag>
-    //         <RowTag>Forum</RowTag>
-    //         <RowTag>
-    //           <Anchor href="https://howto.xinfin.org/general/faq/">FAQs</Anchor>
-    //         </RowTag>
-    //       </ColumnThird>
-    //       <ColumnFourth>
-    //         <Row className="footer-column-heading">New Proposal Alert</Row>
-    //         <InputDiv>
-    //           <Input
-
-    //             type="email"
-    //             placeholder="Add Email"
-    //           />
-    //           <Img
-    //             src={require("../../assets/styles/images/ForwardLogo.svg")}
-    //           />
-    //         </InputDiv>
-    //       </ColumnFourth>
-    //     </Container>
-
-    //     <RowXDC>© 2021 XDC. All Right Reserved</RowXDC>
-    //   </MainContainer>
-    //
-    // </Div>
-    <MobileDiv>
-      <MobileResolution>
-        <Row>
-          <ResponsiveImg
-            className="footer-logo"
-            src={require("../../assets/styles/images/XDC-Logo-Blue.svg")}
-          />
-
-          <div className="xdc-footer">XDC</div>
-        </Row>
-        <Row>
-          <Heading>New Proposal Alert</Heading>
-        </Row>
-        <Row>
-          <InputDiv>
-            <Input type="email" placeholder="Add Email" />
-            <Img src={require("../../assets/styles/images/ForwardLogo.svg")} />
-          </InputDiv>
-        </Row>
-        <Div__>
+    <Div>
+      <MainContainer>
+        <Container>
+          <ColumnOne>
+            <Row>
+              <img
+                className="footer-logo"
+                src={require("../../assets/styles/images/XDC-Logo-Blue.svg")}
+              ></img>
+              <div className="xdc-footer">XDC</div>
+            </Row>
+          </ColumnOne>
           <ColumnSecond>
             <Row className="footer-column-heading">Community</Row>
             <RowTag>
@@ -120,9 +49,79 @@ export default function FooterComponent() {
               <Anchor href="https://howto.xinfin.org/general/faq/">FAQs</Anchor>
             </RowTag>
           </ColumnThird>
-        </Div__>
-      </MobileResolution>
-    </MobileDiv>
+          <ColumnFourth>
+            <Row className="footer-column-heading">New Proposal Alert</Row>
+            <InputDiv>
+              <Input type="email" placeholder="Add Email" />
+              <Img
+                src={require("../../assets/styles/images/ForwardLogo.svg")}
+              />
+            </InputDiv>
+          </ColumnFourth>
+        </Container>
+
+        <RowXDC>© 2021 XDC. All Right Reserved</RowXDC>
+      </MainContainer>
+      <MobileDiv>
+        <MobileResolution>
+          <Row>
+            <ResponsiveImg
+              className="footer-logo"
+              src={require("../../assets/styles/images/XDC-Logo-Blue.svg")}
+            />
+
+            <div className="xdc-footer">XDC</div>
+          </Row>
+          <Row>
+            <Heading>New Proposal Alert</Heading>
+          </Row>
+          <Row>
+            <InputDiv>
+              <Input type="email" placeholder="Add Email" />
+              <Img
+                src={require("../../assets/styles/images/ForwardLogo.svg")}
+              />
+            </InputDiv>
+          </Row>
+          <Div__>
+            <ColumnSecond>
+              <Row className="footer-column-heading">Community</Row>
+              <RowTag>
+                <Anchor href="https://discord.com/invite/KZdD6pkFxp">
+                  Discord
+                </Anchor>
+              </RowTag>
+              <RowTag>
+                <Anchor href="https://github.com/XDCFoundation/">Github</Anchor>
+              </RowTag>
+              <RowTag>
+                <Anchor href="https://twitter.com/XinFin_Official">
+                  Twitter
+                </Anchor>
+              </RowTag>
+              <RowTag>
+                <Anchor href="https://t.me/xinfin">Telegram</Anchor>
+              </RowTag>
+              <RowTag>
+                {/* <Anchor href="https://discord.com/invite/KZdD6pkFxp"> */}
+                Forum
+                {/* </Anchor> */}
+              </RowTag>
+            </ColumnSecond>
+            <ColumnThird>
+              <Row className="footer-column-heading">Governance</Row>
+              <RowTag>Overview </RowTag>
+              <RowTag>Forum</RowTag>
+              <RowTag>
+                <Anchor href="https://howto.xinfin.org/general/faq/">
+                  FAQs
+                </Anchor>
+              </RowTag>
+            </ColumnThird>
+          </Div__>
+        </MobileResolution>
+      </MobileDiv>
+    </Div>
   );
 }
 const Div__ = styled.div`
@@ -177,7 +176,7 @@ const InputDiv = styled.div`
 const Input = styled.input`
   border: 0px;
   border-right: 1 px solid #e3e7eb;
-  width: 100%;
+  // width: 100%;
 `;
 const Img = styled.img`
   padding: 4px;

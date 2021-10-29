@@ -341,5 +341,5 @@ const ColumnDiv = styled.div`
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-  max-width: 650px;
+  max-width: 795px;
 `;
