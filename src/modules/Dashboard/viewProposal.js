@@ -53,22 +53,21 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "center",
-    maxWidth: "970px",
-    position: "absolute",
-    top: "147px",
+    maxWidth: "1280px",
+    // position: "absolute",
+    marginTop: "-104px",
+    marginBottom: "40px",
+    zIndex: "1",
+    top: "145px",
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
       maxWidth: "300px",
-      top: "91px",
     },
     "@media (min-width: 567px) and (max-width: 767px)": {
       maxWidth: "500px",
-      top: "65px",
     },
-    "@media (min-width: 767px) and (max-width: 2080px)": {
-      // maxWidth: "700px",
-      top: "189px",
-      maxWidth: "970px",
+    "@media (min-width: 767px) and (max-width: 1440px)": {
+      maxWidth: "900px",
     },
   },
   rowdiv: {
