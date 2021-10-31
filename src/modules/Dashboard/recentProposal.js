@@ -76,7 +76,8 @@ export default function RecentProposal(props) {
                           >
                             <Row className="date">
                               Posted on{" "}
-                              {Utils.epocToPrettyTime(proposal["cretaedOn"])}
+                              {/* {Utils.epocToPrettyTime(proposal["cretaedOn"])} */}
+                              {formatedTime}
                             </Row>
                             <Row className="name">
                               {proposal["proposalTitle"]}{" "}

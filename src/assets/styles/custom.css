@@ -248,6 +248,9 @@ opacity: 1;
 }
 
 @media (max-width:767px){
+    .footer-div-1{
+        margin-bottom: 201px !important;
+    }
 
     .div-1{
         width: 155px !important;

@@ -1,4 +1,5 @@
 import React from "react";
+import { Column, Row } from "simple-flexbox";
 import styled from "styled-components";
 import HeaderMain from "../header/header";
 import "../../assets/styles/custom.css";
@@ -8,6 +9,7 @@ import FooterComponent from "../footer/footerComponent";
 import { history } from "../../managers/history";
 import Pagination from "react-js-pagination";
 import Utils from "../../utility";
+import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -160,10 +162,10 @@ export default function Voterslist(props) {
             </div>
             <Spacing>
               <Container>
-                <Heading>All Voters</Heading>
+                <Heading>Voters</Heading>
               </Container>
               <SecondContainer>
-                <Leftcontainer>{props.state.votes.length}</Leftcontainer>
+                <Leftcontainer>{props.state.votes.length} votes</Leftcontainer>
               </SecondContainer>
             </Spacing>
 
@@ -174,11 +176,12 @@ export default function Voterslist(props) {
                     <Container>
                       <ImageView src={data.image} />
                       &nbsp;
-                      <Hash>{data.voterAddress}</Hash>
+                      <Hash>{proposalAddressComponent(data.voterAddress)}</Hash>
                     </Container>
                     <SecondContainer>
                       <Leftcontainer>
-                        {Utils.epocToPrettyTime(data.createdOn)}
+                      {moment(data.createdOn).format("D  MMM  ") } 
+                        {/* {Utils.epocToPrettyTime(data.createdOn)} */}
                       </Leftcontainer>
                     </SecondContainer>
                   </Spacing>
@@ -212,6 +215,22 @@ export default function Voterslist(props) {
     </div>
   );
 }
+
+
+function proposalAddressComponent(row) {
+      return (
+          <>
+              <Row className="p-8 justify-content-between">
+                  <Row>
+                      
+                          {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
+                     
+                  </Row>
+                 
+              </Row>
+          </>
+      );
+   }
 const MainHeading = styled.span`
   text-align: left;
 
@@ -305,6 +324,7 @@ const Hash = styled.span`
     font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 13px;
+    margin-left:-22px
   }
 `;
 const Spacing = styled.div`
@@ -362,6 +382,11 @@ const Leftcontainer = styled.div`
   font: normal normal normal 12px/17px Inter;
   letter-spacing: 0px;
   color: #acacac;
+  @media (min-width: 300px) and (max-width: 767px) {
+    margin-top:-23px;
+    margin-left:205px;
+  }
+ 
 `;
 const ImageView = styled.img`
   width: 35px;

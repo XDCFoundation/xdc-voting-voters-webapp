@@ -125,8 +125,8 @@ export default function FooterComponent() {
     <Div>
       <MainContainer>
         <Container>
-          <ColumnOne>
-            <Row>
+          <ColumnOne >
+            <Row class="footer-div-1">
               <img
                 className="footer-logo"
                 src={require("../../assets/styles/images/XDC-Logo-Blue.svg")}
@@ -166,7 +166,7 @@ export default function FooterComponent() {
               <Anchor href="https://howto.xinfin.org/general/faq/">FAQs</Anchor>
             </RowTag>
           </ColumnThird>
-          <ColumnFourth>
+          <ColumnFourth class="footer-div-1">
             <Row className="footer-column-heading">New Proposal Alert</Row>
             <input
               className="footer-search"
