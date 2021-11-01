@@ -9,6 +9,7 @@ import ProposalComponent from "./proposalDetailsComponent"
 import Web3 from "web3";
 import {abi as proposalContractAbi} from "../../common/abis/proposalContractAbi.json";
 import {castVotingProposal, getTotalVotingAddress} from "../../services/proposalService";
+import {getSignedUrlService} from "../../services/fileUploaderService";
 
 export default class ProposalDetails extends BaseComponent {
     constructor(props) {
@@ -63,7 +64,19 @@ export default class ProposalDetails extends BaseComponent {
         } else {
             this.setState({isButtonClicked: true})
         }
+        proposalDetail.proposalDocumentsUrl = await this.getSignedUrls(proposalDetail.proposalDocuments)
+        console.log("proposalDetail ",proposalDetail)
         this.setState({proposalAddress: address, proposalDetails: proposalDetail})
+    }
+
+    getSignedUrls = async (documents)=>{
+        const responseObj = {}
+        documents.map(async key => {
+            const url = await getSignedUrlService(key).catch(err => console.log(err))
+            console.log(url)
+            responseObj[key] = url;
+        })
+        return responseObj
     }
 
     isAlreadyVoted = async (proposalDetail) => {

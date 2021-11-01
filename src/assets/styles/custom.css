@@ -346,7 +346,7 @@ opacity: 1;
         width: 86vw !important;
     }
     .doc-1{
-        width: 353px !important;
+        /*width: 353px !important;*/
     }
     .external-image-proposal2 {
         margin-left: 85px !important;
@@ -1301,7 +1301,7 @@ opacity: 1;
     font-weight: 600;
  }
  .doc-1{
-    width: 580px;
+    /*width: 580px;*/
     height: 53px;
     background: #F8F8F8 0% 0% no-repeat padding-box;
     border-radius: 6px;
@@ -1332,7 +1332,7 @@ margin-right: 10px;
     margin-bottom: 10px;
  }
  .external-image-proposal{
-     margin-left: 260px;
+     margin-left: 205px;
      cursor: pointer;
  }
  .external-image-proposal2{
