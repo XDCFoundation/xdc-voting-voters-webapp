@@ -122,6 +122,9 @@ export default function FooterComponent() {
     //   </div>
     //   {/* </div> */}
     // </div>
+
+
+
     <Div>
       <MainContainer>
         <Container>
@@ -168,23 +171,49 @@ export default function FooterComponent() {
           </ColumnThird>
           <ColumnFourth class="footer-div-1">
             <Row className="footer-column-heading">New Proposal Alert</Row>
+            <span>
             <input
               className="footer-search"
               type="email"
               placeholder="Add Email"
             />
+            </span>
+            <div
+            style={{
+                                  borderLeft: "1px solid #E3E7EB",
+                                  width: "100%",
+                                  maxWidth: "40px",
+          
+                                  marginTop: "10px",
+                                  marginLeft: "-40px",
+                                  alignItems: "center",
+                                }}>
             <Img src={require("../../assets/styles/images/ForwardLogo.svg")} />
+            </div>
           </ColumnFourth>
         </Container>
       </MainContainer>
     </Div>
   );
 }
-const Img = styled.img``;
-const ColumnOne = styled.div``;
-const ColumnSecond = styled.div``;
-const ColumnThird = styled.div``;
-const ColumnFourth = styled.div``;
+const Img = styled.img`
+margin-top:-85px;
+margin-left:259px;
+border-left: 1px solid #E3E7EB;
+
+`;
+const ColumnOne = styled.div`
+margin-bottom:100px;
+`;
+const ColumnSecond = styled.div`
+margin-top:20px;
+`;
+const ColumnThird = styled.div`
+margin-bottom:23px;
+`;
+const ColumnFourth = styled.div`
+
+`;
 const Div = styled.div`
 width:100%
 display:flex;
