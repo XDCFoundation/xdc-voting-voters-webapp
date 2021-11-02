@@ -8,7 +8,7 @@ export default function FooterComponent() {
     <Div>
       <MainContainer>
         <Container>
-          <ColumnOne>
+          <div>
             <Row>
               <img
                 className="footer-logo"
@@ -16,8 +16,8 @@ export default function FooterComponent() {
               ></img>
               <div className="xdc-footer">XDC</div>
             </Row>
-          </ColumnOne>
-          <ColumnSecond>
+          </div>
+          <div>
             <Row className="footer-column-heading">Community</Row>
             <RowTag>
               <Anchor href="https://discord.com/invite/KZdD6pkFxp">
@@ -35,21 +35,17 @@ export default function FooterComponent() {
             <RowTag>
               <Anchor href="https://t.me/xinfin">Telegram</Anchor>
             </RowTag>
-            <RowTag>
-              {/* <Anchor href="https://discord.com/invite/KZdD6pkFxp"> */}
-              Forum
-              {/* </Anchor> */}
-            </RowTag>
-          </ColumnSecond>
-          <ColumnThird>
+            <RowTag>Forum</RowTag>
+          </div>
+          <div>
             <Row className="footer-column-heading">Governance</Row>
             <RowTag>Overview </RowTag>
             <RowTag>Forum</RowTag>
             <RowTag>
               <Anchor href="https://howto.xinfin.org/general/faq/">FAQs</Anchor>
             </RowTag>
-          </ColumnThird>
-          <ColumnFourth>
+          </div>
+          <div>
             <Row className="footer-column-heading">New Proposal Alert</Row>
             <InputDiv>
               <Input type="email" placeholder="Add Email" />
@@ -57,10 +53,14 @@ export default function FooterComponent() {
                 src={require("../../assets/styles/images/ForwardLogo.svg")}
               />
             </InputDiv>
-          </ColumnFourth>
+          </div>
         </Container>
-
-        <RowXDC>© 2021 XDC. All Right Reserved</RowXDC>
+        <div
+          style={{ borderTop: "1px solid #e3e7eb", marginTop: "60px" }}
+        ></div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <RowXDC>© 2021 XDC. All Right Reserved</RowXDC>
+        </div>
       </MainContainer>
       <MobileDiv>
         <MobileResolution>
@@ -84,7 +84,7 @@ export default function FooterComponent() {
             </InputDiv>
           </Row>
           <Div__>
-            <ColumnSecond>
+            <div style={{ paddingRight: "45px" }}>
               <Row className="footer-column-heading">Community</Row>
               <RowTag>
                 <Anchor href="https://discord.com/invite/KZdD6pkFxp">
@@ -102,13 +102,9 @@ export default function FooterComponent() {
               <RowTag>
                 <Anchor href="https://t.me/xinfin">Telegram</Anchor>
               </RowTag>
-              <RowTag>
-                {/* <Anchor href="https://discord.com/invite/KZdD6pkFxp"> */}
-                Forum
-                {/* </Anchor> */}
-              </RowTag>
-            </ColumnSecond>
-            <ColumnThird>
+              <RowTag>Forum</RowTag>
+            </div>
+            <div>
               <Row className="footer-column-heading">Governance</Row>
               <RowTag>Overview </RowTag>
               <RowTag>Forum</RowTag>
@@ -117,8 +113,14 @@ export default function FooterComponent() {
                   FAQs
                 </Anchor>
               </RowTag>
-            </ColumnThird>
+            </div>
           </Div__>
+          <div
+            style={{ borderTop: "1px solid #e3e7eb", marginTop: "60px" }}
+          ></div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <RowXDC>© 2021 XDC. All Right Reserved</RowXDC>
+          </div>
         </MobileResolution>
       </MobileDiv>
     </Div>
@@ -126,7 +128,8 @@ export default function FooterComponent() {
 }
 const Div__ = styled.div`
   display: flex;
-  justify-content: space-between;
+
+  justify-content: flex-start;
 `;
 const Heading = styled.span`
   font-weight: 600;
@@ -137,73 +140,10 @@ const Heading = styled.span`
 `;
 const MobileDiv = styled.div`
   width: 100%;
-  display: flex;
-  border-top: 1px solid #e3e7eb;
-  justify-content: center;
-  @media (min-width: 767px) {
-    display: none;
-  }
-`;
-const MobileResolution = styled.div`
-  @media (min-width: 300px) and (max-width: 567px) {
-    width: 100%;
-    max-width: 300px;
-  }
-
-  @media (min-width: 568px) and (max-width: 767px) {
-    width: 100%;
-    max-width: 500px;
-  }
-`;
-const RowXDC = styled.div`
-  border-top: 1px solid #e3e7eb;
-  justify-content: center;
-  margin-top: 70px;
-  color: #909090;
-  font: normal normal normal 15px/28px Inter;
-  @media (min-width: 300px) and (max-width: 767px) {
-    display: none;
-  }
-`;
-
-const ResponsiveImg = styled.img``;
-const InputDiv = styled.div`
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #e3e7eb;
-  border-radius: 6px;
-  align-items: center;
-  width: 100%;
-`;
-const Input = styled.input`
-  border: 0px;
-  border-right: 1 px solid #e3e7eb;
-  // width: 100%;
-`;
-const Img = styled.img`
-  padding: 4px;
-`;
-const ColumnOne = styled.div``;
-const ColumnSecond = styled.div``;
-const ColumnThird = styled.div``;
-const ColumnFourth = styled.div``;
-const Div = styled.div`
-width:100%
-display:flex;
-justify-content: center;
-border-top: 1px solid #E3E7EB;
-padding-bottom: 100px;
-align-items: flex-start;
-@media (min-width: 300px) and (max-width: 767px) {
   display: none;
-}
-`;
-const MainContainer = styled.div`
-  width: 100%;
-  max-width: 1280px;
-  @media (min-width: 300px) and (max-width: 767px) {
-    // width: 100%;
-    // max-width: 700px;
-    display: none;
+  justify-content: center;
+  @media (max-width: 767px) {
+    display: flex;
   }
   @media (min-width: 300px) and (max-width: 567px) {
     max-width: 300px;
@@ -213,6 +153,62 @@ const MainContainer = styled.div`
     max-width: 500px;
     width: 100%;
   }
+`;
+const MobileResolution = styled.div`
+  width: 100%;
+
+  @media (min-width: 300px) and (max-width: 567px) {
+    width: 100%;
+    max-width: 300px;
+  }
+`;
+const RowXDC = styled.div`
+  justify-content: center;
+  margin-top: 40px;
+  color: #909090;
+  font: normal normal normal 15px/28px Inter;
+`;
+
+const ResponsiveImg = styled.img``;
+const InputDiv = styled.div`
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e3e7eb;
+  border-radius: 6px;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  padding-left: 6px;
+}
+`;
+const Input = styled.input`
+  border: 0px;
+  border-right: 1 px solid #e3e7eb;
+
+  @media (min-width: 567px) and (max-width: 767px) {
+    border: 0px;
+    width: 100%;
+    max-width: 382px;
+  }
+`;
+const Img = styled.img`
+  padding-left: 75px;
+`;
+const Div = styled.div`
+width:100%
+display:flex;
+justify-content: center;
+border-top: 1px solid #E3E7EB;
+padding-bottom: 100px;
+align-items: flex-start;
+
+`;
+const MainContainer = styled.div`
+  width: 100%;
+  max-width: 1280px;
+  @media (max-width: 767px) {
+    display: none;
+  }
+
   @media (min-width: 767px) and (max-width: 1440px) {
     max-width: 900px;
     width: 100%;
@@ -222,9 +218,6 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   padding-top: 40px;
-  @media (min-width: 300px) and (max-width: 767px) {
-    display: none;
-  }
 `;
 const Anchor = styled.a`
   text-decoration: none !important;

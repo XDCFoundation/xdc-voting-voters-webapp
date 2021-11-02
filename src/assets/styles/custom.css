@@ -817,18 +817,17 @@ width: 100%;
     padding-right: 20px;
 }
 .all-div-proposal{
+    
     width: 100%;
-      height: auto;
     display: flex;
-    justify-content: center;
-    position: absolute;
-    top: 292px;
-    padding-left: 20px;
-    padding-right: 20px;
+    z-index: 1;
+    max-width: 1500px;
     margin-top: -104px;
     margin-bottom: 40px;
-    z-index: 1;
-   
+    justify-content: center;
+    margin-top: -112px;
+    height: auto;
+    
 }
 .input-search{
     margin: 14px;
