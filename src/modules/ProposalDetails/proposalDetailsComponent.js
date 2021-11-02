@@ -201,13 +201,13 @@ export default function ProposalDetails(props) {
                     <div className="display-flex">
                       <div className="box-support"></div>
                       <div className="spt">
-                         {props?.state?.proposalDetails?.yesVotes?.length}
+                         Support({props?.state?.proposalDetails?.yesVotes?.length}%)
                       </div>
                     </div>
                     <div className="display-flex">
                       <div className="box-reject"></div>
                       <div className="rjt">
-                         {props?.state?.proposalDetails?.noVotes?.length}
+                         Rejected({props?.state?.proposalDetails?.noVotes?.length}%)
                       </div>
                     </div>
                   </div>
@@ -241,12 +241,12 @@ export default function ProposalDetails(props) {
                 <div className="display-flex p-polling-contract">
                   <div className="polling-heading">Polling Contract</div>
                   <div className="address-number">
-                    {props.state.proposalAddress}
+                    {proposalAddressComponent(props.state.proposalAddress)}
                     <span>
-                      <img
+                      {/* <img
                         className="external-image-proposal4"
                         src={require("../../assets/styles/images/External-Link.svg")}
-                      ></img>
+                      ></img> */}
                     </span>
                   </div>
                 </div>
@@ -255,7 +255,7 @@ export default function ProposalDetails(props) {
             <div className="recent-add-div-proposal2"></div>
           </Column>
         </div>
-        <div className="proposalpage-footer">
+        <div >
           <FooterComponent />
         </div>
       </Column>
@@ -310,6 +310,25 @@ function AddressComponent(row) {
     </>
   );
 }
+
+
+function proposalAddressComponent(row) {
+      return (
+          <>
+              <Row className="p-8 justify-content-between">
+                  <Row>
+                      <div className="fs-15 color-2A2A2A p-l-sm">
+                          {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
+                      </div>
+                  </Row>
+                  <img
+                            className="external-image-proposal4"
+                            src={require("../../assets/styles/images/External-Link.svg")}
+                        ></img>
+              </Row>
+          </>
+      );
+   }
 const ColumnDiv = styled.div`
   display: flex;
   flex-flow: column nowrap;
