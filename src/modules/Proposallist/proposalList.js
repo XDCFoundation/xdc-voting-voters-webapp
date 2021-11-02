@@ -394,10 +394,15 @@ export default function ViewAllProposal(props) {
                 onChange={props.handlePageChange}
               />
             </div>
+
+           
           </Grid>
+
+          
         </div>
+        
       </div>
-      <div>
+      <div >
         <FooterComponent />
       </div>
     </div>

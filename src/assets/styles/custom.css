@@ -208,6 +208,15 @@ opacity: 1;
     margin-top: 8px;
 }
 
+/* .proposalList-footer-div{
+    margin-top:780px ;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+   
+/* } */
+/* .voterList-footer-div{
+    margin-top:780px ;
+} */ 
 
 @media (min-width: 767px) and (max-width: 2000px) {
     .poll-ended-mobile{
