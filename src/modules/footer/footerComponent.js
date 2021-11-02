@@ -165,6 +165,7 @@ const RowXDC = styled.div`
     display: none;
   }
 `;
+
 const ResponsiveImg = styled.img``;
 const InputDiv = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
