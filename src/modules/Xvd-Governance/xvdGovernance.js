@@ -12,9 +12,12 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "center",
-    maxWidth: "970px",
-    position: "absolute",
-    top: "211px",
+    maxWidth: "1280px",
+    // position: "absolute",
+    marginTop: "-104px",
+    marginBottom: "40px",
+    zIndex: "1",
+    top: "145px",
 
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
@@ -23,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 567px) and (max-width: 767px)": {
       maxWidth: "500px",
     },
-    "@media (min-width: 767px) and (max-width: 1040px)": {
-      maxWidth: "700px",
+    "@media (min-width: 767px) and (max-width: 1440px)": {
+      maxWidth: "900px",
     },
   },
   rowdiv: {

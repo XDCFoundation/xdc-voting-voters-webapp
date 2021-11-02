@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../../assets/styles/custom.css";
 import { XdcConnect, Disconnect } from "xdc-connect";
 import { Column, Row } from "simple-flexbox";
 import { history } from "../../managers/history";

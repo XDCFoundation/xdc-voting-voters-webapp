@@ -124,6 +124,7 @@ position: relative;
     width: 100%;
     justify-content: space-between;
     flex: 1;
+    
 }
 .alert{
     background-color: #00144D !important;
@@ -275,6 +276,7 @@ opacity: 1;
     }
     .name{
         white-space: nowrap;
+        font-size: 14px !important;
     }
     
     .mobile-logo-row-1{
@@ -330,7 +332,8 @@ opacity: 1;
     .mobile-footer-main-div{
         display: block !important;
     }
-    .recent-proposal-div-footer{
+    .recent-proposal-div{
+        margin: 0px 20px ;
         
     }
     .footer-search{
@@ -370,6 +373,7 @@ opacity: 1;
       margin-bottom: 4px;
       margin-top: 8% !important;
       justify-content: center !important;
+      margin-left: 24px !important;
       
     }
     .mobile-divbox{
@@ -399,10 +403,12 @@ opacity: 1;
     .xdc-governance{
         font-size: 30px !important;
         font-weight: 500 !important;
+        margin-top: 20px!important;
     }
     .heading{
-        margin: 14px !important;
+        margin: 20px 5px !important;
         font-size: 14px !important;
+        white-space: nowrap;
     }
     .griddiv{
       
@@ -451,6 +457,15 @@ opacity: 1;
         width: 100% !important;
         margin-top: 30px !important;
       
+    }
+    .row-1{
+        margin-top: 94px;
+    }
+    .recent-add-div{
+        height: 65px !important;;
+    }
+    .div-1-row1{
+        font-size: 14px !important;
     }
   
 }
@@ -586,7 +601,7 @@ opacity: 1;
         padding-top: 10px;
     }
     .div-1{
-        width: 209px !important;
+        width: 209px ;
     }
     .recent-proposal-div{
         margin-top: 37px !important;
@@ -655,6 +670,7 @@ cursor:pointer;
     color: #2A2A2A;
     font-size: 17px;
     font-family: "Inter",sans-serif;
+    margin-bottom: 10px;
 }
 .sub-column-heading{
     font: normal normal normal 15px/28px Inter;
@@ -847,17 +863,16 @@ font-family: 'Inter';
 
  /* !****Recent Prosal Css****! */
 .recent-div{
-
-
     width: 100%;
-    height: 100%;
+    height: auto;
     display: flex;
     justify-content: center;
     position: absolute;
+    top: 226px;
+ 
 
-    top: 237px;
-    padding-left: 20px;
-    padding-right: 20px;
+    /* padding-left: 20px;
+    padding-right: 20px; */
 }
 .recent-div-footer{
     width: 100%;
@@ -878,13 +893,17 @@ width: 100%;
 }
 .all-div-proposal{
     width: 100%;
-    height: 100%;
+      height: auto;
     display: flex;
     justify-content: center;
     position: absolute;
-    top: 193px;
+    top: 292px;
     padding-left: 20px;
     padding-right: 20px;
+    margin-top: -104px;
+    margin-bottom: 40px;
+    z-index: 1;
+   
 }
 .input-search{
     margin: 14px;
@@ -1111,13 +1130,14 @@ text-align: center;
 
  }
  .reserved{
-
+    border-top: 1px solid #E3E7EB;
      justify-content: center;
-    margin-top: 40px;
-    font: normal normal normal 15px/28px Inter;
+    margin-top: 70px;
+   
     letter-spacing: 0px;
     color: #909090;
     opacity: 1;
+    font: normal normal normal 15px/28px Inter;
  }
  .row-2-width{
 
@@ -1249,10 +1269,10 @@ opacity: 1;
 
  }
  .griddiv-1{
-    height: auto;
+    height: 613px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     width: 100%;
-    max-width: 650px;
+    max-width: 795px;
     border-bottom: 1px solid #E3E7EB;
     border-radius: 2px;
     padding: 39px 42px 0px 33px;
