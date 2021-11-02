@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
 
     "@media (min-width: 300px) and (max-width: 780px)": {
       display: "block !important",
-      marginTop: "10px",
+      marginTop: "-3px",
     },
   },
 
@@ -177,7 +177,7 @@ export default function ViewAllProposal(props) {
       <div className={classes.maincontainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
-            <div
+            <div class="back-button-mobile"
               style={{ marginBottom: "11px", cursor: "pointer" }}
               onClick={backButton}
             >

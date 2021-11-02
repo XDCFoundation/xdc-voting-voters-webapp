@@ -459,13 +459,16 @@ opacity: 1;
       
     }
     .row-1{
-        margin-top: 94px;
+        padding-top: 94px;
     }
     .recent-add-div{
         height: 65px !important;;
     }
     .div-1-row1{
         font-size: 14px !important;
+    }
+    .back-button-mobile{
+        margin-top: 39px;
     }
   
 }
