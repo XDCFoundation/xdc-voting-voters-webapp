@@ -921,7 +921,7 @@ width: 100%;
       height: auto;
     display: flex;
     justify-content: center;
-    position: absolute;
+    /* //position: absolute; */
     top: 292px;
     padding-left: 20px;
     padding-right: 20px;

@@ -16,7 +16,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     maxWidth: "970px",
-    position: "absolute",
+    //position: "absolute",
+    marginTop: "-104px",
+    marginBottom: "40px",
+    zIndex: "1",
     top: "186px",
 
     width: "100%",
