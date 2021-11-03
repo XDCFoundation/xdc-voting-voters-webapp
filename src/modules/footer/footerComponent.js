@@ -8,8 +8,8 @@ export default function FooterComponent() {
     <Div>
       <MainContainer>
         <Container>
-          <ColumnOne>
-            <Row>
+          <ColumnOne >
+            <Row class="footer-div-1">
               <img
                 className="footer-logo"
                 src={require("../../assets/styles/images/XDC-Logo-Blue.svg")}
@@ -49,7 +49,7 @@ export default function FooterComponent() {
               <Anchor href="https://howto.xinfin.org/general/faq/">FAQs</Anchor>
             </RowTag>
           </ColumnThird>
-          <ColumnFourth>
+          <ColumnFourth class="footer-div-1">
             <Row className="footer-column-heading">New Proposal Alert</Row>
             <InputDiv>
               <Input type="email" placeholder="Add Email" />
@@ -119,6 +119,9 @@ export default function FooterComponent() {
               </RowTag>
             </ColumnThird>
           </Div__>
+          <Row>
+          <RowXDC>© 2021 XDC. All Right Reserved</RowXDC>
+          </Row>
         </MobileResolution>
       </MobileDiv>
     </Div>
@@ -127,6 +130,9 @@ export default function FooterComponent() {
 const Div__ = styled.div`
   display: flex;
   justify-content: space-between;
+  @media (min-width: 300px) and (max-width: 767px) {
+    margin-top:38px
+  }
 `;
 const Heading = styled.span`
   font-weight: 600;
@@ -160,10 +166,13 @@ const RowXDC = styled.div`
   justify-content: center;
   margin-top: 70px;
   color: #909090;
+  text-align:center;
   font: normal normal normal 15px/28px Inter;
   @media (min-width: 300px) and (max-width: 767px) {
-    display: none;
+    margin-top:18px !important;
+    margin-left:43px !important;
   }
+  
 `;
 
 const ResponsiveImg = styled.img``;
@@ -173,6 +182,10 @@ const InputDiv = styled.div`
   border-radius: 6px;
   align-items: center;
   width: 100%;
+  
+  @media (min-width: 300px) and (max-width: 767px) {
+    margin-top:10px
+  }
 `;
 const Input = styled.input`
   border: 0px;
@@ -181,6 +194,7 @@ const Input = styled.input`
 `;
 const Img = styled.img`
   padding: 4px;
+  margin-left:79px
 `;
 const ColumnOne = styled.div``;
 const ColumnSecond = styled.div``;
@@ -194,7 +208,7 @@ border-top: 1px solid #E3E7EB;
 padding-bottom: 100px;
 align-items: flex-start;
 @media (min-width: 300px) and (max-width: 767px) {
-  display: none;
+  
 }
 `;
 const MainContainer = styled.div`

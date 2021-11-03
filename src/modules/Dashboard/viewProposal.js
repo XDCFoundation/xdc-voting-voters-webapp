@@ -244,6 +244,7 @@ export default function ViewAllProposal() {
         <div className={classes.root}>
           <Grid item xs={12}>
             <div
+              
               style={{ marginBottom: "11px", cursor: "pointer" }}
               onClick={backButton}
             >

@@ -124,6 +124,7 @@ position: relative;
     width: 100%;
     justify-content: space-between;
     flex: 1;
+    
 }
 .alert{
     background-color: #00144D !important;
@@ -207,13 +208,62 @@ opacity: 1;
 .recent-proposal-div{
     margin-top: 8px;
 }
+
+/* .proposalList-footer-div{
+    margin-top:780px ;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+   
+/* } */
+/* .voterList-footer-div{
+    margin-top:780px ;
+} */ 
+
+@media (min-width: 767px) and (max-width: 2000px) {
+    .poll-ended-mobile{
+    display: none !important;
+    }
+    .time-inactive-1{
+        display: none;
+    }
+    .voter-list-mobile{
+        display: none !important;
+    }
+    
+
+  }
+
+@media (min-width: 300px) and (max-width: 767px) {
+    .poll-ended{
+    display: none !important;
+    }
+    .time-inactive{
+        display: none;
+    }
+    
+    .poll-ended-mobile{
+        color:#CECECE;
+        margin-top: -6px;
+        }
+    
+    .count-down-mobile{
+        display: none !important;
+    }
+}
+
+
+
 @media  (max-width:360px) {
    .post{
     font-size: 10px !important;
    }
+   
 }
 
 @media (max-width:767px){
+    .footer-div-1{
+        margin-bottom: 201px !important;
+    }
 
     .div-1{
         width: 155px !important;
@@ -229,6 +279,7 @@ opacity: 1;
     }
     .name{
         white-space: nowrap;
+        font-size: 14px !important;
     }
     
     .mobile-logo-row-1{
@@ -284,7 +335,8 @@ opacity: 1;
     .mobile-footer-main-div{
         display: block !important;
     }
-    .recent-proposal-div-footer{
+    .recent-proposal-div{
+        margin: 0px 20px ;
         
     }
     .footer-search{
@@ -300,10 +352,11 @@ opacity: 1;
         width: 30px !important;
     }
     .mobile-rightdiv{
-        margin-top: 280% !important;
+        margin-top: 201% !important;
     }
     .name-proposal{
-        font-size: 9px !important;
+        font-size: 13px !important;
+        white-space: nowrap !important;
     }
     .table-between{
         width: 86vw !important;
@@ -324,6 +377,7 @@ opacity: 1;
       margin-bottom: 4px;
       margin-top: 8% !important;
       justify-content: center !important;
+      margin-left: 24px !important;
       
     }
     .mobile-divbox{
@@ -353,30 +407,46 @@ opacity: 1;
     .xdc-governance{
         font-size: 30px !important;
         font-weight: 500 !important;
+        margin-top: 20px!important;
     }
     .heading{
-        margin: 14px !important;
+        margin: 20px 5px !important;
         font-size: 14px !important;
+        white-space: nowrap;
     }
     .griddiv{
       
     }
     .mobile-div-right{
         padding-right: 0px !important;
+        width:122px !important;
+        margin-top: 41px;
+        z-index: 1;
+        position: relative;
     }
+    .table-cell{
+        width:192px !important
+    }
+    
     .view-all{
     font-family: "Inter",sans-serif;
     font-weight: 600;
     font-size: 13px;
     }
     .details{
-        margin-right: 10px !important;
+        margin-right: -5px !important;
+        width: 94px !important;
+        margin-top: 35px !important;
+        z-index: 1;
+        
     }
-    .poll-ended{
+    /* .poll-ended{
         margin-left: 80px !important;
-    }
+        display: none;
+        color: white;
+    } */
     .vote-number{
-        margin-left: 100px !important;
+        margin-left: 55px !important;
     }
     .know-about-xdc{
         width: 100% !important;
@@ -392,6 +462,45 @@ opacity: 1;
         margin-top: 30px !important;
       
     }
+    .row-1{
+        padding-top: 94px;
+    }
+    .recent-add-div{
+        height: 65px !important;;
+    }
+    .div-1-row1{
+        font-size: 14px !important;
+    }
+    .back-button-mobile{
+        margin-top: 39px;
+    }
+    .heading-1{
+        width:281px !important;
+        height:361px !important;
+        margin-left: -4px !important;
+    }
+    .date-proposal{
+        font-size: 11px !important;
+    }
+    .time-proposal{
+        font-size: 11px !important;
+        z-index: 1;
+        margin-left: -116px;
+    }
+    .recent-add-div-proposal{
+        padding: 19px 20px 10px 17px  !important;
+    }
+    .polling-heading{
+        font-size: 13px!important;
+        margin-top: 2px;
+        
+    }
+    .address-number{
+        font-size: 13px !important;
+        margin-left: -26px!important;
+        color:mediumblue !important;
+    }
+   
   
 }
 @media  (max-width:1023px) {
@@ -526,10 +635,16 @@ opacity: 1;
         padding-top: 10px;
     }
     .div-1{
-        width: 209px !important;
+        width: 209px ;
     }
     .recent-proposal-div{
         margin-top: 37px !important;
+    }
+
+    .heading-1{
+        width:611px ;
+        height:351px ;
+        
     }
 
 }
@@ -821,7 +936,7 @@ width: 100%;
       height: auto;
     display: flex;
     justify-content: center;
-    position: absolute;
+    /* //position: absolute; */
     top: 292px;
     padding-left: 20px;
     padding-right: 20px;
@@ -1082,7 +1197,8 @@ text-align: center;
     width: 100%;
     justify-content: space-between;
    
-    padding: 23px 20px 10px 33px
+    padding: 23px 20px 10px 33px;
+    height: 110px !important;
  }
  .recent-add-div-proposal2{
     width: 100%;
@@ -1284,7 +1400,26 @@ margin-right: 10px;
  .heading-1{
     font-weight: 600;
     margin-bottom: 10px;
+    margin-left: 20px;
+    /* min-height: 300px;
+    overflow: hidden; */
+
+
+    
+        width: 698px;
+        height: 359px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: justify;
+        padding: 20px;
+
+
+    /* width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto; */
+    /* white-space: nowrap; */
  }
+
  .external-image-proposal{
      margin-left: 205px;
      cursor: pointer;
