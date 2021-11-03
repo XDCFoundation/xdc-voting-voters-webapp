@@ -52,6 +52,15 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     width: "100%",
   },
+  mobileVote:{
+    "@media (min-width: 567px) and (max-width: 767px)": {
+      
+    },
+    "@media (min-width: 767px) and (max-width: 1040px)": {
+      display:"none",
+    },
+
+  }
 }));
 
 export default function Voterslist(props) {
@@ -179,7 +188,8 @@ export default function Voterslist(props) {
                     <Container>
                       <ImageView src={data.image} />
                       &nbsp;
-                      <Hash>{proposalAddressComponent(data.voterAddress)}</Hash>
+                      <Hash> {(data.voterAddress)}</Hash>
+                      {/* <Hash className={classes.mobileVote}>{proposalAddressComponent(data.voterAddress)}</Hash> */}
                     </Container>
                     <SecondContainer>
                       <Leftcontainer>
@@ -189,6 +199,8 @@ export default function Voterslist(props) {
                     </SecondContainer>
                   </Spacing>
                 </Div>
+                
+                
               );
             })}
             <Pagingdiv className="display-flex justify-content-end">

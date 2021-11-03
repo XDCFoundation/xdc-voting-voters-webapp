@@ -119,6 +119,9 @@ export default function FooterComponent() {
               </RowTag>
             </ColumnThird>
           </Div__>
+          <Row>
+          <RowXDC>© 2021 XDC. All Right Reserved</RowXDC>
+          </Row>
         </MobileResolution>
       </MobileDiv>
     </Div>
@@ -163,10 +166,13 @@ const RowXDC = styled.div`
   justify-content: center;
   margin-top: 70px;
   color: #909090;
+  text-align:center;
   font: normal normal normal 15px/28px Inter;
   @media (min-width: 300px) and (max-width: 767px) {
-    display: none;
+    margin-top:18px !important;
+    margin-left:43px !important;
   }
+  
 `;
 
 const ResponsiveImg = styled.img``;
