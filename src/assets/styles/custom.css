@@ -500,6 +500,9 @@ opacity: 1;
         margin-left: -26px!important;
         color:mediumblue !important;
     }
+    .recent-proposal-div-proposal4{
+        margin-top: 59px !important;
+    }
    
   
 }
@@ -1192,6 +1195,7 @@ text-align: center;
  .recent-add-div{
      width: 100%;
      justify-content: space-between;
+     margin-top: -1px;
  }
  .recent-add-div-proposal{
     width: 100%;

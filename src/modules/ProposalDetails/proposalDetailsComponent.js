@@ -304,7 +304,7 @@ function AddressComponent(row) {
           </div>
         </Row>
         <div style={{ color: "#ACACAC", fontSize: "13px" }}>
-          {Utils.epocToPrettyTime(row.createdOn)}
+          {moment(row.createdOn).format("D  MMM  ")}
         </div>
       </Row>
     </>
@@ -317,7 +317,7 @@ function proposalAddressComponent(row) {
           <>
               <Row className="p-8 justify-content-between">
                   <Row>
-                      <div className="fs-15 color-2A2A2A p-l-sm">
+                      <div className="fs-12 color-2A2A2A p-l-sm">
                           {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
                       </div>
                   </Row>
