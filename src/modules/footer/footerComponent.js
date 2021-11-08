@@ -2,8 +2,34 @@ import React, { useState } from "react";
 import { Column, Row } from "simple-flexbox";
 import "../../assets/styles/custom.css";
 import styled from "styled-components";
+import {emailSubscription} from "../../services/proposalService"
+import Utils from "../../utility";
 
-export default function FooterComponent() {
+
+
+export default function FooterComponent(props) {
+
+  const [addEmail, setAddEmail] = useState("");
+
+  const addingEmail = async () => {
+    const reqObj = {
+      email: addEmail,
+    };
+    let [error, proposals] = await Utils.parseResponse(emailSubscription(reqObj));
+    // if(!error)
+    // {
+    //   Utils.apiSuccessToast("Email subscribed successfully");
+    // }
+    if(error || !addEmail){
+      Utils.apiFailureToast("Please enter Email");
+    }
+
+    else{
+      Utils.apiSuccessToast("Email subscribed successfully");
+    }
+  };
+
+
   return (
     <Div>
       <MainContainer>
@@ -52,8 +78,11 @@ export default function FooterComponent() {
           <ColumnFourth class="footer-div-1">
             <Row className="footer-column-heading">New Proposal Alert</Row>
             <InputDiv>
-              <Input type="email" placeholder="Add Email" />
-              <Img
+              <Input type="email" placeholder="Add Email" 
+               onChange={(e) =>  setAddEmail(e.target.value)}
+               value={addEmail}
+              />
+              <Img onClick={()=>{addingEmail()}} 
                 src={require("../../assets/styles/images/ForwardLogo.svg")}
               />
             </InputDiv>
