@@ -183,8 +183,9 @@ export default function Voterslist(props) {
 
             {props.state.votes.map((data) => {
               return (
+                <div>
                 <Div>
-                  <Spacing>
+                  <Spacing >
                     <Container>
                       <ImageView src={data.image} />
                       &nbsp;
@@ -199,7 +200,24 @@ export default function Voterslist(props) {
                     </SecondContainer>
                   </Spacing>
                 </Div>
-                
+                <VoterListMobile >
+                  <Spacing >
+                    <Container>
+                      <ImageView src={data.image} />
+                      &nbsp;
+                      {/* <Hash> {(data.voterAddress)}</Hash> */}
+                      <Hash className={classes.mobileVote}>{proposalAddressComponent(data.voterAddress)}</Hash>
+                    </Container>
+                    <SecondContainer>
+                      <Leftcontainer>
+                      {moment(data.createdOn).format("D  MMM  ") } 
+                        {/* {Utils.epocToPrettyTime(data.createdOn)} */}
+                      </Leftcontainer>
+                    </SecondContainer>
+                  </Spacing>
+                </VoterListMobile>
+               
+                </div>
                 
               );
             })}
@@ -252,6 +270,15 @@ const MainHeading = styled.span`
   color: #ffffff;
   font-family: "Inter", sans-serif;
   font-size: 20px;
+`;
+
+const VoterListMobile= styled.div`
+background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e3e7eb;
+  height: auto;
+  @media (min-width: 767px) and (max-width: 2000px) {
+    display: none;
+  }
 `;
 
 const Back = styled.span`
@@ -379,6 +406,9 @@ const Div = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
   height: auto;
+  @media (min-width: 300px) and (max-width: 767px) {
+    display: none;
+  }
 `;
 
 const Heading = styled.span`

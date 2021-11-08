@@ -226,9 +226,9 @@ opacity: 1;
     .time-inactive-1{
         display: none;
     }
-    .voter-list-mobile{
+    /* .voter-list-mobile{
         display: none !important;
-    }
+    } */
     
 
   }
@@ -247,6 +247,9 @@ opacity: 1;
         }
     
     .count-down-mobile{
+        display: none !important;
+    }
+    .voter-list{
         display: none !important;
     }
 }
@@ -420,7 +423,7 @@ opacity: 1;
     .mobile-div-right{
         padding-right: 0px !important;
         width:122px !important;
-        margin-top: 41px;
+        margin-top: 47px;
         z-index: 1;
         position: relative;
     }
@@ -499,6 +502,9 @@ opacity: 1;
         font-size: 13px !important;
         margin-left: -26px!important;
         color:mediumblue !important;
+    }
+    .recent-proposal-div-proposal4{
+        margin-top: 59px !important;
     }
    
   
@@ -1192,6 +1198,7 @@ text-align: center;
  .recent-add-div{
      width: 100%;
      justify-content: space-between;
+     margin-top: -1px;
  }
  .recent-add-div-proposal{
     width: 100%;
