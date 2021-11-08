@@ -264,6 +264,16 @@ opacity: 1;
 }
 
 @media (max-width:767px){
+    .attachment-logo{
+        margin-top: 15px !important;
+        margin-left: 5px !important;
+    }
+    .attachment-heading{
+        padding: 0px !important;
+        font-size: 8px !important;
+        word-break: break-all !important;
+
+    }
     .footer-div-1{
         margin-bottom: 201px !important;
     }
@@ -366,13 +376,18 @@ opacity: 1;
     }
     .doc-1{
         /*width: 353px !important;*/
+        padding: 0px !important;
+        margin-left: -15px !important;
+        width:287px !important
     }
     .external-image-proposal2 {
         margin-left: 85px !important;
         margin-top: -5px !important;
     }
     .external-image-proposal{
-        margin-left: 40px !important;
+        margin-left: 7px !important;
+        margin-top: 19px !important;
+        margin-right: 2px !important;
     }
     .div-box{
        
@@ -650,6 +665,7 @@ opacity: 1;
     .heading-1{
         width:611px ;
         height:351px ;
+        margin-left: -15px !important;
         
     }
 
@@ -1376,6 +1392,7 @@ opacity: 1;
     color: #2149B9;
     opacity: 1;
     font-weight: 600;
+    
  }
  .doc-1{
     /*width: 580px;*/
