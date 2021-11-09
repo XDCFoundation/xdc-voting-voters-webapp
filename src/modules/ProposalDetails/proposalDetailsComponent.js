@@ -124,13 +124,13 @@ export default function ProposalDetails(props) {
                       </Column>
                         {props.state && props.state.proposalDetails && props.state.proposalDetails.proposalDocuments
                         && props.state.proposalDetails.proposalDocuments.length
-                        && props.state.proposalDetails.proposalDocuments.map(doc => {
+                        && props.state.proposalDetails.proposalDocuments.map((doc,index) => {
                             return (<Row className="doc-1">
                                                 <span>
                                                     {" "}
                                                     <img className="attachment-logo" src={require("../../assets/styles/images/Attachment.svg")}/>
                                                 </span>
-                                <a href={props.state.proposalDetails.proposalDocumentsUrl[doc]} target="_blank">
+                              <a href={props.state.proposalDocumentsUrl[index]} target="_blank">
                                     <span className="attachment-heading">{doc.replace('images/','')}</span>
                                 </a>
                                 <span>
@@ -144,8 +144,6 @@ export default function ProposalDetails(props) {
                     </Grid>
                   </Grid>
                 </Row>
-                <Row></Row>
-                <Row></Row>
               </div>
             </div>
           </ColumnDiv>

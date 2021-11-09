@@ -106,7 +106,7 @@ export default class Createproposal extends BaseComponent {
       const acc = accounts[0];
       const contract = new web3.eth.Contract(
         masterContractAbi,
-        "0x89CfE6bb2a708A336dEBcD8A6DE028146Ab1f841"
+        "0xA97c297Ab7dfFcDed29e37b307f289Eff277ABF7"
       );
       contract.methods
         .create_New_Proposal(

@@ -19,7 +19,8 @@ export default class ProposalDetails extends BaseComponent {
             proposalDetails: {},
             isButtonClicked: false,
             open: false,
-            isAllowedToVoting: false
+            isAllowedToVoting: false,
+            proposalDocumentsUrl:[]
         };
     }
 
@@ -58,24 +59,21 @@ export default class ProposalDetails extends BaseComponent {
         if (proposalDetail.endDate > Date.now()) {
             proposalDetail.status = "Open"
             const isVoted = await this.isAlreadyVoted(proposalDetail)
-            console.log("sdfasdv", isVoted)
             if (isVoted)
                 this.setState({isButtonClicked: true})
         } else {
             this.setState({isButtonClicked: true})
         }
-        proposalDetail.proposalDocumentsUrl = await this.getSignedUrls(proposalDetail.proposalDocuments)
-        console.log("proposalDetail ",proposalDetail)
-        this.setState({proposalAddress: address, proposalDetails: proposalDetail})
+        const proposalDocumentsUrl = await this.getSignedUrls(proposalDetail.proposalDocuments)
+        this.setState({proposalAddress: address, proposalDetails: proposalDetail, proposalDocumentsUrl})
     }
 
     getSignedUrls = async (documents)=>{
-        const responseObj = {}
-        documents.map(async key => {
-            const url = await getSignedUrlService(key).catch(err => console.log(err))
-            console.log(url)
-            responseObj[key] = url;
-        })
+        const responseObj = [];
+        for(let index=0; index< documents.length; index++){
+            const url = await getSignedUrlService(documents[index]).catch(err => console.log(err))
+            responseObj.push(url);
+        }
         return responseObj
     }
 
