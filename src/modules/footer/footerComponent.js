@@ -2,13 +2,35 @@ import React, { useState } from "react";
 import { Column, Row } from "simple-flexbox";
 import "../../assets/styles/custom.css";
 import styled from "styled-components";
+import { emailSubscription } from "../../services/proposalService";
+import Utils from "../../utility";
 
-export default function FooterComponent() {
+export default function FooterComponent(props) {
+  const [addEmail, setAddEmail] = useState("");
+
+  const addingEmail = async () => {
+    const reqObj = {
+      email: addEmail,
+    };
+    let [error, proposals] = await Utils.parseResponse(
+      emailSubscription(reqObj)
+    );
+    // if(!error)
+    // {
+    //   Utils.apiSuccessToast("Email subscribed successfully");
+    // }
+    if (error || !addEmail) {
+      Utils.apiFailureToast("Please enter Email");
+    } else {
+      Utils.apiSuccessToast("Email subscribed successfully");
+    }
+  };
+
   return (
     <Div>
       <MainContainer>
         <Container>
-          <ColumnOne >
+          <ColumnOne>
             <Row class="footer-div-1">
               <img
                 className="footer-logo"
@@ -52,8 +74,17 @@ export default function FooterComponent() {
           <ColumnFourth class="footer-div-1">
             <Row className="footer-column-heading">New Proposal Alert</Row>
             <InputDiv>
-              <Input type="email" placeholder="Add Email" />
+              <Input
+                type="email"
+                placeholder="Add Email"
+                onChange={(e) => setAddEmail(e.target.value)}
+                value={addEmail}
+              />
               <Img
+                onClick={() => {
+                  addingEmail();
+                  setAddEmail("");
+                }}
                 src={require("../../assets/styles/images/ForwardLogo.svg")}
               />
             </InputDiv>
@@ -120,7 +151,7 @@ export default function FooterComponent() {
             </ColumnThird>
           </Div__>
           <Row>
-          <RowXDC>© 2021 XDC. All Right Reserved</RowXDC>
+            <RowXDC>© 2021 XDC. All Right Reserved</RowXDC>
           </Row>
         </MobileResolution>
       </MobileDiv>
@@ -131,7 +162,7 @@ const Div__ = styled.div`
   display: flex;
   justify-content: space-between;
   @media (min-width: 300px) and (max-width: 767px) {
-    margin-top:38px
+    margin-top: 38px;
   }
 `;
 const Heading = styled.span`
@@ -166,13 +197,12 @@ const RowXDC = styled.div`
   justify-content: center;
   margin-top: 70px;
   color: #909090;
-  text-align:center;
+  text-align: center;
   font: normal normal normal 15px/28px Inter;
   @media (min-width: 300px) and (max-width: 767px) {
-    margin-top:18px !important;
-    margin-left:43px !important;
+    margin-top: 18px !important;
+    margin-left: 43px !important;
   }
-  
 `;
 
 const ResponsiveImg = styled.img``;
@@ -182,9 +212,9 @@ const InputDiv = styled.div`
   border-radius: 6px;
   align-items: center;
   width: 100%;
-  
+
   @media (min-width: 300px) and (max-width: 767px) {
-    margin-top:10px
+    margin-top: 10px;
   }
 `;
 const Input = styled.input`
@@ -194,7 +224,7 @@ const Input = styled.input`
 `;
 const Img = styled.img`
   padding: 4px;
-  margin-left:79px
+  margin-left: 79px;
 `;
 const ColumnOne = styled.div``;
 const ColumnSecond = styled.div``;
