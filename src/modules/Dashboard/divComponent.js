@@ -73,9 +73,10 @@ export default function DivBlocksComponent() {
                   className="time-inactive"
                   src={require("../../assets/styles/images/Group 32.svg")}
                 />
-                <ImgRedirect
+              <a href="https://www.reddit.com/r/xinfin/">  <ImgRedirect
                   src={require("../../assets/styles/images/External-Link.svg")}
                 />
+                </a>
               </Row>
               <RowHeading>XDC Forum</RowHeading>
               <RowSubheading>

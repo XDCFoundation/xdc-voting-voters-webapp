@@ -58,15 +58,15 @@ export default function FooterComponent(props) {
               <Anchor href="https://t.me/xinfin">Telegram</Anchor>
             </RowTag>
             <RowTag>
-              {/* <Anchor href="https://discord.com/invite/KZdD6pkFxp"> */}
+              <Anchor href="https://www.reddit.com/r/xinfin/">
               Forum
-              {/* </Anchor> */}
+              </Anchor>
             </RowTag>
           </ColumnSecond>
           <ColumnThird>
             <Row className="footer-column-heading">Governance</Row>
             <RowTag>Overview </RowTag>
-            <RowTag>Forum</RowTag>
+            <RowTag></RowTag>
             <RowTag>
               <Anchor href="https://howto.xinfin.org/general/faq/">FAQs</Anchor>
             </RowTag>
