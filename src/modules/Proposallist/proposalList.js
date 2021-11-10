@@ -186,7 +186,7 @@ export default function ViewAllProposal(props) {
                 style={{
                   width: "20px",
                   marginRight: "8px",
-                  marginBottom: "8px",
+                  marginBottom: "3px",
                 }}
               />
               <Back>Back</Back>

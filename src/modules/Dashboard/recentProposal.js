@@ -42,7 +42,7 @@ export default function RecentProposal(props) {
   };
 
   return (
-    <div>
+    <div >
       <Grid lg={13} className="tablegrid_address">
         <Grid component={Paper} style={{ boxShadow: "0px 0px 0px 0px" }}>
           <Table
