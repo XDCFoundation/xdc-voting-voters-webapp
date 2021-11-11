@@ -76,7 +76,7 @@ function Header() {
             <Column>
               <img
                 className="header-logo"
-                src={require("../../assets/styles/images/xdc_logo.svg")}
+                src={require("../../assets/styles/images/XDC-Icon-Logo.svg")}
               ></img>
             </Column>
             <Column className="xdc">

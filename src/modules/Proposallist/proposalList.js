@@ -29,24 +29,25 @@ const useStyles = makeStyles((theme) => ({
   styleHead: {
     display: "flex",
     marginTop: "6px",
-    fontSize: "12px",
+    fontSize: "14px",
     border: "0px",
     outline: "0px",
-    height: "31px",
+    height: "36px",
+    width: "107px",
     fontFamily: "Inter",
     fontWeight: "600",
     // marginLeft: "8px",
     color: "#2A2A2A",
     width: "100%",
-    paddingLeft: "10px",
+    paddingLeft: "8px",
   },
   row: {
     border: "1px solid #E3E7EB",
-    height: "30px",
+    height: "36px",
     borderRadius: "4px",
     width: "100%",
     maxWidth: "126px",
-    marginRight: "10px",
+    marginRight: "11px",
   },
   root: {
     display: "flex",
@@ -74,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     // height: "53px",
     background: "#FFFFFF 0% 0% no-repeat padding-box",
     justifyContent: "space-between",
-    padding: "20px 17px",
+    padding: "21px 24px 21px 22px",
     borderTopLeftRadius: "4px",
     borderTopRightRadius: "4px",
 
@@ -85,18 +86,20 @@ const useStyles = makeStyles((theme) => ({
   },
 
   input: {
-    width: "100%",
-    height: "30px",
-    background: "url(/images/Search.svg) no-repeat 1px",
     color: "#909090",
-    backgroundSize: "14px",
-    padding: "16px 22px",
+    width: "100%",
     border: "1px solid #E3E7EB",
-    borderRadius: "4px",
-    opacity: 1,
+    height: "36px",
+    opacity: "1",
+    padding: "16px 30px",
     fontSize: "14px",
+    maxWidth: "193px",
+    background: "url(/images/Search.svg) no-repeat 1px",
     marginLeft: "10px",
-    maxWidth: "140px",
+    borderRadius: "4px",
+    backgroundSize: "14px",
+    backgroundPositionX: "9.5px",
+    outline: "none",
     "@media (min-width: 300px) and (max-width: 780px)": {
       width: "100%",
       maxWidth: "610px",
@@ -196,6 +199,7 @@ export default function ViewAllProposal(props) {
                 <Heading>All Proposals</Heading>
 
                 <InputDiv>
+                {/* <img src="images/search.svg"></img> */}
                   <Input
                     placeholder="Search"
                     className={classes.input}
@@ -379,7 +383,7 @@ export default function ViewAllProposal(props) {
             </Div>
             <div className="display-flex justify-content-end p-t-15">
               <Pagination
-                prevPageText="Previous"
+                prevPageText="Back"
                 nextPageText="Next"
                 hideFirstLastPages
                 linkClassNext="table-pagination"
@@ -411,19 +415,24 @@ const ArrowImg = styled.img`
   margin-top: -2px;
   margin-right: 7px;
   width: 5%;
+  margin-left:-5px;
 `;
 const DateSpan = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
-  font-size: 13px;
+  font-size: 14px;
   font-family: "Inter";
   font-weight: 600;
-  margin-left: 8px;
+  margin-left: 12px;
 `;
 const DatePickerDiv = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
   border-radius: 4px;
+  width: 237px;
+  height: 36px;
+  padding-top: 1px;
+}
 
   input:focus {
     border: none !important;
@@ -442,7 +451,7 @@ const Input = styled.input`
   font-weight: 400;
 `;
 const MainContainer = styled.div`
-  padding: 20px 17px;
+  padding: 21px 24px 21px 22px;
   @media (min-width: 300px) and (max-width: 767px) {
     padding: 20px 8px 17px 8px;
   }
