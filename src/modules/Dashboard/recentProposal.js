@@ -56,7 +56,7 @@ export default function RecentProposal(props) {
                 props.state.proposalsList.map((proposal, index) => {
                   let status =
                     proposal.endDate > Date.now() ? "Open" : "Closed";
-                  let formatedTime = moment(proposal.createdOn).format("LL");
+                  let formatedTime = moment(proposal.createdOn).format("DD MMMM YYYY");
                   const yesVotes = proposal.yesVotes.length;
                   const noVotes = proposal.noVotes.length;
                   const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
@@ -98,7 +98,7 @@ export default function RecentProposal(props) {
                             </Row>
                             {status === "Open" ? (
                               <>
-                                <Row>
+                                {/* <Row>
                                   <span style={{ marginRight: "5px" }}>
                                     {" "}
                                     <img
@@ -117,7 +117,7 @@ export default function RecentProposal(props) {
                                     />
                                     &nbsp;Remaining
                                   </Span>
-                                </Row>
+                                </Row> */}
                               </>
                             ) : (
                               <>

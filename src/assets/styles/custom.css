@@ -898,7 +898,7 @@ px
   display: flex;
   justify-content: center;
   position: absolute;
-  top: 226px;
+  top: 235px;
 
   /* padding-left: 20px;
     padding-right: 20px; */
@@ -1095,7 +1095,7 @@ px
   font: normal normal medium 22px/26px Inter;
   font-size: 22px;
   font-family: "Inter", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   padding: 15px;
 }
 .support-button {
@@ -1176,9 +1176,10 @@ px
   padding: 15px;
 }
 .heading {
-  margin: 15px;
+  /* margin: 15px; */
   color: var(--unnamed-color-2a2a2a);
-
+padding: 15px;
+padding-left: 20px;
   font: normal normal 600 22px/26px Inter;
   letter-spacing: 0px;
   color: #2a2a2a;
@@ -1388,6 +1389,7 @@ px
 .table-between {
   justify-content: space-between;
   display: flex;
+  padding: 10px;
 }
 .voter-heading {
   letter-spacing: 0px;
@@ -1531,7 +1533,7 @@ img.load {
   display: flex;
   justify-content: center;
 
-  margin-left: 260px;
+  margin-left: 430px;
 }
 
 .view-all {
@@ -1669,9 +1671,13 @@ input:focus {
 .fc-blue {
   /* color: #0052cc !important; */
   color: #2149b9;
+  margin-top: -2px;
+    font-size: 15px;
 }
 .fc-green {
   color: #3ab70d;
+  margin-top: -2px;
+  font-size: 15px;
 }
 
 .fc-dark-slate-blue {
@@ -1693,6 +1699,8 @@ input:focus {
 .fc-red {
   /* color: red; */
   color: #f43d3d;
+  margin-top: -2px;
+  font-size: 15px;
 }
 
 .fc-brownish-grey {
