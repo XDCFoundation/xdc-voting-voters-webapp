@@ -60,7 +60,7 @@ export default function ProposalDetails(props) {
         <div className="all-div-proposal">
           <ColumnDiv>
             <div className="back-image" onClick={props.backButton}>
-              <img src="/images/Back-Arrow.svg" style={{ width: "15px" }} />
+              <img src="/images/Back-Arrow.svg" style={{ width: "21px",height:"18px",marginTop:"3px" }} />
               <div className="back-button">Back</div>
             </div>
             <div className="recent-proposal-div-proposal">
@@ -331,5 +331,5 @@ const ColumnDiv = styled.div`
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-  max-width: 795px;
+  max-width: 842px;
 `;

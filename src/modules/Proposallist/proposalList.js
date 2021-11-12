@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     height: "36px",
     width: "107px",
     fontFamily: "Inter",
-    fontWeight: "600",
+    fontWeight: "500",
     // marginLeft: "8px",
     color: "#2A2A2A",
     width: "100%",
@@ -76,8 +76,8 @@ const useStyles = makeStyles((theme) => ({
     background: "#FFFFFF 0% 0% no-repeat padding-box",
     justifyContent: "space-between",
     padding: "21px 24px 21px 22px",
-    borderTopLeftRadius: "4px",
-    borderTopRightRadius: "4px",
+    borderTopLeftRadius: "6px",
+    borderTopRightRadius: "6px",
 
     "@media (min-width: 300px) and (max-width: 780px)": {
       display: "block !important",
@@ -187,7 +187,8 @@ export default function ViewAllProposal(props) {
               <img
                 src="/images/Back-Arrow.svg"
                 style={{
-                  width: "20px",
+                  width: "21px",
+                  height: "18px",
                   marginRight: "8px",
                   marginBottom: "3px",
                 }}
@@ -422,7 +423,7 @@ const DateSpan = styled.span`
   color: #2a2a2a;
   font-size: 14px;
   font-family: "Inter";
-  font-weight: 600;
+  font-weight: 500;
   margin-left: 12px;
 `;
 const DatePickerDiv = styled.div`
@@ -666,7 +667,7 @@ const Div = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   // border: 1px solid #e3e7eb;
   height: auto;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 6px 6px;
   border-top: 1px solid #e3e7eb;
   border-left: 1px solid #e3e7eb;
   border-right: 1px solid #e3e7eb;

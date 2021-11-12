@@ -86,9 +86,10 @@ function Header() {
         </Column>
         <Column>
           <div className={classes.buttondiv}>
+            {/* <div className="circle"></div> */}
             <XdcConnect
               btnClass={wallet.connected ? classes.btnCss : classes.btnCss}
-              btnName={wallet.connected ? wallet.address : "Connect wallet"}
+             btnName ={ wallet.connected ? wallet.address : <><div className="circle"></div><p className="connect">Connect Wallet</p></>}
               onConnect={(wallet) => {
                 setwallet(wallet);
                 fetchData(wallet.address);
