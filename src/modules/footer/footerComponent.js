@@ -252,7 +252,7 @@ width:100%
 display:flex;
 justify-content: center;
 border-top: 1px solid #E3E7EB;
-padding-bottom: 100px;
+padding-bottom: 20px;
 align-items: flex-start;
 @media (min-width: 300px) and (max-width: 767px) {
   
