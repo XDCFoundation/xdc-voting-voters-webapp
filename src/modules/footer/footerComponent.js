@@ -58,9 +58,7 @@ export default function FooterComponent(props) {
               <Anchor href="https://t.me/xinfin">Telegram</Anchor>
             </RowTag>
             <RowTag>
-              <Anchor href="https://www.reddit.com/r/xinfin/">
-              Forum
-              </Anchor>
+              <Anchor href="https://www.reddit.com/r/xinfin/">Forum</Anchor>
             </RowTag>
           </ColumnSecond>
           <ColumnThird>
@@ -207,24 +205,43 @@ const RowXDC = styled.div`
 
 const ResponsiveImg = styled.img``;
 const InputDiv = styled.div`
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #e3e7eb;
-  border-radius: 6px;
-  align-items: center;
-  width: 100%;
+  // background: #ffffff 0% 0% no-repeat padding-box;
+  // border: 1px solid #e3e7eb;
+  // border-radius: 6px;
+  // align-items: center;
+  // width: 100%;
+  // width: 344px;
+  // height: 38px;
 
   @media (min-width: 300px) and (max-width: 767px) {
     margin-top: 10px;
   }
 `;
 const Input = styled.input`
-  border: 0px;
-  border-right: 1 px solid #e3e7eb;
+  border-left: 1px solid #e3e7eb;
+  margin-top: 2px;
+  border-top: 1px solid #e3e7eb;
+  border-bottom: 1px solid #e3e7eb;
+  border-right: 1px solid #e3e7eb;
+  letter-spacing: 0px;
+  color: #909090;
+  outline: none;
+  width: 344px;
+  height: 38px;
+  padding-left: 12px;
+  padding-right: 40px;
+  border-radius: 6px;
+  opacity: 1;
+  font-size: 15px;
   // width: 100%;
 `;
 const Img = styled.img`
-  padding: 4px;
-  margin-left: 79px;
+  margin-left: -40px;
+  width: 38px;
+  margin-top: -4px;
+  cursor: pointer;
+  border-left: 1px solid #e3e7eb;
+  padding: 7px;
 `;
 const ColumnOne = styled.div``;
 const ColumnSecond = styled.div``;
@@ -235,7 +252,7 @@ width:100%
 display:flex;
 justify-content: center;
 border-top: 1px solid #E3E7EB;
-padding-bottom: 100px;
+padding-bottom: 20px;
 align-items: flex-start;
 @media (min-width: 300px) and (max-width: 767px) {
   

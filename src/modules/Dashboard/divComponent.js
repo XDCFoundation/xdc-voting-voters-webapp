@@ -34,14 +34,14 @@ export default function DivBlocksComponent() {
       <Grid item xs={12}>
         <Grid container spacing={6}>
           <Grid className={classes.gridOne} item xs={12} sm={6} md={4}>
-            <FirstBlock>
+            <FirstBlock  onClick={viewGovernance}>
               <Row
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
                   marginBottom: "10px",
                 }}
-                onClick={viewGovernance}
+               
               >
                 <Img
                   className="time-inactive"
@@ -60,39 +60,42 @@ export default function DivBlocksComponent() {
           </Grid>
 
           <Grid className={classes.gridOne} item xs={12} sm={6} md={4}>
-            <SecondBlock>
+          <a href="https://www.reddit.com/r/xinfin/"> 
+            <SecondBlock  onClick={viewXdcForm}>
               <Row
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
                   marginBottom: "10px",
                 }}
-                onClick={viewXdcForm}
+               
               >
                 <Img
                   className="time-inactive"
                   src={require("../../assets/styles/images/Group 32.svg")}
                 />
-              <a href="https://www.reddit.com/r/xinfin/">  <ImgRedirect
+              {/* <a href="https://www.reddit.com/r/xinfin/">  */}
+               <ImgRedirect
                   src={require("../../assets/styles/images/External-Link.svg")}
                 />
-                </a>
+                {/* </a> */}
               </Row>
               <RowHeading>XDC Forum</RowHeading>
               <RowSubheading>
                 Mauris neque urna, sodales at molestie ut, pulvinar eu lorem.
               </RowSubheading>
             </SecondBlock>
+            </a>
           </Grid>
           <Grid className={classes.gridOne} item xs={12} sm={6} md={4}>
-            <ThirdBlock>
+            <ThirdBlock  onClick={viewCommunity}>
               <Row
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
                   marginBottom: "10px",
                 }}
-                onClick={viewCommunity}
+               
               >
                 <Img
                   className="time-inactive"
@@ -135,6 +138,7 @@ const FirstBlock = styled.div`
   height: 158px;
   padding: 20px;
   max-width: 380px;
+  cursor:pointer;
 `;
 const SecondBlock = styled.div`
   background: #fdfeff 0% 0% no-repeat padding-box;
@@ -144,6 +148,7 @@ const SecondBlock = styled.div`
   height: 158px;
   max-width: 380px;
   padding: 20px;
+  cursor:pointer;
 `;
 const RowSubheading = styled.div`
   color: var(--unnamed-color-2a2a2a);
@@ -161,6 +166,7 @@ const ThirdBlock = styled.div`
   height: 158px;
   padding: 20px;
   max-width: 380px;
+  cursor:pointer;
 `;
 const RowHeading = styled.div`
   display: flex;

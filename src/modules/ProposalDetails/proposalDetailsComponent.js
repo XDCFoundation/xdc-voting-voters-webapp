@@ -60,7 +60,7 @@ export default function ProposalDetails(props) {
         <div className="all-div-proposal">
           <ColumnDiv>
             <div className="back-image" onClick={props.backButton}>
-              <img src="/images/Back-Arrow.svg" style={{ width: "15px" }} />
+              <img src="/images/Back-Arrow.svg" style={{ width: "21px",height:"18px",marginTop:"3px" }} />
               <div className="back-button">Back</div>
             </div>
             <div className="recent-proposal-div-proposal">
@@ -125,20 +125,25 @@ export default function ProposalDetails(props) {
                         {props.state && props.state.proposalDetails && props.state.proposalDetails.proposalDocuments
                         && props.state.proposalDetails.proposalDocuments.length
                         && props.state.proposalDetails.proposalDocuments.map((doc,index) => {
-                            return (<Row className="doc-1">
+                            return (
+                              <a href={props.state.proposalDocumentsUrl[index]} target="_blank">
+                            <Row className="doc-1">
                                                 <span>
                                                     {" "}
                                                     <img className="attachment-logo" src={require("../../assets/styles/images/Attachment.svg")}/>
                                                 </span>
-                              <a href={props.state.proposalDocumentsUrl[index]} target="_blank">
+                           
                                     <span className="attachment-heading">{doc.replace('images/','')}</span>
-                                </a>
+                               
                                 <span>
                             <img
                                 className="external-image-proposal"
                                 src={require("../../assets/styles/images/External-Link.svg")}
                             ></img>
-                          </span></Row>)
+                          </span>
+                          </Row>
+                          </a>
+                          )
                         })}
 
                     </Grid>
@@ -205,7 +210,7 @@ export default function ProposalDetails(props) {
                     <div className="display-flex">
                       <div className="box-reject"></div>
                       <div className="rjt">
-                         Rejected({props?.state?.proposalDetails?.noVotes?.length}%)
+                         Reject({props?.state?.proposalDetails?.noVotes?.length}%)
                       </div>
                     </div>
                   </div>
@@ -331,5 +336,5 @@ const ColumnDiv = styled.div`
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-  max-width: 795px;
+  max-width: 842px;
 `;
