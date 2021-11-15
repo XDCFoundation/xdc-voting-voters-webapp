@@ -120,8 +120,8 @@ export default function DivBlocksComponent() {
 const Div = styled.div`
   width: 100%;
   max-width: 1280px;
-  margin-top: 50px;
-  margin-bottom: 60px;
+  margin-top: 63px;
+  margin-bottom: 108.5px;
 `;
 const Img = styled.img`
   width: 20px;
