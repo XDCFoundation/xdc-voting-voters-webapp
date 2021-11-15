@@ -44,7 +44,7 @@ export default class Dashboard extends BaseComponent {
     window.ethereum.enable();
     const contract = new web3.eth.Contract(
       masterContractAbi,
-      "0x89CfE6bb2a708A336dEBcD8A6DE028146Ab1f841"
+      "0xd768065793ab75d9056398c7788b6f7b14121931"
     );
     const createProposalResponse = await contract.methods
       .created_Proposal_list()
@@ -54,6 +54,8 @@ export default class Dashboard extends BaseComponent {
       });
     return createProposalResponse;
   };
+
+  delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
   getProposalsData = async (addresses) => {
     if (!addresses) return;

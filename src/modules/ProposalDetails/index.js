@@ -42,7 +42,7 @@ export default class ProposalDetails extends BaseComponent {
             const addresses = await getTotalVotingAddress();
             let isAllowedToVoting = false
             addresses.dataList.map(address => {
-                if (address.address === accounts[0]) {
+                if (address.address.toLowerCase() === accounts[0].toLowerCase()) {
                     if (address.permission.allowVoting === true) {
                         this.setState({isAllowedToVoting: true})
                     }
@@ -123,17 +123,42 @@ export default class ProposalDetails extends BaseComponent {
             }
             const contract = new web3.eth.Contract(proposalContractAbi, this.state.proposalAddress);
             const acc = accounts[0];
-            const castProposalResponse = await contract.methods.cast_vote_for_proposal(true, Date.now()).send({from: acc}).catch((err) => {
-                console.log(err, "Error in Vote cast");
-            });
-            const reqData = {
-                pollingContract: this.state.proposalAddress,
-                voterAddress: acc,
-                support: isSupport
-            };
-            this.addProposalToDatabase(reqData)
-            return castProposalResponse;
+            return new Promise(async (resolve, reject)=>{
+                const castProposalResponse = await contract.methods.
+                cast_vote_for_proposal(isSupport, Date.now()).
+                send({from: acc}, async (err, transactionHash) => {
+                    if (err || !transactionHash)
+                        return;
+                    const res = await this.getTransactionReceipt(transactionHash);
+                    if (res) {
+                        const reqData = {
+                            pollingContract: this.state.proposalAddress,
+                            voterAddress: acc,
+                            support: isSupport
+                        };
+                        this.addProposalToDatabase(reqData)
+                        this.setState({isButtonClicked:true})
+                        resolve(true)
+                    }
+                }).catch((err) => {reject(err)});
+            })
         });
+    };
+
+    delay = (ms) => new Promise((res) => setTimeout(res, ms));
+
+    getTransactionReceipt = async (hash) => {
+        let web3;
+        web3 = new Web3(window.web3.currentProvider);
+        let count = 0;
+        while (true) {
+            count++;
+            const receipt = await web3.eth.getTransactionReceipt(hash);
+            if (receipt !== null || count > 10) {
+                return true;
+            }
+            await this.delay(3000);
+        }
     };
 
     addProposalToDatabase = async (reqData) => {
