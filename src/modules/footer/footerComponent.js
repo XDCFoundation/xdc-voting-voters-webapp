@@ -282,7 +282,7 @@ const MainContainer = styled.div`
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-top: 40px;
+  padding-top: 29px;
   @media (min-width: 300px) and (max-width: 767px) {
     display: none;
   }

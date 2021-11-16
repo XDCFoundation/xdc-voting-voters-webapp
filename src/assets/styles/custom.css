@@ -116,7 +116,7 @@ body {
   display: flex;
   cursor: pointer;
   margin-top: -40px;
-  margin-bottom: 17px;
+  padding-bottom: 17px;
 }
 .row-1 {
   width: 100%;
@@ -749,7 +749,7 @@ body {
 .create-wallet {
   margin: 15px;
   width: 168px;
-  height: 36px;
+  height: 42px;
   background: #2149b9 0% 0% no-repeat padding-box;
   border: 1px solid #fffcfc;
   border-radius: 4px;
@@ -760,8 +760,8 @@ body {
   font-size: 15px;
 }
 .create-wallet p {
-  padding-top: 5px;
-  padding-left: 23px;
+  padding-top: 10px;
+  padding-left: 29px;
 
   text-align: center;
   font: normal normal medium 15px/19px Inter;
@@ -1177,7 +1177,7 @@ px
 .recent-add-div {
   width: 100%;
   justify-content: space-between;
-  margin-top: 0px;
+  margin-top: -4px;
 }
 .recent-add-div-proposal {
   width: 100%;
@@ -1769,13 +1769,16 @@ input:focus {
   padding-left: 2px;
   font-weight: 600;
   -webkit-appearance: none !important;
-  background-image: url(/images/XDC-Dropdown.svg);
+  /* background-image: url(/images/XDC-Dropdown.svg); */
+  background: url(/images/XDC-Dropdown.svg), #000000;
   background-repeat: no-repeat;
   width: 130px;
-  background-size: 11px;
+  background-size: 9px;
   background-position-x: 45px;
   background-position-y: 15px;
   background-color: #ffffff;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius:4px;
 }
 .input-border {
   border: solid 1px #dfe1e6;

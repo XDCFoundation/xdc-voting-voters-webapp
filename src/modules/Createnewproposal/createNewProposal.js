@@ -289,10 +289,12 @@ const useStyles = makeStyles((theme) => ({
     padding: "6px",
     fontSize: "10px",
     textAlign: "right",
+    marginRight: "22px",
+    height: "40px",
   },
   image: {
-    width: "27px",
-    marginLeft: "6px",
+    width: "29px",
+    // marginLeft: "6px",
   },
 
   row_one: {
@@ -522,7 +524,7 @@ export default function Createnewproposal(props) {
                                 {index ===
                                 props.state.proposalDocuments.length - 1 ? (
                                   <img
-                                    className={classes.imag}
+                                    className={classes.image}
                                     onClick={props.addDocumentRow}
                                     src="/images/Add.svg"
                                   />
@@ -591,11 +593,13 @@ const BrowseButton = styled.label`
   opacity: 1;
   padding-left: 6px;
   padding-right: 6px;
-  margin-top: 4px;
+  padding-top: 4px;
+  margin-top: -2px;
   margin-bottom: 4px;
   margin-right: 3px;
   width: 100%;
-  max-width: 120px;
+  max-width: 111px;
+  height: 29px;
 `;
 
 const Button = styled.button`

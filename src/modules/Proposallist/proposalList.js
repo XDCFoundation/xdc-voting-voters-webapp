@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
   styleHead: {
     display: "flex",
-    marginTop: "6px",
+    marginTop: "7px",
     fontSize: "14px",
     border: "0px",
     outline: "0px",
@@ -250,7 +250,7 @@ export default function ViewAllProposal(props) {
                   console.log(data, "data===");
                   let title = data.proposalTitle;
                   let status = data.endDate > Date.now() ? "Open" : "Closed";
-                  let formatedTime = moment(data.createdOn).format("LL");
+                  let formatedTime = moment(data.createdOn).format("DD MMMM YYYY");
                   const yesVotes = data.yesVotes.length;
                   const noVotes = data.noVotes.length;
                   const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
@@ -413,10 +413,11 @@ export default function ViewAllProposal(props) {
   );
 }
 const ArrowImg = styled.img`
-  margin-top: -2px;
-  margin-right: 7px;
-  width: 5%;
-  margin-left:-5px;
+  // margin-top: -2px;
+  // margin-right: 7px;
+  width: 9px;
+  color: #000000;
+  // margin-left:-5px;
 `;
 const DateSpan = styled.span`
   letter-spacing: 0px;
