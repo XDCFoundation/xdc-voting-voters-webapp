@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../assets/styles/custom.css";
-import { XdcConnect, Disconnect } from "xdc-connect";
+import jazzicon from 'jazzicon';
 import { Column, Row } from "simple-flexbox";
 import { history } from "../../managers/history";
 import { makeStyles } from "@material-ui/core/styles/";
@@ -41,18 +41,13 @@ function Header() {
   const [wallet, setwallet] = useState("");
   const [iconT, setIcon] = useState("");
   useEffect(() => {
-    // var icon = blockies.create({ // All options are optional
-    //   seed: 'randstring', // seed used to generate icon data, default: random
-    //   color: '#dfe', // to manually specify the icon color, default: random
-    //   bgcolor: '#aaa', // choose a different background color, default: random
-    //   size: 15, // width/height of the icon in blocks, default: 8
-    //   scale: 3, // width/height of each block in pixels, default: 4
-    //   spotcolor: '#000' // each pixel has a 13% chance of being of a third color,
-    //   // default: random. Set to -1 to disable it. These "spots" create structures
-    // });
-    // console.log("+++",icon)
-    // document.body.appendChild(icon);
-    // setIcon(icon)
+    // var body = document.querySelector('body')
+    // for(var i = 0; i < 60; i++) {
+    //   var el = jazzicon(100, Math.round(Math.random() * 10000000))
+    //   console.log("dsjfkksdgfkjhjldsf ",el)
+    //   body.appendChild(el)
+    // }
+
     let web3;
     web3 = new Web3(window.web3.currentProvider);
     console.log("+++",web3);

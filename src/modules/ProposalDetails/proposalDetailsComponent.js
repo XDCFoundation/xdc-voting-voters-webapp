@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Column, Row } from "simple-flexbox";
+import Jazzicon from 'react-jazzicon';
 import "../../assets/styles/custom.css";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -227,7 +228,7 @@ export default function ProposalDetails(props) {
                 </div>
                 <div className="griddiv-voter">
                   {totalVotes.map((row, index) => {
-                    return AddressComponent(row);
+                    return AddressComponent(row, index);
                   })}
                   {/*{props?.state?.proposalDetails?.noVotes?.map((row, index) => {*/}
                   {/*    return AddressComponent(row)*/}
@@ -293,13 +294,14 @@ export default function ProposalDetails(props) {
   );
 }
 
-function AddressComponent(row) {
+function AddressComponent(row, index) {
   return (
     <>
       <Row className="p-8 justify-content-between">
         <Row>
           <div className="b-r-50">
-            <img className="voter-image b-r-50" src={row.image}></img>
+            <Jazzicon diameter={20} seed={Math.round(Math.random() * 10000000)} />
+            {/*<img className="voter-image b-r-50" src={row.image}></img>*/}
           </div>
           <div className="fs-15 color-2A2A2A p-l-sm">
             {row.voterAddress.substr(0, 13)}...

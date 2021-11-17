@@ -10,6 +10,7 @@ import { history } from "../../managers/history";
 import Pagination from "react-js-pagination";
 import Utils from "../../utility";
 import moment from "moment";
+import Jazzicon from "react-jazzicon";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -187,7 +188,7 @@ export default function Voterslist(props) {
                 <Div>
                   <Spacing >
                     <Container>
-                      <ImageView src={data.image} />
+                      <Jazzicon diameter={20} seed={Math.round(Math.random() * 10000000)} />
                       &nbsp;
                       <Hash> {(data.voterAddress)}</Hash>
                       {/* <Hash className={classes.mobileVote}>{proposalAddressComponent(data.voterAddress)}</Hash> */}
