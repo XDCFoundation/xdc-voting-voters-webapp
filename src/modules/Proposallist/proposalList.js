@@ -269,6 +269,7 @@ export default function ViewAllProposal(props) {
                           <TimeRemainingDiv>
                             {status === "Open" ? (
                               <>
+                              
                                 <Row>
                                   <span style={{ marginRight: "5px" }}>
                                     <img
@@ -282,34 +283,43 @@ export default function ViewAllProposal(props) {
                                       date={data.endDate}
                                     />
                                     &nbsp;Remaining
+                                    
                                   </Span>
+                                 
                                 </Row>
-                                <Row className="justify-content-end">
-                                  <div
-                                    className="details"
-                                    onClick={() =>
-                                      props.proposalRedirect(
-                                        data.pollingContract
-                                      )
-                                    }
-                                  >
-                                    Details
-                                  </div>
-                                </Row>
+                              
+                              
                               </>
                             ) : (
+                              
                               <>
+                              
                                 <ClockImage src="/images/Time-Inactive.svg" />
                                 <PollEnded>Poll Ended</PollEnded>
                               </>
                             )}
                           </TimeRemainingDiv>
                         </RowSpacing>
+                        
                         <RowSpacing>
+                          
                           <div className={classes.mobilemedia}>
                             <Content>{title}</Content>
                             {status === "Open" ? (
-                              ""
+                               <Row className="justify-content-end">
+                               <div
+                                 className="details"
+                                 onClick={() =>
+                                   props.proposalRedirect(
+                                     data.pollingContract
+                                   )
+                                 }
+                               >
+                                 Details
+                               </div>
+                             </Row>
+
+                              
                             ) : (
                               <PositionDivLine>
                                 <BarLine>
@@ -474,7 +484,7 @@ const Media_for_container = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  @media (min-width: 767px) and (max-width: 2000px) {
+  @media (min-width: 767px) and (max-width: 2560px) {
     display: none;
   }
 `;
@@ -523,6 +533,7 @@ const Span = styled.span`
   display: flex;
   padding-left: 8px;
   padding-top: 2px;
+  color: #909090;
 `;
 const Show = styled.span`
   display: flex;
@@ -643,7 +654,7 @@ const PositionDivLine = styled.div`
   }
 `;
 const MobileDivLine = styled.div`
-  @media (min-width: 767px) and (max-width: 2000px) {
+  @media (min-width: 767px) and (max-width: 2560px) {
     display: none;
   }
   @media (min-width: 300px) and (max-width: 767px) {

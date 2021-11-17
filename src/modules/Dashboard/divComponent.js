@@ -60,7 +60,7 @@ export default function DivBlocksComponent() {
           </Grid>
 
           <Grid className={classes.gridOne} item xs={12} sm={6} md={4}>
-          <a href="https://www.reddit.com/r/xinfin/"> 
+          <a style={{textDecoration:"none"}} href="https://www.reddit.com/r/xinfin/"> 
             <SecondBlock  onClick={viewXdcForm}>
               <Row
                 style={{
@@ -150,6 +150,7 @@ const SecondBlock = styled.div`
   padding: 20px;
   cursor:pointer;
 `;
+
 const RowSubheading = styled.div`
   color: var(--unnamed-color-2a2a2a);
   text-align: left;

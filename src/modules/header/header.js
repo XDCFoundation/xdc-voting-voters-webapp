@@ -10,6 +10,7 @@ import { getTotalVotingAddress } from "../../services/proposalService";
 import {injected} from "../../services/web3Connector"
 import {useWeb3React} from "@web3-react/core"
 import blockies from "ethereum-blockies";
+import FooterComponent from "../footer/footerComponent";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -252,7 +252,7 @@ width:100%
 display:flex;
 justify-content: center;
 border-top: 1px solid #E3E7EB;
-padding-bottom: 20px;
+padding-bottom: 25px;
 align-items: flex-start;
 @media (min-width: 300px) and (max-width: 767px) {
   
@@ -302,4 +302,5 @@ const RowTag = styled.div`
   text-align: left;
   font: normal normal normal 15px/28px Inter;
   color: #2a2a2a;
+  cursor: pointer;
 `;
