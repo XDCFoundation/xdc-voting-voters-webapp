@@ -30,6 +30,7 @@ export default function DivBlocksComponent() {
   const classes = useStyles();
 
   return (
+    <div>
     <Div>
       <Grid item xs={12}>
         <Grid container spacing={6}>
@@ -115,6 +116,7 @@ export default function DivBlocksComponent() {
         </Grid>
       </Grid>
     </Div>
+    </div>
   );
 }
 const Div = styled.div`
