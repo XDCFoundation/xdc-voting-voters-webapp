@@ -10,6 +10,7 @@ import { getTotalVotingAddress } from "../../services/proposalService";
 import {injected} from "../../services/web3Connector"
 import {useWeb3React} from "@web3-react/core"
 import blockies from "ethereum-blockies";
+import FooterComponent from "../footer/footerComponent";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -129,7 +130,10 @@ function Header() {
             {/*/>*/}
             <div className="xdc-connect">
               <button className="makeStyles-btnCss-3 btn btn-primary" onClick={connectToWallet}>
-                {wallet ? wallet : <><div className="circle"></div><p className="connect">Connect Wallet</p></>}
+                {wallet ?  <>{wallet ? wallet.substr(0, 11) : " "}...
+                              {wallet
+                                ? wallet.substr(wallet.length - 5, 5)
+                                : ""}</> : <><div className="circle"></div><p className="connect">Connect Wallet</p></>}
               </button>
             </div>
             {/* {wallet.connected ? <button onClick={Disconnect}>Logout</button> : ""} */}

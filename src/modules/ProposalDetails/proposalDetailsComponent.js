@@ -69,7 +69,7 @@ export default function ProposalDetails(props) {
                 <Column>
                   <Row className="date-proposal">
                     Posted on{" "}
-                    {moment(props.state.proposalDetails.createdOn).format("LL")}
+                    {moment(props.state.proposalDetails.createdOn).format("DD MMMM YYYY")}
                   </Row>
                   <Row className="name-proposal">
                     {props.state.proposalDetails.proposalTitle}{" "}

@@ -112,10 +112,6 @@ export default function Header(props) {
           </div>
         </div>
       </Column>
-
-      {/* <div>
-        <FooterComponent />
-      </div> */}
     </div>
   );
 }

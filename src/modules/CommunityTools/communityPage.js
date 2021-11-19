@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "500px",
     },
     "@media (min-width: 767px) and (max-width: 1440px)": {
-      maxWidth: "900px",
+      maxWidth: "95%",
     },
   },
   rowDiv: {
@@ -67,7 +67,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
     width: "100%",
-    maxWidth: "230px",
+    maxWidth: "240px",
+    height: "220px",
     display: "flex",
     justifyContent: "center",
     background: "#FDFEFF 0% 0% no-repeat padding-box",
@@ -144,7 +145,7 @@ export default function CommunityPage() {
         <div className={classes.root}>
           <Grid item xs={12}>
             <div
-              style={{ marginBottom: "11px", cursor: "pointer" }}
+              style={{ marginBottom: "4px", cursor: "pointer" }}
               onClick={backButton}
             >
               <img
@@ -373,7 +374,7 @@ const Heading = styled.span`
 
   font-family: "Inter", sans-serif;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 22px;
 `;
 
 const ImageView = styled.img`

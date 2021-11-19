@@ -239,7 +239,9 @@ export default function RecentProposal(props) {
       <div>
         <DivBlocksComponent />
       </div>
+      {/* <div style={{borderTop:"1px solid black"}}></div> */}
       <div>
+       
         <FooterComponent />
       </div>
     </div>

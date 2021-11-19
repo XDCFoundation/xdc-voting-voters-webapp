@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
   styleHead: {
     display: "flex",
-    marginTop: "6px",
+    marginTop: "7px",
     fontSize: "14px",
     border: "0px",
     outline: "0px",
@@ -64,9 +64,10 @@ const useStyles = makeStyles((theme) => ({
     },
     "@media (min-width: 567px) and (max-width: 767px)": {
       maxWidth: "500px",
+      marginTop: "-135px",
     },
     "@media (min-width: 767px) and (max-width: 1440px)": {
-      maxWidth: "900px",
+      maxWidth: "95%",
     },
   },
   rowdiv: {
@@ -79,10 +80,13 @@ const useStyles = makeStyles((theme) => ({
     borderTopLeftRadius: "6px",
     borderTopRightRadius: "6px",
 
-    "@media (min-width: 300px) and (max-width: 780px)": {
-      display: "block !important",
+    "@media (max-width: 768px)": {
+      display: "flex !important",
       marginTop: "-3px",
     },
+    "@media (max-width: 767px)": {
+      display:"block !important",
+    }
   },
 
   input: {
@@ -102,8 +106,13 @@ const useStyles = makeStyles((theme) => ({
     outline: "none",
     "@media (min-width: 300px) and (max-width: 780px)": {
       width: "100%",
-      maxWidth: "610px",
+      maxWidth: "150px",
+      marginLeft:"20px",
     },
+    "@media (min-width: 300px) and (max-width: 767px)": {
+      marginLeft:"9px"
+    }
+
   },
 
   line: {
@@ -150,8 +159,9 @@ const Container = styled.div`
 const SecondContainer = styled.div`
   display: flex;
   align-items: center;
-  @media (min-width: 300px) and (max-width: 780px) {
+  @media (min-width: 300px) and (max-width: 767px) {
     display: block;
+    margin-top:10px;
   }
 `;
 
@@ -250,7 +260,7 @@ export default function ViewAllProposal(props) {
                   console.log(data, "data===");
                   let title = data.proposalTitle;
                   let status = data.endDate > Date.now() ? "Open" : "Closed";
-                  let formatedTime = moment(data.createdOn).format("LL");
+                  let formatedTime = moment(data.createdOn).format("DD MMMM YYYY");
                   const yesVotes = data.yesVotes.length;
                   const noVotes = data.noVotes.length;
                   const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
@@ -269,6 +279,7 @@ export default function ViewAllProposal(props) {
                           <TimeRemainingDiv>
                             {status === "Open" ? (
                               <>
+                              
                                 <Row>
                                   <span style={{ marginRight: "5px" }}>
                                     <img
@@ -282,34 +293,43 @@ export default function ViewAllProposal(props) {
                                       date={data.endDate}
                                     />
                                     &nbsp;Remaining
+                                    
                                   </Span>
+                                 
                                 </Row>
-                                <Row className="justify-content-end">
-                                  <div
-                                    className="details"
-                                    onClick={() =>
-                                      props.proposalRedirect(
-                                        data.pollingContract
-                                      )
-                                    }
-                                  >
-                                    Details
-                                  </div>
-                                </Row>
+                              
+                              
                               </>
                             ) : (
+                              
                               <>
+                              
                                 <ClockImage src="/images/Time-Inactive.svg" />
                                 <PollEnded>Poll Ended</PollEnded>
                               </>
                             )}
                           </TimeRemainingDiv>
                         </RowSpacing>
+                        
                         <RowSpacing>
+                          
                           <div className={classes.mobilemedia}>
                             <Content>{title}</Content>
                             {status === "Open" ? (
-                              ""
+                               <Row className="justify-content-end">
+                               <div
+                                 className="details"
+                                 onClick={() =>
+                                   props.proposalRedirect(
+                                     data.pollingContract
+                                   )
+                                 }
+                               >
+                                 Details
+                               </div>
+                             </Row>
+
+                              
                             ) : (
                               <PositionDivLine>
                                 <BarLine>
@@ -413,10 +433,11 @@ export default function ViewAllProposal(props) {
   );
 }
 const ArrowImg = styled.img`
-  margin-top: -2px;
-  margin-right: 7px;
-  width: 5%;
-  margin-left:-5px;
+  // margin-top: -2px;
+  // margin-right: 7px;
+  width: 9px;
+  color: #000000;
+  // margin-left:-5px;
 `;
 const DateSpan = styled.span`
   letter-spacing: 0px;
@@ -425,6 +446,9 @@ const DateSpan = styled.span`
   font-family: "Inter";
   font-weight: 500;
   margin-left: 12px;
+  @media (min-width: 400px) and (max-width: 780px) {
+    margin-top:5px;
+  }
 `;
 const DatePickerDiv = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -442,7 +466,8 @@ const DatePickerDiv = styled.div`
   @media (min-width: 400px) and (max-width: 780px) {
     width: 100%;
     max-width: 230px;
-    margin-top: 10px;
+    // margin-top: 10px;
+    display:flex;
   }
 `;
 const Input = styled.input`
@@ -473,7 +498,7 @@ const Media_for_container = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  @media (min-width: 767px) and (max-width: 2000px) {
+  @media (min-width: 767px) and (max-width: 2560px) {
     display: none;
   }
 `;
@@ -522,6 +547,7 @@ const Span = styled.span`
   display: flex;
   padding-left: 8px;
   padding-top: 2px;
+  color: #909090;
 `;
 const Show = styled.span`
   display: flex;
@@ -613,8 +639,8 @@ const SelectBox = styled.div`
     display: block;
   }
   @media (min-width: 300px) and (max-width: 780px) {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    // margin-top: 10px;
+    // margin-bottom: 10px;
   }
 `;
 const Failed = styled.span`
@@ -630,7 +656,7 @@ const InputDiv = styled.div`
   display: flex;
   @media (min-width: 300px) and (max-width: 780px) {
     display: block;
-    margin-top: 10px;
+    // margin-top: 10px;
     margin-left: -9px;
   }
 `;
@@ -642,7 +668,7 @@ const PositionDivLine = styled.div`
   }
 `;
 const MobileDivLine = styled.div`
-  @media (min-width: 767px) and (max-width: 2000px) {
+  @media (min-width: 767px) and (max-width: 2560px) {
     display: none;
   }
   @media (min-width: 300px) and (max-width: 767px) {
@@ -794,5 +820,6 @@ const Heading = styled.span`
   color: var(--unnamed-color-2a2a2a);
   @media (min-width: 300px) and (max-width: 767px) {
     font-size: 18px;
+    margin-top:"0px;
   }
 `;

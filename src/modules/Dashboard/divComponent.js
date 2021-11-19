@@ -30,6 +30,7 @@ export default function DivBlocksComponent() {
   const classes = useStyles();
 
   return (
+    <div>
     <Div>
       <Grid item xs={12}>
         <Grid container spacing={6}>
@@ -60,7 +61,7 @@ export default function DivBlocksComponent() {
           </Grid>
 
           <Grid className={classes.gridOne} item xs={12} sm={6} md={4}>
-          <a href="https://www.reddit.com/r/xinfin/"> 
+          <a style={{textDecoration:"none"}} href="https://www.reddit.com/r/xinfin/"> 
             <SecondBlock  onClick={viewXdcForm}>
               <Row
                 style={{
@@ -115,13 +116,14 @@ export default function DivBlocksComponent() {
         </Grid>
       </Grid>
     </Div>
+    </div>
   );
 }
 const Div = styled.div`
   width: 100%;
   max-width: 1280px;
-  margin-top: 50px;
-  margin-bottom: 60px;
+  margin-top: 63px;
+  margin-bottom: 108.5px;
 `;
 const Img = styled.img`
   width: 20px;
@@ -150,6 +152,7 @@ const SecondBlock = styled.div`
   padding: 20px;
   cursor:pointer;
 `;
+
 const RowSubheading = styled.div`
   color: var(--unnamed-color-2a2a2a);
   text-align: left;

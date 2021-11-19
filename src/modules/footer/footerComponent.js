@@ -252,9 +252,11 @@ width:100%
 display:flex;
 justify-content: center;
 border-top: 1px solid #E3E7EB;
-padding-bottom: 20px;
+padding-bottom: 25px;
 align-items: flex-start;
 @media (min-width: 300px) and (max-width: 767px) {
+  padding-left:17px;
+  padding-right:17px;
   
 }
 `;
@@ -277,12 +279,14 @@ const MainContainer = styled.div`
   @media (min-width: 767px) and (max-width: 1440px) {
     max-width: 900px;
     width: 100%;
+    padding-left:17px;
+    padding-right:17px;
   }
 `;
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-top: 40px;
+  padding-top: 29px;
   @media (min-width: 300px) and (max-width: 767px) {
     display: none;
   }
@@ -302,4 +306,5 @@ const RowTag = styled.div`
   text-align: left;
   font: normal normal normal 15px/28px Inter;
   color: #2a2a2a;
+  cursor: pointer;
 `;
