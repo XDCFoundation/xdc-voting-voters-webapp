@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "500px",
     },
     "@media (min-width: 767px) and (max-width: 1440px)": {
-      maxWidth: "900px",
+      maxWidth: "95%",
     },
   },
   rowDiv: {

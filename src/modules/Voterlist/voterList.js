@@ -24,13 +24,13 @@ const useStyles = makeStyles((theme) => ({
 
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
-      maxWidth: "300px",
+      maxWidth: "90%",
     },
     "@media (min-width: 567px) and (max-width: 767px)": {
-      maxWidth: "500px",
+      maxWidth: "95%",
     },
     "@media (min-width: 767px) and (max-width: 1040px)": {
-      maxWidth: "700px",
+      maxWidth: "95%",
     },
   },
   rowDiv: {
@@ -270,6 +270,9 @@ const MainHeading = styled.span`
   color: #ffffff;
   font-family: "Inter", sans-serif;
   font-size: 20px;
+  @media (max-width: 767px){
+    font-size:14px;
+  }
 `;
 
 const VoterListMobile= styled.div`

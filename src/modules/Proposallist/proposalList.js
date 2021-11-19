@@ -64,9 +64,10 @@ const useStyles = makeStyles((theme) => ({
     },
     "@media (min-width: 567px) and (max-width: 767px)": {
       maxWidth: "500px",
+      marginTop: "-135px",
     },
     "@media (min-width: 767px) and (max-width: 1440px)": {
-      maxWidth: "900px",
+      maxWidth: "95%",
     },
   },
   rowdiv: {
@@ -79,10 +80,13 @@ const useStyles = makeStyles((theme) => ({
     borderTopLeftRadius: "6px",
     borderTopRightRadius: "6px",
 
-    "@media (min-width: 300px) and (max-width: 780px)": {
-      display: "block !important",
+    "@media (max-width: 768px)": {
+      display: "flex !important",
       marginTop: "-3px",
     },
+    "@media (max-width: 767px)": {
+      display:"block !important",
+    }
   },
 
   input: {
@@ -102,8 +106,13 @@ const useStyles = makeStyles((theme) => ({
     outline: "none",
     "@media (min-width: 300px) and (max-width: 780px)": {
       width: "100%",
-      maxWidth: "610px",
+      maxWidth: "150px",
+      marginLeft:"20px",
     },
+    "@media (min-width: 300px) and (max-width: 767px)": {
+      marginLeft:"9px"
+    }
+
   },
 
   line: {
@@ -150,8 +159,9 @@ const Container = styled.div`
 const SecondContainer = styled.div`
   display: flex;
   align-items: center;
-  @media (min-width: 300px) and (max-width: 780px) {
+  @media (min-width: 300px) and (max-width: 767px) {
     display: block;
+    margin-top:10px;
   }
 `;
 
@@ -436,6 +446,9 @@ const DateSpan = styled.span`
   font-family: "Inter";
   font-weight: 500;
   margin-left: 12px;
+  @media (min-width: 400px) and (max-width: 780px) {
+    margin-top:5px;
+  }
 `;
 const DatePickerDiv = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -453,7 +466,8 @@ const DatePickerDiv = styled.div`
   @media (min-width: 400px) and (max-width: 780px) {
     width: 100%;
     max-width: 230px;
-    margin-top: 10px;
+    // margin-top: 10px;
+    display:flex;
   }
 `;
 const Input = styled.input`
@@ -625,8 +639,8 @@ const SelectBox = styled.div`
     display: block;
   }
   @media (min-width: 300px) and (max-width: 780px) {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    // margin-top: 10px;
+    // margin-bottom: 10px;
   }
 `;
 const Failed = styled.span`
@@ -642,7 +656,7 @@ const InputDiv = styled.div`
   display: flex;
   @media (min-width: 300px) and (max-width: 780px) {
     display: block;
-    margin-top: 10px;
+    // margin-top: 10px;
     margin-left: -9px;
   }
 `;
@@ -806,5 +820,6 @@ const Heading = styled.span`
   color: var(--unnamed-color-2a2a2a);
   @media (min-width: 300px) and (max-width: 767px) {
     font-size: 18px;
+    margin-top:"0px;
   }
 `;

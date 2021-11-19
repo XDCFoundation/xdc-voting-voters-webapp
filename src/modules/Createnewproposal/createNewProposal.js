@@ -28,13 +28,13 @@ const useStyles = makeStyles((theme) => ({
 
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
-      maxWidth: "300px",
+      maxWidth: "90%",
     },
     "@media (min-width: 567px) and (max-width: 767px)": {
       maxWidth: "500px",
     },
     "@media (min-width: 767px) and (max-width: 1440px)": {
-      maxWidth: "900px",
+      maxWidth: "95%",
     },
   },
   containerOne: {

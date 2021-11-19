@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "500px",
     },
     "@media (min-width: 767px) and (max-width: 1440px)": {
-      maxWidth: "900px",
+      maxWidth: "95%",
     },
   },
   rowdiv: {
@@ -116,7 +116,7 @@ export default function Xvdgovernance() {
         <div className={classes.root}>
           <Grid item xs={12}>
             <div
-              style={{ marginBottom: "11px", cursor: "pointer" }}
+              style={{ marginBottom: "26px", cursor: "pointer" }}
               onClick={backButton}
             >
               <img
@@ -265,7 +265,7 @@ const SelectBoxDiv = styled.div`
 `;
 
 const SelectContainer = styled.div`
-  margin-left: 15px;
+  // margin-left: 15px;
   // @media (min-width: 768px) and (max-width: 1024px) {
   //   display: none;
   // }
@@ -303,6 +303,8 @@ const Heading_One = styled.span`
   opacity: 1;
   margin-bottom: 12px;
   margin-top: 12px;
+ 
+
 `;
 const Para_One = styled.span`
   color: var(--unnamed-color-2a2a2a);
@@ -426,4 +428,7 @@ const Heading = styled.span`
   color: #2a2a2a;
 
   box-shadow: none;
+  @media (max-width: 767px) {
+    font-size:16px;
+   }
 `;

@@ -255,6 +255,8 @@ border-top: 1px solid #E3E7EB;
 padding-bottom: 25px;
 align-items: flex-start;
 @media (min-width: 300px) and (max-width: 767px) {
+  padding-left:17px;
+  padding-right:17px;
   
 }
 `;
@@ -277,6 +279,8 @@ const MainContainer = styled.div`
   @media (min-width: 767px) and (max-width: 1440px) {
     max-width: 900px;
     width: 100%;
+    padding-left:17px;
+    padding-right:17px;
   }
 `;
 const Container = styled.div`
