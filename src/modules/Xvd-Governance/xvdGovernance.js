@@ -130,7 +130,7 @@ export default function Xvdgovernance() {
                 <Heading>Know about XDC Governance</Heading>
               </Container>
             </Spacing>
-
+          
             <SelectBoxDiv>
               <SelectContainer>
                 <SelectOption>
@@ -143,14 +143,22 @@ export default function Xvdgovernance() {
                 </SelectOption>
               </SelectContainer>
             </SelectBoxDiv>
+          
+
             <Row
               style={{
                 border: ".5px solid #e3e7eb",
                 borderRadius: "0% 0% 6px 6px",
               }}
             >
+
+
+           
               <Secondcontainer>
+
+             
                 <Sidemenu>
+               
                   <Row__>
                     <Column>
                       <SectionDiv id="section1">

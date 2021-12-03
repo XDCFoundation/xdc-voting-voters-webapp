@@ -110,7 +110,7 @@ body {
   font-family: "Inter", sans-serif;
   font-size: 17px;
   color: #ffffff;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 .back-image {
   display: flex;
@@ -351,9 +351,11 @@ body {
   .xdc-footer {
     font-weight: 500 !important;
     font-size: 20px !important;
+    margin-top: 16px !important;
   }
   .footer-logo {
     width: 30px !important;
+    margin-top: 10px !important;
   }
   .mobile-rightdiv {
     margin-top: 201% !important;
@@ -576,6 +578,7 @@ body {
   }
   .row-2 {
     display: block !important;
+    margin-top: -20px !important;
   }
   .row-2-width {
     display: block !important;
@@ -668,7 +671,7 @@ body {
   opacity: 1;
 }
 .footer-logo {
-  margin-top: 10px;
+  margin-top: -8px;
   width: 40px;
   height: 40px;
 }
@@ -697,7 +700,7 @@ body {
   letter-spacing: 0px;
   color: #2149b9;
   opacity: 1;
-  margin-top: 16px;
+  margin-top:-2px;
   margin-left: 10px;
 }
 .footer-column {

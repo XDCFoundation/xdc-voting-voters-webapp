@@ -86,6 +86,7 @@ const useStyles = makeStyles((theme) => ({
     },
     "@media (max-width: 767px)": {
       display:"block !important",
+      border:"1px solid #E3E7EB !important"
     }
   },
 

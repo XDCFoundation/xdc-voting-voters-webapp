@@ -145,6 +145,7 @@ const Container = styled.div`
   display: flex;
   @media (min-width: 300px) and (max-width: 767px) {
     display: block;
+    border:1px solid #E3E7EB;
   }
 `;
 const SecondContainer = styled.div`
