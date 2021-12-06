@@ -233,6 +233,9 @@ const Input = styled.input`
   border-radius: 6px;
   opacity: 1;
   font-size: 15px;
+  @media (max-width: 400px){
+    width:300px;
+  }
   // width: 100%;
 `;
 const Img = styled.img`

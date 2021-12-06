@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     top: "145px",
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
-      maxWidth: "300px",
+      maxWidth: "95%",
     },
     "@media (min-width: 567px) and (max-width: 767px)": {
       maxWidth: "500px",
@@ -389,7 +389,7 @@ export default function ViewAllProposal(props) {
                         <RowSpacing>
                           <MobileResponsive>
                             <ClockImage src="/images/Time-Inactive.svg" />
-                            <PollEnded></PollEnded>
+                            <PollEnded>Poll Ended</PollEnded>
                           </MobileResponsive>
                         </RowSpacing>
                       </Column>
@@ -502,6 +502,9 @@ const Media_for_container = styled.div`
   @media (min-width: 767px) and (max-width: 2560px) {
     display: none;
   }
+  // @media (min-width: 360px) and (max-width: 767px) {
+  //   display: none;
+  // }
 `;
 const DisplayNone = styled.div`
   display: flex;
@@ -510,6 +513,7 @@ const DisplayNone = styled.div`
   @media (min-width: 300px) and (max-width: 767px) {
     display: none;
   }
+ 
 `;
 const Back = styled.span`
   text-align: left;

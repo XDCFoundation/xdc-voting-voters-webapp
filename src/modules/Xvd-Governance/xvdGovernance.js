@@ -145,7 +145,7 @@ export default function Xvdgovernance() {
             </SelectBoxDiv>
           
 
-            <Row
+            <Row class="xdc-border-top"
               style={{
                 border: ".5px solid #e3e7eb",
                 borderRadius: "0% 0% 6px 6px",
@@ -294,6 +294,16 @@ const SelectOption = styled.select`
   border: 1px solid #e3e7eb;
   border-radius: 4px;
   opacity: 1;
+  @media (min-width: 360px) and (max-width: 767px) {
+      width: 90%;
+      margin-left:15px;
+      margin-bottom:10px;
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    margin-top:15px;
+    margin-left:15px;
+    margin-bottom:10px;
+}
 `;
 
 const Row__ = styled.div`
@@ -399,6 +409,7 @@ const Spacing = styled.div`
   height: 53px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
+  border-bottom: 1px solid #e3e7eb;
 
   background: #ffffff 0% 0% no-repeat padding-box;
   align-items: center;
