@@ -110,7 +110,11 @@ export default function Header(props) {
               <RecentProposal />
             </div>
           </div>
+         
+          
+         
         </div>
+       {/* <div> <FooterComponent/> </div> */}
       </Column>
     </div>
   );

@@ -178,7 +178,8 @@ export default function ViewAllProposal(props) {
   const backButton = () => {
     history.push("/");
   };
-
+console.log(props.state.activePage,"page")
+console.log(props.handlePageChange,"page1")
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
 
@@ -404,6 +405,7 @@ export default function ViewAllProposal(props) {
               )}
             </Div>
             <div className="display-flex justify-content-end p-t-15">
+              
               <Pagination
                 prevPageText="Back"
                 nextPageText="Next"

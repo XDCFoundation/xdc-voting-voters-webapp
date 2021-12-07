@@ -249,7 +249,14 @@ const SectionDiv = styled.div`
 const Anchor = styled.a`
   text-decoration: none !important;
   color: black;
-  scroll-behaviour:smooth;
+//   a:active {
+//     color: blue;
+// }
+// a:visited {color:#0000FF;}
+// a[tabindex]:focus {
+//   color:blue;
+//   outline: none;
+// }
   &:hover {
     // color: unset !important;
     text-decoration: underline;
@@ -442,6 +449,7 @@ const Secondcontainer = styled.div`
   overflow-y: auto;
   background: #ffffff 0% 0% no-repeat padding-box;
   border-radius: 0% 0% 6px 6px;
+  
 `;
 
 const Div = styled.div`

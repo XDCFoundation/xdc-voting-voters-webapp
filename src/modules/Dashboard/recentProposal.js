@@ -244,6 +244,7 @@ export default function RecentProposal(props) {
        
         <FooterComponent />
       </div>
+     
     </div>
   );
 }
