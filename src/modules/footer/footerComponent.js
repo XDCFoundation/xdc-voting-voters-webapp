@@ -4,6 +4,7 @@ import "../../assets/styles/custom.css";
 import styled from "styled-components";
 import { emailSubscription } from "../../services/proposalService";
 import Utils from "../../utility";
+import validator from "validator";
 
 export default function FooterComponent(props) {
   const [addEmail, setAddEmail] = useState("");
@@ -19,9 +20,9 @@ export default function FooterComponent(props) {
     // {
     //   Utils.apiSuccessToast("Email subscribed successfully");
     // }
-    if (error || !addEmail) {
-      Utils.apiFailureToast("Please enter Email");
-    } else {
+    if (error || !addEmail || !(validator.isEmail(addEmail))) {
+      Utils.apiFailureToast("Please Enter Valid Email");
+    } else{
       Utils.apiSuccessToast("Email subscribed successfully");
     }
   };
@@ -42,23 +43,23 @@ export default function FooterComponent(props) {
           <ColumnSecond>
             <Row className="footer-column-heading">Community</Row>
             <RowTag>
-              <Anchor href="https://discord.com/invite/KZdD6pkFxp">
+              <Anchor href="https://discord.com/invite/KZdD6pkFxp" target="_blank">
                 Discord
               </Anchor>
             </RowTag>
             <RowTag>
-              <Anchor href="https://github.com/XDCFoundation/">Github</Anchor>
+              <Anchor href="https://github.com/XDCFoundation/" target="_blank">Github</Anchor>
             </RowTag>
             <RowTag>
-              <Anchor href="https://twitter.com/XinFin_Official">
+              <Anchor href="https://twitter.com/XDCFoundation" target="_blank">
                 Twitter
               </Anchor>
             </RowTag>
             <RowTag>
-              <Anchor href="https://t.me/xinfin">Telegram</Anchor>
+              <Anchor href="https://t.me/xinfin" target="_blank">Telegram</Anchor>
             </RowTag>
             <RowTag>
-              <Anchor href="https://www.reddit.com/r/xinfin/">Forum</Anchor>
+              <Anchor href="https://www.reddit.com/r/xinfin/" target="_blank">Forum</Anchor>
             </RowTag>
           </ColumnSecond>
           <ColumnThird>
@@ -66,7 +67,7 @@ export default function FooterComponent(props) {
             <RowTag>Overview </RowTag>
             <RowTag></RowTag>
             <RowTag>
-              <Anchor href="https://howto.xinfin.org/general/faq/">FAQs</Anchor>
+              <Anchor href="https://howto.xinfin.org/general/faq/" target="_blank">FAQs</Anchor>
             </RowTag>
           </ColumnThird>
           <ColumnFourth class="footer-div-1">
@@ -116,20 +117,20 @@ export default function FooterComponent(props) {
             <ColumnSecond>
               <Row className="footer-column-heading">Community</Row>
               <RowTag>
-                <Anchor href="https://discord.com/invite/KZdD6pkFxp">
+                <Anchor href="https://discord.com/invite/KZdD6pkFxp" target="_blank">
                   Discord
                 </Anchor>
               </RowTag>
               <RowTag>
-                <Anchor href="https://github.com/XDCFoundation/">Github</Anchor>
+                <Anchor href="https://github.com/XDCFoundation/" target="_blank">Github</Anchor>
               </RowTag>
               <RowTag>
-                <Anchor href="https://twitter.com/XinFin_Official">
+                <Anchor href="https://twitter.com/XinFin_Official" target="_blank">
                   Twitter
                 </Anchor>
               </RowTag>
               <RowTag>
-                <Anchor href="https://t.me/xinfin">Telegram</Anchor>
+                <Anchor href="https://t.me/xinfin" target="_blank">Telegram</Anchor>
               </RowTag>
               <RowTag>
                 {/* <Anchor href="https://discord.com/invite/KZdD6pkFxp"> */}
@@ -142,7 +143,7 @@ export default function FooterComponent(props) {
               <RowTag>Overview </RowTag>
               <RowTag>Forum</RowTag>
               <RowTag>
-                <Anchor href="https://howto.xinfin.org/general/faq/">
+                <Anchor href="https://howto.xinfin.org/general/faq/" target="_blank">
                   FAQs
                 </Anchor>
               </RowTag>

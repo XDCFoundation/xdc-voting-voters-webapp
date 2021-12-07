@@ -1756,7 +1756,7 @@ input:focus {
 }
 
 .fc-black {
-  color: #000000;
+  color: red;
 }
 .section1{
     color: #2149B9;
@@ -1857,4 +1857,8 @@ input:focus {
   color: #848687;
   padding: 0.25rem 0.5rem 0.25rem 0.5rem;
   text-decoration-line: none !important;
+}
+.btn-primary{
+    color: #2149B9;
+    background-color: #ffffff;
 }
