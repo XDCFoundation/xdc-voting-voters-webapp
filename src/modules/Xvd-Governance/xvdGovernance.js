@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "40px",
     zIndex: "1",
     top: "145px",
+    
+    
+    
 
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
@@ -55,6 +58,10 @@ export default function Xvdgovernance() {
   const backButton = () => {
     history.push("/");
   };
+  function scrollWindow()
+{
+window.scrollTo(0,0);
+}
   React.useEffect(() => {
     let address = [
       {
@@ -112,6 +119,7 @@ export default function Xvdgovernance() {
       <div className="header-div-all">
         <HeaderMain />
       </div>
+      
       <div className={classes.maincontainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
@@ -241,6 +249,7 @@ const SectionDiv = styled.div`
 const Anchor = styled.a`
   text-decoration: none !important;
   color: black;
+  scroll-behaviour:smooth;
   &:hover {
     // color: unset !important;
     text-decoration: underline;
@@ -410,7 +419,6 @@ const Spacing = styled.div`
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   border-bottom: 1px solid #e3e7eb;
-
   background: #ffffff 0% 0% no-repeat padding-box;
   align-items: center;
   padding: 11px 24px;
