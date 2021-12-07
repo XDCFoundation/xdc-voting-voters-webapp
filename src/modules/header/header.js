@@ -129,7 +129,7 @@ function Header() {
             {/*  }}*/}
             {/*/>*/}
             <div className="xdc-connect">
-              <button className="makeStyles-btnCss-3 btn btn-primary" onClick={connectToWallet}>
+              <button className="makeStyles-btnCss-3 btn" onClick={connectToWallet}>
                 {wallet ?  <>{wallet ? wallet.substr(0, 11) : " "}...
                               {wallet
                                 ? wallet.substr(wallet.length - 5, 5)
