@@ -339,4 +339,7 @@ const ColumnDiv = styled.div`
   flex-flow: column nowrap;
   width: 100%;
   max-width: 842px;
+  @media (min-width: 300px) and (max-width: 1023px) {
+    max-width:none;
+  }
 `;

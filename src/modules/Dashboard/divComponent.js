@@ -20,9 +20,11 @@ const useStyles = makeStyles((theme) => ({
 export default function DivBlocksComponent() {
   const viewGovernance = () => {
     history.push("/governance");
+    window.scrollTo(0,0)
   };
   const viewCommunity = () => {
     history.push("/community");
+    window.scrollTo(0,0)
   };
   const viewXdcForm = () => {
     history.push("/");

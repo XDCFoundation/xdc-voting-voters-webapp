@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "40px",
     zIndex: "1",
     top: "145px",
+    
+    
+    
 
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
@@ -55,6 +58,10 @@ export default function Xvdgovernance() {
   const backButton = () => {
     history.push("/");
   };
+  function scrollWindow()
+{
+window.scrollTo(0,0);
+}
   React.useEffect(() => {
     let address = [
       {
@@ -112,6 +119,7 @@ export default function Xvdgovernance() {
       <div className="header-div-all">
         <HeaderMain />
       </div>
+      
       <div className={classes.maincontainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
@@ -130,7 +138,7 @@ export default function Xvdgovernance() {
                 <Heading>Know about XDC Governance</Heading>
               </Container>
             </Spacing>
-
+          
             <SelectBoxDiv>
               <SelectContainer>
                 <SelectOption>
@@ -143,14 +151,22 @@ export default function Xvdgovernance() {
                 </SelectOption>
               </SelectContainer>
             </SelectBoxDiv>
-            <Row
+          
+
+            <Row class="xdc-border-top"
               style={{
                 border: ".5px solid #e3e7eb",
                 borderRadius: "0% 0% 6px 6px",
               }}
             >
+
+
+           
               <Secondcontainer>
+
+             
                 <Sidemenu>
+               
                   <Row__>
                     <Column>
                       <SectionDiv id="section1">
@@ -233,6 +249,14 @@ const SectionDiv = styled.div`
 const Anchor = styled.a`
   text-decoration: none !important;
   color: black;
+//   a:active {
+//     color: blue;
+// }
+// a:visited {color:#0000FF;}
+// a[tabindex]:focus {
+//   color:blue;
+//   outline: none;
+// }
   &:hover {
     // color: unset !important;
     text-decoration: underline;
@@ -286,6 +310,16 @@ const SelectOption = styled.select`
   border: 1px solid #e3e7eb;
   border-radius: 4px;
   opacity: 1;
+  @media (min-width: 360px) and (max-width: 767px) {
+      width: 90%;
+      margin-left:15px;
+      margin-bottom:10px;
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    margin-top:15px;
+    margin-left:15px;
+    margin-bottom:10px;
+}
 `;
 
 const Row__ = styled.div`
@@ -391,7 +425,7 @@ const Spacing = styled.div`
   height: 53px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-
+  border-bottom: 1px solid #e3e7eb;
   background: #ffffff 0% 0% no-repeat padding-box;
   align-items: center;
   padding: 11px 24px;
@@ -415,6 +449,7 @@ const Secondcontainer = styled.div`
   overflow-y: auto;
   background: #ffffff 0% 0% no-repeat padding-box;
   border-radius: 0% 0% 6px 6px;
+  
 `;
 
 const Div = styled.div`

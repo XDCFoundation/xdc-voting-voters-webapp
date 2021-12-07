@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
-      maxWidth: "300px",
+      maxWidth: "95%",
     },
     "@media (min-width: 567px) and (max-width: 767px)": {
       maxWidth: "500px",
@@ -75,6 +75,10 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #E3E7EB",
     borderRadius: "6px",
     opacity: 1,
+    "@media (min-width: 300px) and (max-width: 767px)": {
+      height: "137px",
+      width: "150px",
+    },
   },
 }));
 
