@@ -869,6 +869,12 @@ px
   font-weight: 500;
   font-size: 15px;
   padding-top: 9px;
+  color: #2149b9 !important;
+  background-color: #ffffff !important;
+}
+.xdc-connect button :hover{
+    color: #2149b9 !important;
+  background-color: #ffffff !important;
 }
 
 .row-2 {

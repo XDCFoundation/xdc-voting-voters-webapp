@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "12px",
   },
   btnCss: {
-    background: "#ffffff 0% 0% no-repeat padding-box !important",
-    color: "#2149b9!important",
+    background: "#ffffff 0% 0% no-repeat padding-box",
+    color: "#2149b9",
     marginTop:"10px",
   },
   circle: {
