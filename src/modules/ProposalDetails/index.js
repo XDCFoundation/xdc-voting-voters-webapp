@@ -83,7 +83,7 @@ export default class ProposalDetails extends BaseComponent {
         window.ethereum.enable();
         const accounts = await web3.eth.getAccounts()
         if (!accounts || !accounts.length) {
-            Utils.apiFailureToast("Please login to Xin pay extension");
+            Utils.apiFailureToast("Please login to XDCPay extension");
             return;
         }
         let isVoted = false;
@@ -118,7 +118,7 @@ export default class ProposalDetails extends BaseComponent {
         window.ethereum.enable();
         web3.eth.getAccounts().then(async (accounts) => {
             if (!accounts || !accounts.length) {
-                Utils.apiFailureToast("Please login to Xin pay extension");
+                Utils.apiFailureToast("Please login to XDCPay extension");
                 return;
             }
             const contract = new web3.eth.Contract(proposalContractAbi, this.state.proposalAddress);

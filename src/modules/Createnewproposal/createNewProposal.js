@@ -15,6 +15,8 @@ import { history } from "../../managers/history";
 import ReactQuill from "react-quill";
 import DatePicker from "react-multi-date-picker";
 import TextField from "@material-ui/core/TextField";
+import utility from "../../utility/index";
+import Utils from "../../utility";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -385,7 +387,12 @@ export default function Createnewproposal(props) {
       pollingContract: "0011",
       status: "pending",
     };
+    if(proposalTitle.length<40){
     props.createProposal(reqObj);
+    }
+    else{
+      Utils.apiFailureToast("Title should be less than 50 chars");
+    }
   };
 
   const classes = useStyles();
@@ -549,7 +556,7 @@ export default function Createnewproposal(props) {
                 <div className={classes.buttondiv}>
                   <Button onClick={createNewProposal}>
                     <span className={classes.circle}></span>
-                    Connect Wallet
+                    Create Proposal
                   </Button>
                 </div>
               </Container>
