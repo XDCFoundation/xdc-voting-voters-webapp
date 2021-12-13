@@ -387,11 +387,11 @@ export default function Createnewproposal(props) {
       pollingContract: "0011",
       status: "pending",
     };
-    if(proposalTitle.length<40){
+    if(proposalTitle.length<60){
     props.createProposal(reqObj);
     }
     else{
-      Utils.apiFailureToast("Title should be less than 50 chars");
+      Utils.apiFailureToast("Title should be less than 60 chars");
     }
   };
 
@@ -556,7 +556,7 @@ export default function Createnewproposal(props) {
                 <div className={classes.buttondiv}>
                   <Button onClick={createNewProposal}>
                     <span className={classes.circle}></span>
-                    Create Proposal
+                    Connect Wallet
                   </Button>
                 </div>
               </Container>

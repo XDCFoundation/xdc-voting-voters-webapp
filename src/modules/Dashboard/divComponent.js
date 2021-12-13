@@ -56,8 +56,7 @@ export default function DivBlocksComponent() {
               </Row>
               <RowHeading>Know about XDC Governance</RowHeading>
               <RowSubheading>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit quisque
-                venenatis.
+              Learn how XDC maintains the integrity of its global blockchain network.
               </RowSubheading>
             </FirstBlock>
           </Grid>
@@ -85,7 +84,7 @@ export default function DivBlocksComponent() {
               </Row>
               <RowHeading>XDC Forum</RowHeading>
               <RowSubheading>
-                Mauris neque urna, sodales at molestie ut, pulvinar eu lorem.
+              Participate in XDC forums, open discussions and contribute to global blockchain development.
               </RowSubheading>
             </SecondBlock>
             </a>
@@ -110,8 +109,7 @@ export default function DivBlocksComponent() {
               </Row>
               <RowHeading>Community Tools</RowHeading>
               <RowSubheading>
-                Cras porttitor iaculis sapien eu fringilla Cras in ligula
-                egestas ipsum quis urna.
+              Explore and interact with the XDC Network through open community tools.
               </RowSubheading>
             </ThirdBlock>
           </Grid>
