@@ -205,13 +205,13 @@ export default function ProposalDetails(props) {
                     <div className="display-flex">
                       <div className="box-support"></div>
                       <div className="spt">
-                         Support({props?.state?.proposalDetails?.yesVotes?.length}%)
+                         Support({Math.ceil(((props?.state?.proposalDetails?.yesVotes?.length)/(totalVotes.length))*100)}%)
                       </div>
                     </div>
                     <div className="display-flex">
                       <div className="box-reject"></div>
                       <div className="rjt">
-                         Reject({props?.state?.proposalDetails?.noVotes?.length}%)
+                         Reject({Math.floor(((props?.state?.proposalDetails?.noVotes?.length)/(totalVotes.length))*100)}%)
                       </div>
                     </div>
                   </div>

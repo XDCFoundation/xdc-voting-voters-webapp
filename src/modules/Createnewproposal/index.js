@@ -7,6 +7,7 @@ import Utils from "../../utility";
 import AwsService from "../../services/awsService";
 import {addNewProposal} from "../../services/proposalService";
 import {uploadFile} from "../../services/fileUploaderService";
+import { history } from "../../managers/history";
 
 const {extname} = require("path");
 
@@ -128,6 +129,7 @@ export default class Createproposal extends BaseComponent {
                         const addresses = await this.getContractAddresses();
                         this.addProposalInDatabase(reqObj, addresses[addresses.length - 1]);
                         Utils.apiSuccessToast("Proposal Created Successfully");
+                        history.push('/');
                     }
                 })
             // .then(async (res) => {
