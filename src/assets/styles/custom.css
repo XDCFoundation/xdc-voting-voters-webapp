@@ -114,7 +114,7 @@ body {
 }
 .back-image {
   display: flex;
-  cursor: pointer;
+  /* cursor: pointer; */
   margin-top: -40px;
   padding-bottom: 17px;
 }
@@ -1028,7 +1028,7 @@ px
 .recent-proposal-div-proposal {
   width: 100%;
   /* max-width: 842px; */
-  height: 110px;
+  /* height: 110px; */
   justify-content: center;
   align-items: center;
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -1448,7 +1448,7 @@ padding: 21px 24px 21px 33px;
 
   /* width: 698px; */
   /* 270 */
-  height: 180px;
+  /* height: 180px; */
   overflow-x: hidden;
   overflow-y: auto;
   /* text-align: justify; */
@@ -1609,7 +1609,8 @@ padding: 21px 24px 21px 33px;
 }
 
 .quill-editor {
-  height: 300px !important;
+  height: 383px !important;
+  padding-bottom: 60px;
 }
 
 img.load {

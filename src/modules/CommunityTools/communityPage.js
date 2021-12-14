@@ -149,12 +149,12 @@ export default function CommunityPage() {
         <div className={classes.root}>
           <Grid item xs={12}>
             <div
-              style={{ marginBottom: "4px", cursor: "pointer" }}
-              onClick={backButton}
+              style={{ marginBottom: "4px" }}
+             
             >
-              <img
+              <img  onClick={backButton}
                 src="/images/Back-Arrow.svg"
-                style={{ width: "15px", marginRight: "8px" }}
+                style={{ width: "15px", marginRight: "8px", cursor: "pointer" }}
               />
               <Back>Back</Back>
             </div>

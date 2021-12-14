@@ -84,7 +84,7 @@ export default function DivBlocksComponent() {
               </Row>
               <RowHeading>XDC Forum</RowHeading>
               <RowSubheading>
-              Participate in XDC forums, open discussions and contribute to global blockchain development.
+              Participate in XDC forums' open discussions and contribute to global blockchain development.
               </RowSubheading>
             </SecondBlock>
             </a>

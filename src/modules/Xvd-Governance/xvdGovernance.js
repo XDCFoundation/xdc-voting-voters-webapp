@@ -124,12 +124,12 @@ window.scrollTo(0,0);
         <div className={classes.root}>
           <Grid item xs={12}>
             <div
-              style={{ marginBottom: "26px", cursor: "pointer" }}
-              onClick={backButton}
+              style={{ marginBottom: "26px"}}
+            
             >
-              <img
+              <img   onClick={backButton}
                 src="/images/Back-Arrow.svg"
-                style={{ width: "15px", marginRight: "8px" }}
+                style={{ width: "15px", marginRight: "8px",cursor: "pointer"  }}
               />
               <Back>Back</Back>
             </div>

@@ -387,11 +387,15 @@ export default function Createnewproposal(props) {
       pollingContract: "0011",
       status: "pending",
     };
-    if(proposalTitle.length<60){
+    console.log(Date.parse(startDate),"startdate")
+    console.log(Date.parse(endDate),"endDate")
+    if(proposalTitle.length<60 && Date.parse(startDate)<Date.parse(endDate) && description.length>=5 ){
     props.createProposal(reqObj);
     }
     else{
       Utils.apiFailureToast("Title should be less than 60 chars");
+      Utils.apiFailureToast("Start date should be less than end date");
+      Utils.apiFailureToast("Description should be greater than 5 chars");
     }
   };
 
@@ -406,12 +410,12 @@ export default function Createnewproposal(props) {
         <div className={classes.root}>
           <Grid item xs={12}>
             <div
-              style={{ marginBottom: "11px", cursor: "pointer" }}
-              onClick={backButton}
+              style={{ marginBottom: "11px"}}
+             
             >
-              <img
+              <img  onClick={backButton}
                 src="/images/Back-Arrow.svg"
-                style={{ width: "15px", marginRight: "8px" }}
+                style={{ width: "15px", marginRight: "8px", cursor: "pointer"  }}
               />
               <Back>Back</Back>
             </div>

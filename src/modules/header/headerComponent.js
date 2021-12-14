@@ -100,7 +100,7 @@ export default function Header(props) {
                 <div
                   onClick={createView}
                   id="div_create_prop"
-                  className="create-wallet-hide create-wallet"
+                  className="create-wallet"
                 >
                   <p>Create Proposal</p>
                 </div>

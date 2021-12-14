@@ -15,6 +15,8 @@ import Utils from "../../utility";
 import moment from "moment";
 import Countdown from "react-countdown";
 import styled from "styled-components";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+// import Tooltip from "@material-ui/core/Tooltip";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -25,6 +27,7 @@ function removeTags(str) {
 }
 
 export default function ProposalDetails(props) {
+  // const [copiedText, setCopiedText] = useState("");
   function shorten(b, amountL = 13, amountR = 3, stars = 3) {
     return `${b.slice(0, amountL)}${".".repeat(stars)}${b.slice(
       b.length - 5,
@@ -49,7 +52,7 @@ export default function ProposalDetails(props) {
   )
     totalVotes = [...totalVotes, ...props.state.proposalDetails.noVotes];
   if (totalVotes.length > 6) totalVotes.length = 6;
-
+ 
   return (
     <div>
       <div className="header-div-all">
@@ -60,8 +63,8 @@ export default function ProposalDetails(props) {
       <Column>
         <div className="all-div-proposal">
           <ColumnDiv>
-            <div className="back-image" onClick={props.backButton}>
-              <img src="/images/Back-Arrow.svg" style={{ width: "21px",height:"18px",marginTop:"3px" }} />
+            <div className="back-image" >
+              <img onClick={props.backButton} src="/images/Back-Arrow.svg" style={{ width: "21px",height:"18px",marginTop:"3px",cursor:"pointer" }} />
               <div className="back-button">Back</div>
             </div>
             <div className="recent-proposal-div-proposal">
@@ -227,9 +230,10 @@ export default function ProposalDetails(props) {
                   </div>
                 </div>
                 <div className="griddiv-voter">
-                  {totalVotes.map((row, index) => {
+                  {totalVotes && totalVotes.length>=1? totalVotes.map((row, index) => {
                     return AddressComponent(row, index);
-                  })}
+                  }):(<><div style={{display:"flex",justifyContent:"center"}}>No Votes Casted</div></>)
+                }
                   {/*{props?.state?.proposalDetails?.noVotes?.map((row, index) => {*/}
                   {/*    return AddressComponent(row)*/}
                   {/*})}*/}
@@ -259,9 +263,7 @@ export default function ProposalDetails(props) {
             <div className="recent-add-div-proposal2"></div>
           </Column>
         </div>
-        <div >
-          <FooterComponent />
-        </div>
+       
       </Column>
 
       <Snackbar
@@ -290,6 +292,9 @@ export default function ProposalDetails(props) {
           </div>
         </Alert>
       </Snackbar>
+      <div >
+          <FooterComponent />
+        </div>
     </div>
   );
 }
@@ -318,6 +323,7 @@ function AddressComponent(row, index) {
 
 
 function proposalAddressComponent(row) {
+  // console.log(this.state.copied,"copied value")
       return (
           <>
               <Row className="p-8 justify-content-between">
@@ -330,6 +336,31 @@ function proposalAddressComponent(row) {
                             className="external-image-proposal4"
                             src={require("../../assets/styles/images/External-Link.svg")}
                         ></img>
+                         <p style={{ marginTop: "17px" }}>
+                  {/* <CopyToClipboard
+                    text={row.proposalAddress}
+                    onCopy={() => this.setState({copied: true})}
+                  > */}
+                   {/* { this.state?.copied.length>=1 ? "Copied" : "Copy To Clipboard"} */}
+                   
+                    {/* <Tooltip
+                      title={
+                        
+                      }
+                      placement="top"
+                    >
+                      <button
+                        style={{
+                          color: "#2149b9",
+                          backgroundColor: "white",
+                          fontSize: 14,
+                        }}
+                      >
+                        <i class="fa fa-clone" aria-hidden="true"></i>
+                      </button>
+                    </Tooltip> */}
+                  {/* </CopyToClipboard> */}
+                </p>
               </Row>
           </>
       );
