@@ -352,8 +352,9 @@ console.log(props.handlePageChange,"page1")
                         </RowSpacing>
                         <Media_for_container>
                           <Container>
-                            <Status>Status:&ensp;</Status>
-                            <Open>{status}2</Open>
+                            <Status>&ensp;</Status>
+                            <Open></Open>
+                          
                           </Container>
 
                           <MobileDivLine>
@@ -517,7 +518,7 @@ const DisplayNone = styled.div`
   flex-flow: row nowrap;
   justify-content: space-between;
   @media (min-width: 300px) and (max-width: 767px) {
-    display: none;
+    // display: none;
   }
  
 `;
