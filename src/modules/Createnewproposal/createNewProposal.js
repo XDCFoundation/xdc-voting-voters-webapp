@@ -365,6 +365,7 @@ export default function Createnewproposal(props) {
   const [description, setDescription] = useState("");
   const [uploadDocument, setUploadDocument] = useState("");
   const [open, setOpen] = useState(false);
+  const [count, setCount] = React.useState(0);
 
   const inputFile = React.createRef();
   const handleQuillChange = (event) => {
@@ -389,11 +390,11 @@ export default function Createnewproposal(props) {
     };
     console.log(Date.parse(startDate),"startdate")
     console.log(Date.parse(endDate),"endDate")
-    if(proposalTitle.length<60 && Date.parse(startDate)<Date.parse(endDate) && description.length>=5 ){
+    if(Date.parse(startDate)<Date.parse(endDate) && description.length>=5 ){
     props.createProposal(reqObj);
     }
     else{
-      Utils.apiFailureToast("Title should be less than 60 chars");
+      // Utils.apiFailureToast("Title should be less than 60 chars");
       Utils.apiFailureToast("Start date should be less than end date");
       Utils.apiFailureToast("Description should be greater than 5 chars");
     }
@@ -428,12 +429,20 @@ export default function Createnewproposal(props) {
                   <div className={classes.proposaltitle}>Proposal Title</div>
 
                   <Div>
+                    {/* <div style={{display:"flex"}}> */}
                     <input
                       className={classes.proposalinput}
                       type="text"
-                      onChange={(e) => setProposalTitle(e.target.value)}
+                      onChange={(e) => {setProposalTitle(e.target.value);setCount(e.target.value.length)}}
                       value={proposalTitle}
+                      maxLength="60"
+                  
+                    
                     />
+                    <p style={{color:"#2a2a2a",fontSize:"15px"}}>{60-count} characters left</p>
+                    {/* </div> */}
+                  
+                  
                   </Div>
                 </div>
 

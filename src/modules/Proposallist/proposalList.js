@@ -291,7 +291,7 @@ console.log(props.handlePageChange,"page1")
                                       src={require("../../assets/styles/images/Time-Active.svg")}
                                     />
                                   </span>
-                                  <Tooltip placement="top" title={moment(data.endDate).format("DD MM YY")}>
+                                  <Tooltip placement="top" title={moment(data.endDate).format("DD MMMM YYYY")}>
                                   <Span>
                                  
                                     <Countdown

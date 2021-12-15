@@ -21,7 +21,7 @@ export default class ProposalDetails extends BaseComponent {
             open: false,
             isAllowedToVoting: false,
             proposalDocumentsUrl:[],
-            copied: false,
+            copied: "",
         };
     }
 

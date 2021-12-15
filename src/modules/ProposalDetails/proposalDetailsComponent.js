@@ -34,7 +34,7 @@ export default function ProposalDetails(props) {
       b.length
     )}`;
   }
-
+const [copiedtext, setCopiedText]=useState("")
   let totalVotes = [];
   if (
     props.state &&
@@ -208,13 +208,13 @@ export default function ProposalDetails(props) {
                     <div className="display-flex">
                       <div className="box-support"></div>
                       <div className="spt">
-                         Support({Math.ceil(((props?.state?.proposalDetails?.yesVotes?.length)/(totalVotes.length))*100)}%)
+                         Support {" "}({Math.ceil(((props?.state?.proposalDetails?.yesVotes?.length)/(totalVotes.length))*100)}%)
                       </div>
                     </div>
                     <div className="display-flex">
                       <div className="box-reject"></div>
                       <div className="rjt">
-                         Reject({Math.floor(((props?.state?.proposalDetails?.noVotes?.length)/(totalVotes.length))*100)}%)
+                         Reject {" "}({Math.floor(((props?.state?.proposalDetails?.noVotes?.length)/(totalVotes.length))*100)}%)
                       </div>
                     </div>
                   </div>
@@ -297,7 +297,8 @@ export default function ProposalDetails(props) {
         </div>
     </div>
   );
-}
+                    }
+
 
 function AddressComponent(row, index) {
   return (
@@ -323,7 +324,7 @@ function AddressComponent(row, index) {
 
 
 function proposalAddressComponent(row) {
-  // console.log(this.state.copied,"copied value")
+  console.log(row,"row value")
       return (
           <>
               <Row className="p-8 justify-content-between">
@@ -338,9 +339,9 @@ function proposalAddressComponent(row) {
                         ></img>
                          <p style={{ marginTop: "17px" }}>
                   {/* <CopyToClipboard
-                    text={row.proposalAddress}
-                    onCopy={() => this.setState({copied: true})}
-                  > */}
+                    text={row}
+                    onCopy={() => this.setState({copied: row})}
+                  /> */}
                    {/* { this.state?.copied.length>=1 ? "Copied" : "Copy To Clipboard"} */}
                    
                     {/* <Tooltip
@@ -365,6 +366,7 @@ function proposalAddressComponent(row) {
           </>
       );
    }
+  
 const ColumnDiv = styled.div`
   display: flex;
   flex-flow: column nowrap;
