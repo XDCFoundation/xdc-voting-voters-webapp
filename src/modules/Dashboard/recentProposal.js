@@ -15,6 +15,7 @@ import moment from "moment";
 import Utils from "../../utility";
 import DivBlocksComponent from "../Dashboard/divComponent";
 import FooterComponent from "../footer/footerComponent";
+import { Tooltip } from "@material-ui/core";
 
 const GreenLine = styled.div`
   background-color: #3ab70d;
@@ -39,6 +40,7 @@ export default function RecentProposal(props) {
   };
   const handleView = () => {
     history.push("/view-all-proposals");
+    window.scrollTo(0,0)
   };
 
   return (
@@ -161,13 +163,17 @@ export default function RecentProposal(props) {
                                       src={require("../../assets/styles/images/Time-Active.svg")}
                                     />
                                   </span>
+                                  <Tooltip placement="top" title={moment(proposal.endDate).format("DD MM YY")}>
                                   <Span>
+                                   
                                     <Countdown
                                       className="count-down"
                                       date={proposal.endDate}
                                     />
                                     &nbsp;Remaining
+                                  
                                   </Span>
+                                  </Tooltip>
                                 </Row>
                                 <Row className="justify-content-end">
                                   <div

@@ -134,14 +134,14 @@ export default function FooterComponent(props) {
               </RowTag>
               <RowTag>
                 {/* <Anchor href="https://discord.com/invite/KZdD6pkFxp"> */}
-                Forum
+                {/* Forum */}
                 {/* </Anchor> */}
               </RowTag>
             </ColumnSecond>
             <ColumnThird>
               <Row className="footer-column-heading">Governance</Row>
               <RowTag>Overview </RowTag>
-              <RowTag>Forum</RowTag>
+              <RowTag></RowTag>
               <RowTag>
                 <Anchor href="https://howto.xinfin.org/general/faq/" target="_blank">
                   FAQs

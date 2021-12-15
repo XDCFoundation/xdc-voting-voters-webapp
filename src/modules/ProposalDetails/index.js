@@ -20,7 +20,8 @@ export default class ProposalDetails extends BaseComponent {
             isButtonClicked: false,
             open: false,
             isAllowedToVoting: false,
-            proposalDocumentsUrl:[]
+            proposalDocumentsUrl:[],
+            copied: "",
         };
     }
 
@@ -141,6 +142,7 @@ export default class ProposalDetails extends BaseComponent {
                         resolve(true)
                     }
                 }).catch((err) => {reject(err)});
+                this.handleClose()
             })
         });
     };

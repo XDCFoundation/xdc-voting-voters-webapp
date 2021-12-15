@@ -12,6 +12,7 @@ import { history } from "../../managers/history";
 import moment from "moment";
 import Pagination from "react-js-pagination";
 import Countdown from "react-countdown";
+import { Tooltip } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   selectOptions: { backgroundColor: "white" },
@@ -162,7 +163,7 @@ const SecondContainer = styled.div`
   align-items: center;
   @media (min-width: 300px) and (max-width: 767px) {
     display: block;
-    margin-top:10px;
+    margin-top:16px;
   }
 `;
 
@@ -193,16 +194,17 @@ console.log(props.handlePageChange,"page1")
         <div className={classes.root}>
           <Grid item xs={12}>
             <div class="back-button-mobile"
-              style={{ marginBottom: "11px", cursor: "pointer" }}
-              onClick={backButton}
+              style={{ marginBottom: "11px" }}
+              
             >
-              <img
+              <img onClick={backButton}
                 src="/images/Back-Arrow.svg"
                 style={{
                   width: "21px",
                   height: "18px",
                   marginRight: "8px",
                   marginBottom: "3px",
+                  cursor:"pointer"
                 }}
               />
               <Back>Back</Back>
@@ -289,15 +291,17 @@ console.log(props.handlePageChange,"page1")
                                       src={require("../../assets/styles/images/Time-Active.svg")}
                                     />
                                   </span>
+                                  <Tooltip placement="top" title={moment(data.endDate).format("DD MMMM YYYY")}>
                                   <Span>
+                                 
                                     <Countdown
                                       className="count-down"
                                       date={data.endDate}
                                     />
                                     &nbsp;Remaining
-                                    
+                                  
                                   </Span>
-                                 
+                                  </Tooltip>
                                 </Row>
                               
                               
@@ -348,8 +352,9 @@ console.log(props.handlePageChange,"page1")
                         </RowSpacing>
                         <Media_for_container>
                           <Container>
-                            <Status>Status:&ensp;</Status>
-                            <Open>{status}2</Open>
+                            <Status>&ensp;</Status>
+                            <Open></Open>
+                          
                           </Container>
 
                           <MobileDivLine>
@@ -469,7 +474,7 @@ const DatePickerDiv = styled.div`
   @media (min-width: 400px) and (max-width: 780px) {
     width: 100%;
     max-width: 230px;
-    // margin-top: 10px;
+    margin-top: 16px;
     display:flex;
   }
 `;
@@ -513,7 +518,7 @@ const DisplayNone = styled.div`
   flex-flow: row nowrap;
   justify-content: space-between;
   @media (min-width: 300px) and (max-width: 767px) {
-    display: none;
+    // display: none;
   }
  
 `;
@@ -665,6 +670,7 @@ const InputDiv = styled.div`
     display: block;
     // margin-top: 10px;
     margin-left: -9px;
+    margin-top: 26px;
   }
 `;
 
