@@ -109,6 +109,7 @@ export default class ProposalDetails extends BaseComponent {
     };
 
     castProposalVote = async (isSupport) => {
+      
         if(!this.state.isAllowedToVoting) {
             Utils.apiFailureToast("You are not allowed to vote")
             return;
@@ -140,12 +141,19 @@ export default class ProposalDetails extends BaseComponent {
                         this.addProposalToDatabase(reqData)
                         this.setState({isButtonClicked:true})
                         resolve(true)
+                        this.setState({open:true})
+                      
                     }
                 }).catch((err) => {reject(err)});
-                this.handleClose()
+                
             })
+            
         });
+        
     };
+     handleClose = () => {
+        this.setState({open: false})
+    }
 
     delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
@@ -168,9 +176,7 @@ export default class ProposalDetails extends BaseComponent {
         this.getProposalDetails()
     }
 
-    handleClose = () => {
-        this.setState({open: false})
-    }
+    
 
     render() {
         return <ProposalComponent
@@ -178,6 +184,7 @@ export default class ProposalDetails extends BaseComponent {
             handleClickVoter={this.handleClickVoter}
             backButton={this.backButton}
             castProposalVote={this.castProposalVote}
+            handleClose={this.handleClose}
         />
     }
 }

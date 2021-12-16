@@ -293,7 +293,7 @@ const [copiedtext, setCopiedText]=useState("")
       </Column>
 
       <Snackbar
-        open={props.open}
+        open={props.state.open}
         autoHideDuration={3000}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         onClose={props.handleClose}
@@ -362,10 +362,11 @@ function proposalAddressComponent(row) {
                           {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
                       </div>
                   </Row>
+                  <a href="https://explorer.apothem.network/" target="_blank"> 
                   <img
                             className="external-image-proposal4"
                             src={require("../../assets/styles/images/External-Link.svg")}
-                        ></img>
+                        ></img></a>
                          {/* <p style={{ marginTop: "17px" }}> */}
 
                            {/* <button onClick={() => {navigator.clipboard.writeText(row)}}>Copy</button> */}

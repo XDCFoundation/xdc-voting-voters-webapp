@@ -316,7 +316,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     flexFlow: "row nowrap",
-    marginTop: "30px",
+    marginTop: "10px",
     alignItems: "center",
 
     "@media (min-width: 200px) and (max-width: 767px)": {
@@ -403,8 +403,8 @@ export default function Createnewproposal(props) {
     }
     else{
       // Utils.apiFailureToast("Title should be less than 60 chars");
-      Utils.apiFailureToast("Start date should be less than end date Description should be greater than 200 chars");
-      // Utils.apiFailureToast("Description should be greater than 200 chars");
+      Utils.apiFailureToast("Start date should be less than end date");
+      Utils.apiFailureToast("Description should be greater than 200 chars");
     }
   };
 
@@ -447,7 +447,7 @@ export default function Createnewproposal(props) {
                   
                     
                     />
-                    <p style={{color:"#2a2a2a",fontSize:"12px",float:"right"}}>{60-count}/60</p>
+                    <p style={{color:"#2a2a2a",fontSize:"12px",float:"right",paddingTop:"5px"}}>{60-count}/60</p>
                     {/* </div> */}
                   
                   
