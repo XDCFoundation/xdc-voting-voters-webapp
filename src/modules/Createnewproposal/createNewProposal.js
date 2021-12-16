@@ -74,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
     background: "#ffffff 0% 0% no-repeat padding-box",
     border: "1px solid #e3e7eb",
     borderRadius: "4px",
+    outline:"none",
     width: "100%",
     padding: "6px",
     font: "normal normal normal 15px/19px Inter",
@@ -388,15 +389,22 @@ export default function Createnewproposal(props) {
       pollingContract: "0011",
       status: "pending",
     };
+    if (
+      !reqObj.proposalTitle ||
+      !reqObj.startDate ||
+      !reqObj.endDate ||
+      !reqObj.description
+  )
+      Utils.apiFailureToast("Please provide all the inputs");
     console.log(Date.parse(startDate),"startdate")
     console.log(Date.parse(endDate),"endDate")
-    if(Date.parse(startDate)<Date.parse(endDate) && description.length>=5 ){
+    if(Date.parse(startDate)<Date.parse(endDate) && description.length>=200 ){
     props.createProposal(reqObj);
     }
     else{
       // Utils.apiFailureToast("Title should be less than 60 chars");
-      Utils.apiFailureToast("Start date should be less than end date");
-      Utils.apiFailureToast("Description should be greater than 5 chars");
+      Utils.apiFailureToast("Start date should be less than end date Description should be greater than 200 chars");
+      // Utils.apiFailureToast("Description should be greater than 200 chars");
     }
   };
 
@@ -439,7 +447,7 @@ export default function Createnewproposal(props) {
                   
                     
                     />
-                    <p style={{color:"#2a2a2a",fontSize:"15px"}}>{60-count} characters left</p>
+                    <p style={{color:"#2a2a2a",fontSize:"12px",float:"right"}}>{60-count}/60</p>
                     {/* </div> */}
                   
                   

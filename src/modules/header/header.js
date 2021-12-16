@@ -55,7 +55,7 @@ function Header() {
     window.ethereum.enable();
     const accounts = web3.eth.getAccounts().then((accounts) => {
       if (!accounts || !accounts.length) {
-        Utils.apiFailureToast("Wallet is not connected");
+        // Utils.apiFailureToast("Wallet is not connected");
         return;
       }
       console.log(accounts[0])

@@ -84,7 +84,7 @@ export default class ProposalDetails extends BaseComponent {
         window.ethereum.enable();
         const accounts = await web3.eth.getAccounts()
         if (!accounts || !accounts.length) {
-            Utils.apiFailureToast("Please login to XDCPay extension");
+            // Utils.apiFailureToast("Please login to XDCPay extension");
             return;
         }
         let isVoted = false;

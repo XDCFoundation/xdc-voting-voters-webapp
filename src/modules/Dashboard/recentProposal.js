@@ -163,7 +163,7 @@ export default function RecentProposal(props) {
                                       src={require("../../assets/styles/images/Time-Active.svg")}
                                     />
                                   </span>
-                                  <Tooltip placement="top" title={moment(proposal.endDate).format("DD MM YY")}>
+                                  <Tooltip placement="top" title={moment(proposal.endDate).format("DD MMMM YYYY")}>
                                   <Span>
                                    
                                     <Countdown
