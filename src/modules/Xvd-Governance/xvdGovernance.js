@@ -113,6 +113,14 @@ window.scrollTo(0,0);
 
   const [address, setAddress] = React.useState([]);
 
+  const scrollerTop =(e)=>{
+    e.preventDefault();
+    // window.scrollTo(0,1)
+    // e.stopPropagation();
+    // e.nativeEvent.stopImmediatePropagation();
+    // return false;
+  }
+
   const classes = useStyles();
   return (
     <div>
@@ -171,12 +179,12 @@ window.scrollTo(0,0);
                     <Column>
                       <SectionDiv id="section1">
                         <H1>
-                          <Anchor href="#0">Introduction</Anchor>
+                          <Anchor href="#0"smooth={true} >Introduction</Anchor>
                         </H1>
                       </SectionDiv>
                       <SectionDiv id="section2">
                         <H2>
-                          <Anchor href="#1">How voting works</Anchor>
+                          <Anchor href="#1" >How voting works</Anchor>
                         </H2>
                       </SectionDiv>
                       <SectionDiv id="section3">
