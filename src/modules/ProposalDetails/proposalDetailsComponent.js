@@ -15,7 +15,10 @@ import Utils from "../../utility";
 import moment from "moment";
 import Countdown from "react-countdown";
 import styled from "styled-components";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+
+// import { CopyToClipboard } from "react-copy-to-clipboard";
+import copy from "copy-to-clipboard";  
+// import {ClipBoard} from "./clipBoard";
 // import Tooltip from "@material-ui/core/Tooltip";
 
 function Alert(props) {
@@ -27,6 +30,18 @@ function removeTags(str) {
 }
 
 export default function ProposalDetails(props) {
+  const [copyCheck, setCopyCheck]=useState("")
+  // const Clipboard = () => {
+  //   const [copyText, setCopyText] = useState('');
+  
+  //   const handleCopyText = (e) => {
+  //      setCopyText(e.target.value);
+  //   } 
+    
+  //   const copyToClipboard = () => {
+  //      copy(copyText);
+  //      alert(`You have copied "${copyText}"`);
+  //   }
   // const [copiedText, setCopiedText] = useState("");
   function shorten(b, amountL = 13, amountR = 3, stars = 3) {
     return `${b.slice(0, amountL)}${".".repeat(stars)}${b.slice(
@@ -250,7 +265,18 @@ const [copiedtext, setCopiedText]=useState("")
                   <div className="polling-heading">Polling Contract</div>
                   <div className="address-number">
                     {proposalAddressComponent(props.state.proposalAddress)}
+                    
                     <span>
+                    {/* <button onClick={copyToClipboard}>
+               Copy to Clipboard
+          </button> */}
+                      
+                      {/* <React.Fragment>
+                       <CopyToClipboard
+                    text={props.state.proposalAddress}
+                    onCopy={() => this.setState({copied: props.state.proposalAddress})}
+                  />
+                  </React.Fragment> */}
                       {/* <img
                         className="external-image-proposal4"
                         src={require("../../assets/styles/images/External-Link.svg")}
@@ -267,7 +293,7 @@ const [copiedtext, setCopiedText]=useState("")
       </Column>
 
       <Snackbar
-        open={props.open}
+        open={props.state.open}
         autoHideDuration={3000}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         onClose={props.handleClose}
@@ -324,7 +350,10 @@ function AddressComponent(row, index) {
 
 
 function proposalAddressComponent(row) {
-  console.log(row,"row value")
+  // const copyTo = (row) => {navigator.clipboard.writeText(row);}
+  // console.log(row,"row value")
+  // console.log(copyTo,"copy value")
+
       return (
           <>
               <Row className="p-8 justify-content-between">
@@ -333,11 +362,16 @@ function proposalAddressComponent(row) {
                           {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
                       </div>
                   </Row>
+                  <a href="https://explorer.apothem.network/" target="_blank"> 
                   <img
                             className="external-image-proposal4"
                             src={require("../../assets/styles/images/External-Link.svg")}
-                        ></img>
-                         <p style={{ marginTop: "17px" }}>
+                        ></img></a>
+                         {/* <p style={{ marginTop: "17px" }}> */}
+
+                           {/* <button onClick={() => {navigator.clipboard.writeText(row)}}>Copy</button> */}
+                           <img onClick={() => {navigator.clipboard.writeText(row)}} style={{height:"35px",width:"40px",marginTop:"-7px",cursor:"pointer"}} src={require("../../assets/styles/images/copy1.jpg")}></img>
+                      
                   {/* <CopyToClipboard
                     text={row}
                     onCopy={() => this.setState({copied: row})}
@@ -361,7 +395,7 @@ function proposalAddressComponent(row) {
                       </button>
                     </Tooltip> */}
                   {/* </CopyToClipboard> */}
-                </p>
+                {/* </p> */}
               </Row>
           </>
       );

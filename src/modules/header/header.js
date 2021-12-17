@@ -11,6 +11,7 @@ import {injected} from "../../services/web3Connector"
 import {useWeb3React} from "@web3-react/core"
 import blockies from "ethereum-blockies";
 import FooterComponent from "../footer/footerComponent";
+import Jazzicon from "react-jazzicon";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,7 +56,7 @@ function Header() {
     window.ethereum.enable();
     const accounts = web3.eth.getAccounts().then((accounts) => {
       if (!accounts || !accounts.length) {
-        Utils.apiFailureToast("Wallet is not connected");
+        // Utils.apiFailureToast("Wallet is not connected");
         return;
       }
       console.log(accounts[0])
@@ -130,9 +131,9 @@ function Header() {
             {/*/>*/}
             <div className="xdc-connect">
               <button className="makeStyles-btnCss-3 btn" onClick={connectToWallet}>
-                {wallet ?  <>{wallet ? wallet.substr(0, 11) : " "}...
+                {wallet ?  <>{wallet ? <><Jazzicon  diameter={20} seed={Math.round(Math.random() * 10000000)}/>  <div className="address-image">{wallet.substr(0, 11)}</div></> : " "}...
                               {wallet
-                                ? wallet.substr(wallet.length - 5, 5)
+                                ?  wallet.substr(wallet.length - 5, 5)
                                 : ""}</> : <><div className="circle"></div><p className="connect">Connect Wallet</p></>}
               </button>
             </div>

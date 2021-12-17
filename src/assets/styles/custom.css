@@ -123,6 +123,9 @@ body {
   justify-content: space-between;
   flex: 1;
 }
+.address-image{
+  margin-left: 3px;
+}
 .alert {
   background-color: #00144d !important;
 }
@@ -881,7 +884,7 @@ px
 } */
 .xdc-connect button {
   display: flex;
-  width: 168px;
+  width: 189px;
   height: 42px;
   margin-top: 6px;
   margin-right: 6px;

@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   input: {
-    color: "#909090",
+    color: "#2A2A2A",
     width: "100%",
     border: "1px solid #E3E7EB",
     height: "36px",
