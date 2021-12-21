@@ -31,6 +31,13 @@ export default class ProposalDetails extends BaseComponent {
     }
 
     isUserAllowedForVoting = ()=>{
+
+        if (window.ethereum) {//the error line
+            window.web3 = new Web3(window.ethereum);
+        
+            try {
+              window.ethereum.enable();
+
         let web3;
         web3 = new Web3(window.web3.currentProvider);
         console.log(window.web3.currentProvider);
@@ -50,6 +57,15 @@ export default class ProposalDetails extends BaseComponent {
                 }
             })
         });
+
+    } catch (err) {
+        alert("Something went wrong.");
+      }
+      }
+        
+       else {
+        Utils.apiFailureToast("Please install XDCPay extension");
+      }
     }
 
     getProposalDetails = async () => {
@@ -79,6 +95,12 @@ export default class ProposalDetails extends BaseComponent {
     }
 
     isAlreadyVoted = async (proposalDetail) => {
+        if (window.ethereum) {//the error line
+            window.web3 = new Web3(window.ethereum);
+        
+            try {
+              window.ethereum.enable();
+
         let web3;
         web3 = new Web3(window.web3.currentProvider);
         window.ethereum.enable();
@@ -98,6 +120,15 @@ export default class ProposalDetails extends BaseComponent {
                 isVoted = true
         })
         return isVoted;
+
+    } catch (err) {
+        alert("Something went wrong.");
+      }
+      }
+        
+       else {
+        Utils.apiFailureToast("Please install XDCPay Extension");
+      }
     }
 
     handleClickVoter = () => {
