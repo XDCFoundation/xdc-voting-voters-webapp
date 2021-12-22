@@ -10,6 +10,7 @@ import Web3 from "web3";
 import {abi as proposalContractAbi} from "../../common/abis/proposalContractAbi.json";
 import {castVotingProposal, getTotalVotingAddress} from "../../services/proposalService";
 import {getSignedUrlService} from "../../services/fileUploaderService";
+import moment from "moment";
 
 export default class ProposalDetails extends BaseComponent {
     constructor(props) {
@@ -140,11 +141,16 @@ export default class ProposalDetails extends BaseComponent {
     };
 
     castProposalVote = async (isSupport) => {
+        
       
         if(!this.state.isAllowedToVoting) {
             Utils.apiFailureToast("You are not allowed to vote")
             return;
         }
+        // else if(Date.now()>moment(proposalDetails.startDate).format("DD MMMM YYYY"))
+        // {
+        //     Utils.apiFailureToast("You are not allowed to vote",ProposalDetails.startDate)
+        // }
         let web3;
         web3 = new Web3(window.web3.currentProvider);
         console.log(window.web3.currentProvider);

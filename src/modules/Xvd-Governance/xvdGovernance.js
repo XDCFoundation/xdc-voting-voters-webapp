@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import FooterComponent from "../footer/footerComponent";
 import { history } from "../../managers/history";
+import { ClickAwayListener } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,6 +59,9 @@ export default function Xvdgovernance() {
   const backButton = () => {
     history.push("/");
   };
+  const Click=()=>{
+    // window.scrollerTop(0,0);
+  }
   function scrollWindow()
 {
 window.scrollTo(0,0);
@@ -179,7 +183,7 @@ window.scrollTo(0,0);
                     <Column>
                       <SectionDiv id="section1">
                         <H1>
-                          <Anchor href="#0"smooth={true} >Introduction</Anchor>
+                          <Anchor href="#0"  >Introduction</Anchor>
                         </H1>
                       </SectionDiv>
                       <SectionDiv id="section2">

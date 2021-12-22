@@ -92,6 +92,7 @@ const [copiedtext, setCopiedText]=useState("")
                   <Row className="date-proposal">
                     Posted on{" "}
                     {moment(props.state.proposalDetails.createdOn).format("DD MMMM YYYY")}
+                    
                   </Row>
                   <Row className="name-proposal">
                     {props.state.proposalDetails.proposalTitle}{" "}
