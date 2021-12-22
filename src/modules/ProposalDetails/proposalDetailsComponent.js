@@ -49,6 +49,10 @@ export default function ProposalDetails(props) {
       b.length
     )}`;
   }
+  // const handleToastClose=()=>{
+  //   setOpen(false)
+  // }
+
 const [copiedtext, setCopiedText]=useState("")
   let totalVotes = [];
   if (
@@ -88,6 +92,7 @@ const [copiedtext, setCopiedText]=useState("")
                   <Row className="date-proposal">
                     Posted on{" "}
                     {moment(props.state.proposalDetails.createdOn).format("DD MMMM YYYY")}
+                    
                   </Row>
                   <Row className="name-proposal">
                     {props.state.proposalDetails.proposalTitle}{" "}
@@ -294,7 +299,7 @@ const [copiedtext, setCopiedText]=useState("")
 
       <Snackbar
         open={props.state.open}
-        autoHideDuration={3000}
+        // autoHideDuration={3000}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         onClose={props.handleClose}
       >
@@ -308,7 +313,13 @@ const [copiedtext, setCopiedText]=useState("")
             </span>
             <span>
               <div className="toast-message">
-                Your vote is successfully casted
+              <span>
+              Your vote is successfully casted
+                </span>
+                <span onClick={props.handleClose} style={{float:"right",cursor:"pointer",marginTop:"-8px"}}>
+                  X
+                </span>
+                
               </div>
               <div className="toast-address">
                 Thank you for your contribution in adding transparency to XDC

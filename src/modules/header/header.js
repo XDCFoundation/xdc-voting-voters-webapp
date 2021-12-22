@@ -49,6 +49,17 @@ function Header() {
     //   console.log("dsjfkksdgfkjhjldsf ",el)
     //   body.appendChild(el)
     // }
+   
+
+    
+
+     
+    
+  if (window.ethereum) {//the error line
+    window.web3 = new Web3(window.ethereum);
+
+    try {
+      window.ethereum.enable();
 
     let web3;
     web3 = new Web3(window.web3.currentProvider);
@@ -56,31 +67,77 @@ function Header() {
     window.ethereum.enable();
     const accounts = web3.eth.getAccounts().then((accounts) => {
       if (!accounts || !accounts.length) {
+        console.log("please login")
         // Utils.apiFailureToast("Wallet is not connected");
         return;
+        
       }
       console.log(accounts[0])
       setwallet(accounts[0])
       fetchData(accounts[0]);
     });
+
+
+  } catch (err) {
+    alert("Something went wrong.");
+  }
+} else if (window.web3) {
+  window.web3 = new Web3(window.web3.currentProvider);
+  let web3;
+  web3 = new Web3(window.web3.currentProvider);
+  console.log("+++",web3);
+  window.ethereum.enable();
+
+  const accounts = web3.eth.getAccounts().then((accounts) => {
+      if (!accounts || !accounts.length) {
+        console.log("please login")
+        // Utils.apiFailureToast("Wallet is not connected");
+        return;
+        
+      }
+      console.log(accounts[0])
+      setwallet(accounts[0])
+      fetchData(accounts[0]);
+    });
+} else {
+  Utils.apiFailureToast("Please install XDCPay extension");
+}
+
   }, []);
 
   const {active, account, library, connector, activate, deactivate } = useWeb3React()
 
 
   async function connectToWallet(){
+
+    if (window.ethereum) {//the error line
+      window.web3 = new Web3(window.ethereum);
+  
+      try {
+        window.ethereum.enable();
+
     let web3;
     web3 = new Web3(window.web3.currentProvider);
         const conn = await window.web3.currentProvider._events.disconnect[0]();
         console.log("+++++",conn)
     // window.ethereum.enable();
-    const accounts = web3.eth.getAccounts().then((accounts) => {
+
+    let accounts = web3.eth.getAccounts().then((accounts) => {
       if (!accounts || !accounts.length) {
         Utils.apiFailureToast("Wallet is not connected");
         return;
       }
       console.log("accounts[0] ",accounts[0])
     });
+
+  } catch (err) {
+    alert("Something went wrong.");
+  }
+  }
+    
+   else {
+    Utils.apiFailureToast("Please install XDCPay extension");
+  }
   }
 
   const [address, setAddress] = useState({ data: "" });

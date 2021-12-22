@@ -894,10 +894,10 @@ px
   color: #2149b9 !important;
   background-color: #ffffff !important;
 }
-.xdc-connect button :hover{
+/* .xdc-connect button :hover{
     color: #2149b9 !important;
   background-color: #ffffff !important;
-}
+} */
 
 .row-2 {
   justify-content: center;
@@ -1795,6 +1795,7 @@ input:focus {
 }
 .section1{
     color: #2149B9;
+    scroll-behavior: auto;
 }
 .fc-blue-grey {
   color: #5e6c84;

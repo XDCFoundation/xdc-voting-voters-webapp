@@ -10,6 +10,7 @@ import Web3 from "web3";
 import {abi as proposalContractAbi} from "../../common/abis/proposalContractAbi.json";
 import {castVotingProposal, getTotalVotingAddress} from "../../services/proposalService";
 import {getSignedUrlService} from "../../services/fileUploaderService";
+import moment from "moment";
 
 export default class ProposalDetails extends BaseComponent {
     constructor(props) {
@@ -31,6 +32,13 @@ export default class ProposalDetails extends BaseComponent {
     }
 
     isUserAllowedForVoting = ()=>{
+
+        if (window.ethereum) {//the error line
+            window.web3 = new Web3(window.ethereum);
+        
+            try {
+              window.ethereum.enable();
+
         let web3;
         web3 = new Web3(window.web3.currentProvider);
         console.log(window.web3.currentProvider);
@@ -50,6 +58,15 @@ export default class ProposalDetails extends BaseComponent {
                 }
             })
         });
+
+    } catch (err) {
+        alert("Something went wrong.");
+      }
+      }
+        
+       else {
+        Utils.apiFailureToast("Please install XDCPay extension");
+      }
     }
 
     getProposalDetails = async () => {
@@ -79,6 +96,12 @@ export default class ProposalDetails extends BaseComponent {
     }
 
     isAlreadyVoted = async (proposalDetail) => {
+        if (window.ethereum) {//the error line
+            window.web3 = new Web3(window.ethereum);
+        
+            try {
+              window.ethereum.enable();
+
         let web3;
         web3 = new Web3(window.web3.currentProvider);
         window.ethereum.enable();
@@ -98,6 +121,15 @@ export default class ProposalDetails extends BaseComponent {
                 isVoted = true
         })
         return isVoted;
+
+    } catch (err) {
+        alert("Something went wrong.");
+      }
+      }
+        
+       else {
+        Utils.apiFailureToast("Please install XDCPay Extension");
+      }
     }
 
     handleClickVoter = () => {
@@ -109,11 +141,16 @@ export default class ProposalDetails extends BaseComponent {
     };
 
     castProposalVote = async (isSupport) => {
+        
       
         if(!this.state.isAllowedToVoting) {
             Utils.apiFailureToast("You are not allowed to vote")
             return;
         }
+        // else if(Date.now()>moment(proposalDetails.startDate).format("DD MMMM YYYY"))
+        // {
+        //     Utils.apiFailureToast("You are not allowed to vote",ProposalDetails.startDate)
+        // }
         let web3;
         web3 = new Web3(window.web3.currentProvider);
         console.log(window.web3.currentProvider);
