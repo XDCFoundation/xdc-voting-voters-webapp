@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     maxWidth: "1280px",
     // position: "absolute",
-    marginTop: "-84px",
+    marginTop: "-92px",
     marginBottom: "40px",
     zIndex: "1",
     top: "145px",
@@ -149,7 +149,7 @@ export default function CommunityPage() {
         <div className={classes.root}>
           <Grid item xs={12}>
             <div
-              style={{ marginBottom: "4px" }}
+              style={{ marginBottom: "11px" }}
              
             >
               <img  onClick={backButton}
@@ -367,6 +367,10 @@ const Div = styled.div`
   border: 1px solid #e3e7eb;
   border-radius: 0% 0% 6px 6px;
   opacity: 1;
+  @media (min-width: 300px) and (max-width: 767px) {
+    padding: 30px;
+  }
+
 `;
 
 const Heading = styled.span`

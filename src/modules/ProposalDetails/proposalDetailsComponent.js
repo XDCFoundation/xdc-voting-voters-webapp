@@ -381,8 +381,9 @@ function proposalAddressComponent(row) {
                          {/* <p style={{ marginTop: "17px" }}> */}
 
                            {/* <button onClick={() => {navigator.clipboard.writeText(row)}}>Copy</button> */}
+                           
                            <img onClick={() => {navigator.clipboard.writeText(row)}} style={{height:"35px",width:"40px",marginTop:"-7px",cursor:"pointer"}} src={require("../../assets/styles/images/copy1.jpg")}></img>
-                      
+                     
                   {/* <CopyToClipboard
                     text={row}
                     onCopy={() => this.setState({copied: row})}

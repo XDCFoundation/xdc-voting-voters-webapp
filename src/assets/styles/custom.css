@@ -262,6 +262,9 @@ body {
     margin-top: 15px !important;
     margin-left: 5px !important;
   } */
+  .piediv{
+    margin-top: 18px !important;
+  }
   .button-div-support{
       padding-left: 32px !important;
       padding-right: 32px !important;
@@ -369,9 +372,9 @@ body {
     width: 30px !important;
     margin-top: 10px !important;
   }
-  .mobile-rightdiv {
+  /* .mobile-rightdiv {
     margin-top: 835px !important;
-  }
+  } */
   .name-proposal {
     font-size: 14px !important;
     white-space: nowrap !important;
@@ -561,17 +564,17 @@ body {
     height: 501px;
   }
   /* .attachment-heading{
-      padding-right: 40%;
+      padding-right: 45%;
   } */
   .all-div-proposal {
     display: block !important;
   }
-  /* .griddiv-1 {
-    max-width: 730px !important;
-  } */
-  .mobile-rightdiv {
-    margin-top: 750px;
+  .griddiv-1 {
+    margin-bottom: 50px;
   }
+  /* .mobile-rightdiv {
+    margin-top: 750px;
+  } */
   img.load {
     margin-left: 20% !important;
   }
@@ -581,7 +584,7 @@ body {
   .recent-proposal-div-proposal2 {
     /* max-width: 730px !important; */
     margin-left: 0px !important;
-    margin-top: -280px !important;
+    /* margin-top: -280px !important; */
   }
   .recent-proposal-div-proposal3 {
     /* max-width: 730px !important; */
@@ -1424,7 +1427,7 @@ padding: 21px 24px 21px 33px;
   color: #2149b9;
   opacity: 1;
   font-weight: 600;
-  padding-right: 48%;
+  padding-right: 47%;
     margin-top: 4px;
 }
 .doc-1 {
@@ -1655,7 +1658,7 @@ img.load {
   border-radius: 0% 0% 6px 6px;
 }
 input:focus {
-  border: solid 1px #0099ff;
+  border: solid 1px #e3e7eb;
 }
 
 .display-none {

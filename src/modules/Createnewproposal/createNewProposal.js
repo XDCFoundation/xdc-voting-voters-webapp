@@ -87,8 +87,9 @@ const useStyles = makeStyles((theme) => ({
       font: "normal normal normal 15px/19px Inter",
       width: "100%",
     },
+    
   },
-
+ 
   enddateinput: {
     background: "#FFFFFF 0% 0% no-repeat padding-box",
     border: "1px solid #E3E7EB",
@@ -635,7 +636,7 @@ const Button = styled.button`
   border: 1px solid #fffcfc;
   border-radius: 4px;
   color: #ffffff;
-  height: 38px;
+  height: 42px;
   font: normal normal normal 15px/19px Inter;
   margin-bottom: 10%;
   display: flex;
