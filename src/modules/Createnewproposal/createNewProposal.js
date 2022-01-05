@@ -399,7 +399,7 @@ export default function Createnewproposal(props) {
       Utils.apiFailureToast("Please provide all the inputs");
     console.log(Date.parse(startDate),"startdate")
     console.log(Date.parse(endDate),"endDate")
-    if(Date.parse(startDate)<Date.parse(endDate) && description.length>=200 ){
+    if(Date.parse(startDate)<Date.parse(endDate)  && description.length>=200 ){
     props.createProposal(reqObj);
     }
     else{
@@ -462,6 +462,7 @@ export default function Createnewproposal(props) {
                     <input
                       className={classes.startdateinput}
                       type="date"
+                      min={new Date().toISOString().slice(0, 10)}
                       onChange={(e) => setStartDate(e.target.value)}
                       value={startDate}
                     />
@@ -472,6 +473,7 @@ export default function Createnewproposal(props) {
                     <input
                       className={classes.enddateinput}
                       type="date"
+                      min={new Date().toISOString().slice(0, 10)}
                       onChange={(e) => setEndDate(e.target.value)}
                       value={endDate}
                     />
@@ -482,6 +484,7 @@ export default function Createnewproposal(props) {
                     <Startdate>Start Date</Startdate>
                     <Inputstartdate
                       type="date"
+                      // min="2022-01-01"
                       onChange={(e) => setStartDate(e.target.value)}
                       value={startDate}
                     />
