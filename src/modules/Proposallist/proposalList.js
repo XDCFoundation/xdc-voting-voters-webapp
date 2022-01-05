@@ -324,7 +324,7 @@ console.log(props.handlePageChange,"page1")
                             {status === "Open" ? (
                                <Row className="justify-content-end">
                                <div
-                                 className="details"
+                                 className="details1"
                                  onClick={() =>
                                    props.proposalRedirect(
                                      data.pollingContract

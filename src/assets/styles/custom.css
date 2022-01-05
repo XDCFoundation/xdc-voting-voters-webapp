@@ -244,7 +244,9 @@ body {
   }
 
   .count-down-mobile {
-    display: none !important;
+    margin-top: 75px;
+    margin-right: 135px;
+    float: right;
   }
   .voter-list {
     display: none !important;
@@ -384,6 +386,7 @@ body {
   }
   .table-between {
     width: 86vw !important;
+    padding: 21px 24px 0px 12px !important;
   }
   .doc-1 {
     /*width: 353px !important;*/
@@ -441,7 +444,7 @@ body {
   }
   .mobile-div-right {
     padding-right: 0px !important;
-    width: 122px !important;
+    width: 120px !important;
     /* margin-top: 47px; */
     z-index: 1;
     position: relative;
@@ -456,9 +459,9 @@ body {
     font-size: 13px;
   }
   .details {
-    margin-right: -5px !important;
-    width: 94px !important;
-    margin-top: 35px !important;
+    margin-right: -110px !important;
+    width: 100px !important;
+    margin-top: 62px !important;
     z-index: 1;
   }
   /* .poll-ended{
@@ -1543,6 +1546,24 @@ padding: 21px 24px 21px 33px;
   font-size: 14px;
 }
 .details {
+  height: 30px;
+  width: 70px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #2049b9;
+  border-radius: 4px;
+  opacity: 1;
+  text-align: center;
+  padding-top: 5px;
+  margin-left: 58px;
+  margin-top: 5px;
+  color: #2149b9 !important;
+
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+.details1{
   height: 30px;
   width: 70px;
   background: #ffffff 0% 0% no-repeat padding-box;

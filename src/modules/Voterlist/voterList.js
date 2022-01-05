@@ -204,8 +204,9 @@ export default function Voterslist(props) {
                 <VoterListMobile >
                   <Spacing >
                     <Container>
-                      <ImageView src={data.image} />
-                      &nbsp;
+                      {/* <ImageView src={data.image} /> */}
+                      <Jazzicon diameter={20} seed={Math.round(Math.random() * 10000000)} />
+                      &nbsp; &nbsp;&nbsp;&nbsp;
                       {/* <Hash> {(data.voterAddress)}</Hash> */}
                       <Hash className={classes.mobileVote}>{proposalAddressComponent(data.voterAddress)}</Hash>
                     </Container>
@@ -400,7 +401,7 @@ const Container = styled.div`
 `;
 const SecondContainer = styled.div`
   display: flex;
-
+justify-content:end;
   align-items: center;
   @media (min-width: 300px) and (max-width: 767px) {
   }
