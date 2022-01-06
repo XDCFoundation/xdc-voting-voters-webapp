@@ -890,7 +890,7 @@ px
 } */
 .xdc-connect button {
   display: flex;
-  width: 189px;
+  /* width: 189px; */
   height: 42px;
   margin-top: 6px;
   margin-right: 6px;

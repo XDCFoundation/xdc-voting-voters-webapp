@@ -484,7 +484,7 @@ export default function Createnewproposal(props) {
                     <Startdate>Start Date</Startdate>
                     <Inputstartdate
                       type="date"
-                      // min="2022-01-01"
+                      min={new Date().toISOString().slice(0, 10)}
                       onChange={(e) => setStartDate(e.target.value)}
                       value={startDate}
                     />
@@ -493,6 +493,7 @@ export default function Createnewproposal(props) {
                     <Enddate>End Date</Enddate>
                     <Inputenddate
                       type="date"
+                      min={new Date().toISOString().slice(0, 10)}
                       onChange={(e) => setEndDate(e.target.value)}
                       value={endDate}
                     />

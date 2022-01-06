@@ -70,7 +70,7 @@ const [copiedtext, setCopiedText]=useState("")
     props.state.proposalDetails.noVotes.length
   )
     totalVotes = [...totalVotes, ...props.state.proposalDetails.noVotes];
-  if (totalVotes.length > 6) totalVotes.length = 6;
+  // if (totalVotes.length > 6) totalVotes.length = 6;
  
   return (
     <div>
@@ -250,7 +250,11 @@ const [copiedtext, setCopiedText]=useState("")
                   </div>
                 </div>
                 <div className="griddiv-voter">
-                  {totalVotes && totalVotes.length>=1? totalVotes.map((row, index) => {
+               
+                  
+                   
+                  {totalVotes && totalVotes.length>=1 ? totalVotes.map((row, index) => {
+                   if (totalVotes.length > 5) totalVotes.length = 5;
                     return AddressComponent(row, index);
                   }):(<><div style={{display:"flex",justifyContent:"center"}}>No Votes Casted</div></>)
                 }
@@ -338,6 +342,8 @@ const [copiedtext, setCopiedText]=useState("")
 
 
 function AddressComponent(row, index) {
+ 
+
   return (
     <>
       <Row className="p-8 justify-content-between">
