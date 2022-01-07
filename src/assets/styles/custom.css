@@ -900,6 +900,12 @@ px
   color: #2149b9 !important;
   background-color: #ffffff !important;
 }
+.makeStyles-startdateinput-11{
+  outline: none !important;
+}
+.makeStyles-enddateinput-8{
+  outline: none !important;
+}
 /* .xdc-connect button :hover{
     color: #2149b9 !important;
   background-color: #ffffff !important;

@@ -15,6 +15,7 @@ import Utils from "../../utility";
 import moment from "moment";
 import Countdown from "react-countdown";
 import styled from "styled-components";
+import { Tooltip } from "@material-ui/core";
 
 // import { CopyToClipboard } from "react-copy-to-clipboard";
 import copy from "copy-to-clipboard";  
@@ -115,16 +116,21 @@ const [copiedtext, setCopiedText]=useState("")
                         src={require("../../assets/styles/images/Time-Active.svg")}
                       ></img>
                       &nbsp;
+                      <Tooltip placement="top" title={moment(props.state.proposalDetails.endDate).format("DD MMMM YYYY")}>
                       <span>
+                        
                         {props.state.proposalDetails.endDate ? (
+                          
                           <Countdown
                             className="count-down"
                             date={props.state.proposalDetails.endDate}
                           />
+                          
                         ) : (
                           ""
                         )}
                       </span>
+                      </Tooltip>
                     </span>
                     <span>Remaining</span>
                   </Row>
@@ -379,7 +385,7 @@ function proposalAddressComponent(row) {
                           {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
                       </div>
                   </Row>
-                  <a href="https://explorer.apothem.network/" target="_blank"> 
+                  <a href="https://explorer.apothem.network/address" target="_blank"> 
                   <img
                             className="external-image-proposal4"
                             src={require("../../assets/styles/images/External-Link.svg")}

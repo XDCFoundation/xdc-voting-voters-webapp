@@ -465,6 +465,8 @@ export default function Createnewproposal(props) {
                       min={new Date().toISOString().slice(0, 10)}
                       onChange={(e) => setStartDate(e.target.value)}
                       value={startDate}
+                      onKeyDown={(e) => e.preventDefault()}
+                      // disabled
                     />
                   </StartDiv>
                   <EndDiv>
@@ -476,6 +478,7 @@ export default function Createnewproposal(props) {
                       min={new Date().toISOString().slice(0, 10)}
                       onChange={(e) => setEndDate(e.target.value)}
                       value={endDate}
+                      onKeyDown={(e) => e.preventDefault()}
                     />
                   </EndDiv>
                 </div>
@@ -487,6 +490,7 @@ export default function Createnewproposal(props) {
                       min={new Date().toISOString().slice(0, 10)}
                       onChange={(e) => setStartDate(e.target.value)}
                       value={startDate}
+                      onKeyDown={(e) => e.preventDefault()}
                     />
                   </Firstdiv>
                   <Seconddiv>
@@ -496,6 +500,7 @@ export default function Createnewproposal(props) {
                       min={new Date().toISOString().slice(0, 10)}
                       onChange={(e) => setEndDate(e.target.value)}
                       value={endDate}
+                      onKeyDown={(e) => e.preventDefault()}
                     />
                   </Seconddiv>
                 </Mobile>

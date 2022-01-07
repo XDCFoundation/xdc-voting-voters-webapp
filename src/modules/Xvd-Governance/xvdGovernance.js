@@ -154,8 +154,8 @@ window.scrollTo(0,0);
             <SelectBoxDiv>
               <SelectContainer>
                 <SelectOption>
-                  <option value={"0"}>Introduction</option>
-                  <option value={"1"}>How voting works</option>
+                  <option value={""}>Introduction</option>
+                  <option value={""}>How voting works</option>
                   <option value={""}>Voting Wallet Setup</option>
                   <option value={""}>Off-Chain Governance</option>
                   <option value={""}>On-chain Governance</option>

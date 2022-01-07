@@ -141,6 +141,8 @@ export default class ProposalDetails extends BaseComponent {
     };
 
     castProposalVote = async (isSupport) => {
+
+        
         
       
         if(!this.state.isAllowedToVoting) {
@@ -151,6 +153,8 @@ export default class ProposalDetails extends BaseComponent {
         // {
         //     Utils.apiFailureToast("You are not allowed to vote",ProposalDetails.startDate)
         // }
+        if(this.state.proposalDetails.startDate<=Date.now()){
+            
         let web3;
         web3 = new Web3(window.web3.currentProvider);
         console.log(window.web3.currentProvider);
@@ -186,7 +190,10 @@ export default class ProposalDetails extends BaseComponent {
             })
             
         });
-        
+    }
+    else{
+        Utils.apiFailureToast("voting will start from "+moment(this.state.proposalDetails.startDate).format("DD MMMM YYYY"));
+    }
     };
      handleClose = () => {
         this.setState({open: false})
