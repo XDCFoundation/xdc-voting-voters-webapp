@@ -31,6 +31,8 @@ function removeTags(str) {
 }
 
 export default function ProposalDetails(props) {
+
+  // const [copy, setCopy]=useState("copy")
   const [copyCheck, setCopyCheck]=useState("")
   // const Clipboard = () => {
   //   const [copyText, setCopyText] = useState('');
@@ -54,7 +56,7 @@ export default function ProposalDetails(props) {
   //   setOpen(false)
   // }
 
-const [copiedtext, setCopiedText]=useState("")
+const [copiedtext, setCopiedText]=useState("copy")
   let totalVotes = [];
   if (
     props.state &&
@@ -373,6 +375,7 @@ function AddressComponent(row, index) {
 
 
 function proposalAddressComponent(row) {
+  var copy=0;
   // const copyTo = (row) => {navigator.clipboard.writeText(row);}
   // console.log(row,"row value")
   // console.log(copyTo,"copy value")
@@ -385,7 +388,7 @@ function proposalAddressComponent(row) {
                           {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
                       </div>
                   </Row>
-                  <a href="https://explorer.apothem.network/address" target="_blank"> 
+                  <a href={"https://explorer.apothem.network/blocks/countdown/"+row} target="_blank"> 
                   <img
                             className="external-image-proposal4"
                             src={require("../../assets/styles/images/External-Link.svg")}
@@ -393,9 +396,15 @@ function proposalAddressComponent(row) {
                          {/* <p style={{ marginTop: "17px" }}> */}
 
                            {/* <button onClick={() => {navigator.clipboard.writeText(row)}}>Copy</button> */}
-                           
-                           <img onClick={() => {navigator.clipboard.writeText(row)}} style={{height:"35px",width:"40px",marginTop:"-7px",cursor:"pointer"}} src={require("../../assets/styles/images/copy1.jpg")}></img>
-                     
+                         
+                           <img onClick={() => {window.navigator.clipboard.writeText(row)}} style={{height:"35px",width:"40px",marginTop:"-7px",cursor:"pointer"}} src={require("../../assets/styles/images/copy1.jpg")}></img>
+                           {/* <button 
+  onClick={() =>  {window.navigator.clipboard.writeText(row)
+  console.log(copy,"copppppppppppppppppppppppppppppppppppppppp")
+  }}
+>
+{!copy=="0"?"copy":"copied"}
+</button> */}
                   {/* <CopyToClipboard
                     text={row}
                     onCopy={() => this.setState({copied: row})}

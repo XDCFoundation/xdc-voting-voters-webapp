@@ -19,6 +19,7 @@ export default class Createproposal extends BaseComponent {
         this.state = {
             proposalDocuments: [""],
             description: "",
+            open:false,
             modules: {
                 toolbar: [
                     [
@@ -128,7 +129,10 @@ export default class Createproposal extends BaseComponent {
                     if (res) {
                         const addresses = await this.getContractAddresses();
                         this.addProposalInDatabase(reqObj, addresses[addresses.length - 1]);
+                        // this.setState({open:true})
                         Utils.apiSuccessToast("Proposal Created Successfully");
+                        
+                        // this.setState({open:true})
                         history.push('/');
                     }
                 })
@@ -141,7 +145,9 @@ export default class Createproposal extends BaseComponent {
             Utils.apiSuccessToast("Proposal creation is in progress");
         });
     };
-
+    handleClose = () => {
+        this.setState({open: false})
+    }
     delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
     getTransactionReceipt = async (hash) => {
@@ -202,6 +208,7 @@ export default class Createproposal extends BaseComponent {
                     uploadFileToS3={this.uploadFileToS3}
                     addDocumentRow={this.addDocumentRow}
                     deleteDocumentRow={this.deleteDocumentRow}
+                    handleClose={this.handleClose}
                 />
             </div>
         );

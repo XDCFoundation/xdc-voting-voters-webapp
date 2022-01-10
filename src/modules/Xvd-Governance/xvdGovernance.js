@@ -153,7 +153,7 @@ window.scrollTo(0,0);
           
             <SelectBoxDiv>
               <SelectContainer>
-                <SelectOption>
+                <SelectOption id="section1">
                   <option value={""}>Introduction</option>
                   <option value={""}>How voting works</option>
                   <option value={""}>Voting Wallet Setup</option>
@@ -183,7 +183,7 @@ window.scrollTo(0,0);
                     <Column>
                       <SectionDiv id="section1">
                         <H1>
-                          <Anchor href="#0"  >Introduction</Anchor>
+                          <Anchor href="#0" >Introduction</Anchor>
                         </H1>
                       </SectionDiv>
                       <SectionDiv id="section2">

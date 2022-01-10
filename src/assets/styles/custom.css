@@ -141,6 +141,16 @@ body {
   font-family: "Inter", sans-serif;
   /* font-size: 19px; */
 }
+.toast-message1 {
+  color: white;
+  font-weight: 400;
+  /* font: normal normal medium 19px/22px Inter; */
+  letter-spacing: 0px;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  margin-top: 10px;
+  /* font-size: 19px; */
+}
 .toast-address {
   /* font-size: 16px; */
   color: white;

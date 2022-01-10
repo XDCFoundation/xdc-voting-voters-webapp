@@ -17,6 +17,13 @@ import DatePicker from "react-multi-date-picker";
 import TextField from "@material-ui/core/TextField";
 import utility from "../../utility/index";
 import Utils from "../../utility";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -366,7 +373,7 @@ export default function Createnewproposal(props) {
   const [endDate, setEndDate] = useState("");
   const [description, setDescription] = useState("");
   const [uploadDocument, setUploadDocument] = useState("");
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const [count, setCount] = React.useState(0);
 
   const inputFile = React.createRef();
@@ -376,10 +383,10 @@ export default function Createnewproposal(props) {
   const uploadFile = () => {
     inputFile.current.click();
   };
-  const handleOpen = () => {
-    setOpen(true);
-    console.log({ open });
-  };
+  // const handleOpen = () => {
+  //   setOpen(true);
+  //   console.log({ open });
+  // };
   const createNewProposal = async () => {
     const reqObj = {
       proposalTitle: proposalTitle,
@@ -399,12 +406,12 @@ export default function Createnewproposal(props) {
       Utils.apiFailureToast("Please provide all the inputs");
     console.log(Date.parse(startDate),"startdate")
     console.log(Date.parse(endDate),"endDate")
-    if(Date.parse(startDate)<Date.parse(endDate)  && description.length>=200 ){
+    if(proposalTitle && Date.parse(startDate)<Date.parse(endDate)  && description.length>=200 ){
     props.createProposal(reqObj);
     }
     else{
       // Utils.apiFailureToast("Title should be less than 60 chars");
-      Utils.apiFailureToast("Start date should be less than end date");
+      Utils.apiFailureToast("Enter Valid Date");
       Utils.apiFailureToast("Description should be greater than 200 chars");
     }
   };
@@ -595,6 +602,39 @@ export default function Createnewproposal(props) {
           </Grid>
         </div>
       </div>
+
+      <Snackbar
+        open={props.state.open}
+        // autoHideDuration={3000}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        onClose={props.handleClose}
+      >
+        <Alert severity="" className="alert">
+          <div className="alert-div">
+            <span className="alert-span">
+              <img
+                className="done-logo"
+                src={require("../../assets/styles/images/DONE.svg")}
+              ></img>
+            </span>
+            <span>
+              <div className="toast-message1">
+              <span>
+              Proposal Created successfully
+                </span>
+                <span onClick={props.handleClose} style={{float:"right",cursor:"pointer",marginTop:"-20px"}}>
+                  X
+                </span>
+                
+              </div>
+              {/* <div className="toast-address">
+                Thank you for your contribution in adding transparency to XDC
+                network
+              </div> */}
+            </span>
+          </div>
+        </Alert>
+      </Snackbar>
 
       <FooterComponent />
     </div>
