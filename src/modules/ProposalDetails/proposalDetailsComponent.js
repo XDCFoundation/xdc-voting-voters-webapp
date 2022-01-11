@@ -158,7 +158,7 @@ const [copiedtext, setCopiedText]=useState("copy")
                         && props.state.proposalDetails.proposalDocuments.length
                         && props.state.proposalDetails.proposalDocuments.map((doc,index) => {
                             return (
-                              <a href={props.state.proposalDocumentsUrl[index]} target="_blank">
+                              <a href={props.state.proposalDocumentsUrl[index]} target="_blank !important">
                             <Row className="doc-1">
                                                 <span>
                                                     {" "}
@@ -388,7 +388,7 @@ function proposalAddressComponent(row) {
                           {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
                       </div>
                   </Row>
-                  <a href={"https://explorer.apothem.network/blocks/countdown/"+row} target="_blank"> 
+                  <a href={"https://explorer.apothem.network/address/"+row.replace("0x","xdc")} target="_blank"> 
                   <img
                             className="external-image-proposal4"
                             src={require("../../assets/styles/images/External-Link.svg")}
