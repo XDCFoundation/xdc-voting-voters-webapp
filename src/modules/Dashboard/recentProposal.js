@@ -151,7 +151,9 @@ export default function RecentProposal(props) {
                           >
                             {status === "Open" ? (
                               <>
-                                <Row class="count-down-mobile">
+
+
+<Row class="count-down-mobile">
                                   <span style={{ marginRight: "5px" }}>
                                     {" "}
                                     <img
@@ -174,10 +176,15 @@ export default function RecentProposal(props) {
                                   
                                   </Span>
                                   </Tooltip>
+                                  
                                 </Row>
                                 <Row className="justify-content-end">
+                                
+                                
                                   <div
+                                  
                                     className="details justify-content-end"
+                                    
                                     onClick={() =>
                                       proposalRedirect(
                                         proposal["pollingContract"]

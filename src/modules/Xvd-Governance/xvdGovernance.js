@@ -124,6 +124,10 @@ window.scrollTo(0,0);
     // e.nativeEvent.stopImmediatePropagation();
     // return false;
   }
+  const onchangeDropdown=(e)=>{
+    window.location.href=e.target.value;
+    
+  }
 
   const classes = useStyles();
   return (
@@ -153,13 +157,13 @@ window.scrollTo(0,0);
           
             <SelectBoxDiv>
               <SelectContainer>
-                <SelectOption>
-                  <option value={""}>Introduction</option>
-                  <option value={""}>How voting works</option>
-                  <option value={""}>Voting Wallet Setup</option>
-                  <option value={""}>Off-Chain Governance</option>
-                  <option value={""}>On-chain Governance</option>
-                  <option value={""}>Governance FAQs</option>
+                <SelectOption onChange={(e)=>{onchangeDropdown(e)}}>
+                  <option value={"#0"}>Introduction</option>
+                  <option value={"#1"}>How voting works</option>
+                  <option value={"#2"}>Voting Wallet Setup</option>
+                  <option value={"#3"}>Off-Chain Governance</option>
+                  <option value={"#4"}>On-chain Governance</option>
+                  <option value={"#5"}>Governance FAQs</option>
                 </SelectOption>
               </SelectContainer>
             </SelectBoxDiv>
@@ -183,7 +187,7 @@ window.scrollTo(0,0);
                     <Column>
                       <SectionDiv id="section1">
                         <H1>
-                          <Anchor href="#0"  >Introduction</Anchor>
+                          <Anchor href="#0" >Introduction</Anchor>
                         </H1>
                       </SectionDiv>
                       <SectionDiv id="section2">

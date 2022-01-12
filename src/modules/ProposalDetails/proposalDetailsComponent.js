@@ -15,6 +15,7 @@ import Utils from "../../utility";
 import moment from "moment";
 import Countdown from "react-countdown";
 import styled from "styled-components";
+import { Tooltip } from "@material-ui/core";
 
 // import { CopyToClipboard } from "react-copy-to-clipboard";
 import copy from "copy-to-clipboard";  
@@ -30,6 +31,8 @@ function removeTags(str) {
 }
 
 export default function ProposalDetails(props) {
+
+  // const [copy, setCopy]=useState("copy")
   const [copyCheck, setCopyCheck]=useState("")
   // const Clipboard = () => {
   //   const [copyText, setCopyText] = useState('');
@@ -53,7 +56,7 @@ export default function ProposalDetails(props) {
   //   setOpen(false)
   // }
 
-const [copiedtext, setCopiedText]=useState("")
+const [copiedtext, setCopiedText]=useState("copy")
   let totalVotes = [];
   if (
     props.state &&
@@ -70,7 +73,7 @@ const [copiedtext, setCopiedText]=useState("")
     props.state.proposalDetails.noVotes.length
   )
     totalVotes = [...totalVotes, ...props.state.proposalDetails.noVotes];
-  if (totalVotes.length > 6) totalVotes.length = 6;
+  // if (totalVotes.length > 6) totalVotes.length = 6;
  
   return (
     <div>
@@ -115,16 +118,21 @@ const [copiedtext, setCopiedText]=useState("")
                         src={require("../../assets/styles/images/Time-Active.svg")}
                       ></img>
                       &nbsp;
+                      <Tooltip placement="top" title={moment(props.state.proposalDetails.endDate).format("DD MMMM YYYY")}>
                       <span>
+                        
                         {props.state.proposalDetails.endDate ? (
+                          
                           <Countdown
                             className="count-down"
                             date={props.state.proposalDetails.endDate}
                           />
+                          
                         ) : (
                           ""
                         )}
                       </span>
+                      </Tooltip>
                     </span>
                     <span>Remaining</span>
                   </Row>
@@ -150,7 +158,7 @@ const [copiedtext, setCopiedText]=useState("")
                         && props.state.proposalDetails.proposalDocuments.length
                         && props.state.proposalDetails.proposalDocuments.map((doc,index) => {
                             return (
-                              <a href={props.state.proposalDocumentsUrl[index]} target="_blank">
+                              <a href={props.state.proposalDocumentsUrl[index]} target="_blank !important">
                             <Row className="doc-1">
                                                 <span>
                                                     {" "}
@@ -250,7 +258,11 @@ const [copiedtext, setCopiedText]=useState("")
                   </div>
                 </div>
                 <div className="griddiv-voter">
-                  {totalVotes && totalVotes.length>=1? totalVotes.map((row, index) => {
+               
+                  
+                   
+                  {totalVotes && totalVotes.length>=1 ? totalVotes.map((row, index) => {
+                   if (totalVotes.length > 5) totalVotes.length = 5;
                     return AddressComponent(row, index);
                   }):(<><div style={{display:"flex",justifyContent:"center"}}>No Votes Casted</div></>)
                 }
@@ -338,6 +350,8 @@ const [copiedtext, setCopiedText]=useState("")
 
 
 function AddressComponent(row, index) {
+ 
+
   return (
     <>
       <Row className="p-8 justify-content-between">
@@ -361,6 +375,7 @@ function AddressComponent(row, index) {
 
 
 function proposalAddressComponent(row) {
+  var copy=0;
   // const copyTo = (row) => {navigator.clipboard.writeText(row);}
   // console.log(row,"row value")
   // console.log(copyTo,"copy value")
@@ -373,7 +388,7 @@ function proposalAddressComponent(row) {
                           {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
                       </div>
                   </Row>
-                  <a href="https://explorer.apothem.network/" target="_blank"> 
+                  <a href={"https://explorer.apothem.network/address/"+row.replace("0x","xdc")} target="_blank"> 
                   <img
                             className="external-image-proposal4"
                             src={require("../../assets/styles/images/External-Link.svg")}
@@ -381,8 +396,15 @@ function proposalAddressComponent(row) {
                          {/* <p style={{ marginTop: "17px" }}> */}
 
                            {/* <button onClick={() => {navigator.clipboard.writeText(row)}}>Copy</button> */}
-                           <img onClick={() => {navigator.clipboard.writeText(row)}} style={{height:"35px",width:"40px",marginTop:"-7px",cursor:"pointer"}} src={require("../../assets/styles/images/copy1.jpg")}></img>
-                      
+                         
+                           <img onClick={() => {window.navigator.clipboard.writeText(row)}} style={{height:"35px",width:"40px",marginTop:"-7px",cursor:"pointer"}} src={require("../../assets/styles/images/copy1.jpg")}></img>
+                           {/* <button 
+  onClick={() =>  {window.navigator.clipboard.writeText(row)
+  console.log(copy,"copppppppppppppppppppppppppppppppppppppppp")
+  }}
+>
+{!copy=="0"?"copy":"copied"}
+</button> */}
                   {/* <CopyToClipboard
                     text={row}
                     onCopy={() => this.setState({copied: row})}

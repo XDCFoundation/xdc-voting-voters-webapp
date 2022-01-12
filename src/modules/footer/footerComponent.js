@@ -225,7 +225,7 @@ const Input = styled.input`
   border-bottom: 1px solid #e3e7eb;
   border-right: 1px solid #e3e7eb;
   letter-spacing: 0px;
-  color: #909090;
+  color: #000000;
   outline: none;
   width: 344px;
   height: 38px;

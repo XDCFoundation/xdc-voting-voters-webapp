@@ -108,7 +108,7 @@ const useStyles = makeStyles((theme) => ({
     outline: "none",
     "@media (min-width: 300px) and (max-width: 780px)": {
       width: "100%",
-      maxWidth: "150px",
+      maxWidth: "310px",
       marginLeft:"20px",
     },
     "@media (min-width: 300px) and (max-width: 767px)": {
@@ -324,7 +324,7 @@ console.log(props.handlePageChange,"page1")
                             {status === "Open" ? (
                                <Row className="justify-content-end">
                                <div
-                                 className="details"
+                                 className="details1"
                                  onClick={() =>
                                    props.proposalRedirect(
                                      data.pollingContract
@@ -649,6 +649,7 @@ const SelectBox = styled.div`
   align-items: center;
   @media (min-width: 300px) and (max-width: 1038px) {
     display: block;
+    margin-bottom:16px;
   }
   @media (min-width: 300px) and (max-width: 780px) {
     // margin-top: 10px;
