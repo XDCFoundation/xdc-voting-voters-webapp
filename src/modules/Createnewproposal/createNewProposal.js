@@ -594,7 +594,7 @@ export default function Createnewproposal(props) {
                 <div className={classes.buttondiv}>
                   <Button onClick={createNewProposal}>
                     <span className={classes.circle}></span>
-                    Connect Wallet
+                     Submit a Proposal
                   </Button>
                 </div>
               </Container>

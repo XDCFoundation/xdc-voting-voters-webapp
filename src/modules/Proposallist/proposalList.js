@@ -271,8 +271,8 @@ console.log(props.handlePageChange,"page1")
                   const noVotesWidth = (100 * noVotes) / (yesVotes + noVotes);
 
                   if (status === "Closed") {
-                    if (yesVotesWidth >= 66) status = "Passed";
-                    else status = "Failed";
+                    if (yesVotesWidth >= 66) status = "Approved";
+                    else status = "Rejected";
                   }
 
                   return (
@@ -377,7 +377,7 @@ console.log(props.handlePageChange,"page1")
                             <Status>Status:&ensp;</Status>
                             {status == "Open" ? (
                               <Open>{status}</Open>
-                            ) : status === "Passed" ? (
+                            ) : status === "Approved" ? (
                               <Passed>{status}</Passed>
                             ) : (
                               <Failed>{status}</Failed>

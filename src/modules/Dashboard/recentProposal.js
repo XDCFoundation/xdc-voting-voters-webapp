@@ -37,6 +37,7 @@ export default function RecentProposal(props) {
     history.push({
       pathname: `/proposal-details/${address}`,
     });
+    window.scrollTo(0,0);
   };
   const handleView = () => {
     history.push("/view-all-proposals");
@@ -64,8 +65,8 @@ export default function RecentProposal(props) {
                   const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
                   const noVotesWidth = (100 * noVotes) / (yesVotes + noVotes);
                   if (status === "Closed") {
-                    if (yesVotesWidth >= 66) status = "Passed";
-                    else status = "Failed";
+                    if (yesVotesWidth >= 66) status = "Approved";
+                    else status = "Rejected";
                   }
 
                   return (
@@ -90,7 +91,7 @@ export default function RecentProposal(props) {
                                 className={
                                   status === "Open"
                                     ? "fc-blue"
-                                    : status === "Passed"
+                                    : status === "Approved"
                                     ? "fc-green"
                                     : "fc-red"
                                 }
