@@ -207,7 +207,7 @@ console.log(props.handlePageChange,"page1")
                   cursor:"pointer"
                 }}
               />
-              <Back>Back</Back>
+              <Back onClick={backButton} >Back</Back>
             </div>
             <Row className={classes.rowdiv}>
               <Container>
@@ -485,7 +485,7 @@ const Input = styled.input`
   font-weight: 400;
 `;
 const MainContainer = styled.div`
-  padding: 21px 24px 21px 22px;
+  padding: 12px 22px 11px 22px;
   @media (min-width: 300px) and (max-width: 767px) {
     padding: 20px 8px 17px 8px;
   }
@@ -527,6 +527,7 @@ const Back = styled.span`
   font-family: "Inter", sans-serif;
   font-size: 17px;
   color: #ffffff;
+  cursor:pointer;
 `;
 const BackButton = styled.button`
   background: #ffffff 0% 0% no-repeat padding-box;

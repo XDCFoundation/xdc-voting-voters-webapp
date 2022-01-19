@@ -16,6 +16,8 @@ import Utils from "../../utility";
 import DivBlocksComponent from "../Dashboard/divComponent";
 import FooterComponent from "../footer/footerComponent";
 import { Tooltip } from "@material-ui/core";
+import ReactDOM from "react-dom";
+
 
 const GreenLine = styled.div`
   background-color: #3ab70d;
@@ -65,6 +67,7 @@ export default function RecentProposal(props) {
                   const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
                   const noVotesWidth = (100 * noVotes) / (yesVotes + noVotes);
                   if (status === "Closed") {
+                    console.log(proposal.endDate, Date.now(), proposal.timeRemaining, "timing")
                     if (yesVotesWidth >= 66) status = "Approved";
                     else status = "Rejected";
                   }
@@ -172,6 +175,8 @@ export default function RecentProposal(props) {
                                     <Countdown
                                       className="count-down"
                                       date={proposal.endDate}
+                                      
+                                      // 2
                                     />
                                     &nbsp;Remaining
                                   

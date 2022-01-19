@@ -111,6 +111,7 @@ body {
   font-size: 17px;
   color: #ffffff;
   margin-left: 10px;
+  cursor: pointer;
 }
 .back-image {
   display: flex;

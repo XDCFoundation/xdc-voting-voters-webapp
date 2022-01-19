@@ -66,7 +66,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Voterslist(props) {
   const backButton = () => {
-    history.push("/");
+    history.push({
+      pathname: `/proposal-details/${props.state.proposalAddress}`,
+    });
+    window.scrollTo(0,0);
   };
   // React.useEffect(() => {
   //   let address = [
@@ -166,7 +169,7 @@ export default function Voterslist(props) {
                 src="/images/Back-Arrow.svg"
                 style={{ width: "15px", marginRight: "8px" }}
               />
-              <Back>Back</Back>
+              <Back onClick={backButton}>Back</Back>
             </div>
             <div style={{ marginBottom: "20px" }}>
               <MainHeading>
@@ -291,6 +294,7 @@ const Back = styled.span`
   font-family: "Inter", sans-serif;
   font-size: 17px;
   color: #ffffff;
+  cursor:pointer;
 `;
 const BackButton = styled.button`
   text-align: left;
@@ -433,7 +437,7 @@ const Leftcontainer = styled.div`
   letter-spacing: 0px;
   color: #acacac;
   @media (min-width: 300px) and (max-width: 767px) {
-    margin-top:-23px;
+    margin-top:-30px;
     margin-left:205px;
   }
  
