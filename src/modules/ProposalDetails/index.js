@@ -134,6 +134,7 @@ export default class ProposalDetails extends BaseComponent {
 
     handleClickVoter = () => {
         history.push("/voterslist/"+this.state.proposalAddress);
+        window.scrollTo(0,0);
     };
 
     backButton = () => {

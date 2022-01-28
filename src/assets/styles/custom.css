@@ -42,7 +42,7 @@ body {
 }
 
 .p-t-sm {
-  padding-top: 10px;
+  padding-top: 5px;
 }
 
 .p-t-15 {
@@ -111,6 +111,7 @@ body {
   font-size: 17px;
   color: #ffffff;
   margin-left: 10px;
+  cursor: pointer;
 }
 .back-image {
   display: flex;
@@ -936,13 +937,14 @@ px
   font-family: Inter;
 }
 .xdc-para {
-  width: 350px;
+  width: 487px;
   font: normal normal normal 18px/21px Inter;
   letter-spacing: 0px;
   color: #ffffff;
   opacity: 1;
   font-size: 18px;
   font-weight: 400;
+  padding-top: 16px;
 }
 .div-1 {
   width: 185px;
@@ -1511,7 +1513,7 @@ padding: 21px 24px 21px 33px;
 .table-between {
   justify-content: space-between;
   display: flex;
-  padding: 21px 24px 0px 22px;
+  padding: 5px 12px 0px 22px;
 }
 .voter-heading {
   letter-spacing: 0px;

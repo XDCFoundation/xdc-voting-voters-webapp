@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     maxWidth: "1280px",
     // position: "absolute",
-    marginTop: "-92px",
+    marginTop: "-102px",
     marginBottom: "40px",
     zIndex: "1",
     top: "145px",
@@ -149,14 +149,14 @@ export default function CommunityPage() {
         <div className={classes.root}>
           <Grid item xs={12}>
             <div
-              style={{ marginBottom: "11px" }}
+              style={{ marginBottom: "20px" }}
              
             >
               <img  onClick={backButton}
                 src="/images/Back-Arrow.svg"
                 style={{ width: "15px", marginRight: "8px", cursor: "pointer" }}
               />
-              <Back>Back</Back>
+              <Back  onClick={backButton}>Back</Back>
             </div>
             <Spacing>
               <Container>
@@ -319,6 +319,7 @@ const Back = styled.span`
   font-family: "Inter", sans-serif;
   font-size: 17px;
   color: #ffffff;
+  cursor:pointer;
 `;
 
 const Span = styled.span`

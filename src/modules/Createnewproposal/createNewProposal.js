@@ -362,6 +362,7 @@ const Back = styled.span`
   font-family: "Inter", sans-serif;
   font-size: 17px;
   color: #ffffff;
+  cursor:pointer;
 `;
 
 export default function Createnewproposal(props) {
@@ -434,7 +435,7 @@ export default function Createnewproposal(props) {
                 src="/images/Back-Arrow.svg"
                 style={{ width: "15px", marginRight: "8px", cursor: "pointer"  }}
               />
-              <Back>Back</Back>
+              <Back  onClick={backButton}>Back</Back>
             </div>
             <div className={classes.div}>
               <div className={classes.heading}>Create New Proposal</div>
@@ -469,7 +470,8 @@ export default function Createnewproposal(props) {
                     <input
                       className={classes.startdateinput}
                       type="date"
-                      min={new Date().toISOString().slice(0, 10)}
+                      min={new Date().toISOString().split('T')[0]}
+                     
                       onChange={(e) => setStartDate(e.target.value)}
                       value={startDate}
                       onKeyDown={(e) => e.preventDefault()}
@@ -594,7 +596,7 @@ export default function Createnewproposal(props) {
                 <div className={classes.buttondiv}>
                   <Button onClick={createNewProposal}>
                     <span className={classes.circle}></span>
-                    Connect Wallet
+                     Submit a Proposal
                   </Button>
                 </div>
               </Container>
