@@ -55,6 +55,7 @@ export default class Listui extends BaseComponent {
         history.push({
             pathname: `/proposal-details/${address}`,
         });
+        window.scrollTo(0,0);
     };
 
     onDateChange = async (e) => {

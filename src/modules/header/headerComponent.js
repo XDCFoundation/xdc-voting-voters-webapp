@@ -48,6 +48,7 @@ export default function Header(props) {
 
   const createView = () => {
     history.push("/create");
+    window.scrollTo(0,0);
   };
   return (
     <div>

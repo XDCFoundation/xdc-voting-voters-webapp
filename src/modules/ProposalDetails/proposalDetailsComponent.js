@@ -87,7 +87,7 @@ const [copiedtext, setCopiedText]=useState("copy")
           <ColumnDiv>
             <div className="back-image" >
               <img onClick={props.backButton} src="/images/Back-Arrow.svg" style={{ width: "21px",height:"18px",marginTop:"3px",cursor:"pointer" }} />
-              <div className="back-button">Back</div>
+              <div className="back-button" onClick={props.backButton} >Back</div>
             </div>
             <div className="recent-proposal-div-proposal">
               <Row className="recent-add-div-proposal">
