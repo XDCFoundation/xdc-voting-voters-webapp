@@ -20,6 +20,7 @@ import Utils from "../../utility";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
+
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -81,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     background: "#ffffff 0% 0% no-repeat padding-box",
     border: "1px solid #e3e7eb",
     borderRadius: "4px",
-    outline:"none",
+    outline: "none",
     width: "100%",
     padding: "6px",
     font: "normal normal normal 15px/19px Inter",
@@ -94,9 +95,8 @@ const useStyles = makeStyles((theme) => ({
       font: "normal normal normal 15px/19px Inter",
       width: "100%",
     },
-    
   },
- 
+
   enddateinput: {
     background: "#FFFFFF 0% 0% no-repeat padding-box",
     border: "1px solid #E3E7EB",
@@ -364,6 +364,7 @@ const Back = styled.span`
   color: #ffffff;
 `;
 
+
 export default function Createnewproposal(props) {
   const backButton = () => {
     history.push("/");
@@ -380,6 +381,7 @@ export default function Createnewproposal(props) {
   const handleQuillChange = (event) => {
     setDescription(event);
   };
+  
   const uploadFile = () => {
     inputFile.current.click();
   };
@@ -402,14 +404,17 @@ export default function Createnewproposal(props) {
       !reqObj.startDate ||
       !reqObj.endDate ||
       !reqObj.description
-  )
+    )
       Utils.apiFailureToast("Please provide all the inputs");
-    console.log(Date.parse(startDate),"startdate")
-    console.log(Date.parse(endDate),"endDate")
-    if(proposalTitle && Date.parse(startDate)<Date.parse(endDate)  && description.length>=200 ){
-    props.createProposal(reqObj);
-    }
-    else{
+    console.log(Date.parse(startDate), "startdate");
+    console.log(Date.parse(endDate), "endDate");
+    if (
+      proposalTitle &&
+      Date.parse(startDate) < Date.parse(endDate) &&
+      description.length >= 200
+    ) {
+      props.createProposal(reqObj);
+    } else {
       // Utils.apiFailureToast("Title should be less than 60 chars");
       Utils.apiFailureToast("Enter Valid Date");
       Utils.apiFailureToast("Description should be greater than 200 chars");
@@ -418,6 +423,13 @@ export default function Createnewproposal(props) {
 
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
+
+   
+ 
+
+
+
+
   return (
     <div>
       <Headerdiv>
@@ -426,13 +438,11 @@ export default function Createnewproposal(props) {
       <div className={classes.maincontainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
-            <div
-              style={{ marginBottom: "11px"}}
-             
-            >
-              <img  onClick={backButton}
+            <div style={{ marginBottom: "11px" }}>
+              <img
+                onClick={backButton}
                 src="/images/Back-Arrow.svg"
-                style={{ width: "15px", marginRight: "8px", cursor: "pointer"  }}
+                style={{ width: "15px", marginRight: "8px", cursor: "pointer" }}
               />
               <Back>Back</Back>
             </div>
@@ -449,16 +459,24 @@ export default function Createnewproposal(props) {
                     <input
                       className={classes.proposalinput}
                       type="text"
-                      onChange={(e) => {setProposalTitle(e.target.value);setCount(e.target.value.length)}}
+                      onChange={(e) => {
+                        setProposalTitle(e.target.value);
+                        setCount(e.target.value.length);
+                      }}
                       value={proposalTitle}
                       maxLength="60"
-                  
-                    
                     />
-                    <p style={{color:"#2a2a2a",fontSize:"12px",float:"right",paddingTop:"5px"}}>{60-count}/60</p>
+                    <p
+                      style={{
+                        color: "#2a2a2a",
+                        fontSize: "12px",
+                        float: "right",
+                        paddingTop: "5px",
+                      }}
+                    >
+                      {60 - count}/60
+                    </p>
                     {/* </div> */}
-                  
-                  
                   </Div>
                 </div>
 
@@ -531,6 +549,70 @@ export default function Createnewproposal(props) {
                     <Column>
                       {props.state.proposalDocuments.length > 0
                         ? props.state.proposalDocuments.map((doc, index) => {
+
+                          const onchangebutton=(e)=>{
+                            var x=document.getElementById("fileButton" + index);
+
+                            try{
+                           
+                              
+                            var filesize=e.target.files[0].size;
+                            const filename=e.target.files[0].name;
+                            const fileextenstion=filename.split('.').pop().toLowerCase();
+                            
+
+                            const originalfileSize=Math.round(filesize/1024);
+                            const extensionArray=['pdf','docx' ,'doc','xslx','rtf','xls']; 
+                            
+                            console.log(filesize,fileextenstion,originalfileSize,extensionArray);
+                            var flag=false;
+                              
+                            if(x.value.length==0 ){
+                              
+                              Utils.apiFailureToast("No File is Selected Please Select a File.");
+                             
+                            }
+                            else{
+                              for(var i=0;i<extensionArray.length;i++){
+
+                                if(fileextenstion.localeCompare(extensionArray[i])==0){
+                                  flag=true;
+                                }
+                              }
+                              
+                              if(flag == false)
+                              Utils.apiFailureToast("File Extension Must be Docx , Doc, Pdf, Xslx,Rtf,Xls");
+                              else if(originalfileSize > 5120)  {
+                                Utils.apiFailureToast("File Size Must be Less than 5MB");
+                              }
+                              
+                             
+  
+                              if(flag){
+                              extensionArray.map((data)=>{
+                                if((originalfileSize < 5120) && (fileextenstion == data 
+                                  )){
+                                  console.log(index, "+++");
+                                  props.uploadFileToS3(
+                                    e.target.files[0],
+                                    index
+                                   );
+                                   flag=false;
+                                   
+                                  }
+                              })}
+                            }
+                            
+                          }catch(e){
+                            console.log(e);
+                          }
+                          }
+                          const onclickbutton=(e)=>{
+                            var x=document.getElementById("fileButton" + index);
+                            x.value=null;
+                          }
+                          
+                          
                             return (
                               <div className="display-flex m-t-4">
                                 <div
@@ -546,6 +628,7 @@ export default function Createnewproposal(props) {
                                   >
                                     {doc}
                                   </div>
+
                                   <input
                                     ref={inputFile}
                                     id={"fileButton" + index}
@@ -554,17 +637,14 @@ export default function Createnewproposal(props) {
                                     multiple={false}
                                     accept="*"
                                     style={{ display: "none" }}
-                                    onChange={(e) => {
-                                      console.log(index, "+++");
-                                      props.uploadFileToS3(
-                                        e.target.files[0],
-                                        index
-                                      );
-                                    }}
+                                    onChange={ onchangebutton}
+                                    onClick={onclickbutton}
                                   />
+
                                   <BrowseButton for={"fileButton" + index}>
                                     Browse File
                                   </BrowseButton>
+
                                 </div>
                                 {index ===
                                 props.state.proposalDocuments.length - 1 ? (
@@ -619,13 +699,17 @@ export default function Createnewproposal(props) {
             </span>
             <span>
               <div className="toast-message1">
-              <span>
-              Proposal Created successfully
-                </span>
-                <span onClick={props.handleClose} style={{float:"right",cursor:"pointer",marginTop:"-20px"}}>
+                <span>Proposal Created successfully</span>
+                <span
+                  onClick={props.handleClose}
+                  style={{
+                    float: "right",
+                    cursor: "pointer",
+                    marginTop: "-20px",
+                  }}
+                >
                   X
                 </span>
-                
               </div>
               {/* <div className="toast-address">
                 Thank you for your contribution in adding transparency to XDC
