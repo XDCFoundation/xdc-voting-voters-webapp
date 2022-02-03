@@ -6,6 +6,8 @@ import moment from "moment";
 import Loader from "../../assets/styles/images/NewLoader.gif";
 import Utils from "../../utility";
 import {proposalList} from "../../services/proposalService";
+import { getTotalVotingAddress } from "../../services/proposalService";
+
 let proposalContractAbi =
   require("../../common/abis/proposalContractAbi.json").abi;
 let masterContractAbi = require("../../common/abis/masterContractAbi.json").abi;
@@ -19,7 +21,9 @@ export default class Dashboard extends BaseComponent {
       proposalsList:[],
       proposalResponse: [],
       isLoader: false,
-      limit:4
+      limit:4,
+      wallet:"",
+      
     };
   }
 
@@ -27,8 +31,11 @@ export default class Dashboard extends BaseComponent {
     const proposalsAddresses = await this.getContractAddresses();
     // await this.getProposalsData(proposalsAddresses);
     this.setState({ isLoader: true });
-    this.getProposalList()
+    this.getProposalList();
+   
   }
+  
+
 
   getProposalList = async (skip=0) => {
     const reqObj = {"skip": skip, "limit": this.state.limit}

@@ -13,6 +13,9 @@ import moment from "moment";
 import Pagination from "react-js-pagination";
 import Countdown from "react-countdown";
 import { Tooltip } from "@material-ui/core";
+import Web3 from "web3";
+import { getTotalVotingAddress } from "../../services/proposalService";
+import Utils from "../../utility";
 
 const useStyles = makeStyles((theme) => ({
   selectOptions: { backgroundColor: "white" },
@@ -184,6 +187,76 @@ console.log(props.handlePageChange,"page1")
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
 
+  const [wallet, setwallet] = useState("");
+  const [show,setShow]=useState(0);
+ 
+  useEffect(() => {
+    
+  if (window.ethereum) {//the error line
+    window.web3 = new Web3(window.ethereum);
+
+    try {
+      window.ethereum.enable();
+
+    let web3;
+    web3 = new Web3(window.web3.currentProvider);
+    console.log("+++",web3);
+    window.ethereum.enable();
+    const accounts = web3.eth.getAccounts().then((accounts) => {
+      if (!accounts || !accounts.length) {
+        console.log("please login")
+        // Utils.apiFailureToast("Wallet is not connected");
+        return;
+        
+      }
+      console.log(accounts[0])
+      setwallet(accounts[0])
+      fetchData(accounts[0]);
+    });
+
+
+  } catch (err) {
+    alert("Something went wrong.");
+  }
+} else if (window.web3) {
+  window.web3 = new Web3(window.web3.currentProvider);
+  let web3;
+  web3 = new Web3(window.web3.currentProvider);
+  console.log("+++",web3);
+  window.ethereum.enable();
+
+  const accounts = web3.eth.getAccounts().then((accounts) => {
+      if (!accounts || !accounts.length) {
+        console.log("please login")
+        // Utils.apiFailureToast("Wallet is not connected");
+        return;
+        
+      }
+      console.log(accounts[0])
+      setwallet(accounts[0])
+      fetchData(accounts[0]);
+    });
+} else {
+  Utils.apiFailureToast("Please install XDCPay extension");
+}
+
+  }, []);
+
+  const fetchData = async (param) => {
+    const addresses = await getTotalVotingAddress();
+    let isAllowedToCreateProposal = false;
+    let showOpenProposal = false;
+    addresses.dataList.map((address) => {
+      if ((address.address.toLowerCase()) === param.toLowerCase()) {
+        setShow(1);
+
+      
+      }
+    });
+  
+  }
+
+
   return (
     <div>
       <div className="header-div-all">
@@ -324,7 +397,7 @@ console.log(props.handlePageChange,"page1")
                             {status === "Open" ? (
                                <Row className="justify-content-end">
                                <div
-                                 className="details1"
+                                 className={show===1?"details1": "details-hide"}
                                  onClick={() =>
                                    props.proposalRedirect(
                                      data.pollingContract
