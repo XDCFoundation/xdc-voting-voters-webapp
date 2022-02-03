@@ -218,6 +218,15 @@ body {
   margin-top: 8px;
 }
 
+@media (min-width: 360px) and (max-width: 1023px) {
+.maindialog{
+  display: flex !important;
+}
+}
+.maindialog{
+  display: none !important;
+}
+  
 /* .proposalList-footer-div{
     margin-top:780px ;
     /* padding-left: 20px;
@@ -239,6 +248,7 @@ body {
         display: none !important;
     } */
 }
+
 
 @media (min-width: 300px) and (max-width: 767px) {
   .poll-ended {
@@ -1580,6 +1590,12 @@ padding: 21px 24px 21px 33px;
   font-weight: 600;
   font-size: 13px;
   cursor: pointer;
+}
+.details-hide{
+  display: none;
+}
+.detail-row-hide{
+  display: none;
 }
 .details1{
   height: 30px;

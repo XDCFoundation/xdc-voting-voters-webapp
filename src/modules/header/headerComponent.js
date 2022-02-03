@@ -98,10 +98,11 @@ export default function Header(props) {
             <Row className="recent-add-div">
               <Column className="heading">Recent Proposals</Column>
               <Column>
+              
                 <div
                   onClick={createView}
                   id="div_create_prop"
-                  className="create-wallet"
+                  className="create-wallet-hide create-wallet"
                 >
                   <p>Create Proposal</p>
                 </div>

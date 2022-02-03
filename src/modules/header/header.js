@@ -12,6 +12,7 @@ import {useWeb3React} from "@web3-react/core"
 import blockies from "ethereum-blockies";
 import FooterComponent from "../footer/footerComponent";
 import Jazzicon from "react-jazzicon";
+import Web3Dialog from "./mainDialog";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -144,14 +145,27 @@ function Header() {
   const fetchData = async (param) => {
     const addresses = await getTotalVotingAddress();
     let isAllowedToCreateProposal = false;
+    let showOpenProposal = false;
     addresses.dataList.map((address) => {
       if ((address.address.toLowerCase()) === param.toLowerCase()) {
+        showOpenProposal=true;
+
         if (address.permission.allowProposalCreation === true)
           isAllowedToCreateProposal = true;
       }
     });
     if (isAllowedToCreateProposal && document.getElementById("div_create_prop"))
+    {
       document.getElementById("div_create_prop").className = "create-wallet";
+    }
+    //  if(showOpenProposal && document.getElementById("div_create_open"))
+    // {
+    //   document.getElementById("div_create_open").className = "details";
+    // }
+    // else
+    // {
+    //   document.getElementById("div_create_prop").className="create-wallet-hide"; 
+    // }
   };
 
   const reDirect = () => {
@@ -159,6 +173,7 @@ function Header() {
   };
   return (
     <div>
+     {/* <div > <Web3Dialog /></div> */}
       <Row className="row-1">
         <Column>
           <Row>
