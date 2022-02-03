@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Column, Row } from "simple-flexbox";
 import "../../assets/styles/custom.css";
 import TableCell from "@material-ui/core/TableCell";
@@ -17,7 +17,10 @@ import DivBlocksComponent from "../Dashboard/divComponent";
 import FooterComponent from "../footer/footerComponent";
 import { Tooltip } from "@material-ui/core";
 import ReactDOM from "react-dom";
+import Web3 from "web3";
+import { getTotalVotingAddress } from "../../services/proposalService";
 
+import HeaderMain from "../header/header";
 
 const GreenLine = styled.div`
   background-color: #3ab70d;
@@ -45,6 +48,75 @@ export default function RecentProposal(props) {
     history.push("/view-all-proposals");
     window.scrollTo(0,0)
   };
+
+  const [wallet, setwallet] = useState("");
+  const [show,setShow]=useState(0);
+ 
+  useEffect(() => {
+    
+  if (window.ethereum) {//the error line
+    window.web3 = new Web3(window.ethereum);
+
+    try {
+      window.ethereum.enable();
+
+    let web3;
+    web3 = new Web3(window.web3.currentProvider);
+    console.log("+++",web3);
+    window.ethereum.enable();
+    const accounts = web3.eth.getAccounts().then((accounts) => {
+      if (!accounts || !accounts.length) {
+        console.log("please login")
+        // Utils.apiFailureToast("Wallet is not connected");
+        return;
+        
+      }
+      console.log(accounts[0])
+      setwallet(accounts[0])
+      fetchData(accounts[0]);
+    });
+
+
+  } catch (err) {
+    alert("Something went wrong.");
+  }
+} else if (window.web3) {
+  window.web3 = new Web3(window.web3.currentProvider);
+  let web3;
+  web3 = new Web3(window.web3.currentProvider);
+  console.log("+++",web3);
+  window.ethereum.enable();
+
+  const accounts = web3.eth.getAccounts().then((accounts) => {
+      if (!accounts || !accounts.length) {
+        console.log("please login")
+        // Utils.apiFailureToast("Wallet is not connected");
+        return;
+        
+      }
+      console.log(accounts[0])
+      setwallet(accounts[0])
+      fetchData(accounts[0]);
+    });
+} else {
+  Utils.apiFailureToast("Please install XDCPay extension");
+}
+
+  }, []);
+
+  const fetchData = async (param) => {
+    const addresses = await getTotalVotingAddress();
+    let isAllowedToCreateProposal = false;
+    let showOpenProposal = false;
+    addresses.dataList.map((address) => {
+      if ((address.address.toLowerCase()) === param.toLowerCase()) {
+        setShow(1);
+
+      
+      }
+    });
+  
+  }
 
   return (
     <div >
@@ -80,6 +152,8 @@ export default function RecentProposal(props) {
                             class="table-cell"
                             style={{ border: "none" }}
                           >
+                           
+                            {/* <div id="div_create_prop" className="detail-row-hide"> */}
                             <Row className="date">
                               Posted on{" "}
                               {/* {Utils.epocToPrettyTime(proposal["cretaedOn"])} */}
@@ -102,6 +176,15 @@ export default function RecentProposal(props) {
                                 {status}
                               </span>
                             </Row>
+                          
+                           
+
+                           
+                            
+                           
+
+
+                            {/* ********************** */}
                             {status === "Open" ? (
                               <>
                                 {/* <Row>
@@ -156,7 +239,7 @@ export default function RecentProposal(props) {
                             {status === "Open" ? (
                               <>
 
-
+{/* <div id="div_create_prop" className="details-hide"> */}
 <Row class="count-down-mobile">
                                   <span style={{ marginRight: "5px" }}>
                                     {" "}
@@ -189,7 +272,7 @@ export default function RecentProposal(props) {
                                 
                                   <div
                                   
-                                    className="details justify-content-end"
+                                    className={show===1?"details": "details-hide"}
                                     
                                     onClick={() =>
                                       proposalRedirect(
@@ -200,6 +283,7 @@ export default function RecentProposal(props) {
                                     Details
                                   </div>
                                 </Row>
+                                {/* </div> */}
                               </>
                             ) : (
                               <>
