@@ -43,7 +43,7 @@ export default function FooterComponent(props) {
           <ColumnSecond>
             <Row className="footer-column-heading">Community</Row>
             <RowTag>
-              <Anchor href="https://discord.com/invite/KZdD6pkFxp" target="_blank">
+              <Anchor href="https://discord.com/invite/ndhuU2EEqm" target="_blank">
                 Discord
               </Anchor>
             </RowTag>
@@ -56,10 +56,10 @@ export default function FooterComponent(props) {
               </Anchor>
             </RowTag>
             <RowTag>
-              <Anchor href="https://t.me/xinfin" target="_blank">Telegram</Anchor>
+              <Anchor href="https://t.me/xinfintech" target="_blank">Telegram</Anchor>
             </RowTag>
             <RowTag>
-              <Anchor href="https://www.reddit.com/r/xinfin/" target="_blank">Forum</Anchor>
+              <Anchor href="https://www.reddit.com/r/XDC_Foundation/" target="_blank">Forum</Anchor>
             </RowTag>
           </ColumnSecond>
           <ColumnThird>
@@ -67,7 +67,7 @@ export default function FooterComponent(props) {
             <RowTag>Overview </RowTag>
             <RowTag></RowTag>
             <RowTag>
-              <Anchor href="https://howto.xinfin.org/general/faq/" target="_blank">FAQs</Anchor>
+              <Anchor >FAQs</Anchor>
             </RowTag>
           </ColumnThird>
           <ColumnFourth class="footer-div-1">
@@ -117,7 +117,7 @@ export default function FooterComponent(props) {
             <ColumnSecond>
               <Row className="footer-column-heading">Community</Row>
               <RowTag>
-                <Anchor href="https://discord.com/invite/KZdD6pkFxp" target="_blank">
+                <Anchor href="https://discord.com/invite/ndhuU2EEqm" target="_blank">
                   Discord
                 </Anchor>
               </RowTag>
@@ -130,10 +130,10 @@ export default function FooterComponent(props) {
                 </Anchor>
               </RowTag>
               <RowTag>
-                <Anchor href="https://t.me/xinfin" target="_blank">Telegram</Anchor>
+                <Anchor href="https://t.me/xinfintech" target="_blank">Telegram</Anchor>
               </RowTag>
               <RowTag>
-                {/* <Anchor href="https://discord.com/invite/KZdD6pkFxp"> */}
+                {/* <Anchor href="https://discord.com/invite/ndhuU2EEqm"> */}
                 {/* Forum */}
                 {/* </Anchor> */}
               </RowTag>
@@ -143,7 +143,7 @@ export default function FooterComponent(props) {
               <RowTag>Overview </RowTag>
               <RowTag></RowTag>
               <RowTag>
-                <Anchor href="https://howto.xinfin.org/general/faq/" target="_blank">
+                <Anchor >
                   FAQs
                 </Anchor>
               </RowTag>

@@ -240,7 +240,7 @@ export default function RecentProposal(props) {
                               <>
 
 {/* <div id="div_create_prop" className="details-hide"> */}
-<Row class="count-down-mobile">
+<Row  class="count-down-mobile">
                                   <span style={{ marginRight: "5px" }}>
                                     {" "}
                                     <img
