@@ -39,10 +39,12 @@ const RedLine = styled.div`
 
 export default function RecentProposal(props) {
   const proposalRedirect = (address) => {
+    console.log(address,"addres-detail")
     history.push({
       pathname: `/proposal-details/${address}`,
     });
     window.scrollTo(0,0);
+   
   };
   const handleView = () => {
     history.push("/view-all-proposals");
@@ -160,7 +162,9 @@ export default function RecentProposal(props) {
                               {formatedTime}
                             </Row>
                             <Row className="name">
-                              {proposal["proposalTitle"]}{" "}
+                              {!show==1?
+                              proposal.pollingContract:
+                              proposal["proposalTitle"]}
                             </Row>
                             <Row className="status">
                               <p>Status: &nbsp;</p>
