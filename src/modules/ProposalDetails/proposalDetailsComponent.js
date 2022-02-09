@@ -254,7 +254,7 @@ const [copiedtext, setCopiedText]=useState("copy")
                 <div className="div2-voters">
                   <div className="voter-heading">Voters</div>
                   <div className="voter-number">
-                    {totalVotes.length}&nbsp; Votes
+                  {totalVotes.length}  {totalVotes.length>1?"Votes":"Vote"} 
                   </div>
                 </div>
                 <div className="griddiv-voter">
@@ -383,12 +383,13 @@ function proposalAddressComponent(row) {
       return (
           <>
               <Row className="p-8 justify-content-between">
+              <a style={{display:"flex"}} href={"https://observer.xdc.org/address-details/"+row.replace("0x","xdc")} target="_blank"> 
                   <Row>
                       <div className="fs-12 color-2A2A2A p-l-sm">
                           {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
                       </div>
                   </Row>
-                  <a href={"https://explorer.apothem.network/address/"+row.replace("0x","xdc")} target="_blank"> 
+                
                   <img
                             className="external-image-proposal4"
                             src={require("../../assets/styles/images/External-Link.svg")}

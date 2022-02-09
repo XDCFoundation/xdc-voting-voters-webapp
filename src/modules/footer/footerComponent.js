@@ -90,7 +90,7 @@ export default function FooterComponent(props) {
           </ColumnFourth>
         </Container>
 
-        <RowXDC>© 2021 XDC. All Right Reserved</RowXDC>
+        <RowXDC>© 2022 XDC Foundation. All Right Reserved</RowXDC>
       </MainContainer>
       <MobileDiv>
         <MobileResolution>
