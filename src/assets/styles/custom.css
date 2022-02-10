@@ -1575,6 +1575,20 @@ padding: 21px 24px 21px 33px;
   opacity: 1;
   font-size: 14px;
 }
+.error-message{
+  font: normal normal normal 15px/19px Inter;
+letter-spacing: 0px;
+color: #F43D3D;
+opacity: 1;
+}
+.error-description{
+  font: normal normal normal 15px/19px Inter;
+letter-spacing: 0px;
+color: #F43D3D;
+opacity: 1;
+margin-left: 143px;
+width: 1002px;
+}
 .details {
   height: 30px;
   width: 70px;

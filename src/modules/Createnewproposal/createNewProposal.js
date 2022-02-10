@@ -139,7 +139,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     font: "normal normal normal 15px/19px Inter",
     color: " #2a2a2a",
-    paddingRight: "151px",
+    paddingRight: "85px",
     whiteSpace: "nowrap",
 
     "@media (min-width: 300px) and (max-width: 767px)": {
@@ -483,9 +483,10 @@ export default function Createnewproposal(props) {
       !reqObj.endDate ||
       !reqObj.description
     )
-      Utils.apiFailureToast("Please provide all the inputs");
-    console.log(new Date(reqObj.startDate).getTime(), "startdate");
-    console.log(new Date(reqObj.endDate).getTime(), "endDate");
+    setError("Please Enter Title")
+      // Utils.apiFailureToast("Please provide all the inputs");
+    console.log(Date.parse(startDate), "startdate");
+    console.log(Date.parse(endDate), "endDate");
     if (
       proposalTitle &&
       Date.parse(startDate) < Date.parse(endDate) &&
@@ -494,13 +495,21 @@ export default function Createnewproposal(props) {
       props.createProposal(reqObj);
     } else {
       // Utils.apiFailureToast("Title should be less than 60 chars");
-      Utils.apiFailureToast("Enter Valid Date");
+      setDateError("Enter Valid Date");
+      // Utils.apiFailureToast("Enter Valid Date");
       Utils.apiFailureToast("Description should be greater than 200 chars");
+      // setErrorDescription("Description should be greater than 200 characters")
     }
   };
 
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
+const [error,setError]=useState("")
+const [dateError,setDateError]=useState("")
+const [descriptionError,setErrorDescription]=useState("")
+const [fileError,setFileError]=useState("")
+
+
 
   return (
     
@@ -535,10 +544,12 @@ export default function Createnewproposal(props) {
                       onChange={(e) => {
                         setProposalTitle(e.target.value);
                         setCount(e.target.value.length);
+                        setError("")
                       }}
                       value={proposalTitle}
                       maxLength="60"
                     />
+                    <div className="error-message">{error}
                     <p
                       style={{
                         color: "#2a2a2a",
@@ -549,13 +560,15 @@ export default function Createnewproposal(props) {
                     >
                       {60 - count}/60
                     </p>
+                    </div>
                     {/* </div> */}
                   </Div>
                 </div>
 
                 <div className={classes.secondrow}>
                   <StartDiv>
-                    <div className={classes.startdate}>Start Date</div>
+                    <div className={classes.startdate}>Proposal Start Date</div>
+                    <div>
 
                     <input
                       className={classes.startdateinput}
@@ -563,32 +576,34 @@ export default function Createnewproposal(props) {
                        min={new Date().toISOString().split('T')[0]}
                       id="startdate"
                      
-                      onChange={(e)=>setStartDate(e.target.value)}
+                      onChange={(e) =>{ setStartDate(e.target.value);setDateError("")}}
                       value={startDate}
                       onKeyDown={(e) => e.preventDefault()}
                      
                       // disabled
                     />
-                    
+                    <div className="error-message">{dateError}</div>
+                    </div>
                   </StartDiv>
                   <EndDiv>
-                    <div className={classes.enddate}>End Date</div>
-                   
+                    <div className={classes.enddate}>Proposal End Date</div>
+                    <div>
+
                     <input
                       className={classes.enddateinput}
                       type="date"
-                      id="enddate"
-                     
-                       min={new Date().toISOString().slice(0, 10)}
-                      onChange={(e)=>setEndDate(e.target.value)}
+                      min={new Date().toISOString().slice(0, 10)}
+                      onChange={(e) =>{ setEndDate(e.target.value);setDateError("")}}
                       value={endDate}
                       onKeyDown={(e) => e.preventDefault()}
                     />
+                    <div className="error-message">{dateError}</div>
+                    </div>
                   </EndDiv>
                 </div>
                 <Mobile>
                   <Firstdiv>
-                    <Startdate>Start Date</Startdate>
+                    <Startdate>Proposal Start Date</Startdate>
                     <Inputstartdate
                       type="date"
                       min={new Date().toISOString().slice(0, 10)}
@@ -598,7 +613,7 @@ export default function Createnewproposal(props) {
                     />
                   </Firstdiv>
                   <Seconddiv>
-                    <Enddate>End Date</Enddate>
+                    <Enddate>Proposal End Date</Enddate>
                     <Inputenddate
                       type="date"
                       min={new Date().toISOString().slice(0, 10)}
@@ -610,6 +625,7 @@ export default function Createnewproposal(props) {
                 </Mobile>
                 <div className={classes.rowThird}>
                   <div className={classes.description}>Description</div>
+                
                   <div className={classes.quillgrid}>
                     <div className="text-editor">
                       <ReactQuill
@@ -619,8 +635,12 @@ export default function Createnewproposal(props) {
                         formats={props.state.formats}
                         onChange={handleQuillChange}
                       />
+                       
                     </div>
+                    
                   </div>
+                  {/* <div  className="error-description">{descriptionError}</div> */}
+                 
                 </div>
                 <div className={classes.rowFourth}>
                   <div className={classes.upload}>Upload Document</div>
@@ -660,8 +680,10 @@ export default function Createnewproposal(props) {
                               }
                               
                               if(flag == false)
+                              // setFileError("File Extension Must be Docx , Doc, Pdf, Xslx,Rtf,Xls");
                               Utils.apiFailureToast("File Extension Must be Docx , Doc, Pdf, Xslx,Rtf,Xls");
                               else if(originalfileSize > 5120)  {
+                                // setFileError("File Size Must be Less than 5MB")
                                 Utils.apiFailureToast("File Size Must be Less than 5MB");
                               }
                               
@@ -716,7 +738,7 @@ export default function Createnewproposal(props) {
                                     multiple={false}
                                     accept="*"
                                     style={{ display: "none" }}
-                                    onChange={ onchangebutton}
+                                    onChange={onchangebutton}
                                     onClick={onclickbutton}
                                   />
 
@@ -725,6 +747,7 @@ export default function Createnewproposal(props) {
                                   </BrowseButton>
 
                                 </div>
+                               
                                 {index ===
                                 props.state.proposalDocuments.length - 1 ? (
                                   <img
@@ -744,16 +767,18 @@ export default function Createnewproposal(props) {
                                   />
                                 )}
                               </div>
+                              
                             );
                           })
                         : ""}
+                         {/* <div className="error-message">{fileError}</div> */}
                     </Column>
                   </div>
                 </div>
                 <div className={classes.buttondiv}>
                   <Button onClick={createNewProposal}>
                     <span className={classes.circle}></span>
-                     Submit a Proposal
+                     Submit Proposal
                   </Button>
                 </div>
               </Container>
