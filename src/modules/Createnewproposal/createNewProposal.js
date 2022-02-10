@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 import { makeStyles } from "@material-ui/core/styles/";
 import Grid from "@material-ui/core/Grid";
 import { Row, Column } from "simple-flexbox";
@@ -19,6 +19,7 @@ import utility from "../../utility/index";
 import Utils from "../../utility";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+import moment from "moment";
 
 
 function Alert(props) {
@@ -378,6 +379,10 @@ export default function Createnewproposal(props) {
   // const [open, setOpen] = useState(false);
   const [count, setCount] = React.useState(0);
 
+
+  const [utcStartDate,setutcStartDate]=useState("");
+  const [utcEndDate,setutcEndDate]=useState("");
+
   const inputFile = React.createRef();
   const handleQuillChange = (event) => {
     setDescription(event);
@@ -390,7 +395,74 @@ export default function Createnewproposal(props) {
   //   setOpen(true);
   //   console.log({ open });
   // };
-  const createNewProposal = async () => {
+  
+  useEffect(()=>{
+    const date = moment.utc().format();
+
+    
+      // var date2=new Date();
+
+      // const hour = String(date.getUTCHours()).padStart(2, "0");
+      // const minute = String(date.getUTCMinutes()).padStart(2, "0");
+      // const second = String(date.getUTCSeconds()).padStart(2, "0");
+      // //var ms=date.getTime();
+
+      // var strDate = hour + ":" + minute + ":" + second;
+      // const utctime=strDate;
+
+      setutcStartDate(date);
+     // console.log(utcStartDate);
+     
+      
+    },[startDate])
+    useEffect(()=>{
+      const utctime = moment.utc().format();
+
+    
+      // var date=new Date();
+      // console.log(date);
+
+      // const hour = String(date.getUTCHours()).padStart(2, "0");
+      // const minute = String(date.getUTCMinutes()).padStart(2, "0");
+      // const second = String(date.getUTCSeconds()).padStart(2, "0");
+      // //var ms=date.getTime();
+
+      // var strDate = hour + ":" + minute + ":" + second;
+      // const utctime=strDate;
+      
+
+      setutcEndDate(utctime);
+     // console.log(utcEndDate);
+      
+    },[endDate])
+  
+    
+ 
+
+   
+  const  createNewProposal = async () => {
+    
+
+    
+    
+    var compareDate = new Date();
+    var difference= new Date(endDate).getDate()-new Date(startDate).getDate();
+    console.log(difference);
+    console.log(compareDate);
+    compareDate.setDate(compareDate.getDate() + difference);
+    console.log("compare date",compareDate)
+    console.log(compareDate.getTime())
+
+    //UTC AND LOCAL TIME
+    const utctime = moment.utc(compareDate).format();
+    console.log(utctime)
+    var stillUtc = moment.utc(utctime).toDate();
+    console.log(stillUtc);
+    var local = moment(stillUtc).local().format('YYYY-MM-DD HH:mm:ss');
+    console.log(local);
+    console.log(startDate)
+    
+
     const reqObj = {
       proposalTitle: proposalTitle,
       startDate: startDate,
@@ -399,6 +471,11 @@ export default function Createnewproposal(props) {
       filepath: uploadDocument,
       pollingContract: "0011",
       status: "pending",
+
+      // utcTime:stillUtc,
+      // localTime:local,
+     
+
     };
     if (
       !reqObj.proposalTitle ||
@@ -407,8 +484,8 @@ export default function Createnewproposal(props) {
       !reqObj.description
     )
       Utils.apiFailureToast("Please provide all the inputs");
-    console.log(Date.parse(startDate), "startdate");
-    console.log(Date.parse(endDate), "endDate");
+    console.log(new Date(reqObj.startDate).getTime(), "startdate");
+    console.log(new Date(reqObj.endDate).getTime(), "endDate");
     if (
       proposalTitle &&
       Date.parse(startDate) < Date.parse(endDate) &&
@@ -425,13 +502,8 @@ export default function Createnewproposal(props) {
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
 
-   
- 
-
-
-
-
   return (
+    
     <div>
       <Headerdiv>
         <HeaderMain />
@@ -488,22 +560,27 @@ export default function Createnewproposal(props) {
                     <input
                       className={classes.startdateinput}
                       type="date"
-                      min={new Date().toISOString().split('T')[0]}
+                       min={new Date().toISOString().split('T')[0]}
+                      id="startdate"
                      
-                      onChange={(e) => setStartDate(e.target.value)}
+                      onChange={(e)=>setStartDate(e.target.value)}
                       value={startDate}
                       onKeyDown={(e) => e.preventDefault()}
+                     
                       // disabled
                     />
+                    
                   </StartDiv>
                   <EndDiv>
                     <div className={classes.enddate}>End Date</div>
-
+                   
                     <input
                       className={classes.enddateinput}
                       type="date"
-                      min={new Date().toISOString().slice(0, 10)}
-                      onChange={(e) => setEndDate(e.target.value)}
+                      id="enddate"
+                     
+                       min={new Date().toISOString().slice(0, 10)}
+                      onChange={(e)=>setEndDate(e.target.value)}
                       value={endDate}
                       onKeyDown={(e) => e.preventDefault()}
                     />
@@ -515,7 +592,7 @@ export default function Createnewproposal(props) {
                     <Inputstartdate
                       type="date"
                       min={new Date().toISOString().slice(0, 10)}
-                      onChange={(e) => setStartDate(e.target.value)}
+                      onChange={(e) =>{ setStartDate(...e.target.value,e.target.value);}}
                       value={startDate}
                       onKeyDown={(e) => e.preventDefault()}
                     />

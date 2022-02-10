@@ -18,7 +18,7 @@ import styled from "styled-components";
 import { Tooltip } from "@material-ui/core";
 
 // import { CopyToClipboard } from "react-copy-to-clipboard";
-import copy from "copy-to-clipboard";  
+import {CopyToClipboard} from 'react-copy-to-clipboard'; 
 // import {ClipBoard} from "./clipBoard";
 // import Tooltip from "@material-ui/core/Tooltip";
 
@@ -55,6 +55,26 @@ export default function ProposalDetails(props) {
   // const handleToastClose=()=>{
   //   setOpen(false)
   // }
+  const startDate=props.state.proposalDetails.startDate;
+  const endDate=props.state.proposalDetails.endDate;
+  console.log(startDate,endDate);
+
+  // const countdown=(endtime,starttime)=>{
+  //   const gap=endtime-start;
+  //   const second=1000;
+  //   const minute=second*60;
+  //   const hour=second*60;
+  //   const day=hour*24;
+
+  // const textday = Math.floor(gap / day);
+  // const texthour = Math.floor( (gap % day) / hour);
+  // const textminute = Math.floor((gap % hour) / minute);
+  // const textsecond = Math.floor((gap % minute) / second);
+
+  // console.log(textday,texthour,textminute ,textsecond);
+
+  // }
+  // countdown(endDate,startDate);
 
 const [copiedtext, setCopiedText]=useState("copy")
   let totalVotes = [];
@@ -74,9 +94,12 @@ const [copiedtext, setCopiedText]=useState("copy")
   )
     totalVotes = [...totalVotes, ...props.state.proposalDetails.noVotes];
   // if (totalVotes.length > 6) totalVotes.length = 6;
+
+  
  
   return (
     <div>
+      
       <div className="header-div-all">
         {" "}
         <HeaderMain />
@@ -120,6 +143,7 @@ const [copiedtext, setCopiedText]=useState("copy")
                       &nbsp;
                       <Tooltip placement="top" title={moment(props.state.proposalDetails.endDate).format("DD MMMM YYYY")}>
                       <span>
+                    
                         
                         {props.state.proposalDetails.endDate ? (
                           
@@ -375,6 +399,7 @@ function AddressComponent(row, index) {
 
 
 function proposalAddressComponent(row) {
+  
   var copy=0;
   // const copyTo = (row) => {navigator.clipboard.writeText(row);}
   // console.log(row,"row value")
@@ -396,15 +421,22 @@ function proposalAddressComponent(row) {
                          {/* <p style={{ marginTop: "17px" }}> */}
 
                            {/* <button onClick={() => {navigator.clipboard.writeText(row)}}>Copy</button> */}
+
+                           <CopyToClipboard text={row.replace("0x","xdc")} onCopy={()=>console.log('copy to clipboard')}>
+                              {/*  onClick={ async() => {await window.navigator.clipboard.writeText(row)}}  */}
+                              <img style={{height:"35px",width:"40px",marginTop:"-9px",
+                              // marginTop:"-6px",
+                           cursor:"pointer"}} src={require("../../assets/styles/images/copy1.jpg")}></img>
+                           </CopyToClipboard>
                          
-                           <img onClick={() => {window.navigator.clipboard.writeText(row)}} style={{height:"35px",width:"40px",marginTop:"-7px",cursor:"pointer"}} src={require("../../assets/styles/images/copy1.jpg")}></img>
+                          
                            {/* <button 
-  onClick={() =>  {window.navigator.clipboard.writeText(row)
-  console.log(copy,"copppppppppppppppppppppppppppppppppppppppp")
-  }}
->
-{!copy=="0"?"copy":"copied"}
-</button> */}
+                                onClick={() =>  {window.navigator.clipboard.writeText(row)
+                                console.log(copy,"copppppppppppppppppppppppppppppppppppppppp")
+                                }}
+                              >
+                              {!copy=="0"?"copy":"copied"}
+                              </button> */}
                   {/* <CopyToClipboard
                     text={row}
                     onCopy={() => this.setState({copied: row})}

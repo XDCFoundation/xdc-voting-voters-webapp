@@ -90,6 +90,8 @@ export default class Createproposal extends BaseComponent {
     };
 
     createProposal = async (reqObj) => {
+        console.log(reqObj);
+       
         if (
             !reqObj.proposalTitle ||
             !reqObj.startDate ||
@@ -119,7 +121,8 @@ export default class Createproposal extends BaseComponent {
                     reqObj.description,
                     JSON.stringify(this.state.proposalDocuments),
                     false,
-                    acc
+                    acc,
+                   
                 )
                 .send({from: acc}, async (err, transactionHash) => {
                     if (err || !transactionHash) {
@@ -174,6 +177,9 @@ export default class Createproposal extends BaseComponent {
             proposalDocuments: this.state.proposalDocuments,
             pollingContract: _contractAddress,
             status: false,
+            
+            // utcTime:reqObj.utcTime,
+            // localTime:reqObj.localTime
         };
         const response = await addNewProposal(obj).catch((err) => {
             console.log(err);
