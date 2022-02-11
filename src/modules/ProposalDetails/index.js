@@ -23,6 +23,8 @@ export default class ProposalDetails extends BaseComponent {
             isAllowedToVoting: false,
             proposalDocumentsUrl:[],
             copied: "",
+            open1: false,
+            open2: false,
         };
     }
 
@@ -147,7 +149,8 @@ export default class ProposalDetails extends BaseComponent {
         
       
         if(!this.state.isAllowedToVoting) {
-            Utils.apiFailureToast("You are not allowed to vote")
+            this.setState({open1:true})
+            // Utils.apiFailureToast("You are not allowed to vote")
             return;
         }
         // else if(Date.now()>moment(proposalDetails.startDate).format("DD MMMM YYYY"))
@@ -193,13 +196,19 @@ export default class ProposalDetails extends BaseComponent {
         });
     }
     else{
-        Utils.apiFailureToast("Voting starts from "+moment(this.state.proposalDetails.startDate).format("DD MMMM YYYY"));
+        this.setState({open2:true})
+        // Utils.apiFailureToast("Voting starts from "+moment(this.state.proposalDetails.startDate).format("DD MMMM YYYY"));
     }
     };
      handleClose = () => {
         this.setState({open: false})
     }
-
+    handleClose1 = () => {
+        this.setState({open1: false})
+    }
+    handleClose2 = () => {
+        this.setState({open2: false})
+    }
     delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
     getTransactionReceipt = async (hash) => {
@@ -230,6 +239,8 @@ export default class ProposalDetails extends BaseComponent {
             backButton={this.backButton}
             castProposalVote={this.castProposalVote}
             handleClose={this.handleClose}
+            handleClose1={this.handleClose1}
+            handleClose2={this.handleClose2}
         />
     }
 }

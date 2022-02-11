@@ -90,6 +90,7 @@ export default class Createproposal extends BaseComponent {
     };
 
     createProposal = async (reqObj) => {
+        this.setState({open:true})
         if (
             !reqObj.proposalTitle ||
             !reqObj.startDate ||
@@ -123,18 +124,21 @@ export default class Createproposal extends BaseComponent {
                 )
                 .send({from: acc}, async (err, transactionHash) => {
                     if (err || !transactionHash) {
+                        this.setState({open:false})
                         return;
                     }
                     const res = await this.getTransactionReceipt(transactionHash, reqObj);
                     if (res) {
+                        this.setState({open:true})
                         const addresses = await this.getContractAddresses();
                         this.addProposalInDatabase(reqObj, addresses[addresses.length - 1]);
-                        // this.setState({open:true})
-                        Utils.apiSuccessToast("Proposal Created Successfully");
+                        
+                        // Utils.apiSuccessToast("Proposal Created Successfully");
                         
                         // this.setState({open:true})
                         history.push('/');
                     }
+                    this.setState({open:true})
                 })
             // .then(async (res) => {
             //   console.log(res);
@@ -142,7 +146,8 @@ export default class Createproposal extends BaseComponent {
             //   const addresses = await this.getContractAddresses();
             //   this.addProposalInDatabase(reqObj, addresses[addresses.length - 1]);
             // });
-            Utils.apiSuccessToast("Proposal creation is in progress");
+            // Utils.apiSuccessToast("Proposal creation is in progress");
+            // this.setState({open:true})
         });
     };
     handleClose = () => {

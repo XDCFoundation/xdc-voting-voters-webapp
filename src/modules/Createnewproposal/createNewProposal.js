@@ -26,6 +26,9 @@ function Alert(props) {
 }
 
 const useStyles = makeStyles((theme) => ({
+  Alert: {
+    backgroundColor: "#ffffff !important",
+  },
   root: {
     display: "flex",
     justifyContent: "center",
@@ -381,6 +384,7 @@ export default function Createnewproposal(props) {
   const inputFile = React.createRef();
   const handleQuillChange = (event) => {
     setDescription(event);
+    setErrorDescription("")
   };
   
   const uploadFile = () => {
@@ -401,12 +405,12 @@ export default function Createnewproposal(props) {
       status: "pending",
     };
     if (
-      !reqObj.proposalTitle ||
-      !reqObj.startDate ||
-      !reqObj.endDate ||
-      !reqObj.description
+      !reqObj.proposalTitle 
+      // !reqObj.startDate ||
+      // !reqObj.endDate ||
+      // !reqObj.description
     )
-    setError("Please Enter Title")
+   { setError("Please Enter Title")}
       // Utils.apiFailureToast("Please provide all the inputs");
     console.log(Date.parse(startDate), "startdate");
     console.log(Date.parse(endDate), "endDate");
@@ -416,12 +420,17 @@ export default function Createnewproposal(props) {
       description.length >= 200
     ) {
       props.createProposal(reqObj);
-    } else {
-      // Utils.apiFailureToast("Title should be less than 60 chars");
-      setDateError("Enter Valid Date");
+    } 
+    // else if(Date.parse(startDate) > Date.parse(endDate)){
+    //   // Utils.apiFailureToast("Title should be less than 60 chars");
+    //   setDateError("Enter Valid Date");
+    // }
       // Utils.apiFailureToast("Enter Valid Date");
-      Utils.apiFailureToast("Description should be greater than 200 chars");
-      // setErrorDescription("Description should be greater than 200 characters")
+      // Utils.apiFailureToast("Description should be greater than 200 chars");
+     else if(description.length < 200) {setErrorDescription("Description must be atleast 200 characters");}
+    
+    else{
+      setDateError("Enter Valid Date");
     }
   };
 
@@ -456,7 +465,7 @@ const [fileError,setFileError]=useState("")
               <hr className={classes.line} />
               <Container>
                 <div className={classes.row}>
-                  <div className={classes.proposaltitle}>Proposal Title</div>
+                  <div className={classes.proposaltitle}>Proposal Title<span className="star">*</span></div>
 
                   <Div>
                     {/* <div style={{display:"flex"}}> */}
@@ -489,7 +498,7 @@ const [fileError,setFileError]=useState("")
 
                 <div className={classes.secondrow}>
                   <StartDiv>
-                    <div className={classes.startdate}>Proposal Start Date</div>
+                    <div className={classes.startdate}>Proposal Start Date<span className="star">*</span></div>
                     <div>
 
                     <input
@@ -506,7 +515,7 @@ const [fileError,setFileError]=useState("")
                     </div>
                   </StartDiv>
                   <EndDiv>
-                    <div className={classes.enddate}>Proposal End Date</div>
+                    <div className={classes.enddate}>Proposal End Date<span className="star">*</span></div>
                     <div>
 
                     <input
@@ -523,7 +532,7 @@ const [fileError,setFileError]=useState("")
                 </div>
                 <Mobile>
                   <Firstdiv>
-                    <Startdate>Proposal Start Date</Startdate>
+                    <Startdate>Proposal Start Date<span className="star">*</span></Startdate>
                     <Inputstartdate
                       type="date"
                       min={new Date().toISOString().slice(0, 10)}
@@ -533,7 +542,7 @@ const [fileError,setFileError]=useState("")
                     />
                   </Firstdiv>
                   <Seconddiv>
-                    <Enddate>Proposal End Date</Enddate>
+                    <Enddate>Proposal End Date<span className="star">*</span></Enddate>
                     <Inputenddate
                       type="date"
                       min={new Date().toISOString().slice(0, 10)}
@@ -544,8 +553,8 @@ const [fileError,setFileError]=useState("")
                   </Seconddiv>
                 </Mobile>
                 <div className={classes.rowThird}>
-                  <div className={classes.description}>Description</div>
-                
+                  <div className={classes.description}>Description<span className="star">*</span></div>
+                <div>
                   <div className={classes.quillgrid}>
                     <div className="text-editor">
                       <ReactQuill
@@ -559,8 +568,8 @@ const [fileError,setFileError]=useState("")
                     </div>
                     
                   </div>
-                  {/* <div  className="error-description">{descriptionError}</div> */}
-                 
+                  <div  className="error-description">{descriptionError}</div>
+                 </div>
                 </div>
                 <div className={classes.rowFourth}>
                   <div className={classes.upload}>Upload Document</div>
@@ -571,6 +580,7 @@ const [fileError,setFileError]=useState("")
 
                           const onchangebutton=(e)=>{
                             var x=document.getElementById("fileButton" + index);
+                            setFileError("")
 
                             try{
                            
@@ -600,11 +610,11 @@ const [fileError,setFileError]=useState("")
                               }
                               
                               if(flag == false)
-                              // setFileError("File Extension Must be Docx , Doc, Pdf, Xslx,Rtf,Xls");
-                              Utils.apiFailureToast("File Extension Must be Docx , Doc, Pdf, Xslx,Rtf,Xls");
+                              setFileError("File Extension Must be Docx , Doc, Pdf, Xslx,Rtf,Xls");
+                              // Utils.apiFailureToast("File Extension Must be Docx , Doc, Pdf, Xslx,Rtf,Xls");
                               else if(originalfileSize > 5120)  {
-                                // setFileError("File Size Must be Less than 5MB")
-                                Utils.apiFailureToast("File Size Must be Less than 5MB");
+                                setFileError("File Size Must be Less than 5MB")
+                                // Utils.apiFailureToast("File Size Must be Less than 5MB");
                               }
                               
                              
@@ -691,7 +701,7 @@ const [fileError,setFileError]=useState("")
                             );
                           })
                         : ""}
-                         {/* <div className="error-message">{fileError}</div> */}
+                         <div className="error-message">{fileError}</div>
                     </Column>
                   </div>
                 </div>
@@ -716,15 +726,15 @@ const [fileError,setFileError]=useState("")
         <Alert severity="" className="alert">
           <div className="alert-div">
             <span className="alert-span">
-              <img
+              {/* <img
                 className="done-logo"
                 src={require("../../assets/styles/images/DONE.svg")}
-              ></img>
+              ></img> */}
             </span>
             <span>
               <div className="toast-message1">
-                <span>Proposal Created successfully</span>
-                <span
+                <span className="proposal-creation">Proposal creation in Progress</span>
+                {/* <span
                   onClick={props.handleClose}
                   style={{
                     float: "right",
@@ -733,8 +743,10 @@ const [fileError,setFileError]=useState("")
                   }}
                 >
                   X
-                </span>
+                </span> */}
               </div>
+              <div className="loader-spin"></div>
+              <div className="confirm-transaction">Confirm this transaction on XDCPay</div>
               {/* <div className="toast-address">
                 Thank you for your contribution in adding transparency to XDC
                 network

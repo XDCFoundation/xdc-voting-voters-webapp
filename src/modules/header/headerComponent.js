@@ -11,6 +11,7 @@ import {
   getTotalPassedProposals,
   getTotalVotingAddress,
 } from "../../services/proposalService";
+import Web3Dialog from "./mainDialog";
 
 export default function Header(props) {
   const [getVotesCasted, setGetVotesCasted] = useState([]);
@@ -57,7 +58,7 @@ export default function Header(props) {
           {" "}
           <HeaderMain />{" "}
         </div>
-
+        
         {/* !***********************!  */}
 
         <Row className="row-2">
@@ -93,10 +94,11 @@ export default function Header(props) {
             </div>
           </div>
         </Row>
+       
         <div className="recent-div">
           <div className="recent-proposal-div">
             <Row className="recent-add-div">
-              <Column className="heading">Recent Proposals</Column>
+              <Column className="heading">Recent Proposals  </Column>
               <Column>
               
                 <div
