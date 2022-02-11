@@ -3,14 +3,16 @@ import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/styles";
 import { Row } from "simple-flexbox";
 import styled from "styled-components";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 const useStyles = makeStyles((theme) => ({
   add: {
     backgroundColor: "#2149b9",
     marginLeft: "90px",
   },
-// dialog:{
-//     display:"none !important"
-// },
+dialog:{
+    display:"none !important"
+},
   value: {
     width: "400px !important",
   },
@@ -316,9 +318,9 @@ const useStyles = makeStyles((theme) => ({
       padding: "0",
       justifyContent: "center",
     },
-    // dialog:{
-    //    display:"none !important"
-    // },
+    dialog:{
+       display:"none !important"
+    },
     createaccount: {
       color: "#3763dd",
     },
@@ -486,9 +488,10 @@ const CloseIconContainer = styled.div`
 
 export default function Web3Dialog(props) {
   const [open, setOpen] = React.useState(false);
-
+  // const matches = useMediaQuery('(min-width:600px)');
+  const fullScreen = useMediaQuery('(min-width:600px)');
   React.useEffect(async() =>  {
-//    await mainDialogOpen();
+   await mainDialogOpen();
   }, []);
 
   const classes = useStyles();
@@ -501,6 +504,8 @@ const mainDialogOpen = () => {
 
 
   return (
+    <div className="show">
+      {/* {`(min-width:600px) matches: ${matches}`} */}
     <Dialog
     //   className={classes.dialog + " maxWidth-800"}
       className="dialog-main"
@@ -508,98 +513,39 @@ const mainDialogOpen = () => {
       onClose={handleClose}
       aria-labelledby="form-dialog-title"
       id="web3Dialog"
+     
     >
       <div className="main-box">
         <Row className="main-row">
-          <div className="main-title">Connect Wallet</div>
-          <CloseIconContainer onClick={handleClose}>
-              X
-            {/* <img alt="Cross" src={"/images/XDC-Cross.svg"} /> */}
-          </CloseIconContainer>
+          <div className="main-title">You can only view the proposals on mobile browser</div>
+         
         </Row>
-        <hr className="connect-line"/>
+       
         <Row
           className="card-box"
-          style={{
-            display: "flex",
-            flexFlow: "row nowrap",
-            paddingTop: "22px",
-            marginBottom: "20px",
-            gap: "13px"
-          }}
+          
+         
         >
-          <InstructionCard>
-            <div className="steps" style={{ textAlign: "center" }}>
-              Step 1
-            </div>
-            <ImageContainer>
-              <img
-                className="input-data-text"
-                alt="new-feature"
-                src={"/images/connect icon1.svg"}
-              />
-            </ImageContainer>
-            <CardTitle>Install XDCPay</CardTitle>
-            <CardText>
-              Install XDCPay Chrome extension from
-              <a style={{textDecoration:"none",color:"#3163F0"}}
-                href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en-GB"
-                target="_blank"
-              >
-                &nbsp;here.
-              </a>
-            </CardText>
-          </InstructionCard>
-          <InstructionCard>
-            <div className="steps" style={{ textAlign: "center" }}>
-              Step 2
-            </div>
-            <ImageContainer>
-              <img
-                className="input-data-text"
-                alt="new-feature"
-                src={"/images/connect icon2.svg"}
-              />
-            </ImageContainer>
-            <CardTitle>Login to XDCPay</CardTitle>
-            <CardText>
-              Login to you account on XDCPay Chrome extension.
-            </CardText>
-          </InstructionCard>
-          <InstructionCard>
-            <div className="steps" style={{ textAlign: "center" }}>
-              Step 3
-            </div>
-            <ImageContainer>
-              <img
-                className="input-data-text"
-                alt="new-feature"
-                src={"/images/connect icon3.svg"}
-              />
-            </ImageContainer>
-            <CardTitle>Connect Wallet</CardTitle>
-            <CardText>
-            Add your whitelisted addresses
-              {/* {props.connectToWalletMessage
-                ? props.connectToWalletMessage
-                : "Click on ‘Search My Wallet’ to see your wallet transactions."} */}
-            </CardText>
-          </InstructionCard>
-        </Row>
-        {/*<Row className="m-b-20" style={{paddingTop: '22px'}}>*/}
-        {/*    <button className="connect-wallet-btn w-100" onClick={connectWallet}>Connect Wallet</button>*/}
-        {/*</Row>*/}
+          <div>If you have a whitelisted voter, please open XDC Governance portal on a desktop browser and connect XDC Pay to vote and create proposal</div>
+       </Row>
+          
+             
         <Row className="last-row">
 
-         <button className="last-title"> <div > <span><img
+         <button className="last-title" onClick={handleClose}> <div > <span>
+           {/* <img
                 className="connect-text"
                 alt="new-feature"
                 src={"/images/connect xdc icon.svg"}
-              /></span>Connect Wallet</div> </button>
+              /> */}
+              </span>I understood</div> </button>
          
         </Row>
+
+        <div className="dont-message"><input type="checkbox" className="input-check"/><span>Don’t show this message again</span></div>
       </div>
     </Dialog>
+    </div>
   );
 }
 

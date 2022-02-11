@@ -173,7 +173,7 @@ function Header() {
   };
   return (
     <div>
-     {/* <div > <Web3Dialog /></div> */}
+  
       <Row className="row-1">
         <Column>
           <Row>

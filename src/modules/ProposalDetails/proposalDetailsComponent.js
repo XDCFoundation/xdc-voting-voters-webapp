@@ -341,6 +341,61 @@ const [copiedtext, setCopiedText]=useState("copy")
           </div>
         </Alert>
       </Snackbar>
+
+      {/* *****************VOting Not Allowed Toast********************* */}
+      <Snackbar
+        open={props.state.open1}
+        autoHideDuration={3000}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        onClose={props.handleClose1}
+      >
+        <Alert severity="" className="alert">
+          <div className="alert-div">
+            <span className="alert-span">
+            
+            </span>
+            <span>
+              <div className="toast-message">
+              <span>
+              You are not allowed to vote
+              
+                </span>
+               
+                
+              </div>
+              
+            </span>
+          </div>
+        </Alert>
+      </Snackbar>
+      {/* *************** */}
+
+      {/* *****************Future vote Toast********************* */}
+      <Snackbar
+        open={props.state.open2}
+        autoHideDuration={3000}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        onClose={props.handleClose2}
+      >
+        <Alert severity="" className="alert">
+          <div className="alert-div">
+            <span className="alert-span">
+            
+            </span>
+            <span>
+              <div className="toast-message">
+              <span>
+              Voting starts from {moment(props.state.proposalDetails.startDate).format("DD MMMM YYYY")}
+                </span>
+               
+                
+              </div>
+              
+            </span>
+          </div>
+        </Alert>
+      </Snackbar>
+      {/* *************** */}
       <div >
           <FooterComponent />
         </div>
