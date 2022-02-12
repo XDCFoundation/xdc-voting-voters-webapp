@@ -63,7 +63,7 @@ export default function DivBlocksComponent() {
           </Grid>
 
           <Grid className={classes.gridOne} item xs={12} sm={6} md={4}>
-          <a style={{textDecoration:"none"}} href="https://www.reddit.com/r/xinfin/"> 
+          <a style={{textDecoration:"none"}} href="https://www.reddit.com/r/XDC_Foundation/" target={"_blank"}> 
             <SecondBlock  onClick={viewXdcForm}>
               <Row
                 style={{

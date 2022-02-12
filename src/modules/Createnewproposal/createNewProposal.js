@@ -13,7 +13,7 @@ import Utility from "../../utility/index";
 import AddNewProposalLive from "../../services/proposalService";
 import { history } from "../../managers/history";
 import ReactQuill from "react-quill";
-import DatePicker from "react-multi-date-picker";
+import DatePicker, { Calendar } from "react-multi-date-picker";
 import TextField from "@material-ui/core/TextField";
 import utility from "../../utility/index";
 import Utils from "../../utility";
@@ -435,7 +435,8 @@ export default function Createnewproposal(props) {
      // console.log(utcEndDate);
       
     },[endDate])
-  
+
+   
     
  
 
@@ -445,32 +446,61 @@ export default function Createnewproposal(props) {
 
     
     
-    var compareDate = new Date();
-    var difference= new Date(endDate).getDate()-new Date(startDate).getDate();
-    console.log(difference);
-    console.log(compareDate);
-    compareDate.setDate(compareDate.getDate() + difference);
-    console.log("compare date",compareDate)
-    console.log(compareDate.getTime())
+    //  var compareDate = new Date();
+    //  var difference= new Date(endDate).getDate()-new Date(startDate).getDate();
+    //  console.log(difference);
+    //  console.log(compareDate);
+    //  compareDate.setDate(compareDate.getDate() + difference);
+    //  console.log("compare date"+compareDate)
+    //  console.log(compareDate.getTime())
 
-    //UTC AND LOCAL TIME
-    const utctime = moment.utc(compareDate).format();
-    console.log(utctime)
-    var stillUtc = moment.utc(utctime).toDate();
-    console.log(stillUtc);
-    var local = moment(stillUtc).local().format('YYYY-MM-DD HH:mm:ss');
-    console.log(local);
-    console.log(startDate)
+    // //UTC AND LOCAL TIME
+    // const utctime = moment.utc().format();
+    // console.log(utctime)
+    // var stillUtc = moment.utc(utctime).toDate();
+    // console.log(stillUtc);
+    // var local = moment(stillUtc).local().format('YYYY-MM-DD HH:mm:ss');
+    // console.log(local);
+
+    //start Date
+    console.log("startdate"+startDate);
+    
+    var xy=new Date(startDate);
+    console.log(xy);
+    const x=moment(xy).utc().format();
+    console.log(x);
+    var z=new Date(x).toISOString();
+    console.log(z);
+    var epochutcStart=(new Date(z).getTime());
+    console.log(epochutcStart);
+
+    //end-Date
+    var enddate=new Date(endDate);
+    console.log(enddate);
+    const utc=moment(endDate).utc().format();
+    console.log(utc);
+    var stillutc=new Date(utc).toISOString();
+    console.log(stillutc);
+    var epochutcEnd=(new Date(stillutc).getTime());
+    console.log(epochutcEnd);
+
+    
+   
     
 
     const reqObj = {
       proposalTitle: proposalTitle,
-      startDate: startDate,
-      endDate: endDate,
+      startDate: epochutcStart,
+      endDate: epochutcEnd,
       description: description,
       filepath: uploadDocument,
       pollingContract: "0011",
       status: "pending",
+
+
+      // utcStartDate:epochutcStart,
+      // utcEndDate:epochutcEnd,
+
 
       // utcTime:stillUtc,
       // localTime:local,
@@ -485,8 +515,8 @@ export default function Createnewproposal(props) {
     )
     setError("Please Enter Title")
       // Utils.apiFailureToast("Please provide all the inputs");
-    console.log(Date.parse(startDate), "startdate");
-    console.log(Date.parse(endDate), "endDate");
+    //console.log(Date.parse(startDate), "startdate");
+    //console.log(Date.parse(endDate), "endDate");
     if (
       proposalTitle &&
       Date.parse(startDate) < Date.parse(endDate) &&
@@ -572,9 +602,11 @@ const [fileError,setFileError]=useState("")
 
                     <input
                       className={classes.startdateinput}
-                      type="date"
+                      type="datetime-local"
                        min={new Date().toISOString().split('T')[0]}
                       id="startdate"
+                      
+                     
                      
                       onChange={(e) =>{ setStartDate(e.target.value);setDateError("")}}
                       value={startDate}
@@ -591,7 +623,7 @@ const [fileError,setFileError]=useState("")
 
                     <input
                       className={classes.enddateinput}
-                      type="date"
+                      type="datetime-local"
                       min={new Date().toISOString().slice(0, 10)}
                       onChange={(e) =>{ setEndDate(e.target.value);setDateError("")}}
                       value={endDate}

@@ -55,6 +55,7 @@ export default function FooterComponent(props) {
                 Twitter
               </Anchor>
             </RowTag>
+            
             <RowTag>
               <Anchor href="https://t.me/xinfintech" target="_blank">Telegram</Anchor>
             </RowTag>
