@@ -29,14 +29,14 @@ export default function Header(props) {
       console.log(err);
     });
 
-    setGetVotesCasted(response.countData);
+    setGetVotesCasted(response?.countData);
   };
 
   const getVoting = async () => {
     const response = await getTotalVotingAddress().catch((err) => {
       console.log(err);
     });
-    setGetTotalVoting(response.dataList.length);
+    setGetTotalVoting(response?.dataList?.length);
   };
 
   const getPassed = async () => {

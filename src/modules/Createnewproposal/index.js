@@ -109,7 +109,7 @@ export default class Createproposal extends BaseComponent {
             const acc = accounts[0];
             const contract = new web3.eth.Contract(
                 masterContractAbi,
-                "0x85fe7c9734585a494b03c1a450ab0e9b79557cc4"
+                "0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
             );
             contract.methods
                 .create_New_Proposal(
@@ -171,14 +171,14 @@ export default class Createproposal extends BaseComponent {
 
     addProposalInDatabase = async (reqObj, _contractAddress) => {
         const obj = {
-            proposalTitle: reqObj.proposalTitle,
+            // proposalTitle: reqObj.proposalTitle,
             startDate: new Date(reqObj.startDate).getTime(),
             endDate: new Date(reqObj.endDate).getTime(),
             addedOn: Date.now(),
-            description: reqObj.description,
-            proposalDocuments: this.state.proposalDocuments,
+            // description: reqObj.description,
+            // proposalDocuments: this.state.proposalDocuments,
             pollingContract: _contractAddress,
-            status: false,
+            // status: false,
         };
         const response = await addNewProposal(obj).catch((err) => {
             console.log(err);
@@ -192,14 +192,21 @@ export default class Createproposal extends BaseComponent {
         window.ethereum.enable();
         const contract = new web3.eth.Contract(
             masterContractAbi,
-            "0x85fe7c9734585a494b03c1a450ab0e9b79557cc4"
+            "0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
         );
+        const accounts = await web3.eth.getAccounts()
+        if (!accounts || !accounts.length) {
+            // Utils.apiFailureToast("Please login to XDCPay extension");
+            return;
+        }
+        const tx = {from: accounts[0]};
         const createProposalResponse = await contract.methods
             .created_Proposal_list()
-            .call()
+            .call(tx)
             .catch((err) => {
                 console.log(err, "====");
             });
+        console.log("createProposalResponse ",createProposalResponse)
         return createProposalResponse;
     };
 
