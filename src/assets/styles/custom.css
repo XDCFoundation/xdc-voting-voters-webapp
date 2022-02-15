@@ -128,8 +128,16 @@ body {
   margin-left: 3px;
 }
 .alert {
-  background-color: #00144d !important;
+  background-color: #ffffff !important;
 }
+/* @media (min-width: 360px) and (max-width: 1023px) {
+.MuiAlert-root{
+  display: flex !important;
+}
+}
+.MuiAlert-root{
+  display: none ;
+} */
 .alert-div {
   display: flex;
 }
@@ -217,15 +225,79 @@ body {
 .recent-proposal-div {
   margin-top: 8px;
 }
+.main-box{
+  padding: 25px 40px 25px 40px;
+}
+.main-row{
+  justify-content: center;
+}
+.card-box{
+  padding-top: 20px;
+  text-align: center;
+font: normal normal medium 14px/17px Inter;
+letter-spacing: 0px;
+color: #2A2A2A;
+opacity: 1;
+font-size: 14px;
+font-family: "Inter",sans-serif;
+font-weight: 600;
+}
+.last-title{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #2049B9;
+    border-radius: 4px;
+    opacity: 1;
+    width: 206px;
+    height: 38px;
+    margin-top: 40px;
+    text-align: center;
+    font: normal normal 600 14px/17px Inter;
+    letter-spacing: 0px;
+    color: #2149B9;
+    opacity: 1;
+}
+.last-row{
+  justify-content: center;
+}
+.dont-message{
+  letter-spacing: 0px;
+  color: #2A2A2A;
+  opacity: 1;
+  text-align: center;
+  margin-top: 21px;
+  font-size: 13px;
+  font-family: Inter,sans-serif;
 
-@media (min-width: 360px) and (max-width: 1023px) {
-.maindialog{
-  display: flex !important;
 }
+.input-check{
+  width: 16px;
+    height: 16px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #292A29;
+    border-radius: 2px;
+    opacity: 1;
+    margin-right: 5px;
 }
-.maindialog{
+.main-title{
+  display: flex;
+  text-align: center;
+font: normal normal 600 18px/21px Inter;
+letter-spacing: 0px;
+color: #2A2A2A;
+opacity: 1;
+}
+.MuiDialog-paperWidthSm{
+margin-bottom: 30% !important;
+}
+@media (min-width: 1023px){
+  .MuiDialog-paperWidthSm{
   display: none !important;
+ 
 }
+} 
+ /* .MuiDialog-paperWidthSm{
+  display: none !important;
+} */
   
 /* .proposalList-footer-div{
     margin-top:780px ;
@@ -1588,6 +1660,45 @@ color: #F43D3D;
 opacity: 1;
 margin-left: 143px;
 width: 1002px;
+}
+.star{
+  color: #F43D3D;
+}
+.proposal-creation{
+  display: flex;
+    justify-content: center;
+   
+    font: normal normal normal 14px/17px Inter;
+    letter-spacing: 0px;
+    color: #2a2a2a;
+    font-weight: 600;
+}
+.confirm-transaction{
+  display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    font: normal normal normal 14px/17px Inter;
+    letter-spacing: 0px;
+    color: #4B4B4B;
+
+}
+.loader-spin{
+  border: 3px solid #FFFFFF;
+    border-top-color: #2358E5;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 75px;
+    height: 64px;
+    width: 64px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 .details {
   height: 30px;

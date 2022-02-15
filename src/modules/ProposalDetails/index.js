@@ -11,6 +11,7 @@ import {abi as proposalContractAbi} from "../../common/abis/proposalContractAbi.
 import {castVotingProposal, getTotalVotingAddress} from "../../services/proposalService";
 import {getSignedUrlService} from "../../services/fileUploaderService";
 import moment from "moment";
+import {abi as masterContractAbi} from "../../common/abis/masterContractAbi.json";
 
 export default class ProposalDetails extends BaseComponent {
     constructor(props) {
@@ -21,8 +22,12 @@ export default class ProposalDetails extends BaseComponent {
             isButtonClicked: false,
             open: false,
             isAllowedToVoting: false,
-            proposalDocumentsUrl:[],
+            proposalDocumentsUrl: [],
             copied: "",
+            open1: false,
+            open2: false,
+            yesVotersList:[],
+            noVotersList:[]
         };
     }
 
@@ -31,52 +36,77 @@ export default class ProposalDetails extends BaseComponent {
         this.isUserAllowedForVoting()
     }
 
-    isUserAllowedForVoting = ()=>{
-
+    isUserAllowedForVoting = () => {
         if (window.ethereum) {//the error line
             window.web3 = new Web3(window.ethereum);
-        
             try {
-              window.ethereum.enable();
+                window.ethereum.enable();
 
-        let web3;
-        web3 = new Web3(window.web3.currentProvider);
-        console.log(window.web3.currentProvider);
-        window.ethereum.enable();
-        web3.eth.getAccounts().then(async accounts => {
-            if (!accounts || !accounts.length) {
-                Utils.apiFailureToast("Wallet is not connected")
-                return;
-            }
-            const addresses = await getTotalVotingAddress();
-            let isAllowedToVoting = false
-            addresses.dataList.map(address => {
-                if (address.address.toLowerCase() === accounts[0].toLowerCase()) {
-                    if (address.permission.allowVoting === true) {
-                        this.setState({isAllowedToVoting: true})
+                let web3;
+                web3 = new Web3(window.web3.currentProvider);
+                console.log(window.web3.currentProvider);
+                window.ethereum.enable();
+                web3.eth.getAccounts().then(async accounts => {
+                    if (!accounts || !accounts.length) {
+                        Utils.apiFailureToast("Wallet is not connected")
+                        return;
                     }
-                }
-            })
-        });
+                    const addresses = await getTotalVotingAddress();
+                    let isAllowedToVoting = false
+                    addresses.dataList.map(address => {
+                        if (address.address.toLowerCase() === accounts[0].toLowerCase()) {
+                            if (address.permission.allowVoting === true) {
+                                this.setState({isAllowedToVoting: true})
+                            }
+                        }
+                    })
+                });
 
-    } catch (err) {
-        alert("Something went wrong.");
-      }
-      }
-        
-       else {
-        Utils.apiFailureToast("Please install XDCPay extension");
-      }
+            } catch (err) {
+                alert("Something went wrong.");
+            }
+        } else {
+            Utils.apiFailureToast("Please install XDCPay extension");
+        }
     }
 
     getProposalDetails = async () => {
         const address = this.props.location.pathname.replace("/proposal-details/", "");
-        let [error, proposalDetail] = await Utils.parseResponse(ProposalService.getProposalDetail(address, {})).catch(err => {
+        let [error, proposalDetailFromDB] = await Utils.parseResponse(ProposalService.getProposalDetail(address, {})).catch(err => {
             Utils.apiFailureToast("Unable to fetch proposal details");
         });
+
+        let web3;
+        web3 = new Web3(window.web3.currentProvider);
+        window.ethereum.enable();
+        const contract = new web3.eth.Contract(
+            masterContractAbi,
+            "0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
+        );
+        const accounts = await web3.eth.getAccounts();
+        const tx = {from: accounts[0]}
+        const createProposalResponse = await contract.methods.get_proposal_details_by_proposal_address(address).call(tx).catch((err) => {
+            console.log(err, "====");
+        });
+        const proposalDetail = {...proposalDetailFromDB};
+        if (!createProposalResponse)
+            return;
+
+        proposalDetail.proposalTitle = createProposalResponse[0];
+        proposalDetail.startDate = Number(createProposalResponse[1]);
+        proposalDetail.endDate = Number(createProposalResponse[2]);
+        proposalDetail.description = createProposalResponse[4];
+        proposalDetail.proposalDocuments = JSON.parse(createProposalResponse[5]);
+        proposalDetail.pollingContract = proposalDetailFromDB.pollingContract;
+        proposalDetail.status = createProposalResponse[6];
+        proposalDetail.createdOn = proposalDetailFromDB.createdOn;
+        proposalDetail.updatedOn = proposalDetailFromDB.updatedOn;
+        if (!proposalDetail.proposalDocuments[0])
+            proposalDetail.proposalDocuments = []
+
         if (proposalDetail.endDate > Date.now()) {
             proposalDetail.status = "Open"
-            const isVoted = await this.isAlreadyVoted(proposalDetail)
+            const isVoted = await this.isAlreadyVoted(address)
             if (isVoted)
                 this.setState({isButtonClicked: true})
         } else {
@@ -86,55 +116,64 @@ export default class ProposalDetails extends BaseComponent {
         this.setState({proposalAddress: address, proposalDetails: proposalDetail, proposalDocumentsUrl})
     }
 
-    getSignedUrls = async (documents)=>{
+    getSignedUrls = async (documents) => {
         const responseObj = [];
-        for(let index=0; index< documents.length; index++){
+        for (let index = 0; index < documents.length; index++) {
             const url = await getSignedUrlService(documents[index]).catch(err => console.log(err))
             responseObj.push(url);
         }
         return responseObj
     }
 
-    isAlreadyVoted = async (proposalDetail) => {
-        if (window.ethereum) {//the error line
+    isAlreadyVoted = async (proposalAddress) => {
+        if (window.ethereum) {
             window.web3 = new Web3(window.ethereum);
-        
             try {
-              window.ethereum.enable();
+                window.ethereum.enable();
+                let web3;
+                web3 = new Web3(window.web3.currentProvider);
+                const accounts = await web3.eth.getAccounts()
+                if (!accounts || !accounts.length) {
+                    return;
+                }
+                const contract = new web3.eth.Contract(
+                    proposalContractAbi,
+                    proposalAddress
+                );
+                const tx = {from: accounts[0]}
+                const yesVotersList = await contract.methods.get_yes_voter_list().call(tx).catch((err) => {
+                    console.log(err, "====");
+                });
+                const noVotersList = await contract.methods.get_no_voter_list().call(tx).catch((err) => {
+                    console.log(err, "====");
+                });
+                if ((!yesVotersList || !yesVotersList.length) && (!noVotersList || !noVotersList.length))
+                    return false;
 
-        let web3;
-        web3 = new Web3(window.web3.currentProvider);
-        window.ethereum.enable();
-        const accounts = await web3.eth.getAccounts()
-        if (!accounts || !accounts.length) {
-            // Utils.apiFailureToast("Please login to XDCPay extension");
-            return;
+                this.setState({yesVotersList, noVotersList})
+                let isVoted = false;
+                yesVotersList.map(address => {
+                    if (accounts[0] === address)
+                        isVoted = true
+                })
+
+                noVotersList.map(address => {
+                    if (accounts[0] === address)
+                        isVoted = true
+                })
+                return isVoted;
+
+            } catch (err) {
+                alert("Something went wrong.");
+            }
+        } else {
+            Utils.apiFailureToast("Please install XDCPay Extension");
         }
-        let isVoted = false;
-        proposalDetail.yesVotes.map(vote => {
-            if (accounts[0] === vote.voterAddress)
-                isVoted = true
-        })
-
-        proposalDetail.noVotes.map(vote => {
-            if (accounts[0] === vote.voterAddress)
-                isVoted = true
-        })
-        return isVoted;
-
-    } catch (err) {
-        alert("Something went wrong.");
-      }
-      }
-        
-       else {
-        Utils.apiFailureToast("Please install XDCPay Extension");
-      }
     }
 
     handleClickVoter = () => {
-        history.push("/voterslist/"+this.state.proposalAddress);
-        window.scrollTo(0,0);
+        history.push("/voterslist/" + this.state.proposalAddress);
+        window.scrollTo(0, 0);
     };
 
     backButton = () => {
@@ -142,64 +181,66 @@ export default class ProposalDetails extends BaseComponent {
     };
 
     castProposalVote = async (isSupport) => {
-
-        
-        
-      
-        if(!this.state.isAllowedToVoting) {
-            Utils.apiFailureToast("You are not allowed to vote")
+        if (!this.state.isAllowedToVoting) {
+            this.setState({open1: true})
+            // Utils.apiFailureToast("You are not allowed to vote")
             return;
         }
         // else if(Date.now()>moment(proposalDetails.startDate).format("DD MMMM YYYY"))
         // {
         //     Utils.apiFailureToast("You are not allowed to vote",ProposalDetails.startDate)
         // }
-        if(this.state.proposalDetails.startDate<=Date.now()){
+        if (this.state.proposalDetails.startDate <= Date.now()) {
 
-        let web3;
-        web3 = new Web3(window.web3.currentProvider);
-        console.log(window.web3.currentProvider);
-        window.ethereum.enable();
-        web3.eth.getAccounts().then(async (accounts) => {
-            if (!accounts || !accounts.length) {
-                Utils.apiFailureToast("Please login to XDCPay extension");
-                return;
-            }
-            const contract = new web3.eth.Contract(proposalContractAbi, this.state.proposalAddress);
-            const acc = accounts[0];
-            return new Promise(async (resolve, reject)=>{
-                const castProposalResponse = await contract.methods.
-                cast_vote_for_proposal(isSupport, Date.now()).
-                send({from: acc}, async (err, transactionHash) => {
-                    if (err || !transactionHash)
-                        return;
-                    const res = await this.getTransactionReceipt(transactionHash);
-                    if (res) {
-                        const reqData = {
-                            pollingContract: this.state.proposalAddress,
-                            voterAddress: acc,
-                            support: isSupport
-                        };
-                        this.addProposalToDatabase(reqData)
-                        this.setState({isButtonClicked:true})
-                        resolve(true)
-                        this.setState({open:true})
-                      
-                    }
-                }).catch((err) => {reject(err)});
-                
-            })
-            
-        });
-    }
-    else{
-        Utils.apiFailureToast("Voting starts from "+moment(this.state.proposalDetails.startDate).format("DD MMMM YYYY"));
-    }
+            let web3;
+            web3 = new Web3(window.web3.currentProvider);
+            console.log(window.web3.currentProvider);
+            window.ethereum.enable();
+            web3.eth.getAccounts().then(async (accounts) => {
+                if (!accounts || !accounts.length) {
+                    Utils.apiFailureToast("Please login to XDCPay extension");
+                    return;
+                }
+                const contract = new web3.eth.Contract(proposalContractAbi, this.state.proposalAddress);
+                const acc = accounts[0];
+                return new Promise(async (resolve, reject) => {
+                    const castProposalResponse = await contract.methods.cast_vote_for_proposal(isSupport, Date.now()).send({from: acc}, async (err, transactionHash) => {
+                        if (err || !transactionHash)
+                            return;
+                        const res = await this.getTransactionReceipt(transactionHash);
+                        if (res) {
+                            const reqData = {
+                                pollingContract: this.state.proposalAddress,
+                                voterAddress: acc,
+                                support: isSupport
+                            };
+                            this.addProposalToDatabase(reqData)
+                            this.setState({isButtonClicked: true})
+                            resolve(true)
+                            this.setState({open: true})
+
+                        }
+                    }).catch((err) => {
+                        reject(err)
+                    });
+
+                })
+
+            });
+        } else {
+            this.setState({open2: true})
+            // Utils.apiFailureToast("Voting starts from "+moment(this.state.proposalDetails.startDate).format("DD MMMM YYYY"));
+        }
     };
-     handleClose = () => {
+    handleClose = () => {
         this.setState({open: false})
     }
-
+    handleClose1 = () => {
+        this.setState({open1: false})
+    }
+    handleClose2 = () => {
+        this.setState({open2: false})
+    }
     delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
     getTransactionReceipt = async (hash) => {
@@ -221,7 +262,6 @@ export default class ProposalDetails extends BaseComponent {
         this.getProposalDetails()
     }
 
-    
 
     render() {
         return <ProposalComponent
@@ -230,6 +270,8 @@ export default class ProposalDetails extends BaseComponent {
             backButton={this.backButton}
             castProposalVote={this.castProposalVote}
             handleClose={this.handleClose}
+            handleClose1={this.handleClose1}
+            handleClose2={this.handleClose2}
         />
     }
 }

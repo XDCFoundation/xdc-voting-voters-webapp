@@ -40,7 +40,7 @@ export default class Dashboard extends BaseComponent {
   getProposalList = async (skip=0) => {
     const reqObj = {"skip": skip, "limit": this.state.limit}
     let [error, proposals] = await Utils.parseResponse(proposalList(reqObj));
-    this.setState({proposalsList: proposals.proposalList})
+    this.setState({proposalsList: proposals?.proposalList})
     // this.setState({ isLoader: false });
   }
 

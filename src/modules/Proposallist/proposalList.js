@@ -393,7 +393,7 @@ console.log(props.handlePageChange,"page1")
                         <RowSpacing>
                           
                           <div className={classes.mobilemedia}>
-                            <Content>{!show==1?data.pollingContract:title}</Content>
+                            <Content>{data.pollingContract}</Content>
                             {status === "Open" ? (
                                <Row className="justify-content-end">
                                <div

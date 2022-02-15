@@ -90,8 +90,7 @@ export default class Createproposal extends BaseComponent {
     };
 
     createProposal = async (reqObj) => {
-        console.log(reqObj);
-       
+        this.setState({open:true})
         if (
             !reqObj.proposalTitle ||
             !reqObj.startDate ||
@@ -110,7 +109,7 @@ export default class Createproposal extends BaseComponent {
             const acc = accounts[0];
             const contract = new web3.eth.Contract(
                 masterContractAbi,
-                "0x85fe7c9734585a494b03c1a450ab0e9b79557cc4"
+                "0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
             );
             contract.methods
                 .create_New_Proposal(
@@ -121,23 +120,25 @@ export default class Createproposal extends BaseComponent {
                     reqObj.description,
                     JSON.stringify(this.state.proposalDocuments),
                     false,
-                    acc,
-                   
+                    acc
                 )
                 .send({from: acc}, async (err, transactionHash) => {
                     if (err || !transactionHash) {
+                        this.setState({open:false})
                         return;
                     }
                     const res = await this.getTransactionReceipt(transactionHash, reqObj);
                     if (res) {
+                        this.setState({open:true})
                         const addresses = await this.getContractAddresses();
                         this.addProposalInDatabase(reqObj, addresses[addresses.length - 1]);
-                        // this.setState({open:true})
-                        Utils.apiSuccessToast("Proposal Created Successfully");
+
+                        // Utils.apiSuccessToast("Proposal Created Successfully");
                         
                         // this.setState({open:true})
                         history.push('/');
                     }
+                    this.setState({open:true})
                 })
             // .then(async (res) => {
             //   console.log(res);
@@ -145,7 +146,8 @@ export default class Createproposal extends BaseComponent {
             //   const addresses = await this.getContractAddresses();
             //   this.addProposalInDatabase(reqObj, addresses[addresses.length - 1]);
             // });
-            Utils.apiSuccessToast("Proposal creation is in progress");
+            // Utils.apiSuccessToast("Proposal creation is in progress");
+            // this.setState({open:true})
         });
     };
     handleClose = () => {
@@ -169,17 +171,14 @@ export default class Createproposal extends BaseComponent {
 
     addProposalInDatabase = async (reqObj, _contractAddress) => {
         const obj = {
-            proposalTitle: reqObj.proposalTitle,
+            // proposalTitle: reqObj.proposalTitle,
             startDate: new Date(reqObj.startDate).getTime(),
             endDate: new Date(reqObj.endDate).getTime(),
             addedOn: Date.now(),
-            description: reqObj.description,
-            proposalDocuments: this.state.proposalDocuments,
+            // description: reqObj.description,
+            // proposalDocuments: this.state.proposalDocuments,
             pollingContract: _contractAddress,
-            status: false,
-            
-            // utcTime:reqObj.utcTime,
-            // localTime:reqObj.localTime
+            // status: false,
         };
         const response = await addNewProposal(obj).catch((err) => {
             console.log(err);
@@ -193,14 +192,21 @@ export default class Createproposal extends BaseComponent {
         window.ethereum.enable();
         const contract = new web3.eth.Contract(
             masterContractAbi,
-            "0x85fe7c9734585a494b03c1a450ab0e9b79557cc4"
+            "0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
         );
+        const accounts = await web3.eth.getAccounts()
+        if (!accounts || !accounts.length) {
+            // Utils.apiFailureToast("Please login to XDCPay extension");
+            return;
+        }
+        const tx = {from: accounts[0]};
         const createProposalResponse = await contract.methods
             .created_Proposal_list()
-            .call()
+            .call(tx)
             .catch((err) => {
                 console.log(err, "====");
             });
+        console.log("createProposalResponse ",createProposalResponse)
         return createProposalResponse;
     };
 
