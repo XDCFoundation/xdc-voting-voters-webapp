@@ -577,63 +577,44 @@ const [fileError,setFileError]=useState("")
                     <Column>
                       {props.state.proposalDocuments.length > 0
                         ? props.state.proposalDocuments.map((doc, index) => {
-
                           const onchangebutton=(e)=>{
                             var x=document.getElementById("fileButton" + index);
                             setFileError("")
-
                             try{
-                           
-                              
                             var filesize=e.target.files[0].size;
                             const filename=e.target.files[0].name;
                             const fileextenstion=filename.split('.').pop().toLowerCase();
-                            
-
                             const originalfileSize=Math.round(filesize/1024);
-                            const extensionArray=['pdf','docx' ,'doc','xslx','rtf','xls']; 
-                            
-                            console.log(filesize,fileextenstion,originalfileSize,extensionArray);
-                            var flag=false;
-                              
+                            const extensionArray=['pdf','docx' ,'doc','xslx','rtf','xls'];
+                            let flag=false;
                             if(x.value.length==0 ){
-                              
                               Utils.apiFailureToast("No File is Selected Please Select a File.");
-                             
                             }
                             else{
-                              for(var i=0;i<extensionArray.length;i++){
-
+                              for(let i=0;i<extensionArray.length;i++){
                                 if(fileextenstion.localeCompare(extensionArray[i])==0){
                                   flag=true;
                                 }
                               }
-                              
                               if(flag == false)
-                              setFileError("File Extension Must be Docx , Doc, Pdf, Xslx,Rtf,Xls");
+                                 setFileError("File Extension Must be Docx , Doc, Pdf, Xslx,Rtf,Xls");
                               // Utils.apiFailureToast("File Extension Must be Docx , Doc, Pdf, Xslx,Rtf,Xls");
                               else if(originalfileSize > 5120)  {
                                 setFileError("File Size Must be Less than 5MB")
                                 // Utils.apiFailureToast("File Size Must be Less than 5MB");
                               }
-                              
-                             
-  
                               if(flag){
                               extensionArray.map((data)=>{
                                 if((originalfileSize < 5120) && (fileextenstion == data 
                                   )){
-                                  console.log(index, "+++");
                                   props.uploadFileToS3(
                                     e.target.files[0],
                                     index
                                    );
                                    flag=false;
-                                   
                                   }
                               })}
                             }
-                            
                           }catch(e){
                             console.log(e);
                           }
@@ -642,8 +623,6 @@ const [fileError,setFileError]=useState("")
                             var x=document.getElementById("fileButton" + index);
                             x.value=null;
                           }
-                          
-                          
                             return (
                               <div className="display-flex m-t-4">
                                 <div
@@ -657,7 +636,7 @@ const [fileError,setFileError]=useState("")
                                     style={{ textAlign: "left" }}
                                     className="p-l-sm p-t-sm"
                                   >
-                                    {doc}
+                                    {props.state.proposalDocumentsName[index]}
                                   </div>
 
                                   <input

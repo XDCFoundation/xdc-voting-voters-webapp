@@ -26,8 +26,8 @@ export default class ProposalDetails extends BaseComponent {
             copied: "",
             open1: false,
             open2: false,
-            yesVotersList:[],
-            noVotersList:[]
+            yesVotersList: [],
+            noVotersList: []
         };
     }
 
@@ -70,11 +70,20 @@ export default class ProposalDetails extends BaseComponent {
         }
     }
 
-    getProposalDetails = async () => {
-        const address = this.props.location.pathname.replace("/proposal-details/", "");
+    fetchProposalDetailsFromDB = async (address) => {
         let [error, proposalDetailFromDB] = await Utils.parseResponse(ProposalService.getProposalDetail(address, {})).catch(err => {
             Utils.apiFailureToast("Unable to fetch proposal details");
+            throw err
         });
+        return proposalDetailFromDB;
+    }
+
+    getProposalDetails = async () => {
+        const address = this.props.location.pathname.replace("/proposal-details/", "");
+        // let [error, proposalDetailFromDB] = await Utils.parseResponse(ProposalService.getProposalDetail(address, {})).catch(err => {
+        //     Utils.apiFailureToast("Unable to fetch proposal details");
+        // });
+        const proposalDetailFromDB = await this.fetchProposalDetailsFromDB(address).catch(err => {throw err})
 
         let web3;
         web3 = new Web3(window.web3.currentProvider);
@@ -112,8 +121,12 @@ export default class ProposalDetails extends BaseComponent {
         } else {
             this.setState({isButtonClicked: true})
         }
-        const proposalDocumentsUrl = await this.getSignedUrls(proposalDetail.proposalDocuments)
-        this.setState({proposalAddress: address, proposalDetails: proposalDetail, proposalDocumentsUrl})
+        // const proposalDocumentsUrl = await this.getSignedUrls(proposalDetail.proposalDocuments)
+        this.setState({
+            proposalAddress: address,
+            proposalDetails: proposalDetail,
+            proposalDocumentsUrl: proposalDetail.proposalDocuments
+        })
     }
 
     getSignedUrls = async (documents) => {
@@ -183,15 +196,9 @@ export default class ProposalDetails extends BaseComponent {
     castProposalVote = async (isSupport) => {
         if (!this.state.isAllowedToVoting) {
             this.setState({open1: true})
-            // Utils.apiFailureToast("You are not allowed to vote")
             return;
         }
-        // else if(Date.now()>moment(proposalDetails.startDate).format("DD MMMM YYYY"))
-        // {
-        //     Utils.apiFailureToast("You are not allowed to vote",ProposalDetails.startDate)
-        // }
         if (this.state.proposalDetails.startDate <= Date.now()) {
-
             let web3;
             web3 = new Web3(window.web3.currentProvider);
             console.log(window.web3.currentProvider);
@@ -217,8 +224,7 @@ export default class ProposalDetails extends BaseComponent {
                             this.addProposalToDatabase(reqData)
                             this.setState({isButtonClicked: true})
                             resolve(true)
-                            this.setState({open: true})
-
+                            // this.setState({open: true})
                         }
                     }).catch((err) => {
                         reject(err)
@@ -259,7 +265,11 @@ export default class ProposalDetails extends BaseComponent {
 
     addProposalToDatabase = async (reqData) => {
         const response = await castVotingProposal(reqData).catch(err => console.log(err));
-        this.getProposalDetails()
+        const address = this.props.location.pathname.replace("/proposal-details/", "");
+        const fetchProposalDetailsFromDB = await this.fetchProposalDetailsFromDB(address)
+        const newDetails = {...this.state.proposalDetails, ...fetchProposalDetailsFromDB}
+        this.setState({proposalDetails: newDetails})
+        this.setState({isButtonClicked: true})
     }
 
 
