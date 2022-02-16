@@ -2,10 +2,10 @@ import {httpService, httpServiceForFileUpload} from "../utility/httpService";
 import {httpConstants} from "../constants";
 
 export async function uploadFile(fileObj) {
-    const url = process.env.REACT_APP_FILE_UPLOADER_SVC + "upload-file"
+    const url = process.env.REACT_APP_VOTING_SRV_DNS + "addDocs"
     return httpServiceForFileUpload(httpConstants.METHOD_TYPE.POST, {}, fileObj, url)
         .then((response) => {
-            if (!response.success || !response.responseData || response.responseData.length === 0)
+            if (!response.success || !response.responseData)
                 return Promise.reject();
             return Promise.resolve(response.responseData);
         })
