@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Column, Row } from "simple-flexbox";
-import Jazzicon from 'react-jazzicon';
+import Jazzicon from "react-jazzicon";
 import "../../assets/styles/custom.css";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -18,7 +18,7 @@ import styled from "styled-components";
 import { Tooltip } from "@material-ui/core";
 
 // import { CopyToClipboard } from "react-copy-to-clipboard";
-import {CopyToClipboard} from 'react-copy-to-clipboard'; 
+import { CopyToClipboard } from "react-copy-to-clipboard";
 // import {ClipBoard} from "./clipBoard";
 // import Tooltip from "@material-ui/core/Tooltip";
 
@@ -31,16 +31,15 @@ function removeTags(str) {
 }
 
 export default function ProposalDetails(props) {
-
   // const [copy, setCopy]=useState("copy")
-  const [copyCheck, setCopyCheck]=useState("")
+  const [copyCheck, setCopyCheck] = useState("");
   // const Clipboard = () => {
   //   const [copyText, setCopyText] = useState('');
-  
+
   //   const handleCopyText = (e) => {
   //      setCopyText(e.target.value);
-  //   } 
-    
+  //   }
+
   //   const copyToClipboard = () => {
   //      copy(copyText);
   //      alert(`You have copied "${copyText}"`);
@@ -55,9 +54,9 @@ export default function ProposalDetails(props) {
   // const handleToastClose=()=>{
   //   setOpen(false)
   // }
-  const startDate=props.state.proposalDetails.startDate;
-  const endDate=props.state.proposalDetails.endDate;
-  console.log(startDate,endDate);
+  const startDate = props.state.proposalDetails.startDate;
+  const endDate = props.state.proposalDetails.endDate;
+  console.log(startDate, endDate);
 
   // const countdown=(endtime,starttime)=>{
   //   const gap=endtime-start;
@@ -76,7 +75,7 @@ export default function ProposalDetails(props) {
   // }
   // countdown(endDate,startDate);
 
-const [copiedtext, setCopiedText]=useState("copy")
+  const [copiedtext, setCopiedText] = useState("copy");
   let totalVotes = [];
   if (
     props.state &&
@@ -95,11 +94,8 @@ const [copiedtext, setCopiedText]=useState("copy")
     totalVotes = [...totalVotes, ...props.state.proposalDetails.noVotes];
   // if (totalVotes.length > 6) totalVotes.length = 6;
 
-  
- 
   return (
     <div>
-      
       <div className="header-div-all">
         {" "}
         <HeaderMain />
@@ -108,17 +104,29 @@ const [copiedtext, setCopiedText]=useState("copy")
       <Column>
         <div className="all-div-proposal">
           <ColumnDiv>
-            <div className="back-image" >
-              <img onClick={props.backButton} src="/images/Back-Arrow.svg" style={{ width: "21px",height:"18px",marginTop:"3px",cursor:"pointer" }} />
-              <div className="back-button" onClick={props.backButton} >Back</div>
+            <div className="back-image">
+              <img
+                onClick={props.backButton}
+                src="/images/Back-Arrow.svg"
+                style={{
+                  width: "21px",
+                  height: "18px",
+                  marginTop: "3px",
+                  cursor: "pointer",
+                }}
+              />
+              <div className="back-button" onClick={props.backButton}>
+                Back
+              </div>
             </div>
             <div className="recent-proposal-div-proposal">
               <Row className="recent-add-div-proposal">
                 <Column>
                   <Row className="date-proposal">
                     Posted on{" "}
-                    {moment(props.state.proposalDetails.createdOn).format("DD MMMM YYYY")}
-                    
+                    {moment(props.state.proposalDetails.createdOn).format(
+                      "DD MMMM YYYY"
+                    )}
                   </Row>
                   <Row className="name-proposal">
                     {props.state.proposalDetails.proposalTitle}{" "}
@@ -141,21 +149,22 @@ const [copiedtext, setCopiedText]=useState("copy")
                         src={require("../../assets/styles/images/Time-Active.svg")}
                       ></img>
                       &nbsp;
-                      <Tooltip placement="top" title={moment(props.state.proposalDetails.endDate).format("DD MMMM YYYY")}>
-                      <span>
-                    
-                        
-                        {props.state.proposalDetails.endDate ? (
-                          
-                          <Countdown
-                            className="count-down"
-                            date={props.state.proposalDetails.endDate}
-                          />
-                          
-                        ) : (
-                          ""
-                        )}
-                      </span>
+                      <Tooltip
+                        placement="top"
+                        title={moment(
+                          props.state.proposalDetails.endDate
+                        ).format("DD MMMM YYYY")}
+                      >
+                        <span>
+                          {props.state.proposalDetails.endDate ? (
+                            <Countdown
+                              className="count-down"
+                              date={props.state.proposalDetails.endDate}
+                            />
+                          ) : (
+                            ""
+                          )}
+                        </span>
                       </Tooltip>
                     </span>
                     <span>Remaining</span>
@@ -178,30 +187,42 @@ const [copiedtext, setCopiedText]=useState("copy")
                           {removeTags(props.state.proposalDetails.description)}
                         </Row>
                       </Column>
-                        {props.state && props.state.proposalDetails && props.state.proposalDetails.proposalDocuments
-                        && props.state.proposalDetails.proposalDocuments.length
-                        && props.state.proposalDetails.proposalDocuments.map((doc,index) => {
+                      {props.state &&
+                        props.state.proposalDetails &&
+                        props.state.proposalDetails.proposalDocuments &&
+                        props.state.proposalDetails.proposalDocuments.length &&
+                        props.state.proposalDetails.proposalDocuments.map(
+                          (doc, index) => {
                             return (
-                              <a href={props.state.proposalDocumentsUrl[index]} target="_blank !important">
-                            <Row className="doc-1">
-                                                <span>
-                                                    {" "}
-                                                    <img className="attachment-logo" src={require("../../assets/styles/images/Attachment.svg")}/>
-                                                </span>
-                           
-                                    <span className="attachment-heading">{doc.replace('images/','')}</span>
-                               
-                                <span>
-                            <img
-                                className="external-image-proposal"
-                                src={require("../../assets/styles/images/External-Link.svg")}
-                            ></img>
-                          </span>
-                          </Row>
-                          </a>
-                          )
-                        })}
+                              <a
+                                href={props.state.proposalDocumentsUrl[index]}
+                                target="_blank !important"
+                              >
+                                <Row className="doc-1">
+                                  <span>
+                                    {" "}
+                                    <img
+                                      className="attachment-logo"
+                                      src={require("../../assets/styles/images/Attachment.svg")}
+                                    />
+                                  </span>
 
+                                  <span className="attachment-heading">
+                                    {" "}
+                                    {doc.replace("images/", "")}{" "}
+                                  </span>
+
+                                  <span>
+                                    <img
+                                      className="external-image-proposal"
+                                      src={require("../../assets/styles/images/External-Link.svg")}
+                                    ></img>
+                                  </span>
+                                </Row>
+                              </a>
+                            );
+                          }
+                        )}
                     </Grid>
                   </Grid>
                 </Row>
@@ -260,13 +281,25 @@ const [copiedtext, setCopiedText]=useState("copy")
                     <div className="display-flex">
                       <div className="box-support"></div>
                       <div className="spt">
-                         Support {" "}({Math.ceil(((props?.state?.proposalDetails?.yesVotes?.length)/(totalVotes.length))*100)}%)
+                        Support (
+                        {Math.ceil(
+                          (props?.state?.proposalDetails?.yesVotes?.length /
+                            totalVotes.length) *
+                            100
+                        )}
+                        %)
                       </div>
                     </div>
                     <div className="display-flex">
                       <div className="box-reject"></div>
                       <div className="rjt">
-                         Reject {" "}({Math.floor(((props?.state?.proposalDetails?.noVotes?.length)/(totalVotes.length))*100)}%)
+                        Reject (
+                        {Math.floor(
+                          (props?.state?.proposalDetails?.noVotes?.length /
+                            totalVotes.length) *
+                            100
+                        )}
+                        %)
                       </div>
                     </div>
                   </div>
@@ -278,18 +311,25 @@ const [copiedtext, setCopiedText]=useState("copy")
                 <div className="div2-voters">
                   <div className="voter-heading">Voters</div>
                   <div className="voter-number">
-                  {totalVotes.length}  {totalVotes.length>1?"Votes":"Vote"} 
+                    {totalVotes.length}{" "}
+                    {totalVotes.length > 1 ? "Votes" : "Vote"}
                   </div>
                 </div>
                 <div className="griddiv-voter">
-               
-                  
-                   
-                  {totalVotes && totalVotes.length>=1 ? totalVotes.map((row, index) => {
-                   if (totalVotes.length > 5) totalVotes.length = 5;
-                    return AddressComponent(row, index);
-                  }):(<><div style={{display:"flex",justifyContent:"center"}}>No Votes Casted</div></>)
-                }
+                  {totalVotes && totalVotes.length >= 1 ? (
+                    totalVotes.map((row, index) => {
+                      if (totalVotes.length > 5) totalVotes.length = 5;
+                      return AddressComponent(row, index);
+                    })
+                  ) : (
+                    <>
+                      <div
+                        style={{ display: "flex", justifyContent: "center" }}
+                      >
+                        No Votes Casted
+                      </div>
+                    </>
+                  )}
                   {/*{props?.state?.proposalDetails?.noVotes?.map((row, index) => {*/}
                   {/*    return AddressComponent(row)*/}
                   {/*})}*/}
@@ -306,12 +346,12 @@ const [copiedtext, setCopiedText]=useState("copy")
                   <div className="polling-heading">Polling Contract</div>
                   <div className="address-number">
                     {proposalAddressComponent(props.state.proposalAddress)}
-                    
+
                     <span>
-                    {/* <button onClick={copyToClipboard}>
+                      {/* <button onClick={copyToClipboard}>
                Copy to Clipboard
           </button> */}
-                      
+
                       {/* <React.Fragment>
                        <CopyToClipboard
                     text={props.state.proposalAddress}
@@ -330,7 +370,6 @@ const [copiedtext, setCopiedText]=useState("copy")
             <div className="recent-add-div-proposal2"></div>
           </Column>
         </div>
-       
       </Column>
 
       <Snackbar
@@ -349,13 +388,17 @@ const [copiedtext, setCopiedText]=useState("copy")
             </span>
             <span>
               <div className="toast-message">
-              <span>
-              Your vote is successfully casted
-                </span>
-                <span onClick={props.handleClose} style={{float:"right",cursor:"pointer",marginTop:"-8px"}}>
+                <span>Your vote is successfully casted</span>
+                <span
+                  onClick={props.handleClose}
+                  style={{
+                    float: "right",
+                    cursor: "pointer",
+                    marginTop: "-8px",
+                  }}
+                >
                   X
                 </span>
-                
               </div>
               <div className="toast-address">
                 Thank you for your contribution in adding transparency to XDC
@@ -375,19 +418,11 @@ const [copiedtext, setCopiedText]=useState("copy")
       >
         <Alert severity="" className="alert">
           <div className="alert-div">
-            <span className="alert-span">
-            
-            </span>
+            <span className="alert-span"></span>
             <span>
               <div className="toast-message">
-              <span>
-              You are not allowed to vote
-              
-                </span>
-               
-                
+                <span>You are not allowed to vote</span>
               </div>
-              
             </span>
           </div>
         </Alert>
@@ -403,40 +438,38 @@ const [copiedtext, setCopiedText]=useState("copy")
       >
         <Alert severity="" className="alert">
           <div className="alert-div">
-            <span className="alert-span">
-            
-            </span>
+            <span className="alert-span"></span>
             <span>
               <div className="toast-message">
-              <span>
-              Voting starts from {moment(props.state.proposalDetails.startDate).format("DD MMMM YYYY")}
+                <span>
+                  Voting starts from{" "}
+                  {moment(props.state.proposalDetails.startDate).format(
+                    "DD MMMM YYYY"
+                  )}
                 </span>
-               
-                
               </div>
-              
             </span>
           </div>
         </Alert>
       </Snackbar>
       {/* *************** */}
-      <div >
-          <FooterComponent />
-        </div>
+      <div>
+        <FooterComponent />
+      </div>
     </div>
   );
-                    }
-
+}
 
 function AddressComponent(row, index) {
- 
-
   return (
     <>
       <Row className="p-8 justify-content-between">
         <Row>
           <div className="b-r-50">
-            <Jazzicon diameter={20} seed={Math.round(Math.random() * 10000000)} />
+            <Jazzicon
+              diameter={20}
+              seed={Math.round(Math.random() * 10000000)}
+            />
             {/*<img className="voter-image b-r-50" src={row.image}></img>*/}
           </div>
           <div className="fs-15 color-2A2A2A p-l-sm">
@@ -452,54 +485,69 @@ function AddressComponent(row, index) {
   );
 }
 
-
 function proposalAddressComponent(row) {
-  
-  var copy=0;
+  var copy = 0;
   // const copyTo = (row) => {navigator.clipboard.writeText(row);}
   // console.log(row,"row value")
   // console.log(copyTo,"copy value")
 
-      return (
-          <>
-              <Row className="p-8 justify-content-between">
-              <a style={{display:"flex"}} href={"https://observer.xdc.org/address-details/"+row.replace("0x","xdc")} target="_blank"> 
-                  <Row>
-                      <div className="fs-12 color-2A2A2A p-l-sm">
-                          {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
-                      </div>
-                  </Row>
-                
-                  <img
-                            className="external-image-proposal4"
-                            src={require("../../assets/styles/images/External-Link.svg")}
-                        ></img></a>
-                         {/* <p style={{ marginTop: "17px" }}> */}
+  return (
+    <>
+      <Row className="p-8 justify-content-between">
+        <a
+          style={{ display: "flex" }}
+          href={
+            "https://observer.xdc.org/address-details/" +
+            row.replace("0x", "xdc")
+          }
+          target="_blank"
+        >
+          <Row>
+            <div className="fs-12 color-2A2A2A p-l-sm">
+              {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
+            </div>
+          </Row>
 
-                           {/* <button onClick={() => {navigator.clipboard.writeText(row)}}>Copy</button> */}
+          <img
+            className="external-image-proposal4"
+            src={require("../../assets/styles/images/External-Link.svg")}
+          ></img>
+        </a>
+        {/* <p style={{ marginTop: "17px" }}> */}
 
-                           <CopyToClipboard text={row.replace("0x","xdc")} onCopy={()=>console.log('copy to clipboard')}>
-                              {/*  onClick={ async() => {await window.navigator.clipboard.writeText(row)}}  */}
-                              <img style={{height:"35px",width:"40px",marginTop:"-9px",
-                              // marginTop:"-6px",
-                           cursor:"pointer"}} src={require("../../assets/styles/images/copy1.jpg")}></img>
-                           </CopyToClipboard>
-                         
-                          
-                           {/* <button 
+        {/* <button onClick={() => {navigator.clipboard.writeText(row)}}>Copy</button> */}
+
+        <CopyToClipboard
+          text={row.replace("0x", "xdc")}
+          onCopy={() => console.log("copy to clipboard")}
+        >
+          {/*  onClick={ async() => {await window.navigator.clipboard.writeText(row)}}  */}
+          <img
+            style={{
+              height: "35px",
+              width: "40px",
+              marginTop: "-9px",
+              // marginTop:"-6px",
+              cursor: "pointer",
+            }}
+            src={require("../../assets/styles/images/copy1.jpg")}
+          ></img>
+        </CopyToClipboard>
+
+        {/* <button 
                                 onClick={() =>  {window.navigator.clipboard.writeText(row)
                                 console.log(copy,"copppppppppppppppppppppppppppppppppppppppp")
                                 }}
                               >
                               {!copy=="0"?"copy":"copied"}
                               </button> */}
-                  {/* <CopyToClipboard
+        {/* <CopyToClipboard
                     text={row}
                     onCopy={() => this.setState({copied: row})}
                   /> */}
-                   {/* { this.state?.copied.length>=1 ? "Copied" : "Copy To Clipboard"} */}
-                   
-                    {/* <Tooltip
+        {/* { this.state?.copied.length>=1 ? "Copied" : "Copy To Clipboard"} */}
+
+        {/* <Tooltip
                       title={
                         
                       }
@@ -515,19 +563,19 @@ function proposalAddressComponent(row) {
                         <i class="fa fa-clone" aria-hidden="true"></i>
                       </button>
                     </Tooltip> */}
-                  {/* </CopyToClipboard> */}
-                {/* </p> */}
-              </Row>
-          </>
-      );
-   }
-  
+        {/* </CopyToClipboard> */}
+        {/* </p> */}
+      </Row>
+    </>
+  );
+}
+
 const ColumnDiv = styled.div`
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
   max-width: 842px;
   @media (min-width: 300px) and (max-width: 1023px) {
-    max-width:none;
+    max-width: none;
   }
 `;

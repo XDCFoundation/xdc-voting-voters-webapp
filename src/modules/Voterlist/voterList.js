@@ -91,7 +91,7 @@ export default function Voterslist(props) {
   //     {
   //       image: "/images/network.svg",
   //       name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-  //       time: "5.25 PM, 2 july",
+  //       time: "5.25 PM, 2 july"
   //     },
   //     {
   //       image: "/images/network.svg",

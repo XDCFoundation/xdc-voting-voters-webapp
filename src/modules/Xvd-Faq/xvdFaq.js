@@ -6,8 +6,8 @@ import "../../assets/styles/custom.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import FooterComponent from "../footer/footerComponent";
-import { history } from "../../managers/history";
 import { ClickAwayListener } from "@material-ui/core";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,9 +52,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Xvdgovernance() {
+export default function Xvdfaq() {
+  const histor = useHistory();
   const backButton = () => {
-    history.push("/");
+    histor.goBack();
+    //history.push("/");
   };
   const Click = () => {
     // window.scrollerTop(0,0);
@@ -144,26 +146,9 @@ export default function Xvdgovernance() {
             </div>
             <Spacing>
               <Container>
-                <Heading>Know about XDC Governance</Heading>
+                <Heading>FAQs</Heading>
               </Container>
             </Spacing>
-
-            <SelectBoxDiv>
-              <SelectContainer>
-                <SelectOption
-                  onChange={(e) => {
-                    onchangeDropdown(e);
-                  }}
-                >
-                  <option value={"#0"}>Introduction</option>
-                  <option value={"#1"}>How voting works</option>
-                  <option value={"#2"}>Voting Wallet Setup</option>
-                  <option value={"#3"}>Off-Chain Governance</option>
-                  <option value={"#4"}>On-chain Governance</option>
-                  <option value={"#5"}>Governance FAQs</option>
-                </SelectOption>
-              </SelectContainer>
-            </SelectBoxDiv>
 
             <Row
               class="xdc-border-top"
@@ -173,47 +158,6 @@ export default function Xvdgovernance() {
               }}
             >
               <Secondcontainer>
-                <Sidemenu>
-                  <Row__>
-                    <Column>
-                      <SectionDiv id="section1">
-                        <H1>
-                          <Anchor href="#0">Introduction</Anchor>
-                        </H1>
-                      </SectionDiv>
-                      <SectionDiv id="section2">
-                        <H2>
-                          <Anchor href="#1">How voting works</Anchor>
-                        </H2>
-                      </SectionDiv>
-                      <SectionDiv id="section3">
-                        <H3>
-                          <Anchor href="#2">Voting Wallet Setup</Anchor>
-                        </H3>
-                      </SectionDiv>
-
-                      <SectionDiv id="section4">
-                        <H4>
-                          <Anchor href="#3">Off-Chain Governance</Anchor>
-                        </H4>
-                      </SectionDiv>
-
-                      <SectionDiv id="section5">
-                        <H5>
-                          <Anchor href="#4" style={{ textDecoration: "none" }}>
-                            On-chain Governance
-                          </Anchor>
-                        </H5>
-                      </SectionDiv>
-                      <SectionDiv id="section6">
-                        <H6>
-                          <Anchor href="#5">Governance FAQs</Anchor>
-                        </H6>
-                      </SectionDiv>
-                    </Column>
-                  </Row__>
-                </Sidemenu>
-
                 <Div>
                   {address.map((data, index) => {
                     return (
@@ -288,45 +232,6 @@ const SubparagraphTwo = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-`;
-
-const SelectBoxDiv = styled.div`
-  border-right: 1px solid rgb(227, 231, 235);
-  border-left: 1px solid rgb(227, 231, 235);
-`;
-
-const SelectContainer = styled.div`
-  // margin-left: 15px;
-  // @media (min-width: 768px) and (max-width: 1024px) {
-  //   display: none;
-  // }
-  @media (min-width: 1024px) {
-    display: none;
-  }
-`;
-const SelectOption = styled.select`
-  border-radius: 4px;
-  padding: 8px;
-
-  background-color: #fffffff;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.19;
-  font-size: 15px;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #e3e7eb;
-  border-radius: 4px;
-  opacity: 1;
-  @media (min-width: 360px) and (max-width: 767px) {
-    width: 90%;
-    margin-left: 15px;
-    margin-bottom: 10px;
-  }
-  @media (min-width: 768px) and (max-width: 1023px) {
-    margin-top: 15px;
-    margin-left: 15px;
-    margin-bottom: 10px;
-  }
 `;
 
 const Row__ = styled.div`

@@ -20,12 +20,11 @@ const useStyles = makeStyles((theme) => ({
 export default function DivBlocksComponent() {
   const viewGovernance = () => {
     history.push("/governance");
-    window.scrollTo(0,0)
-    
+    window.scrollTo(0, 0);
   };
   const viewCommunity = () => {
     history.push("/community");
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
   };
   const viewXdcForm = () => {
     history.push("/");
@@ -34,89 +33,93 @@ export default function DivBlocksComponent() {
 
   return (
     <div>
-    <Div>
-      <Grid item xs={12}>
-        <Grid container spacing={6}>
-          <Grid className={classes.gridOne} item xs={12} sm={6} md={4}>
-            <FirstBlock  onClick={viewGovernance}>
-              <Row
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginBottom: "10px",
-                }}
-               
-              >
-                <Img
-                  className="time-inactive"
-                  src={require("../../assets/styles/images/Group 30.svg")}
-                />
-                <ImgRedirect
-                  src={require("../../assets/styles/images/External-Link.svg")}
-                />
-              </Row>
-              <RowHeading>Know about XDC Governance</RowHeading>
-              <RowSubheading>
-              Learn how XDC maintains the integrity of its global blockchain network.
-              </RowSubheading>
-            </FirstBlock>
-          </Grid>
+      <Div>
+        <Grid item xs={12}>
+          <Grid container spacing={6}>
+            <Grid className={classes.gridOne} item xs={12} sm={6} md={4}>
+              <FirstBlock onClick={viewGovernance}>
+                <Row
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginBottom: "10px",
+                  }}
+                >
+                  <Img
+                    className="time-inactive"
+                    src={require("../../assets/styles/images/Group 30.svg")}
+                  />
+                  <ImgRedirect
+                    src={require("../../assets/styles/images/External-Link.svg")}
+                  />
+                </Row>
+                <RowHeading>Know about XDC Governance</RowHeading>
+                <RowSubheading>
+                  Learn how XDC maintains the integrity of its global blockchain
+                  network.
+                </RowSubheading>
+              </FirstBlock>
+            </Grid>
 
-          <Grid className={classes.gridOne} item xs={12} sm={6} md={4}>
-          <a style={{textDecoration:"none"}} href="https://www.reddit.com/r/XDC_Foundation/" target={"_blank"}> 
-            <SecondBlock  onClick={viewXdcForm}>
-              <Row
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginBottom: "10px",
-                }}
-               
+            <Grid className={classes.gridOne} item xs={12} sm={6} md={4}>
+              <a
+                style={{ textDecoration: "none" }}
+                href="https://www.reddit.com/r/XDC_Foundation/"
+                target={"_blank"}
               >
-                <Img
-                  className="time-inactive"
-                  src={require("../../assets/styles/images/Group 32.svg")}
-                />
-              {/* <a href="https://www.reddit.com/r/xinfin/">  */}
-               <ImgRedirect
-                  src={require("../../assets/styles/images/External-Link.svg")}
-                />
-                {/* </a> */}
-              </Row>
-              <RowHeading>XDC Forum</RowHeading>
-              <RowSubheading>
-              Participate in XDC forums' open discussions and contribute to global blockchain development.
-              </RowSubheading>
-            </SecondBlock>
-            </a>
-          </Grid>
-          <Grid className={classes.gridOne} item xs={12} sm={6} md={4}>
-            <ThirdBlock  onClick={viewCommunity}>
-              <Row
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginBottom: "10px",
-                }}
-               
-              >
-                <Img
-                  className="time-inactive"
-                  src={require("../../assets/styles/images/Community-Tools.svg")}
-                />
-                <ImgRedirect
-                  src={require("../../assets/styles/images/External-Link.svg")}
-                />
-              </Row>
-              <RowHeading>Community Tools</RowHeading>
-              <RowSubheading>
-              Explore and interact with the XDC Network through open community tools.
-              </RowSubheading>
-            </ThirdBlock>
+                <SecondBlock onClick={viewXdcForm}>
+                  <Row
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <Img
+                      className="time-inactive"
+                      src={require("../../assets/styles/images/Group 32.svg")}
+                    />
+                    {/* <a href="https://www.reddit.com/r/xinfin/">  */}
+                    <ImgRedirect
+                      src={require("../../assets/styles/images/External-Link.svg")}
+                    />
+                    {/* </a> */}
+                  </Row>
+                  <RowHeading>XDC Forum</RowHeading>
+                  <RowSubheading>
+                    Participate in XDC forums' open discussions and contribute
+                    to global blockchain development.
+                  </RowSubheading>
+                </SecondBlock>
+              </a>
+            </Grid>
+            <Grid className={classes.gridOne} item xs={12} sm={6} md={4}>
+              <ThirdBlock onClick={viewCommunity}>
+                <Row
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginBottom: "10px",
+                  }}
+                >
+                  <Img
+                    className="time-inactive"
+                    src={require("../../assets/styles/images/Community-Tools.svg")}
+                  />
+                  <ImgRedirect
+                    src={require("../../assets/styles/images/External-Link.svg")}
+                  />
+                </Row>
+                <RowHeading>Community Tools</RowHeading>
+                <RowSubheading>
+                  Explore and interact with the XDC Network through open
+                  community tools.
+                </RowSubheading>
+              </ThirdBlock>
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
-    </Div>
+      </Div>
     </div>
   );
 }
@@ -141,7 +144,7 @@ const FirstBlock = styled.div`
   height: 158px;
   padding: 20px;
   max-width: 380px;
-  cursor:pointer;
+  cursor: pointer;
 `;
 const SecondBlock = styled.div`
   background: #fdfeff 0% 0% no-repeat padding-box;
@@ -151,7 +154,7 @@ const SecondBlock = styled.div`
   height: 158px;
   max-width: 380px;
   padding: 20px;
-  cursor:pointer;
+  cursor: pointer;
 `;
 
 const RowSubheading = styled.div`
@@ -170,7 +173,7 @@ const ThirdBlock = styled.div`
   height: 158px;
   padding: 20px;
   max-width: 380px;
-  cursor:pointer;
+  cursor: pointer;
 `;
 const RowHeading = styled.div`
   display: flex;
