@@ -21,6 +21,7 @@ export async function addNewProposal(reqObj) {
         response.responseData.length === 0
       )
         return Promise.reject();
+        console.log(response.responseData);
       return Promise.resolve(response.responseData);
     })
     .catch(function (err) {

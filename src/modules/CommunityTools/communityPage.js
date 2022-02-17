@@ -169,7 +169,7 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <a href="https://explorer.xinfin.network/home">
+                        <a href="https://observer.xdc.org/">
                           <ImageView src="/images/Block-Explorer.svg" />
                         </a>
                       </RowDiv>
@@ -183,7 +183,7 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <a href="http://stats.xinfin.network:3000/">
+                        <a href="https://stats.xdc.org/">
                           <ImageView src="/images/Network-Stats.svg" />
                         </a>
                       </RowDiv>
@@ -267,7 +267,7 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <a href="https://docs.xinfin.org/">
+                        <a href="https://docs.xdc.org/">
                           <ImageView src="/images/XinFin-Docs.svg" />
                         </a>
                       </RowDiv>

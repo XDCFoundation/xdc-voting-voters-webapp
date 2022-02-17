@@ -1108,7 +1108,8 @@ px
   padding-left: 20px;
   padding-right: 20px;
   margin-top: -112px;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
+  margin-bottom: 93px;
   z-index: 1;
 }
 .input-search {
@@ -1163,9 +1164,9 @@ px
   box-shadow: 0 1px 15px 0 rgb(0 0 0 / 10%);
 }
 .recent-proposal-div-proposal2 {
-  margin-left: 30px;
+  margin-left: 25px;
   width: 100%;
-  /* max-width: 413px; */
+  /* max-width: 413px;  margin-left: 30px;*/
   /* justify-content: center; */
   /* align-items: center; */
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -1173,7 +1174,8 @@ px
   border-radius: 6px;
   opacity: 1;
   box-shadow: 0 1px 15px 0 rgb(0 0 0 / 10%);
-  height: 250px;
+  /* height: 250px; */
+  height: 273px;
   padding: 15px;
   margin-bottom: 30px;
 }
@@ -1182,9 +1184,9 @@ px
   height: 25px;
 }
 .recent-proposal-div-proposal3 {
-  margin-left: 30px;
+  margin-left: 25px;
   width: 100%;
-  /* max-width: 413px; */
+  /* max-width: 413px;  margin-left: 30px; */
   /* height: 370px; */
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
@@ -1207,9 +1209,9 @@ px
   } */
 
 .recent-proposal-div-proposal4 {
-  margin-left: 30px;
+  margin-left: 25px;
   width: 100%;
-  /* max-width: 413px; */
+  /* max-width: 413px;  margin-left: 30px;*/
   height: 50px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
@@ -1255,7 +1257,7 @@ px
   height: 15px;
   margin-left: 10px;
   cursor: pointer;
-  margin-top: 3px;
+  margin-top: -3px;
 }
 .voter-number {
   letter-spacing: 0px;

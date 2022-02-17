@@ -133,7 +133,7 @@ export default class Createproposal extends BaseComponent {
                         this.setState({open:true})
                         const addresses = await this.getContractAddresses();
                         this.addProposalInDatabase(reqObj, addresses[addresses.length - 1]);
-                        
+
                         // Utils.apiSuccessToast("Proposal Created Successfully");
                         
                         // this.setState({open:true})
