@@ -421,7 +421,7 @@ export default function ProposalDetails(props) {
             <span className="alert-span"></span>
             <span>
               <div className="toast-message">
-                <span>You are not allowed to vote</span>
+                <span className="textToast">You are not allowed to vote</span>
               </div>
             </span>
           </div>

@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import FooterComponent from "../footer/footerComponent";
 import { ClickAwayListener } from "@material-ui/core";
 import { useHistory } from "react-router";
+import { history } from "../../managers/history";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,8 +56,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Xvdfaq() {
   const histor = useHistory();
   const backButton = () => {
-    histor.goBack();
-    //history.push("/");
+    //histor.goBack();
+    history.push("/");
   };
   const Click = () => {
     // window.scrollerTop(0,0);
