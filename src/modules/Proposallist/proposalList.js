@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     border: "0px",
     outline: "0px",
     height: "36px",
-    width: "107px",
+    // width: "107px",
     fontFamily: "Inter",
     fontWeight: "500",
     // marginLeft: "8px",
@@ -393,7 +393,7 @@ console.log(props.handlePageChange,"page1")
                         <RowSpacing>
                           
                           <div className={classes.mobilemedia}>
-                            <Content>{data.pollingContract}</Content>
+                            <Content>{ show===1 ? data.title : data.pollingContract }</Content>
                             {status === "Open" ? (
                                <Row className="justify-content-end">
                                <div
@@ -538,7 +538,7 @@ const DatePickerDiv = styled.div`
   width: 237px;
   height: 36px;
   padding-top: 1px;
-}
+
 
   input:focus {
     border: none !important;

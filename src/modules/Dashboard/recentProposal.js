@@ -109,11 +109,8 @@ export default function RecentProposal(props) {
         addresses.dataList.map((address) => {
             if ((address.address.toLowerCase()) === param.toLowerCase()) {
                 setShow(1);
-
-
             }
         });
-
     }
 
     return (
@@ -158,9 +155,9 @@ export default function RecentProposal(props) {
                                                             {formatedTime}
                                                         </Row>
                                                         <Row className="name">
-                                                            {/*{!show==1?*/}
-                                                            {proposal.pollingContract}
-                                                            {/*: proposal["proposalTitle"]}*/}
+                                                            {!show==1?
+                                                            proposal.pollingContract
+                                                            : proposal.title}
                                                         </Row>
                                                         <Row className="status">
                                                             <p>Status: &nbsp;</p>

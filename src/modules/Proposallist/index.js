@@ -7,6 +7,8 @@ import Utils from "../../utility";
 import { proposalList} from "../../services/proposalService";
 import {history} from "../../managers/history";
 import moment from 'moment'
+import Web3 from "web3";
+import {abi as masterContractAbi} from "../../common/abis/masterContractAbi.json";
 
 export default class Listui extends BaseComponent {
 
@@ -29,7 +31,34 @@ export default class Listui extends BaseComponent {
         const reqObj = {"skip": skip, "limit": this.state.limit}
         let [error, proposals] = await Utils.parseResponse(proposalList(reqObj));
         console.log("=== ", proposals)
-        this.setState({proposalsList: proposals.proposalList, totalProposalsCount: proposals.countData})
+        const updatedList = await this.parseProposalList(proposals?.proposalList)
+        this.setState({proposalsList: updatedList, totalProposalsCount: proposals.countData})
+    }
+
+    parseProposalList = async (proposals)=>{
+        for(let index=0; index< proposals.length; index++){
+            proposals[index].title = await this.getProposalTitle(proposals[index].pollingContract)
+        }
+        return proposals;
+    }
+
+    getProposalTitle = async (proposalAddress)=>{
+        let web3;
+        web3 = new Web3(window.web3.currentProvider);
+        window.ethereum.enable();
+        const contract = new web3.eth.Contract(
+            masterContractAbi,
+            "0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
+        );
+        const accounts = await web3.eth.getAccounts();
+        if(!accounts || !accounts.length)
+            return false;
+        const tx = {from: accounts[0]}
+        const createProposalResponse = await contract.methods.get_proposal_details_by_proposal_address(proposalAddress).call(tx).catch((err) => {
+            console.log(err, "====");
+        });
+        console.log("createProposalResponse[0] ",createProposalResponse)
+        return createProposalResponse[0];
     }
 
     searchingProposal = async (e) => {
