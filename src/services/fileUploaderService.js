@@ -3,6 +3,7 @@ import {httpConstants} from "../constants";
 
 export async function uploadFile(fileObj) {
     const url = process.env.REACT_APP_VOTING_SRV_DNS + "addDocs"
+    // const url = "http://localhost:3001/" + "addDocs"
     return httpServiceForFileUpload(httpConstants.METHOD_TYPE.POST, {}, fileObj, url)
         .then((response) => {
             if (!response.success || !response.responseData)

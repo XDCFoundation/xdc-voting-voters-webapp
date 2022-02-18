@@ -78,7 +78,8 @@ export async function getTotalVotesCasted() {
 }
 
 export async function getTotalPassedProposals() {
-  let url = process.env.REACT_APP_GET_TOTAL_PASSED_PROPOSALS;
+  // let url = "http://localhost:3001/" + "getPassedProposal";
+  let url = process.env.REACT_APP_PROPOSAL_SVC + "getPassedProposal";
   // +`?skip=${skip}&limit=${limit}`;
   return httpService(
     httpConstants.METHOD_TYPE.GET,
@@ -175,6 +176,7 @@ export async function getVotePercentageOnProposal(proposalAddress) {
 
 export async function proposalList(reqObj) {
   const url = process.env.REACT_APP_PROPOSAL_SVC + "getProposalList";
+  // const url = "http://localhost:3001/" + "getProposalList";
   return httpService(
     httpConstants.METHOD_TYPE.POST,
     { "Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON },
