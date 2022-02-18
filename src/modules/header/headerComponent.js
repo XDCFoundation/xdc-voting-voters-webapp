@@ -43,8 +43,7 @@ export default function Header(props) {
     const response = await getTotalPassedProposals().catch((err) => {
       console.log(err);
     });
-
-    setGetPassedProposals(2);
+    setGetPassedProposals(response);
   };
 
   const createView = () => {

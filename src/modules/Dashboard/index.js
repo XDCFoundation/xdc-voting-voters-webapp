@@ -45,24 +45,17 @@ export default class Dashboard extends BaseComponent {
     }
 
     getContractAddresses = async () => {
-
         if (window.ethereum) {//the error line
             window.web3 = new Web3(window.ethereum);
-
             try {
                 window.ethereum.enable();
-
                 let web3;
                 web3 = new Web3(window.web3.currentProvider);
-
-                console.log(window.web3.currentProvider);
                 window.ethereum.enable();
                 const contract = new web3.eth.Contract(
                     masterContractAbi,
                     "0xd768065793ab75d9056398c7788b6f7b14121931"
                 );
-
-
                 const createProposalResponse = await contract.methods
                     .created_Proposal_list()
                     .call()
@@ -70,7 +63,6 @@ export default class Dashboard extends BaseComponent {
                         console.log(err, "====");
                     });
                 return createProposalResponse;
-
             } catch (err) {
                 alert("Something went wrong.");
             }
