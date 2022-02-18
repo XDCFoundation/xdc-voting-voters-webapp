@@ -5,8 +5,17 @@ import styled from "styled-components";
 import { emailSubscription } from "../../services/proposalService";
 import Utils from "../../utility";
 import validator from "validator";
+import { history } from "../../managers/history";
 
 export default function FooterComponent(props) {
+  const viewOverview = () => {
+    history.push("/overview");
+    window.scrollTo(0, 0);
+  };
+  const viewFAQs = () => {
+    history.push("/FAQs");
+    window.scrollTo(0, 0);
+  };
   const [addEmail, setAddEmail] = useState("");
 
   const addingEmail = async () => {
@@ -20,9 +29,9 @@ export default function FooterComponent(props) {
     // {
     //   Utils.apiSuccessToast("Email subscribed successfully");
     // }
-    if (error || !addEmail || !(validator.isEmail(addEmail))) {
+    if (error || !addEmail || !validator.isEmail(addEmail)) {
       Utils.apiFailureToast("Please Enter Valid Email");
-    } else{
+    } else {
       Utils.apiSuccessToast("Email subscribed successfully");
     }
   };
@@ -43,32 +52,46 @@ export default function FooterComponent(props) {
           <ColumnSecond>
             <Row className="footer-column-heading">Community</Row>
             <RowTag>
-              <Anchor href="https://discord.com/invite/ndhuU2EEqm" target="_blank">
+              <Anchor
+                href="https://discord.com/invite/ndhuU2EEqm"
+                target="_blank"
+              >
                 Discord
               </Anchor>
             </RowTag>
             <RowTag>
-              <Anchor href="https://github.com/XDCFoundation/" target="_blank">Github</Anchor>
+              <Anchor href="https://github.com/XDCFoundation/" target="_blank">
+                Github
+              </Anchor>
             </RowTag>
             <RowTag>
               <Anchor href="https://twitter.com/XDCFoundation" target="_blank">
                 Twitter
               </Anchor>
             </RowTag>
-            
+
             <RowTag>
-              <Anchor href="https://t.me/xinfintech" target="_blank">Telegram</Anchor>
+              <Anchor href="https://t.me/xinfintech" target="_blank">
+                Telegram
+              </Anchor>
             </RowTag>
             <RowTag>
-              <Anchor href="https://www.reddit.com/r/XDC_Foundation/" target="_blank">Forum</Anchor>
+              <Anchor
+                href="https://www.reddit.com/r/XDC_Foundation/"
+                target="_blank"
+              >
+                Forum
+              </Anchor>
             </RowTag>
           </ColumnSecond>
           <ColumnThird>
             <Row className="footer-column-heading">Governance</Row>
-            <RowTag>Overview </RowTag>
+            <RowTag>
+              <Anchor onClick={viewOverview}>Overview </Anchor>
+            </RowTag>
             <RowTag></RowTag>
             <RowTag>
-              <Anchor >FAQs</Anchor>
+              <Anchor onClick={viewFAQs}>FAQs</Anchor>
             </RowTag>
           </ColumnThird>
           <ColumnFourth class="footer-div-1">
@@ -118,20 +141,33 @@ export default function FooterComponent(props) {
             <ColumnSecond>
               <Row className="footer-column-heading">Community</Row>
               <RowTag>
-                <Anchor href="https://discord.com/invite/ndhuU2EEqm" target="_blank">
+                <Anchor
+                  href="https://discord.com/invite/ndhuU2EEqm"
+                  target="_blank"
+                >
                   Discord
                 </Anchor>
               </RowTag>
               <RowTag>
-                <Anchor href="https://github.com/XDCFoundation/" target="_blank">Github</Anchor>
+                <Anchor
+                  href="https://github.com/XDCFoundation/"
+                  target="_blank"
+                >
+                  Github
+                </Anchor>
               </RowTag>
               <RowTag>
-                <Anchor href="https://twitter.com/XinFin_Official" target="_blank">
+                <Anchor
+                  href="https://twitter.com/XinFin_Official"
+                  target="_blank"
+                >
                   Twitter
                 </Anchor>
               </RowTag>
               <RowTag>
-                <Anchor href="https://t.me/xinfintech" target="_blank">Telegram</Anchor>
+                <Anchor href="https://t.me/xinfintech" target="_blank">
+                  Telegram
+                </Anchor>
               </RowTag>
               <RowTag>
                 {/* <Anchor href="https://discord.com/invite/ndhuU2EEqm"> */}
@@ -141,12 +177,12 @@ export default function FooterComponent(props) {
             </ColumnSecond>
             <ColumnThird>
               <Row className="footer-column-heading">Governance</Row>
-              <RowTag>Overview </RowTag>
+              <RowTag>
+                <Anchor onClick={viewOverview}>Overview </Anchor>
+              </RowTag>
               <RowTag></RowTag>
               <RowTag>
-                <Anchor >
-                  FAQs
-                </Anchor>
+                <Anchor onClick={viewFAQs}>FAQs</Anchor>
               </RowTag>
             </ColumnThird>
           </Div__>
@@ -235,8 +271,8 @@ const Input = styled.input`
   border-radius: 6px;
   opacity: 1;
   font-size: 15px;
-  @media (max-width: 400px){
-    width:300px;
+  @media (max-width: 400px) {
+    width: 300px;
   }
   // width: 100%;
 `;
@@ -284,8 +320,8 @@ const MainContainer = styled.div`
   @media (min-width: 767px) and (max-width: 1440px) {
     max-width: 900px;
     width: 100%;
-    padding-left:17px;
-    padding-right:17px;
+    padding-left: 17px;
+    padding-right: 17px;
   }
 `;
 const Container = styled.div`

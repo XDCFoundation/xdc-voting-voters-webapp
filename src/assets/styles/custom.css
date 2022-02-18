@@ -138,6 +138,9 @@ body {
 .MuiAlert-root{
   display: none ;
 } */
+.textToast{
+  color:black;
+}
 .alert-div {
   display: flex;
 }
