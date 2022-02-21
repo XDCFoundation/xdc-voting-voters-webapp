@@ -104,7 +104,7 @@ body {
   background: url("../../assets/styles/images/Background.png") 0% 0% no-repeat padding-box;
   /* display: flex; */
   opacity: 1;
-  background-size: 100% 423px;
+  background-size: 100% 300px;
   position: relative;
 }
 .back-button {
@@ -421,7 +421,8 @@ body {
   }
 
   .header-div {
-    background: #2049b9 0% 0% no-repeat padding-box;
+    background:  url("../../assets/styles/images/Background.png") 0% 0% no-repeat padding-box;
+    background-size: 100% 668px;
     width: 100%;
     height: 688px !important;
   }
@@ -663,9 +664,10 @@ body {
   }
 
   .header-div {
-    background: #2049b9 0% 0% no-repeat padding-box;
+    background:  url("../../assets/styles/images/Background.png") 0% 0% no-repeat padding-box;
     width: 100%;
     height: 501px;
+    background-size: 100% 501px;
   }
   /* .attachment-heading{
       padding-right: 45%;
