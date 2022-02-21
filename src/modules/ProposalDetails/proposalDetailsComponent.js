@@ -421,7 +421,10 @@ export default function ProposalDetails(props) {
             <span className="alert-span"></span>
             <span>
               <div className="toast-message">
-                <span className="textToast">You are not allowed to vote</span>
+                <span className="textToast">
+                  <img  className="ErrorIcon" src={require("../../assets/styles/images/Error.svg")}></img>
+                  <span style={{marginLeft:"30.53px",marginRight:"60px"}}>You are not allowed to vote</span>
+                  </span>
               </div>
             </span>
           </div>

@@ -336,7 +336,7 @@ const Anchor = styled.a`
   text-decoration: none !important;
   color: black;
   &:hover {
-    // color: unset !important;
+     color: blue !important;
     text-decoration: underline;
   }
 `;
