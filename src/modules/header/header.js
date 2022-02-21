@@ -13,11 +13,20 @@ import blockies from "ethereum-blockies";
 import FooterComponent from "../footer/footerComponent";
 import Jazzicon from "react-jazzicon";
 import Web3Dialog from "./mainDialog";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  Alert: {
+    backgroundColor: "#ffffff !important",
+},
   buttondiv: {
     display: "flex",
     justifyContent: "center",
@@ -43,6 +52,8 @@ function Header() {
   const classes = useStyles();
   const [wallet, setwallet] = useState("");
   const [iconT, setIcon] = useState("");
+const [open5,setOpen5] = useState(false)
+
   useEffect(() => {
     // var body = document.querySelector('body')
     // for(var i = 0; i < 60; i++) {
@@ -125,7 +136,8 @@ function Header() {
 
     let accounts = web3.eth.getAccounts().then((accounts) => {
       if (!accounts || !accounts.length) {
-        Utils.apiFailureToast("Wallet is not connected");
+        // Utils.apiFailureToast("Wallet is not connected");
+        setOpen5(true)
         return;
       }
       console.log("accounts[0] ",accounts[0])
@@ -171,9 +183,13 @@ function Header() {
   const reDirect = () => {
     history.push("/");
   };
+  const closeAlert =()=>{
+    setOpen5(false)
+  }
   return (
     <div>
-  
+     
+   
       <Row className="row-1">
         <Column>
           <Row>
@@ -213,6 +229,57 @@ function Header() {
           </div>
         </Column>
       </Row>
+
+      {/* ************ wallet not connectet *************** */}
+      <Snackbar
+                open={open5}
+                autoHideDuration={3000}
+                anchorOrigin={{vertical: "top", horizontal: "center"}}
+                // onClose={handleClose4}
+            >
+                <Alert severity="" className={classes.Alert}>
+                    <div style={{display: "flex"}}>
+            <span
+                style={{
+                    marginRight: "10px",
+                    marginTop: "-7px",
+                    marginLeft: "-8px",
+                }}
+            >
+              <img
+                  className="done-logo"
+                  style={{height: "24px", width: "24px", marginTop: "10px"}}
+                  src={require("../../assets/styles/images/Error.svg")}
+              ></img>
+            </span>
+                        <span>
+          
+            {/* <div className="unauthorized">Unauthorized</div> */}
+              <div className="unauthorized-message">
+             
+                <span>Wallet is not connected</span>
+               
+              </div>
+              
+              
+            </span>
+                        <span
+                            onClick={closeAlert}
+                            style={{
+                                float: "right",
+                                cursor: "pointer",
+                               marginTop:"-5px",
+                               marginLeft:"15px",
+                                fontWeight: "600"
+                            }}
+                        >
+                  X
+                </span>
+                    </div>
+                </Alert>
+            </Snackbar>
+
+           {/* ////////////////////////////////// */}
     </div>
   );
 }

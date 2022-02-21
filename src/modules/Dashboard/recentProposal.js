@@ -19,7 +19,7 @@ import {Tooltip} from "@material-ui/core";
 import ReactDOM from "react-dom";
 import Web3 from "web3";
 import {getTotalVotingAddress} from "../../services/proposalService";
-
+import Web3Dialog from "../header/mainDialog";
 import HeaderMain from "../header/header";
 
 const GreenLine = styled.div`
@@ -115,6 +115,7 @@ export default function RecentProposal(props) {
 
     return (
         <div>
+            
             <Grid lg={13} className="tablegrid_address">
                 <Grid component={Paper} style={{boxShadow: "0px 0px 0px 0px"}}>
                     <Table
@@ -141,6 +142,8 @@ export default function RecentProposal(props) {
 
                                     return (
                                         <TableRow className="table-mid-line">
+                                            
+                                           
                                             <Row className="table-between">
                                                 <Column>
                                                     <TableCell
@@ -150,7 +153,7 @@ export default function RecentProposal(props) {
 
                                                         {/* <div id="div_create_prop" className="detail-row-hide"> */}
                                                         <Row className="date">
-                                                            Posted on{" "}
+                                                            Posted on{" "} 
                                                             {/* {Utils.epocToPrettyTime(proposal["cretaedOn"])} */}
                                                             {formatedTime}
                                                         </Row>
