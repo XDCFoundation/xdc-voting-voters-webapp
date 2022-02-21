@@ -190,7 +190,7 @@ export default function ProposalDetails(props) {
                       {props.state &&
                         props.state.proposalDetails &&
                         props.state.proposalDetails.proposalDocuments &&
-                        props.state.proposalDetails.proposalDocuments.length &&
+                        props.state.proposalDetails.proposalDocuments.length ?
                         props.state.proposalDetails.proposalDocuments.map(
                           (doc, index) => {
                             return (
@@ -206,7 +206,6 @@ export default function ProposalDetails(props) {
                                       src={require("../../assets/styles/images/Attachment.svg")}
                                     />
                                   </span>
-
                                   <span className="attachment-heading">
                                     {" "}
                                     {doc.replace("images/", "")}{" "}
@@ -222,7 +221,7 @@ export default function ProposalDetails(props) {
                               </a>
                             );
                           }
-                        )}
+                        ):""}
                     </Grid>
                   </Grid>
                 </Row>
