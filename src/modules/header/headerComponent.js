@@ -53,6 +53,7 @@ export default function Header(props) {
   return (
     <div>
       <Column className="header-div">
+      {/* <img  className="ErrorIcon"  style={{width:"55px", height:"55px"}} src={require("../../assets/styles/images/Background.png")}></img> */}
         <div>
           {" "}
           <HeaderMain />{" "}
