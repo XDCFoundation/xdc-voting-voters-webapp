@@ -280,6 +280,13 @@ body {
   font-size: 13px;
   font-family: Inter, sans-serif;
 }
+.unauthorized-message{
+  margin-top: 5px;
+    font: normal normal normal 15px/20px Inter;
+    letter-spacing: 0.58px;
+    color: #2A2A2A;
+    opacity: 1;
+}
 .input-check {
   width: 16px;
   height: 16px;
@@ -300,11 +307,11 @@ body {
 .MuiDialog-paperWidthSm {
   margin-bottom: 30% !important;
 }
-@media (min-width: 1023px) {
+/* @media (min-width: 1023px) {
   .MuiDialog-paperWidthSm {
     display: none !important;
   }
-}
+} */
 /* .MuiDialog-paperWidthSm{
   display: none !important;
 } */

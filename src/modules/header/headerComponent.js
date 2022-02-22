@@ -52,10 +52,12 @@ export default function Header(props) {
   };
   return (
     <div>
+      {window.innerWidth < 1024 ? <Web3Dialog /> : ""}
       <Column className="header-div">
         <div>
           {" "}
           <HeaderMain />{" "}
+          
         </div>
         
         {/* !***********************!  */}
@@ -63,7 +65,8 @@ export default function Header(props) {
         <Row className="row-2">
           <div className="row-2-width">
             <Column className="mid-div">
-              <Row className="xdc-governance">XDC Governance</Row>
+              <Row className="xdc-governance">XDC Governance </Row>
+              
               <Row className="xdc-para">
                 <div className="para-div">
                   Decentralized community for maintaining the integrity of the
@@ -86,7 +89,7 @@ export default function Header(props) {
                 <Row className="mobile-lower-div">
                   <Column className="div-1">
                     <Row className="div-1-row">{getVotesCasted}</Row>
-                    <Row className="div-1-row1">Votes Casted</Row>
+                    <Row className="div-1-row1">Votes Casted </Row>
                   </Column>
                 </Row>
               </Row>
@@ -95,9 +98,11 @@ export default function Header(props) {
         </Row>
        
         <div className="recent-div">
+       
           <div className="recent-proposal-div">
             <Row className="recent-add-div">
-              <Column className="heading">Recent Proposals  </Column>
+              <Column className="heading">Recent Proposals    </Column>
+              
               <Column>
               
                 <div
@@ -105,6 +110,7 @@ export default function Header(props) {
                   id="div_create_prop"
                   className="create-wallet-hide create-wallet"
                 >
+                  
                   <p>Create Proposal</p>
                 </div>
               </Column>
