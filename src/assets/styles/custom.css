@@ -91,7 +91,8 @@ body {
 .header-div {
   width: 100%;
   height: 423px;
-  background: #2049b9 0% 0% no-repeat padding-box;
+  background: url("../../assets/styles/images/Background.png") 0% 0% no-repeat padding-box;
+  background-size: 100% 423px;
   /* display: flex; */
   opacity: 1;
   position: relative;
@@ -99,7 +100,8 @@ body {
 .header-div-all {
   width: 100%;
   height: 300px;
-  background: #2049b9 0% 0% no-repeat padding-box;
+  background: url("../../assets/styles/images/Background.png") 0% 0% no-repeat padding-box;
+  background-size:100% 300px ;
   /* display: flex; */
   opacity: 1;
 
@@ -426,7 +428,8 @@ body {
   }
 
   .header-div {
-    background: #2049b9 0% 0% no-repeat padding-box;
+    background: url("../../assets/styles/images/Background.png") 0% 0% no-repeat padding-box;
+    background-size:100% 688px ;
     width: 100%;
     height: 688px !important;
   }
@@ -668,9 +671,10 @@ body {
   }
 
   .header-div {
-    background: #2049b9 0% 0% no-repeat padding-box;
+    background: url("../../assets/styles/images/Background.png")0% 0% no-repeat padding-box;
+    background-size: 100% 690px;
     width: 100%;
-    height: 501px;
+    height: 690px;
   }
   /* .attachment-heading{
       padding-right: 45%;

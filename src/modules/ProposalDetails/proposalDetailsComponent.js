@@ -193,6 +193,8 @@ export default function ProposalDetails(props) {
                         props.state.proposalDetails.proposalDocuments.length ?
                         props.state.proposalDetails.proposalDocuments.map(
                           (doc, index) => {
+                            if(doc == "0")
+                             return ""
                             return (
                               <a
                                 href={props.state.proposalDocumentsUrl[index]}
