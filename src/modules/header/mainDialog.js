@@ -6,13 +6,19 @@ import styled from "styled-components";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles((theme) => ({
+ 
   add: {
     backgroundColor: "#2149b9",
     marginLeft: "90px",
   },
-dialog:{
-    display:"none !important"
-},
+// dialog:{
+//     display:"none !important"
+// },
+// drawerWidth: {
+//   width: '50%',
+//   ['@media (min-width:780px)']: { // eslint-disable-line no-useless-computed-key
+//     display: 'none !important'
+//   }},
   value: {
     width: "400px !important",
   },
@@ -318,9 +324,9 @@ dialog:{
       padding: "0",
       justifyContent: "center",
     },
-    dialog:{
-       display:"none !important"
-    },
+    // dialog:{
+    //    display:"none !important"
+    // },
     createaccount: {
       color: "#3763dd",
     },
@@ -489,9 +495,9 @@ const CloseIconContainer = styled.div`
 export default function Web3Dialog(props) {
   const [open, setOpen] = React.useState(false);
   // const matches = useMediaQuery('(min-width:600px)');
-  const fullScreen = useMediaQuery('(min-width:600px)');
-  React.useEffect(async() =>  {
-   await mainDialogOpen();
+  // const fullScreen = useMediaQuery('(min-width:600px)');
+  React.useEffect(() =>  {
+    mainDialogOpen();
   }, []);
 
   const classes = useStyles();
@@ -504,8 +510,9 @@ const mainDialogOpen = () => {
 
 
   return (
-    <div className="show">
-      {/* {`(min-width:600px) matches: ${matches}`} */}
+    <div>
+     
+      
     <Dialog
     //   className={classes.dialog + " maxWidth-800"}
       className="dialog-main"
@@ -545,7 +552,7 @@ const mainDialogOpen = () => {
         <div className="dont-message"><input type="checkbox" className="input-check"/><span>Don’t show this message again</span></div>
       </div>
     </Dialog>
-    </div>
+     </div>
   );
 }
 

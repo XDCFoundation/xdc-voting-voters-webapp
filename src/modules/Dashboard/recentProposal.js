@@ -18,8 +18,8 @@ import FooterComponent from "../footer/footerComponent";
 import { Tooltip } from "@material-ui/core";
 import ReactDOM from "react-dom";
 import Web3 from "web3";
-import { getTotalVotingAddress } from "../../services/proposalService";
-
+import {getTotalVotingAddress} from "../../services/proposalService";
+import Web3Dialog from "../header/mainDialog";
 import HeaderMain from "../header/header";
 
 const GreenLine = styled.div`
@@ -52,6 +52,17 @@ export default function RecentProposal(props) {
 
   const [wallet, setwallet] = useState("");
   const [show, setShow] = useState(0);
+  
+  const fetchData = async (param) => {
+    const addresses = await getTotalVotingAddress();
+    let isAllowedToCreateProposal = false;
+    let showOpenProposal = false;
+    addresses.dataList.map((address) => {
+      if (address.address.toLowerCase() === param.toLowerCase()) {
+        setShow(1);
+      }
+    });
+  };
 
   useEffect(() => {
     if (window.ethereum) {
@@ -72,6 +83,7 @@ export default function RecentProposal(props) {
           }
           setwallet(accounts[0]);
           fetchData(accounts[0]);
+          
         });
       } catch (err) {
         alert("Something went wrong.");
@@ -96,80 +108,66 @@ export default function RecentProposal(props) {
     }
   }, []);
 
-  const fetchData = async (param) => {
-    const addresses = await getTotalVotingAddress();
-    let isAllowedToCreateProposal = false;
-    let showOpenProposal = false;
-    addresses.dataList.map((address) => {
-      if (address.address.toLowerCase() === param.toLowerCase()) {
-        setShow(1);
-      }
-    });
-  };
+    return (
+        <div>
+            
+            <Grid lg={13} className="tablegrid_address">
+                <Grid component={Paper} style={{boxShadow: "0px 0px 0px 0px"}}>
+                    <Table
+                        className="table"
+                        aria-label="Whitelisted Addresses"
+                        style={{boxShadow: "0px 0px 0px 0px"}}
+                    >
+                        <TableHead></TableHead>
+                        <TableBody>
+                            {props.state.proposalsList && props.state.proposalsList.length ? (
+                                props.state.proposalsList.map((proposal, index) => {
+                                    let status =
+                                        proposal.endDate > Date.now() ? "Open" : "Closed";
+                                    let formatedTime = moment(proposal.createdOn).format("DD MMMM YYYY");
+                                    const yesVotes = proposal.yesVotes.length;
+                                    const noVotes = proposal.noVotes.length;
+                                    const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
+                                    const noVotesWidth = (100 * noVotes) / (yesVotes + noVotes);
+                                    if (status === "Closed") {
+                                        console.log(proposal.endDate, Date.now(), proposal.timeRemaining, "timing")
+                                        if (yesVotesWidth >= 66) status = "Approved";
+                                        else status = "Rejected";
+                                    }
 
-  return (
-    <div>
-      <Grid lg={13} className="tablegrid_address">
-        <Grid component={Paper} style={{ boxShadow: "0px 0px 0px 0px" }}>
-          <Table
-            className="table"
-            aria-label="Whitelisted Addresses"
-            style={{ boxShadow: "0px 0px 0px 0px" }}
-          >
-            <TableHead></TableHead>
-            <TableBody>
-              {props.state.proposalsList && props.state.proposalsList.length ? (
-                props.state.proposalsList.map((proposal, index) => {
-                  let status =
-                    proposal.endDate > Date.now() ? "Open" : "Closed";
-                  let formatedTime = moment(proposal.createdOn).format(
-                    "DD MMMM YYYY"
-                  );
-                  const yesVotes = proposal.yesVotes.length;
-                  const noVotes = proposal.noVotes.length;
-                  const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
-                  const noVotesWidth = (100 * noVotes) / (yesVotes + noVotes);
-                  if (status === "Closed") {
-                    console.log(
-                      proposal.endDate,
-                      Date.now(),
-                      proposal.timeRemaining,
-                      "timing"
-                    );
-                    if (yesVotesWidth >= 66) status = "Approved";
-                    else status = "Rejected";
-                  }
+                                    return (
+                                        <TableRow className="table-mid-line">
+                                            
+                                           
+                                            <Row className="table-between">
+                                                <Column>
+                                                    <TableCell
+                                                        class="table-cell"
+                                                        style={{border: "none"}}
+                                                    >
 
-                  return (
-                    <TableRow className="table-mid-line">
-                      <Row className="table-between">
-                        <Column>
-                          <TableCell
-                            class="table-cell"
-                            style={{ border: "none" }}
-                          >
-                            {/* <div id="div_create_prop" className="detail-row-hide"> */}
-                            <Row className="date">
-                              Posted on{" "}
-                              {/* {Utils.epocToPrettyTime(proposal["cretaedOn"])} */}
-                              {formatedTime}
-                            </Row>
-                            <Row className="name">
-                              {!show == 1
-                                ? proposal.pollingContract
-                                : proposal.title}
-                            </Row>
-                            <Row className="status">
-                              <p>Status: &nbsp;</p>
-                              <span
-                                className={
-                                  status === "Open"
-                                    ? "fc-blue"
-                                    : status === "Approved"
-                                    ? "fc-green"
-                                    : "fc-red"
-                                }
-                              >
+                                                        {/* <div id="div_create_prop" className="detail-row-hide"> */}
+                                                        <Row className="date">
+                                                            Posted on{" "} 
+                                                            {/* {Utils.epocToPrettyTime(proposal["cretaedOn"])} */}
+                                                            {formatedTime}
+                                                        </Row>
+                                                        <Row className="name">
+                                                            {!show==1?
+                                                            proposal.pollingContract
+                                                            : proposal.title}
+                                                        </Row>
+                                                        <Row className="status">
+                                                            <p>Status: &nbsp;</p>
+                                                            <span
+                                                                className={
+                                                                    status === "Open"
+                                                                        ? "fc-blue"
+                                                                        : status === "Approved"
+                                                                            ? "fc-green"
+                                                                            : "fc-red"
+                                                                }
+                                                            >
                                 {status}
                               </span>
                             </Row>
