@@ -123,7 +123,7 @@ export default class Dashboard extends BaseComponent {
         window.ethereum.enable();
         const accounts = await web3.eth.getAccounts();
         if(!accounts || !accounts.length)
-            return "";
+            return proposals;
         const addresses = await getTotalVotingAddress();
         let isWhiteListed = false;
         for(let index=0; index< addresses.dataList.length; index++){
