@@ -126,10 +126,11 @@ export default class Dashboard extends BaseComponent {
             return "";
         const addresses = await getTotalVotingAddress();
         let isWhiteListed = false;
-        for(let index=0; index< addresses.dataList.length; index){
-            if(addresses.dataList[index].address.toLowerCase() === accounts[0])
+        for(let index=0; index< addresses.dataList.length; index++){
+            if(addresses.dataList[index].address.toLowerCase() === accounts[0].toLowerCase())
                 isWhiteListed = true;
         }
+        console.log("isWhiteListed ",isWhiteListed, accounts[0])
         if(!isWhiteListed)
             return proposals;
         for(let index=0; index< proposals.length; index++){
