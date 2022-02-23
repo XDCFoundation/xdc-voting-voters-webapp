@@ -102,6 +102,7 @@ export default class ProposalDetails extends BaseComponent {
             return;
 
         proposalDetail.proposalTitle = createProposalResponse[0];
+        document.title = proposalDetail.proposalTitle + " | XDC Governance";
         proposalDetail.startDate = Number(createProposalResponse[1]);
         proposalDetail.endDate = Number(createProposalResponse[2]);
         proposalDetail.description = createProposalResponse[4];
