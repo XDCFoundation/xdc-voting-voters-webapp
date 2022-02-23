@@ -512,7 +512,7 @@ export default function Createnewproposal(props) {
 
     };
     if (
-      !reqObj.proposalTitle 
+      !reqObj.proposalTitle
       // !reqObj.startDate ||
       // !reqObj.endDate ||
       // !reqObj.description
@@ -812,7 +812,7 @@ const [fileError,setFileError]=useState("")
         open={props.state.open}
         // autoHideDuration={3000}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        onClose={props.handleClose}
+        // onClose={props.handleClose}
       >
         <Alert severity="" className="alert">
           <div className="alert-div">

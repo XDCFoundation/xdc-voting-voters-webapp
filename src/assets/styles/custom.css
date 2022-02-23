@@ -156,11 +156,11 @@ body {
   margin-right: 30.53;
 }
 .toast-message {
-  color: white;
+  /* color: white; */
   font-weight: 400;
   /* font: normal normal medium 19px/22px Inter; */
   letter-spacing: 0px;
-  color: #ffffff;
+  color: #2a2a2a;
   font-family: "Inter", sans-serif;
   /* font-size: 19px; */
 }
@@ -176,11 +176,11 @@ body {
 }
 .toast-address {
   /* font-size: 16px; */
-  color: white;
+  /* color: white; */
   /* font-weight: 100; */
   /* font: normal normal normal 16px/19px Inter; */
   letter-spacing: 0px;
-  color: #ffffff;
+  color: #2a2a2a;
   font-family: "Inter", sans-serif;
 }
 .alert-span {
