@@ -96,6 +96,8 @@ export default class Dashboard extends BaseComponent {
         this.setState({proposals});
     };
 
+
+
     parseProposalList = async (proposals) => {
         // proposals = proposals.map((proposal) => {
         //     proposal.title = proposal["0"];
@@ -115,6 +117,21 @@ export default class Dashboard extends BaseComponent {
         //     );
         //     return proposal;
         // });
+
+        let web3;
+        web3 = new Web3(window.web3.currentProvider);
+        window.ethereum.enable();
+        const accounts = await web3.eth.getAccounts();
+        if(!accounts || !accounts.length)
+            return "";
+        const addresses = await getTotalVotingAddress();
+        let isWhiteListed = false;
+        for(let index=0; index< addresses.dataList.length; index){
+            if(addresses.dataList[index].address.toLowerCase() === accounts[0])
+                isWhiteListed = true;
+        }
+        if(!isWhiteListed)
+            return proposals;
         for(let index=0; index< proposals.length; index++){
             proposals[index].title = await this.getProposalTitle(proposals[index].pollingContract)
         }
