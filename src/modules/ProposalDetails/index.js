@@ -224,7 +224,7 @@ export default class ProposalDetails extends BaseComponent {
                             this.addProposalToDatabase(reqData)
                             this.setState({isButtonClicked: true})
                             resolve(true)
-                            // this.setState({open: true})
+                            this.setState({open: true})
                         }
                     }).catch((err) => {
                         reject(err)

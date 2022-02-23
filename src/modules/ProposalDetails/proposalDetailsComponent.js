@@ -379,7 +379,30 @@ export default function ProposalDetails(props) {
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         onClose={props.handleClose}
       >
-        <Alert severity="" className="alert">
+         <Alert severity="" className="alert">
+          <div className="alert-div">
+            <span className="alert-span"></span>
+            <span>
+              <div className="toast-message">
+                <span className="textToast">
+                  <img  className="ErrorIcon" src={require("../../assets/styles/images/DONE (1).svg")}></img>
+                  <span style={{marginLeft:"30.53px",marginRight:"60px"}}>Your vote is successfully casted</span>
+                  <span
+                  onClick={props.handleClose}
+                  style={{
+                    float: "right",
+                    cursor: "pointer",
+                    marginTop: "-8px",
+                  }}
+                >
+                  X
+                </span>
+                  </span>
+              </div>
+            </span>
+          </div>
+        </Alert>
+        {/* <Alert severity="" className="alert">
           <div className="alert-div">
             <span className="alert-span">
               <img
@@ -407,7 +430,7 @@ export default function ProposalDetails(props) {
               </div>
             </span>
           </div>
-        </Alert>
+        </Alert> */}
       </Snackbar>
 
       {/* *****************VOting Not Allowed Toast********************* */}
@@ -445,12 +468,19 @@ export default function ProposalDetails(props) {
             <span className="alert-span"></span>
             <span>
               <div className="toast-message">
-                <span>
+              <span className="textToast">
+                  <img  className="ErrorIcon" src={require("../../assets/styles/images/Error.svg")}></img>
+                  <span style={{marginLeft:"30.53px",marginRight:"60px"}}>Voting starts from{" "}
+                  {moment(props.state.proposalDetails.startDate).format(
+                    "DD MMMM YYYY"
+                  )}</span>
+                  </span>
+                {/* <span>
                   Voting starts from{" "}
                   {moment(props.state.proposalDetails.startDate).format(
                     "DD MMMM YYYY"
                   )}
-                </span>
+                </span> */}
               </div>
             </span>
           </div>
