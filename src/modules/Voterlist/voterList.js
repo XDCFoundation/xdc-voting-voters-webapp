@@ -178,7 +178,7 @@ export default function Voterslist(props) {
             </div>
             <Spacing>
               <Container>
-                <Heading>Voters</Heading>
+                <Heading>All Voters</Heading>
               </Container>
               <SecondContainer>
                 <Leftcontainer>{props.state.votes.length} votes</Leftcontainer>

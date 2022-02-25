@@ -21,6 +21,7 @@ import Web3 from "web3";
 import {getTotalVotingAddress} from "../../services/proposalService";
 import Web3Dialog from "../header/mainDialog";
 import HeaderMain from "../header/header";
+import Loader from "../../assets/styles/images/NewLoader.gif";
 
 const GreenLine = styled.div`
   background-color: #3ab70d;
@@ -290,7 +291,8 @@ export default function RecentProposal(props) {
               ) : (
                 <div className="display-flex justify-content-center p-t-50">
                   {" "}
-                  No Record found
+                  <img className="load" src={Loader}/>
+                  {/* No Record found */}
                 </div>
               )}
               <Row onClick={handleView} className="view-all">

@@ -207,7 +207,8 @@ export default class Dashboard extends BaseComponent {
         return (
             <>
                 {this.state.isLoader == false ? (
-                    <img className="load" src={Loader}/>
+                    <div className="display-flex justify-content-center p-t-50"><img className="load" src={Loader}/></div>
+                    
                 ) : (
                     <div>
                         <RecentProposal
