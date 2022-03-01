@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     maxWidth: "66.7%",
     //position: "absolute",
-    marginTop: "-73px",
+    marginTop: "-115px",
     marginBottom: "40px",
     zIndex: "1",
     top: "186px",
@@ -147,6 +147,22 @@ export default function Voterslist(props) {
   // }, []);
 
   // const [address, setAddress] = React.useState([]);
+  let totalVotes = [];
+  if (
+    props.state &&
+    props.state.proposalDetails &&
+    props.state.proposalDetails.yesVotes &&
+    props.state.proposalDetails.yesVotes.length
+  )
+    totalVotes = [...props.state.proposalDetails.yesVotes];
+
+  if (
+    props.state &&
+    props.state.proposalDetails &&
+    props.state.proposalDetails.noVotes &&
+    props.state.proposalDetails.noVotes.length
+  )
+    totalVotes = [...totalVotes, ...props.state.proposalDetails.noVotes];
 
   const classes = useStyles();
   return (
@@ -181,11 +197,11 @@ export default function Voterslist(props) {
                 <Heading>All Voters</Heading>
               </Container>
               <SecondContainer>
-                <Leftcontainer>{props.state.votes.length} votes</Leftcontainer>
+                <Leftcontainer>{totalVotes.length} {totalVotes.length>1?"Votes":"Vote"} </Leftcontainer>
               </SecondContainer>
             </Spacing>
 
-            {props.state.votes.map((data) => {
+            {totalVotes.map((data) => {
               return (
                 <div>
                 <Div>

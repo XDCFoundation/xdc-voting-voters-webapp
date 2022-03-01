@@ -77,7 +77,7 @@ export default function DivBlocksComponent() {
                   >
                     <Img
                       className="time-inactive"
-                      src={require("../../assets/styles/images/Group 32.svg")}
+                      src={require("../../assets/styles/images/Reddit.svg")}
                     />
                     {/* <a href="https://www.reddit.com/r/xinfin/">  */}
                     <ImgRedirect

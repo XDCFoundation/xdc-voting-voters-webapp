@@ -278,7 +278,7 @@ export default function RecentProposal(props) {
                                   </div>{" "}
                                 </Row>
                                 <Row className="vote-number">
-                                  {yesVotes + noVotes} votes
+                                  {yesVotes + noVotes} {(yesVotes+noVotes).length>1?"Votes":"Vote"} 
                                 </Row>
                               </>
                             )}
