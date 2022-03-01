@@ -239,7 +239,7 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <a href="https://chrome.google.com/webstore/detail/xinpay/bocpokimicclpaiekenaeelehdjllofo?hl=en">
+                        <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo">
                           <ImageView src="/images/XinPay.svg" />
                         </a>
                       </RowDiv>
