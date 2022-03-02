@@ -68,39 +68,42 @@ export default function Xvdfaq() {
   React.useEffect(() => {
     let address = [
       {
-        heading: "Introduction",
+        heading: "What is XDC Governance?",
         paragraph:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis dignissim urna, nec semper risus. Sed  elementum eleifend. Proin maximus, eros eget egestas hendrerit, quam tortor tincidunt dui, ut malesuada urna libero in nisl. Fusce non eros eget eros porttitor egestas eu vel magna. Fusce interdum Leo tortor, vel finibus massa dignissim posuere. Nunc quis lectus nec dui pretium bibendum. Cras sodales bibendum neque sit amet ullamcorper. Maecenas in vestibulum nisl. Nulla quis rutrum nisi. Vivamus e get viverra felis. Integer odio diam, posuere a vehicula sed, maximus sed nulla. Fusce sed sollicitudin nisl. Aliquam erat volutpat. Aenean posuere cursus tellus, vel ornare diam accumsan quis..",
-        subparagraphone:
-          " Aliquam dictum sapien mi, at imperdiet mi eleifend vitae. Cras sed vehicula leo, pretium auctor quam. In elementum tincidunt vestibulum. Nullam interdum diam sit amet tortor rhoncus vestibulum. Aenean semper ante ut orci imperdiet auctor. Fusce placerat arcu eu condimentum commodo. Vivamus at nibh purus. Suspendisse potenti. Maecenas efficitur malesuada dapibus. Duis laoreet varius facilisis. Cras commodo neque massa, lacinia dapibus justo pellentesque vitae. Aenean facilisis volutpat risus at auctor",
+          "XDC Governance is a reliable decentralized blockchain-based web app facilitating on-chain voting to XDC stakeholders for extensive decision-making.",
+        
       },
       {
-        heading: "How voting works",
+        heading: "Do I need to log in to access the dApp?",
         paragraph:
-          "Suspendisse sodales posuere urna, sit amet fringilla libero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vestibulum tristique. Vestibulum vestibulum nisl vitae Leo malesuada varius. Aenean tincidunt justo non lectus porta egestas. Ut non malesuada diam, in accumsan elit. Nunc vitae tincidunt ligula. Quisque ultricies dui ut odio maximus pretium. Nam quis tortor justo. Cras ornare, mi id sodales maximus, dolor nunc interdum lacus, a ullamcorper tortor nunc vel eros. Suspendisse gravida sapien et sapien congue, eu interdum risus tristique. Praesent fermentum lorem ipsum, vitae euismod felis hendrerit ac. Nam dignissim dui blandit, consectetur dolor nec, dapibus est. In consectetur orci quam, ut dignissim lacus ultricies vel. Donec posuere ante eget imperdiet sollicitudin. Duis quam tellus, maximus laoreet ante sit amet, euismod pellentesque tellus. Nullam mi erat, finibus vitae fermentum eu, consectetur a tortor. Praesent faucibus eros nec eros faucibus commodo. Nulla a feugiat arcu. Duis et aliquam dui. Aenean fermentum sollicitudin tempus. Nulla tincidunt felis ante, ac commodo nisi fermentum sit amet. Proin pretium metus sed leo dignissim porttitor. Etiam eleifend id odio non dictum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras quis molestie orci. Pellentesque vehicula libero a sem sodales, ac rutrum leo tincidunt. Praesent tempus consequat lectus, vitae bibendum est hendrerit ut. Donec id venenatis massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum at tellus sit amet imperdiet. Vestibulum metus orci, luctus vel blandit gravida, laoreet sit amet nisl. Fusce efficitur lorem in dignissim commodo. Sed eu lorem ac tortor volutpat malesuada id a nibh. Morbi finibus ex sed est rhoncus, eu tempor arcu faucibus. Donec at bibendum metus, eget suscipit metus. Integer vel aliquet lorem. Nullam ex nunc, dictum sit amet turpis non, bibendum finibus orci. Proin et vulputate urna, in maximus lacus.",
-        subparagraphone:
-          "ibus. Cras quis molestie orci. Pellentesque vehicula libero a sem sodales, ac rutrum leo tincidunt. Praesent tempus consequat lectus, vitae bibendum est hendrerit ut. Donec id venenatis massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum at tellus sit amet imperdiet. Vestibulum metus orci, luctus vel blandit gravida, laoreet sit amet nisl. Fusce efficitur lorem in dignissim commodo. Sed eu lorem ac tortor volutpat malesuada id a nibh. Morbi finibus ex sed est rhoncus, eu ",
+          "No, you don’t need to signup or log in to access XDC Governance. However, you’ll need to connect your XDCPay wallet to create proposals and participate in voting.",
+        
       },
       {
-        heading: "Voting Wallet Setup",
+        heading: "How to create a proposal?",
         paragraph:
-          "Suspendisse sodales posuere urna, sit amet fringilla libero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vestibulum tristique. Vestibulum vestibulum nisl vitae Leo malesuada varius. Aenean tincidunt justo non lectus porta egestas. Ut non malesuada diam, in accumsan elit. Nunc vitae tincidunt ligula. Quisque ultricies dui ut odio maximus pretium. Nam quis tortor justo. Cras ornare, mi id sodales maximus, dolor nunc interdum lacus, a ullamcorper tortor nunc vel eros. Suspendisse gravida sapien et sapien congue, eu interdum risus tristique. Praesent fermentum lorem ipsum, vitae euismod felis hendrerit ac. Nam dignissim dui blandit, consectetur dolor nec, dapibus est. In consectetur orci quam, ut dignissim lacus ultricies vel. Donec posuere ante eget imperdiet sollicitudin. Duis quam tellus, maximus laoreet ante sit amet, euismod pellentesque tellus. Nullam mi erat, finibus vitae fermentum eu, consectetur a tortor. Praesent faucibus eros nec eros faucibus commodo. Nulla a feugiat arcu. Duis et aliquam dui. Aenean fermentum sollicitudin tempus. Nulla tincidunt felis ante, ac commodo nisi fermentum sit amet. Proin pretium metus sed leo dignissim porttitor. Etiam eleifend id odio non dictum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras quis molestie orci. Pellentesque vehicula libero a sem sodales, ac rutrum leo tincidunt. Praesent tempus consequat lectus, vitae bibendum est hendrerit ut. Donec id venenatis massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum at tellus sit amet imperdiet. Vestibulum metus orci, luctus vel blandit gravida, laoreet sit amet nisl. Fusce efficitur lorem in dignissim commodo. Sed eu lorem ac tortor volutpat malesuada id a nibh. Morbi finibus ex sed est rhoncus, eu tempor arcu faucibus. Donec at bibendum metus, eget suscipit metus. Integer vel aliquet lorem. Nullam ex nunc, dictum sit amet turpis non, bibendum finibus orci. Proin et vulputate urna, in maximus lacus.",
+          "Once you connect your wallet, click on the Create Proposal button. Enter the required proposal details and submit your proposal.",
       },
       {
-        heading: "Off-chain Governance",
+        heading: "Who can cast votes on proposals?",
         paragraph:
-          "Introduction How voting works Voting Wallet Setup Off-chain Governance On-Chain Governance Governance FAQs",
+          "Only the whitelisted voters can cast their votes on proposals.",
       },
       {
-        heading: "On-Chain Governance",
+        heading: "How can I become a voter?",
         paragraph:
-          " sit amet fringilla libero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vestibulum tristique. Vestibulum vestibulum nisl vitae Leo malesuada varius. Aenean tincidunt justo non lectus porta egestas. Ut non malesuada diam, in accumsan elit. Nunc vitae tincidunt ligula. Quisque ultricies dui ut odio maximus pretium. Nam quis tortor justo. Cras ornare, mi id sodales maximus, dolor nunc interdum lacus, a ullamcorper tortor nunc vel eros. Suspendisse gravida sapien et sapien congue, eu interdum risus tristique. Praesent fermentum lorem ipsum, vitae euismod felis hendrerit ac. Nam dignissim dui blandit, consectetur dolor nec, dapibus est. In consectetur orci quam, ut dignissim lacus ultricies vel. Donec posuere ante eget imperdiet sollicitudin. Duis quam tellus, maximus laoreet ante sit amet, euismod pellentesque tellus. Nullam mi erat, finibus vitae fermentum eu, consectetur a tortor. Praesent faucibus eros nec eros faucibus commodo. Nulla a feugiat arcu. Duis et aliquam dui. Aenean fermentum sollicitudin tempus. Nulla tincidunt felis ante, ac commodo nisi fermentum sit amet. Proin pretium metus sed leo dignissim porttitor. Etiam eleifend id odio non dictum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras quis molestie orci. Pellentesque vehicula libero a sem sodales, ac rutrum leo tincidunt. Praesent tempus consequat lectus, vitae bibendum est hendrerit ut. Donec id venenatis massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum at tellus sit amet imperdiet. Vestibulum metus orci, luctus vel blandit gravida, laoreet sit amet nisl. Fusce efficitur lorem in dignissim commodo. Sed eu lorem ac tortor volutpat malesuada id a nibh. Morbi finibus ex sed est rhoncus, eu tempor arcu faucibus. Donec at bibendum metus, eget suscipit metus. Integer vel aliquet lorem. Nullam ex nunc, dictum sit amet turpis non, bibendum finibus orci. Proin et vulputate urna, in maximus lacus",
+          "Admin will request you to become a voter and add your XDCPay wallet address as a whitelisted voter identity.",
       },
       {
-        heading: "Governance FAQs",
+        heading: "Can I view the list of voters for a particular proposal?",
         paragraph:
-          "bero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vesti",
+          "Yes. Click on the Details button of the particular proposal you want to view the voters’ list. Now, click on “View All Voters” to check out the list of all voters.",
       },
+      {
+      heading:"Will I get alerts for every new proposal created on-chain?",
+      paragraph:
+      "Yes. You need to subscribe by sharing your email address and you’ll never miss any updates from XDC Governance.",
+    }
     ];
 
     setAddress(

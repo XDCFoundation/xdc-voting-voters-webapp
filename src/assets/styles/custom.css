@@ -183,6 +183,10 @@ body {
   color: #2a2a2a;
   font-family: "Inter", sans-serif;
 }
+.list-item{
+  display: list-item !important;
+  margin-left: 20px !important;
+}
 .alert-span {
   margin-right: 10px;
   margin-top: -5px;
@@ -689,7 +693,7 @@ body {
     margin-top: 750px;
   } */
   img.load {
-    margin-left: 20% !important;
+    /* margin-left: 20% !important; */
   }
   .proposalpage-footer {
     margin-top: 450px;
@@ -1834,7 +1838,7 @@ img.load {
   display: flex;
   justify-content: center;
 
-  margin-left: 30%;
+  /* margin-left: 30%; */
 }
 
 .view-all {

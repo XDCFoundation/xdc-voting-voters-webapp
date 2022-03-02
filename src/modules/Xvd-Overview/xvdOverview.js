@@ -68,39 +68,51 @@ export default function Xvdoverview() {
   React.useEffect(() => {
     let address = [
       {
-        heading: "Introduction",
+        heading: "Overview",
         paragraph:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis dignissim urna, nec semper risus. Sed  elementum eleifend. Proin maximus, eros eget egestas hendrerit, quam tortor tincidunt dui, ut malesuada urna libero in nisl. Fusce non eros eget eros porttitor egestas eu vel magna. Fusce interdum Leo tortor, vel finibus massa dignissim posuere. Nunc quis lectus nec dui pretium bibendum. Cras sodales bibendum neque sit amet ullamcorper. Maecenas in vestibulum nisl. Nulla quis rutrum nisi. Vivamus e get viverra felis. Integer odio diam, posuere a vehicula sed, maximus sed nulla. Fusce sed sollicitudin nisl. Aliquam erat volutpat. Aenean posuere cursus tellus, vel ornare diam accumsan quis..",
+          "XDC Governance is the voting dApp that enables the members of the XDC Network to participate in important decisions by conducting fair blockchain-backed voting for every proposal. The application enables users to create proposals and supports on-chain voting. Using Voting dApp, the XDC platform aims to bring transparency and provide fair voting rights to all the network participants.",
         subparagraphone:
-          " Aliquam dictum sapien mi, at imperdiet mi eleifend vitae. Cras sed vehicula leo, pretium auctor quam. In elementum tincidunt vestibulum. Nullam interdum diam sit amet tortor rhoncus vestibulum. Aenean semper ante ut orci imperdiet auctor. Fusce placerat arcu eu condimentum commodo. Vivamus at nibh purus. Suspendisse potenti. Maecenas efficitur malesuada dapibus. Duis laoreet varius facilisis. Cras commodo neque massa, lacinia dapibus justo pellentesque vitae. Aenean facilisis volutpat risus at auctor",
+          " XDC Voting dApp can be used by the decentralized XDC community on two levels, as mentioned below:",
+          subparagraphTwo:
+          "XDC Admin: Using the voting dApp, the XDC Admin can vote, make proposals, add and eliminate to alter the group of whitelisted voters.",
+          subparagraphThree:
+          "Whitelisted Voters/ Masternode Voters: Voters on XDC can make a proposal and cast their votes as per the proposals."
       },
       {
-        heading: "How voting works",
+        heading: "What Integrations does the XDC Voting dApp have?",
         paragraph:
-          "Suspendisse sodales posuere urna, sit amet fringilla libero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vestibulum tristique. Vestibulum vestibulum nisl vitae Leo malesuada varius. Aenean tincidunt justo non lectus porta egestas. Ut non malesuada diam, in accumsan elit. Nunc vitae tincidunt ligula. Quisque ultricies dui ut odio maximus pretium. Nam quis tortor justo. Cras ornare, mi id sodales maximus, dolor nunc interdum lacus, a ullamcorper tortor nunc vel eros. Suspendisse gravida sapien et sapien congue, eu interdum risus tristique. Praesent fermentum lorem ipsum, vitae euismod felis hendrerit ac. Nam dignissim dui blandit, consectetur dolor nec, dapibus est. In consectetur orci quam, ut dignissim lacus ultricies vel. Donec posuere ante eget imperdiet sollicitudin. Duis quam tellus, maximus laoreet ante sit amet, euismod pellentesque tellus. Nullam mi erat, finibus vitae fermentum eu, consectetur a tortor. Praesent faucibus eros nec eros faucibus commodo. Nulla a feugiat arcu. Duis et aliquam dui. Aenean fermentum sollicitudin tempus. Nulla tincidunt felis ante, ac commodo nisi fermentum sit amet. Proin pretium metus sed leo dignissim porttitor. Etiam eleifend id odio non dictum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras quis molestie orci. Pellentesque vehicula libero a sem sodales, ac rutrum leo tincidunt. Praesent tempus consequat lectus, vitae bibendum est hendrerit ut. Donec id venenatis massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum at tellus sit amet imperdiet. Vestibulum metus orci, luctus vel blandit gravida, laoreet sit amet nisl. Fusce efficitur lorem in dignissim commodo. Sed eu lorem ac tortor volutpat malesuada id a nibh. Morbi finibus ex sed est rhoncus, eu tempor arcu faucibus. Donec at bibendum metus, eget suscipit metus. Integer vel aliquet lorem. Nullam ex nunc, dictum sit amet turpis non, bibendum finibus orci. Proin et vulputate urna, in maximus lacus.",
-        subparagraphone:
-          "ibus. Cras quis molestie orci. Pellentesque vehicula libero a sem sodales, ac rutrum leo tincidunt. Praesent tempus consequat lectus, vitae bibendum est hendrerit ut. Donec id venenatis massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum at tellus sit amet imperdiet. Vestibulum metus orci, luctus vel blandit gravida, laoreet sit amet nisl. Fusce efficitur lorem in dignissim commodo. Sed eu lorem ac tortor volutpat malesuada id a nibh. Morbi finibus ex sed est rhoncus, eu ",
+          "The XDC Voting dApp is embedded with two fundamental integrations:",
+        subparagraphTwo:
+          "XDC Blockchain: XDC blockchain, an enterprise-grade hybrid blockchain with delegated Proof-of-Stake consensus, has a testnet called Apothem Network. XDC Voting dApp is integrated with Apothem network to foster data management and support.",
+          subparagraphThree:
+          "XDCPay: The Chrome browser wallet extension, XDCPay, connects the wallet to the XDC dApp and allows you to access the application on your browser.",
+          subparagraphFour:
+          "The XDC Voting dApp will improve the dynamics of decision making, proposal creation and voting for the decentralized XDC community. Every XDC member participating in the voting through this application gets equal voting rights and extensive opportunities to express their views.",
+          subparagraphFive:
+          "The application also uplifts credibility by allowing better decision-making and improving network integrity. XDC voting dApp will maintain, initiate and monitor the on-chain voting and proposal creation.",
+          subparagraphSix:
+          "With such an extensive governance portal, XDC targets maintaining transparency where the admin can vote, add and eliminate any whitelisted voters as per the network’s need."
       },
-      {
-        heading: "Voting Wallet Setup",
-        paragraph:
-          "Suspendisse sodales posuere urna, sit amet fringilla libero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vestibulum tristique. Vestibulum vestibulum nisl vitae Leo malesuada varius. Aenean tincidunt justo non lectus porta egestas. Ut non malesuada diam, in accumsan elit. Nunc vitae tincidunt ligula. Quisque ultricies dui ut odio maximus pretium. Nam quis tortor justo. Cras ornare, mi id sodales maximus, dolor nunc interdum lacus, a ullamcorper tortor nunc vel eros. Suspendisse gravida sapien et sapien congue, eu interdum risus tristique. Praesent fermentum lorem ipsum, vitae euismod felis hendrerit ac. Nam dignissim dui blandit, consectetur dolor nec, dapibus est. In consectetur orci quam, ut dignissim lacus ultricies vel. Donec posuere ante eget imperdiet sollicitudin. Duis quam tellus, maximus laoreet ante sit amet, euismod pellentesque tellus. Nullam mi erat, finibus vitae fermentum eu, consectetur a tortor. Praesent faucibus eros nec eros faucibus commodo. Nulla a feugiat arcu. Duis et aliquam dui. Aenean fermentum sollicitudin tempus. Nulla tincidunt felis ante, ac commodo nisi fermentum sit amet. Proin pretium metus sed leo dignissim porttitor. Etiam eleifend id odio non dictum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras quis molestie orci. Pellentesque vehicula libero a sem sodales, ac rutrum leo tincidunt. Praesent tempus consequat lectus, vitae bibendum est hendrerit ut. Donec id venenatis massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum at tellus sit amet imperdiet. Vestibulum metus orci, luctus vel blandit gravida, laoreet sit amet nisl. Fusce efficitur lorem in dignissim commodo. Sed eu lorem ac tortor volutpat malesuada id a nibh. Morbi finibus ex sed est rhoncus, eu tempor arcu faucibus. Donec at bibendum metus, eget suscipit metus. Integer vel aliquet lorem. Nullam ex nunc, dictum sit amet turpis non, bibendum finibus orci. Proin et vulputate urna, in maximus lacus.",
-      },
-      {
-        heading: "Off-chain Governance",
-        paragraph:
-          "Introduction How voting works Voting Wallet Setup Off-chain Governance On-Chain Governance Governance FAQs",
-      },
-      {
-        heading: "On-Chain Governance",
-        paragraph:
-          " sit amet fringilla libero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vestibulum tristique. Vestibulum vestibulum nisl vitae Leo malesuada varius. Aenean tincidunt justo non lectus porta egestas. Ut non malesuada diam, in accumsan elit. Nunc vitae tincidunt ligula. Quisque ultricies dui ut odio maximus pretium. Nam quis tortor justo. Cras ornare, mi id sodales maximus, dolor nunc interdum lacus, a ullamcorper tortor nunc vel eros. Suspendisse gravida sapien et sapien congue, eu interdum risus tristique. Praesent fermentum lorem ipsum, vitae euismod felis hendrerit ac. Nam dignissim dui blandit, consectetur dolor nec, dapibus est. In consectetur orci quam, ut dignissim lacus ultricies vel. Donec posuere ante eget imperdiet sollicitudin. Duis quam tellus, maximus laoreet ante sit amet, euismod pellentesque tellus. Nullam mi erat, finibus vitae fermentum eu, consectetur a tortor. Praesent faucibus eros nec eros faucibus commodo. Nulla a feugiat arcu. Duis et aliquam dui. Aenean fermentum sollicitudin tempus. Nulla tincidunt felis ante, ac commodo nisi fermentum sit amet. Proin pretium metus sed leo dignissim porttitor. Etiam eleifend id odio non dictum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras quis molestie orci. Pellentesque vehicula libero a sem sodales, ac rutrum leo tincidunt. Praesent tempus consequat lectus, vitae bibendum est hendrerit ut. Donec id venenatis massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum at tellus sit amet imperdiet. Vestibulum metus orci, luctus vel blandit gravida, laoreet sit amet nisl. Fusce efficitur lorem in dignissim commodo. Sed eu lorem ac tortor volutpat malesuada id a nibh. Morbi finibus ex sed est rhoncus, eu tempor arcu faucibus. Donec at bibendum metus, eget suscipit metus. Integer vel aliquet lorem. Nullam ex nunc, dictum sit amet turpis non, bibendum finibus orci. Proin et vulputate urna, in maximus lacus",
-      },
-      {
-        heading: "Governance FAQs",
-        paragraph:
-          "bero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vesti",
-      },
+      // {
+      //   // heading: "Voting Wallet Setup",
+      //   subparagraphFour:
+      //     "",
+      // },
+      // {
+      //   // heading: "Off-chain Governance",
+      //   subparagraphFour:
+      //     "",
+      // },
+      // {
+      //   // heading: "On-Chain Governance",
+      //   subparagraphFour:
+      //     "",
+      // },
+      // {
+      //   heading: "Governance FAQs",
+      //   paragraph:
+      //     "bero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vesti",
+      // },
     ];
 
     setAddress(
@@ -109,6 +121,11 @@ export default function Xvdoverview() {
           heading: object.heading,
           paragraph: object.paragraph,
           subparagraphone: object.subparagraphone,
+          subparagraphTwo:object.subparagraphTwo,
+          subparagraphThree:object.subparagraphThree,
+          subparagraphFour:object.subparagraphFour,
+          subparagraphFive:object.subparagraphFive,
+          subparagraphSix:object.subparagraphSix
         };
       })
     );
@@ -159,18 +176,18 @@ export default function Xvdoverview() {
               }}
             >
               <Secondcontainer>
-                <Div>
+                <Div >
                   {address.map((data, index) => {
                     return (
-                      <SideContainer>
-                        <Column id={index}>
-                          <Row>
-                            <Heading_One id="section1">
+                      <SideContainer >
+                        <Column id={index} >
+                          <Row >
+                            <Heading_One id="section1" >
                               {data.heading}
                             </Heading_One>
                           </Row>
 
-                          <Para_One id="section1">{data.paragraph}</Para_One>
+                          <Para_One id="section1" >{data.paragraph}</Para_One>
                           <SubparagraphOne>
                             {data.subparagraphone}
                           </SubparagraphOne>
@@ -178,7 +195,23 @@ export default function Xvdoverview() {
                           <SubparagraphTwo>
                             {data.subparagraphTwo}
                           </SubparagraphTwo>
-                          <br />
+
+                          <SubparagraphThree>
+                            {data.subparagraphThree}
+                          </SubparagraphThree>
+
+                          <SubparagraphFour>
+                            {data.subparagraphFour}
+                          </SubparagraphFour>
+
+                          <SubparagraphFive>
+                            {data.subparagraphFive}
+                          </SubparagraphFive>
+
+                          <SubparagraphSix>
+                            {data.subparagraphSix}
+                          </SubparagraphSix>
+                          <br  />
                         </Column>
                       </SideContainer>
                     );
@@ -226,6 +259,7 @@ const SubparagraphOne = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
+  margin-bottom:20px;
 `;
 const SubparagraphTwo = styled.span`
   text-align: left;
@@ -233,6 +267,43 @@ const SubparagraphTwo = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
+  margin-bottom:10px;
+  display: list-item;
+    margin-left: 20px;
+`;
+const SubparagraphThree = styled.span`
+  text-align: left;
+  font: normal normal normal 15px/19px Inter;
+  letter-spacing: 0px;
+  color: #2a2a2a;
+  opacity: 1;
+  margin-bottom:60px;
+  display: list-item;
+    margin-left: 20px;
+`;
+const SubparagraphFour = styled.span`
+  text-align: left;
+  font: normal normal normal 15px/19px Inter;
+  letter-spacing: 0px;
+  color: #2a2a2a;
+  opacity: 1;
+  margin-bottom:10px;
+`;
+const SubparagraphFive = styled.span`
+  text-align: left;
+  font: normal normal normal 15px/19px Inter;
+  letter-spacing: 0px;
+  color: #2a2a2a;
+  opacity: 1;
+  margin-bottom:10px;
+`;
+const SubparagraphSix = styled.span`
+  text-align: left;
+  font: normal normal normal 15px/19px Inter;
+  letter-spacing: 0px;
+  color: #2a2a2a;
+  opacity: 1;
+  margin-bottom:10px;
 `;
 
 const Row__ = styled.div`
@@ -354,7 +425,7 @@ const Container = styled.div`
 `;
 const Secondcontainer = styled.div`
   display: flex;
-  height: 770px;
+  // height: 770px;
   float: left;
   width: 100%;
   overflow-y: auto;

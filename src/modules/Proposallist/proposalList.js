@@ -16,6 +16,7 @@ import { Tooltip } from "@material-ui/core";
 import Web3 from "web3";
 import { getTotalVotingAddress } from "../../services/proposalService";
 import Utils from "../../utility";
+import Loader from "../../assets/styles/images/NewLoader.gif";
 
 const useStyles = makeStyles((theme) => ({
   selectOptions: { backgroundColor: "white" },
@@ -478,7 +479,8 @@ console.log(props.handlePageChange,"page1")
               ) : (
                 <div className="display-flex justify-content-center p-t-50">
                   {" "}
-                  No Record found
+                  <img className="load" src={Loader}/>
+                  {/* No Record found */}
                 </div>
               )}
             </Div>
