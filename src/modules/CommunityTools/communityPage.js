@@ -169,7 +169,7 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <a href="https://observer.xdc.org/">
+                        <a href="https://observer.xdc.org/" target="_blank">
                           <ImageView src="/images/Block-Explorer.svg" />
                         </a>
                       </RowDiv>
@@ -183,7 +183,7 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <a href="https://stats.xdc.org/">
+                        <a href="https://stats.xdc.org/" target="_blank">
                           <ImageView src="/images/Network-Stats.svg" />
                         </a>
                       </RowDiv>
@@ -197,7 +197,7 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <a href="https://xinfin.org/setup-masternode.php">
+                        <a href="https://xinfin.org/setup-masternode.php" target="_blank">
                           <ImageView src="/images/Master-Nodes.svg" />
                         </a>
                       </RowDiv>
@@ -211,7 +211,7 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <a href="https://wallet.xinfin.network/#/">
+                        <a href="https://wallet.xinfin.network/#/" target="_blank">
                           <ImageView src="/images/XinPay.svg" />
                         </a>
                       </RowDiv>
@@ -225,7 +225,7 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <a href="https://play.google.com/store/apps/details?id=com.xdcwallet">
+                        <a href="https://play.google.com/store/apps/details?id=com.xdcwallet" target="_blank">
                           <ImageView src="/images/Android-Wallet.svg" />
                         </a>
                       </RowDiv>
@@ -239,7 +239,7 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo">
+                        <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo" target="_blank">
                           <ImageView src="/images/XinPay.svg" />
                         </a>
                       </RowDiv>
@@ -253,7 +253,7 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <a href="https://explorer.xinfin.network/publicAPIDoc">
+                        <a href="https://explorer.xinfin.network/publicAPIDoc" target="_blank">
                           <ImageView src="/images/API-Documents.svg" />
                         </a>
                       </RowDiv>
@@ -267,7 +267,7 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <a href="https://docs.xdc.org/">
+                        <a href="https://docs.xdc.org/" target="_blank">
                           <ImageView src="/images/XinFin-Docs.svg" />
                         </a>
                       </RowDiv>
@@ -281,7 +281,7 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <a href="https://medium.com/xinfin/xinfin-network-presents-one-click-installer-for-blockchain-node-setup-6ab2dce6ddc0">
+                        <a href="https://medium.com/xinfin/xinfin-network-presents-one-click-installer-for-blockchain-node-setup-6ab2dce6ddc0" target="_blank">
                           <ImageView src="/images/One-Click-Install.svg" />
                         </a>
                       </RowDiv>
