@@ -191,6 +191,8 @@ export default class ProposalDetails extends BaseComponent {
     };
 
     backButton = () => {
+      
+      
         history.push("/");
     };
 

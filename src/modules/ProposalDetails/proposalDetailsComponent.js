@@ -16,9 +16,11 @@ import moment from "moment";
 import Countdown from "react-countdown";
 import styled from "styled-components";
 import { Tooltip } from "@material-ui/core";
+import { Redirect } from "react-router";
 
 // import { CopyToClipboard } from "react-copy-to-clipboard";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { history } from "../../managers/history";
 // import {ClipBoard} from "./clipBoard";
 // import Tooltip from "@material-ui/core/Tooltip";
 
@@ -31,6 +33,12 @@ function removeTags(str) {
 }
 
 export default function ProposalDetails(props) {
+
+  
+
+  console.log(moment(props.state.proposalDetails.endDate).format("MM DD YYYY"),"ending")
+  console.log(props.state.proposalDetails.endDate,Date.now(),"ending date")
+  console.log(Date.now(),props.state.proposalDetails.endDate,"ending date new")
   // const [copy, setCopy]=useState("copy")
   const [copyCheck, setCopyCheck] = useState("");
   // const Clipboard = () => {
@@ -58,6 +66,12 @@ export default function ProposalDetails(props) {
   const endDate = props.state.proposalDetails.endDate;
   console.log(startDate, endDate);
 
+
+
+  const Completionist = () => {
+    window.location.href="/";
+  }
+  // <span>You are good to go!</span>;
   // const countdown=(endtime,starttime)=>{
   //   const gap=endtime-start;
   //   const second=1000;
@@ -157,10 +171,17 @@ export default function ProposalDetails(props) {
                       >
                         <span>
                           {props.state.proposalDetails.endDate ? (
+                            
+                            // props.state.proposalDetails.status!="Open"?<Redirect to={'/'} />:
                             <Countdown
                               className="count-down"
+                              
                               date={props.state.proposalDetails.endDate}
-                            />
+                              >
+                              <Completionist />
+                              </Countdown>
+                            
+                            
                           ) : (
                             ""
                           )}
