@@ -40,7 +40,6 @@ const RedLine = styled.div`
 
 export default function RecentProposal(props) {
   const proposalRedirect = (address) => {
-    console.log(address, "addres-detail");
     history.push({
       pathname: `/proposal-details/${address}`,
     });
@@ -53,7 +52,7 @@ export default function RecentProposal(props) {
 
   const [wallet, setwallet] = useState("");
   const [show, setShow] = useState(0);
-  
+
   const fetchData = async (param) => {
     const addresses = await getTotalVotingAddress();
     let isAllowedToCreateProposal = false;
@@ -84,7 +83,7 @@ export default function RecentProposal(props) {
           }
           setwallet(accounts[0]);
           fetchData(accounts[0]);
-          
+
         });
       } catch (err) {
         alert("Something went wrong.");
@@ -109,209 +108,209 @@ export default function RecentProposal(props) {
     }
   }, []);
 
-    return (
-        <div>
-            
-            <Grid lg={13} className="tablegrid_address">
-                <Grid component={Paper} style={{boxShadow: "0px 0px 0px 0px"}}>
-                    <Table
-                        className="table"
-                        aria-label="Whitelisted Addresses"
-                        style={{boxShadow: "0px 0px 0px 0px"}}
-                    >
-                        <TableHead></TableHead>
-                        <TableBody>
-                            {props.state.proposalsList && props.state.proposalsList.length ? (
-                                props.state.proposalsList.map((proposal, index) => {
-                                    let status =
-                                        proposal.endDate > Date.now() ? "Open" : "Closed";
-                                    let formatedTime = moment(proposal.createdOn).format("DD MMMM YYYY");
-                                    const yesVotes = proposal.yesVotes.length;
-                                    const noVotes = proposal.noVotes.length;
-                                    const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
-                                    const noVotesWidth = (100 * noVotes) / (yesVotes + noVotes);
-                                    if (status === "Closed") {
-                                        console.log(proposal.endDate, Date.now(), proposal.timeRemaining, "timing")
-                                        if (yesVotesWidth >= 66) status = "Approved";
-                                        else status = "Rejected";
-                                    }
+  return (
+      <div>
 
-                                    return (
-                                        <TableRow className="table-mid-line">
-                                            
-                                           
-                                            <Row className="table-between">
-                                                <Column>
-                                                    <TableCell
-                                                        class="table-cell"
-                                                        style={{border: "none"}}
-                                                    >
+        <Grid lg={13} className="tablegrid_address">
+          <Grid component={Paper} style={{boxShadow: "0px 0px 0px 0px"}}>
+            <Table
+                className="table"
+                aria-label="Whitelisted Addresses"
+                style={{boxShadow: "0px 0px 0px 0px"}}
+            >
+              <TableHead></TableHead>
+              <TableBody>
+                {props.state.proposalsList ? (
+                    props.state.proposalsList.length ? props.state.proposalsList.map((proposal, index) => {
+                      let status =
+                          proposal.endDate > Date.now() ? "Open" : "Closed";
+                      let formatedTime = moment(proposal.createdOn).format("DD MMMM YYYY");
+                      const yesVotes = proposal.yesVotes.length;
+                      const noVotes = proposal.noVotes.length;
+                      const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
+                      const noVotesWidth = (100 * noVotes) / (yesVotes + noVotes);
+                      if (status === "Closed") {
+                        console.log(proposal.endDate, Date.now(), proposal.timeRemaining, "timing")
+                        if (yesVotesWidth >= 66) status = "Approved";
+                        else status = "Rejected";
+                      }
 
-                                                        {/* <div id="div_create_prop" className="detail-row-hide"> */}
-                                                        <Row className="date">
-                                                            Posted on{" "} 
-                                                            {/* {Utils.epocToPrettyTime(proposal["cretaedOn"])} */}
-                                                            {formatedTime}
-                                                        </Row>
-                                                        <Row className="name">
-                                                            {!show==1?
-                                                            proposal.pollingContract
-                                                            : proposal.title}
-                                                        </Row>
-                                                        <Row className="status">
-                                                            <p>Status: &nbsp;</p>
-                                                            <span
-                                                                className={
-                                                                    status === "Open"
-                                                                        ? "fc-blue"
-                                                                        : status === "Approved"
-                                                                            ? "fc-green"
-                                                                            : "fc-red"
-                                                                }
-                                                            >
+                      return (
+                          <TableRow className="table-mid-line">
+
+
+                            <Row className="table-between">
+                              <Column>
+                                <TableCell
+                                    class="table-cell"
+                                    style={{border: "none"}}
+                                >
+
+                                  {/* <div id="div_create_prop" className="detail-row-hide"> */}
+                                  <Row className="date">
+                                    Posted on{" "}
+                                    {/* {Utils.epocToPrettyTime(proposal["cretaedOn"])} */}
+                                    {formatedTime}
+                                  </Row>
+                                  <Row className="name">
+                                    {!show==1?
+                                        proposal.pollingContract
+                                        : proposal.title}
+                                  </Row>
+                                  <Row className="status">
+                                    <p>Status: &nbsp;</p>
+                                    <span
+                                        className={
+                                          status === "Open"
+                                              ? "fc-blue"
+                                              : status === "Approved"
+                                                  ? "fc-green"
+                                                  : "fc-red"
+                                        }
+                                    >
                                 {status}
                               </span>
-                            </Row>
-                            {status === "Open" ? (
-                              <></>
-                            ) : (
-                              <>
-                                <Row class="poll-ended-mobile">
-                                  {" "}
-                                  <span style={{ marginRight: "5px" }}>
+                                  </Row>
+                                  {status === "Open" ? (
+                                      <></>
+                                  ) : (
+                                      <>
+                                        <Row class="poll-ended-mobile">
+                                          {" "}
+                                          <span style={{ marginRight: "5px" }}>
                                     {" "}
-                                    <img
-                                      style={{
-                                        height: "14px",
-                                        width: "14px",
-                                        marginTop: "-2px",
-                                      }}
-                                      className="time-inactive-1"
-                                      src={require("../../assets/styles/images/Time-Inactive.svg")}
-                                    ></img>
+                                            <img
+                                                style={{
+                                                  height: "14px",
+                                                  width: "14px",
+                                                  marginTop: "-2px",
+                                                }}
+                                                className="time-inactive-1"
+                                                src={require("../../assets/styles/images/Time-Inactive.svg")}
+                                            ></img>
                                   </span>{" "}
-                                  Poll Ended
-                                </Row>
-                              </>
-                            )}
-                          </TableCell>
-                        </Column>
+                                          Poll Ended
+                                        </Row>
+                                      </>
+                                  )}
+                                </TableCell>
+                              </Column>
 
-                        <Column>
-                          <TableCell
-                            className="mobile-div-right"
-                            style={{ border: "none" }}
-                          >
-                            {status === "Open" ? (
-                              <>
-                                <Row class="count-down-mobile">
+                              <Column>
+                                <TableCell
+                                    className="mobile-div-right"
+                                    style={{ border: "none" }}
+                                >
+                                  {status === "Open" ? (
+                                      <>
+                                        <Row class="count-down-mobile">
                                   <span style={{ marginRight: "5px" }}>
                                     {" "}
                                     <img
-                                      style={{
-                                        height: "14px",
-                                        width: "14px",
-                                      }}
-                                      className="m-b-4"
-                                      src={require("../../assets/styles/images/Time-Active.svg")}
+                                        style={{
+                                          height: "14px",
+                                          width: "14px",
+                                        }}
+                                        className="m-b-4"
+                                        src={require("../../assets/styles/images/Time-Active.svg")}
                                     />
                                   </span>
-                                  <Tooltip
-                                    placement="top"
-                                    title={moment(proposal.endDate).format(
-                                      "DD MMMM YYYY"
-                                    )}
-                                  >
-                                    <Span>
-                                      <Countdown
-                                        className="count-down"
-                                        date={proposal.endDate}
+                                          <Tooltip
+                                              placement="top"
+                                              title={moment(proposal.endDate).format(
+                                                  "DD MMMM YYYY"
+                                              )}
+                                          >
+                                            <Span>
+                                              <Countdown
+                                                  className="count-down"
+                                                  date={proposal.endDate}
 
-                                        // 2
-                                      />
-                                      &nbsp;Remaining
-                                    </Span>
-                                  </Tooltip>
-                                </Row>
-                                <Row className="justify-content-end">
-                                  <div
-                                    className={
-                                      show === 1 ? "details" : "details-hide"
-                                    }
-                                    onClick={() =>
-                                      proposalRedirect(
-                                        proposal["pollingContract"]
-                                      )
-                                    }
-                                  >
-                                    Details
-                                  </div>
-                                </Row>
-                                {/* </div> */}
-                              </>
-                            ) : (
-                              <>
-                                <Row className="poll-ended">
-                                  {" "}
-                                  <span style={{ marginRight: "5px" }}>
+                                                  // 2
+                                              />
+                                              &nbsp;Remaining
+                                            </Span>
+                                          </Tooltip>
+                                        </Row>
+                                        <Row className="justify-content-end">
+                                          <div
+                                              className={
+                                                show === 1 ? "details" : "details-hide"
+                                              }
+                                              onClick={() =>
+                                                  proposalRedirect(
+                                                      proposal["pollingContract"]
+                                                  )
+                                              }
+                                          >
+                                            Details
+                                          </div>
+                                        </Row>
+                                        {/* </div> */}
+                                      </>
+                                  ) : (
+                                      <>
+                                        <Row className="poll-ended">
+                                          {" "}
+                                          <span style={{ marginRight: "5px" }}>
                                     {" "}
-                                    <img
-                                      style={{
-                                        height: "14px",
-                                        width: "14px",
-                                        marginTop: "-2px",
-                                      }}
-                                      className="time-inactive"
-                                      src={require("../../assets/styles/images/Time-Inactive.svg")}
-                                    ></img>
+                                            <img
+                                                style={{
+                                                  height: "14px",
+                                                  width: "14px",
+                                                  marginTop: "-2px",
+                                                }}
+                                                className="time-inactive"
+                                                src={require("../../assets/styles/images/Time-Inactive.svg")}
+                                            ></img>
                                   </span>{" "}
-                                  Poll Ended
-                                </Row>
-                                <Row className="percent-line">
-                                  <div className="bar-line">
-                                    <GreenLine
-                                      style={{ width: yesVotesWidth + "%" }}
-                                    ></GreenLine>
-                                    <RedLine
-                                      style={{ width: noVotesWidth + "%" }}
-                                    ></RedLine>
-                                  </div>{" "}
-                                </Row>
-                                <Row className="vote-number">
-                                  {yesVotes + noVotes} {(yesVotes+noVotes).length>1?"Votes":"Vote"} 
-                                </Row>
-                              </>
-                            )}
-                          </TableCell>
-                        </Column>
-                      </Row>
-                    </TableRow>
-                  );
-                })
-              ) : (
-                <div className="display-flex justify-content-center p-t-50">
-                  {" "}
-                  <img className="load" src={Loader}/>
-                  {/* No Record found */}
-                </div>
-              )}
-              <Row onClick={handleView} className="view-all">
-                {props.state.proposalsList.length > 0
-                  ? "View All Proposals"
-                  : ""}
-              </Row>
-            </TableBody>
-          </Table>
+                                          Poll Ended
+                                        </Row>
+                                        <Row className="percent-line">
+                                          <div className="bar-line">
+                                            <GreenLine
+                                                style={{ width: yesVotesWidth + "%" }}
+                                            ></GreenLine>
+                                            <RedLine
+                                                style={{ width: noVotesWidth + "%" }}
+                                            ></RedLine>
+                                          </div>{" "}
+                                        </Row>
+                                        <Row className="vote-number">
+                                          {yesVotes + noVotes} {(yesVotes+noVotes).length>1?"Votes":"Vote"}
+                                        </Row>
+                                      </>
+                                  )}
+                                </TableCell>
+                              </Column>
+                            </Row>
+                          </TableRow>
+                      );
+                    }):<div className="display-flex justify-content-center">No Proposal Found</div>
+                ) : (
+                    <div className="display-flex justify-content-center p-t-50">
+                      {" "}
+                      <img className="load" src={Loader}/>
+                      {/* No Record found */}
+                    </div>
+                )}
+                <Row onClick={handleView} className="view-all">
+                  {props.state.proposalsList.length > 0
+                      ? "View All Proposals"
+                      : ""}
+                </Row>
+              </TableBody>
+            </Table>
+          </Grid>
         </Grid>
-      </Grid>
-      <div>
-        <DivBlocksComponent />
+        <div>
+          <DivBlocksComponent />
+        </div>
+        {/* <div style={{borderTop:"1px solid black"}}></div> */}
+        <div>
+          <FooterComponent />
+        </div>
       </div>
-      {/* <div style={{borderTop:"1px solid black"}}></div> */}
-      <div>
-        <FooterComponent />
-      </div>
-    </div>
   );
 }
 

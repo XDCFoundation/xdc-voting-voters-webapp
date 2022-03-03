@@ -130,7 +130,6 @@ export default class Dashboard extends BaseComponent {
             if(addresses.dataList[index].address.toLowerCase() === accounts[0].toLowerCase())
                 isWhiteListed = true;
         }
-        console.log("isWhiteListed ",isWhiteListed, accounts[0])
         if(!isWhiteListed)
             return proposals;
         for(let index=0; index< proposals.length; index++){
@@ -190,7 +189,7 @@ export default class Dashboard extends BaseComponent {
         window.ethereum.enable();
         const contract = new web3.eth.Contract(
             masterContractAbi,
-            "0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
+            process.env.REACT_APP_MASTER_CONTRACT_ADDRESS//"0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
         );
         const accounts = await web3.eth.getAccounts();
         if(!accounts || !accounts.length)
@@ -200,6 +199,8 @@ export default class Dashboard extends BaseComponent {
             console.log(err, "====");
         });
         console.log("createProposalResponse[0] ",createProposalResponse)
+        if(!createProposalResponse || !createProposalResponse.length)
+            return "";
         return createProposalResponse[0];
     }
 
@@ -208,7 +209,7 @@ export default class Dashboard extends BaseComponent {
             <>
                 {this.state.isLoader == false ? (
                     <div className="display-flex justify-content-center p-t-50"><img className="load" src={Loader}/></div>
-                    
+
                 ) : (
                     <div>
                         <RecentProposal

@@ -105,7 +105,7 @@ export default class Voter extends BaseComponent {
         window.ethereum.enable();
         const contract = new web3.eth.Contract(
             masterContractAbi,
-            "0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
+            process.env.REACT_APP_MASTER_CONTRACT_ADDRESS//"0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
         );
         const accounts = await web3.eth.getAccounts();
         const tx = {from: accounts[0]}
@@ -142,7 +142,7 @@ export default class Voter extends BaseComponent {
             proposalAddress: address,
             proposalDetails: proposalDetail,
             proposalDocumentsUrl: proposalDetail.proposalDocuments
-           
+
         })
     }
 

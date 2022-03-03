@@ -110,7 +110,7 @@ export default class Createproposal extends BaseComponent {
             const acc = accounts[0];
             const contract = new web3.eth.Contract(
                 masterContractAbi,
-                "0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
+                process.env.REACT_APP_MASTER_CONTRACT_ADDRESS//"0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
             );
             contract.methods
                 .create_New_Proposal(
@@ -135,7 +135,7 @@ export default class Createproposal extends BaseComponent {
                         this.addProposalInDatabase(reqObj, addresses[addresses.length - 1]);
 
                         // Utils.apiSuccessToast("Proposal Created Successfully");
-                        
+
                         // this.setState({open:true})
                         history.push('/');
                     }
@@ -193,7 +193,7 @@ export default class Createproposal extends BaseComponent {
         window.ethereum.enable();
         const contract = new web3.eth.Contract(
             masterContractAbi,
-            "0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
+            process.env.REACT_APP_MASTER_CONTRACT_ADDRESS//"0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
         );
         const accounts = await web3.eth.getAccounts()
         if (!accounts || !accounts.length) {

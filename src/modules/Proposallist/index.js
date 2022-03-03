@@ -37,11 +37,6 @@ export default class Listui extends BaseComponent {
     }
 
     parseProposalList = async (proposals)=>{
-        // for(let index=0; index< proposals.length; index++){
-        //     proposals[index].title = await this.getProposalTitle(proposals[index].pollingContract)
-        // }
-        // console.log(proposals,"proposals");
-        // return proposals;
         let web3;
         web3 = new Web3(window.web3.currentProvider);
         window.ethereum.enable();
@@ -62,7 +57,7 @@ export default class Listui extends BaseComponent {
         }
 
         return proposals;
-        
+
     }
 
     getProposalTitle = async (proposalAddress)=>{
@@ -71,7 +66,7 @@ export default class Listui extends BaseComponent {
         window.ethereum.enable();
         const contract = new web3.eth.Contract(
             masterContractAbi,
-            "0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
+            process.env.REACT_APP_MASTER_CONTRACT_ADDRESS//"0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
         );
         const accounts = await web3.eth.getAccounts();
         if(!accounts || !accounts.length)
@@ -132,7 +127,7 @@ export default class Listui extends BaseComponent {
                     proposalRedirect={this.proposalRedirect}
                     onStatusChange={this.onStatusChange}
                     onDateChange={this.onDateChange}
-                    
+
                 />
             </div>
         );

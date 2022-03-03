@@ -173,9 +173,9 @@ const SecondContainer = styled.div`
 
 function ProgressBar() {
   return (
-    <div>
-      <ViewAllProposal name="deepali" />
-    </div>
+      <div>
+        <ViewAllProposal name="deepali" />
+      </div>
   );
 }
 
@@ -183,63 +183,63 @@ export default function ViewAllProposal(props) {
   const backButton = () => {
     history.push("/");
   };
-console.log(props.state.activePage,"page")
-console.log(props.handlePageChange,"page1")
+  console.log(props.state.activePage,"page")
+  console.log(props.handlePageChange,"page1")
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
 
   const [wallet, setwallet] = useState("");
   const [show,setShow]=useState(0);
- 
-  useEffect(() => {
-    
-  if (window.ethereum) {//the error line
-    window.web3 = new Web3(window.ethereum);
 
-    try {
+  useEffect(() => {
+
+    if (window.ethereum) {//the error line
+      window.web3 = new Web3(window.ethereum);
+
+      try {
+        window.ethereum.enable();
+
+        let web3;
+        web3 = new Web3(window.web3.currentProvider);
+        console.log("+++",web3);
+        window.ethereum.enable();
+        const accounts = web3.eth.getAccounts().then((accounts) => {
+          if (!accounts || !accounts.length) {
+            console.log("please login")
+            // Utils.apiFailureToast("Wallet is not connected");
+            return;
+
+          }
+          console.log(accounts[0])
+          setwallet(accounts[0])
+          fetchData(accounts[0]);
+        });
+
+
+      } catch (err) {
+        alert("Something went wrong.");
+      }
+    } else if (window.web3) {
+      window.web3 = new Web3(window.web3.currentProvider);
+      let web3;
+      web3 = new Web3(window.web3.currentProvider);
+      console.log("+++",web3);
       window.ethereum.enable();
 
-    let web3;
-    web3 = new Web3(window.web3.currentProvider);
-    console.log("+++",web3);
-    window.ethereum.enable();
-    const accounts = web3.eth.getAccounts().then((accounts) => {
-      if (!accounts || !accounts.length) {
-        console.log("please login")
-        // Utils.apiFailureToast("Wallet is not connected");
-        return;
-        
-      }
-      console.log(accounts[0])
-      setwallet(accounts[0])
-      fetchData(accounts[0]);
-    });
+      const accounts = web3.eth.getAccounts().then((accounts) => {
+        if (!accounts || !accounts.length) {
+          console.log("please login")
+          // Utils.apiFailureToast("Wallet is not connected");
+          return;
 
-
-  } catch (err) {
-    alert("Something went wrong.");
-  }
-} else if (window.web3) {
-  window.web3 = new Web3(window.web3.currentProvider);
-  let web3;
-  web3 = new Web3(window.web3.currentProvider);
-  console.log("+++",web3);
-  window.ethereum.enable();
-
-  const accounts = web3.eth.getAccounts().then((accounts) => {
-      if (!accounts || !accounts.length) {
-        console.log("please login")
-        // Utils.apiFailureToast("Wallet is not connected");
-        return;
-        
-      }
-      console.log(accounts[0])
-      setwallet(accounts[0])
-      fetchData(accounts[0]);
-    });
-} else {
-  Utils.apiFailureToast("Please install XDCPay extension");
-}
+        }
+        console.log(accounts[0])
+        setwallet(accounts[0])
+        fetchData(accounts[0]);
+      });
+    } else {
+      Utils.apiFailureToast("Please install XDCPay extension");
+    }
 
   }, []);
 
@@ -251,268 +251,268 @@ console.log(props.handlePageChange,"page1")
       if ((address.address.toLowerCase()) === param.toLowerCase()) {
         setShow(1);
 
-      
+
       }
     });
-  
+
   }
 
 
   return (
-    <div>
-      <div className="header-div-all">
-        <HeaderMain />
-      </div>
+      <div>
+        <div className="header-div-all">
+          <HeaderMain />
+        </div>
 
-      <div className={classes.maincontainer}>
-        <div className={classes.root}>
-          <Grid item xs={12}>
-            <div class="back-button-mobile"
-              style={{ marginBottom: "11px" }}
-              
-            >
-              <img onClick={backButton}
-                src="/images/Back-Arrow.svg"
-                style={{
-                  width: "21px",
-                  height: "18px",
-                  marginRight: "8px",
-                  marginBottom: "3px",
-                  cursor:"pointer"
-                }}
-              />
-              <Back onClick={backButton} >Back</Back>
-            </div>
-            <Row className={classes.rowdiv}>
-              <Container>
-                <Heading>All Proposals</Heading>
+        <div className={classes.maincontainer}>
+          <div className={classes.root}>
+            <Grid item xs={12}>
+              <div class="back-button-mobile"
+                   style={{ marginBottom: "11px" }}
 
-                <InputDiv>
-                {/* <img src="images/search.svg"></img> */}
-                  <Input
-                    placeholder="Search"
-                    className={classes.input}
-                    type="text"
-                    onKeyUp={console.log("hello")}
-                    id="proposalInput"
-                    onChange={(e) => {
-                      props.searchingProposal(e);
-                    }}
-                  />
-                </InputDiv>
-              </Container>
+              >
+                <img onClick={backButton}
+                     src="/images/Back-Arrow.svg"
+                     style={{
+                       width: "21px",
+                       height: "18px",
+                       marginRight: "8px",
+                       marginBottom: "3px",
+                       cursor:"pointer"
+                     }}
+                />
+                <Back onClick={backButton} >Back</Back>
+              </div>
+              <Row className={classes.rowdiv}>
+                <Container>
+                  <Heading>All Proposals</Heading>
 
-              <SecondContainer>
-                <SelectBox>
-                  <Row className={classes.row}>
-                    <Column className={classes.styleHead}>Status </Column>
-                    <select
-                      // className={classes.styleContent}
-                      className="select-box"
-                      onChange={props.onStatusChange}
-                    >
-                      <option>All</option>
-                      <option value={"Open"}>Open</option>
-                      <option value={"Closed"}>Closed</option>
-                    </select>
-                  </Row>
-                </SelectBox>
-                <DatePickerDiv>
-                  <DateSpan>Date</DateSpan>
-                  <DatePicker
-                    arrow={true}
-                    format="D MMM YYYY"
-                    onChange={props.onDateChange}
-                    value={value}
-                    range
-                  />
-                  <ArrowImg src="/images/XDC-Dropdown.svg" />
-                </DatePickerDiv>
-              </SecondContainer>
-            </Row>
+                  <InputDiv>
+                    {/* <img src="images/search.svg"></img> */}
+                    <Input
+                        placeholder="Search"
+                        className={classes.input}
+                        type="text"
+                        onKeyUp={console.log("hello")}
+                        id="proposalInput"
+                        onChange={(e) => {
+                          props.searchingProposal(e);
+                        }}
+                    />
+                  </InputDiv>
+                </Container>
 
-            <Div>
-              {props.state.proposalsList &&
-              props.state.proposalsList.length >= 1 ? (
-                props.state.proposalsList.map((data) => {
-                  console.log(data, "data===");
-                  let title = data.proposalTitle;
-                  let status = data.endDate > Date.now() ? "Open" : "Closed";
-                  let formatedTime = moment(data.createdOn).format("DD MMMM YYYY");
-                  const yesVotes = data.yesVotes.length;
-                  const noVotes = data.noVotes.length;
-                  const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
-                  const noVotesWidth = (100 * noVotes) / (yesVotes + noVotes);
+                <SecondContainer>
+                  <SelectBox>
+                    <Row className={classes.row}>
+                      <Column className={classes.styleHead}>Status </Column>
+                      <select
+                          // className={classes.styleContent}
+                          className="select-box"
+                          onChange={props.onStatusChange}
+                      >
+                        <option>All</option>
+                        <option value={"Open"}>Open</option>
+                        <option value={"Closed"}>Closed</option>
+                      </select>
+                    </Row>
+                  </SelectBox>
+                  <DatePickerDiv>
+                    <DateSpan>Date</DateSpan>
+                    <DatePicker
+                        arrow={true}
+                        format="D MMM YYYY"
+                        onChange={props.onDateChange}
+                        value={value}
+                        range
+                    />
+                    <ArrowImg src="/images/XDC-Dropdown.svg" />
+                  </DatePickerDiv>
+                </SecondContainer>
+              </Row>
 
-                  if (status === "Closed") {
-                    if (yesVotesWidth >= 66) status = "Approved";
-                    else status = "Rejected";
-                  }
+              <Div>
+                {props.state.proposalsList ? (
+                    props.state.proposalsList.length >= 1 ? (
+                        props.state.proposalsList.map((data) => {
+                          console.log(data, "data===");
+                          let title = data.proposalTitle;
+                          let status = data.endDate > Date.now() ? "Open" : "Closed";
+                          let formatedTime = moment(data.createdOn).format("DD MMMM YYYY");
+                          const yesVotes = data.yesVotes.length;
+                          const noVotes = data.noVotes.length;
+                          const yesVotesWidth = (100 * yesVotes) / (yesVotes + noVotes);
+                          const noVotesWidth = (100 * noVotes) / (yesVotes + noVotes);
 
-                  return (
-                    <MainContainer isTextArea={true}>
-                      <Column>
-                        <RowSpacing>
-                          <Posted>Posted on &nbsp;{formatedTime}</Posted>
-                          <TimeRemainingDiv>
-                            {status === "Open" ? (
-                              <>
-                              
-                                <Row>
+                          if (status === "Closed") {
+                            if (yesVotesWidth >= 66) status = "Approved";
+                            else status = "Rejected";
+                          }
+
+                          return (
+                              <MainContainer isTextArea={true}>
+                                <Column>
+                                  <RowSpacing>
+                                    <Posted>Posted on &nbsp;{formatedTime}</Posted>
+                                    <TimeRemainingDiv>
+                                      {status === "Open" ? (
+                                          <>
+
+                                            <Row>
                                   <span style={{ marginRight: "5px" }}>
                                     <img
-                                      className="m-b-4"
-                                      src={require("../../assets/styles/images/Time-Active.svg")}
+                                        className="m-b-4"
+                                        src={require("../../assets/styles/images/Time-Active.svg")}
                                     />
                                   </span>
-                                  <Tooltip placement="top" title={moment(data.endDate).format("DD MMMM YYYY")}>
-                                  <Span>
-                                 
-                                    <Countdown
-                                      className="count-down"
-                                      date={data.endDate}
-                                    />
-                                    &nbsp;Remaining
-                                  
-                                  </Span>
-                                  </Tooltip>
-                                </Row>
-                              
-                              
-                              </>
-                            ) : (
-                              
-                              <>
-                              
-                                <ClockImage src="/images/Time-Inactive.svg" />
-                                <PollEnded>Poll Ended</PollEnded>
-                              </>
-                            )}
-                          </TimeRemainingDiv>
-                        </RowSpacing>
-                        
-                        <RowSpacing>
-                          
-                          <div className={classes.mobilemedia}>
-                            <Content>{ show===1 ? data.title : data.pollingContract }</Content>
-                            {status === "Open" ? (
-                               <Row className="justify-content-end">
-                               <div
-                                 className={show===1?"details1": "details-hide"}
-                                 onClick={() =>
-                                   props.proposalRedirect(
-                                     data.pollingContract
-                                   )
-                                 }
-                               >
-                                 Details
-                               </div>
-                             </Row>
+                                              <Tooltip placement="top" title={moment(data.endDate).format("DD MMMM YYYY")}>
+                                                <Span>
 
-                              
-                            ) : (
-                              <PositionDivLine>
-                                <BarLine>
-                                  <RedLine
-                                    style={{ width: noVotesWidth + "%" }}
-                                  ></RedLine>
-                                  <GreenLine
-                                    style={{ width: yesVotesWidth + "%" }}
-                                  ></GreenLine>
-                                </BarLine>
-                              </PositionDivLine>
-                            )}
-                          </div>
-                        </RowSpacing>
-                        <Media_for_container>
-                          <Container>
-                            <Status>&ensp;</Status>
-                            <Open></Open>
-                          
-                          </Container>
+                                                  <Countdown
+                                                      className="count-down"
+                                                      date={data.endDate}
+                                                  />
+                                                  &nbsp;Remaining
 
-                          <MobileDivLine>
-                            {status === "Open" ? (
-                              ""
-                            ) : (
-                              <BarLine>
-                                <GreenLine
-                                  style={{ width: yesVotesWidth + "%" }}
-                                ></GreenLine>
-                                <RedLine
-                                  style={{ width: noVotesWidth + "%" }}
-                                ></RedLine>
-                              </BarLine>
-                            )}
-                          </MobileDivLine>
-                        </Media_for_container>
-                        <DisplayNone>
-                          <Container>
-                            <Status>Status:&ensp;</Status>
-                            {status == "Open" ? (
-                              <Open>{status}</Open>
-                            ) : status === "Approved" ? (
-                              <Passed>{status}</Passed>
-                            ) : (
-                              <Failed>{status}</Failed>
-                            )}
-                          </Container>
+                                                </Span>
+                                              </Tooltip>
+                                            </Row>
 
-                          {status === "Open" ? (
-                            ""
-                          ) : (
-                            <NumberOfVotes>
-                              {Number(yesVotes) + Number(noVotes)} votes
-                            </NumberOfVotes>
-                          )}
-                        </DisplayNone>
-                        <RowSpacing>
-                          <MobileResponsive>
-                            <ClockImage src="/images/Time-Inactive.svg" />
-                            <PollEnded>Poll Ended</PollEnded>
-                          </MobileResponsive>
-                        </RowSpacing>
-                      </Column>
-                    </MainContainer>
-                  );
-                })
-              ) : (
-                <div className="display-flex justify-content-center p-t-50">
-                  {" "}
-                  <img className="load" src={Loader}/>
-                  {/* No Record found */}
-                </div>
-              )}
-            </Div>
-            <div className="display-flex justify-content-end p-t-15">
-              
-              <Pagination
-                prevPageText="Back"
-                nextPageText="Next"
-                hideFirstLastPages
-                linkClassNext="table-pagination"
-                linkClassPrev="table-pagination"
-                activeLinkClass="fc-black"
-                linkClass="table-pagination"
-                activePage={props.state.activePage}
-                itemsCountPerPage="10"
-                pageRangeDisplayed="5"
-                totalItemsCount={props.state.totalProposalsCount}
-                onChange={props.handlePageChange}
-              />
-            </div>
 
-           
-          </Grid>
+                                          </>
+                                      ) : (
 
-          
+                                          <>
+
+                                            <ClockImage src="/images/Time-Inactive.svg" />
+                                            <PollEnded>Poll Ended</PollEnded>
+                                          </>
+                                      )}
+                                    </TimeRemainingDiv>
+                                  </RowSpacing>
+
+                                  <RowSpacing>
+
+                                    <div className={classes.mobilemedia}>
+                                      <Content>{ show===1 ? data.title : data.pollingContract }</Content>
+                                      {status === "Open" ? (
+                                          <Row className="justify-content-end">
+                                            <div
+                                                className={show===1?"details1": "details-hide"}
+                                                onClick={() =>
+                                                    props.proposalRedirect(
+                                                        data.pollingContract
+                                                    )
+                                                }
+                                            >
+                                              Details
+                                            </div>
+                                          </Row>
+
+
+                                      ) : (
+                                          <PositionDivLine>
+                                            <BarLine>
+                                              <RedLine
+                                                  style={{ width: noVotesWidth + "%" }}
+                                              ></RedLine>
+                                              <GreenLine
+                                                  style={{ width: yesVotesWidth + "%" }}
+                                              ></GreenLine>
+                                            </BarLine>
+                                          </PositionDivLine>
+                                      )}
+                                    </div>
+                                  </RowSpacing>
+                                  <Media_for_container>
+                                    <Container>
+                                      <Status>&ensp;</Status>
+                                      <Open></Open>
+
+                                    </Container>
+
+                                    <MobileDivLine>
+                                      {status === "Open" ? (
+                                          ""
+                                      ) : (
+                                          <BarLine>
+                                            <GreenLine
+                                                style={{ width: yesVotesWidth + "%" }}
+                                            ></GreenLine>
+                                            <RedLine
+                                                style={{ width: noVotesWidth + "%" }}
+                                            ></RedLine>
+                                          </BarLine>
+                                      )}
+                                    </MobileDivLine>
+                                  </Media_for_container>
+                                  <DisplayNone>
+                                    <Container>
+                                      <Status>Status:&ensp;</Status>
+                                      {status == "Open" ? (
+                                          <Open>{status}</Open>
+                                      ) : status === "Approved" ? (
+                                          <Passed>{status}</Passed>
+                                      ) : (
+                                          <Failed>{status}</Failed>
+                                      )}
+                                    </Container>
+
+                                    {status === "Open" ? (
+                                        ""
+                                    ) : (
+                                        <NumberOfVotes>
+                                          {Number(yesVotes) + Number(noVotes)} votes
+                                        </NumberOfVotes>
+                                    )}
+                                  </DisplayNone>
+                                  <RowSpacing>
+                                    <MobileResponsive>
+                                      <ClockImage src="/images/Time-Inactive.svg" />
+                                      <PollEnded>Poll Ended</PollEnded>
+                                    </MobileResponsive>
+                                  </RowSpacing>
+                                </Column>
+                              </MainContainer>
+                          );
+                        })
+                    ):<div className="display-flex justify-content-center">No Proposal Found</div>) : (
+                    <div className="display-flex justify-content-center p-t-50">
+                      {" "}
+                      <img className="load" src={Loader}/>
+                      {/* No Record found */}
+                    </div>
+                )}
+              </Div>
+              <div className="display-flex justify-content-end p-t-15">
+
+                <Pagination
+                    prevPageText="Back"
+                    nextPageText="Next"
+                    hideFirstLastPages
+                    linkClassNext="table-pagination"
+                    linkClassPrev="table-pagination"
+                    activeLinkClass="fc-black"
+                    linkClass="table-pagination"
+                    activePage={props.state.activePage}
+                    itemsCountPerPage="10"
+                    pageRangeDisplayed="5"
+                    totalItemsCount={props.state.totalProposalsCount}
+                    onChange={props.handlePageChange}
+                />
+              </div>
+
+
+            </Grid>
+
+
+          </div>
+
         </div>
-        
+        <div >
+          <FooterComponent />
+        </div>
       </div>
-      <div >
-        <FooterComponent />
-      </div>
-    </div>
   );
 }
 const ArrowImg = styled.img`
@@ -566,7 +566,7 @@ const MainContainer = styled.div`
   }
   // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: ${(props) =>
-    props.isTextArea ? `1px solid rgba(0, 0, 0, 0.1);` : `unset`};
+      props.isTextArea ? `1px solid rgba(0, 0, 0, 0.1);` : `unset`};
   // border-radius: 6px;
 
   border-radius: ${(props) => (props.isTextArea ? `6px;` : `unset`)};
@@ -595,7 +595,7 @@ const DisplayNone = styled.div`
   @media (min-width: 300px) and (max-width: 767px) {
     // display: none;
   }
- 
+
 `;
 const Back = styled.span`
   text-align: left;
