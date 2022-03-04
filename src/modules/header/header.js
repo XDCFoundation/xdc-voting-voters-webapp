@@ -112,7 +112,7 @@ const [open5,setOpen5] = useState(false)
       fetchData(accounts[0]);
     });
 } else {
-  Utils.apiFailureToast("Please install XDCPay extension");
+  // Utils.apiFailureToast("Please install XDCPay extension");
 }
 
   }, []);

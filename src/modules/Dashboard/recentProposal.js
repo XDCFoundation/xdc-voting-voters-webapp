@@ -104,7 +104,7 @@ export default function RecentProposal(props) {
         fetchData(accounts[0]);
       });
     } else {
-      Utils.apiFailureToast("Please install XDCPay extension");
+      // Utils.apiFailureToast("Please install XDCPay extension");
     }
   }, []);
 

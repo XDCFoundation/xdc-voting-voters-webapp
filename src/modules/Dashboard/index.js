@@ -67,7 +67,7 @@ export default class Dashboard extends BaseComponent {
                 alert("Something went wrong.");
             }
         } else {
-            Utils.apiFailureToast("Please install XDCPay extension");
+            // Utils.apiFailureToast("Please install XDCPay extension");
         }
     };
 
@@ -117,7 +117,8 @@ export default class Dashboard extends BaseComponent {
         //     );
         //     return proposal;
         // });
-
+        if(!window.web3 || !window.web3.currentProvider)
+            return proposals;
         let web3;
         web3 = new Web3(window.web3.currentProvider);
         window.ethereum.enable();
@@ -198,9 +199,10 @@ export default class Dashboard extends BaseComponent {
         const createProposalResponse = await contract.methods.get_proposal_details_by_proposal_address(proposalAddress).call(tx).catch((err) => {
             console.log(err, "====");
         });
-        console.log("createProposalResponse[0] ",createProposalResponse)
-        if(!createProposalResponse || !createProposalResponse.length)
+
+        if(!createProposalResponse)
             return "";
+        console.log("createProposalResponse[0] ",createProposalResponse)
         return createProposalResponse[0];
     }
 

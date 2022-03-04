@@ -89,7 +89,7 @@ export default class Voter extends BaseComponent {
                 alert("Something went wrong.");
             }
         } else {
-            Utils.apiFailureToast("Please install XDCPay Extension");
+            // Utils.apiFailureToast("Please install XDCPay Extension");
         }
     }
 
