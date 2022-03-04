@@ -1,4 +1,5 @@
 import React from "react";
+import { Column, Row } from "simple-flexbox";
 import styled from "styled-components";
 import HeaderMain from "../header/header";
 import "../../assets/styles/custom.css";
@@ -6,24 +7,31 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import FooterComponent from "../footer/footerComponent";
 import { history } from "../../managers/history";
+import Pagination from "react-js-pagination";
+import Utils from "../../utility";
+import moment from "moment";
+import Jazzicon from "react-jazzicon";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "center",
-    maxWidth: "970px",
-    position: "absolute",
+    maxWidth: "66.7%",
+    //position: "absolute",
+    marginTop: "-115px",
+    marginBottom: "40px",
+    zIndex: "1",
     top: "186px",
 
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
-      maxWidth: "300px",
+      maxWidth: "90%",
     },
     "@media (min-width: 567px) and (max-width: 767px)": {
-      maxWidth: "500px",
+      maxWidth: "95%",
     },
     "@media (min-width: 767px) and (max-width: 1040px)": {
-      maxWidth: "700px",
+      maxWidth: "95%",
     },
   },
   rowDiv: {
@@ -45,88 +53,116 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     width: "100%",
   },
+  mobileVote:{
+    "@media (min-width: 567px) and (max-width: 767px)": {
+      
+    },
+    "@media (min-width: 767px) and (max-width: 1040px)": {
+      display:"none",
+    },
+
+  }
 }));
 
-export default function Voterslist() {
+export default function Voterslist(props) {
   const backButton = () => {
-    history.push("/");
+    history.push({
+      pathname: `/proposal-details/${props.state.proposalAddress}`,
+    });
+    window.scrollTo(0,0);
   };
-  React.useEffect(() => {
-    let address = [
-      {
-        image: "/images/network.svg",
-        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        time: "5 min ago",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        time: "1 hr 5 min ago",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        time: "10:30 AM,Today",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        time: "5.25 PM, 2 july",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdc0b3693740427612142863616a56599e92bdc955a",
-        time: "Time and Date",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        time: "Time and Date",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        time: "Time and Date",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
-        time: "Time and Date",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        time: "Time and Date",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        time: "Time and Date",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        time: "Time and Date",
-      },
-      {
-        image: "/images/network.svg",
-        name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
-        time: "Time and Date",
-      },
-    ];
+  // React.useEffect(() => {
+  //   let address = [
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+  //       time: "5 min ago",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+  //       time: "1 hr 5 min ago",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+  //       time: "10:30 AM,Today",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+  //       time: "5.25 PM, 2 july"
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdc0b3693740427612142863616a56599e92bdc955a",
+  //       time: "Time and Date",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+  //       time: "Time and Date",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+  //       time: "Time and Date",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdc5c7257f7088b9bb6939764bf479b4220f52d3857",
+  //       time: "Time and Date",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+  //       time: "Time and Date",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+  //       time: "Time and Date",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+  //       time: "Time and Date",
+  //     },
+  //     {
+  //       image: "/images/network.svg",
+  //       name: "xdcbc30809b5e2d894ec485dbaa456694779712fdb9",
+  //       time: "Time and Date",
+  //     },
+  //   ];
+  //
+  //   setAddress(
+  //     address.map((object) => {
+  //       return {
+  //         image: object.image,
+  //         name: object.name,
+  //         time: object.time,
+  //       };
+  //     })
+  //   );
+  // }, []);
 
-    setAddress(
-      address.map((object) => {
-        return {
-          image: object.image,
-          name: object.name,
-          time: object.time,
-        };
-      })
-    );
-  }, []);
+  // const [address, setAddress] = React.useState([]);
+  let totalVotes = [];
+  if (
+    props.state &&
+    props.state.proposalDetails &&
+    props.state.proposalDetails.yesVotes &&
+    props.state.proposalDetails.yesVotes.length
+  )
+    totalVotes = [...props.state.proposalDetails.yesVotes];
 
-  const [address, setAddress] = React.useState([]);
+  if (
+    props.state &&
+    props.state.proposalDetails &&
+    props.state.proposalDetails.noVotes &&
+    props.state.proposalDetails.noVotes.length
+  )
+    totalVotes = [...totalVotes, ...props.state.proposalDetails.noVotes];
 
   const classes = useStyles();
   return (
@@ -149,11 +185,11 @@ export default function Voterslist() {
                 src="/images/Back-Arrow.svg"
                 style={{ width: "15px", marginRight: "8px" }}
               />
-              <Back>Back</Back>
+              <Back onClick={backButton}>Back</Back>
             </div>
             <div style={{ marginBottom: "20px" }}>
               <MainHeading>
-                XDC-ABC Bootstrapping Partnership Proposal
+                {props.state.proposalDetails.proposalTitle}
               </MainHeading>
             </div>
             <Spacing>
@@ -161,47 +197,68 @@ export default function Voterslist() {
                 <Heading>All Voters</Heading>
               </Container>
               <SecondContainer>
-                <Leftcontainer>122 Votes</Leftcontainer>
+                <Leftcontainer>{totalVotes.length} {totalVotes.length>1?"Votes":"Vote"} </Leftcontainer>
               </SecondContainer>
             </Spacing>
 
-            {address.map((data) => {
+            {totalVotes.map((data) => {
               return (
+                <div>
                 <Div>
-                  <Spacing>
+                  <Spacing >
                     <Container>
-                      <ImageView src={data.image} />
+                      <Jazzicon diameter={20} seed={Math.round(Math.random() * 10000000)} />
                       &nbsp;
-                      <Hash>{data.name}</Hash>
+                      <Hash> {(data.voterAddress)}</Hash>
+                      {/* <Hash className={classes.mobileVote}>{proposalAddressComponent(data.voterAddress)}</Hash> */}
                     </Container>
                     <SecondContainer>
-                      <Leftcontainer>{data.time}</Leftcontainer>
+                      <Leftcontainer>
+                      {moment(data.createdOn).format("D  MMM  ") } 
+                        {/* {Utils.epocToPrettyTime(data.createdOn)} */}
+                      </Leftcontainer>
                     </SecondContainer>
                   </Spacing>
                 </Div>
+                <VoterListMobile >
+                  <Spacing >
+                    <Container>
+                      {/* <ImageView src={data.image} /> */}
+                      <Jazzicon diameter={20} seed={Math.round(Math.random() * 10000000)} />
+                      &nbsp; &nbsp;&nbsp;&nbsp;
+                      {/* <Hash> {(data.voterAddress)}</Hash> */}
+                      <Hash className={classes.mobileVote}>{proposalAddressComponent(data.voterAddress)}</Hash>
+                    </Container>
+                    <SecondContainer>
+                      <Leftcontainer>
+                      {moment(data.createdOn).format("D  MMM  ") } 
+                        {/* {Utils.epocToPrettyTime(data.createdOn)} */}
+                      </Leftcontainer>
+                    </SecondContainer>
+                  </Spacing>
+                </VoterListMobile>
+               
+                </div>
+                
               );
             })}
-            <Pagingdiv>
-              <Container>
-                <Show>Show </Show>
-                <Block>
-                  <Span>10 </Span>
-                </Block>
-
-                <Properties>Properties</Properties>
-              </Container>
-              <SecondContainer>
-                <BackButton>Back</BackButton>
-
-                <Block>
-                  <Span>1</Span>
-                </Block>
-                <Block>
-                  <Span>2</Span>
-                </Block>
-
-                <NextButton>Next</NextButton>
-              </SecondContainer>
+            <Pagingdiv className="display-flex justify-content-end">
+              <div className="display-flex justify-content-end p-t-15">
+                <Pagination
+                  prevPageText="Previous"
+                  nextPageText="Next"
+                  hideFirstLastPages
+                  linkClassNext="table-pagination"
+                  linkClassPrev="table-pagination"
+                  activeLinkClass="fc-black"
+                  linkClass="table-pagination"
+                  activePage={props.state.activePage}
+                  itemsCountPerPage={props.state.itemsPerPage}
+                  pageRangeDisplayed="5"
+                  totalItemsCount={props.state.totalVotersCount}
+                  onChange={props.handlePageChange}
+                />
+              </div>
             </Pagingdiv>
           </Grid>
         </div>
@@ -212,12 +269,40 @@ export default function Voterslist() {
     </div>
   );
 }
+
+
+function proposalAddressComponent(row) {
+      return (
+          <>
+              <Row className="p-8 justify-content-between">
+                  <Row>
+                      
+                          {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
+                     
+                  </Row>
+                 
+              </Row>
+          </>
+      );
+   }
 const MainHeading = styled.span`
   text-align: left;
 
   color: #ffffff;
   font-family: "Inter", sans-serif;
   font-size: 20px;
+  @media (max-width: 767px){
+    font-size:14px;
+  }
+`;
+
+const VoterListMobile= styled.div`
+background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e3e7eb;
+  height: auto;
+  @media (min-width: 767px) and (max-width: 2000px) {
+    display: none;
+  }
 `;
 
 const Back = styled.span`
@@ -225,6 +310,7 @@ const Back = styled.span`
   font-family: "Inter", sans-serif;
   font-size: 17px;
   color: #ffffff;
+  cursor:pointer;
 `;
 const BackButton = styled.button`
   text-align: left;
@@ -305,6 +391,7 @@ const Hash = styled.span`
     font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 13px;
+    margin-left:-22px
   }
 `;
 const Spacing = styled.div`
@@ -334,7 +421,7 @@ const Container = styled.div`
 `;
 const SecondContainer = styled.div`
   display: flex;
-
+justify-content:end;
   align-items: center;
   @media (min-width: 300px) and (max-width: 767px) {
   }
@@ -344,6 +431,9 @@ const Div = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
   height: auto;
+  @media (min-width: 300px) and (max-width: 767px) {
+    display: none;
+  }
 `;
 
 const Heading = styled.span`
@@ -362,6 +452,11 @@ const Leftcontainer = styled.div`
   font: normal normal normal 12px/17px Inter;
   letter-spacing: 0px;
   color: #acacac;
+  @media (min-width: 300px) and (max-width: 767px) {
+    margin-top:-30px;
+    margin-left:205px;
+  }
+ 
 `;
 const ImageView = styled.img`
   width: 35px;

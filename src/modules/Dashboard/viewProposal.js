@@ -11,12 +11,12 @@ import FooterComponent from "../footer/footerComponent";
 import { history } from "../../managers/history";
 import { useParams } from "react-router-dom";
 import Utils from "../../utility";
-import { ProposalService } from "../../services/index";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, CartesianAxis } from "recharts";
+import { VotersPercentageService } from "../../services";
+import { ProposalList } from "../../services/index";
+import moment from "moment";
 
 import Chart from "react-google-charts";
-
-
+import { searchProposal } from "../../services/proposalService";
 
 const useStyles = makeStyles((theme) => ({
   selectOptions: { backgroundColor: "white" },
@@ -53,22 +53,21 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "center",
-    maxWidth: "970px",
-    position: "absolute",
-    top: "147px",
+    maxWidth: "1280px",
+    // position: "absolute",
+    marginTop: "-104px",
+    marginBottom: "40px",
+    zIndex: "1",
+    top: "145px",
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
       maxWidth: "300px",
-      top: "91px",
     },
     "@media (min-width: 567px) and (max-width: 767px)": {
       maxWidth: "500px",
-      top: "65px",
     },
-    "@media (min-width: 767px) and (max-width: 2080px)": {
-      // maxWidth: "700px",
-      top: "189px",
-      maxWidth: "970px",
+    "@media (min-width: 767px) and (max-width: 1440px)": {
+      maxWidth: "900px",
     },
   },
   rowdiv: {
@@ -146,6 +145,7 @@ const Container = styled.div`
   display: flex;
   @media (min-width: 300px) and (max-width: 767px) {
     display: block;
+    border:1px solid #E3E7EB;
   }
 `;
 const SecondContainer = styled.div`
@@ -158,145 +158,83 @@ const SecondContainer = styled.div`
 function ProgressBar() {
   return (
     <div>
-      <ViewAllProposal name="deepali" />
+      <ViewAllProposal />
     </div>
   );
 }
 
 export default function ViewAllProposal() {
   const { proposal } = useParams();
-
-  const [transactions, setTransactions] = useState({});
+  const backButton = () => {
+    history.push("/community");
+  };
+  // let urlPath = ""
+  const [getVotesPercentage, setGetVotesPercentage] = useState([]);
 
   // useEffect(async () => {
-  //   let urlPath = `/${proposal}`;
+  //   // let urlPath = ``;
+  //   let [error, votePercentage] = await Utils.parseResponse(
 
-  //   let [error, ProposalDetail] = await Utils.parseResponse(
-  //    ProposalService.getProposalDetail(urlPath, {})
+  //     VotersPercentageService.getVotersPercentage("0x45f5815e7051cA72EF2b11e3E52DC42Aa4cf8439")
   //   );
+  //   console.log("vote",votePercentage)
 
-  //   if (error || !ProposalDetail) return;
+  //   if (error || !votePercentage) return;
 
-  //   setTransactions(ProposalDetail);
+  //   setGetVotesPercentage(votePercentage);
 
-  //   const interval = setInterval(async () => {
-  //     let [error, ProposalDetail] = await Utils.parseResponse(
-  //      ProposalService.getProposalDetail(urlPath, {})
-  //     );
-
-  //     setTransactions(ProposalDetail);
-  //   }, 45000);
   // }, []);
-  //let proposalId =document.getElementById("proposalInput").value;
-  fetch(
-    "http://xinfin-votingdapp-elb-924589235.us-east-1.elb.amazonaws.com:3002/getProposalDetail/6164220cc20c490035c32e34"
-  )
-    .then((res) => res.json())
-    .then((res) => {
-      //console.log("result===",res.data.responseData)
-      setTransactions(res);
-    })
 
-    .catch((err) => {
-      console.log(err);
-    });
+  // console.log("transaction====", getVotesPercentage);
 
-  //console.log("transaction====", transactions?.responseData);
-  // // let detail= transactions?.responseData?.proposalTitle
-  // // let time= transactions?.responseData?.createdOn
-  // // let formatedTime=moment(time).format('LL');
-  // // let statusDetail = transactions?.responseData?.status
-  // // let descrition = transactions?.responseData?.description
-  //   let id=transactions?.responseData?._id
-  let res = transactions?.responseData;
+  // let passVote=getVotesPercentage.supportpercentage?.yes
+  // console.log(passVote,"yes")
+  // let yes=Math.floor(passVote)
+  // let rejectedVote=getVotesPercentage.supportpercentage?.No
+  // console.log(rejectedVote,"noo")
+  // let rejected=Math.floor(rejectedVote)
 
+  const [allProposalList, setProposalList] = useState([]);
 
-  const backButton = () => {
-    history.push("/");
+  const reqObj = {
+    skip: "0",
+    limit: "6",
   };
-  React.useEffect(() => {
-    let address = [
-      {
-        date: "Posted on 24 June 2021",
-        name: "Adding more features to XDC Explorer 2.0",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "145 votes",
-        id: 2,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Relaunch of XinFin.org website",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "89 votes",
-        id: 3,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Launching NFT Marketplace to increase circulation of XDC",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "89 votes",
-        id: 4,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Partnership with Circle Stable Coin",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "89 votes",
-        id: 5,
-        time: "5 min ago",
-      },
-      {
-        date: "Posted on 24 June 2021",
-        name: "Adding more features to XDC Explorer 2.0",
-        status: "Passed",
-        poll: "Poll Ended",
-        bar: "Line",
-        vote: "145 votes",
-        id: 6,
-        time: "5 min ago",
-      },
-    ];
 
-    setAddress(
-      address.map((object) => {
-        return {
-          date: object.date,
-          name: object.name,
-          status: object.status,
-          poll: object.poll,
-          bar: object.bar,
-          vote: object.vote,
-          id: object.id,
-          time: object.time,
-        };
-      })
+  useEffect(async () => {
+    console.log("result");
+    let [error, proposalList] = await Utils.parseResponse(
+      ProposalList.proposalList(reqObj)
     );
+
+    if (error || !proposalList) return;
+
+    setProposalList(proposalList.proposalList);
   }, []);
 
-  const [address, setAddress] = React.useState([]);
+  console.log("transaction====", allProposalList.proposalList);
+  console.log("transaction====", allProposalList.countData);
+  let list = allProposalList.proposalList;
+
   ProgressBar();
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
+  const [searchInput, setSearchInput] = useState("");
 
-  // const searchProposal=()=>{
-  //  let response = res
-  //  //console.log( response)
-  //  return response
-  // }
-  //document.getElementById("proposalInput").onkeyup = function() {searchProposal()};
-  
-  
+  const searchingProposal = async (e) => {
+    setSearchInput(e.target.value);
+    const reqObj = {
+      proposalTitle: searchInput,
+      skip: "0",
+      limit: "6",
+    };
+    const response = await searchProposal(reqObj).catch((err) => {
+      console.log(err);
+    });
+    console.log(response, "seachresponse");
+    setProposalList(response);
+  };
+
   return (
     <div>
       <div className="header-div-all">
@@ -307,6 +245,7 @@ export default function ViewAllProposal() {
         <div className={classes.root}>
           <Grid item xs={12}>
             <div
+              
               style={{ marginBottom: "11px", cursor: "pointer" }}
               onClick={backButton}
             >
@@ -327,6 +266,12 @@ export default function ViewAllProposal() {
                     type="text"
                     onKeyUp={console.log("hello")}
                     id="proposalInput"
+                    value={searchInput}
+                    onChange={(e) => {
+                      // setSearchInput(e.target.value);
+                      console.log(searchInput, "searchInput");
+                      searchingProposal(e);
+                    }}
                   />
                 </InputDiv>
               </Container>
@@ -357,95 +302,96 @@ export default function ViewAllProposal() {
             </Row>
 
             <Div>
-              <MainContainer isTextArea={true}>
-                <Column>
-                  <RowSpacing>
-                    <Posted>Posted on 24 June 2021</Posted>
-                    <TimeRemainingDiv>
-                      <TimerImg src="/images/Time-Active.svg" />
+              {allProposalList &&
+                allProposalList.length >= 1 &&
+                allProposalList.map((data) => {
+                  console.log(data, "data===");
+                  let title = data.proposalTitle;
+                  let status = data.status;
+                  let formatedTime = moment(data.createdOn).format("LL");
 
-                      <Time>01:50:48 Remaining </Time>
-                    </TimeRemainingDiv>
-                  </RowSpacing>
-                  <RowSpacing>
-                    <Content>
-                      XDC-ABC Bootstrapping Partnership Proposal
-                    </Content>
+                  return (
+                    <MainContainer isTextArea={true}>
+                      <Column>
+                        <RowSpacing>
+                          <Posted>Posted on &nbsp;{formatedTime}</Posted>
+                          <TimeRemainingDiv>
+                            <ClockImage src="/images/Time-Inactive.svg" />
+                            &ensp;
+                            <PollEnded>Poll Ended</PollEnded>
+                          </TimeRemainingDiv>
+                        </RowSpacing>
+                        <RowSpacing>
+                          <div className={classes.mobilemedia}>
+                            <Content>{title}</Content>
+                            <PositionDivLine>
+                              <BarLine>
+                                <RedLine></RedLine>
+                                <GreenLine></GreenLine>
+                                {/* <Chart
+                            // let yes={yes}
+                            // let no={rejected}
+                              width={"100%"}
+                              height={"8px"}
+                              chartType="BarChart"
+                              data={[
+                                ["", "",{ role: 'style' }, "", { role: 'style' }, {
+                                  sourceColumn: 0,
+                                  role: 'annotation',
+                                  type: 'string',
+                                  calc: 'stringify',
+                                }],
+                                ["", 14,"color:#3ab70d",30,"color:red",null],
+                                
+                               
+                              ]}
+                              options={{
+                                title: "votes",
+                                chartArea: { width: "100%" },
+                                isStacked: true,
+                                grid:{position: 'none' },
+                                legend: { position: 'none' }
+                                
+                              }}
+                              // For tests
+                              rootProps={{ "data-testid": "1" }}
+                            /> */}
+                              </BarLine>
+                            </PositionDivLine>
+                          </div>
+                        </RowSpacing>
+                        <Media_for_container>
+                          <Container>
+                            <Status>Status:&ensp;</Status>
+                            <Open>{status}</Open>
+                          </Container>
 
-                    {/* <Button>Details</Button> */}
-
-                    <a href={"/proposal-details/" + "615c31771d5ed80035e2dcca"}>
-                      <button className="details">Details</button>
-                    </a>
-                  </RowSpacing>
-                  <Container>
-                    <Status>Status:&ensp;</Status>
-                    <Passed>Passed</Passed>
-                  </Container>
-                  <SecondContainer>
-                    <MobileResponsive>
-                      <TimerImg src="/images/Time-Active.svg" />
-
-                      <Time>01:50:48 Remaining</Time>
-                    </MobileResponsive>
-                  </SecondContainer>
-                </Column>
-              </MainContainer>
-              {address.map((data) => {
-                return (
-                  <MainContainer isTextArea={true}>
-                    <Column>
-                      <RowSpacing>
-                        <Posted>{data.date}</Posted>
-                        <TimeRemainingDiv>
-                          <ClockImage src="/images/Time-Inactive.svg" />
-                          &ensp;
-                          <PollEnded>{data.poll}</PollEnded>
-                        </TimeRemainingDiv>
-                      </RowSpacing>
-                      <RowSpacing>
-                        <div className={classes.mobilemedia}>
-                          <Content>{data.name}</Content>
-                          <PositionDivLine>
+                          <MobileDivLine>
                             <BarLine>
-                            <GreenLine></GreenLine>
-                            <RedLine></RedLine>
+                              <GreenLine></GreenLine>
+                              <RedLine></RedLine>
                             </BarLine>
-                          </PositionDivLine>
-                        </div>
-                      </RowSpacing>
-                      <Media_for_container>
-                        <Container>
-                          <Status>Status:&ensp;</Status>
-                          <Open>Open</Open>
-                        </Container>
+                          </MobileDivLine>
+                        </Media_for_container>
+                        <DisplayNone>
+                          <Container>
+                            <Status>Status:&ensp;</Status>
+                            <Open>{status}</Open>
+                          </Container>
 
-                        <MobileDivLine>
-                          <BarLine>
-                            <GreenLine></GreenLine>
-                            <RedLine></RedLine>
-                          </BarLine>
-                        </MobileDivLine>
-                      </Media_for_container>
-                      <DisplayNone>
-                        <Container>
-                          <Status>Status:&ensp;</Status>
-                          <Open>Open</Open>
-                        </Container>
+                          <NumberOfVotes>25 votes</NumberOfVotes>
+                        </DisplayNone>
+                        <RowSpacing>
+                          <MobileResponsive>
+                            <ClockImage src="/images/Time-Inactive.svg" />
 
-                        <NumberOfVotes>{data.vote}</NumberOfVotes>
-                      </DisplayNone>
-                      <RowSpacing>
-                        <MobileResponsive>
-                          <ClockImage src="/images/Time-Inactive.svg" />
-
-                          <PollEnded>{data.poll}</PollEnded>
-                        </MobileResponsive>
-                      </RowSpacing>
-                    </Column>
-                  </MainContainer>
-                );
-              })}
+                            <PollEnded></PollEnded>
+                          </MobileResponsive>
+                        </RowSpacing>
+                      </Column>
+                    </MainContainer>
+                  );
+                })}
             </Div>
 
             <PagingDiv>
@@ -662,8 +608,8 @@ const MobileResponsive = styled.div`
   }
 `;
 const BarLine = styled.div`
-width: 200px;
-height: 3px;
+  width: 220px;
+  height: 1px;
 
   display: flex;
   @media (min-width: 300px) and (max-width: 767px) {
@@ -754,7 +700,7 @@ const Div = styled.div`
 const Posted = styled.span`
   text-align: left;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
+  // font-weight: 600;
   font-size: 14px;
   letter-spacing: 0px;
   color: #909090;

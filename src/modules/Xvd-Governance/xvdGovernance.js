@@ -7,14 +7,18 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import FooterComponent from "../footer/footerComponent";
 import { history } from "../../managers/history";
+import { ClickAwayListener } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "center",
-    maxWidth: "970px",
-    position: "absolute",
-    top: "211px",
+    maxWidth: "1280px",
+    // position: "absolute",
+    marginTop: "-104px",
+    marginBottom: "40px",
+    zIndex: "1",
+    top: "145px",
 
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
@@ -23,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 567px) and (max-width: 767px)": {
       maxWidth: "500px",
     },
-    "@media (min-width: 767px) and (max-width: 1040px)": {
-      maxWidth: "700px",
+    "@media (min-width: 767px) and (max-width: 1440px)": {
+      maxWidth: "95%",
     },
   },
   rowdiv: {
@@ -52,42 +56,65 @@ export default function Xvdgovernance() {
   const backButton = () => {
     history.push("/");
   };
+  const Click = () => {
+    // window.scrollerTop(0,0);
+  };
+  function scrollWindow() {
+    window.scrollTo(0, 0);
+  }
   React.useEffect(() => {
     let address = [
       {
         heading: "Introduction",
         paragraph:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis dignissim urna, nec semper risus. Sed  elementum eleifend. Proin maximus, eros eget egestas hendrerit, quam tortor tincidunt dui, ut malesuada urna libero in nisl. Fusce non eros eget eros porttitor egestas eu vel magna. Fusce interdum Leo tortor, vel finibus massa dignissim posuere. Nunc quis lectus nec dui pretium bibendum. Cras sodales bibendum neque sit amet ullamcorper. Maecenas in vestibulum nisl. Nulla quis rutrum nisi. Vivamus e get viverra felis. Integer odio diam, posuere a vehicula sed, maximus sed nulla. Fusce sed sollicitudin nisl. Aliquam erat volutpat. Aenean posuere cursus tellus, vel ornare diam accumsan quis..",
+          "XDC Governance is the voting dApp for community members to initiate proposals and cast their votes. The dApp conducts voting on the XDC blockchain, confirming the fair and transparent voting process. It enables the XDC decentralized community to participate actively in decision-making processes and helps maintain the integrity of the entire ecosystem through on-chain voting. XDC Governance implements smart voting contracts written with pre-determined terms governing voting and decision-making. The structure of proposal contracts comprises three main components:"
+
+          ,
         subparagraphone:
-          " Aliquam dictum sapien mi, at imperdiet mi eleifend vitae. Cras sed vehicula leo, pretium auctor quam. In elementum tincidunt vestibulum. Nullam interdum diam sit amet tortor rhoncus vestibulum. Aenean semper ante ut orci imperdiet auctor. Fusce placerat arcu eu condimentum commodo. Vivamus at nibh purus. Suspendisse potenti. Maecenas efficitur malesuada dapibus. Duis laoreet varius facilisis. Cras commodo neque massa, lacinia dapibus justo pellentesque vitae. Aenean facilisis volutpat risus at auctor",
+          "Proposal Struct: Name, description, address of the proposal submitter, end date, the status of the proposal and the file URL.",
+
+          subparagraphTwo:
+          "Vote Struct: Address of the voter and the specific voting time.",
+          subparagraphThree:
+          "Vote Mapping: Key for voting, address value for voting and the complete VoteStruct.",
+          subparagraphFour:
+          "Through this voting dApp, XDC Foundation ensures to keep its network at the cutting edge in terms of community ownership and participation in the network. Operating with the vision of ecosystem growth, XDC Network continues to nourish its environment with the constant development flow.",
+          
+          
+          
+          
       },
       {
         heading: "How voting works",
         paragraph:
-          "Suspendisse sodales posuere urna, sit amet fringilla libero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vestibulum tristique. Vestibulum vestibulum nisl vitae Leo malesuada varius. Aenean tincidunt justo non lectus porta egestas. Ut non malesuada diam, in accumsan elit. Nunc vitae tincidunt ligula. Quisque ultricies dui ut odio maximus pretium. Nam quis tortor justo. Cras ornare, mi id sodales maximus, dolor nunc interdum lacus, a ullamcorper tortor nunc vel eros. Suspendisse gravida sapien et sapien congue, eu interdum risus tristique. Praesent fermentum lorem ipsum, vitae euismod felis hendrerit ac. Nam dignissim dui blandit, consectetur dolor nec, dapibus est. In consectetur orci quam, ut dignissim lacus ultricies vel. Donec posuere ante eget imperdiet sollicitudin. Duis quam tellus, maximus laoreet ante sit amet, euismod pellentesque tellus. Nullam mi erat, finibus vitae fermentum eu, consectetur a tortor. Praesent faucibus eros nec eros faucibus commodo. Nulla a feugiat arcu. Duis et aliquam dui. Aenean fermentum sollicitudin tempus. Nulla tincidunt felis ante, ac commodo nisi fermentum sit amet. Proin pretium metus sed leo dignissim porttitor. Etiam eleifend id odio non dictum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras quis molestie orci. Pellentesque vehicula libero a sem sodales, ac rutrum leo tincidunt. Praesent tempus consequat lectus, vitae bibendum est hendrerit ut. Donec id venenatis massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum at tellus sit amet imperdiet. Vestibulum metus orci, luctus vel blandit gravida, laoreet sit amet nisl. Fusce efficitur lorem in dignissim commodo. Sed eu lorem ac tortor volutpat malesuada id a nibh. Morbi finibus ex sed est rhoncus, eu tempor arcu faucibus. Donec at bibendum metus, eget suscipit metus. Integer vel aliquet lorem. Nullam ex nunc, dictum sit amet turpis non, bibendum finibus orci. Proin et vulputate urna, in maximus lacus.",
+          "The voting on the Governance portal is straightforward:",
         subparagraphone:
-          "ibus. Cras quis molestie orci. Pellentesque vehicula libero a sem sodales, ac rutrum leo tincidunt. Praesent tempus consequat lectus, vitae bibendum est hendrerit ut. Donec id venenatis massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum at tellus sit amet imperdiet. Vestibulum metus orci, luctus vel blandit gravida, laoreet sit amet nisl. Fusce efficitur lorem in dignissim commodo. Sed eu lorem ac tortor volutpat malesuada id a nibh. Morbi finibus ex sed est rhoncus, eu ",
+          "A user creates a proposal to obtain the decisions of all XDC stakeholders through their votes.",
+          subparagraphTwo:
+          "All the whitelisted voters can cast their votes within the given timeframe for every proposal. The admin of XDC Governance dApp manages the voters' list; he can add and eliminate voters, make proposals and vote on them.",
+          subparagraphThree:
+          "Once the deadline for the proposal is met, the voting result is unveiled on the portal. The proposal is accepted when 51% of the votes are in favour."
       },
       {
         heading: "Voting Wallet Setup",
         paragraph:
-          "Suspendisse sodales posuere urna, sit amet fringilla libero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vestibulum tristique. Vestibulum vestibulum nisl vitae Leo malesuada varius. Aenean tincidunt justo non lectus porta egestas. Ut non malesuada diam, in accumsan elit. Nunc vitae tincidunt ligula. Quisque ultricies dui ut odio maximus pretium. Nam quis tortor justo. Cras ornare, mi id sodales maximus, dolor nunc interdum lacus, a ullamcorper tortor nunc vel eros. Suspendisse gravida sapien et sapien congue, eu interdum risus tristique. Praesent fermentum lorem ipsum, vitae euismod felis hendrerit ac. Nam dignissim dui blandit, consectetur dolor nec, dapibus est. In consectetur orci quam, ut dignissim lacus ultricies vel. Donec posuere ante eget imperdiet sollicitudin. Duis quam tellus, maximus laoreet ante sit amet, euismod pellentesque tellus. Nullam mi erat, finibus vitae fermentum eu, consectetur a tortor. Praesent faucibus eros nec eros faucibus commodo. Nulla a feugiat arcu. Duis et aliquam dui. Aenean fermentum sollicitudin tempus. Nulla tincidunt felis ante, ac commodo nisi fermentum sit amet. Proin pretium metus sed leo dignissim porttitor. Etiam eleifend id odio non dictum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras quis molestie orci. Pellentesque vehicula libero a sem sodales, ac rutrum leo tincidunt. Praesent tempus consequat lectus, vitae bibendum est hendrerit ut. Donec id venenatis massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum at tellus sit amet imperdiet. Vestibulum metus orci, luctus vel blandit gravida, laoreet sit amet nisl. Fusce efficitur lorem in dignissim commodo. Sed eu lorem ac tortor volutpat malesuada id a nibh. Morbi finibus ex sed est rhoncus, eu tempor arcu faucibus. Donec at bibendum metus, eget suscipit metus. Integer vel aliquet lorem. Nullam ex nunc, dictum sit amet turpis non, bibendum finibus orci. Proin et vulputate urna, in maximus lacus.",
+          "The users of XDC Governance need to connect their XDCPay wallet to access the portal and participate in the voting process. To install the XDCPay wallet, visit the link and add the wallet extension to your browser.",
       },
-      {
-        heading: "Off-chain Governance",
-        paragraph:
-          "Introduction How voting works Voting Wallet Setup Off-chain Governance On-Chain Governance Governance FAQs",
-      },
-      {
-        heading: "On-Chain Governance",
-        paragraph:
-          " sit amet fringilla libero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vestibulum tristique. Vestibulum vestibulum nisl vitae Leo malesuada varius. Aenean tincidunt justo non lectus porta egestas. Ut non malesuada diam, in accumsan elit. Nunc vitae tincidunt ligula. Quisque ultricies dui ut odio maximus pretium. Nam quis tortor justo. Cras ornare, mi id sodales maximus, dolor nunc interdum lacus, a ullamcorper tortor nunc vel eros. Suspendisse gravida sapien et sapien congue, eu interdum risus tristique. Praesent fermentum lorem ipsum, vitae euismod felis hendrerit ac. Nam dignissim dui blandit, consectetur dolor nec, dapibus est. In consectetur orci quam, ut dignissim lacus ultricies vel. Donec posuere ante eget imperdiet sollicitudin. Duis quam tellus, maximus laoreet ante sit amet, euismod pellentesque tellus. Nullam mi erat, finibus vitae fermentum eu, consectetur a tortor. Praesent faucibus eros nec eros faucibus commodo. Nulla a feugiat arcu. Duis et aliquam dui. Aenean fermentum sollicitudin tempus. Nulla tincidunt felis ante, ac commodo nisi fermentum sit amet. Proin pretium metus sed leo dignissim porttitor. Etiam eleifend id odio non dictum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras quis molestie orci. Pellentesque vehicula libero a sem sodales, ac rutrum leo tincidunt. Praesent tempus consequat lectus, vitae bibendum est hendrerit ut. Donec id venenatis massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum at tellus sit amet imperdiet. Vestibulum metus orci, luctus vel blandit gravida, laoreet sit amet nisl. Fusce efficitur lorem in dignissim commodo. Sed eu lorem ac tortor volutpat malesuada id a nibh. Morbi finibus ex sed est rhoncus, eu tempor arcu faucibus. Donec at bibendum metus, eget suscipit metus. Integer vel aliquet lorem. Nullam ex nunc, dictum sit amet turpis non, bibendum finibus orci. Proin et vulputate urna, in maximus lacus",
-      },
-      {
-        heading: "Governance FAQs",
-        paragraph:
-          "bero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vesti",
-      },
+      // {
+      //   heading: "Off-chain Governance",
+      //   paragraph:
+      //     "Introduction How voting works Voting Wallet Setup Off-chain Governance On-Chain Governance Governance FAQs",
+      // },
+      // {
+      //   heading: "On-Chain Governance",
+      //   paragraph:
+      //     " sit amet fringilla libero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vestibulum tristique. Vestibulum vestibulum nisl vitae Leo malesuada varius. Aenean tincidunt justo non lectus porta egestas. Ut non malesuada diam, in accumsan elit. Nunc vitae tincidunt ligula. Quisque ultricies dui ut odio maximus pretium. Nam quis tortor justo. Cras ornare, mi id sodales maximus, dolor nunc interdum lacus, a ullamcorper tortor nunc vel eros. Suspendisse gravida sapien et sapien congue, eu interdum risus tristique. Praesent fermentum lorem ipsum, vitae euismod felis hendrerit ac. Nam dignissim dui blandit, consectetur dolor nec, dapibus est. In consectetur orci quam, ut dignissim lacus ultricies vel. Donec posuere ante eget imperdiet sollicitudin. Duis quam tellus, maximus laoreet ante sit amet, euismod pellentesque tellus. Nullam mi erat, finibus vitae fermentum eu, consectetur a tortor. Praesent faucibus eros nec eros faucibus commodo. Nulla a feugiat arcu. Duis et aliquam dui. Aenean fermentum sollicitudin tempus. Nulla tincidunt felis ante, ac commodo nisi fermentum sit amet. Proin pretium metus sed leo dignissim porttitor. Etiam eleifend id odio non dictum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras quis molestie orci. Pellentesque vehicula libero a sem sodales, ac rutrum leo tincidunt. Praesent tempus consequat lectus, vitae bibendum est hendrerit ut. Donec id venenatis massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum at tellus sit amet imperdiet. Vestibulum metus orci, luctus vel blandit gravida, laoreet sit amet nisl. Fusce efficitur lorem in dignissim commodo. Sed eu lorem ac tortor volutpat malesuada id a nibh. Morbi finibus ex sed est rhoncus, eu tempor arcu faucibus. Donec at bibendum metus, eget suscipit metus. Integer vel aliquet lorem. Nullam ex nunc, dictum sit amet turpis non, bibendum finibus orci. Proin et vulputate urna, in maximus lacus",
+      // },
+      // {
+      //   heading: "Governance FAQs",
+      //   paragraph:
+      //     "bero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vesti",
+      // },
     ];
 
     setAddress(
@@ -96,6 +123,9 @@ export default function Xvdgovernance() {
           heading: object.heading,
           paragraph: object.paragraph,
           subparagraphone: object.subparagraphone,
+          subparagraphTwo:object.subparagraphTwo,
+          subparagraphThree:object.subparagraphThree,
+          subparagraphFour:object.subparagraphFour
         };
       })
     );
@@ -103,22 +133,32 @@ export default function Xvdgovernance() {
 
   const [address, setAddress] = React.useState([]);
 
+  const scrollerTop = (e) => {
+    e.preventDefault();
+    // window.scrollTo(0,1)
+    // e.stopPropagation();
+    // e.nativeEvent.stopImmediatePropagation();
+    // return false;
+  };
+  const onchangeDropdown = (e) => {
+    window.location.href = e.target.value;
+  };
+
   const classes = useStyles();
   return (
     <div>
       <div className="header-div-all">
         <HeaderMain />
       </div>
+
       <div className={classes.maincontainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
-            <div
-              style={{ marginBottom: "11px", cursor: "pointer" }}
-              onClick={backButton}
-            >
+            <div style={{ marginBottom: "26px" }}>
               <img
+                onClick={backButton}
                 src="/images/Back-Arrow.svg"
-                style={{ width: "15px", marginRight: "8px" }}
+                style={{ width: "15px", marginRight: "8px", cursor: "pointer" }}
               />
               <Back>Back</Back>
             </div>
@@ -130,17 +170,23 @@ export default function Xvdgovernance() {
 
             <SelectBoxDiv>
               <SelectContainer>
-                <SelectOption>
-                  <option value={""}>Introduction</option>
-                  <option value={""}>How voting works</option>
-                  <option value={""}>Voting Wallet Setup</option>
-                  <option value={""}>Off-Chain Governance</option>
-                  <option value={""}>On-chain Governance</option>
-                  <option value={""}>Governance FAQs</option>
+                <SelectOption
+                  onChange={(e) => {
+                    onchangeDropdown(e);
+                  }}
+                >
+                  <option value={"#0"}>Introduction</option>
+                  <option value={"#1"}>How voting works</option>
+                  <option value={"#2"}>Voting Wallet Setup</option>
+                  {/* <option value={"#3"}>Off-Chain Governance</option>
+                  <option value={"#4"}>On-chain Governance</option>
+                  <option value={"#5"}>Governance FAQs</option> */}
                 </SelectOption>
               </SelectContainer>
             </SelectBoxDiv>
+
             <Row
+              class="xdc-border-top"
               style={{
                 border: ".5px solid #e3e7eb",
                 borderRadius: "0% 0% 6px 6px",
@@ -166,7 +212,7 @@ export default function Xvdgovernance() {
                         </H3>
                       </SectionDiv>
 
-                      <SectionDiv id="section4">
+                      {/* <SectionDiv id="section4">
                         <H4>
                           <Anchor href="#3">Off-Chain Governance</Anchor>
                         </H4>
@@ -183,7 +229,7 @@ export default function Xvdgovernance() {
                         <H6>
                           <Anchor href="#5">Governance FAQs</Anchor>
                         </H6>
-                      </SectionDiv>
+                      </SectionDiv> */}
                     </Column>
                   </Row__>
                 </Sidemenu>
@@ -200,13 +246,25 @@ export default function Xvdgovernance() {
                           </Row>
 
                           <Para_One id="section1">{data.paragraph}</Para_One>
-                          <SubparagraphOne>
+                          <SubparagraphOne
+                          className=  {data.subparagraphTwo?"list-item":""} >
                             {data.subparagraphone}
                           </SubparagraphOne>
 
-                          <SubparagraphTwo>
-                            {data.subparagraphTwo}
+                          <SubparagraphTwo 
+                         className=  {data.subparagraphTwo?"list-item":""}>
+                           {data.subparagraphTwo}
+   
                           </SubparagraphTwo>
+
+                          <SubparagraphThree 
+                          className=  {data.subparagraphTwo?"list-item":""}>
+                            {data.subparagraphThree}
+                            </SubparagraphThree>
+
+                            <SubparagraphFour>
+                            {data.subparagraphFour}
+                            </SubparagraphFour>
                           <br />
                         </Column>
                       </SideContainer>
@@ -230,6 +288,14 @@ const SectionDiv = styled.div`
 const Anchor = styled.a`
   text-decoration: none !important;
   color: black;
+  //   a:active {
+  //     color: blue;
+  // }
+  // a:visited {color:#0000FF;}
+  // a[tabindex]:focus {
+  //   color:blue;
+  //   outline: none;
+  // }
   &:hover {
     // color: unset !important;
     text-decoration: underline;
@@ -247,6 +313,9 @@ const SubparagraphOne = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
+  margin-bottom:10px;
+  // display: list-item;
+  //   margin-left: 20px;
 `;
 const SubparagraphTwo = styled.span`
   text-align: left;
@@ -254,17 +323,39 @@ const SubparagraphTwo = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
+  margin-bottom:10px;
+  // display: list-item;
+  //   margin-left: 20px;
 `;
-
+const SubparagraphThree = styled.span`
+  text-align: left;
+  font: normal normal normal 15px/19px Inter;
+  letter-spacing: 0px;
+  color: #2a2a2a;
+  opacity: 1;
+  margin-bottom:10px;
+  // display: list-item;
+  //   margin-left: 20px;
+`;
+const SubparagraphFour = styled.span`
+  text-align: left;
+  font: normal normal normal 15px/19px Inter;
+  letter-spacing: 0px;
+  color: #2a2a2a;
+  opacity: 1;
+  margin-bottom:10p;
+`;
 const SelectBoxDiv = styled.div`
   border-right: 1px solid rgb(227, 231, 235);
   border-left: 1px solid rgb(227, 231, 235);
 `;
 
 const SelectContainer = styled.div`
-  margin-left: 15px;
-
-  @media (min-width: 767px) {
+  // margin-left: 15px;
+  // @media (min-width: 768px) and (max-width: 1024px) {
+  //   display: none;
+  // }
+  @media (min-width: 1024px) {
     display: none;
   }
 `;
@@ -281,6 +372,16 @@ const SelectOption = styled.select`
   border: 1px solid #e3e7eb;
   border-radius: 4px;
   opacity: 1;
+  @media (min-width: 360px) and (max-width: 767px) {
+    width: 90%;
+    margin-left: 15px;
+    margin-bottom: 10px;
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+  }
 `;
 
 const Row__ = styled.div`
@@ -319,7 +420,7 @@ const Sidemenu = styled.div`
   top: 0;
   display: flex;
   justify-content: flex-end;
-  @media (min-width: 300px) and (max-width: 767px) {
+  @media (min-width: 200px) and (max-width: 1024px) {
     display: none;
   }
 `;
@@ -328,6 +429,7 @@ const H1 = styled.span`
   font-family: "Inter", sans-serif !important;
   white-space: nowrap;
   text-decoration:none;
+  font-size: 17px;
 }
 `;
 const H2 = styled.span`
@@ -336,6 +438,7 @@ const H2 = styled.span`
   // margin-top: 20px;
   white-space: nowrap;
   text-decoration:none;
+  font-size: 17px;
 }
 `;
 const H3 = styled.span`
@@ -344,6 +447,7 @@ const H3 = styled.span`
   // margin-top: 20px;
   white-space: nowrap;
   text-decoration:none;
+  font-size: 17px;
 }
 `;
 const H4 = styled.span`
@@ -352,6 +456,7 @@ const H4 = styled.span`
   // margin-top: 20px;
   white-space: nowrap;
   text-decoration:none;
+  font-size: 17px;
 }
 `;
 const H5 = styled.span`
@@ -359,6 +464,7 @@ const H5 = styled.span`
   font-family: "Inter", sans-serif !important;
   // margin-top: 20px;
   white-space: nowrap;
+  font-size: 17px;
 }
 `;
 
@@ -367,6 +473,7 @@ const H6 = styled.span`
   font-family: "Inter", sans-serif !important;
   // margin-top: 20px;
   white-space: nowrap;
+  font-size: 17px;
 }
 `;
 
@@ -378,7 +485,7 @@ const Spacing = styled.div`
   height: 53px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-
+  border-bottom: 1px solid #e3e7eb;
   background: #ffffff 0% 0% no-repeat padding-box;
   align-items: center;
   padding: 11px 24px;
@@ -410,9 +517,12 @@ const Div = styled.div`
 
 const Heading = styled.span`
   white-space: nowrap;
-  font: normal normal 600 19px/26px Inter;
+  font: normal normal 600 22px/26px Inter;
 
   color: #2a2a2a;
 
   box-shadow: none;
+  @media (max-width: 767px) {
+    font-size: 16px;
+  }
 `;

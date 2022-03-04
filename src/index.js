@@ -6,15 +6,22 @@ import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import './assets/styles/custom.css';
+import {Web3ReactProvider} from "@web3-react/core";
+import Web3 from 'web3';
+function getLibrary(provider){
+    return new Web3(provider)
+}
 
 
 function LIMBApp() {
     return (
+        <Web3ReactProvider getLibrary={getLibrary}>
         <BrowserRouter>
             <Provider store={store}>
                 <Routes component={Routes}/>
             </Provider>
         </BrowserRouter>
+        </Web3ReactProvider>
     );
 }
 
