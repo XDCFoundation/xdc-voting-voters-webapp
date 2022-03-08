@@ -130,7 +130,8 @@ const Div = styled.div`
   margin-bottom: 108.5px;
 `;
 const Img = styled.img`
-  width: 20px;
+  width: 30px;
+  height: 30px;
 `;
 const ImgRedirect = styled.img`
   width: 15px;

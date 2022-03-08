@@ -53,6 +53,7 @@ function Header() {
   const [wallet, setwallet] = useState("");
   const [iconT, setIcon] = useState("");
 const [open5,setOpen5] = useState(false)
+const [open6,setOpen6] = useState(false)
 
   useEffect(() => {
     // var body = document.querySelector('body')
@@ -149,7 +150,8 @@ const [open5,setOpen5] = useState(false)
   }
     
    else {
-    Utils.apiFailureToast("Please install XDCPay extension");
+    // Utils.apiFailureToast("Please install XDCPay extension");
+    setOpen6(true)
   }
   }
 
@@ -184,7 +186,8 @@ const [open5,setOpen5] = useState(false)
     history.push("/");
   };
   const closeAlert =()=>{
-    setOpen5(false)
+    setOpen5(false);
+    setOpen6(false);
   }
   return (
     <div>
@@ -258,6 +261,57 @@ const [open5,setOpen5] = useState(false)
               <div className="unauthorized-message">
              
                 <span>Wallet is not logged in</span>
+               
+              </div>
+              
+              
+            </span>
+                        <span
+                            onClick={closeAlert}
+                            style={{
+                                float: "right",
+                                cursor: "pointer",
+                               marginTop:"-5px",
+                               marginLeft:"15px",
+                                fontWeight: "600"
+                            }}
+                        >
+                  X
+                </span>
+                    </div>
+                </Alert>
+            </Snackbar>
+
+           {/* ////////////////////////////////// */}
+
+            {/* ************ NOT iNstalled *************** */}
+            <Snackbar
+                open={open6}
+                autoHideDuration={3000}
+                anchorOrigin={{vertical: "top", horizontal: "center"}}
+                // onClose={handleClose4}
+            >
+                <Alert severity="" className={classes.Alert}>
+                    <div style={{display: "flex"}}>
+            <span
+                style={{
+                    marginRight: "10px",
+                    marginTop: "-7px",
+                    marginLeft: "-8px",
+                }}
+            >
+              <img
+                  className="done-logo"
+                  style={{height: "24px", width: "24px", marginTop: "10px"}}
+                  src={require("../../assets/styles/images/Error.svg")}
+              ></img>
+            </span>
+                        <span>
+          
+            {/* <div className="unauthorized">Unauthorized</div> */}
+              <div className="unauthorized-message">
+             
+                <span>Please install XDCPay extension</span>
                
               </div>
               

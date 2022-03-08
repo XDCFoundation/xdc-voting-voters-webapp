@@ -71,7 +71,7 @@ class Routes extends BaseComponent {
         this.fetchCreatePermission(accounts[0]);
       });
     } else {
-      Utils.apiFailureToast("Please install XDCPay extension");
+      // Utils.apiFailureToast("Please install XDCPay extension");
     }
   }
   // }, []);

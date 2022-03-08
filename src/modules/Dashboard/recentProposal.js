@@ -39,8 +39,8 @@ const RedLine = styled.div`
 `;
 
 export default function RecentProposal(props) {
-  const proposalRedirect = (address) => {
-    history.push({
+  const proposalRedirect = async (address) => {
+   await history.push({
       pathname: `/proposal-details/${address}`,
     });
     window.scrollTo(0, 0);
