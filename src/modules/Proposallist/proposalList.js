@@ -97,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
 
   input: {
     color: "#2A2A2A",
-    width: "100%",
+    width: "90%",
     border: "1px solid #E3E7EB",
     height: "36px",
     opacity: "1",
@@ -111,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPositionX: "9.5px",
     outline: "none",
     "@media (min-width: 300px) and (max-width: 780px)": {
-      width: "100%",
+      width: "85%",
       maxWidth: "310px",
       marginLeft:"20px",
     },
@@ -549,7 +549,7 @@ const DatePickerDiv = styled.div`
   @media (min-width: 400px) and (max-width: 780px) {
     width: 100%;
     max-width: 230px;
-    margin-top: 16px;
+    ${'' /* f 16px; */}
     display:flex;
   }
 `;
@@ -722,10 +722,11 @@ const RedLine = styled.div`
 `;
 const SelectBox = styled.div`
   display: flex;
+  ${'' /* margin-top: 2px; */}
   align-items: center;
   @media (min-width: 300px) and (max-width: 1038px) {
     display: block;
-    margin-bottom:16px;
+    ${'' /* margin-bottom:16px; */}
   }
   @media (min-width: 300px) and (max-width: 780px) {
     // margin-top: 10px;
@@ -744,10 +745,10 @@ const Failed = styled.span`
 const InputDiv = styled.div`
   display: flex;
   @media (min-width: 300px) and (max-width: 780px) {
-    display: block;
+    ${'' /* display: block; */}
     // margin-top: 10px;
-    margin-left: -9px;
-    margin-top: 26px;
+    ${'' /* margin-left: -9px;
+    margin-top: 26px; */}
   }
 `;
 

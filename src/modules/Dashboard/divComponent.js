@@ -127,10 +127,10 @@ const Div = styled.div`
   width: 100%;
   max-width: 1280px;
   margin-top: 63px;
-  margin-bottom: 108.5px;
+  margin-bottom: 39.5px;
 `;
 const Img = styled.img`
-  width: 20px;
+  width: 30px;
 `;
 const ImgRedirect = styled.img`
   width: 15px;

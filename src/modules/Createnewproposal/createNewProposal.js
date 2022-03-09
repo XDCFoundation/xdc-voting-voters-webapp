@@ -223,6 +223,12 @@ const useStyles = makeStyles((theme) => ({
       font: "normal normal normal 15px/19px Inter",
       marginLeft: "0px",
     },
+    "@media (min-width: 768px) and (max-width: 1300px)": {
+      maxWidth: "52%",
+      // width: "100%",
+      marginLeft: "20px",
+  
+    },
   },
 
   row: {

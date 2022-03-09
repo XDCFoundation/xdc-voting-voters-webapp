@@ -23,6 +23,8 @@ import Web3Dialog from "../header/mainDialog";
 import HeaderMain from "../header/header";
 import Loader from "../../assets/styles/images/NewLoader.gif";
 
+
+
 const GreenLine = styled.div`
   background-color: #3ab70d;
   height: 3px;
@@ -37,8 +39,14 @@ const RedLine = styled.div`
     width: 50%;
   }
 `;
-
 export default function RecentProposal(props) {
+  function shorten(b, amountL = 9, amountR = 4, stars = 3) {
+    return `${b.slice(0, amountL)}${".".repeat(stars)}${b.slice(
+      b.length - 4,
+      b.length
+    )}`;
+  }
+
   const proposalRedirect = (address) => {
     history.push({
       pathname: `/proposal-details/${address}`,
@@ -153,9 +161,10 @@ export default function RecentProposal(props) {
                                     {formatedTime}
                                   </Row>
                                   <Row className="name">
-                                    {!show==1?
+                                    {shorten(!show==1?
                                         proposal.pollingContract
-                                        : proposal.title}
+                                        : proposal.title) }
+
                                   </Row>
                                   <Row className="status">
                                     <p>Status: &nbsp;</p>

@@ -237,7 +237,7 @@ const [open5,setOpen5] = useState(false)
                 anchorOrigin={{vertical: "top", horizontal: "center"}}
                 // onClose={handleClose4}
             >
-                <Alert severity="" className={classes.Alert}>
+                {/* <Alert severity="" className={classes.Alert}>
                     <div style={{display: "flex"}}>
             <span
                 style={{
@@ -251,19 +251,19 @@ const [open5,setOpen5] = useState(false)
                   style={{height: "24px", width: "24px", marginTop: "10px"}}
                   src={require("../../assets/styles/images/Error.svg")}
               ></img>
-            </span>
+            </span> */}
                         <span>
           
             {/* <div className="unauthorized">Unauthorized</div> */}
-              <div className="unauthorized-message">
+              {/* <div className="unauthorized-message">
              
                 <span>Wallet is not logged in</span>
                
-              </div>
+              </div> */}
               
               
             </span>
-                        <span
+                        {/* <span
                             onClick={closeAlert}
                             style={{
                                 float: "right",
@@ -276,7 +276,7 @@ const [open5,setOpen5] = useState(false)
                   X
                 </span>
                     </div>
-                </Alert>
+                </Alert> */}
             </Snackbar>
 
            {/* ////////////////////////////////// */}

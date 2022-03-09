@@ -350,7 +350,7 @@ body {
   }
   .time-inactive {
     /* display: none; */
-    width: 12px !important;
+    width: 30px !important;
   }
 
   .poll-ended-mobile {
@@ -418,8 +418,8 @@ body {
   }
   .name {
     white-space: nowrap;
-    font-size: 14px !important;
-  }
+    font-size: 14px ;
+    }
 
   .mobile-logo-row-1 {
     margin-top: -333px;
@@ -539,6 +539,13 @@ body {
   .recent-div {
     margin-top: 190px !important;
   }
+  @media (min-width: 0px) and (max-width: 767px) {
+    .recent-div {
+      margin-top: 75px !important;
+    }
+  }
+
+  
   .xdc-para {
     text-align: center !important;
     justify-content: center !important;
@@ -601,6 +608,11 @@ body {
   }
   .row-1 {
     padding-top: 94px;
+  }
+  @media (min-width: 0px) and (max-width: 767px) {
+    .row-1 {
+      padding-top: 20px;
+    }
   }
   .recent-add-div {
     height: 65px !important;
@@ -957,6 +969,7 @@ body {
   display: none;
 }
 
+
 .connect-wallet p {
   margin-left: 4px;
   padding-top: 8px;
@@ -1013,6 +1026,12 @@ px
   color: #2149b9 !important;
   background-color: #ffffff !important;
 }
+@media (min-width:0px) and (max-width: 1024px) {
+  .xdc-connect button{     
+   display:none;
+     }
+}
+
 .makeStyles-startdateinput-11 {
   outline: none !important;
 }
@@ -1048,8 +1067,13 @@ px
   font-weight: 400;
   padding-top: 16px;
 }
+@media (min-width: 0px)and (max-width:767px){
+  .xdc-para {
+    padding-top:0px;
+  }
+}
 .div-1 {
-  width: 185px;
+  width: 200px;
   height: 88px;
 
   background: #1841b2 0% 0% no-repeat padding-box;
@@ -1058,6 +1082,13 @@ px
 
   margin-inline-end: 20px;
 }
+@media (min-width: 1024px) and (max-width: 1150px) {
+.div-1{
+  width: 145px;
+}
+}
+
+
 .header-right {
   display: flex;
 }
@@ -1090,6 +1121,12 @@ px
   opacity: 1;
   font-family: "Inter";
 }
+@media (min-width: 1024px) and (max-width: 1150px) {
+  .div-1-row1{
+    font-size:14px;
+    margin-top: -9px;
+  }
+  }
 
 /* !****Recent Prosal Css****! */
 .recent-div {
@@ -1377,8 +1414,8 @@ px
   display: flex;
   justify-content: space-between;
   max-width: 1280px;
-  padding-top: 70px;
-  padding-bottom: 85px;
+  /* padding-top: 70px;
+  padding-bottom: 85px; */
 }
 
 .recent-add-div {
@@ -1799,7 +1836,7 @@ px
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   margin-top: 2px;
   font-family: "Inter", sans-serif;
