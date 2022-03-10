@@ -33,7 +33,8 @@ export default class Createproposal extends BaseComponent {
                     ],
 
                     [{list: "bullet"}, {list: "ordered"}],
-                    ["link", "code", "image", "video", "clean", "edit"],
+                    ["edit"],
+                    // ["link", "code", "image", "video", "clean", "edit"],
                 ],
             },
             formats: [

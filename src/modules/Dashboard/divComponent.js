@@ -131,6 +131,7 @@ const Div = styled.div`
 `;
 const Img = styled.img`
   width: 30px;
+  height: 30px;
 `;
 const ImgRedirect = styled.img`
   width: 15px;

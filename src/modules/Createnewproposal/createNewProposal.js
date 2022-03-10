@@ -106,9 +106,9 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #E3E7EB",
     borderRadius: "4px",
     padding: "6px",
- 
+  
     font: "normal normal normal 15px/19px Inter",
-    width: "100%",
+    width: "147%",
     whiteSpace: "nowrap",
 
     maxWidth: "368px",
@@ -118,9 +118,28 @@ const useStyles = makeStyles((theme) => ({
       font: "normal normal normal 15px/19px Inter",
     },
 
-    "@media (min-width: 768px) and (max-width: 1024px)": {
-      width: "85%",
-      marginLeft: "15px",
+    "@media (min-width: 900px) and (max-width: 1099px)": {
+      width: "23vw",
+      marginLeft: "-23%",
+    marginRight:" auto",
+      font: "normal normal normal 15px/19px Inter",
+    },
+    "@media (min-width: 768px) and (max-width: 899px)": {
+      width: "23vw",
+      marginLeft: "-44%",
+    marginRight:" auto",
+      font: "normal normal normal 15px/19px Inter",
+    },
+    "@media (min-width: 1240px) and (max-width: 1340px)": {
+      width: "90vw",
+      marginLeft: "23px",
+
+      font: "normal normal normal 15px/19px Inter",
+    },
+    "@media (min-width: 1100px) and (max-width:1239px)": {
+      width: "24vw",
+      marginLeft: "auto",
+
       font: "normal normal normal 15px/19px Inter",
     },
   },
@@ -162,15 +181,26 @@ const useStyles = makeStyles((theme) => ({
     padding: "6px",
     width: "100%",
     maxWidth: "368px",
-     
+    marginLeft: "72px",
 
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
       width: "100%",
     },
-    "@media (min-width: 768px) and (max-width: 980px)": {
-      width: "70%",
-      // marginLeft: "15px",
+    // "@media (min-width: 768px) and (max-width: 980px)": {
+    //   width: "100%",
+    // },
+    "@media (min-width: 1100px) and (max-width: 1340px)": {
+      width: "80%",
+      font: "normal normal normal 15px/19px Inter",
+    },
+    "@media (min-width: 900px) and (max-width: 1099px)": {
+      font: "normal normal normal 15px/19px Inter",
+      width: "75%",
+    },
+    "@media (min-width: 768px) and (max-width: 899px)": {
+      width: "23vw",
+      font: "normal normal normal 15px/19px Inter",
     },
   },
   enddate: {
@@ -185,11 +215,11 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     overflow: "hidden",
     whiteSpace: "nowrap",
-    "@media (min-width: 768px) and (max-width: 1024px)": {
-      font: "normal normal normal 14px/17px Inter",
-      paddingLeft: "53px",
-      whiteSpace: "nowrap",
-    },
+    // "@media (min-width: 768px) and (max-width: 1024px)": {
+    //   font: "normal normal normal 14px/17px Inter",
+    //   // paddingLeft: "53px",
+    //   whiteSpace: "nowrap",
+    // },
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
       whiteSpace: "nowrap",
@@ -247,7 +277,7 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: "12%",
     },
     "@media (min-width: 1340px) and (max-width:1440px)":{
-      maxWidth: "76vw",
+      maxWidth: "75vw",
       marginLeft: "12%"
     }
   },
@@ -699,6 +729,7 @@ const [fileError,setFileError]=useState("")
                       <ReactQuill
                         className="quill-editor"
                         theme="snow"
+                        
                         modules={props.state.modules}
                         formats={props.state.formats}
                         onChange={handleQuillChange}

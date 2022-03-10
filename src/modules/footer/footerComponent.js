@@ -72,7 +72,7 @@ export default function FooterComponent(props) {
 
             <RowTag>
               <Anchor href="https://t.me/xinfintech" target="_blank">
-                Telegram
+                {/* Telegram */}
               </Anchor>
             </RowTag>
             <RowTag>
@@ -166,7 +166,7 @@ export default function FooterComponent(props) {
               </RowTag>
               <RowTag>
                 <Anchor href="https://t.me/xinfintech" target="_blank">
-                  Telegram
+                  {/* Telegram */}
                 </Anchor>
               </RowTag>
               <RowTag>
