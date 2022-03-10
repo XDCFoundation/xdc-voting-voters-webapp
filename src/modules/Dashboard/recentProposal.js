@@ -40,13 +40,6 @@ const RedLine = styled.div`
   }
 `;
 export default function RecentProposal(props) {
-  function shorten(b, amountL = 9, amountR = 4, stars = 3) {
-    return `${b.slice(0, amountL)}${".".repeat(stars)}${b.slice(
-      b.length - 4,
-      b.length
-    )}`;
-  }
-
   const proposalRedirect = (address) => {
     history.push({
       pathname: `/proposal-details/${address}`,
@@ -161,7 +154,7 @@ export default function RecentProposal(props) {
                                     {formatedTime}
                                   </Row>
                                   <Row className="name">
-                                    {shorten(!show==1?
+                                    {(!show==1?
                                         proposal.pollingContract
                                         : proposal.title) }
 

@@ -100,6 +100,8 @@ export default class Listui extends BaseComponent {
 
     handlePageChange = (e) => {
         this.getProposalList((e - 1) * this.state.limit)
+        console.log('current',this.state.activePage)
+
     }
 
     proposalRedirect = (address) => {

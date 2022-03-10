@@ -485,7 +485,6 @@ export default function ViewAllProposal(props) {
                 )}
               </Div>
               <div className="display-flex justify-content-end p-t-15">
-
                 <Pagination
                     prevPageText="Back"
                     nextPageText="Next"
@@ -499,7 +498,8 @@ export default function ViewAllProposal(props) {
                     pageRangeDisplayed="5"
                     totalItemsCount={props.state.totalProposalsCount}
                     onChange={props.handlePageChange}
-                />
+                 
+        />
               </div>
 
 

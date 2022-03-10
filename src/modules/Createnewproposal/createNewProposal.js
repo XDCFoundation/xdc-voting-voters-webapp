@@ -106,6 +106,7 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #E3E7EB",
     borderRadius: "4px",
     padding: "6px",
+ 
     font: "normal normal normal 15px/19px Inter",
     width: "100%",
     whiteSpace: "nowrap",
@@ -117,8 +118,9 @@ const useStyles = makeStyles((theme) => ({
       font: "normal normal normal 15px/19px Inter",
     },
 
-    "@media (min-width: 767px) and (max-width: 1024px)": {
-      width: "100%",
+    "@media (min-width: 768px) and (max-width: 1024px)": {
+      width: "85%",
+      marginLeft: "15px",
       font: "normal normal normal 15px/19px Inter",
     },
   },
@@ -160,13 +162,15 @@ const useStyles = makeStyles((theme) => ({
     padding: "6px",
     width: "100%",
     maxWidth: "368px",
+     
 
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
       width: "100%",
     },
-    "@media (min-width: 767px) and (max-width: 980px)": {
-      width: "100%",
+    "@media (min-width: 768px) and (max-width: 980px)": {
+      width: "70%",
+      // marginLeft: "15px",
     },
   },
   enddate: {
@@ -174,23 +178,20 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "0px",
     color: "#2a2a2a",
     paddingLeft: "81px",
-
     paddingRight: "99px",
-
+    // marginLeft:"55px",
     font: "normal normal normal 15px/19px Inter",
     alignItems: "center",
     display: "flex",
     overflow: "hidden",
     whiteSpace: "nowrap",
-
-    "@media (min-width: 767px) and (max-width: 1024px)": {
-      font: "normal normal normal 15px/19px Inter",
-
+    "@media (min-width: 768px) and (max-width: 1024px)": {
+      font: "normal normal normal 14px/17px Inter",
+      paddingLeft: "53px",
       whiteSpace: "nowrap",
     },
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
-
       whiteSpace: "nowrap",
     },
   },
@@ -223,12 +224,32 @@ const useStyles = makeStyles((theme) => ({
       font: "normal normal normal 15px/19px Inter",
       marginLeft: "0px",
     },
-    "@media (min-width: 768px) and (max-width: 1300px)": {
-      maxWidth: "52%",
-      // width: "100%",
-      marginLeft: "20px",
+    
   
+    "@media (min-width: 1201px) and (max-width: 1329px)": {
+      maxWidth: "73vw",
+      marginLeft: "12%",
     },
+    "@media (min-width: 1100px) and (max-width: 1200px)": {
+      maxWidth: "71vw",
+      marginLeft: "12%",
+    },
+    "@media (min-width: 1000px) and (max-width:1099px)": {
+      maxWidth: "69vw",
+      marginLeft: "12%",
+    },
+    "@media (min-width: 900px) and (max-width:999px)": {
+      maxWidth: "66vw",
+      marginLeft: "12%",
+    },
+    "@media (min-width: 768px) and (max-width:899px)": {
+      maxWidth: "62vw",
+      marginLeft: "12%",
+    },
+    "@media (min-width: 1340px) and (max-width:1440px)":{
+      maxWidth: "76vw",
+      marginLeft: "12%"
+    }
   },
 
   row: {
@@ -612,7 +633,7 @@ const [fileError,setFileError]=useState("")
 
                 <div className={classes.secondrow}>
                   <StartDiv>
-                    <div className={classes.startdate}>Proposal Start Date<span className="star">*</span></div>
+                    <div className={classes.startdate}>Start Date<span className="star">*</span></div>
                     <div>
 
                     <input
@@ -633,7 +654,7 @@ const [fileError,setFileError]=useState("")
                     </div>
                   </StartDiv>
                   <EndDiv>
-                    <div className={classes.enddate}>Proposal End Date<span className="star">*</span></div>
+                    <div className={classes.enddate}>End Date<span className="star">*</span></div>
                     <div>
 
                     <input
@@ -650,7 +671,7 @@ const [fileError,setFileError]=useState("")
                 </div>
                 <Mobile>
                   <Firstdiv>
-                    <Startdate>Proposal Start Date<span className="star">*</span></Startdate>
+                    <Startdate> Start Date<span className="star">*</span></Startdate>
                     <Inputstartdate
                       type="date"
                       min={new Date().toISOString().slice(0, 10)}
@@ -660,7 +681,7 @@ const [fileError,setFileError]=useState("")
                     />
                   </Firstdiv>
                   <Seconddiv>
-                    <Enddate>Proposal End Date<span className="star">*</span></Enddate>
+                    <Enddate> End Date<span className="star">*</span></Enddate>
                     <Inputenddate
                       type="date"
                       min={new Date().toISOString().slice(0, 10)}
@@ -988,5 +1009,4 @@ const StartDiv = styled.div`
 const EndDiv = styled.div`
   display: flex;
   align-items: center;
-  width: 50%;
 `;
