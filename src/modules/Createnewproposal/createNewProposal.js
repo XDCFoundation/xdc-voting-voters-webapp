@@ -672,6 +672,7 @@ const [fileError,setFileError]=useState("")
                       <ReactQuill
                         className="quill-editor"
                         theme="snow"
+                        
                         modules={props.state.modules}
                         formats={props.state.formats}
                         onChange={handleQuillChange}

@@ -503,7 +503,7 @@ const Container = styled.div`
 `;
 const Secondcontainer = styled.div`
   display: flex;
-  height: 770px;
+  // height: 770px;
   float: left;
   width: 100%;
   overflow-y: auto;

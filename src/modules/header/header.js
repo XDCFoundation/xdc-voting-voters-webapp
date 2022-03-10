@@ -53,6 +53,7 @@ function Header() {
   const [wallet, setwallet] = useState("");
   const [iconT, setIcon] = useState("");
 const [open5,setOpen5] = useState(false)
+const [open6,setOpen6] = useState(false)
 
   useEffect(() => {
     // var body = document.querySelector('body')
@@ -65,19 +66,19 @@ const [open5,setOpen5] = useState(false)
 
     
 
-     
+    window.web3 = new Web3(window.xdc ? window.xdc : window.ethereum);
     
-  if (window.ethereum) {//the error line
-    window.web3 = new Web3(window.ethereum);
+  if (window.xdc) {//the error line
+    window.web3 = new Web3(window.xdc);
 
     try {
-      window.ethereum.enable();
+      // window.ethereum.enable();
 
     let web3;
     web3 = new Web3(window.web3.currentProvider);
     console.log("+++",web3);
-    window.ethereum.enable();
-    const accounts = web3.eth.getAccounts().then((accounts) => {
+    // window.ethereum.enable();
+    const accounts = window.web3.eth.getAccounts().then((accounts) => {
       if (!accounts || !accounts.length) {
         console.log("please login")
         // Utils.apiFailureToast("Wallet is not connected");
@@ -93,14 +94,14 @@ const [open5,setOpen5] = useState(false)
   } catch (err) {
     alert("Something went wrong.");
   }
-} else if (window.web3) {
+} else if (window.xdc) {
   window.web3 = new Web3(window.web3.currentProvider);
   let web3;
   web3 = new Web3(window.web3.currentProvider);
   console.log("+++",web3);
-  window.ethereum.enable();
+  // window.ethereum.enable();
 
-  const accounts = web3.eth.getAccounts().then((accounts) => {
+  const accounts = window.web3.eth.getAccounts().then((accounts) => {
       if (!accounts || !accounts.length) {
         console.log("please login")
         // Utils.apiFailureToast("Wallet is not connected");
@@ -122,11 +123,11 @@ const [open5,setOpen5] = useState(false)
 
   async function connectToWallet(){
 
-    if (window.ethereum) {//the error line
-      window.web3 = new Web3(window.ethereum);
+    if (window.xdc) {//the error line
+      window.web3 = new Web3(window.xdc);
   
       try {
-        window.ethereum.enable();
+        // window.ethereum.enable();
 
     let web3;
     web3 = new Web3(window.web3.currentProvider);
@@ -134,7 +135,7 @@ const [open5,setOpen5] = useState(false)
         console.log("+++++",conn)
     // window.ethereum.enable();
 
-    let accounts = web3.eth.getAccounts().then((accounts) => {
+    let accounts = window.web3.eth.getAccounts().then((accounts) => {
       if (!accounts || !accounts.length) {
         // Utils.apiFailureToast("Wallet is not connected");
         setOpen5(true)
@@ -149,7 +150,8 @@ const [open5,setOpen5] = useState(false)
   }
     
    else {
-    Utils.apiFailureToast("Please install XDCPay extension");
+    // Utils.apiFailureToast("Please install XDCPay extension");
+    setOpen6(true)
   }
   }
 
@@ -184,7 +186,8 @@ const [open5,setOpen5] = useState(false)
     history.push("/");
   };
   const closeAlert =()=>{
-    setOpen5(false)
+    setOpen5(false);
+    setOpen6(false);
   }
   return (
     <div>
@@ -258,6 +261,57 @@ const [open5,setOpen5] = useState(false)
               <div className="unauthorized-message">
              
                 <span>Wallet is not logged in</span>
+               
+              </div>
+              
+              
+            </span>
+                        <span
+                            onClick={closeAlert}
+                            style={{
+                                float: "right",
+                                cursor: "pointer",
+                               marginTop:"-5px",
+                               marginLeft:"15px",
+                                fontWeight: "600"
+                            }}
+                        >
+                  X
+                </span>
+                    </div>
+                </Alert>
+            </Snackbar>
+
+           {/* ////////////////////////////////// */}
+
+            {/* ************ NOT iNstalled *************** */}
+            <Snackbar
+                open={open6}
+                autoHideDuration={3000}
+                anchorOrigin={{vertical: "top", horizontal: "center"}}
+                // onClose={handleClose4}
+            >
+                <Alert severity="" className={classes.Alert}>
+                    <div style={{display: "flex"}}>
+            <span
+                style={{
+                    marginRight: "10px",
+                    marginTop: "-7px",
+                    marginLeft: "-8px",
+                }}
+            >
+              <img
+                  className="done-logo"
+                  style={{height: "24px", width: "24px", marginTop: "10px"}}
+                  src={require("../../assets/styles/images/Error.svg")}
+              ></img>
+            </span>
+                        <span>
+          
+            {/* <div className="unauthorized">Unauthorized</div> */}
+              <div className="unauthorized-message">
+             
+                <span>Please install XDCPay extension</span>
                
               </div>
               

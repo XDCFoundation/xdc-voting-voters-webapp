@@ -236,7 +236,7 @@ export default class ProposalDetails extends BaseComponent {
                 })
 
             });
-        } else {
+        } else if(this.state.proposalDetails.startDate >= Date.now()) {
             this.setState({open2: true})
             // Utils.apiFailureToast("Voting starts from "+moment(this.state.proposalDetails.startDate).format("DD MMMM YYYY"));
         }
