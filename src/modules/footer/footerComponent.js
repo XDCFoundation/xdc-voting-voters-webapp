@@ -77,10 +77,10 @@ export default function FooterComponent(props) {
             </RowTag>
             <RowTag>
               <Anchor
-                href="https://www.reddit.com/r/XDC_Foundation/"
+                href="https://www.facebook.com/XDCFoundation"
                 target="_blank"
               >
-                Forum
+                Facebook
               </Anchor>
             </RowTag>
           </ColumnSecond>

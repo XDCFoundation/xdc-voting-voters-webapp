@@ -296,7 +296,7 @@ export default function RecentProposal(props) {
                             </Row>
                           </TableRow>
                       );
-                    }):<div className="display-flex justify-content-center">No Proposal Found</div>
+                    }):<div className="display-flex justify-content-center"><img className="load" src={Loader}/></div>
                 ) : (
                     <div className="display-flex justify-content-center p-t-50">
                       {" "}
