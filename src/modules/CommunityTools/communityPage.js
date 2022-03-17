@@ -174,7 +174,7 @@ export default function CommunityPage() {
                         </a>
                       </RowDiv>
                       <RowDiv>
-                        <Span>Block Explorer</Span>
+                        <Span>XDC Observatory</Span>
                       </RowDiv>
                     </ColumnDiv>
                   </Paper>
@@ -188,12 +188,12 @@ export default function CommunityPage() {
                         </a>
                       </RowDiv>
                       <RowDiv>
-                        <Span>Network Stats</Span>
+                        <Span>XDC Network Stats</Span>
                       </RowDiv>
                     </ColumnDiv>
                   </Paper>
                 </Grid>
-                <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
+                {/* <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
@@ -234,7 +234,7 @@ export default function CommunityPage() {
                       </RowDiv>
                     </ColumnDiv>
                   </Paper>
-                </Grid>
+                </Grid> */}
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
@@ -253,12 +253,12 @@ export default function CommunityPage() {
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
-                        <a href="https://explorer.xinfin.network/publicAPIDoc" target="_blank">
-                          <ImageView src="/images/API-Documents.svg" />
+                        <a href="https://origin.xdc.org/" target="_blank">
+                          <ImageView src="/images/XinFin-Origin.svg" />
                         </a>
                       </RowDiv>
                       <RowDiv>
-                        <Span>XDC API</Span>
+                        <Span>XDC Origin</Span>
                       </RowDiv>
                     </ColumnDiv>
                   </Paper>
@@ -277,7 +277,7 @@ export default function CommunityPage() {
                     </ColumnDiv>
                   </Paper>
                 </Grid>
-                <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
+                {/* <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
@@ -290,7 +290,7 @@ export default function CommunityPage() {
                       </RowDiv>
                     </ColumnDiv>
                   </Paper>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Div>
           </Grid>
