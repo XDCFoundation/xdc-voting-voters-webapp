@@ -100,56 +100,29 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
     },
   },
-
-  enddateinput: {
-    background: "#FFFFFF 0% 0% no-repeat padding-box",
-    border: "1px solid #E3E7EB",
-    borderRadius: "4px",
-    padding: "6px",
-  
-    font: "normal normal normal 15px/19px Inter",
-    width: "147%",
-    whiteSpace: "nowrap",
-
-    maxWidth: "368px",
-
-    "@media (min-width: 300px) and (max-width: 767px)": {
+    enddateinput: {
+      background: "#FFFFFF 0% 0% no-repeat padding-box",
+      border: "1px solid #E3E7EB",
+      borderRadius: "4px",
+      padding: "6px",
+      font: "normal normal normal 15px/19px Inter",
       width: "100%",
-      font: "normal normal normal 15px/19px Inter",
+      whiteSpace: "nowrap",
+      "@media (min-width: 300px) and (max-width: 767px)": {
+        width: "100%",
+        font: "normal normal normal 15px/19px Inter",
+      },
+  
+      "@media (min-width: 767px) and (max-width: 1140px)": {
+        font: "normal normal normal 15px/19px Inter",
+      },
     },
-
-    "@media (min-width: 900px) and (max-width: 1099px)": {
-      width: "23vw",
-      marginLeft: "-23%",
-    marginRight:" auto",
-      font: "normal normal normal 15px/19px Inter",
-    },
-    "@media (min-width: 768px) and (max-width: 899px)": {
-      width: "23vw",
-      marginLeft: "-44%",
-    marginRight:" auto",
-      font: "normal normal normal 15px/19px Inter",
-    },
-    "@media (min-width: 1240px) and (max-width: 1340px)": {
-      width: "90vw",
-      marginLeft: "23px",
-
-      font: "normal normal normal 15px/19px Inter",
-    },
-    "@media (min-width: 1100px) and (max-width:1239px)": {
-      width: "24vw",
-      marginLeft: "auto",
-
-      font: "normal normal normal 15px/19px Inter",
-    },
-  },
-
   proposaltitle: {
     textAlign: "left",
     font: "normal normal normal 15px/19px Inter",
     letterSpacing: "0px",
     color: "#2a2a2a",
-    // paddingTop: "7px",
+  
     whiteSpace: "nowrap",
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
@@ -182,47 +155,28 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     maxWidth: "368px",
     marginLeft: "72px",
-
-    "@media (min-width: 300px) and (max-width: 767px)": {
-      font: "normal normal normal 15px/19px Inter",
-      width: "100%",
-    },
-    // "@media (min-width: 768px) and (max-width: 980px)": {
-    //   width: "100%",
-    // },
-    "@media (min-width: 1100px) and (max-width: 1340px)": {
-      width: "80%",
-      font: "normal normal normal 15px/19px Inter",
-    },
-    "@media (min-width: 900px) and (max-width: 1099px)": {
-      font: "normal normal normal 15px/19px Inter",
-      width: "75%",
-    },
-    "@media (min-width: 768px) and (max-width: 899px)": {
-      width: "23vw",
-      font: "normal normal normal 15px/19px Inter",
-    },
   },
   enddate: {
     textAlign: "left",
     letterSpacing: "0px",
     color: "#2a2a2a",
-    paddingLeft: "81px",
-    paddingRight: "99px",
-    // marginLeft:"55px",
     font: "normal normal normal 15px/19px Inter",
     alignItems: "center",
     display: "flex",
     overflow: "hidden",
     whiteSpace: "nowrap",
-    // "@media (min-width: 768px) and (max-width: 1024px)": {
-    //   font: "normal normal normal 14px/17px Inter",
-    //   // paddingLeft: "53px",
-    //   whiteSpace: "nowrap",
-    // },
+    "@media (min-width: 768px) and (max-width: 1024px)": {
+      font: "normal normal normal 15px/19px Inter",
+marginLeft:"85px",
+   
+    },
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
       whiteSpace: "nowrap",
+    },
+    "@media (min-width: 1025px) and (max-width: 1300px)": {
+      font: "normal normal normal 15px/19px Inter",
+marginLeft:"105px",
     },
   },
   description: {
@@ -250,38 +204,16 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #e3e7eb",
     font: "normal normal normal 15px/19px Inter",
     marginLeft: "143px",
+  
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
       marginLeft: "0px",
     },
-    
-  
-    "@media (min-width: 1201px) and (max-width: 1329px)": {
-      maxWidth: "73vw",
-      marginLeft: "12%",
+    "@media (min-width:768px) and (max-width: 1440px)": {
+      font: "normal normal normal 15px/19px Inter",
+      maxWidth: "none !important",
     },
-    "@media (min-width: 1100px) and (max-width: 1200px)": {
-      maxWidth: "71vw",
-      marginLeft: "12%",
-    },
-    "@media (min-width: 1000px) and (max-width:1099px)": {
-      maxWidth: "69vw",
-      marginLeft: "12%",
-    },
-    "@media (min-width: 900px) and (max-width:999px)": {
-      maxWidth: "66vw",
-      marginLeft: "12%",
-    },
-    "@media (min-width: 768px) and (max-width:899px)": {
-      maxWidth: "62vw",
-      marginLeft: "12%",
-    },
-    "@media (min-width: 1340px) and (max-width:1440px)":{
-      maxWidth: "75vw",
-      marginLeft: "12%"
-    }
   },
-
   row: {
     display: "flex",
     flexFlow: "row nowrap",
@@ -425,7 +357,12 @@ const Back = styled.span`
   color: #ffffff;
   cursor:pointer;
 `;
-
+const QuillDiv = styled.div`
+@media (min-width:768px) and (max-width:1440px){
+  width: 100%;
+    padding: 0 228px 0 0px;
+}
+`;
 
 export default function Createnewproposal(props) {
   const backButton = () => {
@@ -664,7 +601,7 @@ const [fileError,setFileError]=useState("")
                 <div className={classes.secondrow}>
                   <StartDiv>
                     <div className={classes.startdate}>Start Date<span className="star">*</span></div>
-                    <div>
+                    <div className="start-width-50">
 
                     <input
                       className={classes.startdateinput}
@@ -680,15 +617,18 @@ const [fileError,setFileError]=useState("")
                      
                       // disabled
                     />
-                    <div className="error-message">{dateError}</div>
+                    <div className="error-message" style={{marginLeft:"78px" , width:"100%"}} >{dateError}</div>
                     </div>
+                    
+                   
+                   
                   </StartDiv>
-                  <EndDiv>
-                    <div className={classes.enddate}>End Date<span className="star">*</span></div>
-                    <div>
+                  <EndDiv >
+                  <div className={classes.enddate}>End Date<span className="star">*</span></div>
+                    <div className="end-width-50">
 
                     <input
-                      className={classes.enddateinput}
+                      className={classes.enddateinput }
                       type="datetime-local"
                       min={new Date().toISOString().slice(0, 10)}
                       onChange={(e) =>{ setEndDate(e.target.value);setDateError("")}}
@@ -711,7 +651,7 @@ const [fileError,setFileError]=useState("")
                     />
                   </Firstdiv>
                   <Seconddiv>
-                    <Enddate> End Date<span className="star">*</span></Enddate>
+                    <Enddate>  End Date <span className="star" style={{marginBottom:"18px"}}>*</span></Enddate>
                     <Inputenddate
                       type="date"
                       min={new Date().toISOString().slice(0, 10)}
@@ -723,7 +663,7 @@ const [fileError,setFileError]=useState("")
                 </Mobile>
                 <div className={classes.rowThird}>
                   <div className={classes.description}>Description<span className="star">*</span></div>
-                <div>
+                <QuillDiv>
                   <div className={classes.quillgrid}>
                     <div className="text-editor">
                       <ReactQuill
@@ -739,7 +679,7 @@ const [fileError,setFileError]=useState("")
                     
                   </div>
                   <div  className="error-description">{descriptionError}</div>
-                 </div>
+                 </QuillDiv>
                 </div>
                 <div className={classes.rowFourth}>
                   <div className={classes.upload}>Upload Document</div>
@@ -911,6 +851,7 @@ const [fileError,setFileError]=useState("")
 }
 const Container = styled.div`
   padding: 25px;
+  background:#FFFFFF;
 `;
 const Div = styled.div`
   width: 100%;
@@ -1034,10 +975,14 @@ const Inputstartdate = styled.input`
 `;
 const StartDiv = styled.div`
   display: flex;
+
   align-items: center;
   width: 50%;
 `;
 const EndDiv = styled.div`
   display: flex;
   align-items: center;
+  justify-content:space-between;
+  width: 50%;
+  ${'' /* padding-right: 40px; */}
 `;
