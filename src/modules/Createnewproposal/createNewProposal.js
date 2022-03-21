@@ -1,4 +1,4 @@
-import React, { useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles/";
 import Grid from "@material-ui/core/Grid";
 import { Row, Column } from "simple-flexbox";
@@ -20,7 +20,6 @@ import Utils from "../../utility";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import moment from "moment";
-
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -100,7 +99,6 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
     },
   },
-
   enddateinput: {
     background: "#FFFFFF 0% 0% no-repeat padding-box",
     border: "1px solid #E3E7EB",
@@ -109,26 +107,21 @@ const useStyles = makeStyles((theme) => ({
     font: "normal normal normal 15px/19px Inter",
     width: "100%",
     whiteSpace: "nowrap",
-
-    maxWidth: "368px",
-
     "@media (min-width: 300px) and (max-width: 767px)": {
       width: "100%",
       font: "normal normal normal 15px/19px Inter",
     },
 
-    "@media (min-width: 767px) and (max-width: 1024px)": {
-      width: "100%",
+    "@media (min-width: 767px) and (max-width: 1140px)": {
       font: "normal normal normal 15px/19px Inter",
     },
   },
-
   proposaltitle: {
     textAlign: "left",
     font: "normal normal normal 15px/19px Inter",
     letterSpacing: "0px",
     color: "#2a2a2a",
-    // paddingTop: "7px",
+
     whiteSpace: "nowrap",
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
@@ -160,38 +153,43 @@ const useStyles = makeStyles((theme) => ({
     padding: "6px",
     width: "100%",
     maxWidth: "368px",
-
+    marginLeft: "72px",
+  },
+  newClass: {
+    marginBottom: "18px",
+    "@media (min-width: 768px) and (max-width: 1024px)": {
+      font: "normal normal normal 15px/19px Inter",
+      marginLeft: "85px",
+    },
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
-      width: "100%",
+      whiteSpace: "nowrap",
     },
-    "@media (min-width: 767px) and (max-width: 980px)": {
-      width: "100%",
+    "@media (min-width: 1025px) and (max-width: 2560px)": {
+      font: "normal normal normal 15px/19px Inter",
+      marginLeft: "105px",
     },
   },
   enddate: {
     textAlign: "left",
     letterSpacing: "0px",
     color: "#2a2a2a",
-    paddingLeft: "81px",
-
-    paddingRight: "99px",
-
     font: "normal normal normal 15px/19px Inter",
     alignItems: "center",
     display: "flex",
     overflow: "hidden",
     whiteSpace: "nowrap",
-
-    "@media (min-width: 767px) and (max-width: 1024px)": {
+    "@media (min-width: 768px) and (max-width: 1024px)": {
       font: "normal normal normal 15px/19px Inter",
-
-      whiteSpace: "nowrap",
+      marginLeft: "85px",
     },
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
-
       whiteSpace: "nowrap",
+    },
+    "@media (min-width: 1025px) and (max-width: 2560px)": {
+      font: "normal normal normal 15px/19px Inter",
+      marginLeft: "105px",
     },
   },
   description: {
@@ -219,12 +217,16 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #e3e7eb",
     font: "normal normal normal 15px/19px Inter",
     marginLeft: "143px",
+
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
       marginLeft: "0px",
     },
+    "@media (min-width:768px) and (max-width: 1440px)": {
+      font: "normal normal normal 15px/19px Inter",
+      maxWidth: "none !important",
+    },
   },
-
   row: {
     display: "flex",
     flexFlow: "row nowrap",
@@ -366,9 +368,14 @@ const Back = styled.span`
   font-family: "Inter", sans-serif;
   font-size: 17px;
   color: #ffffff;
-  cursor:pointer;
+  cursor: pointer;
 `;
-
+const QuillDiv = styled.div`
+  @media (min-width: 768px) and (max-width: 1440px) {
+    width: 100%;
+    padding: 0 228px 0 0px;
+  }
+`;
 
 export default function Createnewproposal(props) {
   const backButton = () => {
@@ -382,16 +389,15 @@ export default function Createnewproposal(props) {
   // const [open, setOpen] = useState(false);
   const [count, setCount] = React.useState(0);
 
-
-  const [utcStartDate,setutcStartDate]=useState("");
-  const [utcEndDate,setutcEndDate]=useState("");
+  const [utcStartDate, setutcStartDate] = useState("");
+  const [utcEndDate, setutcEndDate] = useState("");
 
   const inputFile = React.createRef();
   const handleQuillChange = (event) => {
     setDescription(event);
-    setErrorDescription("")
+    setErrorDescription("");
   };
-  
+
   const uploadFile = () => {
     inputFile.current.click();
   };
@@ -399,57 +405,42 @@ export default function Createnewproposal(props) {
   //   setOpen(true);
   //   console.log({ open });
   // };
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     const date = moment.utc().format();
 
-    
-      // var date2=new Date();
+    // var date2=new Date();
 
-      // const hour = String(date.getUTCHours()).padStart(2, "0");
-      // const minute = String(date.getUTCMinutes()).padStart(2, "0");
-      // const second = String(date.getUTCSeconds()).padStart(2, "0");
-      // //var ms=date.getTime();
+    // const hour = String(date.getUTCHours()).padStart(2, "0");
+    // const minute = String(date.getUTCMinutes()).padStart(2, "0");
+    // const second = String(date.getUTCSeconds()).padStart(2, "0");
+    // //var ms=date.getTime();
 
-      // var strDate = hour + ":" + minute + ":" + second;
-      // const utctime=strDate;
+    // var strDate = hour + ":" + minute + ":" + second;
+    // const utctime=strDate;
 
-      setutcStartDate(date);
-     // console.log(utcStartDate);
-     
-      
-    },[startDate])
-    useEffect(()=>{
-      const utctime = moment.utc().format();
+    setutcStartDate(date);
+    // console.log(utcStartDate);
+  }, [startDate]);
+  useEffect(() => {
+    const utctime = moment.utc().format();
 
-    
-      // var date=new Date();
-      // console.log(date);
+    // var date=new Date();
+    // console.log(date);
 
-      // const hour = String(date.getUTCHours()).padStart(2, "0");
-      // const minute = String(date.getUTCMinutes()).padStart(2, "0");
-      // const second = String(date.getUTCSeconds()).padStart(2, "0");
-      // //var ms=date.getTime();
+    // const hour = String(date.getUTCHours()).padStart(2, "0");
+    // const minute = String(date.getUTCMinutes()).padStart(2, "0");
+    // const second = String(date.getUTCSeconds()).padStart(2, "0");
+    // //var ms=date.getTime();
 
-      // var strDate = hour + ":" + minute + ":" + second;
-      // const utctime=strDate;
-      
+    // var strDate = hour + ":" + minute + ":" + second;
+    // const utctime=strDate;
 
-      setutcEndDate(utctime);
-     // console.log(utcEndDate);
-      
-    },[endDate])
+    setutcEndDate(utctime);
+    // console.log(utcEndDate);
+  }, [endDate]);
 
-   
-    
- 
-
-   
-  const  createNewProposal = async () => {
-    
-
-    
-    
+  const createNewProposal = async () => {
     //  var compareDate = new Date();
     //  var difference= new Date(endDate).getDate()-new Date(startDate).getDate();
     //  console.log(difference);
@@ -467,30 +458,26 @@ export default function Createnewproposal(props) {
     // console.log(local);
 
     //start Date
-    console.log("startdate"+startDate);
-    
-    var xy=new Date(startDate);
+    console.log("startdate" + startDate);
+
+    var xy = new Date(startDate);
     console.log(xy);
-    const x=moment(xy).utc().format();
+    const x = moment(xy).utc().format();
     console.log(x);
-    var z=new Date(x).toISOString();
+    var z = new Date(x).toISOString();
     console.log(z);
-    var epochutcStart=(new Date(z).getTime());
+    var epochutcStart = new Date(z).getTime();
     console.log(epochutcStart);
 
     //end-Date
-    var enddate=new Date(endDate);
+    var enddate = new Date(endDate);
     console.log(enddate);
-    const utc=moment(endDate).utc().format();
+    const utc = moment(endDate).utc().format();
     console.log(utc);
-    var stillutc=new Date(utc).toISOString();
+    var stillutc = new Date(utc).toISOString();
     console.log(stillutc);
-    var epochutcEnd=(new Date(stillutc).getTime());
+    var epochutcEnd = new Date(stillutc).getTime();
     console.log(epochutcEnd);
-
-    
-   
-    
 
     const reqObj = {
       proposalTitle: proposalTitle,
@@ -501,24 +488,21 @@ export default function Createnewproposal(props) {
       pollingContract: "0011",
       status: "pending",
 
-
       // utcStartDate:epochutcStart,
       // utcEndDate:epochutcEnd,
 
-
       // utcTime:stillUtc,
       // localTime:local,
-     
-
     };
     if (
       !reqObj.proposalTitle
       // !reqObj.startDate ||
       // !reqObj.endDate ||
       // !reqObj.description
-    )
-   { setError("Please Enter Title")}
-      // Utils.apiFailureToast("Please provide all the inputs");
+    ) {
+      setError("Please Enter Title");
+    }
+    // Utils.apiFailureToast("Please provide all the inputs");
     //console.log(Date.parse(startDate), "startdate");
     //console.log(Date.parse(endDate), "endDate");
     if (
@@ -527,31 +511,28 @@ export default function Createnewproposal(props) {
       description.length >= 200
     ) {
       props.createProposal(reqObj);
-    } 
+    }
     // else if(Date.parse(startDate) > Date.parse(endDate)){
     //   // Utils.apiFailureToast("Title should be less than 60 chars");
     //   setDateError("Enter Valid Date");
     // }
-      // Utils.apiFailureToast("Enter Valid Date");
-      // Utils.apiFailureToast("Description should be greater than 200 chars");
-     else if(description.length < 200) {setErrorDescription("Description must be atleast 200 characters");}
-    
-    else{
+    // Utils.apiFailureToast("Enter Valid Date");
+    // Utils.apiFailureToast("Description should be greater than 200 chars");
+    else if (description.length < 200) {
+      setErrorDescription("Description must be atleast 200 characters");
+    } else {
       setDateError("Enter Valid Date");
     }
   };
 
   const classes = useStyles();
   const [value, onChange] = useState(new Date());
-const [error,setError]=useState("")
-const [dateError,setDateError]=useState("")
-const [descriptionError,setErrorDescription]=useState("")
-const [fileError,setFileError]=useState("")
-
-
+  const [error, setError] = useState("");
+  const [dateError, setDateError] = useState("");
+  const [descriptionError, setErrorDescription] = useState("");
+  const [fileError, setFileError] = useState("");
 
   return (
-    
     <div>
       <Headerdiv>
         <HeaderMain />
@@ -565,7 +546,7 @@ const [fileError,setFileError]=useState("")
                 src="/images/Back-Arrow.svg"
                 style={{ width: "15px", marginRight: "8px", cursor: "pointer" }}
               />
-              <Back  onClick={backButton}>Back</Back>
+              <Back onClick={backButton}>Back</Back>
             </div>
             <div className={classes.div}>
               <div className={classes.heading}>Create New Proposal</div>
@@ -573,7 +554,9 @@ const [fileError,setFileError]=useState("")
               <hr className={classes.line} />
               <Container>
                 <div className={classes.row}>
-                  <div className={classes.proposaltitle}>Proposal Title<span className="star">*</span></div>
+                  <div className={classes.proposaltitle}>
+                    Proposal Title<span className="star">*</span>
+                  </div>
 
                   <Div>
                     {/* <div style={{display:"flex"}}> */}
@@ -583,22 +566,23 @@ const [fileError,setFileError]=useState("")
                       onChange={(e) => {
                         setProposalTitle(e.target.value);
                         setCount(e.target.value.length);
-                        setError("")
+                        setError("");
                       }}
                       value={proposalTitle}
                       maxLength="60"
                     />
-                    <div className="error-message">{error}
-                    <p
-                      style={{
-                        color: "#2a2a2a",
-                        fontSize: "12px",
-                        float: "right",
-                        paddingTop: "5px",
-                      }}
-                    >
-                      {60 - count}/60
-                    </p>
+                    <div className="error-message">
+                      {error}
+                      <p
+                        style={{
+                          color: "#2a2a2a",
+                          fontSize: "12px",
+                          float: "right",
+                          paddingTop: "5px",
+                        }}
+                      >
+                        {60 - count}/60
+                      </p>
                     </div>
                     {/* </div> */}
                   </Div>
@@ -606,55 +590,77 @@ const [fileError,setFileError]=useState("")
 
                 <div className={classes.secondrow}>
                   <StartDiv>
-                    <div className={classes.startdate}>Proposal Start Date<span className="star">*</span></div>
-                    <div>
-
-                    <input
-                      className={classes.startdateinput}
-                      type="datetime-local"
-                       min={new Date().toISOString().split('T')[0]}
-                      id="startdate"
-                      
-                     
-                     
-                      onChange={(e) =>{ setStartDate(e.target.value);setDateError("")}}
-                      value={startDate}
-                      onKeyDown={(e) => e.preventDefault()}
-                     
-                      // disabled
-                    />
-                    <div className="error-message">{dateError}</div>
+                    <div className={classes.startdate}>
+                      Start Date<span className="star">*</span>
+                    </div>
+                    <div className="start-width-50">
+                      <input
+                        className={classes.startdateinput}
+                        type="datetime-local"
+                        min={new Date().toISOString().split("T")[0]}
+                        id="startdate"
+                        onChange={(e) => {
+                          setStartDate(e.target.value);
+                          setDateError("");
+                        }}
+                        value={startDate}
+                        onKeyDown={(e) => e.preventDefault()}
+                        // disabled
+                      />
+                      <div
+                        className="error-message"
+                        style={{ marginLeft: "78px", width: "100%" }}
+                      >
+                        {dateError}
+                      </div>
                     </div>
                   </StartDiv>
                   <EndDiv>
-                    <div className={classes.enddate}>Proposal End Date<span className="star">*</span></div>
-                    <div>
-
-                    <input
-                      className={classes.enddateinput}
-                      type="datetime-local"
-                      min={new Date().toISOString().slice(0, 10)}
-                      onChange={(e) =>{ setEndDate(e.target.value);setDateError("")}}
-                      value={endDate}
-                      onKeyDown={(e) => e.preventDefault()}
-                    />
-                    <div className="error-message">{dateError}</div>
+                    <div
+                      className={dateError ? classes.newClass : classes.enddate}
+                    >
+                      End Date <span className="star">*</span>
+                    </div>
+                    <div className="end-width-50">
+                      <input
+                        className={classes.enddateinput}
+                        type="datetime-local"
+                        min={new Date().toISOString().slice(0, 10)}
+                        onChange={(e) => {
+                          setEndDate(e.target.value);
+                          setDateError("");
+                        }}
+                        value={endDate}
+                        onKeyDown={(e) => e.preventDefault()}
+                      />
+                      <div className="error-message">{dateError}</div>
                     </div>
                   </EndDiv>
                 </div>
                 <Mobile>
                   <Firstdiv>
-                    <Startdate>Proposal Start Date<span className="star">*</span></Startdate>
+                    <Startdate>
+                      {" "}
+                      Start Date<span className="star">*</span>
+                    </Startdate>
                     <Inputstartdate
                       type="date"
                       min={new Date().toISOString().slice(0, 10)}
-                      onChange={(e) =>{ setStartDate(...e.target.value,e.target.value);}}
+                      onChange={(e) => {
+                        setStartDate(...e.target.value, e.target.value);
+                      }}
                       value={startDate}
                       onKeyDown={(e) => e.preventDefault()}
                     />
                   </Firstdiv>
                   <Seconddiv>
-                    <Enddate>Proposal End Date<span className="star">*</span></Enddate>
+                    <Enddate>
+                      {" "}
+                      End Date{" "}
+                      <span className="star" style={{ marginBottom: "18px" }}>
+                        *
+                      </span>
+                    </Enddate>
                     <Inputenddate
                       type="date"
                       min={new Date().toISOString().slice(0, 10)}
@@ -665,24 +671,23 @@ const [fileError,setFileError]=useState("")
                   </Seconddiv>
                 </Mobile>
                 <div className={classes.rowThird}>
-                  <div className={classes.description}>Description<span className="star">*</span></div>
-                <div>
-                  <div className={classes.quillgrid}>
-                    <div className="text-editor">
-                      <ReactQuill
-                        className="quill-editor"
-                        theme="snow"
-                        
-                        modules={props.state.modules}
-                        formats={props.state.formats}
-                        onChange={handleQuillChange}
-                      />
-                       
-                    </div>
-                    
+                  <div className={classes.description}>
+                    Description<span className="star">*</span>
                   </div>
-                  <div  className="error-description">{descriptionError}</div>
-                 </div>
+                  <QuillDiv>
+                    <div className={classes.quillgrid}>
+                      <div className="text-editor">
+                        <ReactQuill
+                          className="quill-editor"
+                          theme="snow"
+                          modules={props.state.modules}
+                          formats={props.state.formats}
+                          onChange={handleQuillChange}
+                        />
+                      </div>
+                    </div>
+                    <div className="error-description">{descriptionError}</div>
+                  </QuillDiv>
                 </div>
                 <div className={classes.rowFourth}>
                   <div className={classes.upload}>Upload Document</div>
@@ -690,52 +695,84 @@ const [fileError,setFileError]=useState("")
                     <Column>
                       {props.state.proposalDocuments.length > 0
                         ? props.state.proposalDocuments.map((doc, index) => {
-                          const onchangebutton=(e)=>{
-                            var x=document.getElementById("fileButton" + index);
-                            setFileError("")
-                            try{
-                            var filesize=e.target.files[0].size;
-                            const filename=e.target.files[0].name;
-                            const fileextenstion=filename.split('.').pop().toLowerCase();
-                            const originalfileSize=Math.round(filesize/1024);
-                            const extensionArray=['pdf','docx' ,'doc','xslx','rtf','xls'];
-                            let flag=false;
-                            if(x.value.length==0 ){
-                              Utils.apiFailureToast("No File is Selected Please Select a File.");
-                            }
-                            else{
-                              for(let i=0;i<extensionArray.length;i++){
-                                if(fileextenstion.localeCompare(extensionArray[i])==0){
-                                  flag=true;
-                                }
-                              }
-                              if(flag == false)
-                                 setFileError("File Extension Must be Docx , Doc, Pdf, Xslx,Rtf,Xls");
-                              // Utils.apiFailureToast("File Extension Must be Docx , Doc, Pdf, Xslx,Rtf,Xls");
-                              else if(originalfileSize > 5120)  {
-                                setFileError("File Size Must be Less than 5MB")
-                                // Utils.apiFailureToast("File Size Must be Less than 5MB");
-                              }
-                              if(flag){
-                              extensionArray.map((data)=>{
-                                if((originalfileSize < 5120) && (fileextenstion == data 
-                                  )){
-                                  props.uploadFileToS3(
-                                    e.target.files[0],
-                                    index
-                                   );
-                                   flag=false;
+                            const onchangebutton = (e) => {
+                              var x = document.getElementById(
+                                "fileButton" + index
+                              );
+                              setFileError("");
+                              try {
+                                var filesize = e.target.files[0].size;
+                                const filename = e.target.files[0].name;
+                                const fileextenstion = filename
+                                  .split(".")
+                                  .pop()
+                                  .toLowerCase();
+                                const originalfileSize = Math.round(
+                                  filesize / 1024
+                                );
+                                const extensionArray = [
+                                  "pdf",
+                                  "docx",
+                                  "doc",
+                                  "xslx",
+                                  "rtf",
+                                  "xls",
+                                ];
+                                let flag = false;
+                                if (x.value.length == 0) {
+                                  Utils.apiFailureToast(
+                                    "No File is Selected Please Select a File."
+                                  );
+                                } else {
+                                  for (
+                                    let i = 0;
+                                    i < extensionArray.length;
+                                    i++
+                                  ) {
+                                    if (
+                                      fileextenstion.localeCompare(
+                                        extensionArray[i]
+                                      ) == 0
+                                    ) {
+                                      flag = true;
+                                    }
                                   }
-                              })}
-                            }
-                          }catch(e){
-                            console.log(e);
-                          }
-                          }
-                          const onclickbutton=(e)=>{
-                            var x=document.getElementById("fileButton" + index);
-                            x.value=null;
-                          }
+                                  if (flag == false)
+                                    setFileError(
+                                      "File Extension Must be Docx , Doc, Pdf, Xslx,Rtf,Xls"
+                                    );
+                                  // Utils.apiFailureToast("File Extension Must be Docx , Doc, Pdf, Xslx,Rtf,Xls");
+                                  else if (originalfileSize > 5120) {
+                                    setFileError(
+                                      "File Size Must be Less than 5MB"
+                                    );
+                                    // Utils.apiFailureToast("File Size Must be Less than 5MB");
+                                  }
+                                  if (flag) {
+                                    extensionArray.map((data) => {
+                                      if (
+                                        originalfileSize < 5120 &&
+                                        fileextenstion == data
+                                      ) {
+                                        props.uploadFileToS3(
+                                          e.target.files[0],
+                                          index
+                                        );
+                                        flag = false;
+                                      }
+                                    });
+                                  }
+                                }
+                              } catch (e) {
+                                console.log(e);
+                              }
+                            };
+                            const onclickbutton = (e) => {
+                              var x = document.getElementById(
+                                "fileButton" + index
+                              );
+                              x.value = null;
+                            };
                             return (
                               <div className="display-flex m-t-4">
                                 <div
@@ -767,9 +804,8 @@ const [fileError,setFileError]=useState("")
                                   <BrowseButton for={"fileButton" + index}>
                                     Browse File
                                   </BrowseButton>
-
                                 </div>
-                               
+
                                 {index ===
                                 props.state.proposalDocuments.length - 1 ? (
                                   <img
@@ -789,18 +825,17 @@ const [fileError,setFileError]=useState("")
                                   />
                                 )}
                               </div>
-                              
                             );
                           })
                         : ""}
-                         <div className="error-message">{fileError}</div>
+                      <div className="error-message">{fileError}</div>
                     </Column>
                   </div>
                 </div>
                 <div className={classes.buttondiv}>
                   <Button onClick={createNewProposal}>
                     <span className={classes.circle}></span>
-                     Submit Proposal
+                    Submit Proposal
                   </Button>
                 </div>
               </Container>
@@ -825,7 +860,9 @@ const [fileError,setFileError]=useState("")
             </span>
             <span>
               <div className="toast-message1">
-                <span className="proposal-creation">Proposal creation in Progress</span>
+                <span className="proposal-creation">
+                  Proposal creation in Progress
+                </span>
                 {/* <span
                   onClick={props.handleClose}
                   style={{
@@ -838,7 +875,9 @@ const [fileError,setFileError]=useState("")
                 </span> */}
               </div>
               <div className="loader-spin"></div>
-              <div className="confirm-transaction">Confirm this transaction on XDCPay</div>
+              <div className="confirm-transaction">
+                Confirm this transaction on XDCPay
+              </div>
               {/* <div className="toast-address">
                 Thank you for your contribution in adding transparency to XDC
                 network
@@ -854,6 +893,7 @@ const [fileError,setFileError]=useState("")
 }
 const Container = styled.div`
   padding: 25px;
+  background: #ffffff;
 `;
 const Div = styled.div`
   width: 100%;
@@ -977,11 +1017,14 @@ const Inputstartdate = styled.input`
 `;
 const StartDiv = styled.div`
   display: flex;
+
   align-items: center;
   width: 50%;
 `;
 const EndDiv = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 50%;
+  ${"" /* padding-right: 40px; */}
 `;

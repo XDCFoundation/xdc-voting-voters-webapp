@@ -236,8 +236,10 @@ const RowXDC = styled.div`
   text-align: center;
   font: normal normal normal 15px/28px Inter;
   @media (min-width: 300px) and (max-width: 767px) {
-    margin-top: 18px !important;
-    margin-left: 43px !important;
+    font: normal normal normal 14px Inter;
+    margin-top: 20px !important;
+    ${'' /* margin-left: 43px !important; */}
+    margin-left: 5px !important;
   }
 `;
 

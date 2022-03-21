@@ -22,6 +22,7 @@ import { getTotalVotingAddress } from "./services/proposalService";
 import Utils from "./utility";
 import Web3 from "web3";
 
+
 class Routes extends BaseComponent {
   constructor(props) {
     super(props);
@@ -117,6 +118,7 @@ class Routes extends BaseComponent {
             ) : (
               ""
             )}
+
             <Route exact path={"/sign-up"} component={SignUp} />
             {this.state.isAllowedToCreateProposal == true ? (
               <Route exact path={"/create"} component={Createproposal} />

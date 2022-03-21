@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Column, Row } from "simple-flexbox";
+import { Column, Row, typeOf } from "simple-flexbox";
 import "../../assets/styles/custom.css";
 import TableCell from "@material-ui/core/TableCell";
 import Grid from "@material-ui/core/Grid";
@@ -23,6 +23,8 @@ import Web3Dialog from "../header/mainDialog";
 import HeaderMain from "../header/header";
 import Loader from "../../assets/styles/images/NewLoader.gif";
 
+
+
 const GreenLine = styled.div`
   background-color: #3ab70d;
   height: 3px;
@@ -37,7 +39,6 @@ const RedLine = styled.div`
     width: 50%;
   }
 `;
-
 export default function RecentProposal(props) {
   const proposalRedirect = async (address) => {
    await history.push({
@@ -152,10 +153,19 @@ export default function RecentProposal(props) {
                                     {/* {Utils.epocToPrettyTime(proposal["cretaedOn"])} */}
                                     {formatedTime}
                                   </Row>
+                                
                                   <Row className="name">
-                                    {!show==1?
-                                        proposal.pollingContract
-                                        : proposal.title}
+                             
+                                  {!show==1?
+                                  <>
+                                        <MobilePollingContract>{     
+                                         `${proposal.pollingContract.slice(0,12)}...${proposal.pollingContract.slice( proposal.pollingContract.length-4, proposal.pollingContract.length)}`
+                                         } </MobilePollingContract>
+                                         <NonMobilePollingContract>
+                                  {proposal.pollingContract }
+                                  </NonMobilePollingContract>
+                                         </>
+                                        : proposal.title }
                                   </Row>
                                   <Row className="status">
                                     <p>Status: &nbsp;</p>
@@ -313,7 +323,17 @@ export default function RecentProposal(props) {
       </div>
   );
 }
-
+const MobilePollingContract=styled.div`
+display:block;
+@media (min-width: 767px) and (max-width: 2000px) {
+    display: none;
+  }
+`;
+const NonMobilePollingContract=styled.div`
+display:none;
+@media (min-width: 767px) and (max-width: 2000px) {
+    display:block;
+  }`;
 const Span = styled.span`
   font-family: "Inter", sans-serif;
   font-weight: 600;
