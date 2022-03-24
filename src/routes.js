@@ -33,14 +33,14 @@ class Routes extends BaseComponent {
     };
   }
   componentDidMount() {
-    if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum);
+    if (window.xdc) {
+      window.web3 = new Web3(window.xdc);
       try {
-        window.ethereum.enable();
+        // window.ethereum.enable();
         let web3;
         web3 = new Web3(window.web3.currentProvider);
         console.log("+++", web3);
-        window.ethereum.enable();
+        // window.ethereum.enable();
         const accounts = web3.eth.getAccounts().then((accounts) => {
           if (!accounts || !accounts.length) {
             return;
@@ -58,7 +58,7 @@ class Routes extends BaseComponent {
       let web3;
       web3 = new Web3(window.web3.currentProvider);
       console.log("+++", web3);
-      window.ethereum.enable();
+      // window.ethereum.enable();
 
       const accounts = web3.eth.getAccounts().then((accounts) => {
         if (!accounts || !accounts.length) {

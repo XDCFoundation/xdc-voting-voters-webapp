@@ -193,16 +193,16 @@ export default function ViewAllProposal(props) {
 
   useEffect(() => {
 
-    if (window.ethereum) {//the error line
-      window.web3 = new Web3(window.ethereum);
+    if (window.xdc) {//the error line
+      window.web3 = new Web3(window.xdc);
 
       try {
-        window.ethereum.enable();
+        // window.ethereum.enable();
 
         let web3;
         web3 = new Web3(window.web3.currentProvider);
         console.log("+++",web3);
-        window.ethereum.enable();
+        // window.ethereum.enable();
         const accounts = web3.eth.getAccounts().then((accounts) => {
           if (!accounts || !accounts.length) {
             console.log("please login")
@@ -224,7 +224,7 @@ export default function ViewAllProposal(props) {
       let web3;
       web3 = new Web3(window.web3.currentProvider);
       console.log("+++",web3);
-      window.ethereum.enable();
+      // window.ethereum.enable();
 
       const accounts = web3.eth.getAccounts().then((accounts) => {
         if (!accounts || !accounts.length) {

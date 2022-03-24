@@ -957,7 +957,7 @@ body {
   cursor: pointer;
   font-family: "Inter";
   font-size: 15px;
-  margin-right: 20px;
+  margin-right: 21px;
 }
 .create-wallet p {
   padding-top: 10px;
@@ -1443,7 +1443,7 @@ px
 .heading {
   /* margin: 15px; */
   color: var(--unnamed-color-2a2a2a);
-  padding: 21px 24px 21px 33px;
+  padding: 21px 24px 21px 24px;
   /* padding-left: 20px; */
   font: normal normal 600 22px/26px Inter;
   letter-spacing: 0px;
@@ -1659,8 +1659,8 @@ px
 .table-between {
   justify-content: space-between;
   display: flex;
-  padding: 5px 12px 0px 22px;
-  height: 105px;
+  padding: 5px 12px 0px 12px;
+  height: 102px;
 }
 .voter-heading {
   letter-spacing: 0px;
