@@ -387,6 +387,9 @@ body {
   .piediv {
     margin-top: 18px !important;
   }
+  .heading{
+    padding-left: 14px !important;
+  }
   .button-div-support {
     padding-left: 32px !important;
     padding-right: 32px !important;
@@ -440,7 +443,7 @@ body {
     background: url("../../assets/styles/images/Background.png") 0% 0% no-repeat padding-box;
     background-size:100% 688px ;
     width: 100%;
-    height: 688px !important;
+    height: 572px !important;
   }
   .forward-image {
     margin-top: 10px;
@@ -507,7 +510,7 @@ body {
   }
   .table-between {
     width: 86vw !important;
-    padding: 21px 24px 0px 12px !important;
+    padding: 6px 0px 0px 0px !important
   }
   .doc-1 {
     /*width: 353px !important;*/
@@ -695,7 +698,7 @@ body {
     background: url("../../assets/styles/images/Background.png")0% 0% no-repeat padding-box;
     background-size: 100% 690px;
     width: 100%;
-    height: 690px;
+    height: 500px;
   }
   /* .attachment-heading{
       padding-right: 45%;
@@ -1087,7 +1090,7 @@ px
 
   margin-inline-end: 20px;
 }
-@media (min-width: 1024px) and (max-width: 1150px) {
+@media (min-width: 1024px) and (max-width: 1190px) {
 .div-1{
   width: 145px;
 }
@@ -1126,7 +1129,7 @@ px
   opacity: 1;
   font-family: "Inter";
 }
-@media (min-width: 1024px) and (max-width: 1150px) {
+@media (min-width: 1024px) and (max-width: 1190px) {
   .div-1-row1{
     font-size:14px;
     margin-top: -9px;
@@ -1536,6 +1539,14 @@ px
   opacity: 1;
   padding: 20px;
 }
+.page-color{
+  color: #0052cc !important;
+}
+a:focus{
+color: #2149B9 !important;
+font-weight: 600 !important;
+}
+
 .griddiv-1 {
   /* height: 615px; */
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -1660,7 +1671,7 @@ px
   justify-content: space-between;
   display: flex;
   padding: 5px 12px 0px 12px;
-  height: 102px;
+  /* height: 102px; */
 }
 .voter-heading {
   letter-spacing: 0px;

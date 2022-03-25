@@ -9,6 +9,7 @@ import FooterComponent from "../footer/footerComponent";
 import { history } from "../../managers/history";
 import { ClickAwayListener } from "@material-ui/core";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -141,7 +142,10 @@ export default function Xvdgovernance() {
     // return false;
   };
   const onchangeDropdown = (e) => {
+    window.scrollTo(0, 0);
     window.location.href = e.target.value;
+   
+
   };
 
   const classes = useStyles();
@@ -288,9 +292,17 @@ const SectionDiv = styled.div`
 const Anchor = styled.a`
   text-decoration: none !important;
   color: black;
-  //   a:active {
-  //     color: blue;
+
+  &:a:focus {
+    outline: none;
+    border-color: red;
+  }
+
+  // &:focus{
+  //   color: #0052cc !important;
   // }
+  
+
   // a:visited {color:#0000FF;}
   // a[tabindex]:focus {
   //   color:blue;
@@ -301,6 +313,8 @@ const Anchor = styled.a`
     text-decoration: underline;
   }
 `;
+
+
 const Back = styled.span`
   text-align: left;
   font-family: "Inter", sans-serif;

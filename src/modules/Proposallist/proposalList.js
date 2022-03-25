@@ -183,6 +183,7 @@ export default function ViewAllProposal(props) {
   const backButton = () => {
     history.push("/");
   };
+  
   console.log(props.state.activePage,"page")
   console.log(props.handlePageChange,"page1")
   const classes = useStyles();
@@ -498,8 +499,11 @@ export default function ViewAllProposal(props) {
                     pageRangeDisplayed="5"
                     totalItemsCount={props.state.totalProposalsCount}
                     onChange={props.handlePageChange}
+                   
+                   
                  
         />
+      
               </div>
 
 
