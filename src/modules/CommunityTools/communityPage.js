@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "6px",
     opacity: "1",
     justifyContent: "space-between",
+    
   },
   line: {
     width: "100%",
@@ -165,31 +166,42 @@ export default function CommunityPage() {
             </Spacing>
             <Div>
               <Grid container spacing={5}>
+              
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
+                
                   <Paper className={classes.paper} elevation={0}>
+                  
                     <ColumnDiv>
+                    <a href="https://observer.xdc.org/" target="_blank">
                       <RowDiv>
-                        <a href="https://observer.xdc.org/" target="_blank">
+                        
                           <ImageView src="/images/Block-Explorer.svg" />
-                        </a>
+                       
                       </RowDiv>
                       <RowDiv>
+                    
                         <Span>XDC Observatory</Span>
                       </RowDiv>
+                      </a>
                     </ColumnDiv>
+                    
                   </Paper>
+                 
                 </Grid>
+               
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
+                    <a href="https://stats.xdc.org/" target="_blank">
                       <RowDiv>
-                        <a href="https://stats.xdc.org/" target="_blank">
+                       
                           <ImageView src="/images/Network-Stats.svg" />
-                        </a>
+                       
                       </RowDiv>
                       <RowDiv>
                         <Span>XDC Network Stats</Span>
                       </RowDiv>
+                      </a>
                     </ColumnDiv>
                   </Paper>
                 </Grid>
@@ -238,42 +250,48 @@ export default function CommunityPage() {
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
+                    <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo" target="_blank">
                       <RowDiv>
-                        <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo" target="_blank">
+                       
                           <ImageView src="/images/XinPay.svg" />
-                        </a>
+                      
                       </RowDiv>
                       <RowDiv>
                         <Span>XDCPay</Span>
                       </RowDiv>
+                      </a>
                     </ColumnDiv>
                   </Paper>
                 </Grid>
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
+                    <a href="https://origin.xdc.org/" target="_blank">
                       <RowDiv>
-                        <a href="https://origin.xdc.org/" target="_blank">
+                       
                           <ImageView src="/images/XinFin-Origin.svg" />
-                        </a>
+                       
                       </RowDiv>
                       <RowDiv>
                         <Span>XDC Origin</Span>
                       </RowDiv>
+                      </a>
                     </ColumnDiv>
                   </Paper>
                 </Grid>
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
+                    <a href="https://docs.xdc.org/" target="_blank">
                       <RowDiv>
-                        <a href="https://docs.xdc.org/" target="_blank">
+                       
                           <ImageView src="/images/XinFin-Docs.svg" />
-                        </a>
+                       
                       </RowDiv>
                       <RowDiv>
                         <Span>XDC Docs</Span>
                       </RowDiv>
+                      </a>
                     </ColumnDiv>
                   </Paper>
                 </Grid>
@@ -313,6 +331,10 @@ const RowDiv = styled.div`
   flex-flow: row nowrap;
   width: 100%;
   justify-content: center;
+
+  a:hover {
+    text-decoration: none !important;
+  }
 `;
 const Back = styled.span`
   text-align: left;

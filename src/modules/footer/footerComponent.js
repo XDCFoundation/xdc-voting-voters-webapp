@@ -290,9 +290,11 @@ const ColumnOne = styled.div``;
 const ColumnSecond = styled.div``;
 const ColumnThird = styled.div``;
 const ColumnFourth = styled.div``;
+
 const Div = styled.div`
-width:100%
+width:100%;
 display:flex;
+
 justify-content: center;
 border-top: 1px solid #E3E7EB;
 padding-bottom: 25px;

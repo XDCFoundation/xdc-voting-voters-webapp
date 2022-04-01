@@ -318,6 +318,13 @@ body {
 .MuiDialog-paperWidthSm {
   margin-bottom: 30% !important;
 }
+.mobile-time{
+  display: none !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
 /* @media (min-width: 1023px) {
   .MuiDialog-paperWidthSm {
     display: none !important;
@@ -349,7 +356,15 @@ body {
     } */
 }
 
-@media (min-width: 300px) and (max-width: 767px) {
+/* @media (min-width: 60) and (max-width: 767px) {
+  .count-down-mobile {
+    margin-top: 75px;
+    margin-right: 62vw;
+    float: right;
+  }
+} */
+
+@media (min-width: 360px) and (max-width: 767px) {
   .poll-ended {
     display: none !important;
   }
@@ -365,7 +380,7 @@ body {
 
   .count-down-mobile {
     margin-top: 75px;
-    margin-right: 135px;
+    margin-right: 37vw;
     float: right;
   }
   .voter-list {
@@ -386,6 +401,12 @@ body {
   } */
   .piediv {
     margin-top: 18px !important;
+  }
+  .mobile-time{
+    display: flex !important;
+  }
+  .justify-content-end{
+    margin-top: -15px;
   }
   .heading{
     padding-left: 14px !important;
@@ -807,7 +828,8 @@ body {
   }
 
   .div-box {
-    justify-content: space-evenly;
+    justify-content: center;
+    margin-left: 4%;
   }
   .xdc-connect {
     padding-top: 10px;
@@ -1093,6 +1115,11 @@ px
 @media (min-width: 1024px) and (max-width: 1190px) {
 .div-1{
   width: 145px;
+}
+.div-box {
+  margin-top: 4%;
+
+  margin-left: 0% !important;
 }
 }
 
@@ -1605,7 +1632,7 @@ font-weight: 600 !important;
   color: #2149b9;
   opacity: 1;
   font-weight: 600;
-  padding-right: 47%;
+  /* padding-right: 47%; */
   margin-top: 4px;
 }
 .doc-1 {

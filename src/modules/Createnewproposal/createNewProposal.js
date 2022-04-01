@@ -153,7 +153,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "6px",
     width: "100%",
     maxWidth: "368px",
-    marginLeft: "72px",
+    marginLeft: "65px",
   },
   newClass: {
     marginBottom: "18px",
@@ -216,7 +216,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     border: "1px solid #e3e7eb",
     font: "normal normal normal 15px/19px Inter",
-    marginLeft: "143px",
+    marginLeft: "140px",
 
     "@media (min-width: 300px) and (max-width: 767px)": {
       font: "normal normal normal 15px/19px Inter",
@@ -279,7 +279,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   uploadbox: {
-    marginLeft: "93px",
+    marginLeft: "100px",
     width: "100%",
     maxWidth: "1019px",
     "@media (min-width: 300px) and (max-width: 767px)": {
@@ -567,6 +567,7 @@ export default function Createnewproposal(props) {
                         setProposalTitle(e.target.value);
                         setCount(e.target.value.length);
                         setError("");
+                        setDateError("")
                       }}
                       value={proposalTitle}
                       maxLength="60"

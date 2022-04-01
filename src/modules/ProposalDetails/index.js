@@ -37,15 +37,15 @@ export default class ProposalDetails extends BaseComponent {
     }
 
     isUserAllowedForVoting = () => {
-        if (window.ethereum) {//the error line
-            window.web3 = new Web3(window.ethereum);
+        if (window.xdc) {//the error line
+            window.web3 = new Web3(window.xdc);
             try {
-                window.ethereum.enable();
+                // window.ethereum.enable();
 
                 let web3;
                 web3 = new Web3(window.web3.currentProvider);
                 console.log(window.web3.currentProvider);
-                window.ethereum.enable();
+                // window.ethereum.enable();
                 web3.eth.getAccounts().then(async accounts => {
                     if (!accounts || !accounts.length) {
                         Utils.apiFailureToast("Wallet is not connected")
@@ -87,7 +87,7 @@ export default class ProposalDetails extends BaseComponent {
 
         let web3;
         web3 = new Web3(window.web3.currentProvider);
-        window.ethereum.enable();
+        // window.ethereum.enable();
         const contract = new web3.eth.Contract(
             masterContractAbi,
             process.env.REACT_APP_MASTER_CONTRACT_ADDRESS//"0xc96b57A8F1A98278007B559Dc8A8B343e3559F6a"
@@ -140,10 +140,10 @@ export default class ProposalDetails extends BaseComponent {
     }
 
     isAlreadyVoted = async (proposalAddress) => {
-        if (window.ethereum) {
-            window.web3 = new Web3(window.ethereum);
+        if (window.xdc) {
+            window.web3 = new Web3(window.xdc);
             try {
-                window.ethereum.enable();
+                // window.ethereum.enable();
                 let web3;
                 web3 = new Web3(window.web3.currentProvider);
                 const accounts = await web3.eth.getAccounts()
@@ -205,7 +205,7 @@ export default class ProposalDetails extends BaseComponent {
             let web3;
             web3 = new Web3(window.web3.currentProvider);
             console.log(window.web3.currentProvider);
-            window.ethereum.enable();
+            // window.ethereum.enable();
             web3.eth.getAccounts().then(async (accounts) => {
                 if (!accounts || !accounts.length) {
                     Utils.apiFailureToast("Please login to XDCPay extension");
