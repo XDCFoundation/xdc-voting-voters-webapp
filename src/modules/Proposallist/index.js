@@ -86,9 +86,9 @@ export default class Listui extends BaseComponent {
         const reqObj = {"skip": 0, "limit": this.state.limit, proposalTitle: e.target.value}
         let [error, proposals] = await Utils.parseResponse(proposalList(reqObj));
         console.log("=== ", proposals)
-        // const updatedList = await this.parseProposalList(proposals?.proposalList)
-        // this.setState({proposalsList: updatedList, totalProposalsCount: proposals.countData})
-        this.setState({proposalsList: proposals.proposalList})
+        const updatedList = await this.parseProposalList(proposals?.proposalList)
+        this.setState({proposalsList: updatedList, totalProposalsCount: proposals.countData})
+        // this.setState({proposalsList: proposals.proposalList})
     };
 
     onStatusChange = async (e) => {
@@ -96,7 +96,9 @@ export default class Listui extends BaseComponent {
         const reqObj = {"skip": 0, "limit": this.state.limit, status: e.target.value}
         let [error, proposals] = await Utils.parseResponse(proposalList(reqObj));
         console.log("=== ", proposals)
-        this.setState({proposalsList: proposals.proposalList})
+        const updatedList = await this.parseProposalList(proposals?.proposalList)
+        this.setState({proposalsList: updatedList, totalProposalsCount: proposals.countData})
+        // this.setState({proposalsList: proposals.proposalList})
     };
 
     handlePageChange = (e) => {
@@ -121,7 +123,9 @@ export default class Listui extends BaseComponent {
         const endTime = moment(e[1].unix * 1000).startOf('day').unix();
         const reqObj = {"skip": 0, "limit": this.state.limit, startTime:startTime*1000, endTime:endTime*1000}
         let [error, proposals] = await Utils.parseResponse(proposalList(reqObj));
-        this.setState({proposalsList: proposals.proposalList})
+        const updatedList = await this.parseProposalList(proposals?.proposalList)
+        this.setState({proposalsList: updatedList, totalProposalsCount: proposals.countData})
+        // this.setState({proposalsList: proposals.proposalList})
     }
 
     render() {

@@ -95,6 +95,17 @@ export default class Voter extends BaseComponent {
 
     getProposalDetails = async () => {
         const address = this.props.location.pathname.replace("/voterslist/", "");
+
+        let [error, proposalDetails] = await Utils.parseResponse(ProposalService.getProposalDetail(address, {})).catch(err => {
+            Utils.apiFailureToast("Unable to fetch proposal details");
+        });
+        let votes = []
+        if (proposalDetails && proposalDetails.yesVotes)
+            votes = proposalDetails.yesVotes
+        if (proposalDetails && proposalDetails.noVotes)
+            votes = [...proposalDetails.yesVotes, ...proposalDetails.noVotes]
+
+        
         // let [error, proposalDetailFromDB] = await Utils.parseResponse(ProposalService.getProposalDetail(address, {})).catch(err => {
         //     Utils.apiFailureToast("Unable to fetch proposal details");
         // });
@@ -141,7 +152,9 @@ export default class Voter extends BaseComponent {
         this.setState({
             proposalAddress: address,
             proposalDetails: proposalDetail,
-            proposalDocumentsUrl: proposalDetail.proposalDocuments
+            proposalDocumentsUrl: proposalDetail.proposalDocuments,
+            totalVotersCount: votes.length
+            
 
         })
     }

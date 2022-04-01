@@ -130,7 +130,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     width: "100%",
     justifyContent: "space-between",
-    "@media (min-width: 300px) and (max-width: 767px)": {},
+    "@media (min-width: 300px) and (max-width: 767px)": {
+    },
   },
   maincontainer: {
     display: "flex",
@@ -160,6 +161,7 @@ const Container = styled.div`
   display: flex;
   @media (min-width: 300px) and (max-width: 767px) {
     display: block;
+    margin-top:-5px;
   }
 `;
 const SecondContainer = styled.div`
@@ -191,6 +193,8 @@ export default function ViewAllProposal(props) {
 
   const [wallet, setwallet] = useState("");
   const [show,setShow]=useState(0);
+  const [emptySearch, setEmptySearch]=useState("")
+  const [showData, setShowData]=useState("")
 
   useEffect(() => {
 
@@ -294,11 +298,19 @@ export default function ViewAllProposal(props) {
                         placeholder="Search"
                         className={classes.input}
                         type="text"
+                        autoComplete="off"
                         onKeyUp={console.log("hello")}
                         id="proposalInput"
                         onChange={(e) => {
+                      
                           props.searchingProposal(e);
+                          setEmptySearch(e.target.value.length)
+                          
+                          console.log(e.target.value.length,"searchempty")
+                         
+                          
                         }}
+                       
                     />
                   </InputDiv>
                 </Container>
@@ -395,7 +407,17 @@ export default function ViewAllProposal(props) {
                                   <RowSpacing>
 
                                     <div className={classes.mobilemedia}>
-                                      <Content>{ show===1 ? data.title : data.pollingContract }</Content>
+                                      {/* <Content>{ props.state.searchDataValue.length==0?  ( show===1 ? data.title : data.pollingContract ) :  (show===1 ? data.proposalTitle : data.pollingContract) }</Content> */}
+                                      <Content>{((emptySearch==0?data.title:"")||(emptySearch>0?data.proposalTitle:"")||(show===1 ? data.title : 
+                                        <>
+                                         <MobilePollingContract>{     
+                                         `${data.pollingContract.slice(0,12)}...${data.pollingContract.slice( data.pollingContract.length-4, data.pollingContract.length)}`
+                                         } </MobilePollingContract>
+                                         <NonMobilePollingContract>
+                                  {data.pollingContract }
+                                  </NonMobilePollingContract>
+                                        </>
+                                        )) }</Content>
                                       {status === "Open" ? (
                                           <Row className="justify-content-end">
                                             <div
@@ -434,7 +456,7 @@ export default function ViewAllProposal(props) {
 
                                     <MobileDivLine>
                                       {status === "Open" ? (
-                                          ""
+                                         ""
                                       ) : (
                                           <BarLine>
                                             <GreenLine
@@ -460,29 +482,53 @@ export default function ViewAllProposal(props) {
                                     </Container>
 
                                     {status === "Open" ? (
-                                        ""
+                                         <>
+                                         <Row className="mobile-time">
+                                <span style={{ marginRight: "5px" }}>
+                                  <img
+                                      className="m-b-4"
+                                      src={require("../../assets/styles/images/Time-Active.svg")}
+                                  />
+                                </span>
+                                            <Tooltip placement="top" title={moment(data.endDate).format("DD MMMM YYYY")}>
+                                              <Span>
+
+                                                <Countdown
+                                                    className="count-down"
+                                                    date={data.endDate}
+                                                />
+                                                &nbsp;Remaining
+
+                                              </Span>
+                                            </Tooltip>
+                                          </Row>
+                                        </>
                                     ) : (
                                         <NumberOfVotes>
                                           {Number(yesVotes) + Number(noVotes)} votes
                                         </NumberOfVotes>
                                     )}
                                   </DisplayNone>
+                                  {status!="Open"?
+                                  <>
                                   <RowSpacing>
                                     <MobileResponsive>
                                       <ClockImage src="/images/Time-Inactive.svg" />
                                       <PollEnded>Poll Ended</PollEnded>
                                     </MobileResponsive>
                                   </RowSpacing>
+                                  </>:""}
                                 </Column>
                               </MainContainer>
                           );
                         })
                     ):<div className="display-flex justify-content-center">No Proposal Found</div>) : (
-                    <div className="display-flex justify-content-center p-t-50">
-                      {" "}
-                      <img className="load" src={Loader}/>
-                      {/* No Record found */}
-                    </div>
+                    // <div className="display-flex justify-content-center p-t-50">
+                    //   {" "}
+                    //   <img className="load" src={Loader}/>
+                    //   {/* No Record found */}
+                    // </div>
+                    <div className="display-flex justify-content-center">No Proposal Found</div>
                 )}
               </Div>
               <div className="display-flex justify-content-end p-t-15">
@@ -519,6 +565,25 @@ export default function ViewAllProposal(props) {
       </div>
   );
 }
+
+const MobilePollingContract=styled.div`
+display:block;
+@media (min-width: 767px) and (max-width: 2000px) {
+    display: none;
+  }
+`;
+const NonMobilePollingContract=styled.div`
+display:none;
+@media (min-width: 767px) and (max-width: 2000px) {
+    display:block;
+  }`;
+// const Span = styled.span`
+//   font-family: "Inter", sans-serif;
+//   font-weight: 600;
+//   font-size: 13px;
+//   color: #909090;
+// `;
+
 const ArrowImg = styled.img`
   // margin-top: -2px;
   // margin-right: 7px;
@@ -543,7 +608,7 @@ const DatePickerDiv = styled.div`
   border-radius: 4px;
   width: 237px;
   height: 36px;
-  padding-top: 1px;
+  padding-top: 3px;
 
 
   input:focus {
@@ -580,6 +645,8 @@ const RowSpacing = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  
+  
 `;
 const Media_for_container = styled.div`
   display: flex;
@@ -598,6 +665,7 @@ const DisplayNone = styled.div`
   justify-content: space-between;
   @media (min-width: 300px) and (max-width: 767px) {
     // display: none;
+    margin-top: -11px;
   }
 
 `;
@@ -854,6 +922,7 @@ const Content = styled.span`
   font-size: 18px;
   @media (min-width: 300px) and (max-width: 767px) {
     font-size: 13px;
+    margin-top: 3px;
   }
 `;
 const Status = styled.span`
