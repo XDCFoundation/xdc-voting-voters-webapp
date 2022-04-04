@@ -8,6 +8,8 @@ import AwsService from "../../services/awsService";
 import {addNewProposal} from "../../services/proposalService";
 import {uploadFile} from "../../services/fileUploaderService";
 import { history } from "../../managers/history";
+import {useNavigate} from 'react-router-dom';
+
 
 const {extname} = require("path");
 
@@ -58,6 +60,7 @@ export default class Createproposal extends BaseComponent {
     handleChange = (value) => {
         this.setState({text: value});
     };
+    
 
     addDocumentRow = () => {
         this.state.proposalDocuments.push("");
@@ -91,6 +94,7 @@ export default class Createproposal extends BaseComponent {
         }
     };
 
+    
     createProposal = async (reqObj) => {
         this.setState({open:true})
         if (
@@ -138,8 +142,18 @@ export default class Createproposal extends BaseComponent {
                         // Utils.apiSuccessToast("Proposal Created Successfully");
 
                         // this.setState({open:true})
-                        history.push('/');
+                        
+                         
+                      
+                      history.push("/");
+                        
+
+                        
+                        // window.location.href = "/";
+                       
+
                     }
+
                     this.setState({open:true})
                 })
             // .then(async (res) => {

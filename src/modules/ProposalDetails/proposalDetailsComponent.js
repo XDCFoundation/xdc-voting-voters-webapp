@@ -394,7 +394,7 @@ export default function ProposalDetails(props) {
         </div>
       </Column>
 
-      <Snackbar
+      <Snackbar className="successfully-voted"
         open={props.state.open}
         // autoHideDuration={3000}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
@@ -455,7 +455,7 @@ export default function ProposalDetails(props) {
       </Snackbar>
 
       {/* *****************VOting Not Allowed Toast********************* */}
-      <Snackbar
+      <Snackbar className="not-allowed"
         open={props.state.open1}
         autoHideDuration={3000}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
@@ -478,7 +478,7 @@ export default function ProposalDetails(props) {
       {/* *************** */}
 
       {/* *****************Future vote Toast********************* */}
-      <Snackbar
+      <Snackbar className="voting-start"
         open={props.state.open2}
         autoHideDuration={3000}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}

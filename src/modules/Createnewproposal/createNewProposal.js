@@ -441,6 +441,11 @@ export default function Createnewproposal(props) {
   }, [endDate]);
 
   const createNewProposal = async () => {
+    // if(!proposalTitle || !startDate || !endDate || !description){
+    //   setError("Please Enter Title");
+    //   setDateError("Enter Valid Date");
+    //   setErrorDescription("Description must be atleast 200 characters");
+    // }
     //  var compareDate = new Date();
     //  var difference= new Date(endDate).getDate()-new Date(startDate).getDate();
     //  console.log(difference);
@@ -458,26 +463,26 @@ export default function Createnewproposal(props) {
     // console.log(local);
 
     //start Date
-    console.log("startdate" + startDate);
+    // console.log("startdate" + startDate);
 
     var xy = new Date(startDate);
-    console.log(xy);
+    // console.log(xy);
     const x = moment(xy).utc().format();
-    console.log(x);
+    // console.log(x);
     var z = new Date(x).toISOString();
-    console.log(z);
+    // console.log(z);
     var epochutcStart = new Date(z).getTime();
-    console.log(epochutcStart);
+    // console.log(epochutcStart);
 
     //end-Date
     var enddate = new Date(endDate);
-    console.log(enddate);
+    // console.log(enddate);
     const utc = moment(endDate).utc().format();
-    console.log(utc);
+    // console.log(utc);
     var stillutc = new Date(utc).toISOString();
-    console.log(stillutc);
+    // console.log(stillutc);
     var epochutcEnd = new Date(stillutc).getTime();
-    console.log(epochutcEnd);
+    // console.log(epochutcEnd);
 
     const reqObj = {
       proposalTitle: proposalTitle,
@@ -494,6 +499,7 @@ export default function Createnewproposal(props) {
       // utcTime:stillUtc,
       // localTime:local,
     };
+
     if (
       !reqObj.proposalTitle
       // !reqObj.startDate ||
@@ -502,16 +508,18 @@ export default function Createnewproposal(props) {
     ) {
       setError("Please Enter Title");
     }
+
     // Utils.apiFailureToast("Please provide all the inputs");
     //console.log(Date.parse(startDate), "startdate");
     //console.log(Date.parse(endDate), "endDate");
-    if (
+    else if (
       proposalTitle &&
       Date.parse(startDate) < Date.parse(endDate) &&
       description.length >= 200
     ) {
       props.createProposal(reqObj);
     }
+
     // else if(Date.parse(startDate) > Date.parse(endDate)){
     //   // Utils.apiFailureToast("Title should be less than 60 chars");
     //   setDateError("Enter Valid Date");
@@ -520,7 +528,7 @@ export default function Createnewproposal(props) {
     // Utils.apiFailureToast("Description should be greater than 200 chars");
     else if (description.length < 200) {
       setErrorDescription("Description must be atleast 200 characters");
-    } else {
+    } else if (Date.parse(startDate) > Date.parse(endDate)) {
       setDateError("Enter Valid Date");
     }
   };
@@ -533,7 +541,7 @@ export default function Createnewproposal(props) {
   const [fileError, setFileError] = useState("");
 
   return (
-    <div>
+    <div className="">
       <Headerdiv>
         <HeaderMain />
       </Headerdiv>
@@ -567,7 +575,7 @@ export default function Createnewproposal(props) {
                         setProposalTitle(e.target.value);
                         setCount(e.target.value.length);
                         setError("");
-                        setDateError("")
+                        setDateError("");
                       }}
                       value={proposalTitle}
                       maxLength="60"
@@ -598,7 +606,8 @@ export default function Createnewproposal(props) {
                       <input
                         className={classes.startdateinput}
                         type="datetime-local"
-                        min={new Date().toISOString().split("T")[0]}
+                        // min={new Date().toISOString().split("T")[0]}
+                        min={new Date().toISOString().slice(0, 16)}
                         id="startdate"
                         onChange={(e) => {
                           setStartDate(e.target.value);
@@ -610,7 +619,7 @@ export default function Createnewproposal(props) {
                       />
                       <div
                         className="error-message"
-                        style={{ marginLeft: "78px", width: "100%" }}
+                        style={{ marginLeft: "65px", width: "100%" }}
                       >
                         {dateError}
                       </div>
@@ -626,7 +635,8 @@ export default function Createnewproposal(props) {
                       <input
                         className={classes.enddateinput}
                         type="datetime-local"
-                        min={new Date().toISOString().slice(0, 10)}
+                        // min={new Date().toISOString().slice(0, 10)}
+                        min={new Date().toISOString().slice(0, 16)}
                         onChange={(e) => {
                           setEndDate(e.target.value);
                           setDateError("");
@@ -811,7 +821,10 @@ export default function Createnewproposal(props) {
                                 props.state.proposalDocuments.length - 1 ? (
                                   <img
                                     className={classes.image}
-                                    onClick={props.addDocumentRow}
+                                    onClick={
+                                      props.addDocumentRow
+                                    
+                                    }
                                     src="/images/Add.svg"
                                   />
                                 ) : (
@@ -877,7 +890,7 @@ export default function Createnewproposal(props) {
               </div>
               <div className="loader-spin"></div>
               <div className="confirm-transaction">
-                Confirm this transaction on XDCPay
+              Confirm this transaction on XDCPay. Proposal will not be created if you close or refresh the page or close the XDCPay window.
               </div>
               {/* <div className="toast-address">
                 Thank you for your contribution in adding transparency to XDC

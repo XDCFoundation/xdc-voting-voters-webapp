@@ -66,6 +66,7 @@ export default function RecentProposal(props) {
   };
 
   useEffect(() => {
+   
     if (window.xdc) {
       //the error line
       window.web3 = new Web3(window.xdc);
@@ -182,7 +183,9 @@ export default function RecentProposal(props) {
                               </span>
                                   </Row>
                                   {status === "Open" ? (
-                                      <></>
+                                      <>
+                                      
+                                      </>
                                   ) : (
                                       <>
                                         <Row class="poll-ended-mobile">
@@ -213,6 +216,7 @@ export default function RecentProposal(props) {
                                 >
                                   {status === "Open" ? (
                                       <>
+                                     
                                         <Row class="count-down-mobile">
                                   <span style={{ marginRight: "5px" }}>
                                     {" "}
@@ -242,6 +246,7 @@ export default function RecentProposal(props) {
                                             </Span>
                                           </Tooltip>
                                         </Row>
+                                       
                                         <Row className="justify-content-end">
                                           <div
                                               className={
