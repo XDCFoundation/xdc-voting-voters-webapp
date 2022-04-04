@@ -81,6 +81,11 @@ body {
 .width-27 {
   width: 27px;
 }
+/* .blur{
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+} */
+
 
 .height-27 {
   height: 27px;
@@ -96,7 +101,7 @@ body {
 .header-div {
   width: 100%;
   height: 423px;
-  background: url("../../assets/styles/images/Background.png") 0% 0% no-repeat padding-box;
+  background: url("../../assets/styles/images/banner_new.png") 0% 0% no-repeat padding-box;
   background-size: 100% 423px;
   /* display: flex; */
   opacity: 1;
@@ -105,7 +110,7 @@ body {
 .header-div-all {
   width: 100%;
   height: 300px;
-  background: url("../../assets/styles/images/Background.png") 0% 0% no-repeat padding-box;
+  background: url("../../assets/styles/images/banner_new.png") 0% 0% no-repeat padding-box;
   background-size:100% 300px ;
   /* display: flex; */
   opacity: 1;
@@ -145,6 +150,66 @@ body {
 .MuiAlert-root{
   display: none ;
 } */
+
+
+.MuiSnackbar-anchorOriginTopCenter{
+  background: rgba( 255, 255, 255, 0.8 );
+ 
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  top: 0px !important;
+  
+}
+.login-xdcpay{
+  background: none !important;
+  top: 25px !important;
+  height: 8% !important;
+  top: 24px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+}
+.install-xdcpay{
+  background: none !important;
+  top: 25px !important;
+  height: 8% !important;
+  top: 24px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+}
+
+.not-allowed{
+  background: none !important;
+  top: 25px !important;
+  height: 10% !important;
+  top: 24px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+}
+
+.successfully-voted{
+  background: none !important;
+  top: 25px !important;
+  height: 10% !important;
+  top: 24px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+}
+
+.voting-start{
+  background: none !important;
+  top: 25px !important;
+  height: 10% !important;
+  top: 24px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+}
+
 .textToast {
   color: #2a2a2a;
   text-align: left;
@@ -356,11 +421,11 @@ a:hover {
     } */
 }
 
-/* @media (min-width: 60) and (max-width: 767px) {
+/* @media (min-width: 5000) and (max-width: 767px) {
   .count-down-mobile {
-    margin-top: 75px;
-    margin-right: 62vw;
-    float: right;
+    margin-top: 75px !important;
+    margin-right: 62vw !important;
+    float: right !important;
   }
 } */
 
@@ -461,7 +526,7 @@ a:hover {
   }
 
   .header-div {
-    background: url("../../assets/styles/images/Background.png") 0% 0% no-repeat padding-box;
+    background: url("../../assets/styles/images/banner_new.png") 0% 0% no-repeat padding-box;
     background-size:100% 688px ;
     width: 100%;
     height: 572px !important;
@@ -716,7 +781,7 @@ a:hover {
   }
 
   .header-div {
-    background: url("../../assets/styles/images/Background.png")0% 0% no-repeat padding-box;
+    background: url("../../assets/styles/images/banner_new.png")0% 0% no-repeat padding-box;
     background-size: 100% 690px;
     width: 100%;
     height: 500px;
@@ -1783,6 +1848,11 @@ font-weight: 600 !important;
   font: normal normal normal 14px/17px Inter;
   letter-spacing: 0px;
   color: #4b4b4b;
+  width: 300px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 30px;
 }
 .loader-spin {
   border: 3px solid #ffffff;
@@ -1792,7 +1862,7 @@ font-weight: 600 !important;
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: 75px;
+  margin-left: 123px;
   height: 64px;
   width: 64px;
   animation: spin 1s linear infinite;

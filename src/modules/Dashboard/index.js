@@ -32,6 +32,7 @@ export default class Dashboard extends BaseComponent {
         // await this.getProposalsData(proposalsAddresses);
         this.setState({isLoader: true});
         this.getProposalList();
+       
 
     }
 
@@ -62,7 +63,7 @@ export default class Dashboard extends BaseComponent {
                     .catch((err) => {
                         console.log(err, "====");
                     });
-                return createProposalResponse;
+                return  createProposalResponse;
             } catch (err) {
                 alert("Something went wrong.");
             }
