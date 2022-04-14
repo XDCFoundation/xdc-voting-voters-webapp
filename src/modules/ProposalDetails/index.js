@@ -111,8 +111,28 @@ export default class ProposalDetails extends BaseComponent {
         proposalDetail.status = createProposalResponse[6];
         proposalDetail.createdOn = proposalDetailFromDB.createdOn;
         proposalDetail.updatedOn = proposalDetailFromDB.updatedOn;
+
+   
+
+        // let c = [
+        //     !proposalDetail.proposalDocuments[0],
+        //     !proposalDetail.proposalDocuments[1],
+        //     !proposalDetail.proposalDocuments[2],
+        //     !proposalDetail.proposalDocuments[3]
+        // ]
+
+        
+       
         if (!proposalDetail.proposalDocuments[0])
+            // if(c[0] && c[1] && c[2] && c[3] && c[4] && c[5])
+            {
+        
             proposalDetail.proposalDocuments = []
+            console.log(proposalDetail.proposalDocuments[0],"proposaldocument")
+        }
+        
+      
+        
 
         if (proposalDetail.endDate > Date.now()) {
             proposalDetail.status = "Open"

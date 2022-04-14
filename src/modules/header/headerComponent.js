@@ -14,6 +14,7 @@ import {
 import Web3Dialog from "./mainDialog";
 
 export default function Header(props) {
+  
   const [getVotesCasted, setGetVotesCasted] = useState([]);
   const [getPassedProposals, setGetPassedProposals] = useState([]);
   const [getTotalVoting, setGetTotalVoting] = useState([]);

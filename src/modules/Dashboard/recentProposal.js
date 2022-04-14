@@ -184,6 +184,35 @@ export default function RecentProposal(props) {
                                   </Row>
                                   {status === "Open" ? (
                                       <>
+                                      <Row className="show-time-mobile">
+                                  <span style={{ marginRight: "5px" }}>
+                                    {" "}
+                                    <img
+                                        style={{
+                                          height: "14px",
+                                          width: "14px",
+                                        }}
+                                        className="m-b-4"
+                                        src={require("../../assets/styles/images/Time-Active.svg")}
+                                    />
+                                  </span>
+                                          <Tooltip
+                                              placement="top"
+                                              title={moment(proposal.endDate).format(
+                                                  "DD MMMM YYYY"
+                                              )}
+                                          >
+                                            <span className="show-timer-mobile">
+                                              <Countdown
+                                                  className="count-down"
+                                                  date={proposal.endDate}
+
+                                                  // 2
+                                              />
+                                              &nbsp;Remaining
+                                            </span>
+                                          </Tooltip>
+                                        </Row>
                                       
                                       </>
                                   ) : (
@@ -204,20 +233,10 @@ export default function RecentProposal(props) {
                                   </span>{" "}
                                           Poll Ended
                                         </Row>
-                                      </>
-                                  )}
-                                </TableCell>
-                              </Column>
 
-                              <Column>
-                                <TableCell
-                                    className="mobile-div-right"
-                                    style={{ border: "none" }}
-                                >
-                                  {status === "Open" ? (
-                                      <>
-                                     
-                                        <Row class="count-down-mobile">
+                                        {/* ***************************** */}
+                                        {/* {status === "Open" ? ( */}
+                                        {/* <Row >
                                   <span style={{ marginRight: "5px" }}>
                                     {" "}
                                     <img
@@ -245,7 +264,52 @@ export default function RecentProposal(props) {
                                               &nbsp;Remaining
                                             </Span>
                                           </Tooltip>
+                                        </Row> */}
+                                        {/* ):("")} */}
+                                      </>
+                                  )}
+                                </TableCell>
+                              </Column>
+
+                              <Column>
+                                <TableCell
+                                    className="mobile-div-right"
+                                    style={{ border: "none" }}
+                                >
+                                  {status === "Open" ? (
+                                      <>
+                                    
+                                        <Row class="count-down-mobile">
+                                  <span className="show-time-active-mobile">
+                                    {" "}
+                                    <img
+                                        style={{
+                                          height: "14px",
+                                          width: "14px",
+                                        }}
+                                        className="m-b-4"
+                                        src={require("../../assets/styles/images/Time-Active.svg")}
+                                    />
+                                  </span>
+                                          <Tooltip
+                                              placement="top"
+                                              title={moment(proposal.endDate).format(
+                                                  "DD MMMM YYYY"
+                                              )}
+                                          >
+                                            <Span>
+                                              <Countdown
+                                                  className="count-down"
+                                                  date={proposal.endDate}
+
+                                                  // 2
+                                              />
+                                              &nbsp;Remaining
+                                            </Span>
+                                          </Tooltip>
                                         </Row>
+
+                                       
                                        
                                         <Row className="justify-content-end">
                                           <div
@@ -261,6 +325,7 @@ export default function RecentProposal(props) {
                                             Details
                                           </div>
                                         </Row>
+                                        
                                         {/* </div> */}
                                       </>
                                   ) : (
@@ -344,4 +409,8 @@ const Span = styled.span`
   font-weight: 600;
   font-size: 13px;
   color: #909090;
+  @media (min-width: 360px) and (max-width: 767px) {
+    display: none;
+  }
+
 `;

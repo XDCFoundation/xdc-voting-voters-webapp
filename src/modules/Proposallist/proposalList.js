@@ -302,9 +302,10 @@ export default function ViewAllProposal(props) {
                         onKeyUp={console.log("hello")}
                         id="proposalInput"
                         onChange={(e) => {
-                      
+                      if(show===1){
                           props.searchingProposal(e);
                           setEmptySearch(e.target.value.length)
+                      }
                           
                           console.log(e.target.value.length,"searchempty")
                          
@@ -913,7 +914,7 @@ const Button = styled.button`
 const Content = styled.span`
   color: var(--unnamed-color-2a2a2a);
   text-align: left;
-  whiteSpace: "nowrap",
+  whiteSpace: "nowrap";
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;

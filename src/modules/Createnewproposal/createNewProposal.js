@@ -464,6 +464,7 @@ export default function Createnewproposal(props) {
 
     //start Date
     // console.log("startdate" + startDate);
+    if(startDate && endDate && proposalTitle && description){
 
     var xy = new Date(startDate);
     // console.log(xy);
@@ -483,6 +484,7 @@ export default function Createnewproposal(props) {
     // console.log(stillutc);
     var epochutcEnd = new Date(stillutc).getTime();
     // console.log(epochutcEnd);
+    }
 
     const reqObj = {
       proposalTitle: proposalTitle,
@@ -501,12 +503,15 @@ export default function Createnewproposal(props) {
     };
 
     if (
-      !reqObj.proposalTitle
-      // !reqObj.startDate ||
-      // !reqObj.endDate ||
-      // !reqObj.description
+      !reqObj.proposalTitle &&
+      !reqObj.startDate &&
+      !reqObj.endDate &&
+      !reqObj.description
     ) {
       setError("Please Enter Title");
+      setDateError("Enter Valid Date");
+       setErrorDescription("Description must be atleast 200 characters");
+
     }
 
     // Utils.apiFailureToast("Please provide all the inputs");
@@ -520,6 +525,13 @@ export default function Createnewproposal(props) {
       props.createProposal(reqObj);
     }
 
+    else if(!proposalTitle){
+      setError("Please Enter Title");
+    }
+
+    else if ((Date.parse(startDate) >= Date.parse(endDate)) || !startDate || !endDate) {
+      setDateError("Enter Valid Date");
+    }
     // else if(Date.parse(startDate) > Date.parse(endDate)){
     //   // Utils.apiFailureToast("Title should be less than 60 chars");
     //   setDateError("Enter Valid Date");
@@ -528,9 +540,8 @@ export default function Createnewproposal(props) {
     // Utils.apiFailureToast("Description should be greater than 200 chars");
     else if (description.length < 200) {
       setErrorDescription("Description must be atleast 200 characters");
-    } else if (Date.parse(startDate) > Date.parse(endDate)) {
-      setDateError("Enter Valid Date");
-    }
+    } 
+    
   };
 
   const classes = useStyles();
@@ -575,7 +586,7 @@ export default function Createnewproposal(props) {
                         setProposalTitle(e.target.value);
                         setCount(e.target.value.length);
                         setError("");
-                        setDateError("");
+                        // setDateError("");
                       }}
                       value={proposalTitle}
                       maxLength="60"
@@ -809,7 +820,7 @@ export default function Createnewproposal(props) {
                                     accept="*"
                                     style={{ display: "none" }}
                                     onChange={onchangebutton}
-                                    onClick={onclickbutton}
+                                    // onClick={onclickbutton}
                                   />
 
                                   <BrowseButton for={"fileButton" + index}>

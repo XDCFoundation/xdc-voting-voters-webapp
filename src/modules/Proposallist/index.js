@@ -26,14 +26,17 @@ export default class Listui extends BaseComponent {
 
     componentDidMount = () => {
         this.getProposalList();
+        
     }
 
     getProposalList = async (skip = 0) => {
+       
         const reqObj = {"skip": skip, "limit": this.state.limit}
         let [error, proposals] = await Utils.parseResponse(proposalList(reqObj));
         console.log("=== ", proposals)
         const updatedList = await this.parseProposalList(proposals?.proposalList)
         this.setState({proposalsList: updatedList, totalProposalsCount: proposals.countData})
+        
     }
 
     parseProposalList = async (proposals)=>{
