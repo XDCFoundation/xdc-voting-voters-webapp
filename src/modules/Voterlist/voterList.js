@@ -201,7 +201,8 @@ export default function Voterslist(props) {
               </SecondContainer>
             </Spacing>
 
-            {totalVotes.map((data) => {
+            {totalVotes && totalVotes.length >= 1 ? (
+            totalVotes.map((data) => {
               return (
                 <div>
                 <Div>
@@ -241,7 +242,17 @@ export default function Voterslist(props) {
                 </div>
                 
               );
-            })}
+            }))
+            :(
+              <>
+                      <div
+                        style={{ display: "flex", justifyContent: "center" }}
+                      >
+                        No Votes Casted
+                      </div>
+                    </>
+            )
+          }
             <Pagingdiv className="display-flex justify-content-end">
               <div className="display-flex justify-content-end p-t-15">
                 <Pagination
@@ -252,10 +263,12 @@ export default function Voterslist(props) {
                   linkClassPrev="table-pagination"
                   activeLinkClass="fc-black"
                   linkClass="table-pagination"
-                  activePage={props.state.activePage}
-                  itemsCountPerPage={props.state.itemsPerPage}
-                  pageRangeDisplayed="5"
-                  totalItemsCount={props.state.totalVotersCount}
+                  // activePage={props.state.activePage}
+                  // itemsCountPerPage={props.state.itemsPerPage}
+                  // pageRangeDisplayed="5"
+                  // itemsCountPerPage="10"
+                  //   pageRangeDisplayed="5"
+                  totalItemsCount={props.state.totalVotersCount>10?1:props.state.totalVotersCount}
                   onChange={props.handlePageChange}
                 />
               </div>

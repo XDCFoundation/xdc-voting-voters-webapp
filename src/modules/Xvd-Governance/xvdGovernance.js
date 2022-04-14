@@ -376,8 +376,7 @@ const SelectContainer = styled.div`
 const SelectOption = styled.select`
   border-radius: 4px;
   padding: 8px;
-
-  background-color: #fffffff;
+  background-color: #ffffff;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.19;
@@ -444,7 +443,6 @@ const H1 = styled.span`
   white-space: nowrap;
   text-decoration:none;
   font-size: 17px;
-}
 `;
 const H2 = styled.span`
   font-weight: 600;
@@ -453,7 +451,6 @@ const H2 = styled.span`
   white-space: nowrap;
   text-decoration:none;
   font-size: 17px;
-}
 `;
 const H3 = styled.span`
   font-weight: 600;
@@ -462,7 +459,6 @@ const H3 = styled.span`
   white-space: nowrap;
   text-decoration:none;
   font-size: 17px;
-}
 `;
 const H4 = styled.span`
   font-weight: 600;
@@ -471,7 +467,6 @@ const H4 = styled.span`
   white-space: nowrap;
   text-decoration:none;
   font-size: 17px;
-}
 `;
 const H5 = styled.span`
   font-weight: 600;
@@ -479,7 +474,6 @@ const H5 = styled.span`
   // margin-top: 20px;
   white-space: nowrap;
   font-size: 17px;
-}
 `;
 
 const H6 = styled.span`
@@ -488,7 +482,6 @@ const H6 = styled.span`
   // margin-top: 20px;
   white-space: nowrap;
   font-size: 17px;
-}
 `;
 
 const Spacing = styled.div`

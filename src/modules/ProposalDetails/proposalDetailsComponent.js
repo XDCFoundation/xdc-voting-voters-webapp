@@ -21,6 +21,7 @@ import { Redirect } from "react-router";
 // import { CopyToClipboard } from "react-copy-to-clipboard";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { history } from "../../managers/history";
+import utility from "../../utility";
 // import {ClipBoard} from "./clipBoard";
 // import Tooltip from "@material-ui/core/Tooltip";
 
@@ -36,7 +37,7 @@ export default function ProposalDetails(props) {
 
   
 
-  console.log(moment(props.state.proposalDetails.endDate).format("MM DD YYYY"),"ending")
+  console.log((props.state.proposalDetails.proposalDocuments),"doc")
   console.log(props.state.proposalDetails.endDate,Date.now(),"ending date")
   console.log(Date.now(),props.state.proposalDetails.endDate,"ending date new")
   // const [copy, setCopy]=useState("copy")
@@ -214,8 +215,12 @@ export default function ProposalDetails(props) {
                         props.state.proposalDetails.proposalDocuments.length ?
                         props.state.proposalDetails.proposalDocuments.map(
                           (doc, index) => {
-                            if(doc == "0")
-                             return ""
+                            console.log(doc,index,"docindex")
+                            if((doc == "0") || (doc =="")){
+                             return "";
+                            }
+                            
+                           
                             return (
                               <a
                                 href={props.state.proposalDocumentsUrl[index]}
@@ -243,7 +248,10 @@ export default function ProposalDetails(props) {
                                 </Row>
                               </a>
                             );
-                          }
+                            }
+                            
+                           
+                          
                         ):""}
                     </Grid>
                   </Grid>
