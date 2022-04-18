@@ -19,7 +19,7 @@ export default class Voter extends BaseComponent {
             totalVotes:[],
             activePage:1,
             totalVotersCount:0,
-            itemsPerPage:10
+            // itemsPerPage:10
         };
     }
 
@@ -95,6 +95,18 @@ export default class Voter extends BaseComponent {
 
     getProposalDetails = async () => {
         const address = this.props.location.pathname.replace("/voterslist/", "");
+        // const reqObj = {"skip": skip, "limit": this.state.limit}
+
+        let [error, proposalDetailsFetch] = await Utils.parseResponse(ProposalService.getProposalDetail(address, {})).catch(err => {
+            Utils.apiFailureToast("Unable to fetch proposal details");
+        });
+        let votes = []
+        if (proposalDetailsFetch && proposalDetailsFetch.yesVotes)
+            votes = proposalDetailsFetch.yesVotes
+        if (proposalDetailsFetch && proposalDetailsFetch.noVotes)
+            votes = [...proposalDetailsFetch.yesVotes, ...proposalDetailsFetch.noVotes]
+
+        
         // let [error, proposalDetailFromDB] = await Utils.parseResponse(ProposalService.getProposalDetail(address, {})).catch(err => {
         //     Utils.apiFailureToast("Unable to fetch proposal details");
         // });
@@ -141,9 +153,12 @@ export default class Voter extends BaseComponent {
         this.setState({
             proposalAddress: address,
             proposalDetails: proposalDetail,
-            proposalDocumentsUrl: proposalDetail.proposalDocuments
+            proposalDocumentsUrl: proposalDetail.proposalDocuments,
+            totalVotersCount: votes.length
+            
 
         })
+        console.log(this.state.proposalDetails,this.state.totalVotersCount,"totalvotes")
     }
 
     handlePageChange = (page)=>{

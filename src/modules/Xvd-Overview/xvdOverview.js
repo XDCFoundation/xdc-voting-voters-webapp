@@ -68,7 +68,7 @@ export default function Xvdoverview() {
   React.useEffect(() => {
     let address = [
       {
-        heading: "Overview",
+        heading: "",
         paragraph:
           "XDC Governance is the voting dApp that enables the members of the XDC Network to participate in important decisions by conducting fair blockchain-backed voting for every proposal. The application enables users to create proposals and supports on-chain voting. Using Voting dApp, the XDC platform aims to bring transparency and provide fair voting rights to all the network participants.",
         subparagraphone:
@@ -352,7 +352,6 @@ const H1 = styled.span`
   white-space: nowrap;
   text-decoration:none;
   font-size: 17px;
-}
 `;
 const H2 = styled.span`
   font-weight: 600;
@@ -361,7 +360,6 @@ const H2 = styled.span`
   white-space: nowrap;
   text-decoration:none;
   font-size: 17px;
-}
 `;
 const H3 = styled.span`
   font-weight: 600;
@@ -370,7 +368,6 @@ const H3 = styled.span`
   white-space: nowrap;
   text-decoration:none;
   font-size: 17px;
-}
 `;
 const H4 = styled.span`
   font-weight: 600;
@@ -379,7 +376,6 @@ const H4 = styled.span`
   white-space: nowrap;
   text-decoration:none;
   font-size: 17px;
-}
 `;
 const H5 = styled.span`
   font-weight: 600;
@@ -387,7 +383,6 @@ const H5 = styled.span`
   // margin-top: 20px;
   white-space: nowrap;
   font-size: 17px;
-}
 `;
 
 const H6 = styled.span`
@@ -396,7 +391,6 @@ const H6 = styled.span`
   // margin-top: 20px;
   white-space: nowrap;
   font-size: 17px;
-}
 `;
 
 const Spacing = styled.div`

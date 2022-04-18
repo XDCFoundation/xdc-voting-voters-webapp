@@ -97,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
 
   input: {
     color: "#2A2A2A",
-    width: "100%",
+    width: "90%",
     border: "1px solid #E3E7EB",
     height: "36px",
     opacity: "1",
@@ -111,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPositionX: "9.5px",
     outline: "none",
     "@media (min-width: 300px) and (max-width: 780px)": {
-      width: "100%",
+      width: "85%",
       maxWidth: "310px",
       marginLeft:"20px",
     },
@@ -130,7 +130,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     width: "100%",
     justifyContent: "space-between",
-    "@media (min-width: 300px) and (max-width: 767px)": {},
+    "@media (min-width: 300px) and (max-width: 767px)": {
+    },
   },
   maincontainer: {
     display: "flex",
@@ -160,6 +161,7 @@ const Container = styled.div`
   display: flex;
   @media (min-width: 300px) and (max-width: 767px) {
     display: block;
+    margin-top:-5px;
   }
 `;
 const SecondContainer = styled.div`
@@ -183,6 +185,7 @@ export default function ViewAllProposal(props) {
   const backButton = () => {
     history.push("/");
   };
+  
   console.log(props.state.activePage,"page")
   console.log(props.handlePageChange,"page1")
   const classes = useStyles();
@@ -190,19 +193,21 @@ export default function ViewAllProposal(props) {
 
   const [wallet, setwallet] = useState("");
   const [show,setShow]=useState(0);
+  const [emptySearch, setEmptySearch]=useState("")
+  const [showData, setShowData]=useState("")
 
   useEffect(() => {
 
-    if (window.ethereum) {//the error line
-      window.web3 = new Web3(window.ethereum);
+    if (window.xdc) {//the error line
+      window.web3 = new Web3(window.xdc);
 
       try {
-        window.ethereum.enable();
+        // window.ethereum.enable();
 
         let web3;
         web3 = new Web3(window.web3.currentProvider);
         console.log("+++",web3);
-        window.ethereum.enable();
+        // window.ethereum.enable();
         const accounts = web3.eth.getAccounts().then((accounts) => {
           if (!accounts || !accounts.length) {
             console.log("please login")
@@ -224,7 +229,7 @@ export default function ViewAllProposal(props) {
       let web3;
       web3 = new Web3(window.web3.currentProvider);
       console.log("+++",web3);
-      window.ethereum.enable();
+      // window.ethereum.enable();
 
       const accounts = web3.eth.getAccounts().then((accounts) => {
         if (!accounts || !accounts.length) {
@@ -293,11 +298,20 @@ export default function ViewAllProposal(props) {
                         placeholder="Search"
                         className={classes.input}
                         type="text"
+                        autoComplete="off"
                         onKeyUp={console.log("hello")}
                         id="proposalInput"
                         onChange={(e) => {
+                      if(show===1){
                           props.searchingProposal(e);
+                          setEmptySearch(e.target.value.length)
+                      }
+                          
+                          console.log(e.target.value.length,"searchempty")
+                         
+                          
                         }}
+                       
                     />
                   </InputDiv>
                 </Container>
@@ -394,7 +408,17 @@ export default function ViewAllProposal(props) {
                                   <RowSpacing>
 
                                     <div className={classes.mobilemedia}>
-                                      <Content>{ show===1 ? data.title : data.pollingContract }</Content>
+                                      {/* <Content>{ props.state.searchDataValue.length==0?  ( show===1 ? data.title : data.pollingContract ) :  (show===1 ? data.proposalTitle : data.pollingContract) }</Content> */}
+                                      <Content>{((emptySearch==0?data.title:"")||(emptySearch>0?data.proposalTitle:"")||(show===1 ? data.title : 
+                                        <>
+                                         <MobilePollingContract>{     
+                                         `${data.pollingContract.slice(0,12)}...${data.pollingContract.slice( data.pollingContract.length-4, data.pollingContract.length)}`
+                                         } </MobilePollingContract>
+                                         <NonMobilePollingContract>
+                                  {data.pollingContract }
+                                  </NonMobilePollingContract>
+                                        </>
+                                        )) }</Content>
                                       {status === "Open" ? (
                                           <Row className="justify-content-end">
                                             <div
@@ -433,7 +457,7 @@ export default function ViewAllProposal(props) {
 
                                     <MobileDivLine>
                                       {status === "Open" ? (
-                                          ""
+                                         ""
                                       ) : (
                                           <BarLine>
                                             <GreenLine
@@ -459,33 +483,56 @@ export default function ViewAllProposal(props) {
                                     </Container>
 
                                     {status === "Open" ? (
-                                        ""
+                                         <>
+                                         <Row className="mobile-time">
+                                <span style={{ marginRight: "5px" }}>
+                                  <img
+                                      className="m-b-4"
+                                      src={require("../../assets/styles/images/Time-Active.svg")}
+                                  />
+                                </span>
+                                            <Tooltip placement="top" title={moment(data.endDate).format("DD MMMM YYYY")}>
+                                              <Span>
+
+                                                <Countdown
+                                                    className="count-down"
+                                                    date={data.endDate}
+                                                />
+                                                &nbsp;Remaining
+
+                                              </Span>
+                                            </Tooltip>
+                                          </Row>
+                                        </>
                                     ) : (
                                         <NumberOfVotes>
                                           {Number(yesVotes) + Number(noVotes)} votes
                                         </NumberOfVotes>
                                     )}
                                   </DisplayNone>
+                                  {status!="Open"?
+                                  <>
                                   <RowSpacing>
                                     <MobileResponsive>
                                       <ClockImage src="/images/Time-Inactive.svg" />
                                       <PollEnded>Poll Ended</PollEnded>
                                     </MobileResponsive>
                                   </RowSpacing>
+                                  </>:""}
                                 </Column>
                               </MainContainer>
                           );
                         })
                     ):<div className="display-flex justify-content-center">No Proposal Found</div>) : (
-                    <div className="display-flex justify-content-center p-t-50">
-                      {" "}
-                      <img className="load" src={Loader}/>
-                      {/* No Record found */}
-                    </div>
+                    // <div className="display-flex justify-content-center p-t-50">
+                    //   {" "}
+                    //   <img className="load" src={Loader}/>
+                    //   {/* No Record found */}
+                    // </div>
+                    <div className="display-flex justify-content-center">No Proposal Found</div>
                 )}
               </Div>
               <div className="display-flex justify-content-end p-t-15">
-
                 <Pagination
                     prevPageText="Back"
                     nextPageText="Next"
@@ -499,7 +546,11 @@ export default function ViewAllProposal(props) {
                     pageRangeDisplayed="5"
                     totalItemsCount={props.state.totalProposalsCount}
                     onChange={props.handlePageChange}
-                />
+                   
+                   
+                 
+        />
+      
               </div>
 
 
@@ -515,6 +566,25 @@ export default function ViewAllProposal(props) {
       </div>
   );
 }
+
+const MobilePollingContract=styled.div`
+display:block;
+@media (min-width: 767px) and (max-width: 2000px) {
+    display: none;
+  }
+`;
+const NonMobilePollingContract=styled.div`
+display:none;
+@media (min-width: 767px) and (max-width: 2000px) {
+    display:block;
+  }`;
+// const Span = styled.span`
+//   font-family: "Inter", sans-serif;
+//   font-weight: 600;
+//   font-size: 13px;
+//   color: #909090;
+// `;
+
 const ArrowImg = styled.img`
   // margin-top: -2px;
   // margin-right: 7px;
@@ -539,7 +609,7 @@ const DatePickerDiv = styled.div`
   border-radius: 4px;
   width: 237px;
   height: 36px;
-  padding-top: 1px;
+  padding-top: 3px;
 
 
   input:focus {
@@ -549,7 +619,7 @@ const DatePickerDiv = styled.div`
   @media (min-width: 400px) and (max-width: 780px) {
     width: 100%;
     max-width: 230px;
-    margin-top: 16px;
+    ${'' /* f 16px; */}
     display:flex;
   }
 `;
@@ -576,6 +646,8 @@ const RowSpacing = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  
+  
 `;
 const Media_for_container = styled.div`
   display: flex;
@@ -594,6 +666,7 @@ const DisplayNone = styled.div`
   justify-content: space-between;
   @media (min-width: 300px) and (max-width: 767px) {
     // display: none;
+    margin-top: -11px;
   }
 
 `;
@@ -722,10 +795,11 @@ const RedLine = styled.div`
 `;
 const SelectBox = styled.div`
   display: flex;
+  ${'' /* margin-top: 2px; */}
   align-items: center;
   @media (min-width: 300px) and (max-width: 1038px) {
     display: block;
-    margin-bottom:16px;
+    ${'' /* margin-bottom:16px; */}
   }
   @media (min-width: 300px) and (max-width: 780px) {
     // margin-top: 10px;
@@ -744,10 +818,10 @@ const Failed = styled.span`
 const InputDiv = styled.div`
   display: flex;
   @media (min-width: 300px) and (max-width: 780px) {
-    display: block;
+    ${'' /* display: block; */}
     // margin-top: 10px;
-    margin-left: -9px;
-    margin-top: 26px;
+    ${'' /* margin-left: -9px;
+    margin-top: 26px; */}
   }
 `;
 
@@ -840,7 +914,7 @@ const Button = styled.button`
 const Content = styled.span`
   color: var(--unnamed-color-2a2a2a);
   text-align: left;
-  whiteSpace: "nowrap",
+  whiteSpace: "nowrap";
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
@@ -849,6 +923,7 @@ const Content = styled.span`
   font-size: 18px;
   @media (min-width: 300px) and (max-width: 767px) {
     font-size: 13px;
+    margin-top: 3px;
   }
 `;
 const Status = styled.span`

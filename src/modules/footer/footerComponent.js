@@ -6,8 +6,24 @@ import { emailSubscription } from "../../services/proposalService";
 import Utils from "../../utility";
 import validator from "validator";
 import { history } from "../../managers/history";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+import { makeStyles } from "@material-ui/core/styles/";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  Alert: {
+    backgroundColor: "#ffffff !important",
+  },
+}));
 
 export default function FooterComponent(props) {
+  const classes = useStyles();
   const viewOverview = () => {
     history.push("/overview");
     window.scrollTo(0, 0);
@@ -17,6 +33,8 @@ export default function FooterComponent(props) {
     window.scrollTo(0, 0);
   };
   const [addEmail, setAddEmail] = useState("");
+  const [open5, setOpen5] = useState(false);
+  const [open6, setOpen6] = useState(false);
 
   const addingEmail = async () => {
     const reqObj = {
@@ -30,10 +48,18 @@ export default function FooterComponent(props) {
     //   Utils.apiSuccessToast("Email subscribed successfully");
     // }
     if (error || !addEmail || !validator.isEmail(addEmail)) {
-      Utils.apiFailureToast("Please Enter Valid Email");
+      // Utils.apiFailureToast("Please Enter Valid Email");
+      setOpen5(true);
     } else {
-      Utils.apiSuccessToast("Email subscribed successfully");
+      // Utils.apiSuccessToast("Email subscribed successfully");
+      setOpen6(true);
     }
+  };
+
+  const closeAlert = () => {
+    setOpen5(false);
+    setOpen6(false);
+   
   };
 
   return (
@@ -72,15 +98,15 @@ export default function FooterComponent(props) {
 
             <RowTag>
               <Anchor href="https://t.me/xinfintech" target="_blank">
-                Telegram
+                {/* Telegram */}
               </Anchor>
             </RowTag>
             <RowTag>
               <Anchor
-                href="https://www.reddit.com/r/XDC_Foundation/"
+                href="https://www.facebook.com/XDCFoundation"
                 target="_blank"
               >
-                Forum
+                Facebook
               </Anchor>
             </RowTag>
           </ColumnSecond>
@@ -166,7 +192,7 @@ export default function FooterComponent(props) {
               </RowTag>
               <RowTag>
                 <Anchor href="https://t.me/xinfintech" target="_blank">
-                  Telegram
+                  {/* Telegram */}
                 </Anchor>
               </RowTag>
               <RowTag>
@@ -191,6 +217,105 @@ export default function FooterComponent(props) {
           </Row>
         </MobileResolution>
       </MobileDiv>
+
+
+      {/* ***********************Invalid Email***************************** */}
+
+      <Snackbar
+        className="login-xdcpay"
+        open={open5}
+        autoHideDuration={3000}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        // onClose={handleClose4}
+      >
+        <Alert severity="" className={classes.Alert}>
+          <div style={{ display: "flex" }}>
+            <span
+              style={{
+                marginRight: "10px",
+                marginTop: "-7px",
+                marginLeft: "-8px",
+              }}
+            >
+              <img
+                className="done-logo"
+                style={{ height: "24px", width: "24px", marginTop: "10px" }}
+                src={require("../../assets/styles/images/Error.svg")}
+              ></img>
+            </span>
+            <span>
+              {/* <div className="unauthorized">Unauthorized</div> */}
+              <div className="unauthorized-message">
+                <span>Please Enter Valid Email</span>
+              </div>
+            </span>
+            <span
+              onClick={closeAlert}
+              style={{
+                float: "right",
+                cursor: "pointer",
+                marginTop: "-5px",
+                marginLeft: "15px",
+                fontWeight: "600",
+              }}
+            >
+              X
+            </span>
+          </div>
+        </Alert>
+      </Snackbar>
+
+
+      {/* ********************************************************************* */}
+
+       {/* ***********************Email Subscribtion Successfull***************************** */}
+
+       <Snackbar
+        className="login-xdcpay"
+        open={open6}
+        autoHideDuration={3000}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        // onClose={handleClose4}
+      >
+        <Alert severity="" className={classes.Alert}>
+          <div style={{ display: "flex" }}>
+            <span
+              style={{
+                marginRight: "10px",
+                marginTop: "-7px",
+                marginLeft: "-8px",
+              }}
+            >
+              <img
+                className="done-logo"
+                style={{ height: "24px", width: "24px", marginTop: "10px" }}
+                src={require("../../assets/styles/images/DONE (1).svg")}
+              ></img>
+            </span>
+            <span>
+              {/* <div className="unauthorized">Unauthorized</div> */}
+              <div className="unauthorized-message">
+                <span>Email subscribed successfully</span>
+              </div>
+            </span>
+            <span
+              onClick={closeAlert}
+              style={{
+                float: "right",
+                cursor: "pointer",
+                marginTop: "-5px",
+                marginLeft: "15px",
+                fontWeight: "600",
+              }}
+            >
+              X
+            </span>
+          </div>
+        </Alert>
+      </Snackbar>
+
+
+      {/* ********************************************************************* */}
     </Div>
   );
 }
@@ -236,8 +361,10 @@ const RowXDC = styled.div`
   text-align: center;
   font: normal normal normal 15px/28px Inter;
   @media (min-width: 300px) and (max-width: 767px) {
-    margin-top: 18px !important;
-    margin-left: 43px !important;
+    font: normal normal normal 14px Inter;
+    margin-top: 20px !important;
+    ${'' /* margin-left: 43px !important; */}
+    margin-left: 5px !important;
   }
 `;
 
@@ -288,9 +415,11 @@ const ColumnOne = styled.div``;
 const ColumnSecond = styled.div``;
 const ColumnThird = styled.div``;
 const ColumnFourth = styled.div``;
+
 const Div = styled.div`
-width:100%
+width:100%;
 display:flex;
+
 justify-content: center;
 border-top: 1px solid #E3E7EB;
 padding-bottom: 25px;

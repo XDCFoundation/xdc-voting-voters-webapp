@@ -9,6 +9,7 @@ import FooterComponent from "../footer/footerComponent";
 import { history } from "../../managers/history";
 import { ClickAwayListener } from "@material-ui/core";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -141,7 +142,10 @@ export default function Xvdgovernance() {
     // return false;
   };
   const onchangeDropdown = (e) => {
+    window.scrollTo(0, 0);
     window.location.href = e.target.value;
+   
+
   };
 
   const classes = useStyles();
@@ -288,9 +292,17 @@ const SectionDiv = styled.div`
 const Anchor = styled.a`
   text-decoration: none !important;
   color: black;
-  //   a:active {
-  //     color: blue;
+
+  &:a:focus {
+    outline: none;
+    border-color: red;
+  }
+
+  // &:focus{
+  //   color: #0052cc !important;
   // }
+  
+
   // a:visited {color:#0000FF;}
   // a[tabindex]:focus {
   //   color:blue;
@@ -301,6 +313,8 @@ const Anchor = styled.a`
     text-decoration: underline;
   }
 `;
+
+
 const Back = styled.span`
   text-align: left;
   font-family: "Inter", sans-serif;
@@ -362,8 +376,7 @@ const SelectContainer = styled.div`
 const SelectOption = styled.select`
   border-radius: 4px;
   padding: 8px;
-
-  background-color: #fffffff;
+  background-color: #ffffff;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.19;
@@ -430,7 +443,6 @@ const H1 = styled.span`
   white-space: nowrap;
   text-decoration:none;
   font-size: 17px;
-}
 `;
 const H2 = styled.span`
   font-weight: 600;
@@ -439,7 +451,6 @@ const H2 = styled.span`
   white-space: nowrap;
   text-decoration:none;
   font-size: 17px;
-}
 `;
 const H3 = styled.span`
   font-weight: 600;
@@ -448,7 +459,6 @@ const H3 = styled.span`
   white-space: nowrap;
   text-decoration:none;
   font-size: 17px;
-}
 `;
 const H4 = styled.span`
   font-weight: 600;
@@ -457,7 +467,6 @@ const H4 = styled.span`
   white-space: nowrap;
   text-decoration:none;
   font-size: 17px;
-}
 `;
 const H5 = styled.span`
   font-weight: 600;
@@ -465,7 +474,6 @@ const H5 = styled.span`
   // margin-top: 20px;
   white-space: nowrap;
   font-size: 17px;
-}
 `;
 
 const H6 = styled.span`
@@ -474,7 +482,6 @@ const H6 = styled.span`
   // margin-top: 20px;
   white-space: nowrap;
   font-size: 17px;
-}
 `;
 
 const Spacing = styled.div`
@@ -503,7 +510,7 @@ const Container = styled.div`
 `;
 const Secondcontainer = styled.div`
   display: flex;
-  height: 770px;
+  // height: 770px;
   float: left;
   width: 100%;
   overflow-y: auto;

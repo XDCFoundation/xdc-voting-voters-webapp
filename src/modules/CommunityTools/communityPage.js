@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "6px",
     opacity: "1",
     justifyContent: "space-between",
+    
   },
   line: {
     width: "100%",
@@ -165,35 +166,46 @@ export default function CommunityPage() {
             </Spacing>
             <Div>
               <Grid container spacing={5}>
+              
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
+                
                   <Paper className={classes.paper} elevation={0}>
+                  
                     <ColumnDiv>
+                    <a href="https://observer.xdc.org/" target="_blank">
                       <RowDiv>
-                        <a href="https://observer.xdc.org/" target="_blank">
+                        
                           <ImageView src="/images/Block-Explorer.svg" />
-                        </a>
+                       
                       </RowDiv>
                       <RowDiv>
-                        <Span>Block Explorer</Span>
+                    
+                        <Span>XDC Observatory</Span>
                       </RowDiv>
+                      </a>
                     </ColumnDiv>
+                    
                   </Paper>
+                 
                 </Grid>
+               
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
+                    <a href="https://stats.xdc.org/" target="_blank">
                       <RowDiv>
-                        <a href="https://stats.xdc.org/" target="_blank">
+                       
                           <ImageView src="/images/Network-Stats.svg" />
-                        </a>
+                       
                       </RowDiv>
                       <RowDiv>
-                        <Span>Network Stats</Span>
+                        <Span>XDC Network Stats</Span>
                       </RowDiv>
+                      </a>
                     </ColumnDiv>
                   </Paper>
                 </Grid>
-                <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
+                {/* <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
@@ -234,50 +246,56 @@ export default function CommunityPage() {
                       </RowDiv>
                     </ColumnDiv>
                   </Paper>
-                </Grid>
+                </Grid> */}
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
+                    <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo" target="_blank">
                       <RowDiv>
-                        <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo" target="_blank">
+                       
                           <ImageView src="/images/XinPay.svg" />
-                        </a>
+                      
                       </RowDiv>
                       <RowDiv>
                         <Span>XDCPay</Span>
                       </RowDiv>
+                      </a>
                     </ColumnDiv>
                   </Paper>
                 </Grid>
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
+                    <a href="https://origin.xdc.org/" target="_blank">
                       <RowDiv>
-                        <a href="https://explorer.xinfin.network/publicAPIDoc" target="_blank">
-                          <ImageView src="/images/API-Documents.svg" />
-                        </a>
+                       
+                          <ImageView src="/images/XinFin-Origin.svg" />
+                       
                       </RowDiv>
                       <RowDiv>
-                        <Span>XDC API</Span>
+                        <Span>XDC Origin</Span>
                       </RowDiv>
+                      </a>
                     </ColumnDiv>
                   </Paper>
                 </Grid>
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
+                    <a href="https://docs.xdc.org/" target="_blank">
                       <RowDiv>
-                        <a href="https://docs.xdc.org/" target="_blank">
+                       
                           <ImageView src="/images/XinFin-Docs.svg" />
-                        </a>
+                       
                       </RowDiv>
                       <RowDiv>
                         <Span>XDC Docs</Span>
                       </RowDiv>
+                      </a>
                     </ColumnDiv>
                   </Paper>
                 </Grid>
-                <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
+                {/* <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
                       <RowDiv>
@@ -290,7 +308,7 @@ export default function CommunityPage() {
                       </RowDiv>
                     </ColumnDiv>
                   </Paper>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Div>
           </Grid>
@@ -313,6 +331,10 @@ const RowDiv = styled.div`
   flex-flow: row nowrap;
   width: 100%;
   justify-content: center;
+
+  a:hover {
+    text-decoration: none !important;
+  }
 `;
 const Back = styled.span`
   text-align: left;

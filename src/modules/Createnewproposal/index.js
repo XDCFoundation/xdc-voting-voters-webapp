@@ -8,8 +8,14 @@ import AwsService from "../../services/awsService";
 import {addNewProposal} from "../../services/proposalService";
 import {uploadFile} from "../../services/fileUploaderService";
 import { history } from "../../managers/history";
+import {useNavigate} from 'react-router-dom';
+import Header from "../header/headerComponent";
+import { Router, Route } from "react-router-dom";
+
+
 
 const {extname} = require("path");
+
 
 let masterContractAbi = require("../../common/abis/masterContractAbi.json").abi;
 
@@ -21,6 +27,7 @@ export default class Createproposal extends BaseComponent {
             proposalDocumentsName:[],
             description: "",
             open:false,
+    
             modules: {
                 toolbar: [
                     [
@@ -33,7 +40,8 @@ export default class Createproposal extends BaseComponent {
                     ],
 
                     [{list: "bullet"}, {list: "ordered"}],
-                    ["link", "code", "image", "video", "clean", "edit"],
+                    ["edit"],
+                    // ["link", "code", "image", "video", "clean", "edit"],
                 ],
             },
             formats: [
@@ -54,9 +62,17 @@ export default class Createproposal extends BaseComponent {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    
+
     handleChange = (value) => {
         this.setState({text: value});
     };
+
+     reloadPage=()=>{ 
+        window.location.reload(); 
+    }
+    
+
 
     addDocumentRow = () => {
         this.state.proposalDocuments.push("");
@@ -90,6 +106,7 @@ export default class Createproposal extends BaseComponent {
         }
     };
 
+    
     createProposal = async (reqObj) => {
         this.setState({open:true})
         if (
@@ -132,15 +149,37 @@ export default class Createproposal extends BaseComponent {
                     if (res) {
                         this.setState({open:true})
                         const addresses = await this.getContractAddresses();
+                        
                         this.addProposalInDatabase(reqObj, addresses[addresses.length - 1]);
 
                         // Utils.apiSuccessToast("Proposal Created Successfully");
 
                         // this.setState({open:true})
-                        history.push('/');
+                        
+                        history.push("/");
+                       
+                        
+                      
+                    //   history.push("/");
+                      
+                    //   window.location.reload();
+                     
+                    //   window.location.reload(true);
+                        
+
+                        
+                        // window.location.href = "/";
+                       
+
                     }
+
                     this.setState({open:true})
+                    // this.reloadPage();
+                  
+                   
+                   
                 })
+                
             // .then(async (res) => {
             //   console.log(res);
             //   Utils.apiSuccessToast("Proposal Created Successfully");
@@ -150,6 +189,8 @@ export default class Createproposal extends BaseComponent {
             // Utils.apiSuccessToast("Proposal creation is in progress");
             // this.setState({open:true})
         });
+        
+        
     };
     handleClose = () => {
         this.setState({open: false})
@@ -208,7 +249,7 @@ export default class Createproposal extends BaseComponent {
                 console.log(err, "====");
             });
         console.log("createProposalResponse ",createProposalResponse)
-        return createProposalResponse;
+        return await createProposalResponse;
     };
 
     render() {
@@ -222,6 +263,7 @@ export default class Createproposal extends BaseComponent {
                     addDocumentRow={this.addDocumentRow}
                     deleteDocumentRow={this.deleteDocumentRow}
                     handleClose={this.handleClose}
+                    
                 />
             </div>
         );

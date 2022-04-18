@@ -18,7 +18,7 @@ export default class Listui extends BaseComponent {
         super(props);
         this.state = {
             proposalsList: [],
-            activePage: 1,
+            activePage: 0,
             totalProposalsCount: 0,
             limit: 6
         };
@@ -26,19 +26,23 @@ export default class Listui extends BaseComponent {
 
     componentDidMount = () => {
         this.getProposalList();
+        
     }
 
     getProposalList = async (skip = 0) => {
+       
         const reqObj = {"skip": skip, "limit": this.state.limit}
         let [error, proposals] = await Utils.parseResponse(proposalList(reqObj));
         console.log("=== ", proposals)
         const updatedList = await this.parseProposalList(proposals?.proposalList)
         this.setState({proposalsList: updatedList, totalProposalsCount: proposals.countData})
+        
     }
 
     parseProposalList = async (proposals)=>{
         if(!window.web3 || !window.web3.currentProvider)
             return proposals;
+            console.log(proposals,"returning proposal")
         let web3;
         web3 = new Web3(window.web3.currentProvider);
         window.ethereum.enable();
@@ -85,9 +89,9 @@ export default class Listui extends BaseComponent {
         const reqObj = {"skip": 0, "limit": this.state.limit, proposalTitle: e.target.value}
         let [error, proposals] = await Utils.parseResponse(proposalList(reqObj));
         console.log("=== ", proposals)
-        // const updatedList = await this.parseProposalList(proposals?.proposalList)
-        // this.setState({proposalsList: updatedList, totalProposalsCount: proposals.countData})
-        this.setState({proposalsList: proposals.proposalList})
+        const updatedList = await this.parseProposalList(proposals?.proposalList)
+        this.setState({proposalsList: updatedList, totalProposalsCount: proposals.countData})
+        // this.setState({proposalsList: proposals.proposalList})
     };
 
     onStatusChange = async (e) => {
@@ -95,11 +99,17 @@ export default class Listui extends BaseComponent {
         const reqObj = {"skip": 0, "limit": this.state.limit, status: e.target.value}
         let [error, proposals] = await Utils.parseResponse(proposalList(reqObj));
         console.log("=== ", proposals)
-        this.setState({proposalsList: proposals.proposalList})
+        const updatedList = await this.parseProposalList(proposals?.proposalList)
+        this.setState({proposalsList: updatedList, totalProposalsCount: proposals.countData})
+        // this.setState({proposalsList: proposals.proposalList})
     };
 
     handlePageChange = (e) => {
+       
         this.getProposalList((e - 1) * this.state.limit)
+        this.setState({activePage:((e - 1) * this.state.limit)/6})
+        console.log('current',((e - 1) * this.state.limit)/6)
+
     }
 
     proposalRedirect = (address) => {
@@ -116,7 +126,9 @@ export default class Listui extends BaseComponent {
         const endTime = moment(e[1].unix * 1000).startOf('day').unix();
         const reqObj = {"skip": 0, "limit": this.state.limit, startTime:startTime*1000, endTime:endTime*1000}
         let [error, proposals] = await Utils.parseResponse(proposalList(reqObj));
-        this.setState({proposalsList: proposals.proposalList})
+        const updatedList = await this.parseProposalList(proposals?.proposalList)
+        this.setState({proposalsList: updatedList, totalProposalsCount: proposals.countData})
+        // this.setState({proposalsList: proposals.proposalList})
     }
 
     render() {
