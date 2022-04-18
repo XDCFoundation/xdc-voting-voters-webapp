@@ -62,7 +62,7 @@
     "start": "react-scripts start",
     "build": "env-cmd .env react-scripts build",
     "test": "react-scripts test",
-    "production": "env-cmd .env.production react-scripts start",
+    "production": "env-cmd .env.production react-scripts build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
