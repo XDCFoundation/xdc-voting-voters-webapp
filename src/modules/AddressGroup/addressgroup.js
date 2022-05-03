@@ -86,6 +86,16 @@ const AddressItem = styled.div`
   align-items: center;
 `;
 
+const Back = styled.div
+`
+  margin-left: 205px;
+  margin-top: -23px;
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  color: #ffffff;
+`;
+
+
 const addresses = [
   "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
   "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
@@ -96,7 +106,7 @@ const addresses = [
   const AddressGroup = () => {
   const [showAddress, setshowAddress] = useState(false);
   const [showGroup, setshowGroup] = useState(false);
-  const [showAdAddr, setshowAdAddr] = useState(false);
+  const [showAddAddr, setshowAddAddr] = useState(false);
 
   const backButton = () => {
         history.push("/");
@@ -111,8 +121,9 @@ const addresses = [
           <img
             onClick={backButton}
             src="/images/Back-Arrow.svg"
+            style={{ marginLeft: "172px", marginTop: "200px"}}
           />
-          {/* <Back>Back</Back> */}
+          <Back>Back</Back>
         </div>
       </div>
 
@@ -123,7 +134,7 @@ const addresses = [
             <button onClick={() => setshowGroup(true)}>New Group</button>
           </Groupbtn>
           <Addressbtn>
-            <button onClick={() => setshowAdAddr(true)}>Add Address</button>
+            <button onClick={() => setshowAddAddr(true)}>Add Address</button>
           </Addressbtn>
         </GroupContainer>
 
