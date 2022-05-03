@@ -2350,6 +2350,16 @@ input:focus {
   background-color: #fafbfc;
 }
 
+.addressgrp
+{
+  font: normal normal 600 26px Inter;
+  margin-left: 25px;
+  margin-top: 13px;
+  letter-spacing: 0px;
+  color: #2A2A2A;
+  opacity: 1;  
+}
+
 .checkbox-border {
   border-radius: 2px;
   border: solid 1px #b9bbc2;
