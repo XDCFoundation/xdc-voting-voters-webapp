@@ -18,10 +18,11 @@ const AddressGroupTabs = styled.div`
   letter-spacing: 0px;
   color: black;
 `;
+
 const Groupbtn = styled.div`
-  margin-left: auto;
+margin-left: 741px;
   margin-top: 13px;
-  width: 123px;
+//   width: 123px;
   height: 32px;
   border: 1px solid #2049b9;
   border-radius: 4px;
@@ -30,17 +31,21 @@ const Groupbtn = styled.div`
   justify-content: space-between;
 `;
 
+// const addrHead = styled.div`
+// `;
+
 const Addressbtn = styled.div`
-  margin-top: 13px;
-  width: 123px;
+   margin-top: 13px;
+//   width: 123px;
   height: 32px;
   border: 1px solid #2049b9;
   border-radius: 4px;
   opacity: 1;
   margin-right: 40px;
-  // display: flex;
+  display: flex;
   justify-content: space-between;
 `;
+
 const Management = styled.div``;
 
 const Employees = styled.div``;
@@ -90,6 +95,9 @@ const addresses = [
 
   const AddressGroup = () => {
   const [showAddress, setshowAddress] = useState(false);
+  const [showGroup, setshowGroup] = useState(false);
+  const [showAdAddr, setshowAdAddr] = useState(false);
+
   const backButton = () => {
         history.push("/");
     };
@@ -103,7 +111,6 @@ const addresses = [
           <img
             onClick={backButton}
             src="/images/Back-Arrow.svg"
-            style={{ marginRight: "8px", cursor: "pointer" }}
           />
           {/* <Back>Back</Back> */}
         </div>
@@ -113,10 +120,10 @@ const addresses = [
         <GroupContainer className="flex justify-between">
           <addrHead className="addressgrp">Address Group</addrHead>
           <Groupbtn>
-            <button>New Group</button>
+            <button onClick={() => setshowGroup(true)}>New Group</button>
           </Groupbtn>
           <Addressbtn>
-            <button>Add Address</button>
+            <button onClick={() => setshowAdAddr(true)}>Add Address</button>
           </Addressbtn>
         </GroupContainer>
 
