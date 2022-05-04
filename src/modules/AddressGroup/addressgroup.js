@@ -5,6 +5,10 @@ import FooterComponent from "../footer/footerComponent";
 import styled from "styled-components";
 import { Styles } from "@material-ui/styles";
 import { history } from "../../managers/history";
+import { white } from "material-ui/styles/colors";
+// import Popover from '@mui/material/Popover';
+// import Typography from '@mui/material/Typography';
+// import Button from '@mui/material/Button';
 
 const AddressGroupTabs = styled.div`
   width: 100%;
@@ -14,7 +18,7 @@ const AddressGroupTabs = styled.div`
   align-items: center;
   border: 1px solid #e3e7eb;
   font-size: 20px;
-  font-weight: bold;
+//   font-weight: bold;
   letter-spacing: 0px;
   color: black;
 `;
@@ -54,7 +58,7 @@ const AddrContainer = styled.div`
   display: flex;
 `;
 const GrpContainer = styled.div`
-  width: 100%;
+  width: 865px;
   padding: 0px 40px;
 `;
 
@@ -62,7 +66,9 @@ const Addrgrp = styled.div`
   width: 322px;
 `;
 
-const AddressContainer = styled.div`
+const AddressContainer = styled.div
+`
+  margin-top: 13px;
   width: 1280px;
   height: 728px;
   border: 1px solid #e3e7eb;
@@ -70,9 +76,11 @@ const AddressContainer = styled.div`
   opacity: 1;
   margin-left: 157px;
 `;
-const GroupContainer = styled.div`
+const GroupContainer = styled.div
+`
   height: 69px;
   border: 1px solid #e3e7eb;
+  background-color: white;
   display: flex;
   justify-content: space-between;
 `;
@@ -95,37 +103,56 @@ const Back = styled.div
   color: #ffffff;
 `;
 
-
 const addresses = [
-  "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
-  "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
-  "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
-  "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
-];
+     {image:"/images/nft_pic.png", address:"xdc517f51dea1ab6468ca2192433a58cbeff0482a0b"},
+     {image:"/images/nft_pic.png", address:"xdc517f51dea1ab6468ca2192433a58cbeff0482a0b"},
+     {image:"/images/nft_pic.png", address:"xdc517f51dea1ab6468ca2192433a58cbeff0482a0b"},
+     {image:"/images/nft_pic.png", address:"xdc517f51dea1ab6468ca2192433a58cbeff0482a0b"}
+  ];
 
   const AddressGroup = () => {
   const [showAddress, setshowAddress] = useState(false);
+  const [showpopOver, setshowpopOver] = useState(false);
   const [showGroup, setshowGroup] = useState(false);
   const [showAddAddr, setshowAddAddr] = useState(false);
-
+  
   const backButton = () => {
         history.push("/");
     };
+
+//   const handleKebabIcon = (event) => {
+//         this.setState({
+//             Topics: event.target.value
+//         })
+//     }
+//     const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+
+//     const handleClick = (event) => {
+//        setAnchorEl(event.currentTarget);
+//    };
+
+//   const handleClose = () => {
+//     setAnchorEl(null);
+//    };
+
+//   const open = Boolean(anchorEl);
+//   const id = open ? 'simple-popover' : undefined;
+    
 
   return (
     <div>
       <div className="header-div-all">
         <HeaderMain />
-
         <div>
           <img
             onClick={backButton}
             src="/images/Back-Arrow.svg"
-            style={{ marginLeft: "172px", marginTop: "200px"}}
+            style={{ marginLeft: "172px", marginTop: "133px",}}
           />
           <Back>Back</Back>
         </div>
-      </div>
+        
+      
 
       <AddressContainer>
         <GroupContainer className="flex justify-between">
@@ -139,26 +166,34 @@ const addresses = [
         </GroupContainer>
 
         <AddrContainer>
-          <Addrgrp>
+          <Addrgrp style={{position: "relative"}}>
             <AddressGroupTabs onClick={() => setshowAddress(true)}>
               Top Decision Makers
+              <img className="kebabIcon" src = "/images/nft_pic.png" onClick={() => setshowpopOver(true)}></img>
             </AddressGroupTabs>
+            { showpopOver && (
+            <div className="popOver"> 
+                  <p className="popoverItems" onClick={() => (true)}>Rename</p>
+                  <p className="popoverItems">Delete</p>
+              </div>
+            )}
             <AddressGroupTabs>Management</AddressGroupTabs>
             <AddressGroupTabs>Employees</AddressGroupTabs>
           </Addrgrp>
           {showAddress && (
             <GrpContainer>
               {addresses.map((item) => (
-                <AddressItem>{item}</AddressItem>
+                <AddressItem ><img src={item.image}/>{item.address}</AddressItem>
               ))}
             </GrpContainer>
           )}
         </AddrContainer>
-
-        <div></div>
+        <div></div>  
       </AddressContainer>
+      </div>
 
-      <div>
+      
+      <div className="footer-all">
         <FooterComponent />
       </div>
     </div>
