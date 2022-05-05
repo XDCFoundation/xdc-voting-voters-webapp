@@ -124,6 +124,7 @@ const addresses = [
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
     groupType: "Top Decsion Makers",
   },
+
   {
     image: "/images/nft_pic.png",
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
@@ -154,6 +155,7 @@ const addresses = [
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
     groupType: "Employees",
   },
+  
   {
     image: "/images/nft_pic.png",
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
@@ -225,7 +227,6 @@ const AddressGroup = () => {
               <button onClick={() => setshowAddAddr(true)}>Add Address</button>
             </Addressbtn>
           </GroupContainer>
-
           <AddrContainer>
             <Addrgrp style={{ position: "relative" }}>
               {addressNamelist.map((item) => (
@@ -233,7 +234,6 @@ const AddressGroup = () => {
                   onClick={() => setSeletedGroupAddresses(item.groupName)}
                 >
                   {item.groupName}
-                  {/* <img className="kebabIcon" src = "/images/nft_pic.png" onClick={() => setshowpopOver(true)}></img> */}
                 </AddressGroupTabs>
               ))}
               {showpopOver && (
@@ -244,10 +244,7 @@ const AddressGroup = () => {
                   <p className="popoverItems">Delete</p>
                 </div>
               )}
-              {/* <AddressGroupTabs>Management</AddressGroupTabs>
-              <AddressGroupTabs>Employees</AddressGroupTabs> */}
             </Addrgrp>
-
             <GrpContainer>
               {addresses
                 .filter((item) => item.groupType === selectedGreoupAddress)
