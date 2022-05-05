@@ -74,7 +74,7 @@ const AddressContainer = styled.div
   border: 1px solid #e3e7eb;
   border-radius: 6px;
   opacity: 1;
-  margin-left: 157px;
+  margin-left: 300px;
 `;
 const GroupContainer = styled.div
 `
@@ -96,7 +96,7 @@ const AddressItem = styled.div`
 
 const Back = styled.div
 `
-  margin-left: 205px;
+  margin-left: 333px;
   margin-top: -23px;
   font-family: "Inter", sans-serif;
   font-size: 17px;
@@ -147,7 +147,7 @@ const addresses = [
           <img
             onClick={backButton}
             src="/images/Back-Arrow.svg"
-            style={{ marginLeft: "172px", marginTop: "133px",}}
+            style={{ marginLeft: "300px", marginTop: "133px",}}
           />
           <Back>Back</Back>
         </div>
