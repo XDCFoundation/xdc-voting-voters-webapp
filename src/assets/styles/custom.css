@@ -2374,6 +2374,7 @@ input:focus {
   position:  absolute ; 
   top: 53px; 
   left: 130px; 
+  z-index: 999 ;
 }
 
 .popoverItems

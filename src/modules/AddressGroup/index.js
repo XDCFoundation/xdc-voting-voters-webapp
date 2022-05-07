@@ -1,8 +1,8 @@
 import React from "react";
 import BaseComponent from "../baseComponent";
-import HeaderMain from "../header/header";
 import FooterComponent from "../footer/footerComponent";
 import AddressGroupMain from "./addressgroup";
+import HeaderComponent from "./headerComponent";
 
  class AddressGroup extends BaseComponent {
   constructor(props) {
@@ -13,6 +13,7 @@ import AddressGroupMain from "./addressgroup";
   render() {
     return (
       <div>
+       <HeaderComponent />
        <AddressGroupMain/>
       </div>
     )
