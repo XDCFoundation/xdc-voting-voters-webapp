@@ -19,7 +19,7 @@ const AddressGroupTabs = styled.div`
   align-items: center;
   border: 1px solid #e3e7eb;
   font-size: 20px;
-  //   font-weight: bold;
+  cursor: pointer;
   letter-spacing: 0px;
   color: black;
   justify-content: space-between;
@@ -31,6 +31,7 @@ const AddressGroupTabs = styled.div`
 const Groupbtn = styled.div`
   margin-left: 741px;
   margin-top: 13px;
+  cursor: pointer;
   height: 32px;
   opacity: 1;
   display: flex;
@@ -39,6 +40,7 @@ const Groupbtn = styled.div`
 
 const Addressbtn = styled.div`
   margin-top: 13px;
+  cursor: pointer;
   height: 32px;
   opacity: 1;
   margin-right: 40px;
@@ -46,8 +48,7 @@ const Addressbtn = styled.div`
   justify-content: space-between;
 `;
 
-const AddButton = styled.button
-`
+const AddButton = styled.button`
 all: unset
 width: 123px;
 height: 32px;
