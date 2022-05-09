@@ -2370,8 +2370,11 @@ input:focus {
   height: 76px;
   width: 183px;
   text-align: left;
-  background: pink;
+  background: #FFFFFF;
   position:  absolute ; 
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 4px;
+  opacity: 1;
   top: 53px; 
   left: 130px; 
   z-index: 999 ;

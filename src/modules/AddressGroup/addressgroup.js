@@ -7,9 +7,6 @@ import { Styles } from "@material-ui/styles";
 import { history } from "../../managers/history";
 import { white } from "material-ui/styles/colors";
 import HeaderComponent from "./headerComponent";
-// import Popover from '@mui/material/Popover';
-// import Typography from '@mui/material/Typography';
-// import Button from '@mui/material/Button';
 
 const AddressGroupTabs = styled.div`
   width: 100%;
@@ -58,10 +55,6 @@ border-radius: 4px;
 opacity: 1;
 `;
 
-// const input = styled.div`
-//   border: none;
-// `;
-
 const AddrContainer = styled.div`
   display: flex;
 `;
@@ -100,6 +93,11 @@ const AddressItem = styled.div`
   border-bottom: 1px solid #e3e7eb;
   display: flex;
   align-items: center;
+
+  display: flex;
+  // justify-content: space-between;
+  position: relative;
+
 `;
 
 const Back = styled.div`
