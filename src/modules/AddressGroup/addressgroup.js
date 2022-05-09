@@ -46,9 +46,13 @@ const Addressbtn = styled.div`
 `;
 
 const AddButton = styled.button`
-all: unset
+all: unset;
+text-align: center;
 width: 123px;
 height: 32px;
+color: #2149B9;
+font-size: 18px;
+letter-spacing: 0px;
 background: #FFFFFF 0% 0% no-repeat padding-box;
 border: 1px solid #2049B9;
 border-radius: 4px;
@@ -194,20 +198,20 @@ const groupList = [
 ];
 
 const AddressGroup = () => {
+
   const [showAddress, setshowAddress] = useState(false);
   const [showpopOver, setshowpopOver] = useState(false);
   const [showGroup, setshowGroup] = useState(false);
   const [showAddAddr, setshowAddAddr] = useState(false);
+  
   const [addressNamelist, setaddressNamelist] = React.useState(groupList);
   const [addGroupInput, setAddGroupInput] = useState("New Group");
-  const [selectedGreoupAddress, setSeletedGroupAddresses] = useState(
-    "Top Decision Makers"
-  );
+  const [selectedGreoupAddress, setSeletedGroupAddresses] = useState("Top Decision Makers");
   const [addAddress, setAddAddress] = React.useState(addressesList);
   const [addAddressesInput, setaddAddressesInput] = useState("Add Address");
   const [showAddAddressesInput, setShowAddAddressesInput] = useState(false);
-
   const [togglePopPop, settogglePopPop] = useState(null);
+  const [showGroupInput, setshowGroupInput] = useState(false);
 
   const addgrouphandler = () => {
     setaddressNamelist([...addressNamelist, { groupName: addGroupInput }]);
@@ -269,9 +273,7 @@ const AddressGroup = () => {
                   <img onClick = {() => togglePopPophandler(index)}  src="/images/Option_Vertical.png" />
                   {togglePopPop === index && (
                 <div className="popOver">
-                  <p className="popoverItems" onClick={() => true}>
-                    Rename
-                  </p>
+                  <p className="popoverItems">Rename</p>
                   <p className="popoverItems">Delete</p>
                 </div>
               )}
