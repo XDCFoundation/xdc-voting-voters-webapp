@@ -209,12 +209,12 @@ const AddressGroup = () => {
   const addgrouphandler = () => {
     setaddressNamelist([...addressNamelist, { groupName: addGroupInput }]);
   };
-  const addaddresshandler = () => {
+    const addaddresshandler = () => {
     setAddAddress([
       ...addAddress,
       { address: addAddressesInput, groupType: selectedGreoupAddress, image: "/images/nft_pic.png"  },
     ])
-    setShowAddAddressesInput(false)
+    setShowAddAddressesInput(!showAddAddressesInput)
   };
   const togglePopPophandler = (index) => {
     if(togglePopPop === index){settogglePopPop(null)}
@@ -248,7 +248,7 @@ const AddressGroup = () => {
               <AddButton  onClick={addgrouphandler}>New Group</AddButton>
             </Groupbtn>
             <Addressbtn>
-              <AddButton onClick={() => setShowAddAddressesInput(true)}>
+              <AddButton onClick={() =>{ setShowAddAddressesInput(!showAddAddressesInput)}}>
                 Add Address
               </AddButton>
             </Addressbtn>
@@ -283,7 +283,7 @@ const AddressGroup = () => {
                   <div>
                     <input type="text" onChange = {(e) => setaddAddressesInput(e.target.value)} />
                     <span onClick={addaddresshandler}>add</span>
-                    <span onClick={() => setShowAddAddressesInput(false)}>cancel</span>
+                    <span onClick={() => setShowAddAddressesInput(!showAddAddressesInput)}>cancel</span>
                   </div>
                 )}
                 {addAddress
