@@ -59,7 +59,7 @@
     "xdc-connect": "^1.0.20"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "env-cmd .env.production react-scripts start",
     "build": "env-cmd .env react-scripts build",
     "test": "react-scripts test",
     "production": "env-cmd .env.production react-scripts build",

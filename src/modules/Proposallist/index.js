@@ -107,8 +107,9 @@ export default class Listui extends BaseComponent {
     handlePageChange = (e) => {
        
         this.getProposalList((e - 1) * this.state.limit)
-        this.setState({activePage:((e - 1) * this.state.limit)/6})
+        this.setState({activePage:(e - 1) * this.state.limit})
         console.log('current',((e - 1) * this.state.limit)/6)
+        console.log(Math.ceil(this.state.totalProposalsCount/6),"total-page")
 
     }
 
