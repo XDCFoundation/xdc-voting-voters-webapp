@@ -33,6 +33,7 @@ export default class Dashboard extends BaseComponent {
         this.setState({isLoader: true});
         this.getProposalList();
         
+        
        
 
     }
@@ -152,8 +153,11 @@ export default class Dashboard extends BaseComponent {
         window.ethereum.enable();
         const contract = new web3.eth.Contract(proposalContractAbi, address);
         const count = await contract.methods.get_yes_voter_list().call();
+        console.log(count.length,"passed-count")
         if (count <= 0) return 0;
+        
         return count.length;
+        
     };
 
     getFailedVote = async (address, status) => {
