@@ -58,6 +58,10 @@ border-radius: 4px;
 opacity: 1;
 `;
 
+// const input = styled.div`
+//   border: none;
+// `;
+
 const AddrContainer = styled.div`
   display: flex;
 `;
@@ -264,7 +268,7 @@ const AddressGroup = () => {
                   
                 >
                   {item.groupName}
-                  <img onClick = {() => togglePopPophandler(index)}  src="/images/nft_pic.png" />
+                  <img onClick = {() => togglePopPophandler(index)}  src="/images/Option_Vertical.png" />
                   {togglePopPop === index && (
                 <div className="popOver">
                   <p className="popoverItems" onClick={() => true}>
@@ -282,9 +286,17 @@ const AddressGroup = () => {
               <>
                 {showAddAddressesInput && (
                   <div>
-                    <input type="text" onChange = {(e) => setaddAddressesInput(e.target.value)} />
-                    <span onClick={addaddresshandler}>add</span>
-                    <span onClick={() => setShowAddAddressesInput(!showAddAddressesInput)}>cancel</span>
+                     <input type="text" className="addressInput" onChange = {(e) => setaddAddressesInput(e.target.value)} />
+                     <img 
+                         onClick={addaddresshandler} 
+                         src="/images/green_correct.png"
+                         style={{ width: "30px", height: "30px" , marginLeft: "10px" }}  
+                         />
+                     <img
+                         onClick={() => setShowAddAddressesInput(!showAddAddressesInput)}
+                         src="/images/red_cancel.png"
+                           style={{ width: "30px", height: "30px" , marginLeft: "15px" }}  
+                         />
                   </div>
                 )}
                 {addAddress
