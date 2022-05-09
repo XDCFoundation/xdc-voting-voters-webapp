@@ -295,7 +295,7 @@ const AddressGroup = () => {
                      <img
                          onClick={() => setShowAddAddressesInput(!showAddAddressesInput)}
                          src="/images/red_cancel.png"
-                           style={{ width: "30px", height: "30px" , marginLeft: "15px" }}  
+                         style={{ width: "30px", height: "30px" , marginLeft: "15px" }}  
                          />
                   </div>
                 )}
