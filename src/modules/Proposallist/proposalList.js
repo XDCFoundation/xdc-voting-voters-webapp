@@ -195,9 +195,12 @@ export default function ViewAllProposal(props) {
   const [show,setShow]=useState(0);
   const [emptySearch, setEmptySearch]=useState("")
   const [showData, setShowData]=useState("")
+  const page=Math.ceil((props.state.totalProposalsCount/6));
+  console.log(page,"newwwwwwwwww")
 
   useEffect(() => {
-
+    
+ 
     if (window.xdc) {//the error line
       window.web3 = new Web3(window.xdc);
 
@@ -304,6 +307,7 @@ export default function ViewAllProposal(props) {
                         onChange={(e) => {
                       if(show===1){
                           props.searchingProposal(e);
+                          
                           setEmptySearch(e.target.value.length)
                       }
                           
@@ -541,11 +545,12 @@ export default function ViewAllProposal(props) {
                     linkClassPrev="table-pagination"
                     activeLinkClass="fc-black"
                     linkClass="table-pagination"
-                    activePage={props.state.activePage}
-                    itemsCountPerPage="10"
-                    pageRangeDisplayed="5"
-                    totalItemsCount={props.state.totalProposalsCount}
+                    // activePage={props.state.activePage}
+                    // itemsCountPerPage="10"
+                    // pageRangeDisplayed="5"
+                    totalItemsCount={Math.ceil((props.state.totalProposalsCount/6))*10}
                     onChange={props.handlePageChange}
+                    
                    
                    
                  
