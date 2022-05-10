@@ -2382,8 +2382,9 @@ input:focus {
 
 .addressInput
 {
-  border: none;
-  width: 700px;
+  /* border: none; */
+  border: 0px solid;
+  width: 650px;
   height: 55px;
 }
 
