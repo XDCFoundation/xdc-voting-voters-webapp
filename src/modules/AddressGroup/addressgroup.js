@@ -70,6 +70,8 @@ const GrpContainer = styled.div`
 
 const Addrgrp = styled.div`
   width: 322px;
+  border-right: 1px solid #E3E7EB;
+  height: 658px;
 `;
 
 const AddressContainer = styled.div`
@@ -124,13 +126,14 @@ const AddressDiv = styled.div`
  font-family: "Inter", sans-serif;
 
 `;
-const RenameImg = styled.div`
- width: 20px' 
+const RenameImg = styled.img`
+ width: 20px;
  height: 20px; 
  margin-left: -80px;
 `;
-const RenameImgNull = styled.div`
-width: 20px' 
+
+const RenameImgNull = styled.img`
+width: 20px;
  height: 20px; 
  margin-left: 10px;
 `;
