@@ -111,6 +111,29 @@ const Back = styled.div`
   font-size: 17px;
   color: #ffffff;
 `;
+const IconImg = styled.img`
+ margin:0 17.75px 0 0;
+ width: 27px;
+ height: 27px;
+`;
+const AddressDiv = styled.div`
+ color: #2A2A2A;
+ font-size:16px;
+ letter-spacing: 0px;
+ opacity: 1;
+ font-family: "Inter", sans-serif;
+
+`;
+const RenameImg = styled.div`
+ width: 20px' 
+ height: 20px; 
+ margin-left: -80px;
+`;
+const RenameImgNull = styled.div`
+width: 20px' 
+ height: 20px; 
+ margin-left: 10px;
+`;
 
 const addressesList = [
   {
@@ -275,18 +298,14 @@ const AddressGroup = () => {
                {
                  showRenameInput === index ? <div>
                    <input type= 'text' className="groupInput" onChange={e => setRenameGroup(e.target.value)}/>
-                   <img 
+                   <RenameImg 
                          onClick= {() => {item['groupName']= renameGroup; toggleRenameInputHandler(null) }} 
                          src="/images/green_correct.png"
-                         style={{ width: "20px", height: "20px", marginLeft: "-80px" }}  
                          />
-                     <img 
+                     <RenameImgNull 
                          onClick={() => setShowRenameInput(null)}
                          src="/images/red_cancel.png"
-                         style={{ width: "20px", height: "20px" , marginLeft: "10px" }}  
                          />
-                   {/* <button onClick= {() => {item['groupName']= renameGroup; toggleRenameInputHandler(null) }}>Add</button>
-                   <button onClick={() => setShowRenameInput(null)}>cancel</button> */}
                  </div> :  <AddressGroupTabs
                   onClick={() => setSeletedGroupAddresses(item.groupName)}  
                   activeColor = {selectedGroupAddress=== item.groupName}
@@ -328,8 +347,8 @@ const AddressGroup = () => {
                   .map((item) => (
                     <AddressItem
                     >
-                      <img src={item.image} />
-                      {item.address}
+                      <IconImg src={item.image} />
+                      <AddressDiv>{item.address}</AddressDiv> 
                     </AddressItem>
                   ))}
               </>
