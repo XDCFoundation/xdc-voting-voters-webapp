@@ -204,14 +204,13 @@ const AddressGroup = () => {
   const [addGroupInput, setAddGroupInput] = useState("New Group");
   const [showGroupInput, setshowGroupInput] = useState(false);
 
-  const [selectedGreoupAddress, setSeletedGroupAddresses] = useState("Top Decision Makers");
+  const [selectedGroupAddress, setSeletedGroupAddresses] = useState("Top Decision Makers");
   const [addAddress, setAddAddress] = React.useState(addressesList);
   
   const [addAddressesInput, setaddAddressesInput] = useState("Add Address");
   const [showAddAddressesInput, setShowAddAddressesInput] = useState(false);
   
   const [togglePopPop, settogglePopPop] = useState(null);
-  
 
   const addgrouphandler = () => {
     setaddressNamelist([...addressNamelist, { groupName: addGroupInput },
@@ -219,7 +218,7 @@ const AddressGroup = () => {
     setshowGroupInput(!showGroupInput)
   };
     const addaddresshandler = () => {
-    setAddAddress([...addAddress, { address: addAddressesInput, groupType: selectedGreoupAddress, image: "/images/nft_pic.png"  },
+    setAddAddress([...addAddress, { address: addAddressesInput, groupType: selectedGroupAddress, image: "/images/nft_pic.png"  },
     ])
     setShowAddAddressesInput(!showAddAddressesInput)
   };
@@ -229,7 +228,7 @@ const AddressGroup = () => {
     else
   {settogglePopPop(index)}
   }
-  console.log(selectedGreoupAddress);
+  console.log(selectedGroupAddress);
 
   const backButton = () => {
     history.push("/");
@@ -266,7 +265,7 @@ const AddressGroup = () => {
               {addressNamelist.map((item, index) => (
                 <AddressGroupTabs
                   onClick={() => setSeletedGroupAddresses(item.groupName)}  
-                  activeColor = {selectedGreoupAddress=== item.groupName}
+                  activeColor = {selectedGroupAddress=== item.groupName}
                   
                 >
                   {item.groupName}
@@ -300,7 +299,7 @@ const AddressGroup = () => {
                   </div>
                 )}
                 {addAddress
-                  .filter((item) => item.groupType === selectedGreoupAddress)
+                  .filter((item) => item.groupType === selectedGroupAddress)
                   .map((item) => (
                     <AddressItem
                     >
