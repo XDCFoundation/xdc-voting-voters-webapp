@@ -2388,6 +2388,14 @@ input:focus {
   height: 55px;
 }
 
+.groupInput
+{
+  width: 322px;
+  height: 62px;
+  background: #2149B9;
+  border: none;
+}
+
 .popoverItems
 {
   width: 58px;

@@ -202,7 +202,8 @@ const AddressGroup = () => {
   const [addressNamelist, setaddressNamelist] = React.useState(groupList);
   
   const [addGroupInput, setAddGroupInput] = useState("New Group");
-  const [showGroupInput, setshowGroupInput] = useState(false);
+  const [renameGroup, setRenameGroup] = useState("");
+  const [showRenameInput, setShowRenameInput] = useState(null);
 
   const [selectedGroupAddress, setSeletedGroupAddresses] = useState("Top Decision Makers");
   const [addAddress, setAddAddress] = React.useState(addressesList);
@@ -215,13 +216,20 @@ const AddressGroup = () => {
   const addgrouphandler = () => {
     setaddressNamelist([...addressNamelist, { groupName: addGroupInput },
     ])
-    setshowGroupInput(!showGroupInput)
   };
     const addaddresshandler = () => {
     setAddAddress([...addAddress, { address: addAddressesInput, groupType: selectedGroupAddress, image: "/images/nft_pic.png"  },
     ])
     setShowAddAddressesInput(!showAddAddressesInput)
   };
+  
+  const toggleRenameInputHandler = (index) => {
+    if(showRenameInput === index)
+      {setShowRenameInput(null)}
+    else
+  {setShowRenameInput(index)}
+  }
+
   const togglePopPophandler = (index) => {
     if(togglePopPop === index)
       {settogglePopPop(null)}
@@ -263,22 +271,39 @@ const AddressGroup = () => {
           <AddrContainer>
             <Addrgrp style={{ position: "relative" }}>
               {addressNamelist.map((item, index) => (
-                <AddressGroupTabs
+               <>
+               {
+                 showRenameInput === index ? <div>
+                   <input type= 'text' className="groupInput" onChange={e => setRenameGroup(e.target.value)}/>
+                   <img 
+                         onClick= {() => {item['groupName']= renameGroup; toggleRenameInputHandler(null) }} 
+                         src="/images/green_correct.png"
+                         style={{ width: "20px", height: "20px", marginLeft: "-80px" }}  
+                         />
+                     <img 
+                         onClick={() => setShowRenameInput(null)}
+                         src="/images/red_cancel.png"
+                         style={{ width: "20px", height: "20px" , marginLeft: "10px" }}  
+                         />
+                   {/* <button onClick= {() => {item['groupName']= renameGroup; toggleRenameInputHandler(null) }}>Add</button>
+                   <button onClick={() => setShowRenameInput(null)}>cancel</button> */}
+                 </div> :  <AddressGroupTabs
                   onClick={() => setSeletedGroupAddresses(item.groupName)}  
                   activeColor = {selectedGroupAddress=== item.groupName}
-                  
                 >
                   {item.groupName}
                   <img onClick = {() => togglePopPophandler(index)}  src="/images/Option_Vertical.png" />
                   {togglePopPop === index && (
                 <div className="popOver">
-                  <p className="popoverItems">Rename</p>
+                  <p onClick={() => toggleRenameInputHandler(index)} className="popoverItems">Rename</p>
+
                   <p className="popoverItems">Delete</p>
                 </div>
               )}
                 </AddressGroupTabs>
+               }
+               </>
               ))}
-              
             </Addrgrp>
 
             <GrpContainer>
