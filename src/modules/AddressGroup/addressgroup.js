@@ -198,35 +198,35 @@ const groupList = [
 ];
 
 const AddressGroup = () => {
-
-  const [showAddress, setshowAddress] = useState(false);
-  const [showpopOver, setshowpopOver] = useState(false);
-  const [showGroup, setshowGroup] = useState(false);
-  const [showAddAddr, setshowAddAddr] = useState(false);
   
   const [addressNamelist, setaddressNamelist] = React.useState(groupList);
+  
   const [addGroupInput, setAddGroupInput] = useState("New Group");
-  const [selectedGreoupAddress, setSeletedGroupAddresses] = useState("Top Decision Makers");
-  const [addAddress, setAddAddress] = React.useState(addressesList);
-  const [addAddressesInput, setaddAddressesInput] = useState("Add Address");
-  const [showAddAddressesInput, setShowAddAddressesInput] = useState(false);
-  const [togglePopPop, settogglePopPop] = useState(null);
   const [showGroupInput, setshowGroupInput] = useState(false);
 
+  const [selectedGreoupAddress, setSeletedGroupAddresses] = useState("Top Decision Makers");
+  const [addAddress, setAddAddress] = React.useState(addressesList);
+  
+  const [addAddressesInput, setaddAddressesInput] = useState("Add Address");
+  const [showAddAddressesInput, setShowAddAddressesInput] = useState(false);
+  
+  const [togglePopPop, settogglePopPop] = useState(null);
+  
+
   const addgrouphandler = () => {
-    setaddressNamelist([...addressNamelist, { groupName: addGroupInput }]);
+    setaddressNamelist([...addressNamelist, { groupName: addGroupInput },
+    ])
+    setshowGroupInput(!showGroupInput)
   };
     const addaddresshandler = () => {
-    setAddAddress([
-      ...addAddress,
-      { address: addAddressesInput, groupType: selectedGreoupAddress, image: "/images/nft_pic.png"  },
+    setAddAddress([...addAddress, { address: addAddressesInput, groupType: selectedGreoupAddress, image: "/images/nft_pic.png"  },
     ])
     setShowAddAddressesInput(!showAddAddressesInput)
   };
   const togglePopPophandler = (index) => {
-    if(togglePopPop === index){settogglePopPop(null)}
-  
-  else
+    if(togglePopPop === index)
+      {settogglePopPop(null)}
+    else
   {settogglePopPop(index)}
   }
   console.log(selectedGreoupAddress);
