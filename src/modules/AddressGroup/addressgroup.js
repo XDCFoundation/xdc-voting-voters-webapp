@@ -7,6 +7,9 @@ import { Styles } from "@material-ui/styles";
 import { history } from "../../managers/history";
 import { white } from "material-ui/styles/colors";
 import HeaderComponent from "./headerComponent";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { validationsMessages } from "../../constants/index";
+// import toast, { Toaster } from "react-hot-toast";
 
 const AddressGroupTabs = styled.div`
   width: 100%;
@@ -294,6 +297,7 @@ const AddressGroup = () => {
   
   const [togglePopPop, settogglePopPop] = useState(null);
   
+  const [isDropdownOpen, toggleDropdown] = React.useState(false);
 
   const addgrouphandler = () => {
     setaddressNamelist([...addressNamelist, { groupName: addGroupInput },
@@ -319,6 +323,18 @@ const AddressGroup = () => {
   {settogglePopPop(index)}
   }
   console.log(selectedGroupAddress);
+
+  const isDataCopied = () => {
+    // notifyCopyToast();
+    toggleDropdown(false);
+  };
+
+  // const notifyCopyToast = () =>
+  // toast.success(validationsMessages.ADDRESS_COPIED, {
+  //   duration: 1000,
+  //   position: validationsMessages.TOASTS_POSITION,
+  //   className: "toast-div-address",
+  // });
 
   const backButton = () => {
     history.push("/");
@@ -404,8 +420,12 @@ const AddressGroup = () => {
                     <AddressItem
                     >
                       <IconImg src={item.image} />
-                      <AddressDiv>{item.address}</AddressDiv> 
-                      <CopyImg src={item.copyImage} />
+                      <AddressDiv>{item.address}</AddressDiv>
+
+                      <CopyToClipboard text={item.address}>
+                      <CopyImg onClick={isDataCopied} src={item.copyImage} />
+                      </CopyToClipboard>   
+                      
                       <DeleteImg src={item.dltImage} />
                     </AddressItem>
                   ))}
