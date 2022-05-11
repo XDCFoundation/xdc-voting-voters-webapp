@@ -26,7 +26,7 @@ const AddressGroupTabs = styled.div`
   `;
 
 const Groupbtn = styled.div`
-  margin-left: 741px;
+  margin-left:  58vh;
   margin-top: 13px;
   cursor: pointer;
   height: 32px;
@@ -64,7 +64,7 @@ const AddrContainer = styled.div`
 `;
 
 const GrpContainer = styled.div`
-  width: 865px;
+  width: 77vh;
   padding: 0px 40px;
 `;
 
@@ -76,14 +76,15 @@ const Addrgrp = styled.div`
 
 const AddressContainer = styled.div`
   margin-top: 21px;
-  width: 1280px;
+  width: 103vh;
   height: 728px;
   border: 1px solid #e3e7eb;
   border-radius: 6px;
   opacity: 1;
-  margin-left: 300px;
+  margin-left: 26vh;
   background-color: #ffffff;
 `;
+
 const GroupContainer = styled.div`
   height: 69px;
   border: 1px solid #e3e7eb;
@@ -99,7 +100,6 @@ const AddressItem = styled.div`
   border-bottom: 1px solid #e3e7eb;
   display: flex;
   align-items: center;
-
   display: flex;
   // justify-content: space-between;
   position: relative;
@@ -107,17 +107,19 @@ const AddressItem = styled.div`
 `;
 
 const Back = styled.div`
-  margin-left: 333px;
+  margin-left: 29vh;
   margin-top: -23px;
   font-family: "Inter", sans-serif;
   font-size: 17px;
   color: #ffffff;
 `;
+
 const IconImg = styled.img`
  margin:0 17.75px 0 0;
  width: 27px;
  height: 27px;
 `;
+
 const AddressDiv = styled.div`
  color: #2A2A2A;
  font-size:16px;
@@ -126,6 +128,7 @@ const AddressDiv = styled.div`
  font-family: "Inter", sans-serif;
 
 `;
+
 const RenameImg = styled.img`
  width: 20px;
  height: 20px; 
@@ -138,73 +141,125 @@ width: 20px;
  margin-left: 10px;
 `;
 
+const AddressImgCorrect = styled.img`
+ width: 30px;
+ height: 30px; 
+ margin-left: 9vh;
+`;
+
+const AddressImgCancel = styled.img`
+ width: 30px;
+ height: 30px; 
+ margin-left: 1vh;
+`;
+
+const BackImg = styled.img`
+ margin-top: 10.75vh; 
+ margin-left: 26vh;
+`;
+
+const CopyImg = styled.img`
+  margin-left: 27vh;
+`;
+
+const DeleteImg = styled.img`
+  margin-left: 1vh;
+`;
+
+
 const addressesList = [
   {
     image: "/images/nft_pic.png",
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
     groupType: "Top Decision Makers",
+    dltImage: "/images/Delete_Address.png",
+    copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
     groupType: "Top Decision Makers",
+    dltImage: "/images/Delete_Address.png",
+    copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
     groupType: "Top Decision Makers",
+    dltImage: "/images/Delete_Address.png",
+    copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
     groupType: "Top Decsion Makers",
+    dltImage: "/images/Delete_Address.png",
+    copyImage: "/images/Copy_Address.png",
   },
 
   {
     image: "/images/nft_pic.png",
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
     groupType: "Management",
+    dltImage: "/images/Delete_Address.png",
+    copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
     groupType: "Management",
+    dltImage: "/images/Delete_Address.png",
+    copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
     groupType: "Management",
+    dltImage: "/images/Delete_Address.png",
+    copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
     groupType: "Management",
+    dltImage: "/images/Delete_Address.png",
+    copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
     groupType: "Employees",
+    dltImage: "/images/Delete_Address.png",
+    copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
     groupType: "Employees",
+    dltImage: "/images/Delete_Address.png",
+    copyImage: "/images/Copy_Address.png",
   },
 
   {
     image: "/images/nft_pic.png",
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
     groupType: "Employees",
+    dltImage: "/images/Delete_Address.png",
+    copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
     address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
     groupType: "Employees",
+    dltImage: "/images/Delete_Address.png",
+    copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
     address: "xdc517f51dea1ab6123456789433a58cbeff0482a0b",
     groupType: "Employees",
+    dltImage: "/images/Delete_Address.png",
+    copyImage: "/images/Copy_Address.png",
   },
 ];
 
@@ -238,6 +293,7 @@ const AddressGroup = () => {
   const [showAddAddressesInput, setShowAddAddressesInput] = useState(false);
   
   const [togglePopPop, settogglePopPop] = useState(null);
+  
 
   const addgrouphandler = () => {
     setaddressNamelist([...addressNamelist, { groupName: addGroupInput },
@@ -272,10 +328,9 @@ const AddressGroup = () => {
     <div>
       <div style={{ marginTop: "-250px" }}>
         <div>
-          <img
+          <BackImg
             onClick={backButton}
             src="/images/Back-Arrow.svg"
-            style={{ marginLeft: "300px", marginTop: "133px" }}
           />
           <Back>Back</Back>
         </div>
@@ -333,15 +388,13 @@ const AddressGroup = () => {
                 {showAddAddressesInput && (
                   <div>
                      <input type="text" className="addressInput" onChange = {(e) => setaddAddressesInput(e.target.value)} />
-                     <img 
+                     <AddressImgCorrect
                          onClick={addaddresshandler} 
                          src="/images/green_correct.png"
-                         style={{ width: "30px", height: "30px" , marginLeft: "10px" }}  
                          />
-                     <img
+                     <AddressImgCancel
                          onClick={() => setShowAddAddressesInput(!showAddAddressesInput)}
                          src="/images/red_cancel.png"
-                         style={{ width: "30px", height: "30px" , marginLeft: "15px" }}  
                          />
                   </div>
                 )}
@@ -352,6 +405,8 @@ const AddressGroup = () => {
                     >
                       <IconImg src={item.image} />
                       <AddressDiv>{item.address}</AddressDiv> 
+                      <CopyImg src={item.copyImage} />
+                      <DeleteImg src={item.dltImage} />
                     </AddressItem>
                   ))}
               </>
