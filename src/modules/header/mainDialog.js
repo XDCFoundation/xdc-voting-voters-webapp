@@ -3,22 +3,14 @@ import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/styles";
 import { Row } from "simple-flexbox";
 import styled from "styled-components";
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles((theme) => ({
- 
   add: {
     backgroundColor: "#2149b9",
     marginLeft: "90px",
   },
-// dialog:{
-//     display:"none !important"
-// },
-// drawerWidth: {
-//   width: '50%',
-//   ['@media (min-width:780px)']: { // eslint-disable-line no-useless-computed-key
-//     display: 'none !important'
-//   }},
+
   value: {
     width: "400px !important",
   },
@@ -131,26 +123,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "22px",
     color: "#2a2a2a",
   },
-//   paperWidthSm: {
-//     position: "absolute",
-//     top: "45px",
-//     width: "503px",
-//     padding: "0 11px",
-//     borderRadius: "12px",
-//   },
-//   paperWidthSm1: {
-//     position: "absolute",
-//     width: "503px",
-//     padding: "0 11px",
-//     borderRadius: "12px",
-//   },
-  // paperWidthSm2: {
-  //   position: "absolute",
-  //   top: "65px",
-  //   width: "600px",
-  //   // padding: "0 11px",
-  //   borderRadius: "12px",
-  // },
+
   termsContainer: {
     flexFlow: "row nowrap",
     display: "flex",
@@ -284,16 +257,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   "@media (max-width: 767px)": {
-    // paperWidthSm: {
-    //   position: "absolute",
-    //   // top: "102px",
-    //   height: "100%",
-    //   width: "100%",
-    //   maxWidth: "767px",
-    //   borderRadius: "0px",
-    //   backgroundImage: "none",
-    //   opacity: "0px",
-    // },
     closeContainer: {
       display: "none",
     },
@@ -393,18 +356,6 @@ const useStyles = makeStyles((theme) => ({
       marginRight: "auto",
     },
 
-    // paperWidthSm1: {
-    //   position: "absolute",
-    //   // top: "102px",
-    //   height: "100%",
-    //   width: "100%",
-    //   maxWidth: "767px",
-    //   borderRadius: "0px",
-    //   backgroundImage: "none",
-    //   opacity: "0px",
-    //   paddingBottom: "30px",
-    // },
-
     input: {
       maxWidth: "433px",
       width: "100%",
@@ -435,36 +386,36 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const InstructionCard = styled.div`
-display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-flow: column;
-    -ms-flex-flow: column;
-    -webkit-flex-flow: column;
-    -ms-flex-flow: column;
-    flex-flow: column;
-    gap: 25px;
-    padding: 12px 0 0 0;
-    width: 200px;
-    height: 233px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #F0F0F0;
-    border-radius: 6px;
-    opacity: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  gap: 25px;
+  padding: 12px 0 0 0;
+  width: 200px;
+  height: 233px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+  opacity: 1;
 `;
 
 const CardText = styled.div`
-padding: 0px 17px 0px 17px;
-/* color: #686868; */
-text-align: center;
-font: normal normal normal 16px/20px Inter;
-letter-spacing: 0px;
-opacity: 1;
-margin-top: -15px;
+  padding: 0px 17px 0px 17px;
+  /* color: #686868; */
+  text-align: center;
+  font: normal normal normal 16px/20px Inter;
+  letter-spacing: 0px;
+  opacity: 1;
+  margin-top: -15px;
 `;
 
 const ImageContainer = styled.div`
@@ -475,28 +426,27 @@ const ImageContainer = styled.div`
 `;
 
 const CardTitle = styled.div`
-text-align: center;
-font: normal normal 600 16px/20px Inter;
-letter-spacing: 0px;
-color: #1F1F1F;
-opacity: 1;
+  text-align: center;
+  font: normal normal 600 16px/20px Inter;
+  letter-spacing: 0px;
+  color: #1f1f1f;
+  opacity: 1;
 `;
 
 const CloseIconContainer = styled.div`
   cursor: pointer;
-//   position: absolute;
-//   right: 42px;
+  //   position: absolute;
+  //   right: 42px;
   width: 15px;
   height: 15px;
   color: #000000;
-    font-weight: 600;
+  font-weight: 600;
 `;
 
 export default function Web3Dialog(props) {
   const [open, setOpen] = React.useState(false);
-  // const matches = useMediaQuery('(min-width:600px)');
-  // const fullScreen = useMediaQuery('(min-width:600px)');
-  React.useEffect(() =>  {
+
+  React.useEffect(() => {
     mainDialogOpen();
   }, []);
 
@@ -504,55 +454,57 @@ export default function Web3Dialog(props) {
   const handleClose = () => {
     setOpen(false);
   };
-const mainDialogOpen = () => {
+  const mainDialogOpen = () => {
     setOpen(true);
   };
 
-
   return (
     <div>
-     
-      
-    <Dialog
-    //   className={classes.dialog + " maxWidth-800"}
-      className="dialog-main"
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="form-dialog-title"
-      id="web3Dialog"
-     
-    >
-      <div className="main-box">
-        <Row className="main-row">
-          <div className="main-title">You can only view the proposals on mobile browser</div>
-         
-        </Row>
-       
-        <Row
-          className="card-box"
-          
-         
-        >
-          <div>If you have a whitelisted voter, please open XDC Governance portal on a desktop browser and connect XDC Pay to vote and create proposal</div>
-       </Row>
-          
-             
-        <Row className="last-row">
+      <Dialog
+        className="dialog-main"
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+        id="web3Dialog"
+      >
+        <div className="main-box">
+          <Row className="main-row">
+            <div className="main-title">
+              You can only view the proposals on mobile browser
+            </div>
+          </Row>
 
-         <button className="last-title" onClick={handleClose}> <div > <span>
-           {/* <img
+          <Row className="card-box">
+            <div>
+              If you have a whitelisted voter, please open XDC Governance portal
+              on a desktop browser and connect XDC Pay to vote and create
+              proposal
+            </div>
+          </Row>
+
+          <Row className="last-row">
+            <button className="last-title" onClick={handleClose}>
+              {" "}
+              <div>
+                {" "}
+                <span>
+                  {/* <img
                 className="connect-text"
                 alt="new-feature"
                 src={"/images/connect xdc icon.svg"}
               /> */}
-              </span>I understood</div> </button>
-         
-        </Row>
+                </span>
+                I understood
+              </div>{" "}
+            </button>
+          </Row>
 
-        <div className="dont-message"><input type="checkbox" className="input-check"/><span>Don’t show this message again</span></div>
-      </div>
-    </Dialog>
-     </div>
+          <div className="dont-message">
+            <input type="checkbox" className="input-check" />
+            <span>Don’t show this message again</span>
+          </div>
+        </div>
+      </Dialog>
+    </div>
   );
 }
-

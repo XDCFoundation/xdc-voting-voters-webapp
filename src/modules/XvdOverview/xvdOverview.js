@@ -6,7 +6,6 @@ import "../../assets/styles/custom.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import FooterComponent from "../footer/footerComponent";
-import { ClickAwayListener } from "@material-ui/core";
 import { useHistory } from "react-router";
 import { history } from "../../managers/history";
 
@@ -73,10 +72,10 @@ export default function Xvdoverview() {
           "XDC Governance is the voting dApp that enables the members of the XDC Network to participate in important decisions by conducting fair blockchain-backed voting for every proposal. The application enables users to create proposals and supports on-chain voting. Using Voting dApp, the XDC platform aims to bring transparency and provide fair voting rights to all the network participants.",
         subparagraphone:
           " XDC Voting dApp can be used by the decentralized XDC community on two levels, as mentioned below:",
-          subparagraphTwo:
+        subparagraphTwo:
           "XDC Admin: Using the voting dApp, the XDC Admin can vote, make proposals, add and eliminate to alter the group of whitelisted voters.",
-          subparagraphThree:
-          "Whitelisted Voters/ Masternode Voters: Voters on XDC can make a proposal and cast their votes as per the proposals."
+        subparagraphThree:
+          "Whitelisted Voters/ Masternode Voters: Voters on XDC can make a proposal and cast their votes as per the proposals.",
       },
       {
         heading: "What Integrations does the XDC Voting dApp have?",
@@ -84,35 +83,15 @@ export default function Xvdoverview() {
           "The XDC Voting dApp is embedded with two fundamental integrations:",
         subparagraphTwo:
           "XDC Blockchain: XDC blockchain, an enterprise-grade hybrid blockchain with delegated Proof-of-Stake consensus, has a testnet called Apothem Network. XDC Voting dApp is integrated with Apothem network to foster data management and support.",
-          subparagraphThree:
+        subparagraphThree:
           "XDCPay: The Chrome browser wallet extension, XDCPay, connects the wallet to the XDC dApp and allows you to access the application on your browser.",
-          subparagraphFour:
+        subparagraphFour:
           "The XDC Voting dApp will improve the dynamics of decision making, proposal creation and voting for the decentralized XDC community. Every XDC member participating in the voting through this application gets equal voting rights and extensive opportunities to express their views.",
-          subparagraphFive:
+        subparagraphFive:
           "The application also uplifts credibility by allowing better decision-making and improving network integrity. XDC voting dApp will maintain, initiate and monitor the on-chain voting and proposal creation.",
-          subparagraphSix:
-          "With such an extensive governance portal, XDC targets maintaining transparency where the admin can vote, add and eliminate any whitelisted voters as per the network’s need."
+        subparagraphSix:
+          "With such an extensive governance portal, XDC targets maintaining transparency where the admin can vote, add and eliminate any whitelisted voters as per the network’s need.",
       },
-      // {
-      //   // heading: "Voting Wallet Setup",
-      //   subparagraphFour:
-      //     "",
-      // },
-      // {
-      //   // heading: "Off-chain Governance",
-      //   subparagraphFour:
-      //     "",
-      // },
-      // {
-      //   // heading: "On-Chain Governance",
-      //   subparagraphFour:
-      //     "",
-      // },
-      // {
-      //   heading: "Governance FAQs",
-      //   paragraph:
-      //     "bero elementum eu. Nunc pharetra, libero elementum dignissim volutpat, leo ante hendrerit leo, sit amet pellentesque nibh libero eu erat. Duis ac felis aliquam, efficitur dolor vel, vehicula augue. Aenean id egestas tortor. Proin congue turpis in turpis condimentum, nec auctor ex aliquam. Sed finibus ex vel justo dapibus, eget egestas quam facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id mollis dolor. Proin tristique enim quis vesti",
-      // },
     ];
 
     setAddress(
@@ -121,11 +100,11 @@ export default function Xvdoverview() {
           heading: object.heading,
           paragraph: object.paragraph,
           subparagraphone: object.subparagraphone,
-          subparagraphTwo:object.subparagraphTwo,
-          subparagraphThree:object.subparagraphThree,
-          subparagraphFour:object.subparagraphFour,
-          subparagraphFive:object.subparagraphFive,
-          subparagraphSix:object.subparagraphSix
+          subparagraphTwo: object.subparagraphTwo,
+          subparagraphThree: object.subparagraphThree,
+          subparagraphFour: object.subparagraphFour,
+          subparagraphFive: object.subparagraphFive,
+          subparagraphSix: object.subparagraphSix,
         };
       })
     );
@@ -135,10 +114,6 @@ export default function Xvdoverview() {
 
   const scrollerTop = (e) => {
     e.preventDefault();
-    // window.scrollTo(0,1)
-    // e.stopPropagation();
-    // e.nativeEvent.stopImmediatePropagation();
-    // return false;
   };
   const onchangeDropdown = (e) => {
     window.location.href = e.target.value;
@@ -176,18 +151,18 @@ export default function Xvdoverview() {
               }}
             >
               <Secondcontainer>
-                <Div >
+                <Div>
                   {address.map((data, index) => {
                     return (
-                      <SideContainer >
-                        <Column id={index} >
-                          <Row >
-                            <Heading_One id="section1" >
+                      <SideContainer>
+                        <Column id={index}>
+                          <Row>
+                            <Heading_One id="section1">
                               {data.heading}
                             </Heading_One>
                           </Row>
 
-                          <Para_One id="section1" >{data.paragraph}</Para_One>
+                          <Para_One id="section1">{data.paragraph}</Para_One>
                           <SubparagraphOne>
                             {data.subparagraphone}
                           </SubparagraphOne>
@@ -211,7 +186,7 @@ export default function Xvdoverview() {
                           <SubparagraphSix>
                             {data.subparagraphSix}
                           </SubparagraphSix>
-                          <br  />
+                          <br />
                         </Column>
                       </SideContainer>
                     );
@@ -259,7 +234,7 @@ const SubparagraphOne = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  margin-bottom:20px;
+  margin-bottom: 20px;
 `;
 const SubparagraphTwo = styled.span`
   text-align: left;
@@ -267,9 +242,9 @@ const SubparagraphTwo = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   display: list-item;
-    margin-left: 20px;
+  margin-left: 20px;
 `;
 const SubparagraphThree = styled.span`
   text-align: left;
@@ -277,9 +252,9 @@ const SubparagraphThree = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  margin-bottom:60px;
+  margin-bottom: 60px;
   display: list-item;
-    margin-left: 20px;
+  margin-left: 20px;
 `;
 const SubparagraphFour = styled.span`
   text-align: left;
@@ -287,7 +262,7 @@ const SubparagraphFour = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  margin-bottom:10px;
+  margin-bottom: 10px;
 `;
 const SubparagraphFive = styled.span`
   text-align: left;
@@ -295,7 +270,7 @@ const SubparagraphFive = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  margin-bottom:10px;
+  margin-bottom: 10px;
 `;
 const SubparagraphSix = styled.span`
   text-align: left;
@@ -303,7 +278,7 @@ const SubparagraphSix = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  margin-bottom:10px;
+  margin-bottom: 10px;
 `;
 
 const Row__ = styled.div`
@@ -350,7 +325,7 @@ const H1 = styled.span`
   font-weight: 600;
   font-family: "Inter", sans-serif !important;
   white-space: nowrap;
-  text-decoration:none;
+  text-decoration: none;
   font-size: 17px;
 `;
 const H2 = styled.span`
@@ -358,7 +333,7 @@ const H2 = styled.span`
   font-family: "Inter", sans-serif !important;
   // margin-top: 20px;
   white-space: nowrap;
-  text-decoration:none;
+  text-decoration: none;
   font-size: 17px;
 `;
 const H3 = styled.span`
@@ -366,7 +341,7 @@ const H3 = styled.span`
   font-family: "Inter", sans-serif !important;
   // margin-top: 20px;
   white-space: nowrap;
-  text-decoration:none;
+  text-decoration: none;
   font-size: 17px;
 `;
 const H4 = styled.span`
@@ -374,7 +349,7 @@ const H4 = styled.span`
   font-family: "Inter", sans-serif !important;
   // margin-top: 20px;
   white-space: nowrap;
-  text-decoration:none;
+  text-decoration: none;
   font-size: 17px;
 `;
 const H5 = styled.span`

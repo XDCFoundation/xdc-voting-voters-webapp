@@ -4,8 +4,7 @@ import { history } from "../../managers/history";
 import "../../assets/styles/custom.css";
 import HeaderMain from "./header";
 import RecentProposal from "../Dashboard/";
-import DivBlocksComponent from "../Dashboard/divComponent";
-import FooterComponent from "../footer/footerComponent";
+
 import {
   getTotalVotesCasted,
   getTotalPassedProposals,
@@ -14,7 +13,6 @@ import {
 import Web3Dialog from "./mainDialog";
 
 export default function Header(props) {
-  
   const [getVotesCasted, setGetVotesCasted] = useState([]);
   const [getPassedProposals, setGetPassedProposals] = useState([]);
   const [getTotalVoting, setGetTotalVoting] = useState([]);
@@ -49,26 +47,25 @@ export default function Header(props) {
 
   const createView = () => {
     history.push("/create");
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   };
   return (
     <div>
       {window.innerWidth < 1024 ? <Web3Dialog /> : ""}
       <Column className="header-div">
-      {/* <img  className="ErrorIcon"  style={{width:"55px", height:"55px"}} src={require("../../assets/styles/images/Background.png")}></img> */}
+        {/* <img  className="ErrorIcon"  style={{width:"55px", height:"55px"}} src={require("../../assets/styles/images/Background.png")}></img> */}
         <div>
           {" "}
           <HeaderMain />{" "}
-          
         </div>
-        
+
         {/* !***********************!  */}
 
         <Row className="row-2">
           <div className="row-2-width">
             <Column className="mid-div">
               <Row className="xdc-governance">XDC Governance </Row>
-              
+
               <Row className="xdc-para">
                 <div className="para-div">
                   Decentralized community for maintaining the integrity of the
@@ -98,21 +95,18 @@ export default function Header(props) {
             </div>
           </div>
         </Row>
-       
+
         <div className="recent-div">
-       
           <div className="recent-proposal-div">
             <Row className="recent-add-div">
-              <Column className="heading">Recent Proposals    </Column>
-              
+              <Column className="heading">Recent Proposals </Column>
+
               <Column>
-              
                 <div
                   onClick={createView}
                   id="div_create_prop"
                   className="create-wallet-hide create-wallet"
                 >
-                  
                   <p>Create Proposal</p>
                 </div>
               </Column>
@@ -121,11 +115,8 @@ export default function Header(props) {
               <RecentProposal />
             </div>
           </div>
-         
-          
-         
         </div>
-       {/* <div> <FooterComponent/> </div> */}
+        {/* <div> <FooterComponent/> </div> */}
       </Column>
     </div>
   );
