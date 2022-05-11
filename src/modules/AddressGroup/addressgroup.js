@@ -296,8 +296,7 @@ const AddressGroup = () => {
   const [showAddAddressesInput, setShowAddAddressesInput] = useState(false);
   
   const [togglePopPop, settogglePopPop] = useState(null);
-  
-  const [isDropdownOpen, toggleDropdown] = React.useState(false);
+  const [copySuccess, setCopySuccess] = React.useState(false);
 
   const addgrouphandler = () => {
     setaddressNamelist([...addressNamelist, { groupName: addGroupInput },
@@ -323,18 +322,17 @@ const AddressGroup = () => {
   {settogglePopPop(index)}
   }
   console.log(selectedGroupAddress);
-
-  const isDataCopied = () => {
-    // notifyCopyToast();
-    toggleDropdown(false);
-  };
-
   // const notifyCopyToast = () =>
   // toast.success(validationsMessages.ADDRESS_COPIED, {
   //   duration: 1000,
   //   position: validationsMessages.TOASTS_POSITION,
   //   className: "toast-div-address",
   // });
+
+  const isDataCopied = () => {
+    // notifyCopyToast();
+    setCopySuccess(false);
+  };
 
   const backButton = () => {
     history.push("/");
