@@ -53,15 +53,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     width: "100%",
   },
-  mobileVote:{
-    "@media (min-width: 567px) and (max-width: 767px)": {
-      
-    },
+  mobileVote: {
+    "@media (min-width: 567px) and (max-width: 767px)": {},
     "@media (min-width: 767px) and (max-width: 1040px)": {
-      display:"none",
+      display: "none",
     },
-
-  }
+  },
 }));
 
 export default function Voterslist(props) {
@@ -69,7 +66,7 @@ export default function Voterslist(props) {
     history.push({
       pathname: `/proposal-details/${props.state.proposalAddress}`,
     });
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   };
   // React.useEffect(() => {
   //   let address = [
@@ -197,62 +194,67 @@ export default function Voterslist(props) {
                 <Heading>All Voters</Heading>
               </Container>
               <SecondContainer>
-                <Leftcontainer>{totalVotes.length} {totalVotes.length>1?"Votes":"Vote"} </Leftcontainer>
+                <Leftcontainer>
+                  {totalVotes.length} {totalVotes.length > 1 ? "Votes" : "Vote"}{" "}
+                </Leftcontainer>
               </SecondContainer>
             </Spacing>
 
             {totalVotes && totalVotes.length >= 1 ? (
-            totalVotes.map((data) => {
-              return (
-                <div>
-                <Div>
-                  <Spacing >
-                    <Container>
-                      <Jazzicon diameter={20} seed={Math.round(Math.random() * 10000000)} />
-                      &nbsp;
-                      <Hash> {(data.voterAddress)}</Hash>
-                      {/* <Hash className={classes.mobileVote}>{proposalAddressComponent(data.voterAddress)}</Hash> */}
-                    </Container>
-                    <SecondContainer>
-                      <Leftcontainer>
-                      {moment(data.createdOn).format("D  MMM  ") } 
-                        {/* {Utils.epocToPrettyTime(data.createdOn)} */}
-                      </Leftcontainer>
-                    </SecondContainer>
-                  </Spacing>
-                </Div>
-                <VoterListMobile >
-                  <Spacing >
-                    <Container>
-                      {/* <ImageView src={data.image} /> */}
-                      <Jazzicon diameter={20} seed={Math.round(Math.random() * 10000000)} />
-                      &nbsp; &nbsp;&nbsp;&nbsp;
-                      {/* <Hash> {(data.voterAddress)}</Hash> */}
-                      <Hash className={classes.mobileVote}>{proposalAddressComponent(data.voterAddress)}</Hash>
-                    </Container>
-                    <SecondContainer>
-                      <Leftcontainer>
-                      {moment(data.createdOn).format("D  MMM  ") } 
-                        {/* {Utils.epocToPrettyTime(data.createdOn)} */}
-                      </Leftcontainer>
-                    </SecondContainer>
-                  </Spacing>
-                </VoterListMobile>
-               
-                </div>
-                
-              );
-            }))
-            :(
+              totalVotes.map((data) => {
+                return (
+                  <div>
+                    <Div>
+                      <Spacing>
+                        <Container>
+                          <Jazzicon
+                            diameter={20}
+                            seed={Math.round(Math.random() * 10000000)}
+                          />
+                          &nbsp;
+                          <Hash> {data.voterAddress}</Hash>
+                          {/* <Hash className={classes.mobileVote}>{proposalAddressComponent(data.voterAddress)}</Hash> */}
+                        </Container>
+                        <SecondContainer>
+                          <Leftcontainer>
+                            {moment(data.createdOn).format("D  MMM  ")}
+                            {/* {Utils.epocToPrettyTime(data.createdOn)} */}
+                          </Leftcontainer>
+                        </SecondContainer>
+                      </Spacing>
+                    </Div>
+                    <VoterListMobile>
+                      <Spacing>
+                        <Container>
+                          {/* <ImageView src={data.image} /> */}
+                          <Jazzicon
+                            diameter={20}
+                            seed={Math.round(Math.random() * 10000000)}
+                          />
+                          &nbsp; &nbsp;&nbsp;&nbsp;
+                          {/* <Hash> {(data.voterAddress)}</Hash> */}
+                          <Hash className={classes.mobileVote}>
+                            {proposalAddressComponent(data.voterAddress)}
+                          </Hash>
+                        </Container>
+                        <SecondContainer>
+                          <Leftcontainer>
+                            {moment(data.createdOn).format("D  MMM  ")}
+                            {/* {Utils.epocToPrettyTime(data.createdOn)} */}
+                          </Leftcontainer>
+                        </SecondContainer>
+                      </Spacing>
+                    </VoterListMobile>
+                  </div>
+                );
+              })
+            ) : (
               <>
-                      <div
-                        style={{ display: "flex", justifyContent: "center" }}
-                      >
-                        No Votes Casted
-                      </div>
-                    </>
-            )
-          }
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  No Votes Casted
+                </div>
+              </>
+            )}
             <Pagingdiv className="display-flex justify-content-end">
               <div className="display-flex justify-content-end p-t-15">
                 <Pagination
@@ -268,7 +270,11 @@ export default function Voterslist(props) {
                   // pageRangeDisplayed="5"
                   // itemsCountPerPage="10"
                   //   pageRangeDisplayed="5"
-                  totalItemsCount={props.state.totalVotersCount>10?1:props.state.totalVotersCount}
+                  totalItemsCount={
+                    props.state.totalVotersCount > 10
+                      ? 1
+                      : props.state.totalVotersCount
+                  }
                   onChange={props.handlePageChange}
                 />
               </div>
@@ -283,34 +289,30 @@ export default function Voterslist(props) {
   );
 }
 
-
 function proposalAddressComponent(row) {
-      return (
-          <>
-              <Row className="p-8 justify-content-between">
-                  <Row>
-                      
-                          {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
-                     
-                  </Row>
-                 
-              </Row>
-          </>
-      );
-   }
+  return (
+    <>
+      <Row className="p-8 justify-content-between">
+        <Row>
+          {row.substr(0, 13)}...{row.substr(row.length - 5, 5)}
+        </Row>
+      </Row>
+    </>
+  );
+}
 const MainHeading = styled.span`
   text-align: left;
 
   color: #ffffff;
   font-family: "Inter", sans-serif;
   font-size: 20px;
-  @media (max-width: 767px){
-    font-size:14px;
+  @media (max-width: 767px) {
+    font-size: 14px;
   }
 `;
 
-const VoterListMobile= styled.div`
-background: #ffffff 0% 0% no-repeat padding-box;
+const VoterListMobile = styled.div`
+  background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
   height: auto;
   @media (min-width: 767px) and (max-width: 2000px) {
@@ -323,7 +325,7 @@ const Back = styled.span`
   font-family: "Inter", sans-serif;
   font-size: 17px;
   color: #ffffff;
-  cursor:pointer;
+  cursor: pointer;
 `;
 const BackButton = styled.button`
   text-align: left;
@@ -404,7 +406,7 @@ const Hash = styled.span`
     font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 13px;
-    margin-left:-22px
+    margin-left: -22px;
   }
 `;
 const Spacing = styled.div`
@@ -434,7 +436,7 @@ const Container = styled.div`
 `;
 const SecondContainer = styled.div`
   display: flex;
-justify-content:end;
+  justify-content: end;
   align-items: center;
   @media (min-width: 300px) and (max-width: 767px) {
   }
@@ -466,10 +468,9 @@ const Leftcontainer = styled.div`
   letter-spacing: 0px;
   color: #acacac;
   @media (min-width: 300px) and (max-width: 767px) {
-    margin-top:-30px;
-    margin-left:205px;
+    margin-top: -30px;
+    margin-left: 205px;
   }
- 
 `;
 const ImageView = styled.img`
   width: 35px;

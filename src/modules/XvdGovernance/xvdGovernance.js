@@ -9,7 +9,6 @@ import FooterComponent from "../footer/footerComponent";
 import { history } from "../../managers/history";
 import { ClickAwayListener } from "@material-ui/core";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -68,33 +67,27 @@ export default function Xvdgovernance() {
       {
         heading: "Introduction",
         paragraph:
-          "XDC Governance is the voting dApp for community members to initiate proposals and cast their votes. The dApp conducts voting on the XDC blockchain, confirming the fair and transparent voting process. It enables the XDC decentralized community to participate actively in decision-making processes and helps maintain the integrity of the entire ecosystem through on-chain voting. XDC Governance implements smart voting contracts written with pre-determined terms governing voting and decision-making. The structure of proposal contracts comprises three main components:"
+          "XDC Governance is the voting dApp for community members to initiate proposals and cast their votes. The dApp conducts voting on the XDC blockchain, confirming the fair and transparent voting process. It enables the XDC decentralized community to participate actively in decision-making processes and helps maintain the integrity of the entire ecosystem through on-chain voting. XDC Governance implements smart voting contracts written with pre-determined terms governing voting and decision-making. The structure of proposal contracts comprises three main components:",
 
-          ,
         subparagraphone:
           "Proposal Struct: Name, description, address of the proposal submitter, end date, the status of the proposal and the file URL.",
 
-          subparagraphTwo:
+        subparagraphTwo:
           "Vote Struct: Address of the voter and the specific voting time.",
-          subparagraphThree:
+        subparagraphThree:
           "Vote Mapping: Key for voting, address value for voting and the complete VoteStruct.",
-          subparagraphFour:
+        subparagraphFour:
           "Through this voting dApp, XDC Foundation ensures to keep its network at the cutting edge in terms of community ownership and participation in the network. Operating with the vision of ecosystem growth, XDC Network continues to nourish its environment with the constant development flow.",
-          
-          
-          
-          
       },
       {
         heading: "How voting works",
-        paragraph:
-          "The voting on the Governance portal is straightforward:",
+        paragraph: "The voting on the Governance portal is straightforward:",
         subparagraphone:
           "A user creates a proposal to obtain the decisions of all XDC stakeholders through their votes.",
-          subparagraphTwo:
+        subparagraphTwo:
           "All the whitelisted voters can cast their votes within the given timeframe for every proposal. The admin of XDC Governance dApp manages the voters' list; he can add and eliminate voters, make proposals and vote on them.",
-          subparagraphThree:
-          "Once the deadline for the proposal is met, the voting result is unveiled on the portal. The proposal is accepted when 51% of the votes are in favour."
+        subparagraphThree:
+          "Once the deadline for the proposal is met, the voting result is unveiled on the portal. The proposal is accepted when 51% of the votes are in favour.",
       },
       {
         heading: "Voting Wallet Setup",
@@ -124,9 +117,9 @@ export default function Xvdgovernance() {
           heading: object.heading,
           paragraph: object.paragraph,
           subparagraphone: object.subparagraphone,
-          subparagraphTwo:object.subparagraphTwo,
-          subparagraphThree:object.subparagraphThree,
-          subparagraphFour:object.subparagraphFour
+          subparagraphTwo: object.subparagraphTwo,
+          subparagraphThree: object.subparagraphThree,
+          subparagraphFour: object.subparagraphFour,
         };
       })
     );
@@ -136,16 +129,10 @@ export default function Xvdgovernance() {
 
   const scrollerTop = (e) => {
     e.preventDefault();
-    // window.scrollTo(0,1)
-    // e.stopPropagation();
-    // e.nativeEvent.stopImmediatePropagation();
-    // return false;
   };
   const onchangeDropdown = (e) => {
     window.scrollTo(0, 0);
     window.location.href = e.target.value;
-   
-
   };
 
   const classes = useStyles();
@@ -251,24 +238,26 @@ export default function Xvdgovernance() {
 
                           <Para_One id="section1">{data.paragraph}</Para_One>
                           <SubparagraphOne
-                          className=  {data.subparagraphTwo?"list-item":""} >
+                            className={data.subparagraphTwo ? "list-item" : ""}
+                          >
                             {data.subparagraphone}
                           </SubparagraphOne>
 
-                          <SubparagraphTwo 
-                         className=  {data.subparagraphTwo?"list-item":""}>
-                           {data.subparagraphTwo}
-   
+                          <SubparagraphTwo
+                            className={data.subparagraphTwo ? "list-item" : ""}
+                          >
+                            {data.subparagraphTwo}
                           </SubparagraphTwo>
 
-                          <SubparagraphThree 
-                          className=  {data.subparagraphTwo?"list-item":""}>
+                          <SubparagraphThree
+                            className={data.subparagraphTwo ? "list-item" : ""}
+                          >
                             {data.subparagraphThree}
-                            </SubparagraphThree>
+                          </SubparagraphThree>
 
-                            <SubparagraphFour>
+                          <SubparagraphFour>
                             {data.subparagraphFour}
-                            </SubparagraphFour>
+                          </SubparagraphFour>
                           <br />
                         </Column>
                       </SideContainer>
@@ -301,7 +290,6 @@ const Anchor = styled.a`
   // &:focus{
   //   color: #0052cc !important;
   // }
-  
 
   // a:visited {color:#0000FF;}
   // a[tabindex]:focus {
@@ -313,7 +301,6 @@ const Anchor = styled.a`
     text-decoration: underline;
   }
 `;
-
 
 const Back = styled.span`
   text-align: left;
@@ -327,7 +314,7 @@ const SubparagraphOne = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   // display: list-item;
   //   margin-left: 20px;
 `;
@@ -337,7 +324,7 @@ const SubparagraphTwo = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   // display: list-item;
   //   margin-left: 20px;
 `;
@@ -347,7 +334,7 @@ const SubparagraphThree = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   // display: list-item;
   //   margin-left: 20px;
 `;
@@ -357,7 +344,7 @@ const SubparagraphFour = styled.span`
   letter-spacing: 0px;
   color: #2a2a2a;
   opacity: 1;
-  margin-bottom:10p;
+  margin-bottom: 10p;
 `;
 const SelectBoxDiv = styled.div`
   border-right: 1px solid rgb(227, 231, 235);
@@ -441,7 +428,7 @@ const H1 = styled.span`
   font-weight: 600;
   font-family: "Inter", sans-serif !important;
   white-space: nowrap;
-  text-decoration:none;
+  text-decoration: none;
   font-size: 17px;
 `;
 const H2 = styled.span`
@@ -449,7 +436,7 @@ const H2 = styled.span`
   font-family: "Inter", sans-serif !important;
   // margin-top: 20px;
   white-space: nowrap;
-  text-decoration:none;
+  text-decoration: none;
   font-size: 17px;
 `;
 const H3 = styled.span`
@@ -457,7 +444,7 @@ const H3 = styled.span`
   font-family: "Inter", sans-serif !important;
   // margin-top: 20px;
   white-space: nowrap;
-  text-decoration:none;
+  text-decoration: none;
   font-size: 17px;
 `;
 const H4 = styled.span`
@@ -465,7 +452,7 @@ const H4 = styled.span`
   font-family: "Inter", sans-serif !important;
   // margin-top: 20px;
   white-space: nowrap;
-  text-decoration:none;
+  text-decoration: none;
   font-size: 17px;
 `;
 const H5 = styled.span`

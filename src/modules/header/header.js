@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "../../assets/styles/custom.css";
-import jazzicon from "jazzicon";
 import { Column, Row } from "simple-flexbox";
 import { history } from "../../managers/history";
 import { makeStyles } from "@material-ui/core/styles/";
 import Web3 from "web3";
 import Utils from "../../utility";
 import { getTotalVotingAddress } from "../../services/proposalService";
-import { injected } from "../../services/web3Connector";
 import { useWeb3React } from "@web3-react/core";
-import blockies from "ethereum-blockies";
-import FooterComponent from "../footer/footerComponent";
 import Jazzicon from "react-jazzicon";
-import Web3Dialog from "./mainDialog";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
@@ -56,13 +51,6 @@ function Header() {
   const [open6, setOpen6] = useState(false);
 
   useEffect(() => {
-    // var body = document.querySelector('body')
-    // for(var i = 0; i < 60; i++) {
-    //   var el = jazzicon(100, Math.round(Math.random() * 10000000))
-    //   console.log("dsjfkksdgfkjhjldsf ",el)
-    //   body.appendChild(el)
-    // }
-
     window.web3 = new Web3(window.xdc ? window.xdc : window.ethereum);
 
     if (window.xdc) {
@@ -269,7 +257,6 @@ function Header() {
               ></img>
             </span>
             <span>
-              {/* <div className="unauthorized">Unauthorized</div> */}
               <div className="unauthorized-message">
                 <span>Please Login to XDCPay</span>
               </div>
@@ -316,7 +303,6 @@ function Header() {
               ></img>
             </span>
             <span>
-              {/* <div className="unauthorized">Unauthorized</div> */}
               <div className="unauthorized-message">
                 <span>Please install XDCPay extension</span>
               </div>

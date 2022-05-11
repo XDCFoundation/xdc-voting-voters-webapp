@@ -21,7 +21,7 @@ export async function addNewProposal(reqObj) {
         response.responseData.length === 0
       )
         return Promise.reject();
-        console.log(response.responseData);
+      console.log(response.responseData);
       return Promise.resolve(response.responseData);
     })
     .catch(function (err) {
@@ -148,32 +148,6 @@ export async function castVotingProposal(reqData) {
     });
 }
 
-export async function getVotePercentageOnProposal(proposalAddress) {
-  console.log("proposal", proposalAddress);
-  let url = process.env.REACT_APP_GET_VOTE_PERCENTAGE_OF_PROPOSAL;
-  // +`?skip=${skip}&limit=${limit}`;
-  return httpService(
-    httpConstants.METHOD_TYPE.GET,
-    { "Content-Type": httpConstants.CONTENT_TYPE.APPLICATION_JSON },
-    {},
-    url + proposalAddress
-  )
-    .then((response) => {
-      if (
-        !response.success ||
-        response.responseCode !== 200 ||
-        !response.responseData ||
-        response.responseData.length === 0
-      )
-        return Promise.reject();
-      console.log("responseforvotepercentageproposal", response.responseData);
-      return Promise.resolve(response.responseData);
-    })
-    .catch(function (err) {
-      return Promise.reject(err);
-    });
-}
-
 export async function proposalList(reqObj) {
   const url = process.env.REACT_APP_PROPOSAL_SVC + "getProposalList";
   // const url = "http://localhost:3001/" + "getProposalList";
@@ -197,7 +171,6 @@ export async function proposalList(reqObj) {
       return Promise.reject(err);
     });
 }
-
 
 export async function emailSubscription(reqObj) {
   const url = process.env.REACT_APP_PROPOSAL_SVC + "addEmail";

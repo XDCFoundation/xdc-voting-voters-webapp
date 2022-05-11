@@ -39,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "6px",
     opacity: "1",
     justifyContent: "space-between",
-    
   },
   line: {
     width: "100%",
@@ -149,15 +148,13 @@ export default function CommunityPage() {
       <div className={classes.mainContainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
-            <div
-              style={{ marginBottom: "20px" }}
-             
-            >
-              <img  onClick={backButton}
+            <div style={{ marginBottom: "20px" }}>
+              <img
+                onClick={backButton}
                 src="/images/Back-Arrow.svg"
                 style={{ width: "15px", marginRight: "8px", cursor: "pointer" }}
               />
-              <Back  onClick={backButton}>Back</Back>
+              <Back onClick={backButton}>Back</Back>
             </div>
             <Spacing>
               <Container>
@@ -166,99 +163,49 @@ export default function CommunityPage() {
             </Spacing>
             <Div>
               <Grid container spacing={5}>
-              
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
-                
                   <Paper className={classes.paper} elevation={0}>
-                  
                     <ColumnDiv>
-                    <a href="https://observer.xdc.org/" target="_blank">
-                      <RowDiv>
-                        
+                      <a href="https://observer.xdc.org/" target="_blank">
+                        <RowDiv>
                           <ImageView src="/images/Block-Explorer.svg" />
-                       
-                      </RowDiv>
-                      <RowDiv>
-                    
-                        <Span>XDC Observatory</Span>
-                      </RowDiv>
+                        </RowDiv>
+                        <RowDiv>
+                          <Span>XDC Observatory</Span>
+                        </RowDiv>
                       </a>
                     </ColumnDiv>
-                    
                   </Paper>
-                 
                 </Grid>
-               
+
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
-                    <a href="https://stats.xdc.org/" target="_blank">
-                      <RowDiv>
-                       
+                      <a href="https://stats.xdc.org/" target="_blank">
+                        <RowDiv>
                           <ImageView src="/images/Network-Stats.svg" />
-                       
-                      </RowDiv>
-                      <RowDiv>
-                        <Span>XDC Network Stats</Span>
-                      </RowDiv>
+                        </RowDiv>
+                        <RowDiv>
+                          <Span>XDC Network Stats</Span>
+                        </RowDiv>
                       </a>
                     </ColumnDiv>
                   </Paper>
                 </Grid>
-                {/* <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
-                  <Paper className={classes.paper} elevation={0}>
-                    <ColumnDiv>
-                      <RowDiv>
-                        <a href="https://xinfin.org/setup-masternode.php" target="_blank">
-                          <ImageView src="/images/Master-Nodes.svg" />
-                        </a>
-                      </RowDiv>
-                      <RowDiv>
-                        <Span>Masternodes</Span>
-                      </RowDiv>
-                    </ColumnDiv>
-                  </Paper>
-                </Grid>
+
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
-                      <RowDiv>
-                        <a href="https://wallet.xinfin.network/#/" target="_blank">
+                      <a
+                        href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo"
+                        target="_blank"
+                      >
+                        <RowDiv>
                           <ImageView src="/images/XinPay.svg" />
-                        </a>
-                      </RowDiv>
-                      <RowDiv>
-                        <Span>Web Wallet</Span>
-                      </RowDiv>
-                    </ColumnDiv>
-                  </Paper>
-                </Grid>
-                <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
-                  <Paper className={classes.paper} elevation={0}>
-                    <ColumnDiv>
-                      <RowDiv>
-                        <a href="https://play.google.com/store/apps/details?id=com.xdcwallet" target="_blank">
-                          <ImageView src="/images/Android-Wallet.svg" />
-                        </a>
-                      </RowDiv>
-                      <RowDiv>
-                        <Span>Android Wallet</Span>
-                      </RowDiv>
-                    </ColumnDiv>
-                  </Paper>
-                </Grid> */}
-                <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
-                  <Paper className={classes.paper} elevation={0}>
-                    <ColumnDiv>
-                    <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo" target="_blank">
-                      <RowDiv>
-                       
-                          <ImageView src="/images/XinPay.svg" />
-                      
-                      </RowDiv>
-                      <RowDiv>
-                        <Span>XDCPay</Span>
-                      </RowDiv>
+                        </RowDiv>
+                        <RowDiv>
+                          <Span>XDCPay</Span>
+                        </RowDiv>
                       </a>
                     </ColumnDiv>
                   </Paper>
@@ -266,15 +213,13 @@ export default function CommunityPage() {
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
-                    <a href="https://origin.xdc.org/" target="_blank">
-                      <RowDiv>
-                       
+                      <a href="https://origin.xdc.org/" target="_blank">
+                        <RowDiv>
                           <ImageView src="/images/XinFin-Origin.svg" />
-                       
-                      </RowDiv>
-                      <RowDiv>
-                        <Span>XDC Origin</Span>
-                      </RowDiv>
+                        </RowDiv>
+                        <RowDiv>
+                          <Span>XDC Origin</Span>
+                        </RowDiv>
                       </a>
                     </ColumnDiv>
                   </Paper>
@@ -282,15 +227,13 @@ export default function CommunityPage() {
                 <Grid className={classes.gridOne} item xs={6} sm={4} md={3}>
                   <Paper className={classes.paper} elevation={0}>
                     <ColumnDiv>
-                    <a href="https://docs.xdc.org/" target="_blank">
-                      <RowDiv>
-                       
+                      <a href="https://docs.xdc.org/" target="_blank">
+                        <RowDiv>
                           <ImageView src="/images/XinFin-Docs.svg" />
-                       
-                      </RowDiv>
-                      <RowDiv>
-                        <Span>XDC Docs</Span>
-                      </RowDiv>
+                        </RowDiv>
+                        <RowDiv>
+                          <Span>XDC Docs</Span>
+                        </RowDiv>
                       </a>
                     </ColumnDiv>
                   </Paper>
@@ -341,7 +284,7 @@ const Back = styled.span`
   font-family: "Inter", sans-serif;
   font-size: 17px;
   color: #ffffff;
-  cursor:pointer;
+  cursor: pointer;
 `;
 
 const Span = styled.span`
@@ -393,7 +336,6 @@ const Div = styled.div`
   @media (min-width: 300px) and (max-width: 767px) {
     padding: 30px;
   }
-
 `;
 
 const Heading = styled.span`

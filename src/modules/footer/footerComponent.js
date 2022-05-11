@@ -59,7 +59,6 @@ export default function FooterComponent(props) {
   const closeAlert = () => {
     setOpen5(false);
     setOpen6(false);
-   
   };
 
   return (
@@ -218,7 +217,6 @@ export default function FooterComponent(props) {
         </MobileResolution>
       </MobileDiv>
 
-
       {/* ***********************Invalid Email***************************** */}
 
       <Snackbar
@@ -265,12 +263,11 @@ export default function FooterComponent(props) {
         </Alert>
       </Snackbar>
 
-
       {/* ********************************************************************* */}
 
-       {/* ***********************Email Subscribtion Successfull***************************** */}
+      {/* ***********************Email Subscribtion Successfull***************************** */}
 
-       <Snackbar
+      <Snackbar
         className="login-xdcpay"
         open={open6}
         autoHideDuration={3000}
@@ -289,11 +286,10 @@ export default function FooterComponent(props) {
               <img
                 className="done-logo"
                 style={{ height: "24px", width: "24px", marginTop: "10px" }}
-                src={require("../../assets/styles/images/DONE (1).svg")}
+                src={require("../../assets/styles/images/DONE.svg")}
               ></img>
             </span>
             <span>
-              {/* <div className="unauthorized">Unauthorized</div> */}
               <div className="unauthorized-message">
                 <span>Email subscribed successfully</span>
               </div>
@@ -313,7 +309,6 @@ export default function FooterComponent(props) {
           </div>
         </Alert>
       </Snackbar>
-
 
       {/* ********************************************************************* */}
     </Div>
@@ -363,7 +358,7 @@ const RowXDC = styled.div`
   @media (min-width: 300px) and (max-width: 767px) {
     font: normal normal normal 14px Inter;
     margin-top: 20px !important;
-    ${'' /* margin-left: 43px !important; */}
+    ${"" /* margin-left: 43px !important; */}
     margin-left: 5px !important;
   }
 `;
@@ -417,18 +412,17 @@ const ColumnThird = styled.div``;
 const ColumnFourth = styled.div``;
 
 const Div = styled.div`
-width:100%;
-display:flex;
+  width: 100%;
+  display: flex;
 
-justify-content: center;
-border-top: 1px solid #E3E7EB;
-padding-bottom: 25px;
-align-items: flex-start;
-@media (min-width: 300px) and (max-width: 767px) {
-  padding-left:17px;
-  padding-right:17px;
-  
-}
+  justify-content: center;
+  border-top: 1px solid #e3e7eb;
+  padding-bottom: 25px;
+  align-items: flex-start;
+  @media (min-width: 300px) and (max-width: 767px) {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
 `;
 const MainContainer = styled.div`
   width: 100%;
@@ -465,7 +459,7 @@ const Anchor = styled.a`
   text-decoration: none !important;
   color: black;
   &:hover {
-     color: blue !important;
+    color: blue !important;
     text-decoration: underline;
   }
 `;

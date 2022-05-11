@@ -10,11 +10,9 @@ import { history } from "./managers/history";
 import BaseComponent from "./modules/baseComponent";
 import AllProposal from "./modules/Proposallist";
 import Community from "./modules/CommunityTools";
-
-import Governance from "./modules/Xvd-Governance";
-import Overview from "./modules/Xvd-Overview";
-import FAQs from "./modules/Xvd-Faq";
-
+import Governance from "./modules/XvdGovernance";
+import Overview from "./modules/XvdOverview";
+import FAQs from "./modules/XvdFaq";
 import Createproposal from "./modules/Createnewproposal";
 import Voter from "./modules/Voterlist";
 import ProposalDetails from "./modules/ProposalDetails";

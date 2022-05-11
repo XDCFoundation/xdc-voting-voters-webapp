@@ -3,7 +3,6 @@ import { Column, Row } from "simple-flexbox";
 import "../../assets/styles/custom.css";
 import Grid from "@material-ui/core/Grid";
 import { history } from "../../managers/history";
-import FooterComponent from "../footer/footerComponent";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 

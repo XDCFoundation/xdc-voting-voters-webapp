@@ -10,12 +10,11 @@ import HeaderMain from "../header/header";
 import "../../assets/styles/custom.css";
 import FooterComponent from "../footer/footerComponent";
 import Utility from "../../utility/index";
-import AddNewProposalLive from "../../services/proposalService";
 import { history } from "../../managers/history";
 import ReactQuill from "react-quill";
-import DatePicker, { Calendar } from "react-multi-date-picker";
-import TextField from "@material-ui/core/TextField";
-import utility from "../../utility/index";
+// import DatePicker, { Calendar } from "react-multi-date-picker";
+// import TextField from "@material-ui/core/TextField";
+// import utility from "../../utility/index";
 import Utils from "../../utility";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
@@ -386,11 +385,15 @@ export default function Createnewproposal(props) {
   const [endDate, setEndDate] = useState("");
   const [description, setDescription] = useState("");
   const [uploadDocument, setUploadDocument] = useState("");
-  // const [open, setOpen] = useState(false);
   const [count, setCount] = React.useState(0);
-
   const [utcStartDate, setutcStartDate] = useState("");
   const [utcEndDate, setutcEndDate] = useState("");
+  const classes = useStyles();
+  const [value, onChange] = useState(new Date());
+  const [error, setError] = useState("");
+  const [dateError, setDateError] = useState("");
+  const [descriptionError, setErrorDescription] = useState("");
+  const [fileError, setFileError] = useState("");
 
   const inputFile = React.createRef();
   const handleQuillChange = (event) => {
@@ -401,89 +404,30 @@ export default function Createnewproposal(props) {
   const uploadFile = () => {
     inputFile.current.click();
   };
-  // const handleOpen = () => {
-  //   setOpen(true);
-  //   console.log({ open });
-  // };
 
   useEffect(() => {
     const date = moment.utc().format();
 
-    // var date2=new Date();
-
-    // const hour = String(date.getUTCHours()).padStart(2, "0");
-    // const minute = String(date.getUTCMinutes()).padStart(2, "0");
-    // const second = String(date.getUTCSeconds()).padStart(2, "0");
-    // //var ms=date.getTime();
-
-    // var strDate = hour + ":" + minute + ":" + second;
-    // const utctime=strDate;
-
     setutcStartDate(date);
-    // console.log(utcStartDate);
   }, [startDate]);
+
   useEffect(() => {
     const utctime = moment.utc().format();
-
-    // var date=new Date();
-    // console.log(date);
-
-    // const hour = String(date.getUTCHours()).padStart(2, "0");
-    // const minute = String(date.getUTCMinutes()).padStart(2, "0");
-    // const second = String(date.getUTCSeconds()).padStart(2, "0");
-    // //var ms=date.getTime();
-
-    // var strDate = hour + ":" + minute + ":" + second;
-    // const utctime=strDate;
 
     setutcEndDate(utctime);
     // console.log(utcEndDate);
   }, [endDate]);
 
   const createNewProposal = async () => {
-    // if(!proposalTitle || !startDate || !endDate || !description){
-    //   setError("Please Enter Title");
-    //   setDateError("Enter Valid Date");
-    //   setErrorDescription("Description must be atleast 200 characters");
-    // }
-    //  var compareDate = new Date();
-    //  var difference= new Date(endDate).getDate()-new Date(startDate).getDate();
-    //  console.log(difference);
-    //  console.log(compareDate);
-    //  compareDate.setDate(compareDate.getDate() + difference);
-    //  console.log("compare date"+compareDate)
-    //  console.log(compareDate.getTime())
-
-    // //UTC AND LOCAL TIME
-    // const utctime = moment.utc().format();
-    // console.log(utctime)
-    // var stillUtc = moment.utc(utctime).toDate();
-    // console.log(stillUtc);
-    // var local = moment(stillUtc).local().format('YYYY-MM-DD HH:mm:ss');
-    // console.log(local);
-
-    //start Date
-    // console.log("startdate" + startDate);
-    if(startDate && endDate && proposalTitle && description){
-
-    var xy = new Date(startDate);
-    // console.log(xy);
-    const x = moment(xy).utc().format();
-    // console.log(x);
-    var z = new Date(x).toISOString();
-    // console.log(z);
-    var epochutcStart = new Date(z).getTime();
-    // console.log(epochutcStart);
-
-    //end-Date
-    var enddate = new Date(endDate);
-    // console.log(enddate);
-    const utc = moment(endDate).utc().format();
-    // console.log(utc);
-    var stillutc = new Date(utc).toISOString();
-    // console.log(stillutc);
-    var epochutcEnd = new Date(stillutc).getTime();
-    // console.log(epochutcEnd);
+    if (startDate && endDate && proposalTitle && description) {
+      var xy = new Date(startDate);
+      const x = moment(xy).utc().format();
+      var z = new Date(x).toISOString();
+      var epochutcStart = new Date(z).getTime();
+      var enddate = new Date(endDate);
+      const utc = moment(endDate).utc().format();
+      var stillutc = new Date(utc).toISOString();
+      var epochutcEnd = new Date(stillutc).getTime();
     }
 
     const reqObj = {
@@ -494,12 +438,6 @@ export default function Createnewproposal(props) {
       filepath: uploadDocument,
       pollingContract: "0011",
       status: "pending",
-
-      // utcStartDate:epochutcStart,
-      // utcEndDate:epochutcEnd,
-
-      // utcTime:stillUtc,
-      // localTime:local,
     };
 
     if (
@@ -510,46 +448,25 @@ export default function Createnewproposal(props) {
     ) {
       setError("Please Enter Title");
       setDateError("Enter Valid Date");
-       setErrorDescription("Description must be atleast 200 characters");
-
-    }
-
-    // Utils.apiFailureToast("Please provide all the inputs");
-    //console.log(Date.parse(startDate), "startdate");
-    //console.log(Date.parse(endDate), "endDate");
-    else if (
+      setErrorDescription("Description must be atleast 200 characters");
+    } else if (
       proposalTitle &&
       Date.parse(startDate) < Date.parse(endDate) &&
       description.length >= 200
     ) {
       props.createProposal(reqObj);
-    }
-
-    else if(!proposalTitle){
+    } else if (!proposalTitle) {
       setError("Please Enter Title");
-    }
-
-    else if ((Date.parse(startDate) >= Date.parse(endDate)) || !startDate || !endDate) {
+    } else if (
+      Date.parse(startDate) >= Date.parse(endDate) ||
+      !startDate ||
+      !endDate
+    ) {
       setDateError("Enter Valid Date");
-    }
-    // else if(Date.parse(startDate) > Date.parse(endDate)){
-    //   // Utils.apiFailureToast("Title should be less than 60 chars");
-    //   setDateError("Enter Valid Date");
-    // }
-    // Utils.apiFailureToast("Enter Valid Date");
-    // Utils.apiFailureToast("Description should be greater than 200 chars");
-    else if (description.length < 200) {
+    } else if (description.length < 200) {
       setErrorDescription("Description must be atleast 200 characters");
-    } 
-    
+    }
   };
-
-  const classes = useStyles();
-  const [value, onChange] = useState(new Date());
-  const [error, setError] = useState("");
-  const [dateError, setDateError] = useState("");
-  const [descriptionError, setErrorDescription] = useState("");
-  const [fileError, setFileError] = useState("");
 
   return (
     <div className="">
@@ -832,10 +749,7 @@ export default function Createnewproposal(props) {
                                 props.state.proposalDocuments.length - 1 ? (
                                   <img
                                     className={classes.image}
-                                    onClick={
-                                      props.addDocumentRow
-                                    
-                                    }
+                                    onClick={props.addDocumentRow}
                                     src="/images/Add.svg"
                                   />
                                 ) : (
@@ -869,44 +783,26 @@ export default function Createnewproposal(props) {
         </div>
       </div>
 
+      {/* ******************Making screen blurr and static at the time of proposal creation************************* */}
+
       <Snackbar
         open={props.state.open}
-        // autoHideDuration={3000}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        // onClose={props.handleClose}
       >
         <Alert severity="" className="alert">
           <div className="alert-div">
-            <span className="alert-span">
-              {/* <img
-                className="done-logo"
-                src={require("../../assets/styles/images/DONE.svg")}
-              ></img> */}
-            </span>
+            <span className="alert-span"></span>
             <span>
               <div className="toast-message1">
                 <span className="proposal-creation">
                   Proposal creation in Progress
                 </span>
-                {/* <span
-                  onClick={props.handleClose}
-                  style={{
-                    float: "right",
-                    cursor: "pointer",
-                    marginTop: "-20px",
-                  }}
-                >
-                  X
-                </span> */}
               </div>
               <div className="loader-spin"></div>
               <div className="confirm-transaction">
-              Confirm this transaction on XDCPay. Proposal will not be created if you close or refresh the page or close the XDCPay window.
+                Confirm this transaction on XDCPay. Proposal will not be created
+                if you close or refresh the page or close the XDCPay window.
               </div>
-              {/* <div className="toast-address">
-                Thank you for your contribution in adding transparency to XDC
-                network
-              </div> */}
             </span>
           </div>
         </Alert>
