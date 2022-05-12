@@ -9,6 +9,7 @@ import { white } from "material-ui/styles/colors";
 import HeaderComponent from "./headerComponent";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { validationsMessages } from "../../constants/index";
+import { Tooltip } from "@material-ui/core";
 // import toast, { Toaster } from "react-hot-toast";
 
 const AddressGroupTabs = styled.div`
@@ -23,13 +24,13 @@ const AddressGroupTabs = styled.div`
   letter-spacing: 0px;
   color: black;
   justify-content: space-between;
-  background-color: ${(props)=> props.activeColor ? '#2149B9' : 'white' };
-  color: ${(props)=> props.activeColor ? 'white' : 'black' };
+  background-color: ${(props) => (props.activeColor ? "#2149B9" : "white")};
+  color: ${(props) => (props.activeColor ? "white" : "black")};
   position: relative;
-  `;
+`;
 
 const Groupbtn = styled.div`
-  margin-left:  58vh;
+  margin-left: 58vh;
   margin-top: 13px;
   cursor: pointer;
   height: 32px;
@@ -49,17 +50,17 @@ const Addressbtn = styled.div`
 `;
 
 const AddButton = styled.button`
-all: unset;
-text-align: center;
-width: 123px;
-height: 32px;
-color: #2149B9;
-font-size: 18px;
-letter-spacing: 0px;
-background: #FFFFFF 0% 0% no-repeat padding-box;
-border: 1px solid #2049B9;
-border-radius: 4px;
-opacity: 1;
+  all: unset;
+  text-align: center;
+  width: 123px;
+  height: 32px;
+  color: #2149b9;
+  font-size: 18px;
+  letter-spacing: 0px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #2049b9;
+  border-radius: 4px;
+  opacity: 1;
 `;
 
 const AddrContainer = styled.div`
@@ -73,7 +74,7 @@ const GrpContainer = styled.div`
 
 const Addrgrp = styled.div`
   width: 322px;
-  border-right: 1px solid #E3E7EB;
+  border-right: 1px solid #e3e7eb;
   height: 658px;
 `;
 
@@ -106,7 +107,6 @@ const AddressItem = styled.div`
   display: flex;
   // justify-content: space-between;
   position: relative;
-
 `;
 
 const Back = styled.div`
@@ -118,47 +118,46 @@ const Back = styled.div`
 `;
 
 const IconImg = styled.img`
- margin:0 17.75px 0 0;
- width: 27px;
- height: 27px;
+  margin: 0 17.75px 0 0;
+  width: 27px;
+  height: 27px;
 `;
 
 const AddressDiv = styled.div`
- color: #2A2A2A;
- font-size:16px;
- letter-spacing: 0px;
- opacity: 1;
- font-family: "Inter", sans-serif;
-
+  color: #2a2a2a;
+  font-size: 16px;
+  letter-spacing: 0px;
+  opacity: 1;
+  font-family: "Inter", sans-serif;
 `;
 
 const RenameImg = styled.img`
- width: 20px;
- height: 20px; 
- margin-left: -80px;
+  width: 20px;
+  height: 20px;
+  margin-left: -80px;
 `;
 
 const RenameImgNull = styled.img`
-width: 20px;
- height: 20px; 
- margin-left: 10px;
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
 `;
 
 const AddressImgCorrect = styled.img`
- width: 30px;
- height: 30px; 
- margin-left: 9vh;
+  width: 30px;
+  height: 30px;
+  margin-left: 9vh;
 `;
 
 const AddressImgCancel = styled.img`
- width: 30px;
- height: 30px; 
- margin-left: 1vh;
+  width: 30px;
+  height: 30px;
+  margin-left: 1vh;
 `;
 
 const BackImg = styled.img`
- margin-top: 10.75vh; 
- margin-left: 26vh;
+  margin-top: 10.75vh;
+  margin-left: 26vh;
 `;
 
 const CopyImg = styled.img`
@@ -168,7 +167,6 @@ const CopyImg = styled.img`
 const DeleteImg = styled.img`
   margin-left: 1vh;
 `;
-
 
 const addressesList = [
   {
@@ -282,45 +280,53 @@ const groupList = [
 ];
 
 const AddressGroup = () => {
-  
   const [addressNamelist, setaddressNamelist] = React.useState(groupList);
-  
+
   const [addGroupInput, setAddGroupInput] = useState("New Group");
   const [renameGroup, setRenameGroup] = useState("");
   const [showRenameInput, setShowRenameInput] = useState(null);
 
-  const [selectedGroupAddress, setSeletedGroupAddresses] = useState("Top Decision Makers");
+  const [selectedGroupAddress, setSeletedGroupAddresses] = useState(
+    "Top Decision Makers"
+  );
   const [addAddress, setAddAddress] = React.useState(addressesList);
-  
+
   const [addAddressesInput, setaddAddressesInput] = useState("Add Address");
   const [showAddAddressesInput, setShowAddAddressesInput] = useState(false);
-  
+
   const [togglePopPop, settogglePopPop] = useState(null);
   const [copySuccess, setCopySuccess] = React.useState(false);
 
   const addgrouphandler = () => {
-    setaddressNamelist([...addressNamelist, { groupName: addGroupInput },
-    ])
+    setaddressNamelist([...addressNamelist, { groupName: addGroupInput }]);
   };
-    const addaddresshandler = () => {
-    setAddAddress([...addAddress, { address: addAddressesInput, groupType: selectedGroupAddress, image: "/images/nft_pic.png"  },
-    ])
-    setShowAddAddressesInput(!showAddAddressesInput)
+  const addaddresshandler = () => {
+    setAddAddress([
+      ...addAddress,
+      {
+        address: addAddressesInput,
+        groupType: selectedGroupAddress,
+        image: "/images/nft_pic.png",
+      },
+    ]);
+    setShowAddAddressesInput(!showAddAddressesInput);
   };
-  
+
   const toggleRenameInputHandler = (index) => {
-    if(showRenameInput === index)
-      {setShowRenameInput(null)}
-    else
-  {setShowRenameInput(index)}
-  }
+    if (showRenameInput === index) {
+      setShowRenameInput(null);
+    } else {
+      setShowRenameInput(index);
+    }
+  };
 
   const togglePopPophandler = (index) => {
-    if(togglePopPop === index)
-      {settogglePopPop(null)}
-    else
-  {settogglePopPop(index)}
-  }
+    if (togglePopPop === index) {
+      settogglePopPop(null);
+    } else {
+      settogglePopPop(index);
+    }
+  };
   console.log(selectedGroupAddress);
   // const notifyCopyToast = () =>
   // toast.success(validationsMessages.ADDRESS_COPIED, {
@@ -342,10 +348,7 @@ const AddressGroup = () => {
     <div>
       <div style={{ marginTop: "-250px" }}>
         <div>
-          <BackImg
-            onClick={backButton}
-            src="/images/Back-Arrow.svg"
-          />
+          <BackImg onClick={backButton} src="/images/Back-Arrow.svg" />
           <Back>Back</Back>
         </div>
 
@@ -354,10 +357,14 @@ const AddressGroup = () => {
             <addrHead className="addressgrp">Address Group</addrHead>
             <Groupbtn>
               <img src={addgrouphandler.image} />
-              <AddButton  onClick={addgrouphandler}>New Group</AddButton>
+              <AddButton onClick={addgrouphandler}>New Group</AddButton>
             </Groupbtn>
             <Addressbtn>
-              <AddButton onClick={() =>{ setShowAddAddressesInput(!showAddAddressesInput)}}>
+              <AddButton
+                onClick={() => {
+                  setShowAddAddressesInput(!showAddAddressesInput);
+                }}
+              >
                 Add Address
               </AddButton>
             </Addressbtn>
@@ -366,34 +373,51 @@ const AddressGroup = () => {
           <AddrContainer>
             <Addrgrp style={{ position: "relative" }}>
               {addressNamelist.map((item, index) => (
-               <>
-               {
-                 showRenameInput === index ? <div>
-                   <input type= 'text' className="groupInput" onChange={e => setRenameGroup(e.target.value)}/>
-                   <RenameImg 
-                         onClick= {() => {item['groupName']= renameGroup; toggleRenameInputHandler(null) }} 
-                         src="/images/green_correct.png"
-                         />
-                     <RenameImgNull 
-                         onClick={() => setShowRenameInput(null)}
-                         src="/images/red_cancel.png"
-                         />
-                 </div> :  <AddressGroupTabs
-                  onClick={() => setSeletedGroupAddresses(item.groupName)}  
-                  activeColor = {selectedGroupAddress=== item.groupName}
-                >
-                  {item.groupName}
-                  <img onClick = {() => togglePopPophandler(index)}  src="/images/Option_Vertical.png" />
-                  {togglePopPop === index && (
-                <div className="popOver">
-                  <p onClick={() => toggleRenameInputHandler(index)} className="popoverItems">Rename</p>
+                <>
+                  {showRenameInput === index ? (
+                    <div>
+                      <input
+                        type="text"
+                        className="groupInput"
+                        onChange={(e) => setRenameGroup(e.target.value)}
+                      />
+                      <RenameImg
+                        onClick={() => {
+                          item["groupName"] = renameGroup;
+                          toggleRenameInputHandler(null);
+                        }}
+                        src="/images/green_correct.png"
+                      />
+                      <RenameImgNull
+                        onClick={() => setShowRenameInput(null)}
+                        src="/images/red_cancel.png"
+                      />
+                    </div>
+                  ) : (
+                    <AddressGroupTabs
+                      onClick={() => setSeletedGroupAddresses(item.groupName)}
+                      activeColor={selectedGroupAddress === item.groupName}
+                    >
+                      {item.groupName}
+                      <img
+                        onClick={() => togglePopPophandler(index)}
+                        src="/images/Option_Vertical.png"
+                      />
+                      {togglePopPop === index && (
+                        <div className="popOver">
+                          <p
+                            onClick={() => toggleRenameInputHandler(index)}
+                            className="popoverItems"
+                          >
+                            Rename
+                          </p>
 
-                  <p className="popoverItems">Delete</p>
-                </div>
-              )}
-                </AddressGroupTabs>
-               }
-               </>
+                          <p className="popoverItems">Delete</p>
+                        </div>
+                      )}
+                    </AddressGroupTabs>
+                  )}
+                </>
               ))}
             </Addrgrp>
 
@@ -401,29 +425,34 @@ const AddressGroup = () => {
               <>
                 {showAddAddressesInput && (
                   <div>
-                     <input type="text" className="addressInput" onChange = {(e) => setaddAddressesInput(e.target.value)} />
-                     <AddressImgCorrect
-                         onClick={addaddresshandler} 
-                         src="/images/green_correct.png"
-                         />
-                     <AddressImgCancel
-                         onClick={() => setShowAddAddressesInput(!showAddAddressesInput)}
-                         src="/images/red_cancel.png"
-                         />
+                    <input
+                      type="text"
+                      className="addressInput"
+                      onChange={(e) => setaddAddressesInput(e.target.value)}
+                    />
+                    <AddressImgCorrect
+                      onClick={addaddresshandler}
+                      src="/images/green_correct.png"
+                    />
+                    <AddressImgCancel
+                      onClick={() =>
+                        setShowAddAddressesInput(!showAddAddressesInput)
+                      }
+                      src="/images/red_cancel.png"
+                    />
                   </div>
                 )}
                 {addAddress
                   .filter((item) => item.groupType === selectedGroupAddress)
                   .map((item) => (
-                    <AddressItem
-                    >
+                    <AddressItem>
                       <IconImg src={item.image} />
                       <AddressDiv>{item.address}</AddressDiv>
 
                       <CopyToClipboard text={item.address}>
-                      <CopyImg onClick={isDataCopied} src={item.copyImage} />
-                      </CopyToClipboard>   
-                      
+                        <CopyImg onClick={isDataCopied} src={item.copyImage} />
+                      </CopyToClipboard>
+
                       <DeleteImg src={item.dltImage} />
                     </AddressItem>
                   ))}
