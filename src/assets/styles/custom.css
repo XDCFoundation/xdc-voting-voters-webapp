@@ -2414,6 +2414,14 @@ input:focus {
   opacity: 1;
 }
 
+.address-item:hover .icons {
+  display: block !important;
+}
+
+.icons {
+  display: none;
+}
+
 .kebabIcon
 {
   margin-left: 65px;

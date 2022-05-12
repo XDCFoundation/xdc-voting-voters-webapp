@@ -1,19 +1,16 @@
 import React from "react";
 import BaseComponent from "../baseComponent";
-import FooterComponent from "../footer/footerComponent";
 import AddressGroupMain from "./addressGroup";
-import HeaderComponent from "./headerComponent";
 
  class AddressGroup extends BaseComponent {
   constructor(props) {
     super(props);
     this.state = {};
   }
-
+  
   render() {
     return (
       <div>
-       <HeaderComponent />
        <AddressGroupMain/>
       </div>
     )

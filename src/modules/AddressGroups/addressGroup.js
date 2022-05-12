@@ -1,16 +1,25 @@
 import React, { useState } from "react";
-import BaseComponent from "../baseComponent";
-import HeaderMain from "../header/header";
 import FooterComponent from "../footer/footerComponent";
 import styled from "styled-components";
-import { Styles } from "@material-ui/styles";
 import { history } from "../../managers/history";
-import { white } from "material-ui/styles/colors";
-import HeaderComponent from "./headerComponent";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { validationsMessages } from "../../constants/index";
 import { Tooltip } from "@material-ui/core";
-// import toast, { Toaster } from "react-hot-toast";
+import Header from "../header/header";
+import Fade from '@material-ui/core/Fade';
+
+const MainContainer = styled.div`
+  width: 100%;
+`;
+
+const HeaderContainer = styled.div`
+  margin-top: 0px;
+  width: 100%;
+  height: 300px;
+  background: url("./images/banner_new.png") 0% 0% no-repeat padding-box;
+  background-size: 100% 300px;
+  opacity: 1;
+`;
 
 const AddressGroupTabs = styled.div`
   width: 100%;
@@ -30,8 +39,6 @@ const AddressGroupTabs = styled.div`
 `;
 
 const Groupbtn = styled.div`
-  margin-left: 58vh;
-  margin-top: 13px;
   cursor: pointer;
   height: 32px;
   opacity: 1;
@@ -40,13 +47,11 @@ const Groupbtn = styled.div`
 `;
 
 const Addressbtn = styled.div`
-  margin-top: 13px;
   cursor: pointer;
-  height: 32px;
-  opacity: 1;
-  margin-right: 40px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-right: 20px;
 `;
 
 const AddButton = styled.button`
@@ -68,8 +73,8 @@ const AddrContainer = styled.div`
 `;
 
 const GrpContainer = styled.div`
-  width: 77vh;
   padding: 0px 40px;
+  width: 100%;
 `;
 
 const Addrgrp = styled.div`
@@ -80,12 +85,12 @@ const Addrgrp = styled.div`
 
 const AddressContainer = styled.div`
   margin-top: 21px;
-  width: 103vh;
+  max-width: 1280px;
   height: 728px;
   border: 1px solid #e3e7eb;
   border-radius: 6px;
   opacity: 1;
-  margin-left: 26vh;
+  margin-inline: auto;
   background-color: #ffffff;
 `;
 
@@ -105,13 +110,13 @@ const AddressItem = styled.div`
   display: flex;
   align-items: center;
   display: flex;
-  // justify-content: space-between;
+  justify-content: space-between;
   position: relative;
+  width: 100%;
 `;
 
 const Back = styled.div`
-  margin-left: 29vh;
-  margin-top: -23px;
+  margin-left: 16px;
   font-family: "Inter", sans-serif;
   font-size: 17px;
   color: #ffffff;
@@ -156,17 +161,23 @@ const AddressImgCancel = styled.img`
 `;
 
 const BackImg = styled.img`
-  margin-top: 10.75vh;
-  margin-left: 26vh;
 `;
 
 const CopyImg = styled.img`
-  margin-left: 27vh;
 `;
 
 const DeleteImg = styled.img`
   margin-left: 1vh;
 `;
+
+const BackButton = styled.div`
+  display: flex;
+  max-width: 1280px;
+  margin: auto;
+`;
+
+const CopyDeleteIcons = styled.div`
+`
 
 const addressesList = [
   {
@@ -296,6 +307,12 @@ const AddressGroup = () => {
 
   const [togglePopPop, settogglePopPop] = useState(null);
   const [copySuccess, setCopySuccess] = React.useState(false);
+//   const [copiedSucess, setcopiedSucess] = React.useState(false);
+
+  const deleteGroupHandler = (value) => {
+    const newData = addressNamelist.filter((item) => item.groupName !== value);
+    setaddressNamelist(newData);
+  };
 
   const addgrouphandler = () => {
     setaddressNamelist([...addressNamelist, { groupName: addGroupInput }]);
@@ -340,26 +357,32 @@ const AddressGroup = () => {
     setCopySuccess(false);
   };
 
+//   const isDataCopied= () => {
+//     setcopiedSucess(false)
+//   }
+
   const backButton = () => {
     history.push("/");
   };
 
   return (
-    <div>
-      <div style={{ marginTop: "-250px" }}>
-        <div>
+    <MainContainer>
+      <HeaderContainer>
+        <Header />
+      </HeaderContainer>
+      <div style={{ marginTop: "-120px", width: "100%" }}>
+        <BackButton>
           <BackImg onClick={backButton} src="/images/Back-Arrow.svg" />
           <Back>Back</Back>
-        </div>
-
+        </BackButton>
         <AddressContainer>
-          <GroupContainer className="flex justify-between">
+          <GroupContainer>
             <addrHead className="addressgrp">Address Group</addrHead>
-            <Groupbtn>
-              <img src={addgrouphandler.image} />
-              <AddButton onClick={addgrouphandler}>New Group</AddButton>
-            </Groupbtn>
             <Addressbtn>
+              <Groupbtn>
+                <img src={addgrouphandler.image} />
+                <AddButton onClick={addgrouphandler}>New Group</AddButton>
+              </Groupbtn>
               <AddButton
                 onClick={() => {
                   setShowAddAddressesInput(!showAddAddressesInput);
@@ -412,7 +435,12 @@ const AddressGroup = () => {
                             Rename
                           </p>
 
-                          <p className="popoverItems">Delete</p>
+                          <p
+                            onClick={() => deleteGroupHandler(item.groupName)}
+                            className="popoverItems"
+                          >
+                            Delete
+                          </p>
                         </div>
                       )}
                     </AddressGroupTabs>
@@ -445,15 +473,23 @@ const AddressGroup = () => {
                 {addAddress
                   .filter((item) => item.groupType === selectedGroupAddress)
                   .map((item) => (
-                    <AddressItem>
-                      <IconImg src={item.image} />
-                      <AddressDiv>{item.address}</AddressDiv>
+                    <AddressItem className="address-item">
+                      <AddressDiv>
+                        <IconImg src={item.image} />
+                        {item.address}
+                      </AddressDiv>
+                      <CopyDeleteIcons className="icons">
+                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 2000 }}  placement="top" title="copied" text={item.address}>
+                          <CopyToClipboard text={item.address}>
+                            <CopyImg
+                              onClick={isDataCopied}
+                              src={item.copyImage}
+                            />
+                          </CopyToClipboard>
+                        </Tooltip>
 
-                      <CopyToClipboard text={item.address}>
-                        <CopyImg onClick={isDataCopied} src={item.copyImage} />
-                      </CopyToClipboard>
-
-                      <DeleteImg src={item.dltImage} />
+                        <DeleteImg src={item.dltImage} />
+                      </CopyDeleteIcons> 
                     </AddressItem>
                   ))}
               </>
@@ -467,7 +503,7 @@ const AddressGroup = () => {
       <div className="footer-all">
         <FooterComponent />
       </div>
-    </div>
+    </MainContainer>
   );
 };
 
