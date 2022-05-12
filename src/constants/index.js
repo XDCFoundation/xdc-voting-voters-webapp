@@ -23,6 +23,11 @@ export const httpConstants = {
   },
 };
 
+export const validationsMessages = {
+  ADDRESS_COPIED: "Address has been Copied",
+  TOASTS_POSITION: "top-center",
+};
+
 export const faqsList = [
   {
     id: 0,
