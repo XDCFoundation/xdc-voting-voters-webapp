@@ -47,6 +47,7 @@ const Groupbtn = styled.div`
 `;
 
 const Addressbtn = styled.div`
+  font-weight: 500;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -73,11 +74,13 @@ const AddrContainer = styled.div`
 `;
 
 const GrpContainer = styled.div`
+  font-weight: 600;
   padding: 0px 40px;
   width: 100%;
 `;
 
 const Addrgrp = styled.div`
+  font-weight: 500;
   width: 322px;
   border-right: 1px solid #e3e7eb;
   height: 658px;
