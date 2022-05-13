@@ -344,21 +344,10 @@ const AddressGroup = () => {
     }
   };
   console.log(selectedGroupAddress);
-  // const notifyCopyToast = () =>
-  // toast.success(validationsMessages.ADDRESS_COPIED, {
-  //   duration: 1000,
-  //   position: validationsMessages.TOASTS_POSITION,
-  //   className: "toast-div-address",
-  // });
 
   const isDataCopied = () => {
-    // notifyCopyToast();
     setCopySuccess(false);
   };
-
-//   const isDataCopied= () => {
-//     setcopiedSucess(false)
-//   }
 
   const backButton = () => {
     history.push("/");
