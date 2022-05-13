@@ -307,7 +307,6 @@ const AddressGroup = () => {
 
   const [togglePopPop, settogglePopPop] = useState(null);
   const [copySuccess, setCopySuccess] = React.useState(false);
-//   const [copiedSucess, setcopiedSucess] = React.useState(false);
 
   const deleteGroupHandler = (value) => {
     const newData = addressNamelist.filter((item) => item.groupName !== value);
