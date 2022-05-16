@@ -96,6 +96,10 @@ const AddressContainer = styled.div`
   opacity: 1;
   margin-inline: auto;
   background-color: #ffffff;
+@media (min-width: 1025px) and (max-width: 1450px) 
+{
+  max-width: 95%;
+}
 `;
 
 const GroupContainer = styled.div`
@@ -124,6 +128,10 @@ const Back = styled.div`
   font-family: "Inter", sans-serif;
   font-size: 17px;
   color: #ffffff;
+  @media (min-width: 1025px) and (max-width: 1450px) 
+{
+  max-width: 95%;
+}
 `;
 
 const IconImg = styled.img`
@@ -184,6 +192,10 @@ const BackButton = styled.div`
   display: flex;
   max-width: 1280px;
   margin: auto;
+  @media (min-width: 1025px) and (max-width: 1450px) 
+{
+  max-width: 95%;
+} 
 `;
 
 const CopyDeleteIcons = styled.div`
