@@ -458,6 +458,7 @@ const AddressGroup = () => {
                     <InputImg src="/images/nft_pic.png"/>
                     <input
                       type="text"
+                      placeholder="Add Address"
                       className="addressInput"
                       onChange={(e) => setaddAddressesInput(e.target.value)}
                     />
