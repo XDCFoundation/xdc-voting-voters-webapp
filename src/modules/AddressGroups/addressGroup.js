@@ -116,7 +116,7 @@ const AddressItem = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
-  width: 100%;
+  width: 105%;
 `;
 
 const Back = styled.div`
@@ -155,13 +155,19 @@ const RenameImgNull = styled.img`
 const AddressImgCorrect = styled.img`
   width: 30px;
   height: 30px;
-  margin-left: -3vh;
+  margin-left: 0vh;
 `;
 
 const AddressImgCancel = styled.img`
   width: 30px;
   height: 30px;
   margin-left: 1vh;
+`;
+
+const InputImg = styled.img`
+    margin-left: -44px;
+    width: 27px;
+    height: 27px
 `;
 
 const BackImg = styled.img`
@@ -375,8 +381,8 @@ const AddressGroup = () => {
                 <img src={addgrouphandler.image} />
                 <AddButton onClick={addgrouphandler}>New Group</AddButton>
               </Groupbtn>
-              <AddButton
-                onClick={() => {
+              <AddButton 
+                onClick={() => { 
                   setShowAddAddressesInput(!showAddAddressesInput);
                 }}
               >
@@ -445,6 +451,11 @@ const AddressGroup = () => {
               <>
                 {showAddAddressesInput && (
                   <div>
+                    {/* <Jazzicon 
+                            diameter={27}
+                            seed={Math.round(Math.random() * 10000000)}
+                          /> */}
+                    <InputImg src="/images/nft_pic.png"/>
                     <input
                       type="text"
                       className="addressInput"
