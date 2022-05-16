@@ -7,6 +7,7 @@ import { validationsMessages } from "../../constants/index";
 import { Tooltip } from "@material-ui/core";
 import Header from "../header/header";
 import Fade from '@material-ui/core/Fade';
+import Jazzicon from "react-jazzicon";
 
 const MainContainer = styled.div`
   width: 100%;
@@ -74,14 +75,14 @@ const AddrContainer = styled.div`
 `;
 
 const GrpContainer = styled.div`
-  font-weight: 600;
-  padding: 0px 40px;
+  font-weight: 500;
+  padding: 0px 90px;
   width: 100%;
 `;
 
 const Addrgrp = styled.div`
   font-weight: 500;
-  width: 322px;
+  width: 530px;
   border-right: 1px solid #e3e7eb;
   height: 658px;
 `;
@@ -154,7 +155,7 @@ const RenameImgNull = styled.img`
 const AddressImgCorrect = styled.img`
   width: 30px;
   height: 30px;
-  margin-left: 9vh;
+  margin-left: -3vh;
 `;
 
 const AddressImgCancel = styled.img`
@@ -466,8 +467,17 @@ const AddressGroup = () => {
                   .map((item) => (
                     <AddressItem className="address-item">
                       <AddressDiv>
-                        <IconImg src={item.image} />
+                      <div 
+                      style={{ width: '0px', height: '0px', marginLeft: '-44px' }}
+                      >
+                      <Jazzicon
+                            diameter={27}
+                            seed={Math.round(Math.random() * 10000000)}
+                          />
+                           </div>
+                        {/* <IconImg src={item.image} /> */}
                         {item.address}
+                       
                       </AddressDiv>
                       <CopyDeleteIcons className="icons">
                         <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 2000 }}  placement="top" title="copied" text={item.address}>
