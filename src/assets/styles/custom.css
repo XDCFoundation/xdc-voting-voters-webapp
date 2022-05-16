@@ -2391,7 +2391,7 @@ input:focus {
 
 .groupInput
 {
-  width: 322px;
+  width: 100%;
   height: 62px;
   background: #2149B9;
   border: none;
