@@ -24,6 +24,7 @@ export const httpConstants = {
 };
 
 export const validationsMessages = {
+  GROUP_CREATED: "New Group Created",
   ADDRESS_COPIED: "Address has been Copied",
   TOASTS_POSITION: "top-center",
 };

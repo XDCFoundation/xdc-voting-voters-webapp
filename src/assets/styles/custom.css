@@ -2386,7 +2386,7 @@ input:focus {
   border-left: 0 !important;
   border-right: 0 !important;
   border: 0px solid;
-  width: 665px;
+  width: 700px;
   height: 55px;
   outline:none;
 }
@@ -2422,6 +2422,18 @@ input:focus {
 
 .icons {
   display: none;
+}
+
+.toast-div-address {
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
+  width: 268px;
+  height: 40px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 8px;
+  /* opacity: 1; */
 }
 
 .kebabIcon

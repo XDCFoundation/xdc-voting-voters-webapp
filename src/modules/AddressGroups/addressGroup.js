@@ -8,6 +8,9 @@ import { Tooltip } from "@material-ui/core";
 import Header from "../header/header";
 import Fade from '@material-ui/core/Fade';
 import Jazzicon from "react-jazzicon";
+import  {toast, Toaster } from "react-hot-toast";
+import commonToasts from "../../common/components/commonToasts";
+
 
 const MainContainer = styled.div`
   width: 100%;
@@ -76,13 +79,15 @@ const AddrContainer = styled.div`
 
 const GrpContainer = styled.div`
   font-weight: 500;
-  padding: 0px 90px;
+  /* padding: 0px 55px; */
+  padding-left: 90px;
+  padding-right: 48px;
   width: 100%;
 `;
 
 const Addrgrp = styled.div`
   font-weight: 500;
-  width: 530px;
+  width: 450px;
   border-right: 1px solid #e3e7eb;
   height: 658px;
 `;
@@ -120,7 +125,7 @@ const AddressItem = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
-  width: 105%;
+  width: 100%;
 `;
 
 const Back = styled.div`
@@ -163,29 +168,19 @@ const RenameImgNull = styled.img`
 const AddressImgCorrect = styled.img`
   width: 30px;
   height: 30px;
-  margin-left: 0vh;
+  margin-left: 22px;
 `;
 
 const AddressImgCancel = styled.img`
   width: 30px;
   height: 30px;
-  margin-left: 1vh;
+  margin-left: 15px;
 `;
 
 const InputImg = styled.img`
     margin-left: -44px;
     width: 27px;
     height: 27px
-`;
-
-const BackImg = styled.img`
-`;
-
-const CopyImg = styled.img`
-`;
-
-const DeleteImg = styled.img`
-  margin-left: 1vh;
 `;
 
 const BackButton = styled.div`
@@ -196,6 +191,19 @@ const BackButton = styled.div`
 {
   max-width: 95%;
 } 
+`;
+
+const DeleteImg = styled.img`
+  margin-left: 1vh;
+`;
+
+const AddrHead = styled.div`
+`;
+
+const BackImg = styled.img`
+`;
+
+const CopyImg = styled.img`
 `;
 
 const CopyDeleteIcons = styled.div`
@@ -337,6 +345,7 @@ const AddressGroup = () => {
 
   const addgrouphandler = () => {
     setaddressNamelist([...addressNamelist, { groupName: addGroupInput }]);
+    commonToasts.successToast(validationsMessages.GROUP_CREATED);
   };
   const addaddresshandler = () => {
     setAddAddress([
@@ -375,7 +384,13 @@ const AddressGroup = () => {
     history.push("/");
   };
 
-  return (
+  
+
+  return ( 
+    <>
+      <div>
+        <Toaster />
+      </div>
     <MainContainer>
       <HeaderContainer>
         <Header />
@@ -387,7 +402,7 @@ const AddressGroup = () => {
         </BackButton>
         <AddressContainer>
           <GroupContainer>
-            <addrHead className="addressgrp">Address Group</addrHead>
+            <AddrHead className="addressgrp">Address Group</AddrHead>
             <Addressbtn>
               <Groupbtn>
                 <img src={addgrouphandler.image} />
@@ -529,6 +544,7 @@ const AddressGroup = () => {
         <FooterComponent />
       </div>
     </MainContainer>
+    </>
   );
 };
 
