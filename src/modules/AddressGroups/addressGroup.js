@@ -341,6 +341,7 @@ const AddressGroup = () => {
   const deleteGroupHandler = (value) => {
     const newData = addressNamelist.filter((item) => item.groupName !== value);
     setaddressNamelist(newData);
+    commonToasts.successToast(validationsMessages.GROUP_DELETED);
   };
 
   const addgrouphandler = () => {

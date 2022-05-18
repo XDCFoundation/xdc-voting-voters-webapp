@@ -26,6 +26,7 @@ export const httpConstants = {
 export const validationsMessages = {
   GROUP_CREATED: "New Group Created",
   ADDRESS_CREATED: "New address added to the group",
+  GROUP_DELETED: "Address group deleted successfully",
   TOASTS_POSITION: "top-center",
 };
 
