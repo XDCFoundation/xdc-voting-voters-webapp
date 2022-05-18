@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FooterComponent from "../footer/footerComponent";
 import styled from "styled-components";
 import { history } from "../../managers/history";
@@ -10,6 +10,8 @@ import Fade from '@material-ui/core/Fade';
 import Jazzicon from "react-jazzicon";
 import  {toast, Toaster } from "react-hot-toast";
 import commonToasts from "../../common/components/commonToasts";
+import Popup from "./Popup";
+import Loader from "../../assets/styles/images/NewLoader.gif";
 
 
 const MainContainer = styled.div`
@@ -337,6 +339,15 @@ const AddressGroup = () => {
 
   const [togglePopPop, settogglePopPop] = useState(null);
   const [copySuccess, setCopySuccess] = React.useState(false);
+
+  const [buttonPopup, setButtonPopup] = React.useState(false);
+  const [timedPopup, setTimedPopup] = React.useState(false);
+
+  useEffect(() =>{
+    setTimeout(() => {
+      setTimedPopup(true);
+    }, 3000);
+  }, []);
   
   const deleteGroupHandler = (value) => {
     const newData = addressNamelist.filter((item) => item.groupName !== value);
@@ -462,11 +473,15 @@ const AddressGroup = () => {
                           </p>
 
                           <p
-                            onClick={() => deleteGroupHandler(item.groupName)}
+                            onClick={() => setButtonPopup(true)}
                             className="popoverItems"
                           >
                             Delete
                           </p>
+                          <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                          <h3 className="delete-text">Delete Address Group</h3>
+                          <p className="group-text">Do you want to delete Address Group?</p>
+                          </Popup>
                         </div>
                       )}
                     </AddressGroupTabs>
@@ -550,3 +565,14 @@ const AddressGroup = () => {
 };
 
 export default AddressGroup;
+
+ /* <div className="popUp-div">
+        <h2 className="popUP-Dialog">Delete Address Group
+        <h1 className="popUP-Dialog-text">Do you want to delete Top Decision Makers Address Group?</h1>
+        
+        <button className="popUp-cancel">Cancel</button>
+        <br></br>
+        <button className="popUp-delete" onClick={() => deleteGroupHandler(item.groupName)}>Delete</button>
+        </h2>
+        
+        </div> */
