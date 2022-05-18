@@ -337,7 +337,7 @@ const AddressGroup = () => {
 
   const [togglePopPop, settogglePopPop] = useState(null);
   const [copySuccess, setCopySuccess] = React.useState(false);
-
+  
   const deleteGroupHandler = (value) => {
     const newData = addressNamelist.filter((item) => item.groupName !== value);
     setaddressNamelist(newData);
@@ -356,6 +356,7 @@ const AddressGroup = () => {
         image: "/images/nft_pic.png",
       },
     ]);
+    commonToasts.successToast(validationsMessages.ADDRESS_CREATED);
     setShowAddAddressesInput(!showAddAddressesInput);
   };
 
@@ -374,7 +375,6 @@ const AddressGroup = () => {
       settogglePopPop(index);
     }
   };
-  console.log(selectedGroupAddress);
 
   const isDataCopied = () => {
     setCopySuccess(false);
