@@ -400,7 +400,9 @@ const AddressGroup = () => {
     settogglePopPop(null);
     if (showRenameInput === index) {
       setShowRenameInput(null);
-    } else {
+      commonToasts.successToast(validationsMessages.ADDRESS_CREATED);
+    } 
+    else {
       setShowRenameInput(index);
     }
   };
@@ -468,6 +470,7 @@ const AddressGroup = () => {
                           onClick={() => {
                             item["groupName"] = renameGroup;
                             toggleRenameInputHandler(null);
+                            commonToasts.successToast(validationsMessages.GROUP_RENAMED);
                           }}
                           src="/images/green_correct.png"
                         />
