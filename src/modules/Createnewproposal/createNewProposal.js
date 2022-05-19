@@ -19,6 +19,9 @@ import Utils from "../../utility";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import moment from "moment";
+import { ProgressBar } from "react-bootstrap";
+import docIcon from "../../assets/styles/images/Group 2380.svg";
+import crossIcon from "../../assets/styles/images/Cross2.svg"
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -394,6 +397,31 @@ export default function Createnewproposal(props) {
   const [dateError, setDateError] = useState("");
   const [descriptionError, setErrorDescription] = useState("");
   const [fileError, setFileError] = useState("");
+  const [showProgress, setShowProgress] = useState([]);
+  // const [progress, setProgress] = useState(50);
+  // const [hideProgress, setHideProgress] = useState(false);
+
+  let deleteRow = (index) => {
+    console.log(index, 'index');
+    props.deleteDocumentRow(index);
+    let tempArr = [...showProgress]
+
+    let indexOf = tempArr.indexOf(index);
+
+    console.log(indexOf);
+
+    if (indexOf >= 0) {
+      let returned = tempArr.splice(indexOf, 1);
+      console.log(returned, 'returned')
+
+      console.log(tempArr, 'temp arr')
+
+      setShowProgress(tempArr);
+    }
+
+    // setShowProgress(false);
+    // props.state.proposalDocuments.length=0
+  }
 
   const inputFile = React.createRef();
   const handleQuillChange = (event) => {
@@ -543,7 +571,7 @@ export default function Createnewproposal(props) {
                         }}
                         value={startDate}
                         onKeyDown={(e) => e.preventDefault()}
-                        // disabled
+                      // disabled
                       />
                       <div
                         className="error-message"
@@ -628,13 +656,16 @@ export default function Createnewproposal(props) {
                     <div className="error-description">{descriptionError}</div>
                   </QuillDiv>
                 </div>
-                <div className={classes.rowFourth}>
-                  <div className={classes.upload}>Upload Document</div>
-                  <div className={classes.uploadbox}>
-                    <Column>
-                      {props.state.proposalDocuments.length > 0
-                        ? props.state.proposalDocuments.map((doc, index) => {
+                <div>
+                  <div className={classes.rowFourth}>
+                    <div className={classes.upload}>Upload Document</div>
+                    <div className={classes.uploadbox}>
+                      <Column>
+                        {props.state.proposalDocuments.length > 0
+                          ? props.state.proposalDocuments.map((doc, index) => {
+                            console.log(doc, 'docs')
                             const onchangebutton = (e) => {
+                              setShowProgress([...showProgress, index]);
                               var x = document.getElementById(
                                 "fileButton" + index
                               );
@@ -712,64 +743,169 @@ export default function Createnewproposal(props) {
                               );
                               x.value = null;
                             };
+
+                            // Progress Bar
+                            // const progressBarSetter = (time) => {
+                            //   let i;
+                            //   let id;
+                            //   switch (time) {
+                            //     case "first":
+                            //       i = 0;
+                            //       id = setInterval(function () {
+                            //         setProgress(i);
+                            //         i++;
+
+                            //         if (i === 49) {
+                            //           clearInterval(id)
+                            //             ;
+                            //         }
+                            //       }, 200);
+                            //       break;
+                            //     case "second":
+                            //       i = 51;
+                            //       id = setInterval(function () {
+                            //         setProgress(i);
+                            //         i++;
+                            //         if (i === 95) {
+                            //           clearInterval(id)
+                            //             ;
+                            //         }
+                            //       }, 200);
+                            //       break;
+                            //       case "response":
+                            //       i = 97;
+                            //       id = setInterval(function () {
+                            //         setProgress(i);
+                            //         i++;
+                            //         if (i === props.state.proposalDocumentsName[index]) {
+                            //           clearInterval(id)
+                            //             ;
+                            //         }
+                            //       }, 200);
+                            //       break;
+                            //       i = 100;
+                            //       setProgress(i);
+                            //     default:
+                            //       return;
+                            //   }
+                            // };
+                            // !
                             return (
-                              <div className="display-flex m-t-4">
-                                <div
-                                  className={
-                                    classes.input +
-                                    " display-flex justify-content-between"
-                                  }
-                                  value={uploadDocument}
-                                >
+                              <div>
+                                <div className="display-flex m-t-4">
                                   <div
-                                    style={{ textAlign: "left" }}
-                                    className="p-l-sm p-t-sm"
+                                    className={
+                                      classes.input +
+                                      " display-flex justify-content-between"
+                                    }
+                                    value={uploadDocument}
                                   >
-                                    {props.state.proposalDocumentsName[index]}
+                                    <div
+                                      style={{ textAlign: "left" }}
+                                      className="p-l-sm p-t-sm"
+                                    >
+                                      {showProgress.includes(index) ? props.state.proposalDocumentsName[index] : ''}
+                                    </div>
+
+                                    <input
+                                      ref={inputFile}
+                                      id={"fileButton" + index}
+                                      name="fileButton"
+                                      type="file"
+                                      multiple={false}
+                                      accept="*"
+                                      style={{ display: "none" }}
+                                      onChange={onchangebutton}
+                                    // onClick={onclickbutton}
+                                    />
+
+                                    <BrowseButton for={"fileButton" + index}>
+                                      Browse File
+                                    </BrowseButton>
                                   </div>
 
-                                  <input
-                                    ref={inputFile}
-                                    id={"fileButton" + index}
-                                    name="fileButton"
-                                    type="file"
-                                    multiple={false}
-                                    accept="*"
-                                    style={{ display: "none" }}
-                                    onChange={onchangebutton}
-                                    // onClick={onclickbutton}
-                                  />
-
-                                  <BrowseButton for={"fileButton" + index}>
-                                    Browse File
-                                  </BrowseButton>
+                                  {index ===
+                                    props.state.proposalDocuments.length - 1 ? (
+                                    <>
+                                      {console.log(props)}
+                                      <img
+                                        className={classes.image}
+                                        onClick={props.addDocumentRow}
+                                        src="/images/Add.svg"
+                                      />
+                                    </>
+                                  ) : (
+                                    <img
+                                      className={
+                                        " height-27 m-t-4 width-27 m-l-4"
+                                      }
+                                      onClick={() =>
+                                        props.deleteDocumentRow(index)
+                                      }
+                                      src="/images/substract.png"
+                                    />
+                                  )}
                                 </div>
+                                {showProgress.includes(index) ?
+                                  <div class="d-flex mt-3 w-50">
+                                    <div class="flex-shrink-0 mr-3">
+                                      {props.state.proposalDocumentsName[index] ?
+                                        <img src={docIcon} alt="..." /> :
+                                        <img src={docIcon} alt="..."
+                                          style={props.state.proposalDocumentsName[index] ? ''
+                                            : { display: "none" }}
+                                          ref={inputFile}
+                                          name="fileButton"
+                                          type="file"
+                                          multiple={false}
+                                          accept="*" />}
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
 
-                                {index ===
-                                props.state.proposalDocuments.length - 1 ? (
-                                  <img
-                                    className={classes.image}
-                                    onClick={props.addDocumentRow}
-                                    src="/images/Add.svg"
-                                  />
-                                ) : (
-                                  <img
-                                    className={
-                                      " height-27 m-t-4 width-27 m-l-4"
-                                    }
-                                    onClick={() =>
-                                      props.deleteDocumentRow(index)
-                                    }
-                                    src="/images/substract.png"
-                                  />
-                                )}
+                                      {
+                                        console.log(props.state.proposalDocumentsName[index], 'file '+index)
+                                      }
+                                      
+                                      {props.state.proposalDocumentsName[index]}
+                                      {
+                                        props.state.proposalDocumentsName[index] !== undefined ?
+                                        props.state.proposalDocumentsName[index] ?
+                                        <ProgressBar style={{ height: "3px" }} now={100} /> :
+                                        <ProgressBar style={{ height: "3px", display: "none" }}
+                                          ref={inputFile}
+                                          name="fileButton"
+                                          type="file"
+                                          multiple={false}
+                                          accept="*" />
+                                          : null
+                                      }
+                                      {/* label={`${60}%`} now={60} */}
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                      {props.state.proposalDocumentsName[index] ?
+                                        <img src={crossIcon} alt="..."
+                                          onClick={() => deleteRow(index)} /> :
+                                        <img src={crossIcon} alt="..."
+                                          style={props.state.proposalDocumentsName[index] ? ''
+                                            : { display: "none" }}
+                                          ref={inputFile}
+                                          name="fileButton"
+                                          type="file"
+                                          multiple={false}
+                                          accept="*"
+                                        />}
+                                    </div>
+                                  </div> : ''}
                               </div>
                             );
                           })
-                        : ""}
-                      <div className="error-message">{fileError}</div>
-                    </Column>
+                          : ""}
+                        <div className="error-message">{fileError}</div>
+                      </Column>
+                    </div>
                   </div>
+
+
                 </div>
                 <div className={classes.buttondiv}>
                   <Button onClick={createNewProposal}>
