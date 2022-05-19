@@ -6,13 +6,12 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { validationsMessages } from "../../constants/index";
 import { Tooltip } from "@material-ui/core";
 import Header from "../header/header";
-import Fade from '@material-ui/core/Fade';
+import Fade from "@material-ui/core/Fade";
 import Jazzicon from "react-jazzicon";
-import  {toast, Toaster } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 import commonToasts from "../../common/components/commonToasts";
 import Popup from "./Popup";
 import Loader from "../../assets/styles/images/NewLoader.gif";
-
 
 const MainContainer = styled.div`
   width: 100%;
@@ -103,10 +102,9 @@ const AddressContainer = styled.div`
   opacity: 1;
   margin-inline: auto;
   background-color: #ffffff;
-@media (min-width: 1025px) and (max-width: 1450px) 
-{
-  max-width: 95%;
-}
+  @media (min-width: 1025px) and (max-width: 1450px) {
+    max-width: 95%;
+  }
 `;
 
 const GroupContainer = styled.div`
@@ -135,10 +133,9 @@ const Back = styled.div`
   font-family: "Inter", sans-serif;
   font-size: 17px;
   color: #ffffff;
-  @media (min-width: 1025px) and (max-width: 1450px) 
-{
-  max-width: 95%;
-}
+  @media (min-width: 1025px) and (max-width: 1450px) {
+    max-width: 95%;
+  }
 `;
 
 const IconImg = styled.img`
@@ -180,19 +177,18 @@ const AddressImgCancel = styled.img`
 `;
 
 const InputImg = styled.img`
-    margin-left: -44px;
-    width: 27px;
-    height: 27px
+  margin-left: -44px;
+  width: 27px;
+  height: 27px;
 `;
 
 const BackButton = styled.div`
   display: flex;
   max-width: 1280px;
   margin: auto;
-  @media (min-width: 1025px) and (max-width: 1450px) 
-{
-  max-width: 95%;
-} 
+  @media (min-width: 1025px) and (max-width: 1450px) {
+    max-width: 95%;
+  }
 `;
 
 const LoaderContainer = styled.div`
@@ -216,23 +212,19 @@ const LoaderWrapper = styled.div`
 `;
 
 const LoaderText = styled.div`
-  color: #FFFFFF;
+  color: #ffffff;
 `;
 const DeleteImg = styled.img`
   margin-left: 1vh;
 `;
 
-const AddrHead = styled.div`
-`;
+const AddrHead = styled.div``;
 
-const BackImg = styled.img`
-`;
+const BackImg = styled.img``;
 
-const CopyImg = styled.img`
-`;
+const CopyImg = styled.img``;
 
-const CopyDeleteIcons = styled.div`
-`
+const CopyDeleteIcons = styled.div``;
 
 const addressesList = [
   {
@@ -365,25 +357,26 @@ const AddressGroup = () => {
 
   const [buttonPopup, setButtonPopup] = React.useState(false);
   const [timedPopup, setTimedPopup] = React.useState(false);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
-
-  useEffect(() =>{
+  useEffect(() => {
     setTimeout(() => {
       setTimedPopup(true);
     }, 3000);
   }, []);
-  
+
   const deleteGroupHandler = (value) => {
     settogglePopPop(null);
-    setButtonPopup(false)
-    setIsLoading(true)
+    setButtonPopup(false);
+    setIsLoading(true);
     setTimeout(() => {
-      setIsLoading(false)
-      const newData = addressNamelist.filter((item) => item.groupName !== value);
+      setIsLoading(false);
+      const newData = addressNamelist.filter(
+        (item) => item.groupName !== value
+      );
       setaddressNamelist(newData);
       commonToasts.successToast(validationsMessages.GROUP_DELETED);
-    }, 3000)
+    }, 3000);
   };
 
   const addgrouphandler = () => {
@@ -404,7 +397,7 @@ const AddressGroup = () => {
   };
 
   const toggleRenameInputHandler = (index) => {
-    settogglePopPop(null)
+    settogglePopPop(null);
     if (showRenameInput === index) {
       setShowRenameInput(null);
     } else {
@@ -428,178 +421,194 @@ const AddressGroup = () => {
     history.push("/");
   };
 
-  
-
-  return ( 
+  return (
     <>
       <div>
         <Toaster />
       </div>
-    <MainContainer>
-      <HeaderContainer>
-        <Header />
-      </HeaderContainer>
-      <div style={{ marginTop: "-120px", width: "100%" }}>
-        <BackButton>
-          <BackImg onClick={backButton} src="/images/Back-Arrow.svg" />
-          <Back>Back</Back>
-        </BackButton>
-        <AddressContainer>
-          <GroupContainer>
-            <AddrHead className="addressgrp">Address Group</AddrHead>
-            <Addressbtn>
-              <Groupbtn>
-                <img src={addgrouphandler.image} />
-                <AddButton onClick={addgrouphandler}>New Group</AddButton>
-              </Groupbtn>
-              <AddButton 
-                onClick={() => { 
-                  setShowAddAddressesInput(!showAddAddressesInput);
-                }}
-              >
-                Add Address
-              </AddButton>
-            </Addressbtn>
-          </GroupContainer>
-         
-          <AddrContainer>
-            <Addrgrp style={{ position: "relative" }}>
-              {addressNamelist.map((item, index) => (
+      <MainContainer>
+        <HeaderContainer>
+          <Header />
+        </HeaderContainer>
+        <div style={{ marginTop: "-120px", width: "100%" }}>
+          <BackButton>
+            <BackImg onClick={backButton} src="/images/Back-Arrow.svg" />
+            <Back>Back</Back>
+          </BackButton>
+          <AddressContainer>
+            <GroupContainer>
+              <AddrHead className="addressgrp">Address Group</AddrHead>
+              <Addressbtn>
+                <Groupbtn>
+                  <img src={addgrouphandler.image} />
+                  <AddButton onClick={addgrouphandler}>New Group</AddButton>
+                </Groupbtn>
+                <AddButton
+                  onClick={() => {
+                    setShowAddAddressesInput(!showAddAddressesInput);
+                  }}
+                >
+                  Add Address
+                </AddButton>
+              </Addressbtn>
+            </GroupContainer>
+
+            <AddrContainer>
+              <Addrgrp style={{ position: "relative" }}>
+                {addressNamelist.map((item, index) => (
+                  <>
+                    {showRenameInput === index ? (
+                      <div>
+                        <input
+                          type="text"
+                          className="groupInput"
+                          onChange={(e) => setRenameGroup(e.target.value)}
+                        />
+                        <RenameImg
+                          onClick={() => {
+                            item["groupName"] = renameGroup;
+                            toggleRenameInputHandler(null);
+                          }}
+                          src="/images/green_correct.png"
+                        />
+                        <RenameImgNull
+                          onClick={() => setShowRenameInput(null)}
+                          src="/images/red_cancel.png"
+                        />
+                      </div>
+                    ) : (
+                      <AddressGroupTabs
+                        onClick={() => setSeletedGroupAddresses(item.groupName)}
+                        activeColor={selectedGroupAddress === item.groupName}
+                      >
+                        {item.groupName}
+                        <img
+                          onClick={() => togglePopPophandler(index)}
+                          src="/images/Option_Vertical.png"
+                        />
+                        {togglePopPop === index && (
+                          <div className="popOver">
+                            <p
+                              onClick={() => toggleRenameInputHandler(index)}
+                              className="popoverItems"
+                            >
+                              Rename
+                            </p>
+
+                            <p
+                              onClick={() => setButtonPopup(true)}
+                              className="popoverItems"
+                            >
+                              Delete
+                            </p>
+                            <Popup
+                              groupName={item.groupName}
+                              deleteGroupHandler={deleteGroupHandler}
+                              trigger={buttonPopup}
+                              setTrigger={setButtonPopup}
+                            >
+                              <h3 className="delete-text">
+                                Delete Address Group
+                              </h3>
+                              <p className="group-text">
+                                Do you want to delete Address Group?
+                              </p>
+                            </Popup>
+                          </div>
+                        )}
+                      </AddressGroupTabs>
+                    )}
+                  </>
+                ))}
+              </Addrgrp>
+
+              <GrpContainer>
                 <>
-                  {showRenameInput === index ? (
+                  {showAddAddressesInput && (
                     <div>
-                      <input
-                        type="text"
-                        className="groupInput"
-                        onChange={(e) => setRenameGroup(e.target.value)}
-                      />
-                      <RenameImg
-                        onClick={() => {
-                          item["groupName"] = renameGroup;
-                          toggleRenameInputHandler(null);
-                        }}
-                        src="/images/green_correct.png"
-                      />
-                      <RenameImgNull
-                        onClick={() => setShowRenameInput(null)}
-                        src="/images/red_cancel.png"
-                      />
-                    </div>
-                  ) : (
-                    <AddressGroupTabs
-                      onClick={() => setSeletedGroupAddresses(item.groupName)}
-                      activeColor={selectedGroupAddress === item.groupName}
-                    >
-                      {item.groupName}
-                      <img
-                        onClick={() => togglePopPophandler(index)}
-                        src="/images/Option_Vertical.png"
-                      />
-                      {togglePopPop === index && (
-                        <div className="popOver">
-                          <p
-                            onClick={() => toggleRenameInputHandler(index)}
-                            className="popoverItems"
-                          >
-                            Rename
-                          </p>
-
-                          <p
-                            onClick={() => setButtonPopup(true)}
-                            className="popoverItems"
-                          >
-                            Delete
-                          </p>
-                          <Popup groupName={item.groupName} deleteGroupHandler={deleteGroupHandler} trigger={buttonPopup} setTrigger={setButtonPopup}>
-                          <h3 className="delete-text">Delete Address Group</h3>
-                          <p className="group-text">Do you want to delete Address Group?</p>
-                          </Popup>
-                        </div>
-                      )}
-                    </AddressGroupTabs>
-                  )}
-                </>
-              ))}
-            </Addrgrp>
-
-            <GrpContainer>
-              <>
-                {showAddAddressesInput && (
-                  <div>
-                    {/* <Jazzicon 
+                      {/* <Jazzicon 
                             diameter={27}
                             seed={Math.round(Math.random() * 10000000)}
                           /> */}
-                    <InputImg src="/images/nft_pic.png"/>
-                    <input
-                      type="text"
-                      placeholder="Add Address"
-                      className="addressInput"
-                      onChange={(e) => setaddAddressesInput(e.target.value)}
-                    />
-                    <AddressImgCorrect
-                      onClick={addaddresshandler}
-                      src="/images/green_correct.png"
-                    />
-                    <AddressImgCancel
-                      onClick={() =>
-                        setShowAddAddressesInput(!showAddAddressesInput)
-                      }
-                      src="/images/red_cancel.png"
-                    />
-                  </div>
-                )}
-                {addAddress
-                  .filter((item) => item.groupType === selectedGroupAddress)
-                  .map((item) => (
-                    <AddressItem className="address-item">
-                      <AddressDiv>
-                      <div 
-                      style={{ width: '0px', height: '0px', marginLeft: '-44px' }}
-                      >
-                      <Jazzicon
-                            diameter={27}
-                            seed={Math.round(Math.random() * 10000000)}
-                          />
-                           </div>
-                        {/* <IconImg src={item.image} /> */}
-                        {item.address}
-                       
-                      </AddressDiv>
-                      <CopyDeleteIcons className="icons">
-                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 2000 }}  placement="top" title="copied" text={item.address}>
-                          <CopyToClipboard text={item.address}>
-                            <CopyImg
-                              onClick={isDataCopied}
-                              src={item.copyImage}
+                      <InputImg src="/images/nft_pic.png" />
+                      <input
+                        type="text"
+                        placeholder="Add Address"
+                        className="addressInput"
+                        onChange={(e) => setaddAddressesInput(e.target.value)}
+                      />
+                      <AddressImgCorrect
+                        onClick={addaddresshandler}
+                        src="/images/green_correct.png"
+                      />
+                      <AddressImgCancel
+                        onClick={() =>
+                          setShowAddAddressesInput(!showAddAddressesInput)
+                        }
+                        src="/images/red_cancel.png"
+                      />
+                    </div>
+                  )}
+                  {addAddress
+                    .filter((item) => item.groupType === selectedGroupAddress)
+                    .map((item) => (
+                      <AddressItem className="address-item">
+                        <AddressDiv>
+                          <div
+                            style={{
+                              width: "0px",
+                              height: "0px",
+                              marginLeft: "-44px",
+                            }}
+                          >
+                            <Jazzicon
+                              diameter={27}
+                              seed={Math.round(Math.random() * 10000000)}
                             />
-                          </CopyToClipboard>
-                        </Tooltip>
+                          </div>
+                          {/* <IconImg src={item.image} /> */}
+                          {item.address}
+                        </AddressDiv>
+                        <CopyDeleteIcons className="icons">
+                          <Tooltip
+                            TransitionComponent={Fade}
+                            TransitionProps={{ timeout: 2000 }}
+                            placement="top"
+                            title="copied"
+                            text={item.address}
+                          >
+                            <CopyToClipboard text={item.address}>
+                              <CopyImg
+                                onClick={isDataCopied}
+                                src={item.copyImage}
+                              />
+                            </CopyToClipboard>
+                          </Tooltip>
 
-                        <DeleteImg src={item.dltImage} />
-                      </CopyDeleteIcons> 
-                    </AddressItem>
-                  ))}
-              </>
-            </GrpContainer>
-          </AddrContainer>
+                          <DeleteImg src={item.dltImage} />
+                        </CopyDeleteIcons>
+                      </AddressItem>
+                    ))}
+                </>
+              </GrpContainer>
+            </AddrContainer>
 
-          <div></div>
-        </AddressContainer>
-      </div>
+            <div></div>
+          </AddressContainer>
+        </div>
 
-      <div className="footer-all">
-        <FooterComponent />
-      </div>
-    </MainContainer>
-    {isLoading && 
-      <LoaderContainer>
-        <LoaderWrapper>
+        <div className="footer-all">
+          <FooterComponent />
+        </div>
+      </MainContainer>
+      {isLoading && (
+        <LoaderContainer>
+          <LoaderWrapper>
             <div className="loader-spinner"></div>
             <LoaderText>Deleting Address Group</LoaderText>
           </LoaderWrapper>
-      </LoaderContainer>
-    }
+        </LoaderContainer>
+      )}
     </>
   );
 };
