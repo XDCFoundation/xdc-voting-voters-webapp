@@ -195,6 +195,29 @@ const BackButton = styled.div`
 } 
 `;
 
+const LoaderContainer = styled.div`
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: grid;
+  place-items: center;
+`;
+
+const LoaderWrapper = styled.div`
+  width: 216px;
+  height: 160px;
+  background: #000000 0% 0% no-repeat padding-box;
+  border-radius: 8px;
+  opacity: 0.5;
+  display: grid;
+  place-items: center;
+  padding-top: 40px;
+`;
+
+const LoaderText = styled.div`
+  color: #FFFFFF;
+`;
 const DeleteImg = styled.img`
   margin-left: 1vh;
 `;
@@ -342,6 +365,8 @@ const AddressGroup = () => {
 
   const [buttonPopup, setButtonPopup] = React.useState(false);
   const [timedPopup, setTimedPopup] = React.useState(false);
+  const [isLoading, setIsLoading] = useState(false)
+
 
   useEffect(() =>{
     setTimeout(() => {
@@ -350,9 +375,15 @@ const AddressGroup = () => {
   }, []);
   
   const deleteGroupHandler = (value) => {
-    const newData = addressNamelist.filter((item) => item.groupName !== value);
-    setaddressNamelist(newData);
-    commonToasts.successToast(validationsMessages.GROUP_DELETED);
+    settogglePopPop(null);
+    setButtonPopup(false)
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
+      const newData = addressNamelist.filter((item) => item.groupName !== value);
+      setaddressNamelist(newData);
+      commonToasts.successToast(validationsMessages.GROUP_DELETED);
+    }, 3000)
   };
 
   const addgrouphandler = () => {
@@ -373,6 +404,7 @@ const AddressGroup = () => {
   };
 
   const toggleRenameInputHandler = (index) => {
+    settogglePopPop(null)
     if (showRenameInput === index) {
       setShowRenameInput(null);
     } else {
@@ -429,7 +461,7 @@ const AddressGroup = () => {
               </AddButton>
             </Addressbtn>
           </GroupContainer>
-
+         
           <AddrContainer>
             <Addrgrp style={{ position: "relative" }}>
               {addressNamelist.map((item, index) => (
@@ -478,7 +510,7 @@ const AddressGroup = () => {
                           >
                             Delete
                           </p>
-                          <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                          <Popup groupName={item.groupName} deleteGroupHandler={deleteGroupHandler} trigger={buttonPopup} setTrigger={setButtonPopup}>
                           <h3 className="delete-text">Delete Address Group</h3>
                           <p className="group-text">Do you want to delete Address Group?</p>
                           </Popup>
@@ -560,19 +592,16 @@ const AddressGroup = () => {
         <FooterComponent />
       </div>
     </MainContainer>
+    {isLoading && 
+      <LoaderContainer>
+        <LoaderWrapper>
+            <div className="loader-spinner"></div>
+            <LoaderText>Deleting Address Group</LoaderText>
+          </LoaderWrapper>
+      </LoaderContainer>
+    }
     </>
   );
 };
 
 export default AddressGroup;
-
- /* <div className="popUp-div">
-        <h2 className="popUP-Dialog">Delete Address Group
-        <h1 className="popUP-Dialog-text">Do you want to delete Top Decision Makers Address Group?</h1>
-        
-        <button className="popUp-cancel">Cancel</button>
-        <br></br>
-        <button className="popUp-delete" onClick={() => deleteGroupHandler(item.groupName)}>Delete</button>
-        </h2>
-        
-        </div> */

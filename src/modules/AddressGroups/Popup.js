@@ -9,7 +9,7 @@ function Popup(props) {
       <button className="cancel-btn" onClick={()=> props.setTrigger(false)}>
           Cancel
         </button>
-        <button className="delete-btn" onClick={() => props.deleteGroupHandler(props.item.groupName)}>
+        <button className="delete-btn" onClick={() => props.deleteGroupHandler(props.groupName)}>
           Delete
         </button>
         { props.children }
