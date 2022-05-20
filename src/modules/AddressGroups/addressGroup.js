@@ -356,9 +356,10 @@ const AddressGroup = () => {
   const [copySuccess, setCopySuccess] = React.useState(false);
 
   const [buttonPopup, setButtonPopup] = React.useState(false);
-  // const [buttonAddrPopup, setButtonAddrPopup] = React.useState(false);
   const [timedPopup, setTimedPopup] = React.useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoader, setLoader] = useState(false);
+
 
   useEffect(() => {
     setTimeout(() => {
@@ -382,9 +383,9 @@ const AddressGroup = () => {
 
   const deleteAddrHandler = (value) => {
     setButtonPopup(false);
-    setIsLoading(true);
+    setLoader(true);
     setTimeout(() => {
-      setIsLoading(false);
+      setLoader(false);
       const newDatas = addAddress.filter(
         (item) => item.address !== value
       );
@@ -642,6 +643,14 @@ const AddressGroup = () => {
           </LoaderWrapper>
         </LoaderContainer>
       )}
+      {isLoader && (
+          <LoaderContainer>
+          <LoaderWrapper>
+            <div className="loader-spinner"></div>
+            <LoaderText>Deleting Address List</LoaderText>
+          </LoaderWrapper>
+        </LoaderContainer>
+)}
     </>
   );
 };

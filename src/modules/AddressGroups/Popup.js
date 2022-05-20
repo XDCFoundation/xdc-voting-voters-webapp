@@ -12,7 +12,7 @@ function Popup(props) {
         <button className="delete-btn" onClick={() => props.deleteGroupHandler(props.groupName)}>
           Delete
         </button>
-        <button className="delete-btn" onClick={() => props.deleteAddrHandler(props.address)}>
+        <button className="delete-bttn" onClick={() => props.deleteAddrHandler(props.address)}>
           Delete
           </button>
         { props.children }
