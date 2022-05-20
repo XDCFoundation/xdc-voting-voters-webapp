@@ -117,9 +117,9 @@ const GroupContainer = styled.div`
 
 const AddressItem = styled.div`
   height: 61px;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  opacity: 1;
-  border-bottom: 1px solid #e3e7eb;
+  /* background: #ffffff 0% 0% no-repeat padding-box; */
+  /* opacity: 1; */
+  border-bottom: 1px solid #E3E7EB;
   display: flex;
   align-items: center;
   display: flex;
@@ -229,28 +229,28 @@ const CopyDeleteIcons = styled.div``;
 const addressesList = [
   {
     image: "/images/nft_pic.png",
-    address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
+    address: "xdc517f51dea1ab6468ca2192433a58dscdd0482a0b",
     groupType: "Top Decision Makers",
     dltImage: "/images/Delete_Address.png",
     copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
-    address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
+    address: "xdc517f51dea1ab6468ca2192433a58fdcvf0482a0b",
     groupType: "Top Decision Makers",
     dltImage: "/images/Delete_Address.png",
     copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
-    address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
+    address: "xdc517f51dea1ab6468ca2192433a58erfds0482a0b",
     groupType: "Top Decision Makers",
     dltImage: "/images/Delete_Address.png",
     copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
-    address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
+    address: "xdc517f51dea1ab6468ca2192433a58fgvbn0482a0b",
     groupType: "Top Decsion Makers",
     dltImage: "/images/Delete_Address.png",
     copyImage: "/images/Copy_Address.png",
@@ -258,42 +258,42 @@ const addressesList = [
 
   {
     image: "/images/nft_pic.png",
-    address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
+    address: "xdc517f51dea1ab6468ca2192433a58ftyfg0482a0b",
     groupType: "Management",
     dltImage: "/images/Delete_Address.png",
     copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
-    address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
+    address: "xdc517f51dea1ab6468ca2192433a58sdcxx0482a0b",
     groupType: "Management",
     dltImage: "/images/Delete_Address.png",
     copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
-    address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
+    address: "xdc517f51dea1ab6468ca2192433a58werty0482a0b",
     groupType: "Management",
     dltImage: "/images/Delete_Address.png",
     copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
-    address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
+    address: "xdc517f51dea1ab6468ca2192433a58ertyu0482a0b",
     groupType: "Management",
     dltImage: "/images/Delete_Address.png",
     copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
-    address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
+    address: "xdc517f51dea1ab6468ca2192433a58rtyui0482a0b",
     groupType: "Employees",
     dltImage: "/images/Delete_Address.png",
     copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
-    address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
+    address: "xdc517f51dea1ab6468ca2192433a58tyuio0482a0b",
     groupType: "Employees",
     dltImage: "/images/Delete_Address.png",
     copyImage: "/images/Copy_Address.png",
@@ -301,21 +301,21 @@ const addressesList = [
 
   {
     image: "/images/nft_pic.png",
-    address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
+    address: "xdc517f51dea1ab6468ca2192433a58yuiop0482a0b",
     groupType: "Employees",
     dltImage: "/images/Delete_Address.png",
     copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
-    address: "xdc517f51dea1ab6468ca2192433a58cbeff0482a0b",
+    address: "xdc517f51dea1ab6468ca2192433a58uiopa0482a0b",
     groupType: "Employees",
     dltImage: "/images/Delete_Address.png",
     copyImage: "/images/Copy_Address.png",
   },
   {
     image: "/images/nft_pic.png",
-    address: "xdc517f51dea1ab6123456789433a58cbeff0482a0b",
+    address: "xdc517f51dea1ab6123456789433a58iopas0482a0b",
     groupType: "Employees",
     dltImage: "/images/Delete_Address.png",
     copyImage: "/images/Copy_Address.png",
@@ -356,6 +356,7 @@ const AddressGroup = () => {
   const [copySuccess, setCopySuccess] = React.useState(false);
 
   const [buttonPopup, setButtonPopup] = React.useState(false);
+  // const [buttonAddrPopup, setButtonAddrPopup] = React.useState(false);
   const [timedPopup, setTimedPopup] = React.useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -376,6 +377,19 @@ const AddressGroup = () => {
       );
       setaddressNamelist(newData);
       commonToasts.successToast(validationsMessages.GROUP_DELETED);
+    }, 3000);
+  };
+
+  const deleteAddrHandler = (value) => {
+    setButtonPopup(false);
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      const newDatas = addAddress.filter(
+        (item) => item.address !== value
+      );
+      setAddAddress(newDatas);
+      commonToasts.successToast(validationsMessages.ADDR_DELETED);
     }, 3000);
   };
 
@@ -588,7 +602,23 @@ const AddressGroup = () => {
                             </CopyToClipboard>
                           </Tooltip>
 
-                          <DeleteImg src={item.dltImage} />
+
+                          <DeleteImg  onClick={() => setButtonPopup(true)} src={item.dltImage} />
+                          <Popup
+                              address={item.address}
+                              deleteAddrHandler={deleteAddrHandler}
+                              trigger={buttonPopup}
+                              setTrigger={setButtonPopup}
+                            >
+                              <h3 className="delete-text">
+                                Delete Addressess
+                              </h3>
+                              <p className="group-text">
+                                Do you want to delete Addressess?
+                              </p>
+                            </Popup>
+
+
                         </CopyDeleteIcons>
                       </AddressItem>
                     ))}
