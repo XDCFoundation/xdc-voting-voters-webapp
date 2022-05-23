@@ -31,7 +31,7 @@ const AddrGroupTabs = styled.div`
   background-color: #FFFFFF;
 `;
 const TabletText = styled.div`
-  margin-top: 70px;
+  margin-top: 50px;
   width: 90%;
   height: 67px;
   margin-left: 21px;
