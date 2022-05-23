@@ -360,6 +360,9 @@ const AddressGroup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoader, setLoader] = useState(false);
 
+  const [groupNameData, setGroupNameData] = useState("");
+  const [addrNameData, setAddrNameData] = useState("");
+
 
   useEffect(() => {
     setTimeout(() => {
@@ -437,7 +440,6 @@ const AddressGroup = () => {
   const backButton = () => {
     history.push("/");
   };
-
   return (
     <>
       <div>
@@ -496,7 +498,7 @@ const AddressGroup = () => {
                       </div>
                     ) : (
                       <AddressGroupTabs
-                        onClick={() => setSeletedGroupAddresses(item.groupName)}
+                        onClick={() =>{ setSeletedGroupAddresses(item.groupName);setGroupNameData(item.groupName)}}
                         activeColor={selectedGroupAddress === item.groupName}
                       >
                         {item.groupName}
@@ -526,7 +528,7 @@ const AddressGroup = () => {
                               setTrigger={setButtonPopup}
                             >
                               <h3 className="delete-text">
-                                Delete Address Group
+                                Delete Address Group {groupNameData}
                               </h3>
                               <p className="group-text">
                                 Do you want to delete Address Group?
@@ -585,7 +587,7 @@ const AddressGroup = () => {
                             />
                           </div>
                           {/* <IconImg src={item.image} /> */}
-                          {item.address}
+                          {item.address} 
                         </AddressDiv>
                         <CopyDeleteIcons className="icons">
                           <Tooltip
@@ -604,7 +606,7 @@ const AddressGroup = () => {
                           </Tooltip>
 
 
-                          <DeleteImg  onClick={() => setButtonPopup(true)} src={item.dltImage} />
+                          <DeleteImg  onClick={() =>{ setButtonPopup(true);setAddrNameData(item.address)}} src={item.dltImage} />
                           <Popup
                               address={item.address}
                               deleteAddrHandler={deleteAddrHandler}
@@ -612,7 +614,8 @@ const AddressGroup = () => {
                               setTrigger={setButtonPopup}
                             >
                               <h3 className="delete-text">
-                                Delete Addressess
+                              Delete Addressess  {addrNameData.substr(0, 11)}
+                              {/* Delete Addressess  {addrNameData.substring(0,7)} */}
                               </h3>
                               <p className="group-text">
                                 Do you want to delete Addressess?
