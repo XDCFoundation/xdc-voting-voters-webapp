@@ -14,8 +14,6 @@ function Popup(props) {
         </button> :   <button className="delete-bttn" onClick={() => props.deleteAddrHandler(props.address)}>
           Delete
           </button>}
-     
-   
         { props.children }
       </div>
     </div>

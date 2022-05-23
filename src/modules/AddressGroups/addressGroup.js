@@ -119,7 +119,7 @@ const AddressItem = styled.div`
   height: 61px;
   /* background: #ffffff 0% 0% no-repeat padding-box; */
   /* opacity: 1; */
-  border-bottom: 1px solid #E3E7EB;
+  border-bottom: 1px solid #e3e7eb;
   display: flex;
   align-items: center;
   display: flex;
@@ -363,7 +363,6 @@ const AddressGroup = () => {
   const [groupNameData, setGroupNameData] = useState("");
   const [addrNameData, setAddrNameData] = useState("");
 
-
   useEffect(() => {
     setTimeout(() => {
       setTimedPopup(true);
@@ -389,9 +388,7 @@ const AddressGroup = () => {
     setLoader(true);
     setTimeout(() => {
       setLoader(false);
-      const newDatas = addAddress.filter(
-        (item) => item.address !== value
-      );
+      const newDatas = addAddress.filter((item) => item.address !== value);
       setAddAddress(newDatas);
       commonToasts.successToast(validationsMessages.ADDR_DELETED);
     }, 3000);
@@ -419,8 +416,7 @@ const AddressGroup = () => {
     if (showRenameInput === index) {
       setShowRenameInput(null);
       commonToasts.successToast(validationsMessages.ADDRESS_CREATED);
-    } 
-    else {
+    } else {
       setShowRenameInput(index);
     }
   };
@@ -487,7 +483,9 @@ const AddressGroup = () => {
                           onClick={() => {
                             item["groupName"] = renameGroup;
                             toggleRenameInputHandler(null);
-                            commonToasts.successToast(validationsMessages.GROUP_RENAMED);
+                            commonToasts.successToast(
+                              validationsMessages.GROUP_RENAMED
+                            );
                           }}
                           src="/images/green_correct.png"
                         />
@@ -498,7 +496,10 @@ const AddressGroup = () => {
                       </div>
                     ) : (
                       <AddressGroupTabs
-                        onClick={() =>{ setSeletedGroupAddresses(item.groupName);setGroupNameData(item.groupName)}}
+                        onClick={() => {
+                          setSeletedGroupAddresses(item.groupName);
+                          setGroupNameData(item.groupName);
+                        }}
                         activeColor={selectedGroupAddress === item.groupName}
                       >
                         {item.groupName}
@@ -587,7 +588,7 @@ const AddressGroup = () => {
                             />
                           </div>
                           {/* <IconImg src={item.image} /> */}
-                          {item.address} 
+                          {item.address}
                         </AddressDiv>
                         <CopyDeleteIcons className="icons">
                           <Tooltip
@@ -605,24 +606,27 @@ const AddressGroup = () => {
                             </CopyToClipboard>
                           </Tooltip>
 
-
-                          <DeleteImg  onClick={() =>{ setButtonPopup(true);setAddrNameData(item.address)}} src={item.dltImage} />
+                          <DeleteImg
+                            onClick={() => {
+                              setButtonPopup(true);
+                              setAddrNameData(item.address);
+                            }}
+                            src={item.dltImage}
+                          />
                           <Popup
-                              address={item.address}
-                              deleteAddrHandler={deleteAddrHandler}
-                              trigger={buttonPopup}
-                              setTrigger={setButtonPopup}
-                            >
-                              <h3 className="delete-text">
-                              Delete Addressess  {addrNameData.substr(0, 11)}
+                            address={item.address}
+                            deleteAddrHandler={deleteAddrHandler}
+                            trigger={buttonPopup}
+                            setTrigger={setButtonPopup}
+                          >
+                            <h3 className="delete-text">
+                              Delete Addressess {addrNameData.substr(0, 11)}
                               {/* Delete Addressess  {addrNameData.substring(0,7)} */}
-                              </h3>
-                              <p className="group-text">
-                                Do you want to delete Addressess?
-                              </p>
-                            </Popup>
-
-
+                            </h3>
+                            <p className="group-text">
+                              Do you want to delete Addressess?
+                            </p>
+                          </Popup>
                         </CopyDeleteIcons>
                       </AddressItem>
                     ))}
@@ -647,13 +651,13 @@ const AddressGroup = () => {
         </LoaderContainer>
       )}
       {isLoader && (
-          <LoaderContainer>
+        <LoaderContainer>
           <LoaderWrapper>
             <div className="loader-spinner"></div>
             <LoaderText>Deleting Address List</LoaderText>
           </LoaderWrapper>
         </LoaderContainer>
-)}
+      )}
     </>
   );
 };
