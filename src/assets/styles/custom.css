@@ -2520,6 +2520,7 @@ input:focus {
 }
 .group-text
 {
+  margin-top: 25px;
   width: 310px;
   height: 38px;
   text-align: center;

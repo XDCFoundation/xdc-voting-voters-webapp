@@ -620,8 +620,8 @@ const AddressGroup = () => {
                             setTrigger={setButtonPopup}
                           >
                             <h3 className="delete-text">
-                              Delete Addressess {addrNameData.substr(0, 11)}
-                              {/* Delete Addressess  {addrNameData.substring(0,7)} */}
+                              Delete Addressess {addrNameData.substr(0,16)}
+                              {/* Delete Addressess  {addrNameData.substring(0,16)} */}
                             </h3>
                             <p className="group-text">
                               Do you want to delete Addressess?
