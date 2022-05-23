@@ -2365,6 +2365,11 @@ input:focus {
   margin-top: 73.5px;
 }
 
+.footer-tab
+{
+  margin-top: 54px;
+}
+
 .popOver
 {
   height: 76px;
@@ -2474,6 +2479,7 @@ input:focus {
   letter-spacing: 0px;
   color: #2149B9;
 }
+
 .popup-inner .delete-btn
 {
   all: unset;
@@ -2490,6 +2496,7 @@ input:focus {
   color: #FFFFFF;
   opacity: 1;
 }
+
 .popup-inner .delete-bttn
 {
   all: unset;
@@ -2506,6 +2513,7 @@ input:focus {
   color: #FFFFFF;
   opacity: 1;
 }
+
 .delete-text
 {
   margin-top: -131px;
@@ -2518,6 +2526,7 @@ input:focus {
   color: #2A2A2A;
   opacity: 1;
 }
+
 .group-text
 {
   margin-top: 25px;

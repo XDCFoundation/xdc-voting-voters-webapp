@@ -11,6 +11,7 @@ import Jazzicon from "react-jazzicon";
 import { toast, Toaster } from "react-hot-toast";
 import commonToasts from "../../common/components/commonToasts";
 import Popup from "./Popup";
+import useWindowDimensions from "../../common/WindowDimension";
 import Loader from "../../assets/styles/images/NewLoader.gif";
 
 const MainContainer = styled.div`
@@ -436,7 +437,9 @@ const AddressGroup = () => {
   const backButton = () => {
     history.push("/");
   };
+  const { height, width } = useWindowDimensions();
   return (
+    width > 1024 && (
     <>
       <div>
         <Toaster />
@@ -620,11 +623,11 @@ const AddressGroup = () => {
                             setTrigger={setButtonPopup}
                           >
                             <h3 className="delete-text">
-                              Delete Addressess {addrNameData.substr(0,16)}
+                              Delete Addresses {addrNameData.substr(0,16)}
                               {/* Delete Addressess  {addrNameData.substring(0,16)} */}
                             </h3>
                             <p className="group-text">
-                              Do you want to delete Addressess?
+                              Do you want to delete Addresses?
                             </p>
                           </Popup>
                         </CopyDeleteIcons>
@@ -659,6 +662,7 @@ const AddressGroup = () => {
         </LoaderContainer>
       )}
     </>
+    )
   );
 };
 

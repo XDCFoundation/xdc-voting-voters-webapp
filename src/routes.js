@@ -13,7 +13,8 @@ import Community from "./modules/CommunityTools";
 import Governance from "./modules/XvdGovernance";
 import Overview from "./modules/XvdOverview";
 import FAQs from "./modules/XvdFaq";
-import AddressGroup from "./modules/AddressGroups";
+import AddressGroup from "./modules/AddressGroups/addressGroup";
+import AddressGroupTabs from "./modules/AddressGroups/addressGroupTabs";
 import Createproposal from "./modules/Createnewproposal";
 import Voter from "./modules/Voterlist";
 import ProposalDetails from "./modules/ProposalDetails";
@@ -130,6 +131,7 @@ class Routes extends BaseComponent {
             <Route exact path={"/overview"} component={Overview} />
             <Route exact path={"/FAQs"} component={FAQs} />
             <Route exact path={"/AddressGroup"} component={AddressGroup}/>
+            <Route exact path={"/AddressGroupTabs"} component={AddressGroupTabs}/>
 
             <Redirect exact from="*" to="/" />
           </Switch>
