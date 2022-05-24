@@ -2823,6 +2823,7 @@ input:focus {
 }
 
 .display-flex {
+  padding-top: 20px;
   display: flex;
   border-left: 1px solid #E3E7EB;
   border-right: 1px solid #E3E7EB;
