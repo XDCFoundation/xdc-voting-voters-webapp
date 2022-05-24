@@ -4,19 +4,17 @@ import AddressGroupMain from "./addressGroup";
 import AddressGroupTabs from "./addressGroupTabs";
 import useWindowDimensions from "../../common/WindowDimension";
 
- class AddressGroup extends BaseComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  
-  render() {
-    return (
-      <div>
-       <AddressGroupMain/>
-      </div>
-    )
-  }
+function AddressGroup() {
+const { height, width } = useWindowDimensions();
+return (
+  <div>
+{width > 1024 && (
+   <AddressGroupMain/>
+)}
+{width < 1024 && (
+<AddressGroupTabs />
+)}
+  </div>
+)
 }
-
-export default AddressGroup
+export default AddressGroup;

@@ -19,11 +19,11 @@ const HeaderContainer = styled.div`
   opacity: 1;
 `;
 const AddrGroupTabs = styled.div`
-  max-width: 393px;
+  max-width: 935px;
   margin-inline: auto;
   margin-top: -50px;
   width: 95%;
-  height: 465px;
+  height: 575px;
   display: block;
   align-items: center;
   border: 1px solid #E3E7EB;
@@ -31,33 +31,40 @@ const AddrGroupTabs = styled.div`
   background-color: #FFFFFF;
 `;
 const TabletText = styled.div`
-  margin-top: 50px;
-  width: 90%;
-  height: 67px;
-  margin-left: 21px;
+  /* height: 67px; */
   font-size: 20px;
   color: #2A2A2A;
-  display: flex;
+  display: block;
   align-items: center;
+  margin: auto;
+  justify-content: space-between;
+  position: relative;
   text-align: center;
   font-weight: 700;
 `;
 const TabletSubText = styled.div`
-  margin-left: 40px;
-  margin-top: 10px;
   width: 326px;
   height: 86px;
   font-size: 17px;
-  display: flex;
+  display: block;
   align-items: center;
+  margin: auto;
+  justify-content: space-between;
+  position: relative;
+  text-align: center;
   border: #2A2A2A;
   font-weight: 400;
 `;
 const NoTabImg = styled.img`
+  display: flex;
+  align-items: center;
+  margin: auto;
+  justify-content: space-between;
+  position: relative;
   width: 67px;
   height: 85px;
   margin-top: 100px;
-  margin-left: 162px;
+  /* margin-left: 420px; */
 `;
 
 
@@ -65,22 +72,29 @@ const NoTabImg = styled.img`
 const AddressGroupTabs = () => {
     const { height, width } = useWindowDimensions();
     return (
-        width < 1024 && (
+        // width < 1024 && (
           <TabContainer>
             <HeaderContainer>
               <Header />
             </HeaderContainer>
             <AddrGroupTabs>
             <div>
-            <div>
+            <div className= "img-div-support">
                <NoTabImg src="./images/Mobile_support" />
                </div>
+               <div className= "text-div-support">
             <TabletText>
-               Feature not available on mobile and tablet browsers
+               Feature not available on mobile and 
                </TabletText>
+               <TabletText>
+               tablet browsers
+               </TabletText>
+               </div>
+               <div>
                <TabletSubText>
                You need to open XDC Governance on a desktop browser to access this feature. Support for Mobile browsers is in progress.
                </TabletSubText>
+               </div>
             </div>
                </AddrGroupTabs>
            <div className="footer-tab">
@@ -88,7 +102,7 @@ const AddressGroupTabs = () => {
         </div>
       </TabContainer>
     )
-      )
+      // )
         
     }
     

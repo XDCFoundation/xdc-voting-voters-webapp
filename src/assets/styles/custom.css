@@ -2370,6 +2370,29 @@ input:focus {
   margin-top: 54px;
 }
 
+.img-div-support
+{
+  height: 115px;
+}
+
+.text-div-support
+{
+  height: 85px;
+}
+
+.back-div-btn
+{
+  margin-top: -120px;
+  width: 100%
+}
+
+.address-div
+{
+  width: 0px;
+  height: 0px;
+  margin-left: -44px;
+}
+
 .popOver
 {
   height: 76px;

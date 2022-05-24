@@ -92,6 +92,7 @@ const Addrgrp = styled.div`
   width: 450px;
   border-right: 1px solid #e3e7eb;
   height: 658px;
+  position: relative;
 `;
 
 const AddressContainer = styled.div`
@@ -448,7 +449,7 @@ const AddressGroup = () => {
         <HeaderContainer>
           <Header />
         </HeaderContainer>
-        <div style={{ marginTop: "-120px", width: "100%" }}>
+        <div className= "back-div-btn">
           <BackButton>
             <BackImg onClick={backButton} src="/images/Back-Arrow.svg" />
             <Back>Back</Back>
@@ -472,7 +473,7 @@ const AddressGroup = () => {
             </GroupContainer>
 
             <AddrContainer>
-              <Addrgrp style={{ position: "relative" }}>
+              <Addrgrp>
                 {addressNamelist.map((item, index) => (
                   <>
                     {showRenameInput === index ? (
@@ -578,13 +579,7 @@ const AddressGroup = () => {
                     .map((item) => (
                       <AddressItem className="address-item">
                         <AddressDiv>
-                          <div
-                            style={{
-                              width: "0px",
-                              height: "0px",
-                              marginLeft: "-44px",
-                            }}
-                          >
+                          <div className="address-div">
                             <Jazzicon
                               diameter={27}
                               seed={Math.round(Math.random() * 10000000)}
