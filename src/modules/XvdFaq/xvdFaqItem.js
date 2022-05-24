@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-const PLUS_IMAGE = "/images/Plus.svg";
-const MINUS_IMAGE = "/images/Minus.svg";
+const PLUS_IMAGE = "/images/Expand.svg";
+const MINUS_IMAGE = "/images/Close.svg";
 
 class FaqItem extends Component {
   state = {

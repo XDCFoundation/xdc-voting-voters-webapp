@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import "../../assets/styles/custom.css";
 import { Column, Row } from "simple-flexbox";
 import { history } from "../../managers/history";
@@ -10,6 +10,8 @@ import { useWeb3React } from "@web3-react/core";
 import Jazzicon from "react-jazzicon";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -49,6 +51,11 @@ function Header() {
   const [iconT, setIcon] = useState("");
   const [open5, setOpen5] = useState(false);
   const [open6, setOpen6] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [tab, setTab] = useState(1);
+  // const [proposals,setProposals]= useState(0);
+  // const [overview,setOverview]= useState(0);
+  // const [roadmap,setRoadmap]= useState(0);
 
   useEffect(() => {
     window.web3 = new Web3(window.xdc ? window.xdc : window.ethereum);
@@ -162,9 +169,47 @@ function Header() {
     // }
   };
 
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const reDirect = () => {
     history.push("/");
   };
+  const toggleTab = (index) => {
+    setTab(index);
+    //   if(index==1){
+    //     history.push("/");
+    //     setTab(1);
+    //   }
+
+    //  else if(index==2){
+    //     history.push("/yourProposals");
+    //     setTab(2);
+    //   }
+    //  else if(index==3){
+    //     history.push("/overview");
+    //     setTab(3);
+    //   }
+    //  else if(index==4){
+    //     history.push("/governance");
+    //     setTab(4);
+    //   }
+  };
+  // const reDirectProposals = (index) => {
+  //   setProposals(index);
+  //   history.push("/yourProposals");
+
+  // };
+  const view = () => {
+    history.push("/overview");
+  };
+  // const reDirectRoadmap = () => {
+  //   history.push("/");
+
+  // };
   const closeAlert = () => {
     setOpen5(false);
     setOpen6(false);
@@ -183,9 +228,66 @@ function Header() {
             <Column className="xdc">
               <p onClick={reDirect}>XDC</p>
             </Column>
+
+            <Row className="hide-tabs">
+              <Column className="tab">
+                <p
+                  onClick={() => {
+                    toggleTab(1);
+                    history.push("/");
+                  }}
+                  className={tab === 1 ? "tab-active" : "tab-inactive"}
+                >
+                  Governance
+                </p>
+              </Column>
+              <Column className="tab">
+                <p
+                  onClick={() => {
+                    toggleTab(2);
+                    history.push("/yourProposals");
+                  }}
+                  className={tab === 2 ? "tab-active" : "tab-inactive"}
+                >
+                  Proposals
+                </p>
+              </Column>
+              <Column className="tab">
+                <p
+                  onClick={() => {
+                    toggleTab(3);
+                    history.push("/overview");
+                  }}
+                  className={tab === 3 ? "tab-active" : "tab-inactive"}
+                >
+                  Overview
+                </p>
+              </Column>
+              <Column className="tab">
+                <p
+                  onClick={() => {
+                    toggleTab(4);
+                    history.push("/governance");
+                  }}
+                  className={tab === 4 ? "tab-active" : "tab-inactive"}
+                >
+                  Roadmap
+                </p>
+              </Column>
+            </Row>
           </Row>
         </Column>
         <Column>
+          <div className="tab-mob-tab">
+            <img
+              className="header-logo"
+              src={require("../../assets/styles/images/Wallet.svg")}
+            ></img>
+            <img
+              className="header-logo"
+              src={require("../../assets/styles/images/hamburgerMenu.svg")}
+            ></img>
+          </div>
           <div className={classes.buttondiv}>
             {/*<XdcConnect*/}
             {/*  btnClass={wallet.connected ? classes.btnCss : classes.btnCss}*/}
@@ -212,7 +314,7 @@ function Header() {
                           seed={Math.round(Math.random() * 10000000)}
                         />{" "}
                         <div className="address-image">
-                          {wallet.substr(0, 11)}
+                          c{wallet.substr(0, 11)}
                         </div>
                       </>
                     ) : (
@@ -220,11 +322,63 @@ function Header() {
                     )}
                     ...
                     {wallet ? wallet.substr(wallet.length - 5, 5) : ""}
+                    <button className="dropdown-button">
+                      {" "}
+                      <img
+                        className="dropdown-icon"
+                        src="/images/XDC-Dropdown.svg"
+                        aria-controls="simple-menu"
+                        aria-haspopup="true"
+                        onClick={handleClick}
+                      ></img>
+                      <Menu
+                        id="simple-menu-item"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                      >
+                        <MenuItem
+                          // onClick={handleChangePassword}
+                          className="menu-heading"
+                          style={{ backgroundColor: "white" }}
+                        >
+                          Profile{" "}
+                        </MenuItem>
+                        <hr className="menu-line" />
+                        <MenuItem
+                          // onClick={handleChangePassword}
+                          className="menu-heading"
+                          style={{ backgroundColor: "white" }}
+                        >
+                          Address Groups{" "}
+                        </MenuItem>
+                        <hr className="menu-line" />
+                        <MenuItem
+                          // onClick={() => {
+                          //   logOut();
+                          // }}
+                          className="menu-heading"
+                          style={{ backgroundColor: "white" }}
+                        >
+                          Log out
+                        </MenuItem>
+                      </Menu>
+                    </button>
                   </>
                 ) : (
                   <>
                     <div className="circle"></div>
                     <p className="connect">Connect Wallet</p>
+                    {/* <button 
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={handleClick}
+                >
+                
+         con */}
+
+                    {/* </button> */}
                   </>
                 )}
               </button>
