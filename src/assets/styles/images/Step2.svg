@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="158" height="158" viewBox="0 0 158 158">
+  <g id="Step2" transform="translate(-709 -971)">
+    <g id="Ellipse_184" data-name="Ellipse 184" transform="translate(709 971)" fill="#ebf1ff" stroke="#bacdff" stroke-width="1">
+      <circle cx="79" cy="79" r="79" stroke="none"/>
+      <circle cx="79" cy="79" r="78.5" fill="none"/>
+    </g>
+    <g id="Group_2352" data-name="Group 2352">
+      <g id="Rectangle_653" data-name="Rectangle 653" transform="translate(732 1011)" fill="#fff" stroke="#e3e7eb" stroke-width="1">
+        <rect width="117" height="79" rx="2" stroke="none"/>
+        <rect x="0.5" y="0.5" width="116" height="78" rx="1.5" fill="none"/>
+      </g>
+      <line id="Line_69" data-name="Line 69" x2="115" transform="translate(732.5 1017.5)" fill="none" stroke="#e3e7eb" stroke-linecap="square" stroke-width="1"/>
+      <circle id="Ellipse_190" data-name="Ellipse 190" cx="1.5" cy="1.5" r="1.5" transform="translate(734 1013)" fill="#fa5555"/>
+      <circle id="Ellipse_191" data-name="Ellipse 191" cx="1.5" cy="1.5" r="1.5" transform="translate(738 1013)" fill="#f8c248"/>
+      <circle id="Ellipse_192" data-name="Ellipse 192" cx="1.5" cy="1.5" r="1.5" transform="translate(742 1013)" fill="#3ab70d"/>
+    </g>
+    <g id="Rectangle_654" data-name="Rectangle 654" transform="translate(746 1026)" fill="#fff" stroke="#e3e7eb" stroke-width="1">
+      <rect width="48" height="5" rx="1" stroke="none"/>
+      <rect x="0.5" y="0.5" width="47" height="4" rx="0.5" fill="none"/>
+    </g>
+    <g id="Rectangle_655" data-name="Rectangle 655" transform="translate(746 1034)" fill="#fff" stroke="#e3e7eb" stroke-width="1">
+      <rect width="48" height="5" rx="1" stroke="none"/>
+      <rect x="0.5" y="0.5" width="47" height="4" rx="0.5" fill="none"/>
+    </g>
+    <g id="Rectangle_656" data-name="Rectangle 656" transform="translate(746 1042)" fill="#fff" stroke="#e3e7eb" stroke-width="1">
+      <rect width="48" height="5" rx="1" stroke="none"/>
+      <rect x="0.5" y="0.5" width="47" height="4" rx="0.5" fill="none"/>
+    </g>
+    <g id="Rectangle_657" data-name="Rectangle 657" transform="translate(746 1050)" fill="#fff" stroke="#e3e7eb" stroke-width="1">
+      <rect width="48" height="24" rx="1" stroke="none"/>
+      <rect x="0.5" y="0.5" width="47" height="23" rx="0.5" fill="none"/>
+    </g>
+    <g id="noun-documents-4748424" transform="translate(679.862 1020.699)">
+      <path id="Path_821" data-name="Path 821" d="M125.94,13.834h23.4a1.894,1.894,0,0,1,1.889,1.889V46.438a1.894,1.894,0,0,1-1.889,1.889h-23.4a1.9,1.9,0,0,1-1.889-1.889V15.723A1.9,1.9,0,0,1,125.94,13.834ZM132.4,7.8h23.4a1.894,1.894,0,0,1,1.889,1.889V40.4a1.894,1.894,0,0,1-1.889,1.889h-3.448V15.723a3.02,3.02,0,0,0-3.011-3.011H130.511V9.69A1.894,1.894,0,0,1,132.4,7.8ZM129.81,19.55h15.662v1.122H129.81Zm0,21.939h13.529v1.123H129.81Zm0-7.313h15.662V35.3H129.81Zm0-7.313h15.662v1.123H129.81Z" transform="translate(0 0)" fill="#2049b9" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>

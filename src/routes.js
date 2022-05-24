@@ -21,6 +21,7 @@ import ProposalDetails from "./modules/ProposalDetails";
 import { getTotalVotingAddress } from "./services/proposalService";
 import Utils from "./utility";
 import Web3 from "web3";
+import HomePage from "./modules/Dashboard/homePage";
 
 
 class Routes extends BaseComponent {
@@ -102,12 +103,20 @@ class Routes extends BaseComponent {
     });
   };
 
+
+
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <Router history={history}>
           <Switch>
-            <Route exact path={"/"} component={Header} />
+          <Route exact path={"/"} component={HomePage} />
+          {this.state.isAllowedToCreateProposal == true ? (
+           <Route  exact path={"/yourProposals"} component={Header} />
+           ) : (
+            ""
+            
+          )}
             <Route exact path={"/view-all-proposals"} component={AllProposal} />
             {this.state.show == 1 ? (
               <Route
