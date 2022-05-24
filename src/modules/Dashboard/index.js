@@ -212,7 +212,7 @@ export default class Dashboard extends BaseComponent {
       <>
         {this.state.isLoader == false ? (
           <div className="display-flex justify-content-center p-t-50">
-            <img className="load" src={Loader} />
+           <img className="load" src={require("../../assets/styles/images/XDC Loader.svg")}></img>
           </div>
         ) : (
           <div>

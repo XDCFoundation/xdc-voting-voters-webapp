@@ -104,7 +104,7 @@ export default function RecentProposal(props) {
 
   return (
     <div>
-      <Grid lg={13} className="tablegrid_address">
+      <Grid lg={13} className="your-proposal-div">
         <Grid component={Paper} style={{ boxShadow: "0px 0px 0px 0px" }}>
           <Table
             className="table"
@@ -147,9 +147,10 @@ export default function RecentProposal(props) {
                             >
                               {/* <div id="div_create_prop" className="detail-row-hide"> */}
                               <Row className="date">
-                                Posted on{" "}
+                                XDC Network
+                                {/* Posted on{" "} */}
                                 {/* {Utils.epocToPrettyTime(proposal["cretaedOn"])} */}
-                                {formatedTime}
+                                {/* {formatedTime} */}
                               </Row>
 
                               <Row className="name">
@@ -372,13 +373,20 @@ export default function RecentProposal(props) {
                   })
                 ) : (
                   <div className="display-flex justify-content-center">
-                    <img className="load" src={Loader} />
+                    {/* <img className="load" src={Loader} /> */}
+                    <img
+                      className="load"
+                      src={require("../../assets/styles/images/XDC Loader.svg")}
+                    ></img>
                   </div>
                 )
               ) : (
                 <div className="display-flex justify-content-center p-t-50">
                   {" "}
-                  <img className="load" src={Loader} />
+                  <img
+                    className="load"
+                    src={require("../../assets/styles/images/XDC Loader.svg")}
+                  ></img>
                   {/* No Record found */}
                 </div>
               )}
@@ -391,9 +399,9 @@ export default function RecentProposal(props) {
           </Table>
         </Grid>
       </Grid>
-      <div>
+      {/* <div>
         <DivBlocksComponent />
-      </div>
+      </div> */}
       {/* <div style={{borderTop:"1px solid black"}}></div> */}
       <div>
         <FooterComponent />

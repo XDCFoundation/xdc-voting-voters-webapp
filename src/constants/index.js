@@ -74,3 +74,5 @@ export const faqsList = [
       "Yes. You need to subscribe by sharing your email address and you’ll never miss any updates from XDC Governance.",
   },
 ];
+
+export const GOVERNANCE_DESCRIPTION="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor a arcu vitae mattis. Etiam at molestie neque. Phasellus mauris ligula, condimentum a sem in, pretium imperdiet augue. Aliquam eu est justo. Mauris vitae scelerisque ante, ac fermentum purus. Integer egestas enim eu nibh maximus, et molestie magna aliquam. Curabitur euismod mattis hendrerit. Nunc efficitur rhoncus purus, a consequat orci mattis in. Suspendisse ut finibus risus."

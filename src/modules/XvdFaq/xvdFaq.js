@@ -16,10 +16,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     maxWidth: "1280px",
     // position: "absolute",
-    marginTop: "-104px",
-    marginBottom: "40px",
-    zIndex: "1",
-    top: "145px",
+    // marginTop: "-104px",
+    marginBottom: "110px",
+    // zIndex: "1",
+    // top: "145px",
 
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
@@ -62,13 +62,13 @@ export default function Faqs(props) {
 
   return (
     <div>
-      <div className="header-div-all">
+      {/* <div className="header-div-all">
         <HeaderMain />
-      </div>
+      </div> */}
       <div className={classes.maincontainer}>
         <div className={classes.root}>
           <Grid item xs={12}>
-            <div style={{ marginBottom: "26px" }}>
+            {/* <div style={{ marginBottom: "26px" }}>
               <img
                 onClick={backButton}
                 src="/images/Back-Arrow.svg"
@@ -80,12 +80,12 @@ export default function Faqs(props) {
               <Container>
                 <Heading>FAQs</Heading>
               </Container>
-            </Spacing>
+            </Spacing> */}
 
             <Row
               class="xdc-border-top"
               style={{
-                border: ".5px solid #e3e7eb",
+                // border: ".5px solid #e3e7eb",
                 borderRadius: "0% 0% 6px 6px",
               }}
             >
@@ -113,9 +113,9 @@ export default function Faqs(props) {
           </Grid>
         </div>
       </div>
-      <div>
+      {/* <div>
         <FooterComponent />
-      </div>
+      </div> */}
     </div>
   );
 }

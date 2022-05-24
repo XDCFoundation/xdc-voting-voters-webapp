@@ -32,6 +32,10 @@ export default function FooterComponent(props) {
     history.push("/FAQs");
     window.scrollTo(0, 0);
   };
+  const viewCommunity = () => {
+    history.push("/community");
+    window.scrollTo(0, 0);
+  };
   const [addEmail, setAddEmail] = useState("");
   const [open5, setOpen5] = useState(false);
   const [open6, setOpen6] = useState(false);
@@ -97,15 +101,15 @@ export default function FooterComponent(props) {
 
             <RowTag>
               <Anchor href="https://t.me/xinfintech" target="_blank">
-                {/* Telegram */}
+                Telegram
               </Anchor>
             </RowTag>
             <RowTag>
               <Anchor
-                href="https://www.facebook.com/XDCFoundation"
+                href="https://www.reddit.com/r/XDC_Foundation/"
                 target="_blank"
               >
-                Facebook
+                Forum
               </Anchor>
             </RowTag>
           </ColumnSecond>
@@ -116,7 +120,15 @@ export default function FooterComponent(props) {
             </RowTag>
             <RowTag></RowTag>
             <RowTag>
-              <Anchor onClick={viewFAQs}>FAQs</Anchor>
+              <Anchor
+                href="https://www.reddit.com/r/XDC_Foundation/"
+                target="_blank"
+              >
+                Forum
+              </Anchor>
+            </RowTag>
+            <RowTag>
+              <Anchor onClick={viewCommunity}>CommunityTools</Anchor>
             </RowTag>
           </ColumnThird>
           <ColumnFourth class="footer-div-1">
@@ -191,13 +203,16 @@ export default function FooterComponent(props) {
               </RowTag>
               <RowTag>
                 <Anchor href="https://t.me/xinfintech" target="_blank">
-                  {/* Telegram */}
+                  Telegram
                 </Anchor>
               </RowTag>
               <RowTag>
-                {/* <Anchor href="https://discord.com/invite/ndhuU2EEqm"> */}
-                {/* Forum */}
-                {/* </Anchor> */}
+                <Anchor
+                  href="https://www.reddit.com/r/XDC_Foundation/"
+                  target="_blank"
+                >
+                  Forum
+                </Anchor>
               </RowTag>
             </ColumnSecond>
             <ColumnThird>
@@ -207,7 +222,15 @@ export default function FooterComponent(props) {
               </RowTag>
               <RowTag></RowTag>
               <RowTag>
-                <Anchor onClick={viewFAQs}>FAQs</Anchor>
+                <Anchor
+                  href="https://www.reddit.com/r/XDC_Foundation/"
+                  target="_blank"
+                >
+                  Forum
+                </Anchor>
+              </RowTag>
+              <RowTag>
+                <Anchor onClick={viewCommunity}>CommunityTools</Anchor>
               </RowTag>
             </ColumnThird>
           </Div__>
