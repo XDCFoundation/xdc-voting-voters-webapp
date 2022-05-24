@@ -1,20 +1,21 @@
 import React from "react";
 import BaseComponent from "../baseComponent";
-import AddressGroupMain from "./addressGroup";
+import AddressGroup from "./addressGroup";
 import AddressGroupTabs from "./addressGroupTabs";
 import useWindowDimensions from "../../common/WindowDimension";
 
-function AddressGroup() {
+function AddressGroupMain() {
 const { height, width } = useWindowDimensions();
 return (
+  <>
   <div>
-{width > 1024 && (
-   <AddressGroupMain/>
+{width >= 1024 && (
+   <AddressGroup/>
 )}
 {width < 1024 && (
 <AddressGroupTabs />
 )}
-  </div>
+  </div></>
 )
 }
-export default AddressGroup;
+export default AddressGroupMain;

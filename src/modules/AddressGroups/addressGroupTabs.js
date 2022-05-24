@@ -64,7 +64,6 @@ const NoTabImg = styled.img`
   width: 67px;
   height: 85px;
   margin-top: 100px;
-  /* margin-left: 420px; */
 `;
 
 const AddressGroupTabs = () => {
