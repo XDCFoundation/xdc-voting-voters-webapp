@@ -69,7 +69,7 @@ const NoTabImg = styled.img`
 const AddressGroupTabs = () => {
     const { height, width } = useWindowDimensions();
     return (
-        // width < 1024 && (
+        width < 1024 && (
           <TabContainer>
             <HeaderContainer>
               <Header />
@@ -77,7 +77,7 @@ const AddressGroupTabs = () => {
             <AddrGroupTabs>
             <div>
             <div className= "img-div-support">
-               <NoTabImg src="./images/Mobile_support" />
+               <NoTabImg src= "./images/Mobile_support.svg" />
                </div>
                <div className= "text-div-support">
             <TabletText>
@@ -99,7 +99,7 @@ const AddressGroupTabs = () => {
         </div>
       </TabContainer>
     )
-      // )
+      )
         
     }
     
