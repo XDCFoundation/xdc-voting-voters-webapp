@@ -23,6 +23,15 @@ export const httpConstants = {
   },
 };
 
+export const validationsMessages = {
+  GROUP_RENAMED: "Group Name Updated",
+  GROUP_CREATED: "New Group Created",
+  ADDRESS_CREATED: "New address added to the group",
+  GROUP_DELETED: "Address group deleted successfully",
+  ADDR_DELETED: "Address deleted successfully",
+  TOASTS_POSITION: "top-center",
+};
+
 export const faqsList = [
   {
     id: 0,

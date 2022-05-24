@@ -206,6 +206,10 @@ function Header() {
   const view = () => {
     history.push("/overview");
   };
+
+  const viewAddressGroup = () => {
+    history.push("/AddressGroup");
+  };
   // const reDirectRoadmap = () => {
   //   history.push("/");
 
@@ -347,7 +351,7 @@ function Header() {
                         </MenuItem>
                         <hr className="menu-line" />
                         <MenuItem
-                          // onClick={handleChangePassword}
+                          onClick={viewAddressGroup}
                           className="menu-heading"
                           style={{ backgroundColor: "white" }}
                         >
