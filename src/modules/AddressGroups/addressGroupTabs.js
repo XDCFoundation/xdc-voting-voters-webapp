@@ -21,7 +21,7 @@ const HeaderContainer = styled.div`
 const AddrGroupTabs = styled.div`
   max-width: 935px;
   margin-inline: auto;
-  margin-top: -50px;
+  margin-top: 8px;
   width: 95%;
   height: 575px;
   display: block;
@@ -66,6 +66,28 @@ const NoTabImg = styled.img`
   margin-top: 100px;
 `;
 
+const Back = styled.div`
+  margin-left: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+`;
+
+const BackButton = styled.div`
+  display: flex;
+  max-width: 580px;
+  margin-top: -82px;
+  margin-left: 20px;
+`;
+
+const BackImg = styled.img`
+    width: 15px;
+`;
+
+const backButton = () => {
+  history.push("/");
+};
+
 const AddressGroupTabs = () => {
     const { height, width } = useWindowDimensions();
     return (
@@ -74,6 +96,11 @@ const AddressGroupTabs = () => {
             <HeaderContainer>
               <Header />
             </HeaderContainer>
+            <div className= "back-btn">
+          <BackButton>
+            <BackImg onClick={backButton} src="/images/Back-Arrow.svg" />
+            <Back>Back</Back>
+          </BackButton>
             <AddrGroupTabs>
             <div>
             <div className= "img-div-support">
@@ -81,10 +108,7 @@ const AddressGroupTabs = () => {
                </div>
                <div className= "text-div-support">
             <TabletText>
-               Feature not available on mobile and 
-               </TabletText>
-               <TabletText>
-               tablet browsers
+               Feature not available on mobile and tablet browsers
                </TabletText>
                </div>
                <div>
@@ -94,6 +118,7 @@ const AddressGroupTabs = () => {
                </div>
             </div>
                </AddrGroupTabs>
+               </div>
            <div className="footer-tab">
           <FooterComponent />
         </div>

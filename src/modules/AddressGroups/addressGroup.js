@@ -22,7 +22,7 @@ const HeaderContainer = styled.div`
   margin-top: 0px;
   width: 100%;
   height: 300px;
-  background: url("./images/banner_new.png") 0% 0% no-repeat padding-box;
+  background: transparent radial-gradient(closest-side at 69% 50%, #355ED0 0%, #2049B9 100%) 0% 0% no-repeat padding-box;
   background-size: 100% 300px;
   opacity: 1;
 `;
