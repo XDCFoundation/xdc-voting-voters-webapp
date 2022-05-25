@@ -43,8 +43,7 @@ const TabletText = styled.div`
   font-weight: 700;
 `;
 const TabletSubText = styled.div`
-  width: 326px;
-  height: 86px;
+  width: 90%;
   font-size: 17px;
   display: block;
   align-items: center;
@@ -63,7 +62,7 @@ const NoTabImg = styled.img`
   position: relative;
   width: 67px;
   height: 85px;
-  margin-top: 100px;
+  margin-top: 125px;
 `;
 
 const Back = styled.div`
