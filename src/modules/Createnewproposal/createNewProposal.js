@@ -403,6 +403,27 @@ export default function Createnewproposal(props) {
   const [descriptionError, setErrorDescription] = useState("");
   const [fileError, setFileError] = useState("");
   const [showProgress, setShowProgress] = useState([]);
+
+  const [uploadBars, setUploadBars] = useState([]);
+
+  let deleteFile= (index)=>{
+    // let tempArr = [...uploadBars];
+    // let indexOf = tempArr.indexOf(index);
+    // if (indexOf !== -1) {
+    //       let returned = tempArr.splice(indexOf, 1);
+    //       console.log(returned, 'returned')
+    
+    //       console.log(tempArr, 'temp arr')
+    
+    //       setUploadBars(tempArr);
+    //     }
+
+    const rows = [...uploadBars];
+        rows.splice(index, 1);
+        setUploadBars(rows);
+  }
+
+  //proposal loader
   // const [progress, setProgress] = useState(50);
   // const [hideProgress, setHideProgress] = useState(false);
 
@@ -428,6 +449,7 @@ export default function Createnewproposal(props) {
   //   setShowProgress(false);
   //   props.state.proposalDocuments.length=0
   // }
+  //*
 
   const inputFile = React.createRef();
   const handleQuillChange = (event) => {
@@ -501,6 +523,9 @@ export default function Createnewproposal(props) {
       setErrorDescription("Description must be atleast 200 characters");
     }
   };
+
+
+
 
   return (
     <div className="">
@@ -580,6 +605,7 @@ export default function Createnewproposal(props) {
                       // disabled
                       />
 
+                      {/* date time picker */}
                       {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DateTimePicker
                           className={classes.startdateinput}
@@ -595,6 +621,7 @@ export default function Createnewproposal(props) {
                           onKeyDown={(e) => e.preventDefault()}
                         />
                       </LocalizationProvider> */}
+                      {/* * */}
 
                       <div
                         className="error-message"
@@ -684,11 +711,16 @@ export default function Createnewproposal(props) {
                     <div className={classes.upload}>Upload Document</div>
                     <div className={classes.uploadbox}>
                       <Column>
+
+
+
+
                         {props.state.proposalDocuments.length > 0
                           ? props.state.proposalDocuments.map((doc, index) => {
                             console.log(doc, 'docs')
                             const onchangebutton = (e) => {
                               setShowProgress([...showProgress, index]);
+                              
                               var x = document.getElementById(
                                 "fileButton" + index
                               );
@@ -696,6 +728,8 @@ export default function Createnewproposal(props) {
                               try {
                                 var filesize = e.target.files[0].size;
                                 const filename = e.target.files[0].name;
+                                console.log(filename, 'filname')
+                                
                                 const fileextenstion = filename
                                   .split(".")
                                   .pop()
@@ -749,8 +783,12 @@ export default function Createnewproposal(props) {
                                       ) {
                                         props.uploadFileToS3(
                                           e.target.files[0],
-                                          index
+                                          index,
+                                          setUploadBars,
+                                          uploadBars
                                         );
+                                        // setUploadBars(this.state.proposalDocumentsName ?
+                                        //   [...uploadBars, filename] : '')
                                         flag = false;
                                       }
                                     });
@@ -767,6 +805,7 @@ export default function Createnewproposal(props) {
                               x.value = null;
                             };
 
+                            // praposal loader
                             // Progress Bar
                             // const progressBarSetter = (time) => {
                             //   let i;
@@ -813,13 +852,14 @@ export default function Createnewproposal(props) {
                             //   }
                             // };
                             // !
+                            // * 
                             return (
                               <div>
                                 <div className="display-flex m-t-4" key={index}>
                                   <div
                                     className={
                                       classes.input +
-                                      " display-flex justify-content-between"
+                                      " display-flex justify-content-between star"
                                     }
                                     value={uploadDocument}
                                   >
@@ -847,7 +887,7 @@ export default function Createnewproposal(props) {
                                     </BrowseButton>
                                   </div>
 
-                                  {index ===
+                                  {/* {index ===
                                     props.state.proposalDocuments.length - 1 ? (
                                     <>
                                       {console.log(props)}
@@ -867,15 +907,17 @@ export default function Createnewproposal(props) {
                                       }
                                       src="/images/substract.png"
                                     />
-                                  )}
+                                  )} */}
                                 </div>
-                                {showProgress.includes(index) ?
+                                {console.log(uploadBars, 'uploadBars')}
+
+                                {uploadBars.map((v, index)=>(
                                   <div class="d-flex mt-3 w-50" key={index}>
                                     <div class="flex-shrink-0 mr-3">
-                                      {props.state.proposalDocumentsName[index] ?
+                                      {v ?
                                         <img src={docIcon} alt="..." /> :
                                         <img src={docIcon} alt="..."
-                                          style={props.state.proposalDocumentsName[index] ? ''
+                                          style={v ? ''
                                             : { display: "none" }}
                                           ref={inputFile}
                                           name="fileButton"
@@ -891,10 +933,11 @@ export default function Createnewproposal(props) {
                                         console.log(props.state.proposalDocumentsName[index], 'file ' + index)
                                       } */}
 
-                                      {props.state.proposalDocumentsName[index]}
+                                      {/* {v.filename} */}
+                                      {v}
                                       {
-                                        props.state.proposalDocumentsName[index] !== undefined ?
-                                          props.state.proposalDocumentsName[index] ?
+                                        v !== undefined ?
+                                          v ?
                                             <ProgressBar style={{ height: "3px" }} now={100} /> :
                                             <ProgressBar style={{ height: "3px", display: "none" }}
                                               ref={inputFile}
@@ -907,14 +950,14 @@ export default function Createnewproposal(props) {
                                       {/* label={`${60}%`} now={60} */}
                                     </div>
                                     <div class="flex-shrink-0">
-                                      {props.state.proposalDocumentsName[index] ?
+                                      {v ?
                                         <img src={crossIcon} alt="..."
-                                          onClick={() => {
-                                            props.deleteDocumentRow(index, props.state.proposalDocumentsName[index]);
+                                          onClick={() =>deleteFile(index)
+                                            // props.deleteDocumentRow(index, props.state.proposalDocumentsName[index]);
                                             // console.log(props.state.proposalDocumentsName[index])
-                                          }} /> :
+                                          } /> :
                                         <img src={crossIcon} alt="..."
-                                          style={props.state.proposalDocumentsName[index] ? ''
+                                          style={v ? ''
                                             : { display: "none" }}
                                           ref={inputFile}
                                           name="fileButton"
@@ -923,14 +966,15 @@ export default function Createnewproposal(props) {
                                           accept="*"
                                         />}
                                     </div>
-                                  </div> : ''}
+                                  </div>
+                                ))}
                               </div>
                             );
                           })
                           : ""}
 
-                          {/* * */}
-                          
+                        {/* * */}
+
                         <div className="error-message">{fileError}</div>
                       </Column>
                     </div>

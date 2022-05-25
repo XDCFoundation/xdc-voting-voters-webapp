@@ -68,7 +68,7 @@ export default class Createproposal extends BaseComponent {
     this.setState({ proposalDocuments: this.state.proposalDocuments });
   };
 
-  
+  // proposal load
   deleteDocumentRow = (index, name) => {
     console.log(index, 'hello index', name)
     this.state.proposalDocuments.splice(index, 1);
@@ -77,7 +77,7 @@ export default class Createproposal extends BaseComponent {
     this.setState({ proposalDocuments: this.state.proposalDocuments , proposalDocumentsName: this.state.proposalDocumentsName});
   };
 
-  uploadFileToS3 = async (file, index) => {
+  uploadFileToS3 = async (file, index, setUploadBars, uploadBars) => {
     let extName = extname(file.name);
     let fileName = Utils.generateCompanyLogoKey() + extName;
     try {
@@ -96,6 +96,8 @@ export default class Createproposal extends BaseComponent {
         this.state.proposalDocuments[index] = responseObj;
         this.state.proposalDocumentsName[index] = file.name;
         this.setState({ proposalDocuments: this.state.proposalDocuments });
+
+        setUploadBars([...uploadBars, file.name])
       }
       
     } catch (err) {
@@ -103,6 +105,8 @@ export default class Createproposal extends BaseComponent {
       Utils.apiFailureToast("Unable to upload document");
     }
   };
+
+  // *
 
   createProposal = async (reqObj) => {
     this.setState({ open: true });
