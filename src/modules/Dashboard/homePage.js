@@ -147,6 +147,10 @@ export default function HomePage() {
   const viewProposal = () => {
     history.push("/yourProposals");
   };
+  const viewAddressGroupTabs = () => {
+    history.push("/AddressGroupTabs");
+  };
+  
 
   const classes = useStyles();
   return (
@@ -191,15 +195,13 @@ export default function HomePage() {
               ></img>
               <Row className="proposal-buttons-tab">
                 <Column>
-                  <button className="see-proposal-tab" onClick={viewProposal}>
+                  <button className="see-proposal-tab" onClick={viewAddressGroupTabs}>
                     See your proposals
                   </button>
                 </Column>
                 <Column>
                   <button
-                    className="create-proposal-tab"
-                    onClick={createProposal}
-                  >
+                    className="create-proposal-tab"onClick={viewAddressGroupTabs}>
                     Create Proposal
                   </button>
                 </Column>

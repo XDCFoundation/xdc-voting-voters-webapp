@@ -2839,6 +2839,287 @@ input:focus {
   cursor: pointer;
 }
 
+.addressgrp
+{
+  font: normal normal 600 26px Inter;
+  margin-left: 25px;
+  margin-top: 13px;
+  letter-spacing: 0px;
+  color: #2A2A2A;
+  opacity: 1;  
+}
+
+.footer-all
+{
+  margin-top: 73.5px;
+}
+
+.footer-tab
+{
+  margin-top: 54px;
+}
+
+.img-div-support
+{
+  height: 115px;
+}
+
+.text-div-support
+{
+  height: 85px;
+}
+
+.back-div-btn
+{
+  margin-top: -120px;
+  width: 100%
+}
+
+.address-div
+{
+  width: 0px;
+  height: 0px;
+  margin-left: -44px;
+}
+
+.popOver
+{
+  height: 76px;
+  width: 183px;
+  text-align: left;
+  background: #FFFFFF;
+  position:  absolute ; 
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 4px;
+  opacity: 1;
+  top: 53px; 
+  left: 130px; 
+  z-index: 999 ;
+}
+
+.addressInput
+{
+  margin-left: 15px;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border: 0px solid;
+  width: 700px;
+  height: 55px;
+  outline:none;
+}
+
+.groupInput
+{
+  width: 100%;
+  height: 62px;
+  background: #2149B9;
+  border: none;
+  outline: none;
+  padding: 0 25px;
+  color: #C6D5FF;
+  font-size:18px;
+}
+
+.popoverItems
+{
+  width: 58px;
+  height: 19px;
+  margin-top: 2px;
+  margin-left: 12px;
+  text-align: left;
+  font-size: 19px;
+  letter-spacing: 0px;
+  color: #2A2A2A;
+  opacity: 1;
+}
+
+.address-item:hover .icons {
+  display: block !important;
+}
+
+.icons {
+  display: none;
+}
+
+.toast-div-address {
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
+  width: 50-auto;
+  height: 40px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 8px;
+  /* opacity: 1; */
+}
+
+.popup
+{
+  position: fixed;
+  top: -657px;
+  left: 0px;
+  width: 100%;
+  height: 180vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup-inner
+{
+  position: relative;
+  padding: 32px;
+  width: 361px;
+  height: 173px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 8px;
+  opacity: 1;
+}
+.popup-inner .cancel-btn
+{
+  all: unset;
+  position: absolute;
+  width: 130px;
+  height: 32px;
+  border: 1px solid #2049B9;
+  border-radius: 4px;
+  opacity: 1;
+  margin-top: 85px;
+  text-align: center;
+  font: normal normal 600 15px/19px Inter;
+  letter-spacing: 0px;
+  color: #2149B9;
+}
+
+.popup-inner .delete-btn
+{
+  all: unset;
+  width: 130px;
+  height: 32px;
+  background: #2149B9 0% 0% no-repeat padding-box;
+  border-radius: 4px;
+  opacity: 1;
+  margin-top: 85px;
+  margin-left: 162px;
+  text-align: center;
+  font: normal normal 600 15px/19px Inter;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+.popup-inner .delete-bttn
+{
+  all: unset;
+  width: 130px;
+  height: 32px;
+  background: #2149B9 0% 0% no-repeat padding-box;
+  border-radius: 4px;
+  opacity: 1;
+  margin-top: 85px;
+  margin-left: 162px;
+  text-align: center;
+  font: normal normal 600 15px/19px Inter;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+.delete-text
+{
+  margin-top: -131px;
+  margin-left: 49px;
+  width: 213px;
+  height: 24px;
+  text-align: left;
+  font: normal normal 600 20px/24px Inter;
+  letter-spacing: 0px;
+  color: #2A2A2A;
+  opacity: 1;
+}
+
+.group-text
+{
+  margin-top: 25px;
+  width: 310px;
+  height: 38px;
+  text-align: center;
+  font-size: 15px;
+  letter-spacing: 0px;
+  color: #2A2A2A;
+  opacity: 1;
+}
+
+.loader-spinner {
+  color: #ffffff;
+  font-size: 10px;
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 50%;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-animation: load4 1.3s infinite linear;
+  animation: load4 1.3s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+@-webkit-keyframes load4 {
+  0%,
+  100% {
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+  }
+  12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  25% {
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+  }
+  75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+@keyframes load4 {
+  0%,
+  100% {
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+  }
+  12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  25% {
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+  }
+  75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+
 .cursor-default {
   cursor: default;
 }
