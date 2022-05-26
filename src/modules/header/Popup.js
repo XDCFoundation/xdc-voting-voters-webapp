@@ -7,7 +7,7 @@ function Popup(props) {
     <div className="popup">
       <div className="popup-profile">
 
-      <img className="img-cross"  src="/images/Cross_X.svg" onClick={()=> props.setTrigger(false)}/>
+      <img className="img-cross" onClick={()=> props.setTrigger(false)}  src="/images/Cross_X.svg" />
         {/* {props.groupName? <button className="delete-btn" onClick={() => props.deleteGroupHandler(props.groupName)}>
           Delete
         </button> :   <button className="delete-bttn" onClick={() => props.deleteAddrHandler(props.address)}>

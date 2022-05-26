@@ -2844,7 +2844,7 @@ input:focus {
   height: 439px;
   margin-top: 171px;
   margin-block-end: auto;
-  background: #ffffff 0% 0% no-repeat padding-box;
+  background: #ffffff;
   box-shadow: 0px 3px 6px #00000029;
   border-radius: 4px;
   opacity: 1;
@@ -2947,6 +2947,32 @@ input:focus {
   font: normal normal medium 15px/19px Inter;
   color: #FFFFFF;
   opacity: 1;
+}
+
+.cropper-div
+{
+  display: flex;
+  margin: -122px;
+  width: 454px;
+  height: 439px;
+  background: #ffffff;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 4px;
+  opacity: 1;
+}
+
+.cropper-text
+{
+  width: 120px;
+  height: 26px;
+  text-align: center;
+  font: normal normal 600 22px/26px Inter;
+  letter-spacing: 0px;
+  color: #2A2A2A;
+  opacity: 1;
+  display: block;
+  margin-inline: auto;
+  margin-top: revert;
 }
 
 .footer-all {

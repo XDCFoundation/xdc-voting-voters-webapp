@@ -1,7 +1,8 @@
-import React, { useMemo, useEffect, useState } from "react";
+import React, { useCallback, useMemo, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 // import "./CommonBlog.css";
 import styled from "styled-components";
+import Cropper from 'react-easy-crop'
 
 const UploadImg = styled.img`
   margin-left: 5px;
@@ -50,14 +51,23 @@ const thumbInner = {
   overflow: "hidden",
 };
 const img = {
-  display: "block",
+  display: "flex",
   width: "370px",
   height: "250px",
-  marginTop: "-23px",
+  margin: "auto",
 };
+
 export default function StyledDropzone(props) {
-  const [files, setFiles] = useState([]);
-  const {
+
+    const [crop, setCrop] = useState({ x: 0, y: 0 })
+  const [zoom, setZoom] = useState(1)
+
+  const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
+    console.log(croppedArea, croppedAreaPixels)
+  }, [])
+    
+    const [files, setFiles] = useState([]);
+    const {
     getRootProps,
     getInputProps,
     isDragActive,
@@ -79,6 +89,7 @@ export default function StyledDropzone(props) {
       );
     },
   });
+
   const style = useMemo(
     () => ({
       ...baseStyle,
@@ -90,9 +101,17 @@ export default function StyledDropzone(props) {
   );
   const thumbs = files.map((file) => (
     <div key={file.name}>
-      <div>
-        <img src={file.preview} style={img} />
-      </div>
+      <img src={file.preview} style={img} />
+      <Cropper
+      image={file.preview}
+      crop={crop}
+      zoom={zoom}
+      aspect={4 / 3}
+      onCropChange={setCrop}
+      onCropComplete={onCropComplete}
+      onZoomChange={setZoom}
+    />
+     {console.log(crop + "123456")}
     </div>
   ));
   useEffect(
