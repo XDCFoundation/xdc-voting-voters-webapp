@@ -140,12 +140,6 @@ const Back = styled.div`
   }
 `;
 
-const IconImg = styled.img`
-  margin: 0 17.75px 0 0;
-  width: 27px;
-  height: 27px;
-`;
-
 const AddressDiv = styled.div`
   color: #2a2a2a;
   font-size: 16px;
@@ -585,7 +579,7 @@ const AddressGroup = () => {
                               seed={Math.round(Math.random() * 10000000)}
                             />
                           </div>
-                          {/* <IconImg src={item.image} /> */}
+                          {/* <img src={item.image} /> */}
                           {item.address}
                         </AddressDiv>
                         <CopyDeleteIcons className="icons">

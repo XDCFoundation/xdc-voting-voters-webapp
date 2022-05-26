@@ -12,6 +12,9 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import Popup from "./Popup";
+import Dragdrop from "./dragDrop"
+// import UploadFile from "./uploadFile";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -53,6 +56,20 @@ function Header() {
   const [open6, setOpen6] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [tab, setTab] = useState(1);
+
+  const [buttonPopup, setButtonPopup] = React.useState(false);
+  const [timedPopup, setTimedPopup] = React.useState(false);
+
+  // const togglePopup = () => {
+  //   setButtonPopup(!buttonPopup);
+  // };
+   
+  useEffect(() => {
+    setTimeout(() => {
+      setTimedPopup(true);
+    }, 3000);
+  }, []);
+
   // const [proposals,setProposals]= useState(0);
   // const [overview,setOverview]= useState(0);
   // const [roadmap,setRoadmap]= useState(0);
@@ -346,8 +363,26 @@ function Header() {
                           // onClick={handleChangePassword}
                           className="menu-heading"
                           style={{ backgroundColor: "white" }}
+                          onClick={() => setButtonPopup(true)}
                         >
                           Profile{" "}
+                          <Popup
+                            trigger={buttonPopup}
+                            setTrigger={setButtonPopup}
+                          >
+                            <h3 className="profile-text">Profile</h3>
+                            <p className="profile-subtext">
+                              Setting a profile gives an identity to the
+                              proposal created by you.
+                            </p>
+                            <div className="img-div-upload">
+                            <div className="img-div-background">
+                              <Dragdrop/>
+                            </div>
+                            </div>
+                              <input type="text" className="input-profile" placeholder="     Unamed" />
+                              <input type="submit" className="update-profile" value="Update" />
+                          </Popup>
                         </MenuItem>
                         <hr className="menu-line" />
                         <MenuItem

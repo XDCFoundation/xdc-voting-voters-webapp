@@ -31,6 +31,7 @@
     "react-countdown": "^2.3.2",
     "react-date-picker": "^8.3.2",
     "react-dom": "^16.9.0",
+    "react-dropzone": "^14.2.1",
     "react-google-charts": "^3.0.15",
     "react-hot-toast": "^2.2.0",
     "react-jazzicon": "^0.1.3",
