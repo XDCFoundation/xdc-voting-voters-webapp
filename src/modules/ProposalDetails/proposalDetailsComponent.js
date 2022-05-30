@@ -167,6 +167,7 @@ export default function ProposalDetails(props) {
                           {removeTags(props.state.proposalDetails.description)}
                         </Row>
                       </Column>
+                      {console.log(props.state.proposalDetails.proposalDocuments, "hello mai ---")}
                       {props.state &&
                       props.state.proposalDetails &&
                       props.state.proposalDetails.proposalDocuments &&

@@ -72,38 +72,50 @@ export default class Createproposal extends BaseComponent {
   deleteDocumentRow = (index, name) => {
     console.log(index, 'hello index', name)
     this.state.proposalDocuments.splice(index, 1);
-    this.state.proposalDocumentsName.splice(index ,1)
+    this.state.proposalDocumentsName.splice(index, 1)
     // console.log(this.state.proposalDocuments, 'jiii haa')
-    this.setState({ proposalDocuments: this.state.proposalDocuments , proposalDocumentsName: this.state.proposalDocumentsName});
+    this.setState({ proposalDocuments: this.state.proposalDocuments, proposalDocumentsName: this.state.proposalDocumentsName });
   };
 
-  uploadFileToS3 = async (file, index, setUploadBars, uploadBars) => {
+  uploadFileToS3 = async (file, index, setUploadBars, uploadBars, setUrlDocument, urlDocument) => {
     let extName = extname(file.name);
+
+    let checkFileExists = uploadBars.filter(item => item == file.name);
+
+    console.log(checkFileExists, 'cehck file')
+
     let fileName = Utils.generateCompanyLogoKey() + extName;
-    try {
-      const data = new FormData();
-      data.append("fileName", file.name);
-      data.append("files", file);
-      let responseObj = await uploadFile(data).catch((err) => {
-        console.log(err);
-      });
-      console.log("responseObj+++ ", responseObj);
-      // if (!responseObj || !responseObj.length || !responseObj[0].sourceFileName)
-      if (!responseObj){
+
+    if (checkFileExists.length <= 0) {
+
+      try {
+        const data = new FormData();
+        data.append("fileName", file.name);
+        data.append("files", file);
+        let responseObj = await uploadFile(data).catch((err) => {
+          console.log(err);
+        });
+        console.log("responseObj+++ ", responseObj);
+        // if (!responseObj || !responseObj.length || !responseObj[0].sourceFileName)
+        if (!responseObj) {
+          this.state.proposalDocumentsName[index] = undefined;
+          Utils.apiFailureToast("Unable to upload document");
+        } else {
+          this.state.proposalDocuments[index] = responseObj;
+          this.state.proposalDocumentsName[index] = file.name;
+          // console.log(file.name,index, 'dfghj')
+          this.setState({ proposalDocuments: this.state.proposalDocuments});
+          // console.log(this.state.proposalDocuments,index, 'response documentUrl');
+
+          setUploadBars([...uploadBars, file.name])
+          // setUrlDocument([...urlDocument, responseObj])
+        }
+
+      } catch (err) {
         this.state.proposalDocumentsName[index] = undefined;
         Utils.apiFailureToast("Unable to upload document");
-      } else{
-        this.state.proposalDocuments[index] = responseObj;
-        this.state.proposalDocumentsName[index] = file.name;
-        this.setState({ proposalDocuments: this.state.proposalDocuments });
-
-        setUploadBars([...uploadBars, file.name])
       }
-      
-    } catch (err) {
-      this.state.proposalDocumentsName[index] = undefined;
-      Utils.apiFailureToast("Unable to upload document");
-    }
+    }else{Utils.apiFailureToast("Duplicate file not allowed");}
   };
 
   // *
@@ -121,6 +133,7 @@ export default class Createproposal extends BaseComponent {
     web3 = new Web3(window.web3.currentProvider);
     window.ethereum.enable();
     web3.eth.getAccounts().then(async (accounts) => {
+      console.log(accounts,"response from api")
       if (!accounts || !accounts.length) {
         Utils.apiFailureToast("Please login to XDCPay extension");
         return;

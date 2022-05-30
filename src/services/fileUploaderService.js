@@ -6,6 +6,7 @@ export async function uploadFile(fileObj) {
     // const url = "http://localhost:3001/" + "addDocs"
     return httpServiceForFileUpload(httpConstants.METHOD_TYPE.POST, {}, fileObj, url)
         .then((response) => {
+            console.log(response,"hello jiiiii")
             if (!response.success || !response.responseData)
                 return Promise.reject();
             return Promise.resolve(response.responseData);

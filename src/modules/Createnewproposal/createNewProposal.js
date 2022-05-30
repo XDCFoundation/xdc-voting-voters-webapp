@@ -405,22 +405,23 @@ export default function Createnewproposal(props) {
   const [showProgress, setShowProgress] = useState([]);
 
   const [uploadBars, setUploadBars] = useState([]);
+  const [urlDocument, setUrlDocument] = useState([]);
 
-  let deleteFile= (index)=>{
+  let deleteFile = (index) => {
     // let tempArr = [...uploadBars];
     // let indexOf = tempArr.indexOf(index);
     // if (indexOf !== -1) {
     //       let returned = tempArr.splice(indexOf, 1);
     //       console.log(returned, 'returned')
-    
+
     //       console.log(tempArr, 'temp arr')
-    
+
     //       setUploadBars(tempArr);
     //     }
 
     const rows = [...uploadBars];
-        rows.splice(index, 1);
-        setUploadBars(rows);
+    rows.splice(index, 1);
+    setUploadBars(rows);
   }
 
   //proposal loader
@@ -491,11 +492,13 @@ export default function Createnewproposal(props) {
       startDate: epochutcStart,
       endDate: epochutcEnd,
       description: description,
-      filepath: uploadDocument,
+      filepath: urlDocument,
       pollingContract: "0011",
       status: "pending",
     };
 
+    console.log(urlDocument, 'urlDocument');
+    console.log(reqObj, "req obj")
     if (
       !reqObj.proposalTitle &&
       !reqObj.startDate &&
@@ -712,15 +715,21 @@ export default function Createnewproposal(props) {
                     <div className={classes.uploadbox}>
                       <Column>
 
-
+                      {console.log(props.state.proposalDocuments, 's')}
 
 
                         {props.state.proposalDocuments.length > 0
-                          ? props.state.proposalDocuments.map((doc, index) => {
-                            console.log(doc, 'docs')
+                          ? props.state.proposalDocuments.slice(0,1).map((doc, index) => {
+                            console.log(index, 'docs')
                             const onchangebutton = (e) => {
                               setShowProgress([...showProgress, index]);
-                              
+
+                              // for(let i of uploadBars){
+                              //   if(duplicate.indexOf(i) === -1){
+                              //     setDuplicate(duplicate.push(i))
+                              //   }
+                              // }
+
                               var x = document.getElementById(
                                 "fileButton" + index
                               );
@@ -729,7 +738,7 @@ export default function Createnewproposal(props) {
                                 var filesize = e.target.files[0].size;
                                 const filename = e.target.files[0].name;
                                 console.log(filename, 'filname')
-                                
+
                                 const fileextenstion = filename
                                   .split(".")
                                   .pop()
@@ -775,6 +784,7 @@ export default function Createnewproposal(props) {
                                     );
                                     // Utils.apiFailureToast("File Size Must be Less than 5MB");
                                   }
+
                                   if (flag) {
                                     extensionArray.map((data) => {
                                       if (
@@ -783,10 +793,15 @@ export default function Createnewproposal(props) {
                                       ) {
                                         props.uploadFileToS3(
                                           e.target.files[0],
-                                          index,
+                                          uploadBars.length,
                                           setUploadBars,
-                                          uploadBars
+                                          uploadBars,
+                                          setUrlDocument,
+                                          urlDocument
                                         );
+
+
+
                                         // setUploadBars(this.state.proposalDocumentsName ?
                                         //   [...uploadBars, filename] : '')
                                         flag = false;
@@ -911,7 +926,8 @@ export default function Createnewproposal(props) {
                                 </div>
                                 {console.log(uploadBars, 'uploadBars')}
 
-                                {uploadBars.map((v, index)=>(
+                                {uploadBars.map((v, index) => (
+                                  uploadBars.indexOf(v) === index) ?
                                   <div class="d-flex mt-3 w-50" key={index}>
                                     <div class="flex-shrink-0 mr-3">
                                       {v ?
@@ -932,18 +948,18 @@ export default function Createnewproposal(props) {
                                       {/* {
                                         console.log(props.state.proposalDocumentsName[index], 'file ' + index)
                                       } */}
-
-                                      {/* {v.filename} */}
                                       {v}
                                       {
                                         v !== undefined ?
                                           v ?
-                                            <ProgressBar style={{ height: "3px" }} now={100} /> :
-                                            <ProgressBar style={{ height: "3px", display: "none" }}
+                                            <ProgressBar
+                                              style={{ height: "3px" }}
+                                              now={100} /> :
+                                            <ProgressBar style={{ display: "none" }}
                                               ref={inputFile}
                                               name="fileButton"
                                               type="file"
-                                              multiple={false}
+                                              multiple={true}
                                               accept="*" />
                                           : null
                                       }
@@ -952,7 +968,7 @@ export default function Createnewproposal(props) {
                                     <div class="flex-shrink-0">
                                       {v ?
                                         <img src={crossIcon} alt="..."
-                                          onClick={() =>deleteFile(index)
+                                          onClick={() => deleteFile(index)
                                             // props.deleteDocumentRow(index, props.state.proposalDocumentsName[index]);
                                             // console.log(props.state.proposalDocumentsName[index])
                                           } /> :
@@ -966,14 +982,17 @@ export default function Createnewproposal(props) {
                                           accept="*"
                                         />}
                                     </div>
-                                  </div>
-                                ))}
+                                  </div> : ""
+                                  // setFileError("Duplicate files can't be selected.")
+                                )}
                               </div>
                             );
                           })
                           : ""}
 
                         {/* * */}
+
+
 
                         <div className="error-message">{fileError}</div>
                       </Column>
@@ -982,6 +1001,28 @@ export default function Createnewproposal(props) {
 
 
                 </div>
+
+                {/* <div className={classes.rowFourth}>
+                  <div className="mr-5">
+                    Who Can Vote
+                  </div>
+                  <div className="mr-5">
+                    <select>
+                      <option>All Governance Address</option>
+                      <option>Only Whitelisted Address</option>
+                    </select>
+                  </div>
+                  <div className="">
+                    Proposal Visibility
+                  </div>
+                  <div>
+                    <select>
+                      <option>All Governance Address</option>
+                      <option>Only Whitelisted Address</option>
+                    </select>
+                  </div>
+                </div> */}
+
                 <div className={classes.buttondiv}>
                   <Button onClick={createNewProposal}>
                     <span className={classes.circle}></span>
