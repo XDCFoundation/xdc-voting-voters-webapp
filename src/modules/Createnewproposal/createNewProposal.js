@@ -723,7 +723,7 @@ export default function Createnewproposal(props) {
                             console.log(index, 'docs')
                             const onchangebutton = (e) => {
                               setShowProgress([...showProgress, index]);
-
+                              
                               // for(let i of uploadBars){
                               //   if(duplicate.indexOf(i) === -1){
                               //     setDuplicate(duplicate.push(i))
@@ -799,7 +799,7 @@ export default function Createnewproposal(props) {
                                           setUrlDocument,
                                           urlDocument
                                         );
-
+                                          
 
 
                                         // setUploadBars(this.state.proposalDocumentsName ?
@@ -894,6 +894,9 @@ export default function Createnewproposal(props) {
                                       accept="*"
                                       style={{ display: "none" }}
                                       onChange={onchangebutton}
+                                      onClick={(event)=> {
+                                        event.target.value = null
+                                      }}
                                     // onClick={onclickbutton}
                                     />
 
