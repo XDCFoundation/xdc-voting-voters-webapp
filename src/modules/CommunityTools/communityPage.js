@@ -13,9 +13,12 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "center",
-    maxWidth: "970px",
-    position: "absolute",
-    top: "215px",
+    maxWidth: "1280px",
+    // position: "absolute",
+    marginTop: "-84px",
+    marginBottom: "40px",
+    zIndex: "1",
+    top: "145px",
 
     width: "100%",
     "@media (min-width: 300px) and (max-width: 567px)": {
@@ -24,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 567px) and (max-width: 767px)": {
       maxWidth: "500px",
     },
-    "@media (min-width: 767px) and (max-width: 1040px)": {
-      maxWidth: "700px",
+    "@media (min-width: 767px) and (max-width: 1440px)": {
+      maxWidth: "900px",
     },
   },
   rowDiv: {
@@ -236,7 +239,7 @@ export default function CommunityPage() {
                         </a>
                       </RowDiv>
                       <RowDiv>
-                        <Span>XinPay</Span>
+                        <Span>XDCPay</Span>
                       </RowDiv>
                     </ColumnDiv>
                   </Paper>
@@ -250,7 +253,7 @@ export default function CommunityPage() {
                         </a>
                       </RowDiv>
                       <RowDiv>
-                        <Span>XinFin API</Span>
+                        <Span>XDC API</Span>
                       </RowDiv>
                     </ColumnDiv>
                   </Paper>
@@ -264,7 +267,7 @@ export default function CommunityPage() {
                         </a>
                       </RowDiv>
                       <RowDiv>
-                        <Span>XinFin Docs</Span>
+                        <Span>XDC Docs</Span>
                       </RowDiv>
                     </ColumnDiv>
                   </Paper>
@@ -357,7 +360,7 @@ const Div = styled.div`
   padding: 46px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e3e7eb;
-  borderradius: 6px;
+  border-radius: 0% 0% 6px 6px;
   opacity: 1;
 `;
 
@@ -367,7 +370,7 @@ const Heading = styled.span`
   color: #2a2a2a;
   opacity: 1;
   box-shadow: none;
-  color: var(--unnamed-color-2a2a2a);
+
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 18px;
